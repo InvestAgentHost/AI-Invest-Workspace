@@ -1,0 +1,4 @@
+interface:
+  display_name: "公司资料整理"
+  short_description: "整理公司研究投递资料、来源清单和跨设备手动压缩同步路径"
+  default_prompt: "使用 $company-material-intake 整理公司新增资料，并更新资料目录与手动同步路径。"

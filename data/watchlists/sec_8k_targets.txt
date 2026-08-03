@@ -1,0 +1,4 @@
+# Add one US-listed ticker per line.
+AAPL
+INTC
+V

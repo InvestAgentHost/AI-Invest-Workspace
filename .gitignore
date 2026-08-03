@@ -1,0 +1,81 @@
+# Secrets and machine-local configuration
+.env
+.env.*
+config.json
+config.yaml
+*.local.json
+credentials.json
+secrets.json
+secrets.yaml
+secrets.yml
+*.key
+*.pem
+*.p12
+
+# Local runtime
+.local/
+.auth/
+.cache/
+.pytest_cache/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.log
+*.tmp
+
+# IDE, Obsidian and operating systems
+.obsidian/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# All acquired source material is local-only and transferred as a folder.
+sources/**
+!sources/.gitkeep
+
+# Rebuildable data and knowledge products
+data/derived/**
+knowledge/indexes/**
+knowledge/databases/**
+!knowledge/indexes/README.md
+!knowledge/databases/README.md
+
+# Generated deliverables and temporary intake
+outputs/**
+!outputs/README.md
+inbox/**
+!inbox/README.md
+
+# Large local formats are never added outside sources by accident.
+*.pdf
+*.PDF
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.parquet
+*.feather
+*.arrow
+*.sqlite
+*.sqlite3
+*.duckdb
+*.db
+*.faiss
+*.index
+*.pkl
+*.pickle
+*.joblib

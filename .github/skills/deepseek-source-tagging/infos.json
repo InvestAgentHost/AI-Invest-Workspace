@@ -1,0 +1,19 @@
+{
+  "summary": "使用 DeepSeek 为 Damnang Substack 投研 Markdown 文章生成 llm/ 标签并写回 Obsidian frontmatter。",
+  "keywords": [
+    "Damnang 文章打标签",
+    "Substack Markdown 标签",
+    "DeepSeek 标签",
+    "Obsidian 知识库",
+    "投研文章标签"
+  ],
+  "example_prompts": [
+    "使用 DeepSeek 给 Damnang 的文章全部打标签。",
+    "先给 Damnang 的 Nokia 文章打标签。",
+    "强制重新生成前 10 篇文章的 LLM 标签。"
+  ],
+  "when_not_to_use": [
+    "只想人工整理最终投资结论时",
+    "需要修改原始来源文件或建立固定主题页时"
+  ]
+}

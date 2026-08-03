@@ -1,0 +1,6 @@
+[project]
+name = "ai-invest-sec-8k-mna"
+version = "0.1.0"
+description = "Daily SEC 8-K merger and restructuring event workflow"
+requires-python = ">=3.12,<3.13"
+

@@ -1,0 +1,17 @@
+schema_version: 1
+id: <market>-<ticker>-<slug>
+source_path: sources/companies/<market>/<ticker>-<slug>
+name: <公司名称>
+aliases: []
+tickers: []
+research_path: research/companies/<market>/<ticker>-<slug>
+inbox_path: sources/companies/<market>/<ticker>-<slug>/inbox
+destinations:
+  filings: sources/companies/<market>/<ticker>-<slug>/filings
+  broker_research: sources/companies/<market>/<ticker>-<slug>/broker-research
+  company_materials: sources/companies/<market>/<ticker>-<slug>/user-materials
+  structured_data: sources/companies/<market>/<ticker>-<slug>/structured-data
+  models: sources/companies/<market>/<ticker>-<slug>/models
+  outputs: outputs/reports/company/<slug>
+manual_sync_paths:
+  - sources/companies/<market>/<ticker>-<slug>

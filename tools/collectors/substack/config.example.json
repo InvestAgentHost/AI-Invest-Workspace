@@ -1,0 +1,14 @@
+{
+  "default_profile": "example",
+  "profiles": {
+    "example": {
+      "base_url": "https://your-author.substack.com",
+      "archive_url": "https://your-author.substack.com/archive?sort=new",
+      "output_dir": "sources/publishers/substack/example",
+      "cdp_url": "http://127.0.0.1:9222",
+      "max_scrolls": 80,
+      "min_delay": 3.0,
+      "max_delay": 5.0
+    }
+  }
+}

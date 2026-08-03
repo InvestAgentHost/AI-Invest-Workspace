@@ -1,0 +1,4 @@
+interface:
+  display_name: "Substack Incremental Archive"
+  short_description: "Fetch logged-in Substack posts incrementally."
+  default_prompt: "Use $substack-incremental-archive to fetch new Substack posts with the logged-in member session."

@@ -1,0 +1,21 @@
+schema_version: 1
+id: CN-688234-sicc
+source_path: sources/companies/CN/688234-sicc
+name: 天岳先进
+aliases:
+  - 山东天岳先进科技股份有限公司
+  - SICC
+tickers:
+  - 688234.SH
+  - 02631.HK
+research_path: research/companies/CN/688234-sicc
+inbox_path: sources/companies/CN/688234-sicc/inbox
+destinations:
+  filings: sources/companies/CN/688234-sicc/filings
+  broker_research: sources/companies/CN/688234-sicc/broker-research
+  company_materials: sources/companies/CN/688234-sicc/user-materials
+  structured_data: sources/companies/CN/688234-sicc/structured-data
+  models: sources/companies/CN/688234-sicc/models
+  outputs: outputs/reports/company/tianyue
+manual_sync_paths:
+  - sources/companies/CN/688234-sicc

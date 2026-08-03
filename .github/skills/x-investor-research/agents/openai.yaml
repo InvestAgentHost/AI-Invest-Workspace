@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Investor Research"
+  short_description: "Retrieve cited X investor views."
+  default_prompt: "Use $x-investor-research to analyze ShanghaoJin views with cited posts."

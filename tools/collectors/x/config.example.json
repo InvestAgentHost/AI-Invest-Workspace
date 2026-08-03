@@ -1,0 +1,22 @@
+{
+  "default_profile": "ShanghaoJin",
+  "database_path": "knowledge/databases/x.sqlite",
+  "profiles": {
+    "ShanghaoJin": {
+      "handle": "ShanghaoJin",
+      "profile_url": "https://x.com/ShanghaoJin",
+      "output_dir": "sources/social/x/ShanghaoJin",
+      "cdp_url": "http://127.0.0.1:9222",
+      "collect_replies": true,
+      "collect_quotes": true,
+      "download_images": true,
+      "hydrate_context": true,
+      "max_context_depth": 5,
+      "max_context_pages": 100,
+      "max_scrolls": 80,
+      "stalled_rounds": 5,
+      "min_delay": 1.5,
+      "max_delay": 3.0
+    }
+  }
+}

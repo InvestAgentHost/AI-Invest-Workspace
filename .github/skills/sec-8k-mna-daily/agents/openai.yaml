@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEC 8-K M&A Daily"
+  short_description: "执行 SEC 8-K 并购重组监控、重试失败并生成中文日报"
+  default_prompt: "Use $sec-8k-mna-daily to run the SEC 8-K M&A monitor and report the Chinese daily summary."

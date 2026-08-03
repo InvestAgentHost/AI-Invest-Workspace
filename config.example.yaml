@@ -1,0 +1,4 @@
+# Optional local overrides. Relative Workspace paths are the portable default.
+paths:
+  sources: sources
+  knowledge: knowledge
