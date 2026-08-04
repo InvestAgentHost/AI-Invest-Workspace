@@ -1,0 +1,17 @@
+schema_version: 1
+id: ES-CLNX-cellnex
+source_path: sources/companies/ES/CLNX-cellnex
+name: Cellnex Telecom, S.A.
+aliases: [Cellnex, Cellnex Telecom]
+tickers: [BME:CLNX]
+research_path: research/companies/ES/CLNX-cellnex
+inbox_path: sources/companies/ES/CLNX-cellnex/inbox
+destinations:
+  filings: sources/companies/ES/CLNX-cellnex/filings
+  broker_research: sources/companies/ES/CLNX-cellnex/broker-research
+  company_materials: sources/companies/ES/CLNX-cellnex/user-materials
+  structured_data: sources/companies/ES/CLNX-cellnex/structured-data
+  models: sources/companies/ES/CLNX-cellnex/models
+  outputs: outputs/reports/company/cellnex
+manual_sync_paths:
+  - sources/companies/ES/CLNX-cellnex
