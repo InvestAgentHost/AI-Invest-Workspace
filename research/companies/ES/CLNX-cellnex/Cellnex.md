@@ -15,7 +15,7 @@ tags: [company-research, official-website]
 
 Cellnex 是以长期合同经营共享通信基础设施的欧洲中立宿主，而非通信设备制造商。正式报告分为 Towers、DAS/Small Cells/RANaaS、Fiber/Connectivity/Housing 和 Broadcast 四条业务线，其中 Towers 是收入、现金流和资本配置的核心。
 
-详见 [Cellnex 官网业务与产品手册](Cellnex-official-website-handbook-2026-08-04.md)。
+详见 [Cellnex 公司基础研究报告（扩展版）](Cellnex-company-research-report-2026-08-05.md) 和 [Cellnex 官网业务与产品手册](Cellnex-official-website-handbook-2026-08-04.md)。前者按公司概况、业务版图、产品、客户、商业模式、财务基本面、战略和风险展开，适合作为首次认识公司的主入口。
 
 ## 核心逻辑
 

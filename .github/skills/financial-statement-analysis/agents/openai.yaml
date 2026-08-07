@@ -1,0 +1,4 @@
+interface:
+  display_name: "Financial Statement Analysis"
+  short_description: "Audit-ready statement metrics and analysis"
+  default_prompt: "Use $financial-statement-analysis to extract reported financial statements, calculate auditable metrics, and explain their economic meaning."
