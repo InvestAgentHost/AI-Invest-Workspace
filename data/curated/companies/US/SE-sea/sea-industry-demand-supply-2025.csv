@@ -1,0 +1,17 @@
+industry,metric,period,geography,value,unit,status,source,comparability_note
+digital_economy,total_gmv,2025,ASEAN-10,305,USD billion,third_party_estimate,e-Conomy SEA 2025,2025 based on annualized H1; historical series before 2025 covers SEA-6
+ecommerce,ecommerce_gmv,2024,SEA-6,156,USD billion,third_party_estimate,e-Conomy SEA 2025,compare with 2025 SEA-6 only
+ecommerce,ecommerce_gmv,2025,SEA-6,181,USD billion,third_party_estimate,e-Conomy SEA 2025,2025 based on annualized H1
+ecommerce,ecommerce_gmv,2025,ASEAN-10,185,USD billion,third_party_estimate,e-Conomy SEA 2025,includes about USD 4 billion outside SEA-6
+ecommerce,ecommerce_gmv_forecast,2030,ASEAN-10,359,USD billion,third_party_forecast,e-Conomy SEA 2025,forecast not regulatory statistics
+ecommerce,video_commerce_share_of_gmv,2025,SEA-6,25,percent,third_party_estimate,e-Conomy SEA 2025,video commerce definition follows report
+ecommerce,video_commerce_gmv,2025,SEA-6,46,USD billion,third_party_estimate,e-Conomy SEA 2025,2025 based on annualized H1
+ecommerce,video_commerce_order_value,2025,SEA-6,6-7,USD per order,third_party_estimate,e-Conomy SEA 2025,not directly comparable with Shopee GMV per gross order
+ecommerce,total_ecommerce_order_value,2025,SEA-6,11-13,USD per order,third_party_estimate,e-Conomy SEA 2025,not directly comparable with Shopee GMV per gross order
+payments,digital_payment_gtv,2025,ASEAN-10,1412,USD billion,third_party_estimate,e-Conomy SEA 2025,includes cards account-to-account and ewallet transactions
+lending,digital_loan_book,2025,ASEAN-10,91,USD billion,third_party_estimate,e-Conomy SEA 2025,consumer excluding cards and mortgages plus SME
+lending,consumer_digital_loan_book,2025,ASEAN-10,70,USD billion,third_party_estimate,e-Conomy SEA 2025,rounded chart value
+lending,sme_digital_loan_book,2025,ASEAN-10,20,USD billion,third_party_estimate,e-Conomy SEA 2025,rounded chart value; components may not add due to rounding
+gaming,indonesia_share_of_mobile_game_downloads,2025,ASEAN-10,40,percent,third_party_estimate,e-Conomy SEA 2025,approximately 40 percent
+financial_inclusion,adults_with_financial_account,2024,Global,79,percent,official_survey_summary,World Bank Global Findex 2025,global background not Sea operating-market penetration
+digital_connectivity,adults_owning_mobile_phone,2024,Low- and middle-income economies,84,percent,official_survey_summary,World Bank Global Findex 2025,LMIC aggregate not Sea operating-market penetration

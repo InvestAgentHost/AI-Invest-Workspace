@@ -1,0 +1,20 @@
+schema_version: 1
+id: JP-9435-hikari-tsushin
+source_path: sources/companies/JP/9435-hikari-tsushin
+name: Hikari Tsushin, Inc.
+aliases:
+  - Hikari Tsushin
+  - 光通信株式会社
+tickers:
+  - "9435"
+research_path: research/companies/JP/9435-hikari-tsushin
+inbox_path: sources/companies/JP/9435-hikari-tsushin/inbox
+destinations:
+  filings: sources/companies/JP/9435-hikari-tsushin/filings
+  broker_research: sources/companies/JP/9435-hikari-tsushin/broker-research
+  company_materials: sources/companies/JP/9435-hikari-tsushin/user-materials
+  structured_data: sources/companies/JP/9435-hikari-tsushin/structured-data
+  models: sources/companies/JP/9435-hikari-tsushin/models
+  outputs: outputs/reports/company/hikari-tsushin
+manual_sync_paths:
+  - sources/companies/JP/9435-hikari-tsushin

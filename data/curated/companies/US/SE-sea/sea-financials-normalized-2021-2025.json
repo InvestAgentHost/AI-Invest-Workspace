@@ -1,0 +1,1908 @@
+{
+  "entity": "Sea Limited",
+  "currency": "USD",
+  "scale": "million",
+  "reporting_framework": "US GAAP",
+  "fiscal_year_end": "December 31",
+  "consolidation_scope": "consolidated",
+  "sector": "marketplace, payments and lending, digital entertainment",
+  "as_of_date": "2026-08-12",
+  "period_order": [
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "notes": [
+    "Monee makes generic liquidity and net-debt metrics incomplete for regulatory analysis.",
+    "Short-term debt includes current convertible notes; long-term debt includes non-current convertible notes."
+  ],
+  "periods": {
+    "2021": {
+      "period_length_months": 12,
+      "end_date": "2021-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 9955.19,
+          "source_label": "Revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 6059.455,
+          "source_label": "Cost of revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 3895.735,
+          "source_label": "Gross profit",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": -1583.06,
+          "source_label": "Operating income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 279.032,
+          "source_label": "Depreciation and amortization expenses",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": -1715.184,
+          "source_label": "Income (loss) before income tax",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 332.865,
+          "source_label": "Income tax expense",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": -2043.03,
+          "source_label": "Net income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": -2046.759,
+          "source_label": "Net income (loss) attributable to Sea Limited's ordinary shareholders",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 3.729,
+          "source_label": "Net income (loss) attributable to non-controlling interests",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 9247.762,
+          "source_label": "Cash and cash equivalents",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "liquid_investments": {
+          "value": 911.281,
+          "source_label": "Short-term investments",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 388.308,
+          "source_label": "Accounts receivable, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 117.499,
+          "source_label": "Inventories, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 15135.397,
+          "source_label": "Total current assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "ppe": {
+          "value": 1029.963,
+          "source_label": "Property and equipment, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "right_of_use_assets": {
+          "value": 649.68,
+          "source_label": "Operating lease right-of-use assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "goodwill": {
+          "value": 539.624,
+          "source_label": "Goodwill",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "intangible_assets": {
+          "value": 52.517,
+          "source_label": "Intangible assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 18756.025,
+          "source_label": "Total assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 100.0,
+          "source_label": "Borrowings + current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "current borrowings plus current convertible notes",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 3475.708,
+          "source_label": "Non-current borrowings + non-current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "non-current borrowings plus non-current convertible notes",
+          "confidence": "high"
+        },
+        "current_lease_liabilities": {
+          "value": 186.494,
+          "source_label": "Current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "noncurrent_lease_liabilities": {
+          "value": 491.313,
+          "source_label": "Non-current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 213.58,
+          "source_label": "Accounts payable",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 7176.436,
+          "source_label": "Total current liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 11331.616,
+          "source_label": "Total liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 7398.697,
+          "source_label": "Total Sea Limited shareholders' equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "nci": {
+          "value": 25.712,
+          "source_label": "Non-controlling interests",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 7424.409,
+          "source_label": "Total equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 208.649,
+          "source_label": "Net cash generated from (used in) operating activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -3767.273,
+          "source_label": "Net cash used in investing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 7401.589,
+          "source_label": "Net cash generated from financing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_ppe": {
+          "value": 772.177,
+          "source_label": "Purchase of property and equipment",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_intangibles": {
+          "value": 34.999,
+          "source_label": "Purchase of intangible assets",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "interest_paid": {
+          "value": 44.981,
+          "source_label": "Interest paid",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "fx_cash_effect": {
+          "value": -58.218,
+          "source_label": "Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        }
+      }
+    },
+    "2022": {
+      "period_length_months": 12,
+      "end_date": "2022-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 12449.705,
+          "source_label": "Revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 7264.428,
+          "source_label": "Cost of revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 5185.277,
+          "source_label": "Gross profit",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": -1487.508,
+          "source_label": "Operating income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 428.344,
+          "source_label": "Depreciation and amortization expenses",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": -1500.533,
+          "source_label": "Income (loss) before income tax",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 168.395,
+          "source_label": "Income tax expense",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": -1657.772,
+          "source_label": "Net income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": -1651.421,
+          "source_label": "Net income (loss) attributable to Sea Limited's ordinary shareholders",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": -6.351,
+          "source_label": "Net income (loss) attributable to non-controlling interests",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 6029.859,
+          "source_label": "Cash and cash equivalents",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "liquid_investments": {
+          "value": 864.258,
+          "source_label": "Short-term investments",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 268.814,
+          "source_label": "Accounts receivable, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 109.668,
+          "source_label": "Inventories, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 12688.012,
+          "source_label": "Total current assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "ppe": {
+          "value": 1387.895,
+          "source_label": "Property and equipment, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "right_of_use_assets": {
+          "value": 957.84,
+          "source_label": "Operating lease right-of-use assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "goodwill": {
+          "value": 230.208,
+          "source_label": "Goodwill",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "intangible_assets": {
+          "value": 65.019,
+          "source_label": "Intangible assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 17002.796,
+          "source_label": "Total assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 119.647,
+          "source_label": "Borrowings + current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "current borrowings plus current convertible notes",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 3338.75,
+          "source_label": "Non-current borrowings + non-current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "non-current borrowings plus non-current convertible notes",
+          "confidence": "high"
+        },
+        "current_lease_liabilities": {
+          "value": 269.968,
+          "source_label": "Current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "noncurrent_lease_liabilities": {
+          "value": 756.818,
+          "source_label": "Non-current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 258.648,
+          "source_label": "Accounts payable",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 6935.692,
+          "source_label": "Total current liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 11191.972,
+          "source_label": "Total liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 5715.705,
+          "source_label": "Total Sea Limited shareholders' equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "nci": {
+          "value": 95.119,
+          "source_label": "Non-controlling interests",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 5810.824,
+          "source_label": "Total equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": -1055.692,
+          "source_label": "Net cash generated from (used in) operating activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -2428.809,
+          "source_label": "Net cash used in investing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 400.256,
+          "source_label": "Net cash generated from financing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_ppe": {
+          "value": 924.178,
+          "source_label": "Purchase of property and equipment",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_intangibles": {
+          "value": 52.105,
+          "source_label": "Purchase of intangible assets",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "interest_paid": {
+          "value": 103.335,
+          "source_label": "Interest paid",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "fx_cash_effect": {
+          "value": -143.511,
+          "source_label": "Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2023-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        }
+      }
+    },
+    "2023": {
+      "period_length_months": 12,
+      "end_date": "2023-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 13063.56,
+          "source_label": "Revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 7229.913,
+          "source_label": "Cost of revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 5833.647,
+          "source_label": "Gross profit",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 224.778,
+          "source_label": "Operating income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 440.845,
+          "source_label": "Depreciation and amortization expenses",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 432.394,
+          "source_label": "Income (loss) before income tax",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 262.68,
+          "source_label": "Income tax expense",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 162.682,
+          "source_label": "Net income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 150.726,
+          "source_label": "Net income (loss) attributable to Sea Limited's ordinary shareholders",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 11.956,
+          "source_label": "Net income (loss) attributable to non-controlling interests",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 2811.056,
+          "source_label": "Cash and cash equivalents",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "liquid_investments": {
+          "value": 2547.644,
+          "source_label": "Short-term investments",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 262.716,
+          "source_label": "Accounts receivable, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 125.395,
+          "source_label": "Inventories, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 11773.934,
+          "source_label": "Total current assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "ppe": {
+          "value": 1207.698,
+          "source_label": "Property and equipment, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "right_of_use_assets": {
+          "value": 1015.982,
+          "source_label": "Operating lease right-of-use assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "goodwill": {
+          "value": 112.782,
+          "source_label": "Goodwill",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "intangible_assets": {
+          "value": 50.821,
+          "source_label": "Intangible assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 18883.232,
+          "source_label": "Total assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 298.425,
+          "source_label": "Borrowings + current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "current borrowings plus current convertible notes",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 3069.108,
+          "source_label": "Non-current borrowings + non-current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "non-current borrowings plus non-current convertible notes",
+          "confidence": "high"
+        },
+        "current_lease_liabilities": {
+          "value": 290.788,
+          "source_label": "Current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "noncurrent_lease_liabilities": {
+          "value": 789.514,
+          "source_label": "Non-current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 342.547,
+          "source_label": "Accounts payable",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 8168.941,
+          "source_label": "Total current liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 12185.647,
+          "source_label": "Total liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 6593.83,
+          "source_label": "Total Sea Limited shareholders' equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "nci": {
+          "value": 103.755,
+          "source_label": "Non-controlling interests",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 6697.585,
+          "source_label": "Total equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 2079.688,
+          "source_label": "Net cash generated from (used in) operating activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -5804.462,
+          "source_label": "Net cash used in investing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 366.011,
+          "source_label": "Net cash generated from financing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_ppe": {
+          "value": 241.605,
+          "source_label": "Purchase of property and equipment",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_intangibles": {
+          "value": 16.656,
+          "source_label": "Purchase of intangible assets",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "interest_paid": {
+          "value": 119.471,
+          "source_label": "Interest paid",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "fx_cash_effect": {
+          "value": -7.964,
+          "source_label": "Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        }
+      }
+    },
+    "2024": {
+      "period_length_months": 12,
+      "end_date": "2024-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 16819.866,
+          "source_label": "Revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 9614.778,
+          "source_label": "Cost of revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 7205.088,
+          "source_label": "Gross profit",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 662.152,
+          "source_label": "Operating income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 389.673,
+          "source_label": "Depreciation and amortization expenses",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 778.783,
+          "source_label": "Income (loss) before income tax",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 321.168,
+          "source_label": "Income tax expense",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 447.827,
+          "source_label": "Net income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 444.321,
+          "source_label": "Net income (loss) attributable to Sea Limited's ordinary shareholders",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 3.506,
+          "source_label": "Net income (loss) attributable to non-controlling interests",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 2405.153,
+          "source_label": "Cash and cash equivalents",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "liquid_investments": {
+          "value": 6215.423,
+          "source_label": "Short-term investments",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 306.657,
+          "source_label": "Accounts receivable, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 143.246,
+          "source_label": "Inventories, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 16857.668,
+          "source_label": "Total current assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "ppe": {
+          "value": 1097.699,
+          "source_label": "Property and equipment, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "right_of_use_assets": {
+          "value": 1054.785,
+          "source_label": "Operating lease right-of-use assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "goodwill": {
+          "value": 107.625,
+          "source_label": "Goodwill",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "intangible_assets": {
+          "value": 27.31,
+          "source_label": "Intangible assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 22625.469,
+          "source_label": "Total assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 1278.599,
+          "source_label": "Borrowings + current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "current borrowings plus current convertible notes",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 1728.258,
+          "source_label": "Non-current borrowings + non-current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "non-current borrowings plus non-current convertible notes",
+          "confidence": "high"
+        },
+        "current_lease_liabilities": {
+          "value": 300.274,
+          "source_label": "Current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "noncurrent_lease_liabilities": {
+          "value": 803.502,
+          "source_label": "Non-current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 350.021,
+          "source_label": "Accounts payable",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 11296.152,
+          "source_label": "Total current liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 14147.893,
+          "source_label": "Total liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 8372.335,
+          "source_label": "Total Sea Limited shareholders' equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "nci": {
+          "value": 105.241,
+          "source_label": "Non-controlling interests",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 8477.576,
+          "source_label": "Total equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 3277.42,
+          "source_label": "Net cash generated from (used in) operating activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -5040.846,
+          "source_label": "Net cash used in investing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 1684.493,
+          "source_label": "Net cash generated from financing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_ppe": {
+          "value": 318.153,
+          "source_label": "Purchase of property and equipment",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_intangibles": {
+          "value": 3.44,
+          "source_label": "Purchase of intangible assets",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "interest_paid": {
+          "value": 144.7,
+          "source_label": "Interest paid",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "fx_cash_effect": {
+          "value": -83.139,
+          "source_label": "Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        }
+      }
+    },
+    "2025": {
+      "period_length_months": 12,
+      "end_date": "2025-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 22938.469,
+          "source_label": "Revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 12694.732,
+          "source_label": "Cost of revenue",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 10243.737,
+          "source_label": "Gross profit",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 1985.306,
+          "source_label": "Operating income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 372.171,
+          "source_label": "Depreciation and amortization expenses",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 2280.859,
+          "source_label": "Income (loss) before income tax",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 651.081,
+          "source_label": "Income tax expense",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 1610.894,
+          "source_label": "Net income (loss)",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 1578.149,
+          "source_label": "Net income (loss) attributable to Sea Limited's ordinary shareholders",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 32.745,
+          "source_label": "Net income (loss) attributable to non-controlling interests",
+          "statement": "income_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-11 to F-12",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 4158.92,
+          "source_label": "Cash and cash equivalents",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "liquid_investments": {
+          "value": 6413.261,
+          "source_label": "Short-term investments",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 378.047,
+          "source_label": "Accounts receivable, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 222.578,
+          "source_label": "Inventories, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 23249.495,
+          "source_label": "Total current assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "ppe": {
+          "value": 1306.837,
+          "source_label": "Property and equipment, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "right_of_use_assets": {
+          "value": 1425.198,
+          "source_label": "Operating lease right-of-use assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "goodwill": {
+          "value": 104.462,
+          "source_label": "Goodwill",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "intangible_assets": {
+          "value": 12.21,
+          "source_label": "Intangible assets, net",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 29370.979,
+          "source_label": "Total assets",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 1333.252,
+          "source_label": "Borrowings + current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "current borrowings plus current convertible notes",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 510.396,
+          "source_label": "Non-current borrowings + non-current convertible notes",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "non-current borrowings plus non-current convertible notes",
+          "confidence": "high"
+        },
+        "current_lease_liabilities": {
+          "value": 368.115,
+          "source_label": "Current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "noncurrent_lease_liabilities": {
+          "value": 1118.682,
+          "source_label": "Non-current operating lease liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 467.807,
+          "source_label": "Accounts payable",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 14680.55,
+          "source_label": "Total current liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 16722.651,
+          "source_label": "Total liabilities",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 12526.503,
+          "source_label": "Total Sea Limited shareholders' equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "nci": {
+          "value": 121.825,
+          "source_label": "Non-controlling interests",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 12648.328,
+          "source_label": "Total equity",
+          "statement": "balance_sheet",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-7 to F-10",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 5024.523,
+          "source_label": "Net cash generated from (used in) operating activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -4408.668,
+          "source_label": "Net cash used in investing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 1623.183,
+          "source_label": "Net cash generated from financing activities",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_ppe": {
+          "value": 513.809,
+          "source_label": "Purchase of property and equipment",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "capex_intangibles": {
+          "value": 10.69,
+          "source_label": "Purchase of intangible assets",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "interest_paid": {
+          "value": 170.151,
+          "source_label": "Interest paid",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        },
+        "fx_cash_effect": {
+          "value": 98.844,
+          "source_label": "Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",
+          "statement": "cash_flow_statement",
+          "source": "sources/companies/US/SE-sea/official-website/2026-08-12/raw/pdfs/Sea-FY2025-Form-20-F.pdf",
+          "page": "F-14 to F-15",
+          "status": "reported",
+          "mapping": "none",
+          "confidence": "high"
+        }
+      }
+    }
+  }
+}

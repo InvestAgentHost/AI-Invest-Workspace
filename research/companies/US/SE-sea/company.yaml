@@ -1,0 +1,20 @@
+schema_version: 1
+id: US-SE-sea
+source_path: sources/companies/US/SE-sea
+name: Sea Limited
+aliases:
+  - Sea Ltd
+  - Sea
+tickers:
+  - SE
+research_path: research/companies/US/SE-sea
+inbox_path: sources/companies/US/SE-sea/inbox
+destinations:
+  filings: sources/companies/US/SE-sea/filings
+  broker_research: sources/companies/US/SE-sea/broker-research
+  company_materials: sources/companies/US/SE-sea/user-materials
+  structured_data: sources/companies/US/SE-sea/structured-data
+  models: sources/companies/US/SE-sea/models
+  outputs: outputs/reports/company/sea
+manual_sync_paths:
+  - sources/companies/US/SE-sea

@@ -28,6 +28,7 @@ dist/
 build/
 *.log
 *.tmp
+/tmp
 
 # IDE, Obsidian and operating systems
 .obsidian/

@@ -1,0 +1,24 @@
+as_of,segment,metric,unit,FY2025,FY2026,source,verification_status
+2026-08-13,Electricity & Gas,revenue,JPY billion,288.4,319.5,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Electricity & Gas,recurring_operating_profit,JPY billion,61.1,68.9,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Electricity & Gas,customer_acquisition_cost,JPY billion,25.7,33.1,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Electricity & Gas,operating_profit,JPY billion,35.4,35.8,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Telecommunications,revenue,JPY billion,122.5,127.5,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Telecommunications,recurring_operating_profit,JPY billion,39.6,42.4,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Telecommunications,customer_acquisition_cost,JPY billion,13.8,13.8,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Telecommunications,operating_profit,JPY billion,25.7,28.5,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Beverage,revenue,JPY billion,79.3,85.3,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Beverage,recurring_operating_profit,JPY billion,30.7,34.4,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Beverage,customer_acquisition_cost,JPY billion,22.1,24.2,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Beverage,operating_profit,JPY billion,8.5,10.1,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Insurance,revenue,JPY billion,26.9,31.4,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Insurance,recurring_operating_profit,JPY billion,13.1,17.7,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Insurance,customer_acquisition_cost,JPY billion,5.0,8.3,official FY2026 results presentation p.7,issuer APM
+2026-08-13,Insurance,operating_profit,JPY billion,8.0,9.3,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Finance,revenue,JPY billion,33.1,45.5,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Finance,customer_acquisition_cost,JPY billion,-17.0,-22.0,official FY2026 results presentation p.7,negative because finance profit is presented in acquisition-cost column
+2026-08-13,Finance,operating_profit,JPY billion,17.8,22.0,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Solution,revenue,JPY billion,28.0,26.8,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Solution,operating_profit,JPY billion,2.8,3.3,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Commission-based sales,revenue,JPY billion,108.0,98.4,official FY2026 results presentation p.7,issuer presentation
+2026-08-13,Commission-based sales,operating_profit,JPY billion,11.5,10.0,official FY2026 results presentation p.7,issuer presentation

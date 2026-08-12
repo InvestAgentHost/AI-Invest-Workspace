@@ -1,0 +1,41 @@
+canonical_key,source_label,transformation,economic_scope,confidence,comparability_note,source_pages
+revenue,Revenue,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+cost_of_revenue,Cost of revenue,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+gross_profit,Gross profit,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+operating_profit,Operating income (loss),none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+depreciation_amortization,Depreciation and amortization expenses,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+income_before_tax,Income (loss) before income tax,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+income_tax_expense,Income tax expense,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+net_income_consolidated,Net income (loss),none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+net_income_parent,Net income (loss) attributable to Sea Limited's ordinary shareholders,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+net_income_nci,Net income (loss) attributable to non-controlling interests,none,as reported,high,latest audited comparative presentation used,F-11 to F-12
+cash_and_equivalents,Cash and cash equivalents,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+liquid_investments,Short-term investments,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+trade_receivables,"Accounts receivable, net",none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+inventory,"Inventories, net",none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+current_assets,Total current assets,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+ppe,"Property and equipment, net",none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+right_of_use_assets,"Operating lease right-of-use assets, net",none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+goodwill,Goodwill,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+intangible_assets,"Intangible assets, net",none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+total_assets,Total assets,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+short_term_debt,Borrowings + current convertible notes,sum,current borrowings and current convertible notes,high,latest audited comparative presentation used,F-7 to F-10
+long_term_debt,Non-current borrowings + non-current convertible notes,sum,non-current borrowings and non-current convertible notes,high,latest audited comparative presentation used,F-7 to F-10
+current_lease_liabilities,Current operating lease liabilities,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+noncurrent_lease_liabilities,Non-current operating lease liabilities,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+trade_payables,Accounts payable,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+current_liabilities,Total current liabilities,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+total_liabilities,Total liabilities,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+parent_equity,Total Sea Limited shareholders' equity,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+nci,Non-controlling interests,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+total_equity,Total equity,none,as reported,high,latest audited comparative presentation used,F-7 to F-10
+cfo,Net cash generated from (used in) operating activities,none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+cfi,Net cash used in investing activities,none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+cff,Net cash generated from financing activities,none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+capex_ppe,Purchase of property and equipment,none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+capex_intangibles,Purchase of intangible assets,none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+interest_paid,Interest paid,none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+cash_begin,"Cash, cash equivalents and restricted cash at beginning of year",none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+cash_end,"Cash, cash equivalents and restricted cash at end of year",none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+net_change_cash,"Net increase (decrease) in cash, cash equivalents and restricted cash",none,as reported,high,latest audited comparative presentation used,F-14 to F-15
+fx_cash_effect,"Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",none,as reported,high,latest audited comparative presentation used,F-14 to F-15

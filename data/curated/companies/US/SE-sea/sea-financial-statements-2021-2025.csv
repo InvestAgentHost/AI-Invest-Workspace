@@ -1,0 +1,201 @@
+period,canonical_key,source_label,value_usd_m,source,page,status,confidence
+2021,revenue,Revenue,9955.19,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,cost_of_revenue,Cost of revenue,6059.455,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,gross_profit,Gross profit,3895.735,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,operating_profit,Operating income (loss),-1583.06,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,depreciation_amortization,Depreciation and amortization expenses,279.032,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,income_before_tax,Income (loss) before income tax,-1715.184,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,income_tax_expense,Income tax expense,332.865,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,net_income_consolidated,Net income (loss),-2043.03,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,net_income_parent,Net income (loss) attributable to Sea Limited's ordinary shareholders,-2046.759,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,net_income_nci,Net income (loss) attributable to non-controlling interests,3.729,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2021,cash_and_equivalents,Cash and cash equivalents,9247.762,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,liquid_investments,Short-term investments,911.281,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,trade_receivables,"Accounts receivable, net",388.308,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,inventory,"Inventories, net",117.499,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,current_assets,Total current assets,15135.397,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,ppe,"Property and equipment, net",1029.963,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,right_of_use_assets,"Operating lease right-of-use assets, net",649.68,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,goodwill,Goodwill,539.624,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,intangible_assets,"Intangible assets, net",52.517,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,total_assets,Total assets,18756.025,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,short_term_debt,Borrowings + current convertible notes,100.0,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,long_term_debt,Non-current borrowings + non-current convertible notes,3475.708,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,current_lease_liabilities,Current operating lease liabilities,186.494,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,noncurrent_lease_liabilities,Non-current operating lease liabilities,491.313,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,trade_payables,Accounts payable,213.58,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,current_liabilities,Total current liabilities,7176.436,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,total_liabilities,Total liabilities,11331.616,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,parent_equity,Total Sea Limited shareholders' equity,7398.697,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,nci,Non-controlling interests,25.712,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,total_equity,Total equity,7424.409,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2021,cfo,Net cash generated from (used in) operating activities,208.649,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,cfi,Net cash used in investing activities,-3767.273,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,cff,Net cash generated from financing activities,7401.589,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,capex_ppe,Purchase of property and equipment,772.177,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,capex_intangibles,Purchase of intangible assets,34.999,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,interest_paid,Interest paid,44.981,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,cash_begin,"Cash, cash equivalents and restricted cash at beginning of year",7053.393,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,cash_end,"Cash, cash equivalents and restricted cash at end of year",10838.14,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,net_change_cash,"Net increase (decrease) in cash, cash equivalents and restricted cash",3784.747,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2021,fx_cash_effect,"Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",-58.218,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,revenue,Revenue,12449.705,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,cost_of_revenue,Cost of revenue,7264.428,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,gross_profit,Gross profit,5185.277,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,operating_profit,Operating income (loss),-1487.508,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,depreciation_amortization,Depreciation and amortization expenses,428.344,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,income_before_tax,Income (loss) before income tax,-1500.533,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,income_tax_expense,Income tax expense,168.395,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,net_income_consolidated,Net income (loss),-1657.772,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,net_income_parent,Net income (loss) attributable to Sea Limited's ordinary shareholders,-1651.421,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,net_income_nci,Net income (loss) attributable to non-controlling interests,-6.351,Sea-FY2023-Form-20-F.pdf,F-11 to F-12,reported,high
+2022,cash_and_equivalents,Cash and cash equivalents,6029.859,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,liquid_investments,Short-term investments,864.258,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,trade_receivables,"Accounts receivable, net",268.814,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,inventory,"Inventories, net",109.668,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,current_assets,Total current assets,12688.012,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,ppe,"Property and equipment, net",1387.895,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,right_of_use_assets,"Operating lease right-of-use assets, net",957.84,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,goodwill,Goodwill,230.208,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,intangible_assets,"Intangible assets, net",65.019,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,total_assets,Total assets,17002.796,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,short_term_debt,Borrowings + current convertible notes,119.647,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,long_term_debt,Non-current borrowings + non-current convertible notes,3338.75,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,current_lease_liabilities,Current operating lease liabilities,269.968,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,noncurrent_lease_liabilities,Non-current operating lease liabilities,756.818,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,trade_payables,Accounts payable,258.648,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,current_liabilities,Total current liabilities,6935.692,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,total_liabilities,Total liabilities,11191.972,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,parent_equity,Total Sea Limited shareholders' equity,5715.705,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,nci,Non-controlling interests,95.119,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,total_equity,Total equity,5810.824,Sea-FY2023-Form-20-F.pdf,F-7 to F-10,reported,high
+2022,cfo,Net cash generated from (used in) operating activities,-1055.692,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,cfi,Net cash used in investing activities,-2428.809,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,cff,Net cash generated from financing activities,400.256,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,capex_ppe,Purchase of property and equipment,924.178,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,capex_intangibles,Purchase of intangible assets,52.105,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,interest_paid,Interest paid,103.335,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,cash_begin,"Cash, cash equivalents and restricted cash at beginning of year",10838.14,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,cash_end,"Cash, cash equivalents and restricted cash at end of year",7610.384,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,net_change_cash,"Net increase (decrease) in cash, cash equivalents and restricted cash",-3227.756,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2022,fx_cash_effect,"Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",-143.511,Sea-FY2023-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,revenue,Revenue,13063.56,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,cost_of_revenue,Cost of revenue,7229.913,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,gross_profit,Gross profit,5833.647,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,operating_profit,Operating income (loss),224.778,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,depreciation_amortization,Depreciation and amortization expenses,440.845,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,income_before_tax,Income (loss) before income tax,432.394,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,income_tax_expense,Income tax expense,262.68,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,net_income_consolidated,Net income (loss),162.682,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,net_income_parent,Net income (loss) attributable to Sea Limited's ordinary shareholders,150.726,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,net_income_nci,Net income (loss) attributable to non-controlling interests,11.956,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2023,cash_and_equivalents,Cash and cash equivalents,2811.056,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,liquid_investments,Short-term investments,2547.644,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,trade_receivables,"Accounts receivable, net",262.716,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,inventory,"Inventories, net",125.395,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,current_assets,Total current assets,11773.934,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,ppe,"Property and equipment, net",1207.698,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,right_of_use_assets,"Operating lease right-of-use assets, net",1015.982,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,goodwill,Goodwill,112.782,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,intangible_assets,"Intangible assets, net",50.821,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,total_assets,Total assets,18883.232,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,short_term_debt,Borrowings + current convertible notes,298.425,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,long_term_debt,Non-current borrowings + non-current convertible notes,3069.108,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,current_lease_liabilities,Current operating lease liabilities,290.788,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,noncurrent_lease_liabilities,Non-current operating lease liabilities,789.514,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,trade_payables,Accounts payable,342.547,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,current_liabilities,Total current liabilities,8168.941,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,total_liabilities,Total liabilities,12185.647,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,parent_equity,Total Sea Limited shareholders' equity,6593.83,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,nci,Non-controlling interests,103.755,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,total_equity,Total equity,6697.585,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2023,cfo,Net cash generated from (used in) operating activities,2079.688,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,cfi,Net cash used in investing activities,-5804.462,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,cff,Net cash generated from financing activities,366.011,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,capex_ppe,Purchase of property and equipment,241.605,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,capex_intangibles,Purchase of intangible assets,16.656,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,interest_paid,Interest paid,119.471,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,cash_begin,"Cash, cash equivalents and restricted cash at beginning of year",7610.384,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,cash_end,"Cash, cash equivalents and restricted cash at end of year",4243.657,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,net_change_cash,"Net increase (decrease) in cash, cash equivalents and restricted cash",-3366.727,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2023,fx_cash_effect,"Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",-7.964,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,revenue,Revenue,16819.866,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,cost_of_revenue,Cost of revenue,9614.778,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,gross_profit,Gross profit,7205.088,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,operating_profit,Operating income (loss),662.152,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,depreciation_amortization,Depreciation and amortization expenses,389.673,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,income_before_tax,Income (loss) before income tax,778.783,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,income_tax_expense,Income tax expense,321.168,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,net_income_consolidated,Net income (loss),447.827,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,net_income_parent,Net income (loss) attributable to Sea Limited's ordinary shareholders,444.321,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,net_income_nci,Net income (loss) attributable to non-controlling interests,3.506,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2024,cash_and_equivalents,Cash and cash equivalents,2405.153,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,liquid_investments,Short-term investments,6215.423,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,trade_receivables,"Accounts receivable, net",306.657,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,inventory,"Inventories, net",143.246,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,current_assets,Total current assets,16857.668,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,ppe,"Property and equipment, net",1097.699,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,right_of_use_assets,"Operating lease right-of-use assets, net",1054.785,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,goodwill,Goodwill,107.625,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,intangible_assets,"Intangible assets, net",27.31,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,total_assets,Total assets,22625.469,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,short_term_debt,Borrowings + current convertible notes,1278.599,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,long_term_debt,Non-current borrowings + non-current convertible notes,1728.258,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,current_lease_liabilities,Current operating lease liabilities,300.274,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,noncurrent_lease_liabilities,Non-current operating lease liabilities,803.502,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,trade_payables,Accounts payable,350.021,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,current_liabilities,Total current liabilities,11296.152,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,total_liabilities,Total liabilities,14147.893,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,parent_equity,Total Sea Limited shareholders' equity,8372.335,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,nci,Non-controlling interests,105.241,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,total_equity,Total equity,8477.576,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2024,cfo,Net cash generated from (used in) operating activities,3277.42,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,cfi,Net cash used in investing activities,-5040.846,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,cff,Net cash generated from financing activities,1684.493,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,capex_ppe,Purchase of property and equipment,318.153,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,capex_intangibles,Purchase of intangible assets,3.44,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,interest_paid,Interest paid,144.7,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,cash_begin,"Cash, cash equivalents and restricted cash at beginning of year",4243.657,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,cash_end,"Cash, cash equivalents and restricted cash at end of year",4081.585,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,net_change_cash,"Net increase (decrease) in cash, cash equivalents and restricted cash",-162.072,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2024,fx_cash_effect,"Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",-83.139,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,revenue,Revenue,22938.469,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,cost_of_revenue,Cost of revenue,12694.732,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,gross_profit,Gross profit,10243.737,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,operating_profit,Operating income (loss),1985.306,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,depreciation_amortization,Depreciation and amortization expenses,372.171,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,income_before_tax,Income (loss) before income tax,2280.859,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,income_tax_expense,Income tax expense,651.081,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,net_income_consolidated,Net income (loss),1610.894,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,net_income_parent,Net income (loss) attributable to Sea Limited's ordinary shareholders,1578.149,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,net_income_nci,Net income (loss) attributable to non-controlling interests,32.745,Sea-FY2025-Form-20-F.pdf,F-11 to F-12,reported,high
+2025,cash_and_equivalents,Cash and cash equivalents,4158.92,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,liquid_investments,Short-term investments,6413.261,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,trade_receivables,"Accounts receivable, net",378.047,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,inventory,"Inventories, net",222.578,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,current_assets,Total current assets,23249.495,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,ppe,"Property and equipment, net",1306.837,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,right_of_use_assets,"Operating lease right-of-use assets, net",1425.198,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,goodwill,Goodwill,104.462,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,intangible_assets,"Intangible assets, net",12.21,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,total_assets,Total assets,29370.979,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,short_term_debt,Borrowings + current convertible notes,1333.252,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,long_term_debt,Non-current borrowings + non-current convertible notes,510.396,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,current_lease_liabilities,Current operating lease liabilities,368.115,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,noncurrent_lease_liabilities,Non-current operating lease liabilities,1118.682,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,trade_payables,Accounts payable,467.807,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,current_liabilities,Total current liabilities,14680.55,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,total_liabilities,Total liabilities,16722.651,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,parent_equity,Total Sea Limited shareholders' equity,12526.503,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,nci,Non-controlling interests,121.825,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,total_equity,Total equity,12648.328,Sea-FY2025-Form-20-F.pdf,F-7 to F-10,reported,high
+2025,cfo,Net cash generated from (used in) operating activities,5024.523,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,cfi,Net cash used in investing activities,-4408.668,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,cff,Net cash generated from financing activities,1623.183,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,capex_ppe,Purchase of property and equipment,513.809,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,capex_intangibles,Purchase of intangible assets,10.69,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,interest_paid,Interest paid,170.151,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,cash_begin,"Cash, cash equivalents and restricted cash at beginning of year",4081.585,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,cash_end,"Cash, cash equivalents and restricted cash at end of year",6419.467,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,net_change_cash,"Net increase (decrease) in cash, cash equivalents and restricted cash",2337.882,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high
+2025,fx_cash_effect,"Effect of foreign exchange rate changes on cash, cash equivalents and restricted cash",98.844,Sea-FY2025-Form-20-F.pdf,F-14 to F-15,reported,high

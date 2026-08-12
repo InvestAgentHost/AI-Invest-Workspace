@@ -1,0 +1,7 @@
+interface:
+  display_name: "估值绑定方法"
+  short_description: "证据绑定的情景估值与IRR分析"
+  default_prompt: "使用 $valuation-binding-methodology 基于年报、经营KPI和清洁底稿构建可审计的5年/2年情景估值。"
+
+policy:
+  allow_implicit_invocation: true
