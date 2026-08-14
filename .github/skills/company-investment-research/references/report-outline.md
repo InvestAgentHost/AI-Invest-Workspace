@@ -4,7 +4,7 @@
 
 Use a two-layer structure:
 
-1. **Universal spine**: identity and reporting boundary; industry/economic context; business model and operating units; financial statements and accounting bridge; capital allocation/governance/risk; valuation; evidence gaps; balanced synthesis; source index.
+1. **Universal spine**: identity and reporting boundary; industry/economic context; business model and operating units; financial statements and accounting bridge; capital allocation/governance/risk; valuation; evidence gaps; balanced synthesis; source/acquisition handoff; release review.
 2. **Route modules**: insert only the modules selected in `business-model-routing.md`, in the order that explains the company's economics. Do not create empty chapters to satisfy a fixed template.
 
 The first chapter must be introductory and begin with one sentence explaining what kind of company this is. It should not lead with a valuation conclusion. Industry demand/supply should precede detailed company conclusions when they clarify the business; for a resource, lender, insurer, property, pipeline or asset-value company, the relevant production/risk/development/NAV context may come before or replace a generic demand/supply chapter.
@@ -51,9 +51,13 @@ Select DCF/FCF, EV multiples, P/E/P/B/residual income, NAV/SOTP, rNPV, reserve v
 
 State what is established, attractive, fragile, contradicted, unmodeled and capable of changing the view. End with investment thesis/anti-thesis only after evidence and valuation.
 
-### 11. Source index and reproducibility handoff
+### 11. Source index, acquisition record and reproducibility handoff
 
-List source IDs, local paths, original URLs, document dates, access dates, page locators, extraction method, usability, derived-data paths, tests and Git status.
+List source IDs, local paths, original URLs, document dates, access dates, page locators, extraction method, usability, evidence-ledger and acquisition-attempt paths, derived-data paths, tests and Git status. Critical unavailable rows must resolve to acquisition attempts.
+
+### 12. Release review
+
+Record every A1-E2 and R1-R3 sub-gate, benchmark calibration when selected, findings corrected, remaining limitations, weakest mandatory sub-gate and final release decision. This is a separate clean pass after the draft, not a restatement of the report conclusion.
 
 ## 3. Route modules
 
@@ -88,26 +92,34 @@ Add only relevant modules:
 - [ ] source IDs, URLs, local paths and page locators resolve;
 - [ ] facts, company claims, calculations, judgments, assumptions and unresolved items separated;
 - [ ] contradictory evidence preserved and adjudicated transparently.
+- [ ] A1 provenance and A2 evidence sufficiency are rated separately;
+- [ ] source-category dispositions and acquisition attempts support every critical `unavailable` row.
 
 ### Routing and coverage
 
 - [ ] primary and secondary business-model archetypes recorded for each material segment;
 - [ ] economic unit, value driver, balance-sheet anchor and risk carrier identified;
 - [ ] every material segment, legal entity, revenue type, risk, capital action and valuation component covered or explicitly unavailable;
+- [ ] every `covered` material conclusion has a mechanism, quantitative anchor where available, counterargument/failure path and monitoring KPI;
+- [ ] at least one representative unit/cycle closes through revenue, cost, capital, cash and failure for every material route;
 - [ ] irrelevant modules were excluded rather than filled mechanically.
 
 ### Fundamentals and valuation
 
-- [ ] statements reconcile and APMs remain separate;
-- [ ] route-appropriate metrics appear before narrative;
-- [ ] material movements have bridges or explicit unresolved status;
-- [ ] valuation method matches the business model and avoids double counting;
-- [ ] assumptions precede results and sensitivities are directionally coherent;
+- [ ] D1 statement, cash and attribution reconciliations pass and APMs remain separate;
+- [ ] D2 independently covers statement movements, segments, debt/lease, tax, impairment/restructuring, working capital, capital intensity and route metrics;
+- [ ] route-appropriate metrics appear before narrative and material movements have economic bridges or explicit unresolved status;
+- [ ] E1 valuation method and timestamped market/share/perimeter boundaries match the routed business;
+- [ ] E2 contains a complete modeled-or-pending component bridge, avoids double counting and has directionally coherent scenarios/sensitivities;
 - [ ] no IRR, target price or precision is shown when inputs are invalid.
 
 ### Publishing
 
 - [ ] Markdown headings, tables, links and code fences render correctly;
 - [ ] units, periods and share counts are consistent;
-- [ ] `git diff --check` and available parsers/calculators pass;
+- [ ] the full-report validator, `git diff --check` and available parsers/calculators pass or their failures downgrade R3;
+- [ ] a permitted benchmark, when selected, is calibrated before drafting and compared after drafting without copying target-specific content;
+- [ ] material benchmark depth variance has a section-by-section justification rather than a generic scope disclaimer;
+- [ ] the clean release review reports A1-E2 and R1-R3, and the release decision is no better than the weakest mandatory sub-gate;
+- [ ] a `PARTIAL` full report still satisfies the minimum deliverable in `release-gates.md`;
 - [ ] handoff states source scope, limitations, tests, derived paths and Git status.

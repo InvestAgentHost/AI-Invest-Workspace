@@ -70,3 +70,18 @@ Do not draft the relevant sections until the evidence packet contains, or explic
 - source manifest, source index, evidence ledger and unresolved-question list for the work performed.
 
 If local-language and English materials disagree, preserve both and resolve using the hierarchy in the main skill. Never translate away a material qualification. If a source category is irrelevant to the issuer or scope, record it as `n.a.` rather than collecting it mechanically.
+
+## 6. Acquisition-attempt log and honest unavailability
+
+For full-company research, maintain an acquisition-attempt log for route-critical questions. The log may live in `validation-log.md` or a separate artifact, but the coverage matrix must be able to reference it.
+
+Use fields equivalent to:
+
+```text
+attempt_id, research_question, criticality, source_category, query_or_page,
+accessed_at, result, selected_source_id, rejection_or_failure, next_step
+```
+
+Do not mark a critical KPI `unavailable` after checking only the annual report. Check or explicitly disposition the latest interim notes, official presentation/Q&A or transcript, relevant operating/product/technology pages, and one independent/counterparty category where corroboration is possible. Record access blocks and genuine non-existence instead of silently omitting the category.
+
+The attempt log does not create a presumption that the evidence is sufficient. It proves that the gap is real. Apply the gate downgrade and minimum `PARTIAL` requirements in [release-gates.md](release-gates.md) when the missing evidence can change a requested conclusion.

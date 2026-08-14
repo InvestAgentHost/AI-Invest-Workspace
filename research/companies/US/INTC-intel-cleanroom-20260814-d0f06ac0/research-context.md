@@ -1,0 +1,24 @@
+# Intel Corporation clean-room research context
+
+- Issuer: Intel Corporation
+- Security: Nasdaq Global Select Market common stock, ticker `INTC`
+- SEC registrant: Intel Corporation, CIK `0000050863`
+- Research as-of date: 2026-08-14
+- Valuation boundary date: 2026-08-13 last completed U.S. close, observed on 2026-08-14 Shanghai time
+- Fiscal year-end: last Saturday in December; FY2025 ended 2025-12-27
+- Accounting framework: U.S. GAAP, consolidated
+- Currency and units: U.S. dollars; report tables will state scale explicitly
+- Requested output: complete, independent, end-to-end company deep research
+- Clean-room rule: no Intel-specific research, source packet, or structured data that existed before this task may be read or reused
+- Isolation ID: `INTC-intel-cleanroom-20260814-d0f06ac0`
+- Source root: `sources/companies/US/INTC-intel-cleanroom-20260814-d0f06ac0/`
+- Research root: `research/companies/US/INTC-intel-cleanroom-20260814-d0f06ac0/`
+- Curated-data root: `data/curated/companies/US/INTC-intel-cleanroom-20260814-d0f06ac0/`
+- Derived-data root: `data/derived/companies/US/INTC-intel-cleanroom-20260814-d0f06ac0/`
+- Preliminary route: manufacturing/hardware and asset-heavy semiconductor fabrication, with segment-specific software/platform or investment components only if current evidence supports them
+- Preliminary economic anchor: a qualified semiconductor product or foundry wafer moves from design/specification through process technology, fabrication/yield, inventory, shipment and cash collection
+- Preliminary value drivers: product mix and price, process-node competitiveness, yield and utilization, foundry external revenue, unit cost, capital intensity, and execution timing
+- Principal balance-sheet exposure: property, plant and equipment; construction commitments; inventory; debt; tax-credit and government-incentive receivables/obligations where applicable
+- Principal risk carrier: Intel Corporation and relevant manufacturing subsidiaries; customer qualification and supply-chain risks may be shared but are not assumed transferred
+- Preliminary valuation route: consolidated DCF/normalized FCF with SOTP cross-check only if segment economics and disclosure permit a defensible separation
+- Benchmark: none selected; no target-company prior report will be inspected

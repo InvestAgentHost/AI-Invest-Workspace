@@ -62,45 +62,45 @@ Keep contradictions in a separate section. Examples: management versus statutory
 
 ## 4. Stage gates
 
-Do not advance silently when a gate fails.
+Do not advance silently when a gate fails. For a full-company report, apply the complete contract in [release-gates.md](release-gates.md) and report every sub-gate. A parent gate inherits the weakest mandatory sub-gate; do not average a failure away.
 
-### Gate A: evidence ready
+### Gate A: evidence
 
-- material claims have traceable source records and raw/local paths resolve where material was acquired;
-- latest audited statements and key notes are identified;
-- as-of date and units are written;
-- evidence gaps are recorded.
+**A1 Provenance integrity** requires traceable source records, current audited statements/key notes, as-of dates, units, raw/local paths and recorded gaps.
 
-### Gate B: industry intelligible
+**A2 Evidence sufficiency** requires the full source-category matrix, an acquisition-attempt log for critical questions, retained contradictions, and enough operating evidence to analyze rather than merely identify every material segment. A narrow but well-indexed filing packet passes A1 only.
 
-- primary and secondary business-model archetypes are recorded for every material segment, with the economic unit and excluded modules stated;
-- a professional investor unfamiliar with the industry can explain the relevant economic object or cycle (customer transaction, product, project, asset, loan, policy, resource, pipeline or portfolio), who controls it, who pays or funds it, and who bears loss;
-- demand/utilization, production/supply, credit/claims, regulatory, pipeline or portfolio drivers are separated according to the selected archetype;
-- the relevant supply constraints, competitive bottlenecks or risk constraints are concrete rather than abstract market adjectives;
-- route-appropriate KPIs and failure paths are defined.
+### Gate B: industry and external context
 
-### Gate C: operating model coherent
+**B1 Economic intelligibility** requires routed archetypes, a concrete economic object/cycle, participants, product/service and money flows, demand/supply or risk constraints, route KPIs and failure paths.
 
-- every major business line has an operating unit;
-- revenue, profit, cash and capital occupation are connected;
-- recurring, one-off, cyclical, finance, insurance, platform, project, resource, pipeline and investment economics are separated where relevant;
-- claims of channel reuse, scale economies, network effects, cost advantage, IP, underwriting or moat have verification indicators.
+**B2 Triangulation** requires permitted non-issuer, regulatory, customer, supplier or competitor evidence for material industry/competition claims. If the user forbids it or logged attempts fail, mark B2 `PARTIAL`; do not promote issuer claims to independent facts.
 
-### Gate D: financial statements reconcile
+### Gate C: operating model
 
-- assets = liabilities + equity within disclosed rounding;
-- cash-flow subtotals and cash bridge reconcile;
-- parent/NCI profit and equity attribution reconcile;
-- restated comparatives, signs, periods, units and perimeter are consistent;
-- APMs remain separate from statutory numbers.
+**C1 Segment coverage** requires a complete operating-unit record and group bridge for every material business line.
 
-### Gate E: valuation bound
+**C2 Economic closure** requires at least one representative unit/cycle carried through trigger, delivery, revenue, cost, capital occupation, cash and failure, plus route-specific KPI states and evidence-backed movement bridges. A route table alone does not pass C2. A critical `unavailable` KPI must reference acquisition attempts and normally makes C2 `PARTIAL`.
 
-- market boundary and shares are sourced and timestamped;
-- a valuation anchor appropriate to the selected archetype is defined (normalized earnings, cash flow, NAV, rNPV, reserve value or another explicit basis);
-- low/base/high assumptions are monotonic and explained when scenarios are requested;
-- SOTP components do not double count assets, debt, interest, or cash when SOTP/NAV is selected;
-- unavailable outputs are labeled pending rather than fabricated.
+### Gate D: financial analysis
+
+**D1 Reconciliation integrity** requires balance-sheet, cash and parent/NCI reconciliations; consistent periods, units, signs, perimeter and restatements; and separation of APMs from statutory values.
+
+**D2 Analytical coverage** separately requires reported statements before interpretation, segment and APM bridges, debt/lease, tax, impairment/restructuring, working-capital and route-relevant metric analysis, plus economic explanations for material movements. Arithmetic correctness cannot pass D2.
+
+### Gate E: valuation
+
+**E1 Method and boundary validity** requires a route-appropriate method, timestamped market/share/dilution inputs, valid ownership/lease/perimeter matching and explicit rejection of invalid methods.
+
+**E2 Model completeness** requires a complete component bridge, formulas or pending formulas, source-linked assumptions, coherent scenarios/sensitivities and double-count/debt/cash/NCI/lease/dilution checks. Directional assumptions without a model or pending component bridge do not pass E2.
+
+### Gate R: release
+
+**R1 Coverage/depth** tests whether every `covered` row is actually analyzed and whether `PARTIAL` was used to omit supported work.
+
+**R2 Benchmark calibration** applies when a permitted benchmark is selected. Material structural variance requires a section-by-section explanation, not a generic scope disclaimer.
+
+**R3 Independent review/publishing** requires a clean second-pass review, deterministic validation, rendering/layout inspection and a release status no better than the weakest sub-gate.
 
 ## 5. Reuse and refresh rules
 

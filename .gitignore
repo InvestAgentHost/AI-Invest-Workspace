@@ -46,6 +46,9 @@ $RECYCLE.BIN/
 sources/**
 !sources/.gitkeep
 
+# Company-local external material moved alongside research reports.
+research/companies/**/_file/
+
 # Rebuildable data and knowledge products
 data/derived/**
 knowledge/indexes/**

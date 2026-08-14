@@ -1,0 +1,68 @@
+{
+  "entity": "Intel Corporation",
+  "as_of_date": "2026-08-14",
+  "currency": "USD",
+  "scale": "billion",
+  "method": "consolidated FCFF DCF",
+  "formula": "FCFF = EBIT - cash_tax + D&A - capex - change_in_nwc; TV = FCFF_2031*(1+g)/(WACC-g)",
+  "boundary": {
+    "share_price": 104.56,
+    "price_date": "2026-08-13",
+    "pre_offering_shares": 5.044,
+    "offering_shares": 0.242105,
+    "pro_forma_basic_shares": 5.286105,
+    "non_contingent_escrow_shares": 0.071,
+    "base_valuation_shares": 5.357105,
+    "q2_net_debt_ex_leases": 20.810,
+    "assumed_net_offering_proceeds": 22.500,
+    "pro_forma_net_cash": 1.690,
+    "nci_book_proxy": 15.601,
+    "market_cap_pro_forma_basic": 552.716,
+    "source_ids": ["S03", "S09", "S12", "S13"]
+  },
+  "scenarios": {
+    "low": {
+      "2026_revenue_anchor": 62.0,
+      "revenue_growth_2027_2031": [0.02, 0.01, 0.01, 0.01, 0.01],
+      "ebit_margin_2027_2031": [-0.02, 0.00, 0.02, 0.03, 0.04],
+      "da_2027_2031": [12.5, 13.0, 13.5, 14.0, 14.5],
+      "capex_2027_2031": [20.0, 18.0, 17.0, 16.0, 15.0],
+      "cash_tax_rate_2027_2028": 0.15,
+      "cash_tax_rate_2029_2031": 0.18,
+      "incremental_nwc_percent_of_revenue_growth": 0.05,
+      "wacc": 0.12,
+      "terminal_growth": 0.015
+    },
+    "base": {
+      "2026_revenue_anchor": 63.0,
+      "revenue_growth_2027_2031": [0.10, 0.08, 0.07, 0.06, 0.05],
+      "ebit_margin_2027_2031": [0.04, 0.09, 0.14, 0.18, 0.21],
+      "da_2027_2031": [12.5, 13.0, 13.5, 14.0, 14.5],
+      "capex_2027_2031": [23.0, 24.0, 23.0, 22.0, 21.0],
+      "cash_tax_rate_2027_2028": 0.15,
+      "cash_tax_rate_2029_2031": 0.18,
+      "incremental_nwc_percent_of_revenue_growth": 0.05,
+      "wacc": 0.10,
+      "terminal_growth": 0.025
+    },
+    "high": {
+      "2026_revenue_anchor": 64.0,
+      "revenue_growth_2027_2031": [0.15, 0.13, 0.11, 0.09, 0.07],
+      "ebit_margin_2027_2031": [0.07, 0.14, 0.20, 0.25, 0.29],
+      "da_2027_2031": [12.7, 13.5, 14.5, 15.5, 16.0],
+      "capex_2027_2031": [25.0, 27.0, 27.0, 25.0, 23.0],
+      "cash_tax_rate_2027_2028": 0.15,
+      "cash_tax_rate_2029_2031": 0.18,
+      "incremental_nwc_percent_of_revenue_growth": 0.05,
+      "wacc": 0.085,
+      "terminal_growth": 0.035
+    }
+  },
+  "policy": {
+    "dividends_and_buybacks": "excluded from FCFF and value bridge; no separate payout added",
+    "leases": "not separately available; included in operating cash/capex economics but not Q2 net debt, a disclosed limitation",
+    "escrow_derivative": "not subtracted when economically matched escrow shares are included in dilution; avoids double count",
+    "altera": "no separate value added because a defensible current stand-alone value and distribution bridge are unavailable",
+    "p_e_irr": "not applicable because reported and normalized positive net income are not stable"
+  }
+}
