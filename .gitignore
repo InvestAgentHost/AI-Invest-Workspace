@@ -49,6 +49,11 @@ sources/**
 # Company-local external material moved alongside research reports.
 research/companies/**/_file/
 
+# Rebuildable company-research intake and preprocessing artifacts.
+# Keep durable report/ledger Markdown at the company directory root tracked.
+research/companies/US/BKR-baker-hughes/data/**
+research/companies/US/HUBB-hubbell/data/**
+
 # Rebuildable data and knowledge products
 data/derived/**
 knowledge/indexes/**
