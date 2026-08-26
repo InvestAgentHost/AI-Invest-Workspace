@@ -1,0 +1,7 @@
+horizon,scenario,ofse_normalized_ebitda_bn,ofse_multiple_x,iet_core_ebitda_bn,iet_multiple_x,dc_incremental_revenue_bn,dc_ebitda_margin,dc_multiple_x,corporate_cost_bn,corporate_multiple_x,net_debt_ex_lease_bn,shares_million,price_usd,source_ids,evidence_type,rationale
+FY2027_2Y,Bear,2.30,7.5,2.35,10.0,0.30,0.14,9.0,0.318,10.0,2.372,988.237,61.985,S01;S17;S24,analyst_assumption,OFSE remains cyclical; IET core grows slowly; only initial Power Systems capacity converts before 2027
+FY2027_2Y,Base,2.60,8.5,2.55,11.5,0.60,0.16,12.0,0.318,10.0,2.372,988.237,61.985,S01;S17;S24,analyst_assumption,OFSE stabilizes; IET orders convert with measured timing; 2027 capacity ramp is partial
+FY2027_2Y,Bull,2.80,9.5,2.80,13.5,1.00,0.20,15.0,0.318,10.0,2.372,988.237,61.985,S01;S17;S24,analyst_assumption,OFSE recovers; IET mix and early Power Systems delivery support premium multiple
+FY2029_5Y,Bear,2.20,7.5,2.30,10.0,1.00,0.14,10.0,0.318,10.0,2.372,988.237,61.985,S01;S17;S24,analyst_assumption,25% of the 4bn incremental Power Systems capacity is realized; order conversion and margins disappoint
+FY2029_5Y,Base,2.60,8.5,2.60,12.0,2.00,0.18,14.0,0.318,10.0,2.372,988.237,61.985,S01;S17;S24,analyst_assumption,50% of incremental capacity is realized; service pull-through and IET execution support a mid-cycle multiple
+FY2029_5Y,Bull,2.80,9.5,2.90,14.0,3.00,0.22,18.0,0.318,10.0,2.372,988.237,61.985,S01;S17;S24,analyst_assumption,75% of incremental capacity is realized; Power Systems and services support premium growth multiple

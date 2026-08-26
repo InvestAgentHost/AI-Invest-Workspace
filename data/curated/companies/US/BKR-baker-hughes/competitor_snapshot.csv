@@ -1,0 +1,5 @@
+company,ticker,fy2025_revenue_musd,fy2025_key_metric,source,comparability_note
+Baker Hughes,BKR,27733,OFSE revenue 14324; IET revenue 13409; RPO 35900,"S01;S02",Target company; two-segment energy technology portfolio
+Halliburton,HAL,22184,Completion and Production revenue 12782; Drilling and Evaluation revenue 9402; operating margins 17% and 15%,S13,Oilfield services peer; no direct IET equivalent
+SLB,SLB,35708,"Services revenue 21200; product sales 14508; four divisions including Digital, Reservoir Performance, Well Construction and Production Systems",S14,Oilfield services and digital peer; larger upstream exposure
+GE Vernova,GEV,38068,Equipment revenue 20934; services revenue 17134; RPO 150200,S15,Power/electrification peer; relevant to IET gas turbines and services but broader portfolio

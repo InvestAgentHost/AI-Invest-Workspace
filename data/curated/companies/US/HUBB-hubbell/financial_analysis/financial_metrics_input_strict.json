@@ -1,0 +1,1338 @@
+{
+  "entity": "Hubbell Incorporated",
+  "currency": "USD",
+  "scale": "million",
+  "reporting_framework": "US GAAP",
+  "fiscal_year_end": "12-31",
+  "consolidation_scope": "consolidated",
+  "sector": "manufacturing/electrical equipment",
+  "as_of_date": "2026-08-26",
+  "period_order": [
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "periods": {
+    "2021": {
+      "period_length_months": 12,
+      "end_date": "2021-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 4194.1,
+          "source_label": "revenue",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 3042.6,
+          "source_label": "cost_of_goods_sold",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 1151.5,
+          "source_label": "gross_profit",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 532.3,
+          "source_label": "operating_income",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 405.6,
+          "source_label": "consolidated_net_income",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 399.5,
+          "source_label": "parent_net_income",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 5281.5,
+          "source_label": "assets",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 3040.8,
+          "source_label": "total_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 2229.8,
+          "source_label": "parent_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 2240.7,
+          "source_label": "total_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 1879.3,
+          "source_label": "current_assets",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 1065.2,
+          "source_label": "current_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 286.2,
+          "source_label": "cash",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 9.7,
+          "source_label": "debt_current",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 1435.5,
+          "source_label": "debt_long_term",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 675.3,
+          "source_label": "receivables",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 662.1,
+          "source_label": "inventory",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 532.8,
+          "source_label": "accounts_payable",
+          "statement": "balance_sheet",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 513.7,
+          "source_label": "cfo",
+          "statement": "cash_flow",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "capex_total": {
+          "value": 90.2,
+          "source_label": "capex",
+          "statement": "cash_flow",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": -433.0,
+          "source_label": "cff",
+          "statement": "cash_flow",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 88.2,
+          "source_label": "income_tax",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 149.1,
+          "source_label": "depreciation_amortization",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "DepreciationDepletionAndAmortization",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 6.1,
+          "source_label": "NCI attribution",
+          "statement": "income_statement",
+          "source": "SEC S05 filing",
+          "page": "S05 pp.45-49",
+          "status": "calculated",
+          "mapping": "consolidated net income - parent net income",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 459.3,
+          "source_label": "pretax_income",
+          "statement": "income_statement",
+          "source": "SEC S05 Company Facts / filing",
+          "page": "S05 pp.45-49",
+          "status": "reported",
+          "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+          "confidence": "high"
+        }
+      }
+    },
+    "2022": {
+      "period_length_months": 12,
+      "end_date": "2022-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 4947.9,
+          "source_label": "revenue",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 3476.3,
+          "source_label": "cost_of_goods_sold",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 1471.6,
+          "source_label": "gross_profit",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 709.1,
+          "source_label": "operating_income",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 551.4,
+          "source_label": "consolidated_net_income",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 545.9,
+          "source_label": "parent_net_income",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 5402.6,
+          "source_label": "assets",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 3032.0,
+          "source_label": "total_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 2360.9,
+          "source_label": "parent_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 2370.6,
+          "source_label": "total_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 2021.4,
+          "source_label": "current_assets",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 1088.5,
+          "source_label": "current_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 440.5,
+          "source_label": "cash",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 4.7,
+          "source_label": "debt_current",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 1437.9,
+          "source_label": "debt_long_term",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 741.6,
+          "source_label": "receivables",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 740.7,
+          "source_label": "inventory",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 529.9,
+          "source_label": "accounts_payable",
+          "statement": "balance_sheet",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 636.2,
+          "source_label": "cfo",
+          "statement": "cash_flow",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "capex_total": {
+          "value": 129.3,
+          "source_label": "capex",
+          "statement": "cash_flow",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": -437.1,
+          "source_label": "cff",
+          "statement": "cash_flow",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 140.2,
+          "source_label": "income_tax",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 148.5,
+          "source_label": "depreciation_amortization",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "DepreciationDepletionAndAmortization",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 5.5,
+          "source_label": "NCI attribution",
+          "statement": "income_statement",
+          "source": "SEC S04 filing",
+          "page": "S04 pp.45-49",
+          "status": "calculated",
+          "mapping": "consolidated net income - parent net income",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 657.0,
+          "source_label": "pretax_income",
+          "statement": "income_statement",
+          "source": "SEC S04 Company Facts / filing",
+          "page": "S04 pp.45-49",
+          "status": "reported",
+          "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+          "confidence": "high"
+        }
+      }
+    },
+    "2023": {
+      "period_length_months": 12,
+      "end_date": "2023-12-31",
+      "comparability": "not_comparable_fifo_balance_recast",
+      "values": {
+        "revenue": {
+          "value": 5372.9,
+          "source_label": "revenue",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 3495.9,
+          "source_label": "cost_of_goods_sold",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 1877.0,
+          "source_label": "gross_profit",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 1027.4,
+          "source_label": "operating_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 757.6,
+          "source_label": "consolidated_net_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 751.4,
+          "source_label": "parent_net_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 6914.0,
+          "source_label": "assets",
+          "statement": "balance_sheet",
+          "source": "SEC S03 filing",
+          "page": "S03 pp.47-48",
+          "status": "reported",
+          "mapping": "FY2023 10-K original balance sheet; not FIFO-recast",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 4024.7,
+          "source_label": "total_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S03 filing",
+          "page": "S03 pp.47-48",
+          "status": "reported",
+          "mapping": "FY2023 10-K original balance sheet; not FIFO-recast",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 2877.0,
+          "source_label": "parent_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 2889.3,
+          "source_label": "total_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S03 filing",
+          "page": "S03 pp.47-48",
+          "status": "reported",
+          "mapping": "FY2023 10-K original balance sheet; not FIFO-recast",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 2167.2,
+          "source_label": "current_assets",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 1323.4,
+          "source_label": "current_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 336.1,
+          "source_label": "cash",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 117.4,
+          "source_label": "debt_current",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 2023.2,
+          "source_label": "debt_long_term",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 785.4,
+          "source_label": "receivables",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 832.9,
+          "source_label": "inventory",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 563.5,
+          "source_label": "accounts_payable",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 880.8,
+          "source_label": "cfo",
+          "statement": "cash_flow",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "capex_total": {
+          "value": 165.7,
+          "source_label": "capex",
+          "statement": "cash_flow",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -1380.2,
+          "source_label": "cfi",
+          "statement": "cash_flow",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 388.5,
+          "source_label": "cff",
+          "statement": "cash_flow",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 214.6,
+          "source_label": "income_tax",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 149.7,
+          "source_label": "depreciation_amortization",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "DepreciationDepletionAndAmortization",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 6.2,
+          "source_label": "NCI attribution",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 filing",
+          "page": "S01 pp.49-53",
+          "status": "calculated",
+          "mapping": "consolidated net income - parent net income",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 972.2,
+          "source_label": "pretax_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S03 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+          "confidence": "high"
+        }
+      }
+    },
+    "2024": {
+      "period_length_months": 12,
+      "end_date": "2024-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 5628.5,
+          "source_label": "revenue",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 3722.9,
+          "source_label": "cost_of_goods_sold",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 1905.6,
+          "source_label": "gross_profit",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 1093.1,
+          "source_label": "operating_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 784.7,
+          "source_label": "consolidated_net_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 779.0,
+          "source_label": "parent_net_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 6847.7,
+          "source_label": "assets",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 3437.1,
+          "source_label": "total_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 3396.2,
+          "source_label": "parent_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 3410.6,
+          "source_label": "total_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 2257.9,
+          "source_label": "current_assets",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 1274.2,
+          "source_label": "current_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 329.1,
+          "source_label": "cash",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 125.4,
+          "source_label": "debt_current",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 1442.7,
+          "source_label": "debt_long_term",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 756.0,
+          "source_label": "receivables",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 1010.4,
+          "source_label": "inventory",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 541.7,
+          "source_label": "accounts_payable",
+          "statement": "balance_sheet",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 991.2,
+          "source_label": "cfo",
+          "statement": "cash_flow",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "capex_total": {
+          "value": 180.4,
+          "source_label": "capex",
+          "statement": "cash_flow",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -59.1,
+          "source_label": "cfi",
+          "statement": "cash_flow",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": -923.4,
+          "source_label": "cff",
+          "statement": "cash_flow",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 222.1,
+          "source_label": "income_tax",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 212.1,
+          "source_label": "depreciation_amortization",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "DepreciationDepletionAndAmortization",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 5.7,
+          "source_label": "NCI attribution",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 filing",
+          "page": "S01 pp.49-53",
+          "status": "calculated",
+          "mapping": "consolidated net income - parent net income",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 1006.8,
+          "source_label": "pretax_income",
+          "statement": "income_statement",
+          "source": "SEC S01/S02 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+          "confidence": "high"
+        }
+      }
+    },
+    "2025": {
+      "period_length_months": 12,
+      "end_date": "2025-12-31",
+      "comparability": "comparable",
+      "values": {
+        "revenue": {
+          "value": 5844.6,
+          "source_label": "revenue",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cost_of_revenue": {
+          "value": 3780.5,
+          "source_label": "cost_of_goods_sold",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "gross_profit": {
+          "value": 2064.1,
+          "source_label": "gross_profit",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "operating_profit": {
+          "value": 1208.8,
+          "source_label": "operating_income",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_consolidated": {
+          "value": 891.9,
+          "source_label": "consolidated_net_income",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "net_income_parent": {
+          "value": 887.1,
+          "source_label": "parent_net_income",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_assets": {
+          "value": 8228.8,
+          "source_label": "assets",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_liabilities": {
+          "value": 4370.9,
+          "source_label": "total_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "parent_equity": {
+          "value": 3847.9,
+          "source_label": "parent_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "total_equity": {
+          "value": 3857.9,
+          "source_label": "total_equity",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_assets": {
+          "value": 2594.0,
+          "source_label": "current_assets",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "current_liabilities": {
+          "value": 1508.7,
+          "source_label": "current_liabilities",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cash_and_equivalents": {
+          "value": 482.5,
+          "source_label": "cash",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "short_term_debt": {
+          "value": 289.1,
+          "source_label": "debt_current",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "long_term_debt": {
+          "value": 2036.3,
+          "source_label": "debt_long_term",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_receivables": {
+          "value": 856.9,
+          "source_label": "receivables",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "inventory": {
+          "value": 1083.8,
+          "source_label": "inventory",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "trade_payables": {
+          "value": 570.5,
+          "source_label": "accounts_payable",
+          "statement": "balance_sheet",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfo": {
+          "value": 1029.8,
+          "source_label": "cfo",
+          "statement": "cash_flow",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "capex_total": {
+          "value": 155.1,
+          "source_label": "capex",
+          "statement": "cash_flow",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cfi": {
+          "value": -1094.6,
+          "source_label": "cfi",
+          "statement": "cash_flow",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "cff": {
+          "value": 203.6,
+          "source_label": "cff",
+          "statement": "cash_flow",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "income_tax_expense": {
+          "value": 227.2,
+          "source_label": "income_tax",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "SEC Company Facts exact annual/instant fact",
+          "confidence": "high"
+        },
+        "depreciation_amortization": {
+          "value": 206.1,
+          "source_label": "depreciation_amortization",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "DepreciationDepletionAndAmortization",
+          "confidence": "high"
+        },
+        "net_income_nci": {
+          "value": 4.8,
+          "source_label": "NCI attribution",
+          "statement": "income_statement",
+          "source": "SEC S01 filing",
+          "page": "S01 pp.49-53",
+          "status": "calculated",
+          "mapping": "consolidated net income - parent net income",
+          "confidence": "high"
+        },
+        "income_before_tax": {
+          "value": 1119.1,
+          "source_label": "pretax_income",
+          "statement": "income_statement",
+          "source": "SEC S01 Company Facts / filing",
+          "page": "S01 pp.49-53",
+          "status": "reported",
+          "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+          "confidence": "high"
+        }
+      }
+    }
+  },
+  "notes": [
+    "2023-2025 values use FY2025 latest FIFO-recast comparative where available; 2023 balance-sheet recast is calculated from Note 1 disclosed adjustments.",
+    "CFO 2021-2024 uses continuing-operations concept consistent with issuer FCF definition; 2025 consolidated CFO."
+  ]
+}

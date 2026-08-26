@@ -1,0 +1,21 @@
+{
+  "schema_version": "research_foundry_transcript_plan.v1",
+  "plan_id": "trp_21cc62900a944622a703818a9de5ad81",
+  "status": "ready",
+  "target_name": "Hubbell Incorporated",
+  "event_date": "2026-04-30",
+  "event_type": "earnings_call",
+  "fiscal_period": "2026Q1",
+  "workspace_root": "/Users/tccc/Desktop/AI Invest/Workspace/research/companies/US/HUBB-hubbell/data",
+  "source_path": "/Users/tccc/Desktop/AI Invest/Workspace/research/companies/US/HUBB-hubbell/data/2026Q1_EarningsCall.md",
+  "source_sha256": "737a4a0c6231ff619d44c166a1a6067b71a99e46f6ea0c98854894d007bf5b99",
+  "source_byte_size": 78910,
+  "source_method": "user_upload",
+  "provider": "local",
+  "provider_record_id": null,
+  "provenance_path": null,
+  "source_representation": "raw_transcript",
+  "source_title": null,
+  "confirmed": true,
+  "warnings": []
+}

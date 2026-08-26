@@ -1,0 +1,22 @@
+# 验证日志
+
+- 研究 skill：`.github/skills/company-investment-research/SKILL.md`，按混合制造/项目/服务/数字化/能源转型路由执行。
+- SEC 五年 prepared 包状态均 `completed`；FY2025 cleaning report 94 张表，指数表 93 张，正文表格优先。
+- 五年时间序列使用报告制单位（百万美元），2021-2022 数字来自对应年报，2023-2025 使用 FY2025 10-K 比较列；交叉年度存在轻微重分类时采用最新审计比较列。
+- 2025 分部 EBITDA reconciliation：OFSE 2,618 + IET 2,482 - corporate 318 - inventory impairment 22 - restructuring 215 - other 262 - D&A 1,184 - net interest 222 - tax 253 - NCI 36 = parent net income 2,588（百万美元，四舍五入可能差异）。
+- 2025 FCF proxy = CFO 3,810 - capital assets 1,273 = 2,537 百万美元；这是分析计算，不是公司披露的自由现金流定义。
+- Gangtise 2026-08-24 close 61.985 美元；988.237 百万股（FY2025 10-K）推导 equity value 61,255.6 百万美元；短期及长期债务 6,087、现金 3,715，推导 net debt 2,372 和 EV 63,627.6，均为分析计算。
+- 已运行：Gangtise security、quote、financial、valuation 脚本；financial/valuation 的不完整结果已记录，不作为主结论。
+- 已运行：`validate_research_release.py --full-report`，结果 `PASS: no mechanical release findings`；本次指标为 words=7113、h2=16、h3=47、tables=20、source_ids=19。已删除阶段性“投资结论”和“研究范围与证据”章节，并将后续章节编号前移。
+- 已纳入用户提供的三份会议纪要，新增来源 ID S16-S18；逐项将其标为管理层披露/公司主张，并保留前瞻性与口径限制。Q2 电话会称 Chart 已交割并将作为第三报告分部，但本报告尚未用 2026 Q2 10-Q 重建交易后合并报表。
+- 已运行：curated 与 Gangtise CSV 结构解析、Markdown 产物非空检查、`git diff --check`；均通过。工作区保持未暂存、未提交。
+- 2026-08-25 第三章经营分析更新：新增 `data/curated/companies/US/BKR-baker-hughes/operating_timeseries.csv` 与 `operating-data-dictionary.md`。产品线收入使用 FY2023 10-K 对 2021-2022 的重述列；订单/RPO、合同资产/负债、分部资产、D&A 和 capex 使用各年度 10-K 附注。产品线利润、利用率、单井价格和产品线 ROIC 未披露，正文未作虚构推导。
+- 第三章新增 OFSE 四产品线、IET 五产品线、订单/RPO -> 合同余额 -> 收入 -> EBITDA -> CFO 闭环，以及管理层主张的服务绑定率/数据中心订单证伪指标。2026 年 Chart 交割、PSI 出售和 Cactus 合资未混入 FY2021-FY2025 历史序列。
+- 本次检查：`.venv/bin/python` CSV 解析（5 行；分部收入允许 2021 年四舍五入 1 百万美元差异；资本开支完全勾稽）、Markdown 表格结构、source-ID 引用、`git diff --check`；完整 release validator 使用当前参数运行通过：`PASS: no mechanical release findings`，指标为 words=9390、h2=16、h3=50、tables=34、source_ids=21。
+- 2026-08-25 新增第四章“北美数据中心电力机会”：沿用 S19-S23 独立需求/官网证据，并纳入 S01、S16-S18 的数据中心/Power Systems 订单披露。明确 Power Systems 是跨 GTE/GTS/Industrial Solutions/CTS 的管理层商业标签；未将业务池收入相加为数据中心收入，也未将订单/RPO视为收入。
+- 新章节完成后重新运行完整校验：words=10628、h2=17、h3=57、tables=38、source_ids=21，结果 `PASS: no mechanical release findings`；报告章节顺延为五年财务、资本配置、估值、监测、发布状态。
+- 2026-08-25 第五章财务分析重写：新增 `financial_analysis/consolidated_balance_sheet.csv`、`consolidated_income_statement.csv`、`consolidated_cash_flow_statement.csv`、`statement_mapping_ledger.csv`、strict calculator input/output；原始三表按 FY2021-FY2025 当年 10-K 展示恢复，标准化输入对 FY2023-FY2024 采用 FY2025 10-K 的最新比较列，并保留符号、来源、页码和 calculated/reported 状态。
+- 第五章衍生指标补全后，使用 `.venv/bin/python .github/skills/financial-statement-analysis/scripts/calculate_metrics.py data/curated/companies/US/BKR-baker-hughes/financial_analysis/financial_metrics_input_strict.json --format json --include-missing --strict` 重算；五年资产负债表、净利润归属、期末现金、CFO+CFI+CFF+FX 现金桥接全部 `pass`，evidence metadata issues=0。新增并核验 revenue/profit growth、CAGR、effective tax rate、quick ratio、CFO/current liabilities、租赁调整杠杆、CFO interest coverage、CFO/net income、accrual ratio、shareholder cash coverage、投入资本周转、标准化 ROIC、DSO/DIO/DPO 及共同比指标；公司 adjusted EBITDA、EBITDAaL、NFD/adjusted EBITDA 和 issuer FCF 仍明确标记为不可得。
+- 同步生成 `financial_analysis/financial_metrics_output.md`。财务章节更新后完整 release validator（`--full-report --strict`）：words=12467、h2=9、h3=44、tables=38、source_ids=21，结果 `PASS: no mechanical release findings`；`git diff --check` 通过。
+- 2026-08-25 重写第七章为 SOTP：新增 `data/curated/companies/US/BKR-baker-hughes/valuation/sotp_inputs.csv` 与 `sotp_outputs.csv`，按 FY2027/FY2029 拆分 OFSE、IET 核心、数据中心增量期权和公司中心成本；不使用 DCF，不把订单/RPO/TAM 直接资本化。Gangtise quote refresh 生成 S24（2026-08-24 close 61.985 美元）；估值接口仍未找到 BKR 数据，SOTP 倍数明确标为分析假设。Chart 交割后债务和股本仍未由 10-Q 验证，估值状态保持 `PARTIAL`。重跑完整 release validator（`--full-report --strict`）：words=13635、h2=9、h3=49、tables=41、source_ids=21，`PASS: no mechanical release findings`。
+- 在用户反馈后，SOTP 输出补入分红与回购后的股东 IRR：FY2025 每股股息 0.92 美元、年度回购 3.84 亿美元，回购按 61.985 美元减少股数；主情景假设经营现金流覆盖分派，另列现金消耗敏感性。更新 `sotp_outputs.csv` 与第 7.4/7.5 表格；完整 release validator 更新结果为 words=13867、h2=9、h3=49、tables=41、source_ids=21，`PASS: no mechanical release findings`，`git diff --check` 通过。

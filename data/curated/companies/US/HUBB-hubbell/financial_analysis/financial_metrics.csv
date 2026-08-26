@@ -1,0 +1,76 @@
+period,metric,value,formula
+2021,revenue_growth,,revenue_t / revenue_t-1 - 1
+2021,operating_margin,0.126916,operating_income / revenue
+2021,parent_net_margin,0.095253,parent_net_income / revenue
+2021,consolidated_net_margin,0.096707,consolidated_net_income / revenue
+2021,gross_margin,0.274552,gross_profit / revenue
+2021,cfo_margin,0.122482,CFO / revenue
+2021,fcf_proxy,423.5,CFO - capex
+2021,fcf_margin,0.100975,(CFO - capex) / revenue
+2021,cfo_to_net_income,1.266519,CFO / consolidated_net_income
+2021,capex_intensity,0.021506,capex / revenue
+2021,current_ratio,1.76427,current_assets / current_liabilities
+2021,net_debt,1159.0,gross_debt - cash
+2021,net_debt_to_operating_income,2.177344,net_debt / operating_income (proxy; not EBITDA)
+2021,equity_ratio,0.424254,total_equity / assets
+2022,revenue_growth,0.179729,revenue_t / revenue_t-1 - 1
+2022,operating_margin,0.143313,operating_income / revenue
+2022,parent_net_margin,0.11033,parent_net_income / revenue
+2022,consolidated_net_margin,0.111441,consolidated_net_income / revenue
+2022,gross_margin,0.297419,gross_profit / revenue
+2022,cfo_margin,0.12858,CFO / revenue
+2022,fcf_proxy,506.9,CFO - capex
+2022,fcf_margin,0.102448,(CFO - capex) / revenue
+2022,cfo_to_net_income,1.15379,CFO / consolidated_net_income
+2022,capex_intensity,0.026132,capex / revenue
+2022,current_ratio,1.857051,current_assets / current_liabilities
+2022,net_debt,1002.1,gross_debt - cash
+2022,net_debt_to_operating_income,1.4132,net_debt / operating_income (proxy; not EBITDA)
+2022,equity_ratio,0.438789,total_equity / assets
+2023,revenue_growth,0.085895,revenue_t / revenue_t-1 - 1
+2023,operating_margin,0.191219,operating_income / revenue
+2023,parent_net_margin,0.13985,parent_net_income / revenue
+2023,consolidated_net_margin,0.141004,consolidated_net_income / revenue
+2023,gross_margin,0.349346,gross_profit / revenue
+2023,cfo_margin,0.163934,CFO / revenue
+2023,fcf_proxy,715.1,CFO - capex
+2023,fcf_margin,0.133094,(CFO - capex) / revenue
+2023,cfo_to_net_income,1.162619,CFO / consolidated_net_income
+2023,capex_intensity,0.03084,capex / revenue
+2023,current_ratio,1.6376,current_assets / current_liabilities
+2023,net_debt,1804.5,gross_debt - cash
+2023,net_debt_to_operating_income,1.756375,net_debt / operating_income (proxy; not EBITDA)
+2023,equity_ratio,0.40803,total_equity / assets
+2024,revenue_growth,0.047572,revenue_t / revenue_t-1 - 1
+2024,operating_margin,0.194208,operating_income / revenue
+2024,parent_net_margin,0.138403,parent_net_income / revenue
+2024,consolidated_net_margin,0.139415,consolidated_net_income / revenue
+2024,gross_margin,0.338563,gross_profit / revenue
+2024,cfo_margin,0.176104,CFO / revenue
+2024,fcf_proxy,810.8,CFO - capex
+2024,fcf_margin,0.144053,(CFO - capex) / revenue
+2024,cfo_to_net_income,1.263158,CFO / consolidated_net_income
+2024,capex_intensity,0.032051,capex / revenue
+2024,current_ratio,1.772014,current_assets / current_liabilities
+2024,net_debt,1239.0,gross_debt - cash
+2024,net_debt_to_operating_income,1.133474,net_debt / operating_income (proxy; not EBITDA)
+2024,equity_ratio,0.498065,total_equity / assets
+2025,revenue_growth,0.038394,revenue_t / revenue_t-1 - 1
+2025,operating_margin,0.206823,operating_income / revenue
+2025,parent_net_margin,0.151781,parent_net_income / revenue
+2025,consolidated_net_margin,0.152602,consolidated_net_income / revenue
+2025,gross_margin,0.353164,gross_profit / revenue
+2025,cfo_margin,0.176197,CFO / revenue
+2025,fcf_proxy,874.7,CFO - capex
+2025,fcf_margin,0.14966,(CFO - capex) / revenue
+2025,cfo_to_net_income,1.154614,CFO / consolidated_net_income
+2025,capex_intensity,0.026537,capex / revenue
+2025,current_ratio,1.719361,current_assets / current_liabilities
+2025,net_debt,1842.9,gross_debt - cash
+2025,net_debt_to_operating_income,1.52457,net_debt / operating_income (proxy; not EBITDA)
+2025,equity_ratio,0.468829,total_equity / assets
+2021-2025,revenue_cagr,0.086498,(revenue_2025 / revenue_2021)^(1/4)-1
+2021-2025,parent_net_income_cagr,0.220714,(parent_net_income_2025 / parent_net_income_2021)^(1/4)-1
+2021-2025,consolidated_net_income_cagr,0.21774,(consolidated_net_income_2025 / consolidated_net_income_2021)^(1/4)-1
+2021-2025,cfo_cagr,0.189901,(cfo_2025 / cfo_2021)^(1/4)-1
+2021-2025,fcf_proxy_cagr,0.198813,(FCF_2025 / FCF_2021)^(1/4)-1

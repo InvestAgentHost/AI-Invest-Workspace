@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-08-26T05:26:17.215284+00:00",
+  "event": {
+    "date": "2026-07-14",
+    "fiscal_period": "2026Q2",
+    "type": "earnings_call"
+  },
+  "prepared": {
+    "artifact_ref": "prepared/cleaned_transcript.md",
+    "byte_size": 86530,
+    "marker_count": 62,
+    "sha256": "3820185fb2f95717b69dd4933d6c572740d630072d180b681d0862e9e727cca9"
+  },
+  "run_id": "run_e00512ad94cc4c998a6d3126c701271b",
+  "schema_version": "research_foundry_transcript_manifest.v1",
+  "source": {
+    "artifact_ref": "raw/source.md",
+    "byte_size": 85452,
+    "method": "user_upload",
+    "provider": "local",
+    "provider_record_id": null,
+    "representation": "raw_transcript",
+    "sha256": "a4ba66bbf0380fa22002226b32b165aee053cbdc5debef0a4a01ba6c2da2e215"
+  },
+  "target": {
+    "name": "Hubbell Incorporated"
+  },
+  "transcript_id": "trn_92340a915dfb6d99",
+  "warnings": []
+}

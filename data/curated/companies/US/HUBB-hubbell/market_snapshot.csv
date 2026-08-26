@@ -1,0 +1,11 @@
+field,value,unit,as_of,source,notes
+ticker,HUBB,,2026-08-25,NYSE/Yahoo chart API,Common stock
+close_price,464.190002,USD/share,2026-08-25,Yahoo Finance chart API (retrieved 2026-08-26),NYSE close; latest available before research date
+shares_outstanding,52.832571,million shares,2026-07-23,SEC S06 cover,Outstanding shares, not diluted weighted average
+equity_value,24524.351261,USD million,2026-08-25,Analyst calculation,close_price * shares_outstanding; uses basic outstanding shares
+gross_debt,2325.4,USD million,2025-12-31,SEC S01 balance sheet / Company Facts,Short-term + long-term debt; excludes leases
+cash_and_short_term_investments,497.9,USD million,2025-12-31,SEC S01 balance sheet,482.5 cash + 15.4 short-term investments
+net_debt_ex_leases,1827.5,USD million,2025-12-31,Analyst calculation,gross debt - cash - short-term investments
+enterprise_value_ex_leases,26351.851261,USD million,2026-08-25,Analyst calculation,equity value + gross debt - cash - short-term investments; valuation boundary uses FY2025 balance sheet
+FY2025_parent_net_income,887.1,USD million,FY2025,SEC S01 p.49,Used only as trailing earnings anchor; not a forecast
+FY2025_FCF_company_reported,874.7,USD million,FY2025,SEC S01 MD&A pp.31-32,Issuer FCF=CFO-capex; keep separate from analyst cash-flow-after-capex

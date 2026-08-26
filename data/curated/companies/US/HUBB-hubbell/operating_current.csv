@@ -1,0 +1,21 @@
+period,scope,metric,value,unit,source,status_note
+2026H1,Consolidated,net_sales,3228.5,USD million,S06 pp.2-3,unaudited six months ended 2026-06-30
+2026H1,Consolidated,operating_income,612.4,USD million,S06 pp.2-3,unaudited six months ended 2026-06-30
+2026H1,Consolidated,net_income,425.2,USD million,S06 pp.2-3,unaudited six months ended 2026-06-30
+2026H1,Consolidated,cfo,336.4,USD million,S06 pp.5-6,unaudited; not annualized
+2026H1,Consolidated,capex,77.6,USD million,S06 pp.5-6,unaudited
+2026H1,Consolidated,acquisitions_net_cash,3005.7,USD million,S06 pp.5-6,NSI Industries acquisition cash outflow
+2026H1,Utility Solutions,net_sales,1974.7,USD million,S06 pp.14-15,unaudited
+2026H1,Utility Solutions,operating_income,409.0,USD million,S06 pp.14-15,20.7% operating margin
+2026H1,Utility Solutions,organic_sales_growth,6.1,%,S06 pp.47-48,company non-GAAP measure
+2026H1,Utility Solutions,capex,46.6,USD million,S06 p.15,unaudited
+2026H1,Electrical Solutions,net_sales,1253.8,USD million,S06 pp.14-15,unaudited
+2026H1,Electrical Solutions,operating_income,203.4,USD million,S06 pp.14-15,16.2% operating margin
+2026H1,Electrical Solutions,organic_sales_growth,14.6,%,S06 pp.48-49,company non-GAAP measure; data center and light industrial cited as volume drivers
+2026H1,Electrical Solutions,capex,31.0,USD million,S06 p.15,unaudited
+2026-06-30,Consolidated,cash_and_equivalents,378.6,USD million,S06 p.4,period-end balance sheet
+2026-06-30,Consolidated,short_term_investments,16.1,USD million,S06 p.4,period-end balance sheet
+2026-06-30,Consolidated,accounts_receivable,1150.9,USD million,S06 p.4,period-end balance sheet
+2026-06-30,Consolidated,inventories,1267.5,USD million,S06 p.4,period-end balance sheet
+2026-06-30,Consolidated,short_term_debt,568.7,USD million,S06 p.4,period-end balance sheet
+2026-06-30,Consolidated,long_term_debt,4803.9,USD million,S06 pp.28-34,net of debt issuance costs and discounts

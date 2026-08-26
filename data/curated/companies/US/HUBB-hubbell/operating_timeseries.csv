@@ -1,0 +1,44 @@
+fiscal_year,segment,metric,value,unit,source,status_note
+2021,Utility Solutions,net_sales,2334.4,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2021,Utility Solutions,operating_income,284.1,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2022,Utility Solutions,net_sales,2871.1,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2022,Utility Solutions,operating_income,438.2,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2023,Utility Solutions,net_sales,3261.7,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2023,Utility Solutions,operating_income,698.4,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2024,Utility Solutions,net_sales,3600.7,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2024,Utility Solutions,operating_income,731.8,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2025,Utility Solutions,net_sales,3672.3,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2025,Utility Solutions,operating_income,789.9,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2021,Electrical Solutions,net_sales,1859.7,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2021,Electrical Solutions,operating_income,248.2,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2022,Electrical Solutions,net_sales,2076.8,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2022,Electrical Solutions,operating_income,270.9,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2023,Electrical Solutions,net_sales,2111.2,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2023,Electrical Solutions,operating_income,329.0,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2024,Electrical Solutions,net_sales,2027.8,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2024,Electrical Solutions,operating_income,361.3,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2025,Electrical Solutions,net_sales,2172.3,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2025,Electrical Solutions,operating_income,418.9,USD million,S03 Note 20 pp.84-86; S01 Note 20 pp.94-96,reported; 2023 uses FY2025 FIFO-recast segment comparative
+2021,Group,firm_backlog,1848.0,USD million,S06 MD&A backlog; S01 pp.6-7,reported; firm backlog not unconditional revenue
+2022,Group,firm_backlog,2463.4,USD million,S05 MD&A backlog; S01 pp.6-7,reported; firm backlog not unconditional revenue
+2023,Group,firm_backlog,2328.0,USD million,S01 MD&A backlog; S01 pp.6-7,reported; firm backlog not unconditional revenue
+2024,Group,firm_backlog,1898.0,USD million,S01 MD&A backlog; S01 pp.6-7,reported; firm backlog not unconditional revenue
+2025,Group,firm_backlog,2159.0,USD million,S01 MD&A backlog; S01 pp.6-7,reported; firm backlog not unconditional revenue
+2023,Utility Solutions,segment_assets,4690.1,USD million,S01 Note 20 pp.95-96,reported; segment total uses FIFO-recast 2023 assets
+2023,Utility Solutions,segment_capex,99.5,USD million,S01 Note 20 p.96,reported
+2023,Utility Solutions,segment_depreciation_amortization,103.4,USD million,S01 Note 20 p.96,reported
+2024,Utility Solutions,segment_assets,4569.1,USD million,S01 Note 20 pp.95-96,reported; segment total uses FIFO-recast 2023 assets
+2024,Utility Solutions,segment_capex,103.6,USD million,S01 Note 20 p.96,reported
+2024,Utility Solutions,segment_depreciation_amortization,164.5,USD million,S01 Note 20 p.96,reported
+2025,Utility Solutions,segment_assets,5603.8,USD million,S01 Note 20 pp.95-96,reported; segment total uses FIFO-recast 2023 assets
+2025,Utility Solutions,segment_capex,81.3,USD million,S01 Note 20 p.96,reported
+2025,Utility Solutions,segment_depreciation_amortization,151.8,USD million,S01 Note 20 p.96,reported
+2023,Electrical Solutions,segment_assets,2001.1,USD million,S01 Note 20 pp.95-96,reported; segment total uses FIFO-recast 2023 assets
+2023,Electrical Solutions,segment_capex,66.2,USD million,S01 Note 20 p.96,reported
+2023,Electrical Solutions,segment_depreciation_amortization,46.3,USD million,S01 Note 20 p.96,reported
+2024,Electrical Solutions,segment_assets,1943.4,USD million,S01 Note 20 pp.95-96,reported; segment total uses FIFO-recast 2023 assets
+2024,Electrical Solutions,segment_capex,76.8,USD million,S01 Note 20 p.96,reported
+2024,Electrical Solutions,segment_depreciation_amortization,47.6,USD million,S01 Note 20 p.96,reported
+2025,Electrical Solutions,segment_assets,2238.8,USD million,S01 Note 20 pp.95-96,reported; segment total uses FIFO-recast 2023 assets
+2025,Electrical Solutions,segment_capex,73.8,USD million,S01 Note 20 p.96,reported
+2025,Electrical Solutions,segment_depreciation_amortization,54.3,USD million,S01 Note 20 p.96,reported

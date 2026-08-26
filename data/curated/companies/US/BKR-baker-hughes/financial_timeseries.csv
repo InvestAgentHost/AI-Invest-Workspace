@@ -1,0 +1,6 @@
+fiscal_year,revenue_musd,sales_of_goods_musd,sales_of_services_musd,net_income_parent_musd,cfo_musd,capex_musd,cash_musd,total_assets_musd,ofse_revenue_musd,iet_revenue_musd,ofse_profit_musd,iet_profit_musd,segment_profit_basis
+2021,20502,12248,8254,-219,2374,856,3853,35308,12028,8473,830,1177,operating_income_before_tax
+2022,21156,12236,8920,-601,1888,989,2488,34181,13229,7926,1201,1135,operating_income_before_tax
+2023,25506,15617,9889,1943,3062,1224,2646,36945,15361,10145,2595,1527,segment_ebitda
+2024,27829,17810,10019,2979,3332,1278,3364,38363,15628,12201,2881,2050,segment_ebitda
+2025,27733,18216,9517,2588,3810,1273,3715,40881,14324,13409,2618,2482,segment_ebitda

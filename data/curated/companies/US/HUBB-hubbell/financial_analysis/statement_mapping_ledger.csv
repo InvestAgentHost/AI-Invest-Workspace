@@ -1,0 +1,18 @@
+field,canonical_metric,source_concept,period_scope,unit,source,notes
+Net sales,revenue,RevenueFromContractWithCustomerExcludingAssessedTax,FY2021-FY2025,USD millions,S01-S05 Company Facts,Latest filed 10-K fact selected by exact annual dates
+Cost of goods sold,cost_of_goods_sold,CostOfGoodsAndServicesSold,FY2021-FY2025,USD millions,S01-S05 Company Facts,2023-2025 reflects FY2025 FIFO-recast comparison values
+Gross profit,gross_profit,GrossProfit,FY2021-FY2025,USD millions,S01-S05 Company Facts,Reported GAAP
+Selling and administrative,selling_general_admin,SellingGeneralAndAdministrativeExpense,FY2021-FY2025,USD millions,S01-S05 Company Facts,Reported GAAP
+Operating income,operating_income,OperatingIncomeLoss,FY2021-FY2025,USD millions,S01-S05 Company Facts,Reported GAAP before disposition/interest/other
+Pretax income,pretax_income,IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,FY2021-FY2025,USD millions,S01-S05 Company Facts,Continuing-operations pretax concept
+Income tax,income_tax,IncomeTaxExpenseBenefit,FY2021-FY2025,USD millions,S01-S05 Company Facts,Reported provision
+Consolidated net income,consolidated_net_income,ProfitLoss,FY2021-FY2025,USD millions,S01-S05 Company Facts,Includes NCI; distinguish parent net income
+Parent net income,parent_net_income,NetIncomeLoss,FY2021-FY2025,USD millions,S01-S05 Company Facts,Attributable to Hubbell Incorporated context
+CFO,cfo,NetCashProvidedByUsedInOperatingActivities[ContinuingOperations for 2021-22],FY2021-FY2025,USD millions,S01-S05 Company Facts,Matches company FCF definition; continuing-operations label for 2021-24
+Capital expenditures,capex,PaymentsToAcquireProductiveAssets,FY2021-FY2025,USD millions,S01-S05 Company Facts,Productive asset purchases
+Cash,cash,CashAndCashEquivalentsAtCarryingValue,year-end 2021-2025,USD millions,S01-S05 Company Facts,Instant fact
+Assets,assets,Assets,year-end 2021-2025,USD millions,S01-S05 Company Facts,Instant fact
+Gross debt,gross_debt,DebtCurrent + LongTermDebtNoncurrent,year-end 2021-2025,USD millions,S01-S05 Company Facts,Analyst calculation; excludes leases unless separately added
+FCF proxy,fcf_proxy,CFO - capex,FY2021-FY2025,USD millions,Derived from above,Company defines same formula but 2021-24 continuing-operations scope
+Dividend per share,dividend_per_share,CommonStockDividendsPerShareDeclared,FY2021-FY2025,USD/share,S01-S05 Company Facts,Declared per share; cash paid tracked from MD&A/CF statements
+Share repurchases,repurchase_cash,PaymentsForRepurchaseOfCommonStock,FY2021-FY2025,USD millions,S01-S05 Company Facts,Financing cash flow; distinguish share count effect

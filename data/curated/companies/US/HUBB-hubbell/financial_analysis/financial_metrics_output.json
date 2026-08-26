@@ -1,0 +1,4602 @@
+{
+  "metadata": {
+    "entity": "Hubbell Incorporated",
+    "currency": "USD",
+    "scale": "million",
+    "periods": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ]
+  },
+  "checks": [
+    {
+      "period": "2021",
+      "id": "balance_sheet",
+      "label": "Assets = liabilities + equity",
+      "status": "pass",
+      "left": 5281.5,
+      "right": 5281.5,
+      "difference": 0.0,
+      "formula": "total assets = total liabilities + total equity"
+    },
+    {
+      "period": "2021",
+      "id": "income_attribution",
+      "label": "Consolidated income = parent + NCI",
+      "status": "pass",
+      "left": 405.6,
+      "right": 405.6,
+      "difference": 0.0,
+      "formula": "consolidated net income = parent net income + NCI net income"
+    },
+    {
+      "period": "2022",
+      "id": "balance_sheet",
+      "label": "Assets = liabilities + equity",
+      "status": "pass",
+      "left": 5402.6,
+      "right": 5402.6,
+      "difference": 0.0,
+      "formula": "total assets = total liabilities + total equity"
+    },
+    {
+      "period": "2022",
+      "id": "income_attribution",
+      "label": "Consolidated income = parent + NCI",
+      "status": "pass",
+      "left": 551.4,
+      "right": 551.4,
+      "difference": 0.0,
+      "formula": "consolidated net income = parent net income + NCI net income"
+    },
+    {
+      "period": "2023",
+      "id": "balance_sheet",
+      "label": "Assets = liabilities + equity",
+      "status": "pass",
+      "left": 6914.0,
+      "right": 6914.0,
+      "difference": 0.0,
+      "formula": "total assets = total liabilities + total equity"
+    },
+    {
+      "period": "2023",
+      "id": "income_attribution",
+      "label": "Consolidated income = parent + NCI",
+      "status": "pass",
+      "left": 757.6,
+      "right": 757.6,
+      "difference": 0.0,
+      "formula": "consolidated net income = parent net income + NCI net income"
+    },
+    {
+      "period": "2024",
+      "id": "balance_sheet",
+      "label": "Assets = liabilities + equity",
+      "status": "pass",
+      "left": 6847.7,
+      "right": 6847.7,
+      "difference": 0.0,
+      "formula": "total assets = total liabilities + total equity"
+    },
+    {
+      "period": "2024",
+      "id": "income_attribution",
+      "label": "Consolidated income = parent + NCI",
+      "status": "pass",
+      "left": 784.7,
+      "right": 784.7,
+      "difference": 0.0,
+      "formula": "consolidated net income = parent net income + NCI net income"
+    },
+    {
+      "period": "2025",
+      "id": "balance_sheet",
+      "label": "Assets = liabilities + equity",
+      "status": "pass",
+      "left": 8228.8,
+      "right": 8228.8,
+      "difference": 0.0,
+      "formula": "total assets = total liabilities + total equity"
+    },
+    {
+      "period": "2025",
+      "id": "income_attribution",
+      "label": "Consolidated income = parent + NCI",
+      "status": "pass",
+      "left": 891.9,
+      "right": 891.9,
+      "difference": 0.0,
+      "formula": "consolidated net income = parent net income + NCI net income"
+    }
+  ],
+  "metrics": [
+    {
+      "period": "2021",
+      "category": "profitability",
+      "id": "gross_margin",
+      "label": "Gross margin",
+      "value": 0.27455234734508,
+      "unit": "percent",
+      "formula": "gross profit / revenue",
+      "inputs": {
+        "gross profit": 1151.5,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "profitability",
+      "id": "operating_margin",
+      "label": "Operating margin",
+      "value": 0.12691638253737392,
+      "unit": "percent",
+      "formula": "operating profit / revenue",
+      "inputs": {
+        "operating profit": 532.3,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "profitability",
+      "id": "ebitda_margin",
+      "label": "EBITDA margin",
+      "value": 0.1624663217376791,
+      "unit": "percent",
+      "formula": "EBITDA / revenue",
+      "inputs": {
+        "ebitda_calculated": 681.4,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "profitability",
+      "id": "consolidated_net_margin",
+      "label": "Consolidated net margin",
+      "value": 0.09670727927326482,
+      "unit": "percent",
+      "formula": "consolidated net income / revenue",
+      "inputs": {
+        "consolidated net income": 405.6,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "profitability",
+      "id": "parent_net_margin",
+      "label": "Parent net margin",
+      "value": 0.09525285520135428,
+      "unit": "percent",
+      "formula": "parent net income / revenue",
+      "inputs": {
+        "parent net income": 399.5,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "profitability",
+      "id": "effective_tax_rate",
+      "label": "Effective tax rate",
+      "value": 0.19203135205747876,
+      "unit": "percent",
+      "formula": "income tax expense / income before tax",
+      "inputs": {
+        "income tax expense": 88.2,
+        "income before tax": 459.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "liquidity",
+      "id": "current_ratio",
+      "label": "Current ratio",
+      "value": 1.7642696207285016,
+      "unit": "ratio",
+      "formula": "current assets / current liabilities",
+      "inputs": {
+        "current assets": 1879.3,
+        "current liabilities": 1065.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "liquidity",
+      "id": "cash_only_ratio",
+      "label": "Cash-only ratio",
+      "value": 0.2686819376642884,
+      "unit": "ratio",
+      "formula": "cash and equivalents / current liabilities",
+      "inputs": {
+        "cash and equivalents": 286.2,
+        "current liabilities": 1065.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "solvency",
+      "id": "equity_ratio",
+      "label": "Equity ratio",
+      "value": 0.42425447316103376,
+      "unit": "percent",
+      "formula": "total equity / total assets",
+      "inputs": {
+        "total equity": 2240.7,
+        "total assets": 5281.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "solvency",
+      "id": "gross_debt_ex_lease_assets",
+      "label": "Gross debt ex leases / assets",
+      "value": 0.2736343841711635,
+      "unit": "percent",
+      "formula": "gross debt excluding leases / total assets",
+      "inputs": {
+        "gross debt ex leases": 1445.2,
+        "total assets": 5281.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "solvency",
+      "id": "debt_equity_ex_lease",
+      "label": "Debt / equity ex leases",
+      "value": 0.6449770161110367,
+      "unit": "ratio",
+      "formula": "gross debt excluding leases / total equity",
+      "inputs": {
+        "gross debt ex leases": 1445.2,
+        "total equity": 2240.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "cfo_margin",
+      "label": "CFO margin",
+      "value": 0.1224815812689254,
+      "unit": "percent",
+      "formula": "CFO / revenue",
+      "inputs": {
+        "CFO": 513.7,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "cfo_ebitda",
+      "label": "CFO / EBITDA",
+      "value": 0.753889051951864,
+      "unit": "ratio",
+      "formula": "CFO / EBITDA",
+      "inputs": {
+        "CFO": 513.7,
+        "ebitda_calculated": 681.4
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "capex_intensity",
+      "label": "Capex intensity",
+      "value": 0.02150640185021816,
+      "unit": "percent",
+      "formula": "capex / revenue",
+      "inputs": {
+        "capex": 90.2,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "cfo_capex",
+      "label": "CFO / capex",
+      "value": 5.695121951219512,
+      "unit": "ratio",
+      "formula": "CFO / capex",
+      "inputs": {
+        "CFO": 513.7,
+        "capex": 90.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "cash_after_capex_margin",
+      "label": "Cash flow after capex margin",
+      "value": 0.10097517941870723,
+      "unit": "percent",
+      "formula": "(CFO - capex) / revenue",
+      "inputs": {
+        "cash flow after capex": 423.50000000000006,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "common_size",
+      "id": "cash_assets_share",
+      "label": "Cash / total assets",
+      "value": 0.05418915080942914,
+      "unit": "percent",
+      "formula": "cash and equivalents / total assets",
+      "inputs": {
+        "cash and equivalents": 286.2,
+        "total assets": 5281.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "common_size",
+      "id": "receivables_assets_share",
+      "label": "Receivables / total assets",
+      "value": 0.12786140301050836,
+      "unit": "percent",
+      "formula": "trade receivables / total assets",
+      "inputs": {
+        "trade receivables": 675.3,
+        "total assets": 5281.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "common_size",
+      "id": "inventory_assets_share",
+      "label": "Inventory / total assets",
+      "value": 0.1253621130360693,
+      "unit": "percent",
+      "formula": "inventory / total assets",
+      "inputs": {
+        "inventory": 662.1,
+        "total assets": 5281.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "common_size",
+      "id": "cost_of_revenue_share",
+      "label": "Cost of revenue / revenue",
+      "value": 0.72544765265492,
+      "unit": "percent",
+      "formula": "cost of revenue / revenue",
+      "inputs": {
+        "cost of revenue": 3042.6,
+        "revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "debt_bridge",
+      "id": "gross_debt_ex_lease",
+      "label": "Gross debt excluding leases",
+      "value": 1445.2,
+      "unit": "currency",
+      "formula": "short-term debt + long-term debt",
+      "inputs": {
+        "short-term debt": 9.7,
+        "long-term debt": 1435.5
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "debt_bridge",
+      "id": "net_debt_ex_lease",
+      "label": "Net debt excluding leases",
+      "value": 1159.0,
+      "unit": "currency",
+      "formula": "gross debt excluding leases - cash - eligible liquid investments",
+      "inputs": {
+        "gross debt excluding leases": 1445.2,
+        "cash and equivalents": 286.2
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "leverage",
+      "id": "net_debt_ebitda_ex_lease",
+      "label": "Net debt ex leases / EBITDA",
+      "value": 1.7009098914000587,
+      "unit": "ratio",
+      "formula": "net debt excluding leases / pre-lease EBITDA",
+      "inputs": {
+        "net debt ex leases": 1159.0,
+        "ebitda_calculated": 681.4
+      },
+      "status": "computed",
+      "note": "analyst calculation; cash and eligible liquid investments are netted",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "earnings_quality",
+      "id": "cfo_net_income",
+      "label": "CFO / consolidated net income",
+      "value": 1.266518737672584,
+      "unit": "ratio",
+      "formula": "CFO / consolidated net income",
+      "inputs": {
+        "CFO": 513.7,
+        "consolidated net income": 405.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "cash_flow_after_capex",
+      "label": "Cash flow after capex",
+      "value": 423.50000000000006,
+      "unit": "currency",
+      "formula": "CFO - capex_total",
+      "inputs": {
+        "CFO": 513.7,
+        "capex_total": 90.2
+      },
+      "status": "computed",
+      "note": "analyst calculation; not automatically the issuer's FCF",
+      "missing": []
+    },
+    {
+      "period": "2021",
+      "category": "cash_conversion",
+      "id": "da_capex",
+      "label": "D&A / capex",
+      "value": 1.6529933481152992,
+      "unit": "ratio",
+      "formula": "D&A / capex_total",
+      "inputs": {
+        "D&A": 149.1,
+        "capex": 90.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "growth",
+      "id": "revenue_growth",
+      "label": "Revenue growth",
+      "value": 0.179728666460027,
+      "unit": "percent",
+      "formula": "current revenue / prior revenue - 1",
+      "inputs": {
+        "current revenue": 4947.9,
+        "prior revenue": 4194.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "growth",
+      "id": "consolidated_profit_growth",
+      "label": "Consolidated profit growth",
+      "value": 0.35946745562130167,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 551.4,
+        "prior profit": 405.6
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "growth",
+      "id": "parent_profit_growth",
+      "label": "Parent profit growth",
+      "value": 0.36645807259073837,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 545.9,
+        "prior profit": 399.5
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "profitability",
+      "id": "gross_margin",
+      "label": "Gross margin",
+      "value": 0.2974191070959397,
+      "unit": "percent",
+      "formula": "gross profit / revenue",
+      "inputs": {
+        "gross profit": 1471.6,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "profitability",
+      "id": "operating_margin",
+      "label": "Operating margin",
+      "value": 0.1433133248448837,
+      "unit": "percent",
+      "formula": "operating profit / revenue",
+      "inputs": {
+        "operating profit": 709.1,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "profitability",
+      "id": "ebitda_margin",
+      "label": "EBITDA margin",
+      "value": 0.17332605751935165,
+      "unit": "percent",
+      "formula": "EBITDA / revenue",
+      "inputs": {
+        "ebitda_calculated": 857.6,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "profitability",
+      "id": "consolidated_net_margin",
+      "label": "Consolidated net margin",
+      "value": 0.11144121748620628,
+      "unit": "percent",
+      "formula": "consolidated net income / revenue",
+      "inputs": {
+        "consolidated net income": 551.4,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "profitability",
+      "id": "parent_net_margin",
+      "label": "Parent net margin",
+      "value": 0.11032963479455932,
+      "unit": "percent",
+      "formula": "parent net income / revenue",
+      "inputs": {
+        "parent net income": 545.9,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "profitability",
+      "id": "effective_tax_rate",
+      "label": "Effective tax rate",
+      "value": 0.21339421613394213,
+      "unit": "percent",
+      "formula": "income tax expense / income before tax",
+      "inputs": {
+        "income tax expense": 140.2,
+        "income before tax": 657.0
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "liquidity",
+      "id": "current_ratio",
+      "label": "Current ratio",
+      "value": 1.8570509875976116,
+      "unit": "ratio",
+      "formula": "current assets / current liabilities",
+      "inputs": {
+        "current assets": 2021.4,
+        "current liabilities": 1088.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "liquidity",
+      "id": "cash_only_ratio",
+      "label": "Cash-only ratio",
+      "value": 0.4046853468075333,
+      "unit": "ratio",
+      "formula": "cash and equivalents / current liabilities",
+      "inputs": {
+        "cash and equivalents": 440.5,
+        "current liabilities": 1088.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "liquidity",
+      "id": "cfo_current_liabilities",
+      "label": "CFO / average current liabilities",
+      "value": 0.5907972326693598,
+      "unit": "percent",
+      "formula": "CFO / average current liabilities",
+      "inputs": {
+        "CFO": 636.2,
+        "average current liabilities": 1076.85
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "solvency",
+      "id": "equity_ratio",
+      "label": "Equity ratio",
+      "value": 0.4387887313515714,
+      "unit": "percent",
+      "formula": "total equity / total assets",
+      "inputs": {
+        "total equity": 2370.6,
+        "total assets": 5402.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "solvency",
+      "id": "gross_debt_ex_lease_assets",
+      "label": "Gross debt ex leases / assets",
+      "value": 0.2670195831636619,
+      "unit": "percent",
+      "formula": "gross debt excluding leases / total assets",
+      "inputs": {
+        "gross debt ex leases": 1442.6000000000001,
+        "total assets": 5402.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "solvency",
+      "id": "debt_equity_ex_lease",
+      "label": "Debt / equity ex leases",
+      "value": 0.6085379228887202,
+      "unit": "ratio",
+      "formula": "gross debt excluding leases / total equity",
+      "inputs": {
+        "gross debt ex leases": 1442.6000000000001,
+        "total equity": 2370.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "cfo_margin",
+      "label": "CFO margin",
+      "value": 0.12857980153196308,
+      "unit": "percent",
+      "formula": "CFO / revenue",
+      "inputs": {
+        "CFO": 636.2,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "cfo_ebitda",
+      "label": "CFO / EBITDA",
+      "value": 0.7418376865671642,
+      "unit": "ratio",
+      "formula": "CFO / EBITDA",
+      "inputs": {
+        "CFO": 636.2,
+        "ebitda_calculated": 857.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "capex_intensity",
+      "label": "Capex intensity",
+      "value": 0.026132298550900386,
+      "unit": "percent",
+      "formula": "capex / revenue",
+      "inputs": {
+        "capex": 129.3,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "cfo_capex",
+      "label": "CFO / capex",
+      "value": 4.9203402938901775,
+      "unit": "ratio",
+      "formula": "CFO / capex",
+      "inputs": {
+        "CFO": 636.2,
+        "capex": 129.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "cash_after_capex_margin",
+      "label": "Cash flow after capex margin",
+      "value": 0.10244750298106269,
+      "unit": "percent",
+      "formula": "(CFO - capex) / revenue",
+      "inputs": {
+        "cash flow after capex": 506.90000000000003,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "common_size",
+      "id": "cash_assets_share",
+      "label": "Cash / total assets",
+      "value": 0.08153481656979972,
+      "unit": "percent",
+      "formula": "cash and equivalents / total assets",
+      "inputs": {
+        "cash and equivalents": 440.5,
+        "total assets": 5402.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "common_size",
+      "id": "receivables_assets_share",
+      "label": "Receivables / total assets",
+      "value": 0.13726724169844148,
+      "unit": "percent",
+      "formula": "trade receivables / total assets",
+      "inputs": {
+        "trade receivables": 741.6,
+        "total assets": 5402.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "common_size",
+      "id": "inventory_assets_share",
+      "label": "Inventory / total assets",
+      "value": 0.1371006552400696,
+      "unit": "percent",
+      "formula": "inventory / total assets",
+      "inputs": {
+        "inventory": 740.7,
+        "total assets": 5402.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "common_size",
+      "id": "cost_of_revenue_share",
+      "label": "Cost of revenue / revenue",
+      "value": 0.7025808929040605,
+      "unit": "percent",
+      "formula": "cost of revenue / revenue",
+      "inputs": {
+        "cost of revenue": 3476.3,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "debt_bridge",
+      "id": "gross_debt_ex_lease",
+      "label": "Gross debt excluding leases",
+      "value": 1442.6000000000001,
+      "unit": "currency",
+      "formula": "short-term debt + long-term debt",
+      "inputs": {
+        "short-term debt": 4.7,
+        "long-term debt": 1437.9
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "debt_bridge",
+      "id": "net_debt_ex_lease",
+      "label": "Net debt excluding leases",
+      "value": 1002.1000000000001,
+      "unit": "currency",
+      "formula": "gross debt excluding leases - cash - eligible liquid investments",
+      "inputs": {
+        "gross debt excluding leases": 1442.6000000000001,
+        "cash and equivalents": 440.5
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "leverage",
+      "id": "net_debt_ebitda_ex_lease",
+      "label": "Net debt ex leases / EBITDA",
+      "value": 1.1684934701492538,
+      "unit": "ratio",
+      "formula": "net debt excluding leases / pre-lease EBITDA",
+      "inputs": {
+        "net debt ex leases": 1002.1000000000001,
+        "ebitda_calculated": 857.6
+      },
+      "status": "computed",
+      "note": "analyst calculation; cash and eligible liquid investments are netted",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "earnings_quality",
+      "id": "cfo_net_income",
+      "label": "CFO / consolidated net income",
+      "value": 1.1537903518317012,
+      "unit": "ratio",
+      "formula": "CFO / consolidated net income",
+      "inputs": {
+        "CFO": 636.2,
+        "consolidated net income": 551.4
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "cash_flow_after_capex",
+      "label": "Cash flow after capex",
+      "value": 506.90000000000003,
+      "unit": "currency",
+      "formula": "CFO - capex_total",
+      "inputs": {
+        "CFO": 636.2,
+        "capex_total": 129.3
+      },
+      "status": "computed",
+      "note": "analyst calculation; not automatically the issuer's FCF",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "cash_conversion",
+      "id": "da_capex",
+      "label": "D&A / capex",
+      "value": 1.148491879350348,
+      "unit": "ratio",
+      "formula": "D&A / capex_total",
+      "inputs": {
+        "D&A": 148.5,
+        "capex": 129.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "returns",
+      "id": "roa",
+      "label": "ROA",
+      "value": 0.10321880177085575,
+      "unit": "percent",
+      "formula": "consolidated net income / average total assets",
+      "inputs": {
+        "consolidated net income": 551.4,
+        "average total assets": 5342.05
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "returns",
+      "id": "parent_roe",
+      "label": "Parent ROE",
+      "value": 0.2378286535822423,
+      "unit": "percent",
+      "formula": "parent net income / average parent equity",
+      "inputs": {
+        "parent net income": 545.9,
+        "average parent equity": 2295.3500000000004
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "returns",
+      "id": "consolidated_roe",
+      "label": "Consolidated ROE",
+      "value": 0.23915164920955048,
+      "unit": "percent",
+      "formula": "consolidated net income / average total equity",
+      "inputs": {
+        "consolidated net income": 551.4,
+        "average total equity": 2305.6499999999996
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "returns",
+      "id": "asset_turnover",
+      "label": "Asset turnover",
+      "value": 0.9262174633333644,
+      "unit": "ratio",
+      "formula": "revenue / average total assets",
+      "inputs": {
+        "revenue": 4947.9,
+        "average total assets": 5342.05
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "earnings_quality",
+      "id": "accrual_ratio",
+      "label": "Accrual ratio",
+      "value": -0.015874055839986533,
+      "unit": "percent",
+      "formula": "(consolidated net income - CFO) / average total assets",
+      "inputs": {
+        "net income minus CFO": -84.80000000000007,
+        "average total assets": 5342.05
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "working_capital",
+      "id": "dso",
+      "label": "Days sales outstanding",
+      "value": 52.26141393318378,
+      "unit": "days",
+      "formula": "average trade receivables / revenue * 365",
+      "inputs": {
+        "average trade receivables": 708.45,
+        "revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "working_capital",
+      "id": "dio",
+      "label": "Days inventory outstanding",
+      "value": 73.64467968817422,
+      "unit": "days",
+      "formula": "average inventory / cost of revenue * 365",
+      "inputs": {
+        "average inventory": 701.4000000000001,
+        "cost of revenue": 3476.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "working_capital",
+      "id": "dpo",
+      "label": "Days payables outstanding",
+      "value": 55.78999223312141,
+      "unit": "days",
+      "formula": "average trade payables / cost of revenue * 365",
+      "inputs": {
+        "average trade payables": 531.3499999999999,
+        "cost of revenue": 3476.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2022",
+      "category": "working_capital",
+      "id": "cash_conversion_cycle",
+      "label": "Cash conversion cycle",
+      "value": 70.11610138823659,
+      "unit": "days",
+      "formula": "DSO + DIO - DPO",
+      "inputs": {
+        "DSO": 52.26141393318378,
+        "DIO": 73.64467968817422,
+        "DPO": 55.78999223312141
+      },
+      "status": "computed",
+      "note": "DPO uses cost of revenue unless purchases are supplied separately",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "growth",
+      "id": "revenue_growth",
+      "label": "Revenue growth",
+      "value": 0.08589502617271974,
+      "unit": "percent",
+      "formula": "current revenue / prior revenue - 1",
+      "inputs": {
+        "current revenue": 5372.9,
+        "prior revenue": 4947.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "growth",
+      "id": "consolidated_profit_growth",
+      "label": "Consolidated profit growth",
+      "value": 0.3739571998549149,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 757.6,
+        "prior profit": 551.4
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "growth",
+      "id": "parent_profit_growth",
+      "label": "Parent profit growth",
+      "value": 0.37644257189961533,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 751.4,
+        "prior profit": 545.9
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "profitability",
+      "id": "gross_margin",
+      "label": "Gross margin",
+      "value": 0.3493457909136593,
+      "unit": "percent",
+      "formula": "gross profit / revenue",
+      "inputs": {
+        "gross profit": 1877.0,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "profitability",
+      "id": "operating_margin",
+      "label": "Operating margin",
+      "value": 0.1912188948240243,
+      "unit": "percent",
+      "formula": "operating profit / revenue",
+      "inputs": {
+        "operating profit": 1027.4,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "profitability",
+      "id": "ebitda_margin",
+      "label": "EBITDA margin",
+      "value": 0.21908094325224742,
+      "unit": "percent",
+      "formula": "EBITDA / revenue",
+      "inputs": {
+        "ebitda_calculated": 1177.1000000000001,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "profitability",
+      "id": "consolidated_net_margin",
+      "label": "Consolidated net margin",
+      "value": 0.14100392711571033,
+      "unit": "percent",
+      "formula": "consolidated net income / revenue",
+      "inputs": {
+        "consolidated net income": 757.6,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "profitability",
+      "id": "parent_net_margin",
+      "label": "Parent net margin",
+      "value": 0.1398499879022502,
+      "unit": "percent",
+      "formula": "parent net income / revenue",
+      "inputs": {
+        "parent net income": 751.4,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "profitability",
+      "id": "effective_tax_rate",
+      "label": "Effective tax rate",
+      "value": 0.22073647397654803,
+      "unit": "percent",
+      "formula": "income tax expense / income before tax",
+      "inputs": {
+        "income tax expense": 214.6,
+        "income before tax": 972.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "liquidity",
+      "id": "current_ratio",
+      "label": "Current ratio",
+      "value": 1.63760012090071,
+      "unit": "ratio",
+      "formula": "current assets / current liabilities",
+      "inputs": {
+        "current assets": 2167.2,
+        "current liabilities": 1323.4
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "liquidity",
+      "id": "cash_only_ratio",
+      "label": "Cash-only ratio",
+      "value": 0.2539670545564455,
+      "unit": "ratio",
+      "formula": "cash and equivalents / current liabilities",
+      "inputs": {
+        "cash and equivalents": 336.1,
+        "current liabilities": 1323.4
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "liquidity",
+      "id": "cfo_current_liabilities",
+      "label": "CFO / average current liabilities",
+      "value": 0.7303785397404535,
+      "unit": "percent",
+      "formula": "CFO / average current liabilities",
+      "inputs": {
+        "CFO": 880.8,
+        "average current liabilities": 1205.95
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "solvency",
+      "id": "equity_ratio",
+      "label": "Equity ratio",
+      "value": 0.41789123517500726,
+      "unit": "percent",
+      "formula": "total equity / total assets",
+      "inputs": {
+        "total equity": 2889.3,
+        "total assets": 6914.0
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "solvency",
+      "id": "gross_debt_ex_lease_assets",
+      "label": "Gross debt ex leases / assets",
+      "value": 0.30960370263234016,
+      "unit": "percent",
+      "formula": "gross debt excluding leases / total assets",
+      "inputs": {
+        "gross debt ex leases": 2140.6,
+        "total assets": 6914.0
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "solvency",
+      "id": "debt_equity_ex_lease",
+      "label": "Debt / equity ex leases",
+      "value": 0.7408714913646903,
+      "unit": "ratio",
+      "formula": "gross debt excluding leases / total equity",
+      "inputs": {
+        "gross debt ex leases": 2140.6,
+        "total equity": 2889.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "cfo_margin",
+      "label": "CFO margin",
+      "value": 0.16393381600253124,
+      "unit": "percent",
+      "formula": "CFO / revenue",
+      "inputs": {
+        "CFO": 880.8,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "cfo_ebitda",
+      "label": "CFO / EBITDA",
+      "value": 0.7482796703763486,
+      "unit": "ratio",
+      "formula": "CFO / EBITDA",
+      "inputs": {
+        "CFO": 880.8,
+        "ebitda_calculated": 1177.1000000000001
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "capex_intensity",
+      "label": "Capex intensity",
+      "value": 0.030839956075862197,
+      "unit": "percent",
+      "formula": "capex / revenue",
+      "inputs": {
+        "capex": 165.7,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "cfo_capex",
+      "label": "CFO / capex",
+      "value": 5.315630657815329,
+      "unit": "ratio",
+      "formula": "CFO / capex",
+      "inputs": {
+        "CFO": 880.8,
+        "capex": 165.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "cash_after_capex_margin",
+      "label": "Cash flow after capex margin",
+      "value": 0.13309385992666903,
+      "unit": "percent",
+      "formula": "(CFO - capex) / revenue",
+      "inputs": {
+        "cash flow after capex": 715.0999999999999,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "common_size",
+      "id": "cash_assets_share",
+      "label": "Cash / total assets",
+      "value": 0.04861151287243275,
+      "unit": "percent",
+      "formula": "cash and equivalents / total assets",
+      "inputs": {
+        "cash and equivalents": 336.1,
+        "total assets": 6914.0
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "common_size",
+      "id": "receivables_assets_share",
+      "label": "Receivables / total assets",
+      "value": 0.11359560312409603,
+      "unit": "percent",
+      "formula": "trade receivables / total assets",
+      "inputs": {
+        "trade receivables": 785.4,
+        "total assets": 6914.0
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "common_size",
+      "id": "inventory_assets_share",
+      "label": "Inventory / total assets",
+      "value": 0.12046572172403817,
+      "unit": "percent",
+      "formula": "inventory / total assets",
+      "inputs": {
+        "inventory": 832.9,
+        "total assets": 6914.0
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "common_size",
+      "id": "cost_of_revenue_share",
+      "label": "Cost of revenue / revenue",
+      "value": 0.6506542090863408,
+      "unit": "percent",
+      "formula": "cost of revenue / revenue",
+      "inputs": {
+        "cost of revenue": 3495.9,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "debt_bridge",
+      "id": "gross_debt_ex_lease",
+      "label": "Gross debt excluding leases",
+      "value": 2140.6,
+      "unit": "currency",
+      "formula": "short-term debt + long-term debt",
+      "inputs": {
+        "short-term debt": 117.4,
+        "long-term debt": 2023.2
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "debt_bridge",
+      "id": "net_debt_ex_lease",
+      "label": "Net debt excluding leases",
+      "value": 1804.5,
+      "unit": "currency",
+      "formula": "gross debt excluding leases - cash - eligible liquid investments",
+      "inputs": {
+        "gross debt excluding leases": 2140.6,
+        "cash and equivalents": 336.1
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "leverage",
+      "id": "net_debt_ebitda_ex_lease",
+      "label": "Net debt ex leases / EBITDA",
+      "value": 1.5330048424093108,
+      "unit": "ratio",
+      "formula": "net debt excluding leases / pre-lease EBITDA",
+      "inputs": {
+        "net debt ex leases": 1804.5,
+        "ebitda_calculated": 1177.1000000000001
+      },
+      "status": "computed",
+      "note": "analyst calculation; cash and eligible liquid investments are netted",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "earnings_quality",
+      "id": "cfo_net_income",
+      "label": "CFO / consolidated net income",
+      "value": 1.1626187961985215,
+      "unit": "ratio",
+      "formula": "CFO / consolidated net income",
+      "inputs": {
+        "CFO": 880.8,
+        "consolidated net income": 757.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "cash_flow_after_capex",
+      "label": "Cash flow after capex",
+      "value": 715.0999999999999,
+      "unit": "currency",
+      "formula": "CFO - capex_total",
+      "inputs": {
+        "CFO": 880.8,
+        "capex_total": 165.7
+      },
+      "status": "computed",
+      "note": "analyst calculation; not automatically the issuer's FCF",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "cash_conversion",
+      "id": "da_capex",
+      "label": "D&A / capex",
+      "value": 0.9034399517199758,
+      "unit": "ratio",
+      "formula": "D&A / capex_total",
+      "inputs": {
+        "D&A": 149.7,
+        "capex": 165.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "returns",
+      "id": "roa",
+      "label": "ROA",
+      "value": 0.1230209635776107,
+      "unit": "percent",
+      "formula": "consolidated net income / average total assets",
+      "inputs": {
+        "consolidated net income": 757.6,
+        "average total assets": 6158.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "returns",
+      "id": "parent_roe",
+      "label": "Parent ROE",
+      "value": 0.2869088756944577,
+      "unit": "percent",
+      "formula": "parent net income / average parent equity",
+      "inputs": {
+        "parent net income": 751.4,
+        "average parent equity": 2618.95
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "returns",
+      "id": "consolidated_roe",
+      "label": "Consolidated ROE",
+      "value": 0.2880663130477766,
+      "unit": "percent",
+      "formula": "consolidated net income / average total equity",
+      "inputs": {
+        "consolidated net income": 757.6,
+        "average total equity": 2629.95
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "returns",
+      "id": "asset_turnover",
+      "label": "Asset turnover",
+      "value": 0.8724648035983956,
+      "unit": "ratio",
+      "formula": "revenue / average total assets",
+      "inputs": {
+        "revenue": 5372.9,
+        "average total assets": 6158.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "earnings_quality",
+      "id": "accrual_ratio",
+      "label": "Accrual ratio",
+      "value": -0.02000552100417322,
+      "unit": "percent",
+      "formula": "(consolidated net income - CFO) / average total assets",
+      "inputs": {
+        "net income minus CFO": -123.19999999999993,
+        "average total assets": 6158.3
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "working_capital",
+      "id": "dso",
+      "label": "Days sales outstanding",
+      "value": 51.8672411546837,
+      "unit": "days",
+      "formula": "average trade receivables / revenue * 365",
+      "inputs": {
+        "average trade receivables": 763.5,
+        "revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "working_capital",
+      "id": "dio",
+      "label": "Days inventory outstanding",
+      "value": 82.14823078463343,
+      "unit": "days",
+      "formula": "average inventory / cost of revenue * 365",
+      "inputs": {
+        "average inventory": 786.8,
+        "cost of revenue": 3495.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "working_capital",
+      "id": "dpo",
+      "label": "Days payables outstanding",
+      "value": 57.079864984696364,
+      "unit": "days",
+      "formula": "average trade payables / cost of revenue * 365",
+      "inputs": {
+        "average trade payables": 546.7,
+        "cost of revenue": 3495.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2023",
+      "category": "working_capital",
+      "id": "cash_conversion_cycle",
+      "label": "Cash conversion cycle",
+      "value": 76.93560695462077,
+      "unit": "days",
+      "formula": "DSO + DIO - DPO",
+      "inputs": {
+        "DSO": 51.8672411546837,
+        "DIO": 82.14823078463343,
+        "DPO": 57.079864984696364
+      },
+      "status": "computed",
+      "note": "DPO uses cost of revenue unless purchases are supplied separately",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "growth",
+      "id": "revenue_growth",
+      "label": "Revenue growth",
+      "value": 0.04757207467103434,
+      "unit": "percent",
+      "formula": "current revenue / prior revenue - 1",
+      "inputs": {
+        "current revenue": 5628.5,
+        "prior revenue": 5372.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "growth",
+      "id": "consolidated_profit_growth",
+      "label": "Consolidated profit growth",
+      "value": 0.03577085533262939,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 784.7,
+        "prior profit": 757.6
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "growth",
+      "id": "parent_profit_growth",
+      "label": "Parent profit growth",
+      "value": 0.03673143465531012,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 779.0,
+        "prior profit": 751.4
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "profitability",
+      "id": "gross_margin",
+      "label": "Gross margin",
+      "value": 0.33856267211512836,
+      "unit": "percent",
+      "formula": "gross profit / revenue",
+      "inputs": {
+        "gross profit": 1905.6,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "profitability",
+      "id": "operating_margin",
+      "label": "Operating margin",
+      "value": 0.19420804832548635,
+      "unit": "percent",
+      "formula": "operating profit / revenue",
+      "inputs": {
+        "operating profit": 1093.1,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "profitability",
+      "id": "ebitda_margin",
+      "label": "EBITDA margin",
+      "value": 0.23189126765568088,
+      "unit": "percent",
+      "formula": "EBITDA / revenue",
+      "inputs": {
+        "ebitda_calculated": 1305.1999999999998,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "profitability",
+      "id": "consolidated_net_margin",
+      "label": "Consolidated net margin",
+      "value": 0.13941547481567027,
+      "unit": "percent",
+      "formula": "consolidated net income / revenue",
+      "inputs": {
+        "consolidated net income": 784.7,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "profitability",
+      "id": "parent_net_margin",
+      "label": "Parent net margin",
+      "value": 0.13840277160877676,
+      "unit": "percent",
+      "formula": "parent net income / revenue",
+      "inputs": {
+        "parent net income": 779.0,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "profitability",
+      "id": "effective_tax_rate",
+      "label": "Effective tax rate",
+      "value": 0.2205999205403258,
+      "unit": "percent",
+      "formula": "income tax expense / income before tax",
+      "inputs": {
+        "income tax expense": 222.1,
+        "income before tax": 1006.8
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "liquidity",
+      "id": "current_ratio",
+      "label": "Current ratio",
+      "value": 1.7720138125882907,
+      "unit": "ratio",
+      "formula": "current assets / current liabilities",
+      "inputs": {
+        "current assets": 2257.9,
+        "current liabilities": 1274.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "liquidity",
+      "id": "cash_only_ratio",
+      "label": "Cash-only ratio",
+      "value": 0.25827970491288654,
+      "unit": "ratio",
+      "formula": "cash and equivalents / current liabilities",
+      "inputs": {
+        "cash and equivalents": 329.1,
+        "current liabilities": 1274.2
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "liquidity",
+      "id": "cfo_current_liabilities",
+      "label": "CFO / average current liabilities",
+      "value": 0.7631659993840467,
+      "unit": "percent",
+      "formula": "CFO / average current liabilities",
+      "inputs": {
+        "CFO": 991.2,
+        "average current liabilities": 1298.8000000000002
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "solvency",
+      "id": "equity_ratio",
+      "label": "Equity ratio",
+      "value": 0.49806504373731325,
+      "unit": "percent",
+      "formula": "total equity / total assets",
+      "inputs": {
+        "total equity": 3410.6,
+        "total assets": 6847.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "solvency",
+      "id": "gross_debt_ex_lease_assets",
+      "label": "Gross debt ex leases / assets",
+      "value": 0.2289965973976664,
+      "unit": "percent",
+      "formula": "gross debt excluding leases / total assets",
+      "inputs": {
+        "gross debt ex leases": 1568.1000000000001,
+        "total assets": 6847.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "solvency",
+      "id": "debt_equity_ex_lease",
+      "label": "Debt / equity ex leases",
+      "value": 0.4597724740514866,
+      "unit": "ratio",
+      "formula": "gross debt excluding leases / total equity",
+      "inputs": {
+        "gross debt ex leases": 1568.1000000000001,
+        "total equity": 3410.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "cfo_margin",
+      "label": "CFO margin",
+      "value": 0.17610375766189926,
+      "unit": "percent",
+      "formula": "CFO / revenue",
+      "inputs": {
+        "CFO": 991.2,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "cfo_ebitda",
+      "label": "CFO / EBITDA",
+      "value": 0.7594238430891819,
+      "unit": "ratio",
+      "formula": "CFO / EBITDA",
+      "inputs": {
+        "CFO": 991.2,
+        "ebitda_calculated": 1305.1999999999998
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "capex_intensity",
+      "label": "Capex intensity",
+      "value": 0.03205116816203252,
+      "unit": "percent",
+      "formula": "capex / revenue",
+      "inputs": {
+        "capex": 180.4,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "cfo_capex",
+      "label": "CFO / capex",
+      "value": 5.494456762749445,
+      "unit": "ratio",
+      "formula": "CFO / capex",
+      "inputs": {
+        "CFO": 991.2,
+        "capex": 180.4
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "cash_after_capex_margin",
+      "label": "Cash flow after capex margin",
+      "value": 0.14405258949986677,
+      "unit": "percent",
+      "formula": "(CFO - capex) / revenue",
+      "inputs": {
+        "cash flow after capex": 810.8000000000001,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "common_size",
+      "id": "cash_assets_share",
+      "label": "Cash / total assets",
+      "value": 0.04805993253209107,
+      "unit": "percent",
+      "formula": "cash and equivalents / total assets",
+      "inputs": {
+        "cash and equivalents": 329.1,
+        "total assets": 6847.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "common_size",
+      "id": "receivables_assets_share",
+      "label": "Receivables / total assets",
+      "value": 0.11040203279933408,
+      "unit": "percent",
+      "formula": "trade receivables / total assets",
+      "inputs": {
+        "trade receivables": 756.0,
+        "total assets": 6847.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "common_size",
+      "id": "inventory_assets_share",
+      "label": "Inventory / total assets",
+      "value": 0.14755319304291953,
+      "unit": "percent",
+      "formula": "inventory / total assets",
+      "inputs": {
+        "inventory": 1010.4,
+        "total assets": 6847.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "common_size",
+      "id": "cost_of_revenue_share",
+      "label": "Cost of revenue / revenue",
+      "value": 0.6614373278848716,
+      "unit": "percent",
+      "formula": "cost of revenue / revenue",
+      "inputs": {
+        "cost of revenue": 3722.9,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "debt_bridge",
+      "id": "gross_debt_ex_lease",
+      "label": "Gross debt excluding leases",
+      "value": 1568.1000000000001,
+      "unit": "currency",
+      "formula": "short-term debt + long-term debt",
+      "inputs": {
+        "short-term debt": 125.4,
+        "long-term debt": 1442.7
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "debt_bridge",
+      "id": "net_debt_ex_lease",
+      "label": "Net debt excluding leases",
+      "value": 1239.0,
+      "unit": "currency",
+      "formula": "gross debt excluding leases - cash - eligible liquid investments",
+      "inputs": {
+        "gross debt excluding leases": 1568.1000000000001,
+        "cash and equivalents": 329.1
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "leverage",
+      "id": "net_debt_ebitda_ex_lease",
+      "label": "Net debt ex leases / EBITDA",
+      "value": 0.9492798038614773,
+      "unit": "ratio",
+      "formula": "net debt excluding leases / pre-lease EBITDA",
+      "inputs": {
+        "net debt ex leases": 1239.0,
+        "ebitda_calculated": 1305.1999999999998
+      },
+      "status": "computed",
+      "note": "analyst calculation; cash and eligible liquid investments are netted",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "earnings_quality",
+      "id": "cfo_net_income",
+      "label": "CFO / consolidated net income",
+      "value": 1.263157894736842,
+      "unit": "ratio",
+      "formula": "CFO / consolidated net income",
+      "inputs": {
+        "CFO": 991.2,
+        "consolidated net income": 784.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "cash_flow_after_capex",
+      "label": "Cash flow after capex",
+      "value": 810.8000000000001,
+      "unit": "currency",
+      "formula": "CFO - capex_total",
+      "inputs": {
+        "CFO": 991.2,
+        "capex_total": 180.4
+      },
+      "status": "computed",
+      "note": "analyst calculation; not automatically the issuer's FCF",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "cash_conversion",
+      "id": "da_capex",
+      "label": "D&A / capex",
+      "value": 1.175720620842572,
+      "unit": "ratio",
+      "formula": "D&A / capex_total",
+      "inputs": {
+        "D&A": 212.1,
+        "capex": 180.4
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "returns",
+      "id": "roa",
+      "label": "ROA",
+      "value": 0.11404114317271849,
+      "unit": "percent",
+      "formula": "consolidated net income / average total assets",
+      "inputs": {
+        "consolidated net income": 784.7,
+        "average total assets": 6880.85
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "returns",
+      "id": "parent_roe",
+      "label": "Parent ROE",
+      "value": 0.24835809475227955,
+      "unit": "percent",
+      "formula": "parent net income / average parent equity",
+      "inputs": {
+        "parent net income": 779.0,
+        "average parent equity": 3136.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "returns",
+      "id": "consolidated_roe",
+      "label": "Consolidated ROE",
+      "value": 0.24911506531849714,
+      "unit": "percent",
+      "formula": "consolidated net income / average total equity",
+      "inputs": {
+        "consolidated net income": 784.7,
+        "average total equity": 3149.95
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "returns",
+      "id": "asset_turnover",
+      "label": "Asset turnover",
+      "value": 0.8179948698198624,
+      "unit": "ratio",
+      "formula": "revenue / average total assets",
+      "inputs": {
+        "revenue": 5628.5,
+        "average total assets": 6880.85
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "earnings_quality",
+      "id": "accrual_ratio",
+      "label": "Accrual ratio",
+      "value": -0.03001082715071539,
+      "unit": "percent",
+      "formula": "(consolidated net income - CFO) / average total assets",
+      "inputs": {
+        "net income minus CFO": -206.5,
+        "average total assets": 6880.85
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "working_capital",
+      "id": "dso",
+      "label": "Days sales outstanding",
+      "value": 49.9787687661011,
+      "unit": "days",
+      "formula": "average trade receivables / revenue * 365",
+      "inputs": {
+        "average trade receivables": 770.7,
+        "revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "working_capital",
+      "id": "dio",
+      "label": "Days inventory outstanding",
+      "value": 90.36027021945257,
+      "unit": "days",
+      "formula": "average inventory / cost of revenue * 365",
+      "inputs": {
+        "average inventory": 921.65,
+        "cost of revenue": 3722.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "working_capital",
+      "id": "dpo",
+      "label": "Days payables outstanding",
+      "value": 54.17792581052406,
+      "unit": "days",
+      "formula": "average trade payables / cost of revenue * 365",
+      "inputs": {
+        "average trade payables": 552.6,
+        "cost of revenue": 3722.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2024",
+      "category": "working_capital",
+      "id": "cash_conversion_cycle",
+      "label": "Cash conversion cycle",
+      "value": 86.1611131750296,
+      "unit": "days",
+      "formula": "DSO + DIO - DPO",
+      "inputs": {
+        "DSO": 49.9787687661011,
+        "DIO": 90.36027021945257,
+        "DPO": 54.17792581052406
+      },
+      "status": "computed",
+      "note": "DPO uses cost of revenue unless purchases are supplied separately",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "growth",
+      "id": "revenue_growth",
+      "label": "Revenue growth",
+      "value": 0.038393888247312845,
+      "unit": "percent",
+      "formula": "current revenue / prior revenue - 1",
+      "inputs": {
+        "current revenue": 5844.6,
+        "prior revenue": 5628.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "growth",
+      "id": "consolidated_profit_growth",
+      "label": "Consolidated profit growth",
+      "value": 0.13661271823626855,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 891.9,
+        "prior profit": 784.7
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "growth",
+      "id": "parent_profit_growth",
+      "label": "Parent profit growth",
+      "value": 0.13876765083440312,
+      "unit": "percent",
+      "formula": "current profit / prior profit - 1",
+      "inputs": {
+        "current profit": 887.1,
+        "prior profit": 779.0
+      },
+      "status": "computed",
+      "note": "not meaningful when either profit base is non-positive or near zero",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "growth",
+      "id": "revenue_cagr",
+      "label": "Revenue CAGR since first supplied period",
+      "value": 0.0864981799466733,
+      "unit": "percent",
+      "formula": "(ending revenue / beginning revenue) ** (1 / elapsed years) - 1",
+      "inputs": {
+        "beginning revenue": 4194.1,
+        "ending revenue": 5844.6,
+        "elapsed years": 4
+      },
+      "status": "computed",
+      "note": "4-year CAGR across the supplied period set",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "profitability",
+      "id": "gross_margin",
+      "label": "Gross margin",
+      "value": 0.3531636040105396,
+      "unit": "percent",
+      "formula": "gross profit / revenue",
+      "inputs": {
+        "gross profit": 2064.1,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "profitability",
+      "id": "operating_margin",
+      "label": "Operating margin",
+      "value": 0.20682339253327855,
+      "unit": "percent",
+      "formula": "operating profit / revenue",
+      "inputs": {
+        "operating profit": 1208.8,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "profitability",
+      "id": "ebitda_margin",
+      "label": "EBITDA margin",
+      "value": 0.24208671252095948,
+      "unit": "percent",
+      "formula": "EBITDA / revenue",
+      "inputs": {
+        "ebitda_calculated": 1414.8999999999999,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "profitability",
+      "id": "consolidated_net_margin",
+      "label": "Consolidated net margin",
+      "value": 0.15260240221743146,
+      "unit": "percent",
+      "formula": "consolidated net income / revenue",
+      "inputs": {
+        "consolidated net income": 891.9,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "profitability",
+      "id": "parent_net_margin",
+      "label": "Parent net margin",
+      "value": 0.15178113130068782,
+      "unit": "percent",
+      "formula": "parent net income / revenue",
+      "inputs": {
+        "parent net income": 887.1,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "profitability",
+      "id": "effective_tax_rate",
+      "label": "Effective tax rate",
+      "value": 0.2030202841569118,
+      "unit": "percent",
+      "formula": "income tax expense / income before tax",
+      "inputs": {
+        "income tax expense": 227.2,
+        "income before tax": 1119.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "liquidity",
+      "id": "current_ratio",
+      "label": "Current ratio",
+      "value": 1.7193610393053622,
+      "unit": "ratio",
+      "formula": "current assets / current liabilities",
+      "inputs": {
+        "current assets": 2594.0,
+        "current liabilities": 1508.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "liquidity",
+      "id": "cash_only_ratio",
+      "label": "Cash-only ratio",
+      "value": 0.31981175846755483,
+      "unit": "ratio",
+      "formula": "cash and equivalents / current liabilities",
+      "inputs": {
+        "cash and equivalents": 482.5,
+        "current liabilities": 1508.7
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "liquidity",
+      "id": "cfo_current_liabilities",
+      "label": "CFO / average current liabilities",
+      "value": 0.7400912716949943,
+      "unit": "percent",
+      "formula": "CFO / average current liabilities",
+      "inputs": {
+        "CFO": 1029.8,
+        "average current liabilities": 1391.45
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "solvency",
+      "id": "equity_ratio",
+      "label": "Equity ratio",
+      "value": 0.46882899086136504,
+      "unit": "percent",
+      "formula": "total equity / total assets",
+      "inputs": {
+        "total equity": 3857.9,
+        "total assets": 8228.8
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "solvency",
+      "id": "gross_debt_ex_lease_assets",
+      "label": "Gross debt ex leases / assets",
+      "value": 0.2825928446432044,
+      "unit": "percent",
+      "formula": "gross debt excluding leases / total assets",
+      "inputs": {
+        "gross debt ex leases": 2325.4,
+        "total assets": 8228.8
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "solvency",
+      "id": "debt_equity_ex_lease",
+      "label": "Debt / equity ex leases",
+      "value": 0.6027631613053734,
+      "unit": "ratio",
+      "formula": "gross debt excluding leases / total equity",
+      "inputs": {
+        "gross debt ex leases": 2325.4,
+        "total equity": 3857.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "cfo_margin",
+      "label": "CFO margin",
+      "value": 0.17619683126304622,
+      "unit": "percent",
+      "formula": "CFO / revenue",
+      "inputs": {
+        "CFO": 1029.8,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "cfo_ebitda",
+      "label": "CFO / EBITDA",
+      "value": 0.7278252880062196,
+      "unit": "ratio",
+      "formula": "CFO / EBITDA",
+      "inputs": {
+        "CFO": 1029.8,
+        "ebitda_calculated": 1414.8999999999999
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "capex_intensity",
+      "label": "Capex intensity",
+      "value": 0.02653731649727954,
+      "unit": "percent",
+      "formula": "capex / revenue",
+      "inputs": {
+        "capex": 155.1,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "cfo_capex",
+      "label": "CFO / capex",
+      "value": 6.639587362991619,
+      "unit": "ratio",
+      "formula": "CFO / capex",
+      "inputs": {
+        "CFO": 1029.8,
+        "capex": 155.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "cash_after_capex_margin",
+      "label": "Cash flow after capex margin",
+      "value": 0.14965951476576667,
+      "unit": "percent",
+      "formula": "(CFO - capex) / revenue",
+      "inputs": {
+        "cash flow after capex": 874.6999999999999,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "common_size",
+      "id": "cash_assets_share",
+      "label": "Cash / total assets",
+      "value": 0.05863552401322186,
+      "unit": "percent",
+      "formula": "cash and equivalents / total assets",
+      "inputs": {
+        "cash and equivalents": 482.5,
+        "total assets": 8228.8
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "common_size",
+      "id": "receivables_assets_share",
+      "label": "Receivables / total assets",
+      "value": 0.10413426015944002,
+      "unit": "percent",
+      "formula": "trade receivables / total assets",
+      "inputs": {
+        "trade receivables": 856.9,
+        "total assets": 8228.8
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "common_size",
+      "id": "inventory_assets_share",
+      "label": "Inventory / total assets",
+      "value": 0.1317081469959168,
+      "unit": "percent",
+      "formula": "inventory / total assets",
+      "inputs": {
+        "inventory": 1083.8,
+        "total assets": 8228.8
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "common_size",
+      "id": "cost_of_revenue_share",
+      "label": "Cost of revenue / revenue",
+      "value": 0.6468363959894603,
+      "unit": "percent",
+      "formula": "cost of revenue / revenue",
+      "inputs": {
+        "cost of revenue": 3780.5,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "debt_bridge",
+      "id": "gross_debt_ex_lease",
+      "label": "Gross debt excluding leases",
+      "value": 2325.4,
+      "unit": "currency",
+      "formula": "short-term debt + long-term debt",
+      "inputs": {
+        "short-term debt": 289.1,
+        "long-term debt": 2036.3
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "debt_bridge",
+      "id": "net_debt_ex_lease",
+      "label": "Net debt excluding leases",
+      "value": 1842.9,
+      "unit": "currency",
+      "formula": "gross debt excluding leases - cash - eligible liquid investments",
+      "inputs": {
+        "gross debt excluding leases": 2325.4,
+        "cash and equivalents": 482.5
+      },
+      "status": "computed",
+      "note": "analyst calculation",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "leverage",
+      "id": "net_debt_ebitda_ex_lease",
+      "label": "Net debt ex leases / EBITDA",
+      "value": 1.3024948759629658,
+      "unit": "ratio",
+      "formula": "net debt excluding leases / pre-lease EBITDA",
+      "inputs": {
+        "net debt ex leases": 1842.9,
+        "ebitda_calculated": 1414.8999999999999
+      },
+      "status": "computed",
+      "note": "analyst calculation; cash and eligible liquid investments are netted",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "earnings_quality",
+      "id": "cfo_net_income",
+      "label": "CFO / consolidated net income",
+      "value": 1.154613745935643,
+      "unit": "ratio",
+      "formula": "CFO / consolidated net income",
+      "inputs": {
+        "CFO": 1029.8,
+        "consolidated net income": 891.9
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "cash_flow_after_capex",
+      "label": "Cash flow after capex",
+      "value": 874.6999999999999,
+      "unit": "currency",
+      "formula": "CFO - capex_total",
+      "inputs": {
+        "CFO": 1029.8,
+        "capex_total": 155.1
+      },
+      "status": "computed",
+      "note": "analyst calculation; not automatically the issuer's FCF",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "cash_conversion",
+      "id": "da_capex",
+      "label": "D&A / capex",
+      "value": 1.3288201160541586,
+      "unit": "ratio",
+      "formula": "D&A / capex_total",
+      "inputs": {
+        "D&A": 206.1,
+        "capex": 155.1
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "returns",
+      "id": "roa",
+      "label": "ROA",
+      "value": 0.11831658541438662,
+      "unit": "percent",
+      "formula": "consolidated net income / average total assets",
+      "inputs": {
+        "consolidated net income": 891.9,
+        "average total assets": 7538.25
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "returns",
+      "id": "parent_roe",
+      "label": "Parent ROE",
+      "value": 0.24491655278088376,
+      "unit": "percent",
+      "formula": "parent net income / average parent equity",
+      "inputs": {
+        "parent net income": 887.1,
+        "average parent equity": 3622.05
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "returns",
+      "id": "consolidated_roe",
+      "label": "Consolidated ROE",
+      "value": 0.24541514755451604,
+      "unit": "percent",
+      "formula": "consolidated net income / average total equity",
+      "inputs": {
+        "consolidated net income": 891.9,
+        "average total equity": 3634.25
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "returns",
+      "id": "asset_turnover",
+      "label": "Asset turnover",
+      "value": 0.7753258382250523,
+      "unit": "ratio",
+      "formula": "revenue / average total assets",
+      "inputs": {
+        "revenue": 5844.6,
+        "average total assets": 7538.25
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "earnings_quality",
+      "id": "accrual_ratio",
+      "label": "Accrual ratio",
+      "value": -0.018293370477232777,
+      "unit": "percent",
+      "formula": "(consolidated net income - CFO) / average total assets",
+      "inputs": {
+        "net income minus CFO": -137.89999999999998,
+        "average total assets": 7538.25
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "working_capital",
+      "id": "dso",
+      "label": "Days sales outstanding",
+      "value": 50.36345515518599,
+      "unit": "days",
+      "formula": "average trade receivables / revenue * 365",
+      "inputs": {
+        "average trade receivables": 806.45,
+        "revenue": 5844.6
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "working_capital",
+      "id": "dio",
+      "label": "Days inventory outstanding",
+      "value": 101.09549001454835,
+      "unit": "days",
+      "formula": "average inventory / cost of revenue * 365",
+      "inputs": {
+        "average inventory": 1047.1,
+        "cost of revenue": 3780.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "working_capital",
+      "id": "dpo",
+      "label": "Days payables outstanding",
+      "value": 53.69038486972622,
+      "unit": "days",
+      "formula": "average trade payables / cost of revenue * 365",
+      "inputs": {
+        "average trade payables": 556.1,
+        "cost of revenue": 3780.5
+      },
+      "status": "computed",
+      "note": "",
+      "missing": []
+    },
+    {
+      "period": "2025",
+      "category": "working_capital",
+      "id": "cash_conversion_cycle",
+      "label": "Cash conversion cycle",
+      "value": 97.76856030000812,
+      "unit": "days",
+      "formula": "DSO + DIO - DPO",
+      "inputs": {
+        "DSO": 50.36345515518599,
+        "DIO": 101.09549001454835,
+        "DPO": 53.69038486972622
+      },
+      "status": "computed",
+      "note": "DPO uses cost of revenue unless purchases are supplied separately",
+      "missing": []
+    }
+  ],
+  "warnings": [
+    "2021: ebitda_calculated = operating_profit + depreciation_amortization",
+    "2021: net debt subtracts cash only; liquid_investments not supplied",
+    "2022: ebitda_calculated = operating_profit + depreciation_amortization",
+    "2022: net debt subtracts cash only; liquid_investments not supplied",
+    "2023: ebitda_calculated = operating_profit + depreciation_amortization",
+    "2023: net debt subtracts cash only; liquid_investments not supplied",
+    "2024: ebitda_calculated = operating_profit + depreciation_amortization",
+    "2024: net debt subtracts cash only; liquid_investments not supplied",
+    "2025: ebitda_calculated = operating_profit + depreciation_amortization",
+    "2025: net debt subtracts cash only; liquid_investments not supplied"
+  ],
+  "evidence_issues": [],
+  "evidence": [
+    {
+      "period": "2021",
+      "key": "revenue",
+      "value": 4194.1,
+      "source_label": "revenue",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "cost_of_revenue",
+      "value": 3042.6,
+      "source_label": "cost_of_goods_sold",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "gross_profit",
+      "value": 1151.5,
+      "source_label": "gross_profit",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "operating_profit",
+      "value": 532.3,
+      "source_label": "operating_income",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "net_income_consolidated",
+      "value": 405.6,
+      "source_label": "consolidated_net_income",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "net_income_parent",
+      "value": 399.5,
+      "source_label": "parent_net_income",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "total_assets",
+      "value": 5281.5,
+      "source_label": "assets",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "total_liabilities",
+      "value": 3040.8,
+      "source_label": "total_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "parent_equity",
+      "value": 2229.8,
+      "source_label": "parent_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "total_equity",
+      "value": 2240.7,
+      "source_label": "total_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "current_assets",
+      "value": 1879.3,
+      "source_label": "current_assets",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "current_liabilities",
+      "value": 1065.2,
+      "source_label": "current_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "cash_and_equivalents",
+      "value": 286.2,
+      "source_label": "cash",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "short_term_debt",
+      "value": 9.7,
+      "source_label": "debt_current",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "long_term_debt",
+      "value": 1435.5,
+      "source_label": "debt_long_term",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "trade_receivables",
+      "value": 675.3,
+      "source_label": "receivables",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "inventory",
+      "value": 662.1,
+      "source_label": "inventory",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "trade_payables",
+      "value": 532.8,
+      "source_label": "accounts_payable",
+      "statement": "balance_sheet",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "cfo",
+      "value": 513.7,
+      "source_label": "cfo",
+      "statement": "cash_flow",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "capex_total",
+      "value": 90.2,
+      "source_label": "capex",
+      "statement": "cash_flow",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "cff",
+      "value": -433.0,
+      "source_label": "cff",
+      "statement": "cash_flow",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "income_tax_expense",
+      "value": 88.2,
+      "source_label": "income_tax",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "depreciation_amortization",
+      "value": 149.1,
+      "source_label": "depreciation_amortization",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "DepreciationDepletionAndAmortization",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "net_income_nci",
+      "value": 6.1,
+      "source_label": "NCI attribution",
+      "statement": "income_statement",
+      "source": "SEC S05 filing",
+      "page": "S05 pp.45-49",
+      "status": "calculated",
+      "mapping": "consolidated net income - parent net income",
+      "confidence": "high"
+    },
+    {
+      "period": "2021",
+      "key": "income_before_tax",
+      "value": 459.3,
+      "source_label": "pretax_income",
+      "statement": "income_statement",
+      "source": "SEC S05 Company Facts / filing",
+      "page": "S05 pp.45-49",
+      "status": "reported",
+      "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "revenue",
+      "value": 4947.9,
+      "source_label": "revenue",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "cost_of_revenue",
+      "value": 3476.3,
+      "source_label": "cost_of_goods_sold",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "gross_profit",
+      "value": 1471.6,
+      "source_label": "gross_profit",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "operating_profit",
+      "value": 709.1,
+      "source_label": "operating_income",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "net_income_consolidated",
+      "value": 551.4,
+      "source_label": "consolidated_net_income",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "net_income_parent",
+      "value": 545.9,
+      "source_label": "parent_net_income",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "total_assets",
+      "value": 5402.6,
+      "source_label": "assets",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "total_liabilities",
+      "value": 3032.0,
+      "source_label": "total_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "parent_equity",
+      "value": 2360.9,
+      "source_label": "parent_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "total_equity",
+      "value": 2370.6,
+      "source_label": "total_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "current_assets",
+      "value": 2021.4,
+      "source_label": "current_assets",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "current_liabilities",
+      "value": 1088.5,
+      "source_label": "current_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "cash_and_equivalents",
+      "value": 440.5,
+      "source_label": "cash",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "short_term_debt",
+      "value": 4.7,
+      "source_label": "debt_current",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "long_term_debt",
+      "value": 1437.9,
+      "source_label": "debt_long_term",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "trade_receivables",
+      "value": 741.6,
+      "source_label": "receivables",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "inventory",
+      "value": 740.7,
+      "source_label": "inventory",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "trade_payables",
+      "value": 529.9,
+      "source_label": "accounts_payable",
+      "statement": "balance_sheet",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "cfo",
+      "value": 636.2,
+      "source_label": "cfo",
+      "statement": "cash_flow",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "capex_total",
+      "value": 129.3,
+      "source_label": "capex",
+      "statement": "cash_flow",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "cff",
+      "value": -437.1,
+      "source_label": "cff",
+      "statement": "cash_flow",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "income_tax_expense",
+      "value": 140.2,
+      "source_label": "income_tax",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "depreciation_amortization",
+      "value": 148.5,
+      "source_label": "depreciation_amortization",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "DepreciationDepletionAndAmortization",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "net_income_nci",
+      "value": 5.5,
+      "source_label": "NCI attribution",
+      "statement": "income_statement",
+      "source": "SEC S04 filing",
+      "page": "S04 pp.45-49",
+      "status": "calculated",
+      "mapping": "consolidated net income - parent net income",
+      "confidence": "high"
+    },
+    {
+      "period": "2022",
+      "key": "income_before_tax",
+      "value": 657.0,
+      "source_label": "pretax_income",
+      "statement": "income_statement",
+      "source": "SEC S04 Company Facts / filing",
+      "page": "S04 pp.45-49",
+      "status": "reported",
+      "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "revenue",
+      "value": 5372.9,
+      "source_label": "revenue",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "cost_of_revenue",
+      "value": 3495.9,
+      "source_label": "cost_of_goods_sold",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "gross_profit",
+      "value": 1877.0,
+      "source_label": "gross_profit",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "operating_profit",
+      "value": 1027.4,
+      "source_label": "operating_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "net_income_consolidated",
+      "value": 757.6,
+      "source_label": "consolidated_net_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "net_income_parent",
+      "value": 751.4,
+      "source_label": "parent_net_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "total_assets",
+      "value": 6914.0,
+      "source_label": "assets",
+      "statement": "balance_sheet",
+      "source": "SEC S03 filing",
+      "page": "S03 pp.47-48",
+      "status": "reported",
+      "mapping": "FY2023 10-K original balance sheet; not FIFO-recast",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "total_liabilities",
+      "value": 4024.7,
+      "source_label": "total_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S03 filing",
+      "page": "S03 pp.47-48",
+      "status": "reported",
+      "mapping": "FY2023 10-K original balance sheet; not FIFO-recast",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "parent_equity",
+      "value": 2877.0,
+      "source_label": "parent_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "total_equity",
+      "value": 2889.3,
+      "source_label": "total_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S03 filing",
+      "page": "S03 pp.47-48",
+      "status": "reported",
+      "mapping": "FY2023 10-K original balance sheet; not FIFO-recast",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "current_assets",
+      "value": 2167.2,
+      "source_label": "current_assets",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "current_liabilities",
+      "value": 1323.4,
+      "source_label": "current_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "cash_and_equivalents",
+      "value": 336.1,
+      "source_label": "cash",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "short_term_debt",
+      "value": 117.4,
+      "source_label": "debt_current",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "long_term_debt",
+      "value": 2023.2,
+      "source_label": "debt_long_term",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "trade_receivables",
+      "value": 785.4,
+      "source_label": "receivables",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "inventory",
+      "value": 832.9,
+      "source_label": "inventory",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "trade_payables",
+      "value": 563.5,
+      "source_label": "accounts_payable",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "cfo",
+      "value": 880.8,
+      "source_label": "cfo",
+      "statement": "cash_flow",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "capex_total",
+      "value": 165.7,
+      "source_label": "capex",
+      "statement": "cash_flow",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "cfi",
+      "value": -1380.2,
+      "source_label": "cfi",
+      "statement": "cash_flow",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "cff",
+      "value": 388.5,
+      "source_label": "cff",
+      "statement": "cash_flow",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "income_tax_expense",
+      "value": 214.6,
+      "source_label": "income_tax",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "depreciation_amortization",
+      "value": 149.7,
+      "source_label": "depreciation_amortization",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "DepreciationDepletionAndAmortization",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "net_income_nci",
+      "value": 6.2,
+      "source_label": "NCI attribution",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 filing",
+      "page": "S01 pp.49-53",
+      "status": "calculated",
+      "mapping": "consolidated net income - parent net income",
+      "confidence": "high"
+    },
+    {
+      "period": "2023",
+      "key": "income_before_tax",
+      "value": 972.2,
+      "source_label": "pretax_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S03 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "revenue",
+      "value": 5628.5,
+      "source_label": "revenue",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "cost_of_revenue",
+      "value": 3722.9,
+      "source_label": "cost_of_goods_sold",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "gross_profit",
+      "value": 1905.6,
+      "source_label": "gross_profit",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "operating_profit",
+      "value": 1093.1,
+      "source_label": "operating_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "net_income_consolidated",
+      "value": 784.7,
+      "source_label": "consolidated_net_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "net_income_parent",
+      "value": 779.0,
+      "source_label": "parent_net_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "total_assets",
+      "value": 6847.7,
+      "source_label": "assets",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "total_liabilities",
+      "value": 3437.1,
+      "source_label": "total_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "parent_equity",
+      "value": 3396.2,
+      "source_label": "parent_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "total_equity",
+      "value": 3410.6,
+      "source_label": "total_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "current_assets",
+      "value": 2257.9,
+      "source_label": "current_assets",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "current_liabilities",
+      "value": 1274.2,
+      "source_label": "current_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "cash_and_equivalents",
+      "value": 329.1,
+      "source_label": "cash",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "short_term_debt",
+      "value": 125.4,
+      "source_label": "debt_current",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "long_term_debt",
+      "value": 1442.7,
+      "source_label": "debt_long_term",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "trade_receivables",
+      "value": 756.0,
+      "source_label": "receivables",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "inventory",
+      "value": 1010.4,
+      "source_label": "inventory",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "trade_payables",
+      "value": 541.7,
+      "source_label": "accounts_payable",
+      "statement": "balance_sheet",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "cfo",
+      "value": 991.2,
+      "source_label": "cfo",
+      "statement": "cash_flow",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "capex_total",
+      "value": 180.4,
+      "source_label": "capex",
+      "statement": "cash_flow",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "cfi",
+      "value": -59.1,
+      "source_label": "cfi",
+      "statement": "cash_flow",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "cff",
+      "value": -923.4,
+      "source_label": "cff",
+      "statement": "cash_flow",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "income_tax_expense",
+      "value": 222.1,
+      "source_label": "income_tax",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "depreciation_amortization",
+      "value": 212.1,
+      "source_label": "depreciation_amortization",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "DepreciationDepletionAndAmortization",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "net_income_nci",
+      "value": 5.7,
+      "source_label": "NCI attribution",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 filing",
+      "page": "S01 pp.49-53",
+      "status": "calculated",
+      "mapping": "consolidated net income - parent net income",
+      "confidence": "high"
+    },
+    {
+      "period": "2024",
+      "key": "income_before_tax",
+      "value": 1006.8,
+      "source_label": "pretax_income",
+      "statement": "income_statement",
+      "source": "SEC S01/S02 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "revenue",
+      "value": 5844.6,
+      "source_label": "revenue",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "cost_of_revenue",
+      "value": 3780.5,
+      "source_label": "cost_of_goods_sold",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "gross_profit",
+      "value": 2064.1,
+      "source_label": "gross_profit",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "operating_profit",
+      "value": 1208.8,
+      "source_label": "operating_income",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "net_income_consolidated",
+      "value": 891.9,
+      "source_label": "consolidated_net_income",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "net_income_parent",
+      "value": 887.1,
+      "source_label": "parent_net_income",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "total_assets",
+      "value": 8228.8,
+      "source_label": "assets",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "total_liabilities",
+      "value": 4370.9,
+      "source_label": "total_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "parent_equity",
+      "value": 3847.9,
+      "source_label": "parent_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "total_equity",
+      "value": 3857.9,
+      "source_label": "total_equity",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "current_assets",
+      "value": 2594.0,
+      "source_label": "current_assets",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "current_liabilities",
+      "value": 1508.7,
+      "source_label": "current_liabilities",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "cash_and_equivalents",
+      "value": 482.5,
+      "source_label": "cash",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "short_term_debt",
+      "value": 289.1,
+      "source_label": "debt_current",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "long_term_debt",
+      "value": 2036.3,
+      "source_label": "debt_long_term",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "trade_receivables",
+      "value": 856.9,
+      "source_label": "receivables",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "inventory",
+      "value": 1083.8,
+      "source_label": "inventory",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "trade_payables",
+      "value": 570.5,
+      "source_label": "accounts_payable",
+      "statement": "balance_sheet",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "cfo",
+      "value": 1029.8,
+      "source_label": "cfo",
+      "statement": "cash_flow",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "capex_total",
+      "value": 155.1,
+      "source_label": "capex",
+      "statement": "cash_flow",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "cfi",
+      "value": -1094.6,
+      "source_label": "cfi",
+      "statement": "cash_flow",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "cff",
+      "value": 203.6,
+      "source_label": "cff",
+      "statement": "cash_flow",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "income_tax_expense",
+      "value": 227.2,
+      "source_label": "income_tax",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "SEC Company Facts exact annual/instant fact",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "depreciation_amortization",
+      "value": 206.1,
+      "source_label": "depreciation_amortization",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "DepreciationDepletionAndAmortization",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "net_income_nci",
+      "value": 4.8,
+      "source_label": "NCI attribution",
+      "statement": "income_statement",
+      "source": "SEC S01 filing",
+      "page": "S01 pp.49-53",
+      "status": "calculated",
+      "mapping": "consolidated net income - parent net income",
+      "confidence": "high"
+    },
+    {
+      "period": "2025",
+      "key": "income_before_tax",
+      "value": 1119.1,
+      "source_label": "pretax_income",
+      "statement": "income_statement",
+      "source": "SEC S01 Company Facts / filing",
+      "page": "S01 pp.49-53",
+      "status": "reported",
+      "mapping": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes...",
+      "confidence": "high"
+    }
+  ]
+}

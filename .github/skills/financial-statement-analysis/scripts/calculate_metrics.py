@@ -81,6 +81,16 @@ def get_value(data: dict[str, Any], period: str, key: str) -> float | None:
     return number_from(item)
 
 
+def get_opening_value(
+    data: dict[str, Any], period: str, key: str, previous: str | None
+) -> float | None:
+    """Return the prior-period value, or an explicitly supplied opening balance."""
+    if previous is not None:
+        return get_value(data, previous, key)
+    opening = data["periods"][period].get("opening_values", {})
+    return number_from(opening.get(key))
+
+
 def period_order(data: dict[str, Any]) -> list[str]:
     periods = list(data["periods"])
     explicit = data.get("period_order")
@@ -308,6 +318,8 @@ def calculate_metrics(
         d = derived[period]
         revenue = get("revenue")
         operating_profit = get("operating_profit")
+        income_before_tax = get("income_before_tax")
+        income_tax_expense = get("income_tax_expense")
         consolidated_income = get("net_income_consolidated")
         parent_income = get("net_income_parent")
         current_assets = get("current_assets")
@@ -319,6 +331,12 @@ def calculate_metrics(
         cfo = get("cfo")
         capex = d["capex_total"]
         ebitda = d["ebitda"]
+        opening_current_liabilities = get_opening_value(
+            data, period, "current_liabilities", previous
+        )
+        average_current_liabilities = average(
+            current_liabilities, opening_current_liabilities
+        )
 
         if previous is not None:
             prior_revenue = get_value(data, previous, "revenue")
@@ -354,15 +372,67 @@ def calculate_metrics(
                 )
             add_if_visible(results, item, include_missing)
 
+            for growth_key, label, current_profit, prior_key in (
+                ("consolidated_profit_growth", "Consolidated profit growth", consolidated_income, "net_income_consolidated"),
+                ("parent_profit_growth", "Parent profit growth", parent_income, "net_income_parent"),
+            ):
+                prior_profit = get_value(data, previous, prior_key)
+                profit_growth = ratio_metric(
+                    period,
+                    "growth",
+                    growth_key,
+                    label,
+                    None if current_profit is None or prior_profit is None else current_profit - prior_profit,
+                    prior_profit,
+                    "profit change",
+                    "prior profit",
+                    "percent",
+                    "current profit / prior profit - 1",
+                    require_positive_denominator=True,
+                    note="not meaningful when either profit base is non-positive or near zero",
+                )
+                if profit_growth["status"] == "computed":
+                    profit_growth["inputs"] = {
+                        "current profit": current_profit,
+                        "prior profit": prior_profit,
+                    }
+                add_if_visible(results, profit_growth, include_missing)
+
+        if index == len(periods) - 1 and len(periods) > 1:
+            first_revenue = get_value(data, periods[0], "revenue")
+            years = len(periods) - 1
+            cagr_value = None
+            if revenue is not None and first_revenue is not None and first_revenue > 0 and revenue > 0:
+                cagr_value = (revenue / first_revenue) ** (1 / years) - 1
+            add_if_visible(
+                results,
+                metric(
+                    period,
+                    "growth",
+                    "revenue_cagr",
+                    "Revenue CAGR since first supplied period",
+                    cagr_value,
+                    "percent",
+                    "(ending revenue / beginning revenue) ** (1 / elapsed years) - 1",
+                    inputs={"beginning revenue": first_revenue, "ending revenue": revenue, "elapsed years": years},
+                    status="computed" if cagr_value is not None else "missing",
+                    missing=[] if cagr_value is not None else ["beginning revenue", "ending revenue"],
+                    note=f"{years}-year CAGR across the supplied period set",
+                ),
+                include_missing,
+            )
+
         standard_ratios = [
             ("profitability", "gross_margin", "Gross margin", d["gross_profit"], revenue, "gross profit", "revenue", "gross profit / revenue"),
             ("profitability", "operating_margin", "Operating margin", operating_profit, revenue, "operating profit", "revenue", "operating profit / revenue"),
             ("profitability", "ebitda_margin", "EBITDA margin", ebitda, revenue, str(d["ebitda_label"]), "revenue", "EBITDA / revenue"),
             ("profitability", "consolidated_net_margin", "Consolidated net margin", consolidated_income, revenue, "consolidated net income", "revenue", "consolidated net income / revenue"),
             ("profitability", "parent_net_margin", "Parent net margin", parent_income, revenue, "parent net income", "revenue", "parent net income / revenue"),
+            ("profitability", "effective_tax_rate", "Effective tax rate", income_tax_expense, income_before_tax, "income tax expense", "income before tax", "income tax expense / income before tax"),
             ("liquidity", "current_ratio", "Current ratio", current_assets, current_liabilities, "current assets", "current liabilities", "current assets / current liabilities"),
             ("liquidity", "quick_ratio", "Quick ratio", d["quick_assets"], current_liabilities, "quick assets", "current liabilities", "quick assets / current liabilities"),
             ("liquidity", "cash_only_ratio", "Cash-only ratio", cash, current_liabilities, "cash and equivalents", "current liabilities", "cash and equivalents / current liabilities"),
+            ("liquidity", "cfo_current_liabilities", "CFO / average current liabilities", cfo, average_current_liabilities, "CFO", "average current liabilities", "CFO / average current liabilities"),
             ("solvency", "equity_ratio", "Equity ratio", total_equity, total_assets, "total equity", "total assets", "total equity / total assets"),
             ("solvency", "gross_debt_ex_lease_assets", "Gross debt ex leases / assets", d["gross_debt_ex_lease"], total_assets, "gross debt ex leases", "total assets", "gross debt excluding leases / total assets"),
             ("solvency", "gross_debt_incl_lease_assets", "Gross debt incl leases / assets", d["gross_debt_incl_lease"], total_assets, "gross debt incl leases", "total assets", "gross debt including leases / total assets"),
@@ -375,7 +445,7 @@ def calculate_metrics(
             ("cash_conversion", "cash_after_capex_margin", "Cash flow after capex margin", d["cash_after_capex"], revenue, "cash flow after capex", "revenue", "(CFO - capex) / revenue"),
         ]
         for category, metric_id, label, num, den, num_name, den_name, formula in standard_ratios:
-            require_positive = metric_id in {"cfo_ebitda", "cfo_capex"}
+            require_positive = metric_id in {"cfo_ebitda", "cfo_capex", "cfo_current_liabilities"}
             ratio_units = {
                 "current_ratio",
                 "quick_ratio",
@@ -399,6 +469,34 @@ def calculate_metrics(
                     "ratio" if metric_id in ratio_units else "percent",
                     formula,
                     require_positive_denominator=require_positive,
+                ),
+                include_missing,
+            )
+
+        common_size_ratios = [
+            ("cash_assets_share", "Cash / total assets", cash, total_assets, "cash and equivalents", "total assets"),
+            ("receivables_assets_share", "Receivables / total assets", get("trade_receivables"), total_assets, "trade receivables", "total assets"),
+            ("inventory_assets_share", "Inventory / total assets", get("inventory"), total_assets, "inventory", "total assets"),
+            ("ppe_assets_share", "PP&E / total assets", get("ppe"), total_assets, "PP&E", "total assets"),
+            ("right_of_use_assets_share", "Right-of-use assets / total assets", get("right_of_use_assets"), total_assets, "right-of-use assets", "total assets"),
+            ("goodwill_assets_share", "Goodwill / total assets", get("goodwill"), total_assets, "goodwill", "total assets"),
+            ("intangible_assets_share", "Intangible assets / total assets", get("intangible_assets"), total_assets, "intangible assets", "total assets"),
+            ("cost_of_revenue_share", "Cost of revenue / revenue", get("cost_of_revenue"), revenue, "cost of revenue", "revenue"),
+        ]
+        for metric_id, label, num, den, num_name, den_name in common_size_ratios:
+            add_if_visible(
+                results,
+                ratio_metric(
+                    period,
+                    "common_size",
+                    metric_id,
+                    label,
+                    num,
+                    den,
+                    num_name,
+                    den_name,
+                    "percent",
+                    f"{num_name} / {den_name}",
                 ),
                 include_missing,
             )
@@ -688,7 +786,31 @@ def calculate_metrics(
                     status="missing",
                     missing=missing,
                 )
-            )
+                )
+
+        dividends_paid = get("dividends_paid")
+        buybacks = get("buybacks")
+        distributions = None
+        if dividends_paid is not None and buybacks is not None:
+            distributions = dividends_paid + buybacks
+        add_if_visible(
+            results,
+            ratio_metric(
+                period,
+                "earnings_quality",
+                "shareholder_cash_coverage",
+                "Shareholder cash coverage",
+                d["cash_after_capex"],
+                distributions,
+                "cash flow after capex",
+                "dividends + buybacks",
+                "ratio",
+                "(CFO - capex_total) / (dividends_paid + buybacks)",
+                require_positive_denominator=True,
+                note="analyst calculation before acquisitions and debt changes; cash flow after capex is not issuer FCF",
+            ),
+            include_missing,
+        )
 
         da = get("depreciation_amortization")
         add_if_visible(
@@ -709,10 +831,10 @@ def calculate_metrics(
             include_missing,
         )
 
-        if previous is not None:
-            prior_assets = get_value(data, previous, "total_assets")
-            prior_parent_equity = get_value(data, previous, "parent_equity")
-            prior_total_equity = get_value(data, previous, "total_equity")
+        if previous is not None or data["periods"][period].get("opening_values"):
+            prior_assets = get_opening_value(data, period, "total_assets", previous)
+            prior_parent_equity = get_opening_value(data, period, "parent_equity", previous)
+            prior_total_equity = get_opening_value(data, period, "total_equity", previous)
             avg_assets = average(total_assets, prior_assets)
             avg_parent_equity = average(parent_equity, prior_parent_equity)
             avg_total_equity = average(total_equity, prior_total_equity)
@@ -741,6 +863,67 @@ def calculate_metrics(
                     include_missing,
                 )
 
+            current_invested_capital = None
+            prior_invested_capital = None
+            gross_debt_incl_lease = d["gross_debt_incl_lease"]
+            if gross_debt_incl_lease is not None and total_equity is not None and cash is not None:
+                current_invested_capital = gross_debt_incl_lease + total_equity - cash - (get("liquid_investments") or 0.0)
+            prior_cash = get_opening_value(data, period, "cash_and_equivalents", previous)
+            prior_total_equity_for_ic = get_opening_value(data, period, "total_equity", previous)
+            prior_short_debt = get_opening_value(data, period, "short_term_debt", previous)
+            prior_long_debt = get_opening_value(data, period, "long_term_debt", previous)
+            prior_current_lease = get_opening_value(data, period, "current_lease_liabilities", previous)
+            prior_noncurrent_lease = get_opening_value(data, period, "noncurrent_lease_liabilities", previous)
+            if all(value is not None for value in (prior_short_debt, prior_long_debt, prior_current_lease, prior_noncurrent_lease, prior_total_equity_for_ic, prior_cash)):
+                prior_invested_capital = (
+                    prior_short_debt + prior_long_debt + prior_current_lease + prior_noncurrent_lease
+                    + prior_total_equity_for_ic - prior_cash
+                )
+            avg_invested_capital = average(current_invested_capital, prior_invested_capital)
+            normalized_tax_rate = get("normalized_tax_rate")
+            normalized_nopat = None
+            if operating_profit is not None and normalized_tax_rate is not None:
+                normalized_nopat = operating_profit * (1 - normalized_tax_rate)
+            for metric_id, label, num, den, num_name, den_name, formula, note in [
+                (
+                    "invested_capital_turnover",
+                    "Invested capital turnover",
+                    revenue,
+                    avg_invested_capital,
+                    "revenue",
+                    "average invested capital",
+                    "revenue / average invested capital",
+                    "invested capital = debt + leases + total equity - cash - liquid investments",
+                ),
+                (
+                    "roic_normalized",
+                    "ROIC (normalized tax rate)",
+                    normalized_nopat,
+                    avg_invested_capital,
+                    "normalized NOPAT",
+                    "average invested capital",
+                    "normalized operating profit * (1 - normalized tax rate) / average invested capital",
+                    "analyst calculation; normalized tax rate is an explicit input assumption",
+                ),
+            ]:
+                add_if_visible(
+                    results,
+                    ratio_metric(
+                        period,
+                        "returns",
+                        metric_id,
+                        label,
+                        num,
+                        den,
+                        num_name,
+                        den_name,
+                        "ratio" if metric_id == "invested_capital_turnover" else "percent",
+                        formula,
+                        note=note,
+                    ),
+                    include_missing,
+                )
+
             if consolidated_income is not None and cfo is not None:
                 accrual_num = consolidated_income - cfo
             else:
@@ -764,13 +947,13 @@ def calculate_metrics(
 
             avg_receivables = average(
                 get("trade_receivables"),
-                get_value(data, previous, "trade_receivables"),
+                get_opening_value(data, period, "trade_receivables", previous),
             )
             avg_inventory = average(
-                get("inventory"), get_value(data, previous, "inventory")
+                get("inventory"), get_opening_value(data, period, "inventory", previous)
             )
             avg_payables = average(
-                get("trade_payables"), get_value(data, previous, "trade_payables")
+                get("trade_payables"), get_opening_value(data, period, "trade_payables", previous)
             )
             cost = get("cost_of_revenue")
             days = 365.0
@@ -909,6 +1092,17 @@ def metadata_issues(data: dict[str, Any], periods: list[str]) -> list[str]:
                     issues.append(f"{period}.{key}: missing evidence fields {', '.join(missing)}")
             else:
                 issues.append(f"{period}.{key}: value is not numeric or an evidence object")
+        for key, item in data["periods"][period].get("opening_values", {}).items():
+            if isinstance(item, (int, float)) and not isinstance(item, bool):
+                issues.append(f"{period}.opening_values.{key}: bare number has no source metadata")
+            elif isinstance(item, dict):
+                missing = [field for field in EVIDENCE_FIELDS if field not in item]
+                if missing:
+                    issues.append(
+                        f"{period}.opening_values.{key}: missing evidence fields {', '.join(missing)}"
+                    )
+            else:
+                issues.append(f"{period}.opening_values.{key}: value is not numeric or an evidence object")
     return issues
 
 
