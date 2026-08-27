@@ -1,85 +1,84 @@
 ---
 name: company-deep-investment-research
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: Build, refresh, or audit a provenance-preserving deep investment research package for a public company, including language-triggered reconstruction of multi-year statements and note-table time series. Use when the task needs multi-year SEC filings, latest interim disclosure, official IR and website evidence, cleaned earnings or conference transcripts, business-model routing, three-statement reconstruction, industry or theme analysis, SOTP or route-appropriate valuation, shareholder IRR, and an independent release review. This skill includes a bundled ResearchFoundry data-preparation runtime and local bridge; it is not for a quick company summary, a website crawl alone, or an isolated ratio calculation.
 ---
 
 # Company Deep Investment Research
 
-## Overview
+Use this skill as the research lead for a public-company deep dive. The output is a durable Markdown report under `research/`, supported by raw external material under `sources/` and small, reproducible data under `data/curated/` or `data/derived/`.
 
-[TODO: 1-2 sentences explaining what this skill enables]
+## Operating contract
 
-## Structuring This Skill
+- Read the repository `AGENTS.md` before changing files and preserve unrelated user work.
+- Establish issuer identity, ticker, market, CIK, fiscal year end, accounting basis, consolidation perimeter, currency, units, history window, latest interim filing, as-of date, output paths, and research questions before acquisition.
+- Prefer SEC filings and official IR material. Treat the company website and management statements as company-reported; use independent sources for corroboration, contradiction checks, industry context, and dated market inputs.
+- Keep raw inputs immutable. Every material source needs a stable source ID, original URL or provider reference, local path, access date, content date, SHA-256 when practical, extraction method, and page/turn/line locator.
+- Separate `source fact`, `company claim`, `analyst calculation`, `analyst judgment`, `model assumption`, and `unresolved question` in both ledgers and prose.
+- Adapt the economic route to the issuer. Do not assume SaaS, market share, cohorts, customer concentration, backlog conversion, product margins, utilization, or a theme-specific revenue split without evidence.
+- Use `unavailable` for relevant but undisclosed metrics and `n.a.` for economically irrelevant metrics. A real evidence gap must remain visible and lower the affected gate to `PARTIAL` where material.
+- Do not copy facts, business assumptions, numbers, valuation, or conclusions from a reference company. A reference report may inform sequence, evidence organization, table design, and review criteria only. Run a reference-leakage scan before release.
+- Do not ask the user to execute internal ResearchFoundry commands. The agent invokes available tools and reports outcomes; ask for confirmation only when source identity, metadata, permissions, or a materially different valuation boundary is ambiguous.
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+## Workflow
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+Follow the stages in order. Load the linked reference only when that stage is active.
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+1. **Stage 0 - identity and scope.** Inspect tools, permissions, current files, and any approved reference report. Create the rebuildable `research-context.md`, `source-index.md`, `evidence-ledger.md`, `acquisition-attempt-log.md`, `coverage-matrix.md`, `validation-log.md`, and `release-review.md` under the company-local `data/` directory. See [workflow.md](references/workflow.md) and [evidence-and-ledger.md](references/evidence-and-ledger.md).
+2. **Stage 1 - source acquisition and preparation.** Build the source plan, obtain SEC 10-K/10-Q/8-K, IR releases and presentations, official-site evidence, transcripts or meeting minutes, and relevant independent industry or market material. Preserve failures and retries. See [source-acquisition.md](references/source-acquisition.md).
+3. **Stage 2 - business-model routing.** Map legal/reporting segments to economic units, customers, revenue recognition, cost stack, capital occupation, cash timing, risk carrier, verification KPI, and failure path. See [business-model-routing.md](references/business-model-routing.md).
+4. **Stage 3 - industry and operating analysis.** Explain the demand event, value chain, supply constraints, competition, customer choice, and cycle. Add only route-relevant modules. Separate company claims from independently verified facts. See [industry-and-theme-analysis.md](references/industry-and-theme-analysis.md).
+5. **Stage 4 - fundamentals and derived metrics.** Extract reported consolidated statements first, then build a source-linked mapping ledger, restatement bridge, segment bridge, APM bridge, and auditable derived metrics. Use the Workspace financial calculator with `--strict` when available. See [financial-reconstruction.md](references/financial-reconstruction.md).
+6. **Stage 5 - capital allocation, governance, risk, and monitoring.** Trace acquisitions, disposals, capex, inventory/capacity, debt, leases, pensions, goodwill, dividends, buybacks, incentives, controls, and stress paths to statements and cash.
+7. **Stage 6 - valuation and shareholder return.** Select a route-appropriate primary method before assumptions. Prefer SOTP for heterogeneous groups; use EV/EBITDA or FCF as cross-checks only when perimeter and denominator match. Model dividends and buybacks under one explicit convention. See [valuation-and-shareholder-return.md](references/valuation-and-shareholder-return.md).
+8. **Stage 7 - report assembly and release review.** Draft the adaptive report spine, show reported tables before interpretation, cite claims inline, run deterministic checks, conduct a clean second-pass review, and publish `PASS`, `PARTIAL`, or `BLOCKED`. See [output-contract.md](references/output-contract.md) and [release-gates.md](references/release-gates.md).
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+## Automatic run and human handoff
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+The `prompts/full-research.zh-CN.md` prompt is the default autonomous entry. Show the Stage 0 plan first, request one confirmation for identity/scope and access, then run the confirmed stages in sequence using the bundled bridge and ordinary terminal web tools. Do not ask the user to copy internal commands. Pause only for a material ambiguity, missing authorization, unsafe source choice, or a valuation boundary that would change the decision. After deterministic validation and release review, deliver the report and ledgers, state `PASS`/`PARTIAL`/`BLOCKED`, and enter a human review turn with unresolved questions, key sensitivities, and explicit approval points.
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+For a focused data task, route natural-language requests such as “重建最近五年三表时序”“拼接债务和养老金 Note”“补齐缺失年份并检查重述” to [04-financial-series-reconstruction.zh-CN.md](prompts/04-financial-series-reconstruction.zh-CN.md). Load [financial-series-reconstruction.md](references/financial-series-reconstruction.md) for the two-layer raw/standardized data model, metadata contract, cross-year stitching rules, and reconciliation gates. This focused route may stop after structured data and validation; it does not imply that a valuation or narrative report is requested.
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+## Bundled data runtime
 
-## [TODO: Replace with the first main section based on chosen structure]
+This skill ships a trimmed, portable ResearchFoundry runtime under `vendor/research_foundry/`. It includes SEC native HTML acquisition, official-site acquisition and preparation, manually supplied transcript preparation, research contracts, provenance manifests, immutable run records, indexing, and deterministic validation. The runtime is invoked through `scripts/research_foundry_local.py`, which adds the bundled package to `sys.path` and emits machine-readable JSON.
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+The terminal still supplies the execution environment: Python 3.12+, the dependencies listed in `vendor/requirements.txt`, network access, and writable roots from `examples/config.toml`. Install the bundled dependencies with the active terminal interpreter using `python -m pip install -r vendor/requirements.txt`; no external ResearchFoundry checkout is required. A separately installed ResearchFoundry may be used for comparison, but is not part of the normal path.
 
-## Resources (optional)
+After installing the dependencies, run `python scripts/preflight.py --workspace <artifact-root>`. The agent normally invokes the bridge itself; direct inspection uses `python scripts/research_foundry_local.py doctor`, `... transcript ...`, `... ten-k sec-html ...`, `... official-site ...`, and `... research ...`.
 
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
+Use the bundled stable flows:
 
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
+```text
+ten-k sec-html: plan --confirm -> run -> inspect -> index/search/read
+transcript: plan or plan-metadata --confirm -> run -> publish -> inspect
+official-site: plan -> run -> publish -> inspect -> search/read
+```
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
+Do not invent a prepared transcript. Preserve supplied provider-prepared minutes as a distinct representation and disclose that speaker attribution or completeness may not be independently verifiable. User-uploaded source files remain immutable; every cleaned output must retain source hash, coverage status, limitations, and line-addressable markers.
 
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
+The bundled runtime deliberately excludes model-specific OCR executors and third-party data-provider adapters. When a source requires an excluded capability, preserve the raw source, record the gap, and continue only with evidence that can be independently validated.
 
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
+## Report spine
 
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
+Use the following order unless the issuer's economics require a documented change:
 
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
+1. Company identity and research boundary
+2. Industry/economic context and competitive structure
+3. Business model and operating units
+4. Fundamental statements and accounting bridge
+5. Derived fundamentals and balance-sheet economics
+6. Capital allocation, management, and governance
+7. Strategy, competition, advantages, and limits
+8. Risk, stress paths, and monitoring
+9. Valuation and shareholder return
+10. Evidence gaps, limitations, balanced synthesis, and release status
 
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
+Insert only relevant route modules. For a structural-theme question, use the three-layer rule in [theme-demand-three-layer.md](references/theme-demand-three-layer.md): direct product/revenue, system or infrastructure indirect demand, and adjacent enabling indirect demand. Never turn a total segment, market TAM, external demand forecast, or management order target into theme revenue without a sourced revenue bridge.
 
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
+## Tool and output handoff
 
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
-
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
-
----
-
-**Not every skill requires all three types of resources.**
+- Use repository-relative paths in tracked Markdown. Keep external originals in `sources/`; keep rebuildable artifacts out of Git according to repository policy.
+- Initialize a new project with `scripts/init_company_research.py` and build a file manifest with `scripts/build_source_manifest.py`. These scripts never overwrite existing files unless explicitly requested.
+- Validate a package with `scripts/validate_research_package.py`, the available financial calculator, the full report validator, parsers for JSON/CSV, and `git diff --check`.
+- Treat a mechanically clean report as necessary but not sufficient. The release decision is the weakest mandatory evidence, routing, fundamentals, valuation, or review gate.
+- The package includes `examples/config.toml` for terminal setup and `prompts/` for user-friendly stage prompts. Replace placeholders before use; never paste secrets into the skill or prompts.

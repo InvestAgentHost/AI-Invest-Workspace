@@ -1,0 +1,371 @@
+{
+  "$defs": {
+    "ResearchMethodDimension": {
+      "additionalProperties": false,
+      "description": "One candidate question to review without prescribing an answer.",
+      "properties": {
+        "completion_signal": {
+          "minLength": 1,
+          "title": "Completion Signal",
+          "type": "string"
+        },
+        "core_question": {
+          "minLength": 1,
+          "title": "Core Question",
+          "type": "string"
+        },
+        "dimension_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Dimension Id",
+          "type": "string"
+        },
+        "requirement": {
+          "const": "review",
+          "default": "review",
+          "title": "Requirement",
+          "type": "string"
+        },
+        "responsibility_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Responsibility Id",
+          "type": "string"
+        },
+        "selection_guidance": {
+          "minLength": 1,
+          "title": "Selection Guidance",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dimension_id",
+        "responsibility_id",
+        "core_question",
+        "selection_guidance",
+        "completion_signal"
+      ],
+      "title": "ResearchMethodDimension",
+      "type": "object"
+    },
+    "ResearchMethodPanelSpec": {
+      "additionalProperties": false,
+      "description": "One quantitative panel required by a method pack.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "panel_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Panel Id",
+          "type": "string"
+        },
+        "panel_type": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Panel Type",
+          "type": "string"
+        },
+        "required_metric_groups": {
+          "default": [],
+          "items": {
+            "items": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Required Metric Groups",
+          "type": "array"
+        },
+        "required_sections": {
+          "default": [],
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+            "type": "string"
+          },
+          "title": "Required Sections",
+          "type": "array"
+        },
+        "requirement": {
+          "enum": [
+            "required",
+            "conditional"
+          ],
+          "title": "Requirement",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "panel_id",
+        "panel_type",
+        "title",
+        "description",
+        "requirement"
+      ],
+      "title": "ResearchMethodPanelSpec",
+      "type": "object"
+    },
+    "ResearchMethodReportSubtopic": {
+      "additionalProperties": false,
+      "description": "One method-pack writing cue below a report topic.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "subtopic_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Subtopic Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "subtopic_id",
+        "title",
+        "description"
+      ],
+      "title": "ResearchMethodReportSubtopic",
+      "type": "object"
+    },
+    "ResearchMethodReportTable": {
+      "additionalProperties": false,
+      "description": "One decision-useful table required inside a comprehensive report topic.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "table_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Table Id",
+          "type": "string"
+        },
+        "table_layout": {
+          "default": "freeform",
+          "enum": [
+            "freeform",
+            "metric_by_period"
+          ],
+          "title": "Table Layout",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "table_id",
+        "title",
+        "description"
+      ],
+      "title": "ResearchMethodReportTable",
+      "type": "object"
+    },
+    "ResearchMethodReportTopic": {
+      "additionalProperties": false,
+      "description": "One substantive topic required in the final comprehensive report.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "subtopics": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResearchMethodReportSubtopic"
+          },
+          "title": "Subtopics",
+          "type": "array"
+        },
+        "tables": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResearchMethodReportTable"
+          },
+          "title": "Tables",
+          "type": "array"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "topic_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Topic Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "topic_id",
+        "title",
+        "description"
+      ],
+      "title": "ResearchMethodReportTopic",
+      "type": "object"
+    },
+    "ResearchMethodResponsibility": {
+      "additionalProperties": false,
+      "description": "One material research responsibility offered by a method catalog.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "requirement": {
+          "enum": [
+            "required",
+            "conditional"
+          ],
+          "title": "Requirement",
+          "type": "string"
+        },
+        "responsibility_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Responsibility Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "responsibility_id",
+        "title",
+        "description",
+        "requirement"
+      ],
+      "title": "ResearchMethodResponsibility",
+      "type": "object"
+    },
+    "ResearchMethodSourceRequirement": {
+      "additionalProperties": false,
+      "description": "One evidence category that a comprehensive run must explicitly dispose.",
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "requirement": {
+          "enum": [
+            "required",
+            "conditional"
+          ],
+          "title": "Requirement",
+          "type": "string"
+        },
+        "source_requirement_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Source Requirement Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_requirement_id",
+        "title",
+        "description",
+        "requirement"
+      ],
+      "title": "ResearchMethodSourceRequirement",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_method_catalog:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Industry or business-model questions available to comprehensive research.",
+  "properties": {
+    "applies_to": {
+      "const": "comprehensive_company_research",
+      "title": "Applies To",
+      "type": "string"
+    },
+    "catalog_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{2,95}$",
+      "title": "Catalog Id",
+      "type": "string"
+    },
+    "dimensions": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ResearchMethodDimension"
+      },
+      "title": "Dimensions",
+      "type": "array"
+    },
+    "panel_specs": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ResearchMethodPanelSpec"
+      },
+      "title": "Panel Specs",
+      "type": "array"
+    },
+    "report_topics": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ResearchMethodReportTopic"
+      },
+      "title": "Report Topics",
+      "type": "array"
+    },
+    "responsibilities": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ResearchMethodResponsibility"
+      },
+      "title": "Responsibilities",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "research_method_catalog.v1",
+      "default": "research_method_catalog.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_requirements": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ResearchMethodSourceRequirement"
+      },
+      "title": "Source Requirements",
+      "type": "array"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "catalog_id",
+    "title",
+    "applies_to"
+  ],
+  "title": "ResearchMethodCatalog",
+  "type": "object"
+}

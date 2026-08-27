@@ -1,0 +1,7 @@
+# Bundled ResearchFoundry runtime dependencies. Install with the active
+# Workspace interpreter: .venv/bin/python -m pip install -r vendor/requirements.txt
+pydantic>=2.11,<3
+PyYAML>=6,<7
+httpx>=0.28,<1
+PyMuPDF>=1.24,<2
+XlsxWriter>=3.2,<4

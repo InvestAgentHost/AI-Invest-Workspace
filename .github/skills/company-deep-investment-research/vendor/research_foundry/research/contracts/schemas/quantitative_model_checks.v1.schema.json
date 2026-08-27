@@ -1,0 +1,146 @@
+{
+  "$defs": {
+    "QuantitativeCheckResult": {
+      "additionalProperties": false,
+      "description": "One recomputed model check result.",
+      "properties": {
+        "category": {
+          "enum": [
+            "segment_reconciliation",
+            "cash_bridge",
+            "formula",
+            "scenario",
+            "other"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "check_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Check Id",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "difference": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Difference"
+        },
+        "expected_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Expected Value"
+        },
+        "input_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+            "type": "string"
+          },
+          "minItems": 2,
+          "title": "Input Ids",
+          "type": "array"
+        },
+        "observed_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Observed Value"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "tolerance": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            }
+          ],
+          "title": "Tolerance"
+        }
+      },
+      "required": [
+        "check_id",
+        "category",
+        "description",
+        "status",
+        "observed_value",
+        "expected_value",
+        "difference",
+        "tolerance",
+        "input_ids"
+      ],
+      "title": "QuantitativeCheckResult",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:quantitative_model_checks:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Deterministic output from declared quantitative model checks.",
+  "properties": {
+    "all_passed": {
+      "title": "All Passed",
+      "type": "boolean"
+    },
+    "model_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/QuantitativeCheckResult"
+      },
+      "minItems": 1,
+      "title": "Results",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "quantitative_model_checks.v1",
+      "default": "quantitative_model_checks.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "model_id",
+    "all_passed",
+    "results"
+  ],
+  "title": "QuantitativeModelChecks",
+  "type": "object"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "source_binding.v1",
+  "source_binding_key": "ten_k.sec_edgar_html",
+  "version": 1,
+  "source_type": "10k",
+  "source_method": "sec_edgar_html",
+  "stage1_pipeline": {
+    "key": "10k_sec_html",
+    "version": 1,
+    "implementation": "research_foundry.preprocessing.capabilities.ten_k.sources.sec_html.pipeline:execute_sec_html"
+  },
+  "request_schema": "urn:research_foundry:schema:ten_k_sec_html_request:v1",
+  "accepted_inputs": [
+    {
+      "role": "reference",
+      "media_type": "application/sec-reference"
+    }
+  ],
+  "prepared_outputs": [
+    {
+      "role": "document",
+      "format": "markdown",
+      "schema": "urn:research_foundry:schema:ten_k_prepared_markdown:v1"
+    },
+    {
+      "role": "document_json",
+      "format": "json",
+      "schema": "urn:research_foundry:schema:ten_k_sec_html_blocks:v1"
+    },
+    {
+      "role": "xbrl_metadata",
+      "format": "json",
+      "schema": "urn:research_foundry:schema:ten_k_xbrl_metadata:v1"
+    },
+    {
+      "role": "cleaning_report",
+      "format": "json",
+      "schema": "urn:research_foundry:schema:ten_k_html_cleaning_report:v1"
+    }
+  ],
+  "quality_checks": "ten_k_sec_html_v1"
+}

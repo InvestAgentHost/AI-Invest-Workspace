@@ -1,0 +1,202 @@
+{
+  "$defs": {
+    "AgentLedgerEntry": {
+      "additionalProperties": false,
+      "description": "One persisted Harness assignment and its execution state.",
+      "properties": {
+        "agent_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agent Ref"
+        },
+        "assignment_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "attempt": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Attempt",
+          "type": "integer"
+        },
+        "branch_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Branch Id"
+        },
+        "depends_on": {
+          "default": [],
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "finished_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Finished At"
+        },
+        "note_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note Ref"
+        },
+        "owned_files": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Owned Files",
+          "type": "array"
+        },
+        "responsibility_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Responsibility Id"
+        },
+        "role": {
+          "enum": [
+            "research",
+            "writer",
+            "reviewer"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Started At"
+        },
+        "status": {
+          "default": "planned",
+          "enum": [
+            "planned",
+            "started",
+            "checkpointed",
+            "completed",
+            "failed",
+            "interrupted",
+            "blocked"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assignment_id",
+        "role",
+        "updated_at"
+      ],
+      "title": "AgentLedgerEntry",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_agent_ledger:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Tool-owned execution ledger for delegated research, Writer, and review.",
+  "properties": {
+    "entries": {
+      "items": {
+        "$ref": "#/$defs/AgentLedgerEntry"
+      },
+      "minItems": 1,
+      "title": "Entries",
+      "type": "array"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "research_agent_ledger.v1",
+      "default": "research_agent_ledger.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "research_id",
+    "updated_at",
+    "entries"
+  ],
+  "title": "AgentLedger",
+  "type": "object"
+}

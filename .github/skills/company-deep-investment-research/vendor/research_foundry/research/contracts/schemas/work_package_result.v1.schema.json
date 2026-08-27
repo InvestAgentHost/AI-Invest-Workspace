@@ -1,0 +1,85 @@
+{
+  "$id": "urn:research_foundry:schema:work_package_result:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Compact handoff from one completed or stopped research package.",
+  "properties": {
+    "conclusion": {
+      "minLength": 1,
+      "title": "Conclusion",
+      "type": "string"
+    },
+    "downstream_implications": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Downstream Implications",
+      "type": "array"
+    },
+    "key_calculations": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Key Calculations",
+      "type": "array"
+    },
+    "material_claim_ids": {
+      "default": [],
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+        "type": "string"
+      },
+      "title": "Material Claim Ids",
+      "type": "array"
+    },
+    "open_gaps": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Open Gaps",
+      "type": "array"
+    },
+    "package_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Package Id",
+      "type": "string"
+    },
+    "recommended_followups": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Recommended Followups",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "work_package_result.v1",
+      "default": "work_package_result.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "needs_followup",
+        "blocked"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "package_id",
+    "status",
+    "conclusion"
+  ],
+  "title": "WorkPackageResult",
+  "type": "object"
+}

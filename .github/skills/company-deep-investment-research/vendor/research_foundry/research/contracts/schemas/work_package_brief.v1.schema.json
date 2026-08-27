@@ -1,0 +1,75 @@
+{
+  "$id": "urn:research_foundry:schema:work_package_brief:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One independently verifiable, conclusion-sensitive question.",
+  "properties": {
+    "closure_criteria": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Closure Criteria",
+      "type": "array"
+    },
+    "dependencies": {
+      "default": [],
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+        "type": "string"
+      },
+      "title": "Dependencies",
+      "type": "array"
+    },
+    "expected_outputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Expected Outputs",
+      "type": "array"
+    },
+    "falsifiers": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Falsifiers",
+      "type": "array"
+    },
+    "package_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Package Id",
+      "type": "string"
+    },
+    "question": {
+      "minLength": 1,
+      "title": "Question",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "work_package_brief.v1",
+      "default": "work_package_brief.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "why_it_matters": {
+      "minLength": 1,
+      "title": "Why It Matters",
+      "type": "string"
+    }
+  },
+  "required": [
+    "package_id",
+    "question",
+    "why_it_matters",
+    "expected_outputs",
+    "closure_criteria",
+    "falsifiers"
+  ],
+  "title": "WorkPackageBrief",
+  "type": "object"
+}

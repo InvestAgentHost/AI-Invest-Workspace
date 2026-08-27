@@ -1,0 +1,68 @@
+{
+  "as_of": "2026-08-26",
+  "currency_note": "AJBU and ME8U are SGD; DCRU is USD.",
+  "companies": {
+    "AJBU": {
+      "period": "1H26",
+      "price": {"value": 2.24, "unit": "SGD/unit", "source": "S005"},
+      "gross_revenue": {"value": 242.048, "unit": "SGD_m", "source": "S005_p2"},
+      "property_expenses": {"value": 31.669, "unit": "SGD_m", "source": "S005_p2"},
+      "npi": {"value": 210.379, "unit": "SGD_m", "source": "S005_p2"},
+      "finance_income": {"value": 7.394, "unit": "SGD_m", "source": "S005_p2"},
+      "finance_costs": {"value": 30.735, "unit": "SGD_m", "source": "S005_p2"},
+      "distributable_income": {"value": 150.668, "unit": "SGD_m", "source": "S005_p2"},
+      "dpu_half_year": {"value": 5.714, "unit": "SGD_cents", "source": "S005_p2"},
+      "occupancy": {"value": 92.5, "unit": "%", "source": "S005_p3", "note": "95.3% excluding Cardiff"},
+      "contracted_power": {"value": 95.0, "unit": "%", "source": "S005_p3"},
+      "wale_area_years": {"value": 6.7, "unit": "years", "source": "S005_p2"},
+      "leverage": {"value": 34.0, "unit": "%", "source": "S005_p3"},
+      "fixed_rate_debt": {"value": 87.0, "unit": "%", "source": "S005_p3"},
+      "borrowings": {"value": 2300.0, "unit": "SGD_m", "source": "S005_p3"},
+      "interest_coverage": {"value": 6.9, "unit": "x", "source": "S005_p3"},
+      "annualised_dpu": {"value": 11.428, "unit": "SGD_cents", "formula": "dpu_half_year*2"},
+      "annualised_yield": {"value": 5.10, "unit": "%", "formula": "annualised_dpu/price"}
+      ,"market_cap": {"value": 5300.0, "unit": "SGD_m", "source": "S003_factsheet"},
+      "aum": {"value": 6300.0, "unit": "SGD_m", "source": "S006"},
+      "implied_cap_rate": {"value": 5.5, "unit": "%", "formula": "annualised_npi/(market_cap+borrowings)"}
+    },
+    "DCRU": {
+      "period": "1H26",
+      "price": {"value": 0.510, "unit": "USD/unit", "source": "M101"},
+      "gross_revenue": {"value": 88.572, "unit": "USD_m", "source": "S105_p1"},
+      "property_expenses": {"value": 44.901, "unit": "USD_m", "source": "S105_p1"},
+      "npi": {"value": 43.671, "unit": "USD_m", "source": "S105_p1"},
+      "cash_npi": {"value": 42.675, "unit": "USD_m", "source": "S105_p1"},
+      "distributable_income": {"value": 23.328, "unit": "USD_m", "source": "S105_p1"},
+      "dpu_half_year": {"value": 1.80, "unit": "USD_cents", "source": "S105_p1"},
+      "issued_units": {"value": 1296.026, "unit": "USD_m_units", "source": "S105_p1_footnote"},
+      "occupancy": {"value": 97.3, "unit": "%", "source": "S105_p1"},
+      "wale_rent_years": {"value": 4.31, "unit": "years", "source": "S102"},
+      "leverage": {"value": 39.2, "unit": "%", "source": "S105_p1"},
+      "repurchased_units": {"value": 8.0, "unit": "USD_m_units", "source": "S105_p1"},
+      "repurchase_price": {"value": 0.488, "unit": "USD/unit", "source": "S105_p1"},
+      "annualised_dpu": {"value": 3.60, "unit": "USD_cents", "formula": "dpu_half_year*2"},
+      "annualised_yield": {"value": 7.06, "unit": "%", "formula": "annualised_dpu/price"}
+      ,"market_cap": {"value": 678.0, "unit": "USD_m", "source": "M102"},
+      "enterprise_value": {"value": 1470.0, "unit": "USD_m", "source": "M102"},
+      "implied_cap_rate": {"value": 5.9, "unit": "%", "formula": "(npi*2)/enterprise_value"}
+    },
+    "ME8U": {
+      "period": "1QFY26/27",
+      "price": {"value": 1.92, "unit": "SGD/unit", "source": "M201"},
+      "gross_revenue": {"value": 162.3, "unit": "SGD_m", "source": "S201"},
+      "npi": {"value": 122.3, "unit": "SGD_m", "source": "S201"},
+      "dpu_quarter": {"value": 3.11, "unit": "SGD_cents", "source": "S201"},
+      "fy25_26_dpu": {"value": 12.71, "unit": "SGD_cents", "source": "S203", "note": "includes S$15.7m net divestment gain"},
+      "occupancy": {"value": 90.7, "unit": "%", "source": "S201"},
+      "portfolio_value": {"value": 8300.0, "unit": "SGD_m", "source": "S203"},
+      "properties": {"value": 136, "unit": "count", "source": "S203"},
+      "leverage": {"value": 37.5, "unit": "%", "source": "S201"},
+      "interest_coverage": {"value": 4.0, "unit": "x", "source": "S201"},
+      "annualised_dpu_from_quarter": {"value": 12.44, "unit": "SGD_cents", "formula": "dpu_quarter*4"},
+      "fy25_26_yield": {"value": 6.62, "unit": "%", "formula": "fy25_26_dpu/price"}
+      ,"market_cap": {"value": 5510.0, "unit": "SGD_m", "source": "M202"},
+      "enterprise_value": {"value": 8070.0, "unit": "SGD_m", "source": "M202"},
+      "implied_cap_rate": {"value": 6.1, "unit": "%", "formula": "(npi*4)/enterprise_value"}
+    }
+  }
+}

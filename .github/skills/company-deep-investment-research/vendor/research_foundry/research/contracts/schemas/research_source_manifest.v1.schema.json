@@ -1,0 +1,160 @@
+{
+  "$defs": {
+    "PublishedArtifact": {
+      "additionalProperties": false,
+      "description": "Content identity for one file frozen by the release manifest.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_ref",
+        "sha256",
+        "byte_size"
+      ],
+      "title": "PublishedArtifact",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_source_manifest:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Frozen identity and provenance for one run-local research source.",
+  "properties": {
+    "acquisition_method": {
+      "enum": [
+        "browser",
+        "web_search",
+        "mcp",
+        "api",
+        "http_download",
+        "manual",
+        "other"
+      ],
+      "title": "Acquisition Method",
+      "type": "string"
+    },
+    "content_status": {
+      "enum": [
+        "raw_only",
+        "evidence_ready"
+      ],
+      "title": "Content Status",
+      "type": "string"
+    },
+    "notes": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "prepared_artifact": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublishedArtifact"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "published_at": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Published At"
+    },
+    "publisher": {
+      "minLength": 1,
+      "title": "Publisher",
+      "type": "string"
+    },
+    "raw_artifact": {
+      "$ref": "#/$defs/PublishedArtifact"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "research_source_manifest.v1",
+      "default": "research_source_manifest.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Source Id",
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "regulatory_filing",
+        "official_website",
+        "government",
+        "industry_data",
+        "transcript",
+        "news",
+        "research",
+        "other"
+      ],
+      "title": "Source Type",
+      "type": "string"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_id",
+    "title",
+    "publisher",
+    "source_type",
+    "retrieved_at",
+    "acquisition_method",
+    "content_status",
+    "raw_artifact"
+  ],
+  "title": "ResearchSourceManifest",
+  "type": "object"
+}

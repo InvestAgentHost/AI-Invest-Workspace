@@ -1,0 +1,176 @@
+{
+  "$defs": {
+    "AcceptedInput": {
+      "additionalProperties": false,
+      "description": "One input role accepted by a SourceBinding.",
+      "properties": {
+        "media_type": {
+          "minLength": 1,
+          "title": "Media Type",
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "media_type"
+      ],
+      "title": "AcceptedInput",
+      "type": "object"
+    },
+    "PreparedOutput": {
+      "additionalProperties": false,
+      "description": "One prepared artifact role promised by a SourceBinding.",
+      "properties": {
+        "format": {
+          "minLength": 1,
+          "title": "Format",
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "title": "Role",
+          "type": "string"
+        },
+        "schema": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schema"
+        }
+      },
+      "required": [
+        "role",
+        "format"
+      ],
+      "title": "PreparedOutput",
+      "type": "object"
+    },
+    "Stage1PipelineRef": {
+      "additionalProperties": false,
+      "description": "Fixed implementation selected by a SourceBinding.",
+      "properties": {
+        "implementation": {
+          "minLength": 1,
+          "title": "Implementation",
+          "type": "string"
+        },
+        "key": {
+          "minLength": 1,
+          "title": "Key",
+          "type": "string"
+        },
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "key",
+        "version",
+        "implementation"
+      ],
+      "title": "Stage1PipelineRef",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:source_binding:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Versioned mapping from an explicit source choice to a fixed pipeline.",
+  "properties": {
+    "accepted_inputs": {
+      "items": {
+        "$ref": "#/$defs/AcceptedInput"
+      },
+      "minItems": 1,
+      "title": "Accepted Inputs",
+      "type": "array"
+    },
+    "prepared_outputs": {
+      "items": {
+        "$ref": "#/$defs/PreparedOutput"
+      },
+      "minItems": 1,
+      "title": "Prepared Outputs",
+      "type": "array"
+    },
+    "quality_checks": {
+      "minLength": 1,
+      "title": "Quality Checks",
+      "type": "string"
+    },
+    "request_schema": {
+      "minLength": 1,
+      "title": "Request Schema",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "source_binding.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_binding_key": {
+      "minLength": 1,
+      "title": "Source Binding Key",
+      "type": "string"
+    },
+    "source_method": {
+      "minLength": 1,
+      "title": "Source Method",
+      "type": "string"
+    },
+    "source_type": {
+      "minLength": 1,
+      "title": "Source Type",
+      "type": "string"
+    },
+    "stage1_pipeline": {
+      "$ref": "#/$defs/Stage1PipelineRef"
+    },
+    "usage_policy_ref": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Usage Policy Ref"
+    },
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_binding_key",
+    "version",
+    "source_type",
+    "source_method",
+    "stage1_pipeline",
+    "request_schema",
+    "accepted_inputs",
+    "prepared_outputs",
+    "quality_checks"
+  ],
+  "title": "SourceBinding",
+  "type": "object"
+}

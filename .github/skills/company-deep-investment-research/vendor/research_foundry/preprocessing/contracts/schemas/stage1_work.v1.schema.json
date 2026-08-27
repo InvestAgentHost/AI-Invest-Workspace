@@ -1,0 +1,118 @@
+{
+  "$id": "urn:research_foundry:schema:stage1_work:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Public result of executing one request against one exact binding.",
+  "properties": {
+    "error": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error"
+    },
+    "failure_code": {
+      "anyOf": [
+        {
+          "enum": [
+            "invalid_request",
+            "input_failed",
+            "pipeline_failed",
+            "output_invalid",
+            "policy_blocked"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Failure Code"
+    },
+    "finished_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Finished At"
+    },
+    "package_id": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Package Id"
+    },
+    "request_ref": {
+      "minLength": 1,
+      "title": "Request Ref",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "stage1_work.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_binding_key": {
+      "minLength": 1,
+      "title": "Source Binding Key",
+      "type": "string"
+    },
+    "stage1_pipeline": {
+      "minLength": 1,
+      "title": "Stage1 Pipeline",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed",
+        "cancelled"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "work_id": {
+      "minLength": 1,
+      "title": "Work Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "work_id",
+    "request_ref",
+    "source_binding_key",
+    "stage1_pipeline",
+    "status",
+    "started_at"
+  ],
+  "title": "Stage1Work",
+  "type": "object"
+}

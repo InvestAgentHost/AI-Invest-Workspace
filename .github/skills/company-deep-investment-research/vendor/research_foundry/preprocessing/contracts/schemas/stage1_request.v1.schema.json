@@ -1,0 +1,50 @@
+{
+  "$defs": {
+    "JsonValue": {}
+  },
+  "$id": "urn:research_foundry:schema:stage1_request:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Common envelope used to select one exact Stage 1 pipeline.",
+  "properties": {
+    "input": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "propertyNames": {
+        "minLength": 1
+      },
+      "title": "Input",
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "stage1_request.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_method": {
+      "minLength": 1,
+      "title": "Source Method",
+      "type": "string"
+    },
+    "source_type": {
+      "minLength": 1,
+      "title": "Source Type",
+      "type": "string"
+    },
+    "stage1_pipeline": {
+      "minLength": 1,
+      "title": "Stage1 Pipeline",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_type",
+    "source_method",
+    "stage1_pipeline",
+    "input"
+  ],
+  "title": "Stage1Request",
+  "type": "object"
+}

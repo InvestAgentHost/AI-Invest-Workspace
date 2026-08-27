@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "PublishedArtifact": {
+      "additionalProperties": false,
+      "description": "Content identity for one file frozen by the release manifest.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_ref",
+        "sha256",
+        "byte_size"
+      ],
+      "title": "PublishedArtifact",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:quantitative_model_manifest:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Frozen generated artifacts and boundaries for one quantitative model.",
+  "properties": {
+    "artifacts": {
+      "items": {
+        "$ref": "#/$defs/PublishedArtifact"
+      },
+      "minItems": 4,
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "chart_count": {
+      "minimum": 1,
+      "title": "Chart Count",
+      "type": "integer"
+    },
+    "check_count": {
+      "minimum": 1,
+      "title": "Check Count",
+      "type": "integer"
+    },
+    "input_count": {
+      "minimum": 1,
+      "title": "Input Count",
+      "type": "integer"
+    },
+    "model_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "purpose": {
+      "minLength": 1,
+      "title": "Purpose",
+      "type": "string"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "quantitative_model_manifest.v1",
+      "default": "quantitative_model_manifest.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "model_id",
+    "research_id",
+    "purpose",
+    "input_count",
+    "check_count",
+    "chart_count",
+    "artifacts"
+  ],
+  "title": "QuantitativeModelManifest",
+  "type": "object"
+}

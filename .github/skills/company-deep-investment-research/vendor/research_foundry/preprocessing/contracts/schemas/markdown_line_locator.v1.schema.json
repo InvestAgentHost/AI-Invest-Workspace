@@ -1,0 +1,36 @@
+{
+  "$id": "urn:research_foundry:schema:markdown_line_locator:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Inclusive line range in one exact immutable Prepared Markdown artifact.",
+  "properties": {
+    "artifact_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Artifact Sha256",
+      "type": "string"
+    },
+    "end_line": {
+      "minimum": 1,
+      "title": "End Line",
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "markdown_line_locator.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "start_line": {
+      "minimum": 1,
+      "title": "Start Line",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "artifact_sha256",
+    "start_line",
+    "end_line"
+  ],
+  "title": "MarkdownLineLocator",
+  "type": "object"
+}

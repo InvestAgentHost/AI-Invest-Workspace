@@ -1,0 +1,107 @@
+{
+  "$defs": {
+    "PublishedArtifact": {
+      "additionalProperties": false,
+      "description": "Content identity for one file frozen by the release manifest.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_ref",
+        "sha256",
+        "byte_size"
+      ],
+      "title": "PublishedArtifact",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_release_manifest:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Complete immutable file inventory for a research release.",
+  "properties": {
+    "artifacts": {
+      "items": {
+        "$ref": "#/$defs/PublishedArtifact"
+      },
+      "minItems": 1,
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "as_of": {
+      "format": "date",
+      "title": "As Of",
+      "type": "string"
+    },
+    "domain": {
+      "minLength": 1,
+      "title": "Domain",
+      "type": "string"
+    },
+    "key_claim_ids": {
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Key Claim Ids",
+      "type": "array"
+    },
+    "package_ids": {
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Package Ids",
+      "type": "array"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "quality_status": {
+      "const": "research_ready",
+      "default": "research_ready",
+      "title": "Quality Status",
+      "type": "string"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "research_release_manifest.v1",
+      "default": "research_release_manifest.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "research_id",
+    "domain",
+    "as_of",
+    "published_at",
+    "package_ids",
+    "key_claim_ids",
+    "artifacts"
+  ],
+  "title": "ResearchReleaseManifest",
+  "type": "object"
+}

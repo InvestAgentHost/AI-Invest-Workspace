@@ -1,0 +1,207 @@
+{
+  "$defs": {
+    "NotebookCitation": {
+      "additionalProperties": false,
+      "description": "One lightweight Markdown citation resolved during notebook publication.",
+      "properties": {
+        "document_ref": {
+          "minLength": 1,
+          "title": "Document Ref",
+          "type": "string"
+        },
+        "end_line": {
+          "minimum": 1,
+          "title": "End Line",
+          "type": "integer"
+        },
+        "source_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "start_line": {
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "document_ref",
+        "source_id",
+        "start_line",
+        "end_line"
+      ],
+      "title": "NotebookCitation",
+      "type": "object"
+    },
+    "NotebookSourceRecord": {
+      "additionalProperties": false,
+      "description": "Identity of one Markdown source registered by a research notebook.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 1,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "line_count": {
+          "minimum": 1,
+          "title": "Line Count",
+          "type": "integer"
+        },
+        "source_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "artifact_ref",
+        "artifact_sha256",
+        "byte_size",
+        "line_count"
+      ],
+      "title": "NotebookSourceRecord",
+      "type": "object"
+    },
+    "PublishedArtifact": {
+      "additionalProperties": false,
+      "description": "Content identity for one file frozen by the release manifest.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_ref",
+        "sha256",
+        "byte_size"
+      ],
+      "title": "PublishedArtifact",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_notebook_release:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Immutable release boundary for free-form notebook research.",
+  "properties": {
+    "artifacts": {
+      "items": {
+        "$ref": "#/$defs/PublishedArtifact"
+      },
+      "minItems": 1,
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "as_of": {
+      "format": "date",
+      "title": "As Of",
+      "type": "string"
+    },
+    "citations": {
+      "items": {
+        "$ref": "#/$defs/NotebookCitation"
+      },
+      "minItems": 1,
+      "title": "Citations",
+      "type": "array"
+    },
+    "domain": {
+      "minLength": 1,
+      "title": "Domain",
+      "type": "string"
+    },
+    "published_at": {
+      "format": "date-time",
+      "title": "Published At",
+      "type": "string"
+    },
+    "quality_status": {
+      "default": "mechanically_valid",
+      "enum": [
+        "mechanically_valid",
+        "research_ready"
+      ],
+      "title": "Quality Status",
+      "type": "string"
+    },
+    "release_scope": {
+      "default": "bounded",
+      "enum": [
+        "bounded",
+        "comprehensive",
+        "limited"
+      ],
+      "title": "Release Scope",
+      "type": "string"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "research_shape": {
+      "default": "bounded",
+      "enum": [
+        "bounded",
+        "comprehensive"
+      ],
+      "title": "Research Shape",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "research_notebook_release.v1",
+      "default": "research_notebook_release.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/NotebookSourceRecord"
+      },
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    },
+    "subject": {
+      "minLength": 1,
+      "title": "Subject",
+      "type": "string"
+    }
+  },
+  "required": [
+    "research_id",
+    "domain",
+    "subject",
+    "as_of",
+    "published_at",
+    "sources",
+    "citations",
+    "artifacts"
+  ],
+  "title": "ResearchNotebookReleaseManifest",
+  "type": "object"
+}

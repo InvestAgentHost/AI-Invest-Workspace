@@ -1,0 +1,125 @@
+{
+  "$defs": {
+    "ResearchScope": {
+      "additionalProperties": false,
+      "description": "Only the task boundaries needed by downstream research work.",
+      "properties": {
+        "excluded": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Excluded",
+          "type": "array"
+        },
+        "included": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Included",
+          "type": "array"
+        },
+        "subjects": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Subjects",
+          "type": "array"
+        }
+      },
+      "required": [
+        "subjects"
+      ],
+      "title": "ResearchScope",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_brief:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Decision question and boundaries for one research run.",
+  "properties": {
+    "as_of": {
+      "format": "date",
+      "title": "As Of",
+      "type": "string"
+    },
+    "constraints": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Constraints",
+      "type": "array"
+    },
+    "decision_question": {
+      "minLength": 1,
+      "title": "Decision Question",
+      "type": "string"
+    },
+    "deliverables": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Deliverables",
+      "type": "array"
+    },
+    "domain": {
+      "minLength": 1,
+      "title": "Domain",
+      "type": "string"
+    },
+    "material_questions": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Material Questions",
+      "type": "array"
+    },
+    "release_criteria": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Release Criteria",
+      "type": "array"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "research_brief.v1",
+      "default": "research_brief.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scope": {
+      "$ref": "#/$defs/ResearchScope"
+    }
+  },
+  "required": [
+    "research_id",
+    "domain",
+    "decision_question",
+    "as_of",
+    "scope",
+    "deliverables",
+    "material_questions",
+    "release_criteria"
+  ],
+  "title": "ResearchBrief",
+  "type": "object"
+}

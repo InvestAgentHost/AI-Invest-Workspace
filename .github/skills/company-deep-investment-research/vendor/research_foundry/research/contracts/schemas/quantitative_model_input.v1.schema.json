@@ -1,0 +1,157 @@
+{
+  "$defs": {
+    "EvidenceRef": {
+      "additionalProperties": false,
+      "description": "Exact lines in one immutable artifact below the user workspace.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "end_line": {
+          "minimum": 1,
+          "title": "End Line",
+          "type": "integer"
+        },
+        "start_line": {
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "artifact_ref",
+        "artifact_sha256",
+        "start_line",
+        "end_line"
+      ],
+      "title": "EvidenceRef",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:quantitative_model_input:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One evidence-bound numeric input used by a research model.",
+  "properties": {
+    "data_state": {
+      "enum": [
+        "reported",
+        "adjusted",
+        "derived",
+        "guidance",
+        "model",
+        "scenario"
+      ],
+      "title": "Data State",
+      "type": "string"
+    },
+    "definition": {
+      "minLength": 1,
+      "title": "Definition",
+      "type": "string"
+    },
+    "entity": {
+      "minLength": 1,
+      "title": "Entity",
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/EvidenceRef"
+      },
+      "minItems": 1,
+      "title": "Evidence",
+      "type": "array"
+    },
+    "formula": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Formula"
+    },
+    "input_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Input Id",
+      "type": "string"
+    },
+    "metric": {
+      "minLength": 1,
+      "title": "Metric",
+      "type": "string"
+    },
+    "perimeter": {
+      "minLength": 1,
+      "title": "Perimeter",
+      "type": "string"
+    },
+    "period": {
+      "minLength": 1,
+      "title": "Period",
+      "type": "string"
+    },
+    "scenario": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scenario"
+    },
+    "schema_version": {
+      "const": "quantitative_model_input.v1",
+      "default": "quantitative_model_input.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "unit": {
+      "minLength": 1,
+      "title": "Unit",
+      "type": "string"
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+          "type": "string"
+        }
+      ],
+      "title": "Value"
+    }
+  },
+  "required": [
+    "input_id",
+    "metric",
+    "value",
+    "period",
+    "unit",
+    "entity",
+    "perimeter",
+    "data_state",
+    "definition",
+    "evidence"
+  ],
+  "title": "QuantitativeModelInput",
+  "type": "object"
+}

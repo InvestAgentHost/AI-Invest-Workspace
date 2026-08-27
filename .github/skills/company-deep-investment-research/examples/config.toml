@@ -1,0 +1,24 @@
+# Copy this file to the terminal's config location and replace placeholders.
+# Do not commit credentials or personal paths.
+
+model_reasoning_effort = "high"
+# "never" lets a confirmed full-research prompt run unattended; the skill
+# still pauses for material ambiguity and ends with a human review handoff.
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+# Use absolute paths only in the local terminal configuration.
+# The skill itself remains portable and contains no machine-specific paths.
+[sandbox_workspace_write]
+network_access = true
+writable_roots = [
+  "/path/to/your/AI-Invest-Workspace",
+  "/path/to/your/ResearchData"
+]
+
+# The bundled ResearchFoundry runtime is inside this skill; no separate
+# ResearchFoundry checkout or third-party data service is required.
+# Set optional local paths in the terminal environment, not in this package:
+# COMPANY_RESEARCH_WORKSPACE=/path/to/research-artifacts
+# WORKSPACE_FINANCIAL_CALCULATOR=/path/to/Workspace/tools/financial_statement_analysis

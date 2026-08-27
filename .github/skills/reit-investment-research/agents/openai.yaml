@@ -1,0 +1,4 @@
+interface:
+  display_name: "REIT Investment Research"
+  short_description: "从资产租约分派资本结构到估值的REIT深度研究工作流"
+  default_prompt: "Use $reit-investment-research to produce an evidence-backed REIT research report with operating, capital-structure, valuation, and shareholder-return analysis."

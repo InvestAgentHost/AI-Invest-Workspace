@@ -1,0 +1,84 @@
+{
+  "$id": "urn:research_foundry:schema:research_quality_report:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Research Lead's qualitative release assessment.",
+  "properties": {
+    "independently_challenged_claim_ids": {
+      "default": [],
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+        "type": "string"
+      },
+      "title": "Independently Challenged Claim Ids",
+      "type": "array"
+    },
+    "lead_assessment": {
+      "enum": [
+        "sufficient",
+        "limited",
+        "not_ready"
+      ],
+      "title": "Lead Assessment",
+      "type": "string"
+    },
+    "limitations": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    },
+    "material_gaps": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Material Gaps",
+      "type": "array"
+    },
+    "remaining_uncertainties": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Remaining Uncertainties",
+      "type": "array"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "research_ready": {
+      "title": "Research Ready",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "research_quality_report.v1",
+      "default": "research_quality_report.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "warnings": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "research_id",
+    "research_ready",
+    "lead_assessment"
+  ],
+  "title": "ResearchQualityReport",
+  "type": "object"
+}

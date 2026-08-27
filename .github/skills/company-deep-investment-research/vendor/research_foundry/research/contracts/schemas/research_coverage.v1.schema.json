@@ -1,0 +1,377 @@
+{
+  "$defs": {
+    "CoverageBranch": {
+      "additionalProperties": false,
+      "description": "One semantic research branch and its persisted free-form note.",
+      "properties": {
+        "agent_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agent Ref"
+        },
+        "branch_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "depends_on": {
+          "default": [],
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "evidence_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "unreviewed",
+                "evidence_ready",
+                "bounded_gap",
+                "blocked"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Status"
+        },
+        "exception": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exception"
+        },
+        "execution_mode": {
+          "enum": [
+            "delegated",
+            "lead"
+          ],
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "limitation": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Limitation"
+        },
+        "note_ref": {
+          "minLength": 1,
+          "title": "Note Ref",
+          "type": "string"
+        },
+        "question": {
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "readiness": {
+          "enum": [
+            "planned",
+            "in_progress",
+            "usable",
+            "bounded",
+            "blocked"
+          ],
+          "title": "Readiness",
+          "type": "string"
+        },
+        "responsibility_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Responsibility Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "branch_id",
+        "responsibility_id",
+        "question",
+        "execution_mode",
+        "note_ref",
+        "readiness"
+      ],
+      "title": "CoverageBranch",
+      "type": "object"
+    },
+    "CoverageCatalogSnapshot": {
+      "additionalProperties": false,
+      "description": "Tool-owned identity for one method catalog frozen into a research run.",
+      "properties": {
+        "catalog_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.-]{2,95}$",
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "snapshot_ref": {
+          "minLength": 1,
+          "title": "Snapshot Ref",
+          "type": "string"
+        },
+        "snapshot_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Snapshot Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "catalog_id",
+        "snapshot_ref",
+        "snapshot_sha256"
+      ],
+      "title": "CoverageCatalogSnapshot",
+      "type": "object"
+    },
+    "CoverageResponsibility": {
+      "additionalProperties": false,
+      "description": "Task-specific disposition of one catalog responsibility.",
+      "properties": {
+        "disposition": {
+          "enum": [
+            "unreviewed",
+            "selected",
+            "not_material",
+            "blocked"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "responsibility_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Responsibility Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "responsibility_id",
+        "disposition"
+      ],
+      "title": "CoverageResponsibility",
+      "type": "object"
+    },
+    "CoverageSourceRequirement": {
+      "additionalProperties": false,
+      "description": "Run-specific disposition of one required evidence category.",
+      "properties": {
+        "disposition": {
+          "enum": [
+            "unreviewed",
+            "obtained",
+            "unavailable",
+            "failed",
+            "not_material"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        },
+        "source_ids": {
+          "default": [],
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+            "type": "string"
+          },
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "source_requirement_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Source Requirement Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_requirement_id",
+        "disposition"
+      ],
+      "title": "CoverageSourceRequirement",
+      "type": "object"
+    },
+    "DimensionDisposition": {
+      "additionalProperties": false,
+      "description": "Task-specific selection of one catalog candidate question.",
+      "properties": {
+        "branch_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Branch Id"
+        },
+        "dimension_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+          "title": "Dimension Id",
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "unreviewed",
+            "selected",
+            "not_material",
+            "blocked"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rationale"
+        }
+      },
+      "required": [
+        "dimension_id",
+        "disposition"
+      ],
+      "title": "DimensionDisposition",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:research_coverage:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Small comprehensive-research coverage and release-scope boundary.",
+  "properties": {
+    "branches": {
+      "items": {
+        "$ref": "#/$defs/CoverageBranch"
+      },
+      "minItems": 1,
+      "title": "Branches",
+      "type": "array"
+    },
+    "catalogs": {
+      "items": {
+        "$ref": "#/$defs/CoverageCatalogSnapshot"
+      },
+      "minItems": 1,
+      "title": "Catalogs",
+      "type": "array"
+    },
+    "dimensions": {
+      "items": {
+        "$ref": "#/$defs/DimensionDisposition"
+      },
+      "minItems": 1,
+      "title": "Dimensions",
+      "type": "array"
+    },
+    "release_scope": {
+      "default": "comprehensive",
+      "enum": [
+        "comprehensive",
+        "limited"
+      ],
+      "title": "Release Scope",
+      "type": "string"
+    },
+    "research_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Research Id",
+      "type": "string"
+    },
+    "research_shape": {
+      "const": "comprehensive",
+      "default": "comprehensive",
+      "title": "Research Shape",
+      "type": "string"
+    },
+    "responsibilities": {
+      "items": {
+        "$ref": "#/$defs/CoverageResponsibility"
+      },
+      "minItems": 1,
+      "title": "Responsibilities",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "research_coverage.v1",
+      "default": "research_coverage.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_requirements": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CoverageSourceRequirement"
+      },
+      "title": "Source Requirements",
+      "type": "array"
+    }
+  },
+  "required": [
+    "research_id",
+    "catalogs",
+    "responsibilities",
+    "branches",
+    "dimensions"
+  ],
+  "title": "ResearchCoverage",
+  "type": "object"
+}

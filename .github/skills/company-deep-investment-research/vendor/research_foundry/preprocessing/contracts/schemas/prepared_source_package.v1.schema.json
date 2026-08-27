@@ -1,0 +1,233 @@
+{
+  "$defs": {
+    "PackageSource": {
+      "additionalProperties": false,
+      "description": "Exact source and Stage 1 binding that produced a package.",
+      "properties": {
+        "binding_key": {
+          "minLength": 1,
+          "title": "Binding Key",
+          "type": "string"
+        },
+        "binding_version": {
+          "minimum": 1,
+          "title": "Binding Version",
+          "type": "integer"
+        },
+        "method": {
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        },
+        "stage1_pipeline": {
+          "minLength": 1,
+          "title": "Stage1 Pipeline",
+          "type": "string"
+        },
+        "type": {
+          "minLength": 1,
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "method",
+        "binding_key",
+        "binding_version",
+        "stage1_pipeline"
+      ],
+      "title": "PackageSource",
+      "type": "object"
+    },
+    "PreparedOutputArtifact": {
+      "additionalProperties": false,
+      "description": "Immutable Prepared output handed to Stage 2.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "format": {
+          "minLength": 1,
+          "title": "Format",
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "title": "Role",
+          "type": "string"
+        },
+        "schema": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schema"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "artifact_ref",
+        "sha256",
+        "byte_size",
+        "format"
+      ],
+      "title": "PreparedOutputArtifact",
+      "type": "object"
+    },
+    "RawInputArtifact": {
+      "additionalProperties": false,
+      "description": "Immutable Raw input referenced by a PreparedSourcePackage.",
+      "properties": {
+        "artifact_ref": {
+          "minLength": 1,
+          "title": "Artifact Ref",
+          "type": "string"
+        },
+        "byte_size": {
+          "minimum": 0,
+          "title": "Byte Size",
+          "type": "integer"
+        },
+        "media_type": {
+          "minLength": 1,
+          "title": "Media Type",
+          "type": "string"
+        },
+        "role": {
+          "minLength": 1,
+          "title": "Role",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "artifact_ref",
+        "sha256",
+        "byte_size",
+        "media_type"
+      ],
+      "title": "RawInputArtifact",
+      "type": "object"
+    }
+  },
+  "$id": "urn:research_foundry:schema:prepared_source_package:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The only published Stage 1 handoff to downstream consumers.",
+  "properties": {
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "pipeline_manifest_ref": {
+      "minLength": 1,
+      "title": "Pipeline Manifest Ref",
+      "type": "string"
+    },
+    "pipeline_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Pipeline Manifest Sha256",
+      "type": "string"
+    },
+    "prepared_outputs": {
+      "items": {
+        "$ref": "#/$defs/PreparedOutputArtifact"
+      },
+      "minItems": 1,
+      "title": "Prepared Outputs",
+      "type": "array"
+    },
+    "prepared_source_package_id": {
+      "minLength": 1,
+      "title": "Prepared Source Package Id",
+      "type": "string"
+    },
+    "raw_inputs": {
+      "items": {
+        "$ref": "#/$defs/RawInputArtifact"
+      },
+      "minItems": 1,
+      "title": "Raw Inputs",
+      "type": "array"
+    },
+    "request_ref": {
+      "minLength": 1,
+      "title": "Request Ref",
+      "type": "string"
+    },
+    "request_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Request Sha256",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "prepared_source_package.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/PackageSource"
+    },
+    "usage_policy_ref": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Usage Policy Ref"
+    },
+    "warnings": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "prepared_source_package_id",
+    "source",
+    "request_ref",
+    "request_sha256",
+    "raw_inputs",
+    "prepared_outputs",
+    "pipeline_manifest_ref",
+    "pipeline_manifest_sha256",
+    "created_at"
+  ],
+  "title": "PreparedSourcePackage",
+  "type": "object"
+}

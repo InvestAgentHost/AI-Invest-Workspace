@@ -1,0 +1,106 @@
+{
+  "$id": "urn:research_foundry:schema:research_source_metadata:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Agent-supplied provenance for one externally acquired research source.",
+  "properties": {
+    "acquisition_method": {
+      "enum": [
+        "browser",
+        "web_search",
+        "mcp",
+        "api",
+        "http_download",
+        "manual",
+        "other"
+      ],
+      "title": "Acquisition Method",
+      "type": "string"
+    },
+    "notes": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "published_at": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Published At"
+    },
+    "publisher": {
+      "minLength": 1,
+      "title": "Publisher",
+      "type": "string"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "research_source_metadata.v1",
+      "default": "research_source_metadata.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{2,95}$",
+      "title": "Source Id",
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "regulatory_filing",
+        "official_website",
+        "government",
+        "industry_data",
+        "transcript",
+        "news",
+        "research",
+        "other"
+      ],
+      "title": "Source Type",
+      "type": "string"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    },
+    "title": {
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_id",
+    "title",
+    "publisher",
+    "source_type",
+    "retrieved_at",
+    "acquisition_method"
+  ],
+  "title": "ResearchSourceMetadata",
+  "type": "object"
+}
