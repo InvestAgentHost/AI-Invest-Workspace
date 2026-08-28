@@ -5,10 +5,12 @@
 - `collectors/`：外部平台采集器
 - `knowledge/`：清洗、索引和检索工具
 - `research/`：公司、行业和数据分析工具
+- `congressional_monitor/`：国会议员 PTR 交易申报统计与筛选 CLI
 - `shared/`：通用模块
 
 具体工具指南：
 
 - [X Collector 指南](../docs/x-collector.md)：授权浏览器采集、归档、图片关联和本地检索
+- [Congressional Monitor](congressional_monitor/README.md)：在终端查询议员交易申报快照
 
 工具产生的数据应写入顶层 `sources/`、`data/`、`knowledge/` 或 `outputs/`。

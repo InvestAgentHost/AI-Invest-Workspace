@@ -1,0 +1,4 @@
+interface:
+  display_name: "Congressional Monitor"
+  short_description: "分析美国议员 PTR 交易申报与净变动"
+  default_prompt: "Use $congressional-monitor to analyze congressional PTR trades and disclosed quantity changes."

@@ -54,7 +54,7 @@ research/companies/**/_file/
 research/companies/**/data/**
 
 # Rebuildable data and knowledge products
-data/curaged/**
+data/curated/**
 data/derived/**
 knowledge/indexes/**
 knowledge/databases/**
