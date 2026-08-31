@@ -15,6 +15,7 @@ import re
 from typing import Any, Iterable
 
 from tools.shared.workspace_paths import find_workspace_root
+from .dedupe import deduplicate_trades
 
 
 DEFAULT_FILES = ("congressional-pelosi-2026.json", "congressional-members-2026.json")
@@ -135,6 +136,8 @@ def load_dataset(data_dir: Path | str | None = None, data_files: Iterable[Path |
                     seen_trade_ids.add(trade_id)
                 trades.append(normalized)
 
+    deduped = deduplicate_trades(trades)
+    trades = deduped["trades"]
     member_by_id = {item["member_id"]: item for item in members}
     for trade in trades:
         member = member_by_id.get(trade["member_id"], {})
@@ -142,7 +145,7 @@ def load_dataset(data_dir: Path | str | None = None, data_files: Iterable[Path |
         trade["district"] = member.get("district", "")
         trade["chamber"] = member.get("chamber", trade.get("chamber", "House"))
     return {
-        "source": {"files": [str(item) for item in DEFAULT_FILES] + [str(item) for item in (data_files or [])], "senate_files": [str(item) for item in (senate_files or [])]},
+        "source": {"files": [str(item) for item in DEFAULT_FILES] + [str(item) for item in (data_files or [])], "senate_files": [str(item) for item in (senate_files or [])], "duplicate_count": deduped["duplicate_count"], "duplicates": deduped["duplicates"]},
         "members": members,
         "trades": trades,
     }

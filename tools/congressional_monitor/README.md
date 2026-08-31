@@ -69,6 +69,40 @@
 .venv/bin/python -m tools.congressional_monitor.cli sync \
   --year 2025 --member Pelosi --limit 20 --json
 
+# 第二次及以后运行会读取状态并只报告变化；可自定义状态文件
+.venv/bin/python -m tools.congressional_monitor.cli sync \
+  --year 2025 --member Pelosi \
+  --state-file data/derived/congressional-monitor/state/house-2025-pelosi.json \
+  --json
+
+# 多年度 House 全量同步；P=原始 PTR，A=修订/更正，默认两者都纳入
+.venv/bin/python -m tools.congressional_monitor.cli sync \
+  --year 2024 --year 2025 --incremental --download --json
+
+# 只同步原始 PTR（例如不想在本轮处理修订）
+.venv/bin/python -m tools.congressional_monitor.cli sync \
+  --year 2025 --filing-types P --incremental --json
+
+# 将 sync 清单批量转换为交易事件；扫描件只进入 OCR 队列
+.venv/bin/python -m tools.congressional_monitor.cli house-parse \
+  data/derived/congressional-monitor/sync/2025.json --json
+
+# 对有效交易事件做统计并输出描述性提醒
+.venv/bin/python -m tools.congressional_monitor.cli house-events \
+  data/derived/congressional-monitor/parse/2025.json --json
+
+# 分析议员群体行为；默认输出近 30/90 日，并自动计算议员重点级别
+.venv/bin/python -m tools.congressional_monitor.cli behavior-report \
+  data/derived/congressional-monitor/events/2025-2026-ocr.json \
+  --windows 30,90 --member-profiles data/curated/congressional-member-profiles.json --top-n 50 \
+  --output-md research/congressional-monitor/2025-2026-behavior-report.md --json
+
+# 为 Agent 生成可断点续跑的复核批次（不自动批准、不改 curated）
+.venv/bin/python -m tools.congressional_monitor.cli agent-review \
+  data/derived/congressional-monitor/parse/2025-2026.json \
+  --output-dir data/derived/congressional-monitor/agent-review/2025-2026 \
+  --batch-size 50 --json
+
 # 查看某年度所有有 PTR 申报的 House 议员（不指定 --member）
 .venv/bin/python -m tools.congressional_monitor.cli house-index \
   sources/providers/house-clerk/2025/2025FD.zip --filing-type P --json
@@ -109,4 +143,16 @@ GLM_OCR_PROBABILITY=true
 
 ## 数据边界
 
-当前快照包含 Pelosi 的 3 份 2026 PTR，以及 Gottheimer、Salazar、Crenshaw 各自当前载入的报告。工具分析的是延迟的交易申报事件，不是全体议员目录，也不是完整实时持仓。补充历史数据时，先将每份报告规范化为同一字段并通过 `--data-file` 加载，再按交易日计算净变动。下一步数据层应接入 House Clerk 全量年度 ZIP、Senate eFD、OCR、增量同步和去重；在此基础上再增加定时报告与告警。
+当前快照包含 Pelosi 的 3 份 2026 PTR，以及 Gottheimer、Salazar、Crenshaw 各自当前载入的报告。工具分析的是延迟的交易申报事件，不是全体议员目录，也不是完整实时持仓。补充历史数据时，先将每份报告规范化为同一字段并通过 `--data-file` 加载，再按交易日计算净变动。House 全量同步可重复传入 `--year`，跨年度按文档 ID 和交易指纹去重；A 类型修订报告保留为独立报告，只有存在明确 `amends_report_id` 时才建立替代关系，无法显式关联的修订会标记为 `unlinked_amendment`。
+
+状态化同步会在 `data/derived/congressional-monitor/state/` 保存可重建的 JSON 快照，并在同步结果的 `changes` 中输出新增报告、内容变化、运行状态变化和 OCR 候选变化。使用 `--incremental` 时，未变化 PDF 会复用文本层和已完成 OCR 元数据，避免 House 全量批处理重复识别。状态文件不属于 curated 数据，也不会改变交易分析结果。
+
+`house-parse` 生成的结果保存在 `data/derived/congressional-monitor/parse/`，包括报告解析状态、OCR 队列、待复核候选、可分析交易和修订后的有效交易视图。`house-events` 只对有效交易做统计和描述性提醒，不把提醒解释为内幕信息或交易动机。
+
+`behavior-report` 是议员行为分析层。它默认只输出近 30/90 日窗口，优先保证监控时效性；需要历史背景时可显式加 `--include-full-period`，也可用 `--windows` 自定义。历史数据仍用于判断“首次出现”和计算当前窗口相对于前一同长度窗口的变化。工具按 ticker 汇总买入/卖出议员数、交易数、参与率、披露覆盖率、方向性议员净差、重复买入、首次出现、明确数量净变化、金额区间等级、党派/两院覆盖，并按启发式行为分数排序；同时输出近期议员画像、自动重点级别（领导职务、委员会职务、媒体关注度、近 90 日交易活跃度、历史覆盖度）、买卖变动众数和窗口对比趋势。`--members` 可指定重点议员，只影响画像部分，不改变群体统计；`--member-profiles` 可提供可审计的议员元数据 JSON。行为分数只用于发现群体性增持、群体性减持、重复买入、新群体关注和跨党派/跨院收敛等线索，不是收益预测或买卖建议。PTR 不披露完整当前持仓，因此“参与率/披露覆盖率”不能解释为真实组合仓位比例；金额仍保持法定区间。
+
+提供 `--output-md` 时会生成面向分析师阅读的 Markdown 报告，包含执行摘要、各窗口榜单、趋势变化、议员画像、信号解释、数据边界和复核优先级；JSON 仍作为机器可读中间产物。
+
+Markdown 报告会在股票代码旁显示公司/发行人名称，并为重点证券增加所属领域和一句业务概览。已知公司的概览来自本地可审计映射；未收录证券只做名称级粗略归类或明确标注待核验，不用于估值或公司研究结论。
+
+`agent-review` 将待复核候选拆成带原始文本/坐标证据的 JSON 批次，并提供固定的 `approved`、`rejected`、`needs_more_evidence` 决定格式。Agent 输出决定后，可用同一命令的 `--decisions` 和 `--output` 应用；应用仍经过 `ocr-review` 的必填字段、代码、日期、金额区间和重复 ID 校验。

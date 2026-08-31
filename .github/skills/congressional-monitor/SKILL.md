@@ -11,7 +11,8 @@ Workspace root: `.`
 
 ## Decide the analysis
 
-- A broad question such as “最近议员都买了什么” maps to `summary` or `trades`.
+- A broad behavior question such as “最近哪些股票被议员集中买入” maps to
+  `behavior-report`; use `summary` or `trades` only for raw counts/details.
 - A member question maps to `member` or `trades --member`.
 - A ticker/security question maps to `ticker`.
 - A question about net additions, reductions, or inferred holdings maps to `positions`.
@@ -39,6 +40,13 @@ From the Workspace root, use the canonical interpreter and JSON output:
 .venv/bin/python -m tools.congressional_monitor.cli ocr-review <review-json> --decisions <decisions-json> --output data/curated/<reviewed-file>.json
 .venv/bin/python -m tools.congressional_monitor.cli house-download <document-id> --year <year> --json
 .venv/bin/python -m tools.congressional_monitor.cli sync --year <year> --member <name-or-district> --json
+.venv/bin/python -m tools.congressional_monitor.cli house-parse <sync-manifest.json> --json
+.venv/bin/python -m tools.congressional_monitor.cli house-events <house-parse.json> --json
+.venv/bin/python -m tools.congressional_monitor.cli behavior-report <house-events.json> --windows 30,90 --members <member1,member2> --output-md <report.md> --json
+.venv/bin/python -m tools.congressional_monitor.cli agent-review <house-parse.json> --output-dir <review-dir> --json
+.venv/bin/python -m tools.congressional_monitor.cli agent-review <review-dir>/manifest.json --decisions <decisions.json> --output <curated-output.json>
+# 多年度 House 全量增量同步
+.venv/bin/python -m tools.congressional_monitor.cli sync --year 2024 --year 2025 --incremental --download --json
 .venv/bin/python -m tools.congressional_monitor.cli senate-efd <export.json> --json
 .venv/bin/python -m tools.congressional_monitor.cli --senate-file <export.json> cross-report --json
 ```
@@ -77,15 +85,77 @@ OCR candidates include conservative ticker aliases and the House Clerk A-J statu
 Use `house-index` on an official House Clerk annual `YYYYFD.zip` to discover
 new PTR document IDs. This is an index/discovery step; it does not download or
 curate PDFs automatically. Preserve the ZIP under `sources/` and fetch/parse
-individual reports only after review.
+individual reports only after review. `filing_type=P` is an original PTR;
+`filing_type=A` is an amendment/correction and must remain a separate source
+report until an explicit original-report link is available.
 
 Use `house-download` to fetch one discovered PTR PDF. It writes under `sources/providers/house-clerk/<year>/`, verifies SHA-256, limits response size, retries transient failures, and refuses to overwrite an existing file. It does not add the PDF to curated data.
 
-Use `sync` to run the end-to-end preparation flow. It reads an annual index,
-finds existing or new PTR PDFs, optionally downloads them with `--download`,
-and marks text-layer/OCR requirements. Add `--ocr` only for a bounded member or
-`--limit`; the resulting manifest and review candidates are written under
-`data/derived/congressional-monitor/sync/` and never mutate curated data.
+Use `sync` to run the end-to-end preparation flow. It reads one or more annual
+indexes (`--year` and `--index-file` may be repeated), de-duplicates repeated
+document IDs across years, finds existing or new PTR PDFs, optionally downloads
+them with `--download`, and marks text-layer/OCR requirements. It includes P and
+A filings by default; narrow with `--filing-types P` when needed. Add `--ocr`
+only for a bounded member or `--limit`; the resulting manifest and review
+candidates are written under `data/derived/congressional-monitor/sync/` and
+never mutate curated data.
+
+`sync` is stateful. It stores a compact snapshot under
+`data/derived/congressional-monitor/state/` (or `--state-file`) and adds a
+`changes` section to each JSON result. `new_reports` means report IDs absent
+from the previous comparable run; `changed_reports` means source/index/content
+metadata changed; `status_changes` tracks operational transitions separately;
+`new_candidates` tracks OCR candidate IDs. A first run marks the selected scope
+as new. Do not interpret a bounded `--limit` run as evidence that omitted
+reports were removed.
+
+Add `--incremental` to reuse text-layer and completed OCR metadata when the local
+PDF SHA-256 and byte count are unchanged. This avoids repeating OCR in a House
+wide batch while preserving the report in the manifest. The state key is the
+House document ID (not the annual index year), so a report copied into multiple
+annual indexes is compared only once. Amendment rows without an explicit
+`amends_report_id` are labeled `unlinked_amendment`; they are not silently
+treated as replacements.
+
+Use `house-parse` on a sync manifest to convert text-layer PDFs into normalized
+analysis-ready events. It writes a derived JSON containing raw report results,
+validated/review candidates, an OCR queue, quality metrics, and an effective
+trade view. It never promotes rows to curated data. Use `house-events` on that
+JSON for counts by member/security/direction and descriptive alerts such as new
+reports, unlinked amendments, a member's first observed ticker, and securities
+appearing for multiple members in the supplied window.
+
+Use `behavior-report` for the congressional behavior analysis layer. It accepts
+the effective-trade JSON from `house-parse` or the event JSON from
+`house-events`, evaluates 30/90-day windows by default and returns ticker
+behavior rankings, recent member profiles, buy/sell change
+modes, and recent-versus-prior changes. Metrics include buy/sell member counts,
+directional member balance, buy participation rate, disclosed member coverage,
+repeat buying, first-time attention, explicit quantity net change, amount-band
+levels, and party/chamber convergence when available. Use `--members` to focus
+the member profile on important legislators without removing them from group
+statistics. Its heuristic score is a
+screening aid for disclosed behavior, not a return forecast, proof of intent, or
+buy/sell recommendation. PTR participation and coverage ratios are not actual
+portfolio allocation because PTR does not disclose complete current holdings.
+When the user asks for a deliverable, always pass `--output-md` and return the
+Markdown report path; keep the JSON as a rebuildable intermediate artifact.
+Use `--include-full-period` only when a historical background view is explicitly
+requested; the default report should remain focused on current behavior.
+The member profile section computes an explainable priority level from
+leadership, committee role, media attention, recent trading activity, and
+historical coverage. Pass `--member-profiles <json>` when official member
+metadata is available; missing role/media dimensions are reported explicitly.
+The Markdown report must show the ticker together with its issuer/company name
+and include a short, non-valuation business overview for the highlighted
+securities. Use the local company-context mapping when available; otherwise
+label name-based classification or missing context explicitly.
+
+Use `agent-review` to create resumable review batches for remaining candidates.
+Each packet carries report context and raw evidence with a fixed decision schema.
+An Agent may return `approved`, `rejected`, or `needs_more_evidence`; only
+complete approved rows pass the existing review validation when applied. Packet
+preparation does not call an LLM and does not mutate curated data.
 
 Use `ocr-review` to close the OCR loop. Without `--decisions`, it creates an
 editable template with `approved`, `rejected`, or `needs_more_evidence` states.

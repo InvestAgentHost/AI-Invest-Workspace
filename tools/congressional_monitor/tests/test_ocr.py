@@ -182,6 +182,24 @@ class OCRTests(unittest.TestCase):
             self.assertEqual(result["counts"], {"existing": 1})
             self.assertEqual(result["reports"][0]["text_layer"]["ocr_required"], True)
 
+    @patch("tools.congressional_monitor.sync.download_ptr")
+    def test_sync_uses_financial_pdf_url_for_amendments(self, download):
+        import zipfile
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "sources"
+            index = Path(directory) / "2025FD.zip"
+            with zipfile.ZipFile(index, "w") as archive:
+                archive.writestr("2025FD.txt", "Prefix\tLast\tFirst\tSuffix\tFilingType\tStateDst\tYear\tFilingDate\tDocID\n\tDoe\tJane\t\tA\tCA01\t2025\t6/1/2025\t10073311\n")
+            pdf = root / "2025" / "10073311.pdf"
+            def fake_download(*args, **kwargs):
+                pdf.parent.mkdir(parents=True)
+                pdf.write_bytes(b"pdf")
+                return {"path": str(pdf), "sha256": "abc", "bytes": 3}
+            download.side_effect = fake_download
+            result = sync_house_ptrs(index, output_root=root, filing_types=("A",), download=True)
+            self.assertEqual(result["counts"], {"downloaded": 1})
+            self.assertIn("financial-pdfs", download.call_args.kwargs["url_template"])
+
     def test_senate_efd_csv_normalizes_transaction_fields(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "efd.csv"

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Company Investment Research"
-  short_description: "Route, analyze, and publish evidence-bound company research"
-  default_prompt: "Use $company-investment-research to build rigorous, plain-language, non-repetitive, depth-gated research from newly acquired primary evidence: route every material business, close its economics into statements and cash, separate reconciliation from analytical coverage, bind valuation to valid boundaries, then perform a clean release review and strict validation against every A1-E2 and R1-R3 sub-gate."

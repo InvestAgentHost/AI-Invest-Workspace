@@ -14,7 +14,12 @@ from .house_index import read_house_index, summarize_house_index
 from .review import apply_review_decisions, review_template
 from .house_download import download_ptr
 from .sync import sync_house_ptrs
+from .sync_state import build_state, diff_states, load_state, write_state
 from .senate_efd import read_senate_efd, summarize_senate_efd
+from .batch_parse import detect_event_alerts, parse_sync_manifest, summarize_effective_trades
+from .agent_review import apply_agent_review, load_agent_packet, prepare_agent_review, write_review_batches
+from .behavior import analyze_behavior, render_behavior_markdown
+from .member_priority import load_important_members, load_member_profiles
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -39,14 +44,18 @@ def _parser() -> argparse.ArgumentParser:
         ("house-index", "读取 House Clerk 年度索引并发现 PTR 增量报告。"),
         ("ocr-review", "生成 OCR 复核模板，或应用批准决定生成 curated 数据。"),
         ("house-download", "下载一份 House Clerk 官方 PTR PDF，不覆盖已有文件。"),
+        ("house-parse", "批量将同步清单转换为交易候选、OCR 队列和有效交易视图。"),
+        ("house-events", "分析 House 有效交易事件并输出提醒信号。"),
+        ("behavior-report", "从多种时间和群体视角分析议员持仓变动行为。"),
+        ("agent-review", "生成或应用 PTR 候选的 Agent 复核批次。"),
         ("sync", "串联 House Clerk 索引、下载、文本层判断和 OCR 准备。"),
         ("senate-efd", "读取官方 Senate eFD JSON/CSV 导出并统一交易字段。"),
         ("cross-report", "生成 House/Senate 两院统一交易行为报告。"),
     ):
         command = commands.add_parser(name, help=help_text)
-        if name not in {"ocr", "ocr-check", "ocr-parse", "house-index", "ocr-review", "house-download", "sync", "senate-efd", "cross-report"}:
+        if name not in {"ocr", "ocr-check", "ocr-parse", "house-index", "ocr-review", "house-download", "house-parse", "house-events", "behavior-report", "agent-review", "sync", "senate-efd", "cross-report"}:
             command.add_argument("value", nargs="?", help="member_id/姓名/地区，或证券 ticker。")
-        if name not in {"ocr", "ocr-check", "ocr-parse", "house-index", "ocr-review", "house-download", "sync", "senate-efd", "cross-report"}:
+        if name not in {"ocr", "ocr-check", "ocr-parse", "house-index", "ocr-review", "house-download", "house-parse", "house-events", "behavior-report", "agent-review", "sync", "senate-efd", "cross-report"}:
             command.add_argument("--data-dir", type=Path, default=argparse.SUPPRESS, help="Curated data directory; defaults to data/curated.")
             command.add_argument("--data-file", action="append", default=argparse.SUPPRESS, help="Additional curated JSON file; repeatable for historical years.")
             command.add_argument("--member", help="member_id、姓名或地区，例如 pelosi-nancy、CA11。")
@@ -87,17 +96,45 @@ def _parser() -> argparse.ArgumentParser:
             command.add_argument("--year", required=True, help="申报年度，例如 2026。")
             command.add_argument("--output-dir", type=Path, default=Path("sources/providers/house-clerk"), help="保存根目录。")
             command.add_argument("--url-template", default=None, help="可选 URL 模板，必须包含 {year} 和 {document_id}。")
+        elif name == "house-parse":
+            command.add_argument("manifest", type=Path, help="sync 命令生成的 JSON 清单。")
+            command.add_argument("--output", type=Path, help="解析结果输出路径；默认 data/derived/congressional-monitor/parse/<manifest>.json。")
+            command.add_argument("--minimum-probability", type=float, default=0.90, help="候选最低置信度；文本层默认视为 1.0。")
+        elif name == "house-events":
+            command.add_argument("parse_json", type=Path, help="house-parse 生成的解析结果 JSON。")
+            command.add_argument("--window-days", type=int, default=30, help="多人同证券提醒的观察窗口标签，默认 30 天。")
+        elif name == "behavior-report":
+            command.add_argument("input_json", type=Path, help="house-parse/house-events 生成的交易事件 JSON。")
+            command.add_argument("--windows", default="30,90", help="比较窗口，逗号分隔天数；默认近 30/90 天。")
+            command.add_argument("--include-full-period", action="store_true", help="额外输出完整选定区间，默认关闭以保持报告时效性。")
+            command.add_argument("--from-date", dest="from_date", help="交易日下限 YYYY-MM-DD。")
+            command.add_argument("--to-date", dest="to_date", help="交易日上限 YYYY-MM-DD。")
+            command.add_argument("--min-members", type=int, default=2, help="多人行为信号的最小议员数，默认 2。")
+            command.add_argument("--top-n", type=int, default=50, help="每个窗口最多输出多少只股票/议员，默认 50。")
+            command.add_argument("--members", help="重点议员姓名或 ID，逗号分隔；只影响议员画像，不改变群体统计。")
+            command.add_argument("--member-profiles", type=Path, help="可选议员职务/委员会/媒体元数据 JSON；用于自动重点级别评分。")
+            command.add_argument("--important-members", type=Path, default=Path("data/curated/congressional-important-members.json"), help="重点议员名单 JSON；默认使用 data/curated/congressional-important-members.json。")
+            command.add_argument("--output-md", type=Path, help="将分析师可读的 Markdown 报告写入指定路径。")
+        elif name == "agent-review":
+            command.add_argument("input_json", type=Path, help="house-parse 结果，或 agent-review 生成的批次包。")
+            command.add_argument("--output-dir", type=Path, help="复核批次目录；省略时只输出单一 packet JSON。")
+            command.add_argument("--batch-size", type=int, default=50, help="每批候选数，默认 50。")
+            command.add_argument("--decisions", type=Path, help="Agent 输出的 decisions JSON；提供后进入应用模式。")
+            command.add_argument("--output", type=Path, help="应用模式下输出新的 curated-compatible JSON。")
         elif name == "sync":
-            command.add_argument("--year", required=True, help="申报年度，例如 2025。")
-            command.add_argument("--index-file", type=Path, help="年度索引 ZIP/TXT；默认 sources/providers/house-clerk/<year>/<year>FD.zip。")
+            command.add_argument("--year", action="append", required=True, help="申报年度，例如 2025；可重复以合并多个年度。")
+            command.add_argument("--index-file", action="append", type=Path, help="年度索引 ZIP/TXT；可重复。未提供时按每个 --year 使用默认路径。")
             command.add_argument("--member", help="按姓名、选区或文档 ID 筛选。")
             command.add_argument("--limit", type=int, help="最多处理多少条索引记录。")
             command.add_argument("--download", action="store_true", help="下载尚不存在的 PTR PDF。")
             command.add_argument("--ocr", action="store_true", help="对无文本层 PDF 调用 GLM OCR。")
             command.add_argument("--pages", help="OCR 页码列表，例如 1,2；默认全部页面。")
             command.add_argument("--dpi", type=int, default=220, help="OCR 渲染分辨率，默认 220。")
+            command.add_argument("--filing-types", default="P,A", help="纳入的 House filing type，逗号分隔；默认 P,A（PTR 与修订）。")
+            command.add_argument("--incremental", action="store_true", help="复用状态中未变化报告的文本层/OCR结果。")
             command.add_argument("--output-root", type=Path, default=Path("sources/providers/house-clerk"), help="原始 PDF 保存根目录。")
             command.add_argument("--manifest", type=Path, help="同步清单输出路径；默认 data/derived/congressional-monitor/sync/<year>.json。")
+            command.add_argument("--state-file", type=Path, help="状态文件；默认 data/derived/congressional-monitor/state/<year>-<scope>.json。")
         elif name == "senate-efd":
             command.add_argument("efd_file", type=Path, help="官方 Senate eFD JSON/CSV 导出文件。")
             command.add_argument("--member", help="按 senator/member ID 或姓名筛选。")
@@ -240,17 +277,132 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 print(f"已下载 PTR {result['document_id']} | {result['bytes']} bytes | SHA-256 {result['sha256']} | {result['path']}")
             return 0
+        if args.command == "house-parse":
+            result = parse_sync_manifest(args.manifest, minimum_probability=args.minimum_probability)
+            output = args.output or Path("data/derived/congressional-monitor/parse") / f"{args.manifest.stem}.json"
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(json.dumps(result, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+            if args.json:
+                print(json.dumps({"output": str(output), **result}, ensure_ascii=False, indent=2, default=str))
+            else:
+                counts = result["counts"]
+                print(f"House 批量解析: 报告 {counts['report_count']} | 已解析 {counts['parsed']} | OCR 队列 {counts['ocr_queue']} | 失败 {counts['failed']} | 可分析交易 {counts['effective_trade_count']}")
+                print(f"结果: {output}")
+            return 0
+        if args.command == "house-events":
+            try:
+                parsed = json.loads(args.parse_json.read_text(encoding="utf-8"))
+            except FileNotFoundError as exc:
+                raise OCRError(f"house parse JSON not found: {args.parse_json}") from exc
+            except json.JSONDecodeError as exc:
+                raise OCRError(f"invalid house parse JSON: {args.parse_json}: {exc}") from exc
+            if not isinstance(parsed, dict):
+                raise OCRError("house parse JSON must be an object")
+            effective = parsed.get("effective") or {}
+            result = {"source_parse": str(args.parse_json), "summary": summarize_effective_trades(effective.get("trades") or []), "quality": parsed.get("quality") or {}, "alerts": detect_event_alerts(parsed, window_days=args.window_days), "trades": effective.get("trades") or []}
+            if args.json:
+                print(json.dumps(result, ensure_ascii=False, indent=2, default=str))
+            else:
+                summary = result["summary"]
+                print(f"House 交易事件: {summary['trade_count']} 笔 | 议员 {summary['member_count']} | 证券 {summary['ticker_count']} | 提醒 {len(result['alerts'])}")
+                for alert in result["alerts"][:30]:
+                    print(f"  {alert['type']} | {alert.get('member_name') or alert.get('ticker') or alert.get('document_id')}")
+            return 0
+        if args.command == "behavior-report":
+            try:
+                payload = json.loads(args.input_json.read_text(encoding="utf-8"))
+            except FileNotFoundError as exc:
+                raise OCRError(f"behavior input not found: {args.input_json}") from exc
+            except json.JSONDecodeError as exc:
+                raise OCRError(f"invalid behavior input JSON: {args.input_json}: {exc}") from exc
+            if not isinstance(payload, dict):
+                raise OCRError("behavior input JSON must be an object")
+            if isinstance(payload.get("effective"), dict):
+                rows = payload["effective"].get("trades") or []
+            else:
+                rows = payload.get("trades") or payload.get("analysis_ready_trades") or []
+            windows = [int(item.strip()) for item in str(args.windows).split(",") if item.strip()]
+            focus_members = [item.strip() for item in str(args.members or "").split(",") if item.strip()]
+            profiles = load_member_profiles(args.member_profiles) if args.member_profiles else {}
+            important = load_important_members(args.important_members) if args.important_members and args.important_members.exists() else {}
+            result = analyze_behavior(rows, windows=windows, from_date=args.from_date, to_date=args.to_date, min_members=args.min_members, top_n=args.top_n, focus_members=focus_members, include_full_period=args.include_full_period, member_profiles=profiles, important_members=important)
+            result["source"] = str(args.input_json)
+            if args.output_md:
+                args.output_md.parent.mkdir(parents=True, exist_ok=True)
+                args.output_md.write_text(render_behavior_markdown(result), encoding="utf-8")
+            if args.json:
+                output = {"output_md": str(args.output_md) if args.output_md else None, **result}
+                print(json.dumps(output, ensure_ascii=False, indent=2, default=str))
+            else:
+                print(f"议员行为分析: 数据覆盖 {result['period']['from_date'] or '-'} 至 {result['period']['to_date'] or '-'} | 交易 {result['quality'].get('trade_count', 0)} | 议员 {result['quality'].get('active_member_count', 0)} | 证券 {result['quality'].get('ticker_count', 0)}")
+                for window in result.get("windows", []):
+                    print(f"\n[{window['label']}] 交易 {window['trade_count']} | 活跃议员 {window['active_member_count']}")
+                    for ticker in window.get("tickers", [])[:10]:
+                        signal_labels = {
+                            "multi_member_attention": "多人关注",
+                            "broad_accumulation": "群体增持",
+                            "broad_reduction": "群体减持",
+                            "repeat_buying": "重复买入",
+                            "new_group_attention": "新群体关注",
+                            "cross_chamber_convergence": "跨院收敛",
+                            "cross_party_convergence": "跨党派收敛",
+                            "compound_long_exposure": "股票+期权多头",
+                            "mixed_direction_attention": "买卖分歧",
+                        }
+                        signals = ",".join(signal_labels.get(item, item) for item in (ticker.get("signals") or [])) or "-"
+                        print(f"  {ticker['ticker']} | 买入议员 {ticker['buy_member_count']} | 卖出议员 {ticker['sell_member_count']} | 参与率 {ticker['buy_participation_rate']:.1%} | 信号 {signals}")
+                if result.get("interpretation"):
+                    print("\n边界: " + result["interpretation"][0])
+                if args.output_md:
+                    print(f"Markdown 报告: {args.output_md}")
+            return 0
+        if args.command == "agent-review":
+            try:
+                payload = json.loads(args.input_json.read_text(encoding="utf-8"))
+            except FileNotFoundError as exc:
+                raise OCRError(f"agent review input not found: {args.input_json}") from exc
+            except json.JSONDecodeError as exc:
+                raise OCRError(f"invalid agent review input JSON: {args.input_json}: {exc}") from exc
+            if not isinstance(payload, dict):
+                raise OCRError("agent review input JSON must be an object")
+            if args.decisions:
+                result = apply_agent_review(load_agent_packet(args.input_json), json.loads(args.decisions.read_text(encoding="utf-8")), output_path=args.output)
+                print(json.dumps({"output": str(args.output) if args.output else None, "promoted_count": result.get("promoted_count", 0), "errors": result.get("errors", []), "agent_review": result.get("agent_review")}, ensure_ascii=False, indent=2, default=str))
+            else:
+                packet = prepare_agent_review(payload, batch_size=args.batch_size)
+                if args.output_dir:
+                    print(json.dumps(write_review_batches(packet, args.output_dir), ensure_ascii=False, indent=2, default=str))
+                else:
+                    print(json.dumps(packet, ensure_ascii=False, indent=2, default=str))
+            return 0
         if args.command == "sync":
-            index_file = args.index_file or Path("sources/providers/house-clerk") / args.year / f"{args.year}FD.zip"
+            years = list(args.year)
+            index_files = list(args.index_file or [])
+            if not index_files:
+                index_files = [Path("sources/providers/house-clerk") / year / f"{year}FD.zip" for year in years]
+            elif len(index_files) != len(years):
+                raise ValueError("--index-file must be provided once per --year")
             pages = [int(item) for item in args.pages.split(",")] if args.pages else None
-            result = sync_house_ptrs(index_file, output_root=args.output_root, member=args.member, limit=args.limit, download=args.download, ocr=args.ocr, pages=pages, dpi=args.dpi)
-            manifest = args.manifest or Path("data/derived/congressional-monitor/sync") / f"{args.year}.json"
+            scope_name = "all" if not args.member else "-".join(args.member.lower().split())
+            year_scope = "-".join(years) if len(years) > 1 else years[0]
+            state_file = args.state_file or Path("data/derived/congressional-monitor/state") / f"{year_scope}-{scope_name}.json"
+            previous_state = load_state(state_file)
+            filing_types = tuple(item.strip().upper() for item in args.filing_types.split(",") if item.strip())
+            result = sync_house_ptrs(index_files, output_root=args.output_root, member=args.member, limit=args.limit, download=args.download, ocr=args.ocr, pages=pages, dpi=args.dpi, filing_types=filing_types, previous_state=previous_state, incremental=args.incremental)
+            current_state = build_state(result)
+            changes = diff_states(previous_state, current_state)
+            write_state(state_file, current_state)
+            result["state_file"] = str(state_file)
+            result["changes"] = changes
+            manifest = args.manifest or Path("data/derived/congressional-monitor/sync") / f"{year_scope}.json"
             manifest.parent.mkdir(parents=True, exist_ok=True)
             manifest.write_text(json.dumps(result, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
             if args.json:
                 print(json.dumps(result, ensure_ascii=False, indent=2, default=str))
             else:
                 print(f"同步完成: {result['requested_count']} 条 | " + " · ".join(f"{key} {value}" for key, value in sorted(result["counts"].items())))
+                print("本次变化: " + " · ".join(f"{key} {value}" for key, value in sorted(changes["counts"].items())))
+                print(f"状态: {state_file}")
                 print(f"清单: {manifest}")
             return 0
         if args.command == "senate-efd":

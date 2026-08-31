@@ -5,7 +5,7 @@ from __future__ import annotations
 import csv
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 import zipfile
 import re
 
@@ -18,7 +18,15 @@ def _filing_sort_key(value: str) -> tuple[int, int, int]:
         return (0, 0, 0)
 
 
-def read_house_index(path: Path | str, *, filing_type: str = "P", member: str | None = None) -> list[dict[str, Any]]:
+def _filing_types(value: str | Iterable[str] | None) -> set[str] | None:
+    if value is None or value == "":
+        return None
+    values = value.split(",") if isinstance(value, str) else value
+    normalized = {str(item).strip().upper() for item in values if str(item).strip()}
+    return normalized or None
+
+
+def read_house_index(path: Path | str, *, filing_type: str | Iterable[str] | None = "P", member: str | None = None) -> list[dict[str, Any]]:
     """Read a House Clerk ``YYYYFD.txt`` or ZIP and return normalized rows."""
 
     source = Path(path)
@@ -34,6 +42,7 @@ def read_house_index(path: Path | str, *, filing_type: str = "P", member: str | 
         text = source.read_text(encoding="utf-8-sig", errors="replace")
     rows: list[dict[str, Any]] = []
     wanted = (member or "").strip().lower()
+    wanted_types = _filing_types(filing_type)
     reader = csv.DictReader(text.splitlines(), delimiter="\t")
     for raw in reader:
         normalized = {str(key or "").strip().lower(): str(value or "").strip() for key, value in raw.items()}
@@ -47,9 +56,10 @@ def read_house_index(path: Path | str, *, filing_type: str = "P", member: str | 
             "year": normalized.get("year", ""),
             "filing_date": normalized.get("filingdate", ""),
             "document_id": normalized.get("docid", ""),
+            "amends_report_id": next((normalized.get(key, "") for key in ("amendsreportid", "amendeddocid", "originaldocid", "relateddocid") if normalized.get(key)), ""),
             "source_file": str(source),
         }
-        if filing_type and row["filing_type"].upper() != filing_type.upper():
+        if wanted_types and row["filing_type"].upper() not in wanted_types:
             continue
         haystack = " ".join((row["first_name"], row["last_name"], row["district"], row["document_id"])).lower()
         if wanted and wanted not in haystack:
