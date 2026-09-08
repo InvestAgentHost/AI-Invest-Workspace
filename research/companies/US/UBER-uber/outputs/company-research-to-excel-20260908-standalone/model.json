@@ -1,0 +1,4277 @@
+{
+  "company": {
+    "name": "Uber Technologies, Inc.",
+    "ticker": "UBER",
+    "currency": "USD",
+    "units": "USD in million except per-share data",
+    "reporting_framework": "US GAAP",
+    "fiscal_year_end": "December 31",
+    "consolidation_scope": "consolidated",
+    "as_of_date": "2025-12-31",
+    "model_date": "2026-09-08"
+  },
+  "periods": {
+    "annual": [
+      {
+        "label": "FY2016"
+      },
+      {
+        "label": "FY2017"
+      },
+      {
+        "label": "FY2018"
+      },
+      {
+        "label": "FY2019"
+      },
+      {
+        "label": "FY2020"
+      },
+      {
+        "label": "FY2021"
+      },
+      {
+        "label": "FY2022"
+      },
+      {
+        "label": "FY2023"
+      },
+      {
+        "label": "FY2024"
+      },
+      {
+        "label": "FY2025"
+      }
+    ],
+    "scrap_cols": 0,
+    "quarterly": []
+  },
+  "sheets": [
+    {
+      "name": "Cover",
+      "kind": "table",
+      "tab_color": "1F4E79",
+      "col_widths": [
+        30,
+        60
+      ],
+      "table": [
+        [
+          {
+            "text": "Uber Technologies, Inc. \u2014 Financial Model",
+            "bold": true
+          }
+        ],
+        [],
+        [
+          "Ticker",
+          "UBER"
+        ],
+        [
+          "Currency / Units",
+          "USD in million except per-share data"
+        ],
+        [
+          "Reporting Framework",
+          "US GAAP"
+        ],
+        [
+          "Fiscal Year End",
+          "December 31"
+        ],
+        [
+          "Periods Covered",
+          "FY2016 \u2013 FY2025 (annual only; no quarterly columns \u2014 see note below)"
+        ],
+        [
+          "Model Date",
+          "2026-09-08"
+        ],
+        [],
+        [
+          {
+            "text": "Sheet Guide",
+            "bold": true
+          }
+        ],
+        [
+          "Income Statement (IS)",
+          "As-reported P&L, EPS/share count, Adjusted EBITDA bridge"
+        ],
+        [
+          "Balance Sheet (BS)",
+          "As-reported balance sheet, balance check, working-capital analytics"
+        ],
+        [
+          "Cash Flow (CF)",
+          "As-reported CFO/CFI/CFF detail, cash walk check, FCF analytics"
+        ],
+        [
+          "Segments (SEG)",
+          "Mobility / Delivery / Freight (and legacy ATG / All Other) revenue and Adjusted EBITDA, tied to IS revenue"
+        ],
+        [
+          "Geography (GEO)",
+          "Revenue by region and by country, tied to IS revenue"
+        ],
+        [
+          "Operating Metrics (OP)",
+          "Gross Bookings, MAPCs, Trips and derived KPIs"
+        ],
+        [
+          "Derived Metrics (DM)",
+          "Ratio and common-size analytics computed from metrics.md"
+        ],
+        [],
+        [
+          {
+            "text": "Key Comparability Notes",
+            "bold": true
+          }
+        ],
+        [
+          "1. Revenue restatement",
+          "FY2018-2019 revenue and cost of revenue were restated in the FY2020 10-K to reclassify certain Driver/Restaurant incentives as a reduction of revenue. This model uses the restated basis throughout."
+        ],
+        [
+          "2. Segment re-definition",
+          "Reportable segments changed from 5 (2018-2020, incl. ATG and All Other) to 4 (2019-2021, ATG divested) to 3 (Mobility/Delivery/Freight only, from FY2021 10-K onward, All Other phased out)."
+        ],
+        [
+          "3. Geography granularity",
+          "Country-level revenue disclosure added a separate United Kingdom line starting the FY2023 10-K; prior years' 'All other countries' figure includes the UK."
+        ],
+        [
+          "4. ASC 842 adoption",
+          "Operating lease right-of-use assets/liabilities first appear in FY2019 upon adoption of the new lease standard \u2014 not a data gap for FY2016-2018."
+        ],
+        [
+          "5. Interest presentation",
+          "Uber began separately disclosing Interest income (previously netted within Other income (expense)) starting the FY2025 10-K, with FY2023 restated on a comparable basis."
+        ],
+        [
+          "6. Quarterly columns",
+          "Omitted \u2014 the curated Tier-1 source (financial_input.json) contains only annual data; no quarterly time series was available to build a consistent quarterly block."
+        ],
+        [],
+        [
+          "Source Tiers",
+          "Tier 1: data/curated financial_input.json (curated aggregates). Tier 2: SEC 10-K/10-Q source HTML (as-reported detail). Tier 3: sec-cleaned S-1/press releases (supplementary). Tier 4: metrics.md (derived ratios). See Sources sheet for the full table-level bibliography."
+        ]
+      ]
+    },
+    {
+      "name": "Income Statement",
+      "short": "IS",
+      "kind": "statement",
+      "tab_color": "1F4E79",
+      "contents": true,
+      "blocks": [
+        {
+          "title": "INCOME STATEMENT",
+          "rows": [
+            {
+              "id": "revenue",
+              "label": "Revenue",
+              "type": "input",
+              "values": {
+                "FY2016": 3845,
+                "FY2017": 7932,
+                "FY2018": 10433,
+                "FY2019": 13000,
+                "FY2020": 11139,
+                "FY2021": 17455,
+                "FY2022": 31877,
+                "FY2023": 37281,
+                "FY2024": 43978,
+                "FY2025": 52017
+              },
+              "bold": true
+            },
+            {
+              "id": "revenue_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "revenue",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "cost_of_revenue",
+              "label": "Cost of revenue, exclusive of D&A shown separately below",
+              "type": "input",
+              "values": {
+                "FY2016": 2228,
+                "FY2017": 4160,
+                "FY2018": 4786,
+                "FY2019": 6061,
+                "FY2020": 5154,
+                "FY2021": 9351,
+                "FY2022": 19659,
+                "FY2023": 22457,
+                "FY2024": 26651,
+                "FY2025": 31338
+              }
+            },
+            {
+              "id": "gross_profit",
+              "label": "Gross Profit",
+              "type": "calc",
+              "expr": "{revenue}-{cost_of_revenue}",
+              "bold": true,
+              "fmt": "num"
+            },
+            {
+              "id": "gross_margin",
+              "label": "  Gross Margin",
+              "type": "calc",
+              "expr": "{gross_profit}/{revenue}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "ops_support",
+              "label": "Operations and support",
+              "type": "input",
+              "values": {
+                "FY2018": 1516,
+                "FY2019": 2302,
+                "FY2020": 1819,
+                "FY2021": 1877,
+                "FY2022": 2413,
+                "FY2023": 2689,
+                "FY2024": 2732,
+                "FY2025": 2854
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "sales_marketing",
+              "label": "Sales and marketing",
+              "type": "input",
+              "values": {
+                "FY2018": 3151,
+                "FY2019": 4626,
+                "FY2020": 3583,
+                "FY2021": 4789,
+                "FY2022": 4756,
+                "FY2023": 4356,
+                "FY2024": 4337,
+                "FY2025": 4898
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "research_development",
+              "label": "Research and development",
+              "type": "input",
+              "values": {
+                "FY2018": 1505,
+                "FY2019": 4836,
+                "FY2020": 2205,
+                "FY2021": 2054,
+                "FY2022": 2798,
+                "FY2023": 3164,
+                "FY2024": 3109,
+                "FY2025": 3402
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "general_administrative",
+              "label": "General and administrative",
+              "type": "input",
+              "values": {
+                "FY2018": 2082,
+                "FY2019": 3299,
+                "FY2020": 2666,
+                "FY2021": 2316,
+                "FY2022": 3136,
+                "FY2023": 2682,
+                "FY2024": 3639,
+                "FY2025": 3241
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "da_expense",
+              "label": "Depreciation and amortization",
+              "type": "input",
+              "values": {
+                "FY2016": 320,
+                "FY2017": 510,
+                "FY2018": 426,
+                "FY2019": 472,
+                "FY2020": 575,
+                "FY2021": 902,
+                "FY2022": 947,
+                "FY2023": 823,
+                "FY2024": 711,
+                "FY2025": 719
+              }
+            },
+            {
+              "id": "total_costs_expenses",
+              "label": "Total costs and expenses",
+              "type": "subtotal",
+              "children": [
+                "cost_of_revenue",
+                "ops_support",
+                "sales_marketing",
+                "research_development",
+                "general_administrative",
+                "da_expense"
+              ],
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2018",
+              "note": "Full opex detail only disclosed from FY2018 (post-IPO 10-K comparatives)"
+            },
+            {
+              "id": "operating_profit",
+              "label": "Income (loss) from operations",
+              "type": "input",
+              "values": {
+                "FY2016": -3023,
+                "FY2017": -4080,
+                "FY2018": -3033,
+                "FY2019": -8596,
+                "FY2020": -4863,
+                "FY2021": -3834,
+                "FY2022": -1832,
+                "FY2023": 1110,
+                "FY2024": 2799,
+                "FY2025": 5565
+              },
+              "bold": true
+            },
+            {
+              "id": "operating_margin",
+              "label": "  Operating Margin",
+              "type": "calc",
+              "expr": "{operating_profit}/{revenue}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "op_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "operating_profit",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "is_check_opex",
+              "label": "Check: Revenue - Total Costs & Exp - Op. Income (should be ~0)",
+              "type": "check",
+              "expr": "{revenue}-{total_costs_expenses}-{operating_profit}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "net_interest_expense_pre",
+              "label": "Net interest expense (pre-IPO presentation)",
+              "type": "input",
+              "values": {
+                "FY2016": 334,
+                "FY2017": 479
+              },
+              "min_label": "FY2016",
+              "max_label": "FY2017",
+              "note": "FY2016-2017 filings did not separately break out interest expense/income; Tier-1 net figure used"
+            },
+            {
+              "id": "interest_expense",
+              "label": "Interest expense",
+              "type": "input",
+              "values": {
+                "FY2018": -648,
+                "FY2019": -559,
+                "FY2020": -458,
+                "FY2021": -483,
+                "FY2022": -565,
+                "FY2023": -633,
+                "FY2024": -523,
+                "FY2025": -440
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "interest_income",
+              "label": "Interest income",
+              "type": "input",
+              "values": {
+                "FY2023": 484,
+                "FY2024": 721,
+                "FY2025": 743
+              },
+              "min_label": "FY2023",
+              "note": "Separately disclosed starting with the FY2025 10-K (FY2023 restated comparative); previously netted within Other income (expense)"
+            },
+            {
+              "id": "other_income_expense_net",
+              "label": "Other income (expense), net",
+              "type": "input",
+              "values": {
+                "FY2018": 4993,
+                "FY2019": 722,
+                "FY2020": -1625,
+                "FY2021": 3292,
+                "FY2022": -7029,
+                "FY2023": 1360,
+                "FY2024": 1128,
+                "FY2025": -68
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "income_before_tax",
+              "label": "Income (loss) before income taxes",
+              "type": "input",
+              "values": {
+                "FY2016": -3218,
+                "FY2017": -4575,
+                "FY2018": 1312,
+                "FY2019": -8433,
+                "FY2020": -6946,
+                "FY2021": -1025,
+                "FY2022": -9426,
+                "FY2023": 2321,
+                "FY2024": 4125,
+                "FY2025": 5800
+              },
+              "bold": true
+            },
+            {
+              "id": "income_tax_expense",
+              "label": "Provision for (benefit from) income taxes",
+              "type": "input",
+              "values": {
+                "FY2016": 28,
+                "FY2017": -542,
+                "FY2018": 283,
+                "FY2019": 45,
+                "FY2020": -192,
+                "FY2021": -492,
+                "FY2022": -181,
+                "FY2023": 213,
+                "FY2024": -5758,
+                "FY2025": -4346
+              }
+            },
+            {
+              "id": "equity_method_income",
+              "label": "Income (loss) from equity method investments",
+              "type": "input",
+              "values": {
+                "FY2018": -42,
+                "FY2019": -34,
+                "FY2020": -34,
+                "FY2021": -37,
+                "FY2022": 107,
+                "FY2023": 48,
+                "FY2024": -38,
+                "FY2025": -53
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "is_check_ni",
+              "label": "Check: Income before tax - Tax + Equity Method - NI (should be ~0)",
+              "type": "check",
+              "expr": "{income_before_tax}-{income_tax_expense}+{equity_method_income}-{net_income_consolidated}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "net_income_consolidated",
+              "label": "Net income (loss) including non-controlling interests",
+              "type": "input",
+              "values": {
+                "FY2016": -370,
+                "FY2017": -4033,
+                "FY2018": 987,
+                "FY2019": -8512,
+                "FY2020": -6788,
+                "FY2021": -570,
+                "FY2022": -9138,
+                "FY2023": 2156,
+                "FY2024": 9845,
+                "FY2025": 10093
+              },
+              "bold": true
+            },
+            {
+              "id": "net_income_nci",
+              "label": "Less: net income (loss) attributable to non-controlling interests, net of tax",
+              "type": "input",
+              "values": {
+                "FY2016": 0,
+                "FY2017": 0,
+                "FY2018": -10,
+                "FY2019": -6,
+                "FY2020": -20,
+                "FY2021": -74,
+                "FY2022": 3,
+                "FY2023": 269,
+                "FY2024": -11,
+                "FY2025": 40
+              }
+            },
+            {
+              "id": "net_income_parent",
+              "label": "Net income (loss) attributable to Uber Technologies, Inc.",
+              "type": "input",
+              "values": {
+                "FY2016": -370,
+                "FY2017": -4033,
+                "FY2018": 997,
+                "FY2019": -8506,
+                "FY2020": -6768,
+                "FY2021": -496,
+                "FY2022": -9141,
+                "FY2023": 1887,
+                "FY2024": 9856,
+                "FY2025": 10053
+              },
+              "bold": true
+            },
+            {
+              "id": "is_check_parent",
+              "label": "Check: NI incl. NCI - NCI - NI to Uber (should be ~0)",
+              "type": "check",
+              "expr": "{net_income_consolidated}-{net_income_nci}-{net_income_parent}",
+              "fmt": "num",
+              "memo": true
+            },
+            {
+              "id": "net_margin",
+              "label": "  Net Margin",
+              "type": "calc",
+              "expr": "{net_income_parent}/{revenue}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "ni_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "net_income_parent",
+              "fmt": "pct",
+              "memo": true
+            }
+          ]
+        },
+        {
+          "title": "EPS & SHARE COUNT",
+          "rows": [
+            {
+              "id": "basic_eps",
+              "label": "Basic EPS",
+              "type": "input",
+              "values": {
+                "FY2019": -6.81,
+                "FY2020": -3.86,
+                "FY2021": -0.26,
+                "FY2022": -4.64,
+                "FY2023": 0.93,
+                "FY2024": 4.71,
+                "FY2025": 4.82
+              },
+              "fmt": "ps",
+              "bold": true,
+              "min_label": "FY2019",
+              "note": "FY2016-2018: no meaningful per-share amounts presented pre-IPO"
+            },
+            {
+              "id": "diluted_eps",
+              "label": "Diluted EPS",
+              "type": "input",
+              "values": {
+                "FY2019": -6.81,
+                "FY2020": -3.86,
+                "FY2021": -0.29,
+                "FY2022": -4.65,
+                "FY2023": 0.87,
+                "FY2024": 4.56,
+                "FY2025": 4.73
+              },
+              "fmt": "ps",
+              "bold": true,
+              "min_label": "FY2019"
+            },
+            {
+              "id": "eps_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "diluted_eps",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "waso_basic",
+              "label": "Weighted Avg Shares \u2014 Basic (millions)",
+              "type": "input",
+              "values": {
+                "FY2018": 443.368,
+                "FY2019": 1248.353,
+                "FY2020": 1752.96,
+                "FY2021": 1892.546,
+                "FY2022": 1972.131,
+                "FY2023": 2035.651,
+                "FY2024": 2094.602,
+                "FY2025": 2085.253
+              },
+              "fmt": "num1",
+              "min_label": "FY2018"
+            },
+            {
+              "id": "waso_diluted",
+              "label": "Weighted Avg Shares \u2014 Diluted (millions)",
+              "type": "input",
+              "values": {
+                "FY2018": 478.999,
+                "FY2019": 1248.353,
+                "FY2020": 1752.96,
+                "FY2021": 1895.519,
+                "FY2022": 1974.928,
+                "FY2023": 2091.782,
+                "FY2024": 2150.508,
+                "FY2025": 2119.689
+              },
+              "fmt": "num1",
+              "min_label": "FY2018"
+            }
+          ]
+        },
+        {
+          "title": "NON-GAAP RECONCILIATION (ADJUSTED EBITDA)",
+          "rows": [
+            {
+              "id": "ni_bridge",
+              "label": "Net income (loss) attributable to Uber (from above)",
+              "type": "link",
+              "ref": "IS:net_income_parent",
+              "bold": true
+            },
+            {
+              "id": "add_nci_bridge",
+              "label": "Add: Net income (loss) attributable to non-controlling interests, net of tax",
+              "type": "link",
+              "ref": "IS:net_income_nci",
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "add_equity_method",
+              "label": "Add: Loss (income) from equity method investments",
+              "type": "input",
+              "values": {
+                "FY2018": 42,
+                "FY2019": 34,
+                "FY2020": 34,
+                "FY2021": 37,
+                "FY2022": -107,
+                "FY2023": -48,
+                "FY2024": 38,
+                "FY2025": 53
+              },
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "add_tax_bridge",
+              "label": "Add: Provision for (benefit from) income taxes",
+              "type": "link",
+              "ref": "IS:income_tax_expense",
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "add_other_income",
+              "label": "Add (deduct): Other (income) expense, net",
+              "type": "calc",
+              "expr": "0-{IS:other_income_expense_net}",
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "add_interest_expense",
+              "label": "Add: Interest expense",
+              "type": "calc",
+              "expr": "0-{IS:interest_expense}",
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "add_interest_income",
+              "label": "Deduct: Interest income",
+              "type": "calc",
+              "expr": "0-{IS:interest_income}",
+              "indent": 1,
+              "min_label": "FY2023"
+            },
+            {
+              "id": "bridge_op_income",
+              "label": "= Income (loss) from operations",
+              "type": "link",
+              "ref": "IS:operating_profit",
+              "indent": 1,
+              "border_top": true,
+              "min_label": "FY2018"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "add_da_bridge",
+              "label": "Add: Depreciation and amortization",
+              "type": "link",
+              "ref": "IS:da_expense",
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "add_sbc",
+              "label": "Add: Stock-based compensation expense",
+              "type": "input",
+              "values": {
+                "FY2018": 172,
+                "FY2019": 4596,
+                "FY2020": 827,
+                "FY2021": 1168,
+                "FY2022": 1793,
+                "FY2023": 1935,
+                "FY2024": 1796,
+                "FY2025": 1826
+              },
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "legal_tax_reg",
+              "label": "Add: Legal, tax, and regulatory reserve changes and settlements",
+              "type": "input",
+              "values": {
+                "FY2018": 340,
+                "FY2019": 353,
+                "FY2020": -35,
+                "FY2021": 526,
+                "FY2022": 732,
+                "FY2023": 9,
+                "FY2024": 1123,
+                "FY2025": 564
+              },
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "driver_appreciation_award",
+              "label": "Add: Driver appreciation award",
+              "type": "input",
+              "values": {
+                "FY2019": 299
+              },
+              "indent": 1
+            },
+            {
+              "id": "payroll_tax_ipo_sbc",
+              "label": "Add: Payroll tax on IPO stock-based compensation",
+              "type": "input",
+              "values": {
+                "FY2019": 86
+              },
+              "indent": 1
+            },
+            {
+              "id": "goodwill_impairments_bridge",
+              "label": "Add: Goodwill and asset impairments/loss on sale of assets, net",
+              "type": "input",
+              "values": {
+                "FY2018": 237,
+                "FY2019": 8,
+                "FY2020": 317,
+                "FY2021": 157,
+                "FY2022": 25,
+                "FY2023": 84,
+                "FY2024": 3,
+                "FY2025": 2
+              },
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "acquisition_financing_expenses",
+              "label": "Add: Acquisition, financing and divestiture related expenses",
+              "type": "input",
+              "values": {
+                "FY2018": 15,
+                "FY2019": 0,
+                "FY2020": 86,
+                "FY2021": 102,
+                "FY2022": 46,
+                "FY2023": 36,
+                "FY2024": 25,
+                "FY2025": 43
+              },
+              "indent": 1,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "accelerated_lease_costs",
+              "label": "Add: Accelerated lease costs related to cease-use of ROU assets",
+              "type": "input",
+              "values": {
+                "FY2020": 102,
+                "FY2021": 5
+              },
+              "indent": 1
+            },
+            {
+              "id": "covid_response",
+              "label": "Add: COVID-19 response initiatives",
+              "type": "input",
+              "values": {
+                "FY2020": 106,
+                "FY2021": 54
+              },
+              "indent": 1
+            },
+            {
+              "id": "gain_loss_lease_arrangement",
+              "label": "Add (deduct): (Gain) loss on lease arrangement, net",
+              "type": "input",
+              "values": {
+                "FY2018": -4,
+                "FY2020": -5,
+                "FY2022": 7,
+                "FY2023": 4,
+                "FY2024": 2,
+                "FY2025": 2
+              },
+              "indent": 1
+            },
+            {
+              "id": "restructuring_charges",
+              "label": "Add: Restructuring and related charges, net",
+              "type": "input",
+              "values": {
+                "FY2019": 57,
+                "FY2020": 362,
+                "FY2023": 51,
+                "FY2024": 25,
+                "FY2025": 9
+              },
+              "indent": 1
+            },
+            {
+              "id": "legacy_auto_insurance_transfer",
+              "label": "Add: Legacy auto insurance transfer",
+              "type": "input",
+              "values": {
+                "FY2021": 103
+              },
+              "indent": 1
+            },
+            {
+              "id": "mass_arbitration_fees",
+              "label": "Add (deduct): Mass arbitration fees, net",
+              "type": "input",
+              "values": {
+                "FY2021": 43,
+                "FY2022": -14
+              },
+              "indent": 1
+            },
+            {
+              "id": "adj_ebitda",
+              "label": "Adjusted EBITDA",
+              "type": "input",
+              "values": {
+                "FY2016": -2517,
+                "FY2017": -2642,
+                "FY2018": -1847,
+                "FY2019": -2725,
+                "FY2020": -2528,
+                "FY2021": -774,
+                "FY2022": 1713,
+                "FY2023": 4052,
+                "FY2024": 6484,
+                "FY2025": 8730
+              },
+              "bold": true,
+              "border_top": true
+            },
+            {
+              "id": "adj_ebitda_margin",
+              "label": "  Adjusted EBITDA Margin",
+              "type": "calc",
+              "expr": "{adj_ebitda}/{IS:revenue}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "adj_ebitda_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "adj_ebitda",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "nongaap_check",
+              "label": "Bridge Check vs. Adjusted EBITDA (should be ~0)",
+              "type": "check",
+              "expr": "{ni_bridge}+{add_nci_bridge}+{add_equity_method}+{add_tax_bridge}+{add_other_income}+{add_interest_expense}+{add_interest_income}+{add_da_bridge}+{add_sbc}+{legal_tax_reg}+{driver_appreciation_award}+{payroll_tax_ipo_sbc}+{goodwill_impairments_bridge}+{acquisition_financing_expenses}+{accelerated_lease_costs}+{covid_response}+{gain_loss_lease_arrangement}+{restructuring_charges}+{legacy_auto_insurance_transfer}+{mass_arbitration_fees}-{adj_ebitda}",
+              "fmt": "num",
+              "memo": true,
+              "expect_nonzero": true,
+              "min_label": "FY2018"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Balance Sheet",
+      "short": "BS",
+      "kind": "statement",
+      "tab_color": "1F4E79",
+      "contents": true,
+      "blocks": [
+        {
+          "title": "ASSETS",
+          "rows": [
+            {
+              "id": "cash_and_equivalents",
+              "label": "Cash and cash equivalents",
+              "type": "input",
+              "values": {
+                "FY2016": 6241,
+                "FY2017": 4393,
+                "FY2018": 6406,
+                "FY2019": 10873,
+                "FY2020": 5647,
+                "FY2021": 4295,
+                "FY2022": 4208,
+                "FY2023": 4680,
+                "FY2024": 5893,
+                "FY2025": 7105
+              },
+              "bold": true
+            },
+            {
+              "id": "short_term_investments",
+              "label": "Short-term investments",
+              "type": "input",
+              "values": {
+                "FY2019": 440,
+                "FY2020": 1180,
+                "FY2022": 103,
+                "FY2023": 727,
+                "FY2024": 1084,
+                "FY2025": 528
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "restricted_cash_current",
+              "label": "Restricted cash and cash equivalents, current",
+              "type": "input",
+              "values": {
+                "FY2019": 99,
+                "FY2020": 250,
+                "FY2021": 631,
+                "FY2022": 680,
+                "FY2023": 805,
+                "FY2024": 545,
+                "FY2025": 631
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "trade_receivables",
+              "label": "Accounts receivable, net",
+              "type": "input",
+              "values": {
+                "FY2017": 739,
+                "FY2018": 919,
+                "FY2019": 1214,
+                "FY2020": 1073,
+                "FY2021": 2439,
+                "FY2022": 2779,
+                "FY2023": 3404,
+                "FY2024": 3333,
+                "FY2025": 3827
+              },
+              "min_label": "FY2017"
+            },
+            {
+              "id": "prepaid_other_current",
+              "label": "Prepaid expenses and other current assets",
+              "type": "input",
+              "values": {
+                "FY2019": 1299,
+                "FY2020": 1215,
+                "FY2021": 1454,
+                "FY2022": 1479,
+                "FY2023": 1681,
+                "FY2024": 1390,
+                "FY2025": 1902
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "assets_held_for_sale",
+              "label": "Assets held for sale",
+              "type": "input",
+              "values": {
+                "FY2020": 517
+              },
+              "min_label": "FY2020",
+              "max_label": "FY2020"
+            },
+            {
+              "id": "current_assets",
+              "label": "Total current assets",
+              "type": "input",
+              "values": {
+                "FY2017": 6837,
+                "FY2018": 8658,
+                "FY2019": 13925,
+                "FY2020": 9882,
+                "FY2021": 8819,
+                "FY2022": 9249,
+                "FY2023": 11297,
+                "FY2024": 12245,
+                "FY2025": 13993
+              },
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2017"
+            },
+            {
+              "id": "bs_check_ca",
+              "label": "Check: Sum of current asset detail vs. Total current assets (should be ~0)",
+              "type": "check",
+              "expr": "{cash_and_equivalents}+{short_term_investments}+{restricted_cash_current}+{trade_receivables}+{prepaid_other_current}+{assets_held_for_sale}-{current_assets}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2019"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "restricted_cash_noncurrent",
+              "label": "Restricted cash and cash equivalents, non-current",
+              "type": "input",
+              "values": {
+                "FY2019": 1095,
+                "FY2020": 1494,
+                "FY2021": 2879,
+                "FY2022": 1789,
+                "FY2023": 1519,
+                "FY2024": 2172,
+                "FY2025": 1911
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "collateral_held_by_insurer",
+              "label": "Collateral held by insurer",
+              "type": "input",
+              "values": {
+                "FY2020": 860
+              },
+              "min_label": "FY2020",
+              "max_label": "FY2020"
+            },
+            {
+              "id": "investments",
+              "label": "Investments",
+              "type": "input",
+              "values": {
+                "FY2019": 10527,
+                "FY2020": 9052,
+                "FY2021": 11806,
+                "FY2022": 4401,
+                "FY2023": 6101,
+                "FY2024": 8460,
+                "FY2025": 9178
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "restricted_investments",
+              "label": "Restricted investments",
+              "type": "input",
+              "values": {
+                "FY2022": 1614,
+                "FY2023": 4779,
+                "FY2024": 7019,
+                "FY2025": 8874
+              },
+              "min_label": "FY2022",
+              "note": "New face line starting FY2022"
+            },
+            {
+              "id": "equity_method_investments",
+              "label": "Equity method investments",
+              "type": "input",
+              "values": {
+                "FY2019": 1364,
+                "FY2020": 1079,
+                "FY2021": 800,
+                "FY2022": 870,
+                "FY2023": 353,
+                "FY2024": 302,
+                "FY2025": 287
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "ppe",
+              "label": "Property and equipment, net",
+              "type": "input",
+              "values": {
+                "FY2017": 1192,
+                "FY2018": 1641,
+                "FY2019": 1731,
+                "FY2020": 1814,
+                "FY2021": 1853,
+                "FY2022": 2082,
+                "FY2023": 2073,
+                "FY2024": 1952,
+                "FY2025": 1897
+              },
+              "min_label": "FY2017"
+            },
+            {
+              "id": "operating_lease_rou_assets",
+              "label": "Operating lease right-of-use assets",
+              "type": "input",
+              "values": {
+                "FY2019": 1594,
+                "FY2020": 1274,
+                "FY2021": 1388,
+                "FY2022": 1449,
+                "FY2023": 1241,
+                "FY2024": 1158,
+                "FY2025": 1114
+              },
+              "min_label": "FY2019",
+              "note": "ASC 842 adopted effective Jan 1, 2019; no ROU assets reported before FY2019"
+            },
+            {
+              "id": "intangible_assets",
+              "label": "Intangible assets, net",
+              "type": "input",
+              "values": {
+                "FY2017": 54,
+                "FY2018": 82,
+                "FY2019": 71,
+                "FY2020": 1564,
+                "FY2021": 2412,
+                "FY2022": 1874,
+                "FY2023": 1425,
+                "FY2024": 1125,
+                "FY2025": 1048
+              },
+              "min_label": "FY2017"
+            },
+            {
+              "id": "goodwill",
+              "label": "Goodwill",
+              "type": "input",
+              "values": {
+                "FY2017": 39,
+                "FY2018": 153,
+                "FY2019": 167,
+                "FY2020": 6109,
+                "FY2021": 8420,
+                "FY2022": 8263,
+                "FY2023": 8151,
+                "FY2024": 8066,
+                "FY2025": 8931
+              },
+              "min_label": "FY2017"
+            },
+            {
+              "id": "deferred_tax_assets",
+              "label": "Deferred tax assets",
+              "type": "input",
+              "values": {
+                "FY2024": 6171,
+                "FY2025": 10951
+              },
+              "min_label": "FY2024",
+              "note": "Became material after release of U.S. valuation allowance in FY2023"
+            },
+            {
+              "id": "other_assets",
+              "label": "Other assets",
+              "type": "input",
+              "values": {
+                "FY2019": 88,
+                "FY2020": 124,
+                "FY2021": 397,
+                "FY2022": 518,
+                "FY2023": 1760,
+                "FY2024": 2574,
+                "FY2025": 3618
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "total_assets",
+              "label": "Total assets",
+              "type": "input",
+              "values": {
+                "FY2016": 15713,
+                "FY2017": 15426,
+                "FY2018": 23988,
+                "FY2019": 31761,
+                "FY2020": 33252,
+                "FY2021": 38774,
+                "FY2022": 32109,
+                "FY2023": 38699,
+                "FY2024": 51244,
+                "FY2025": 61802
+              },
+              "bold": true,
+              "border_top": true
+            }
+          ]
+        },
+        {
+          "title": "LIABILITIES",
+          "rows": [
+            {
+              "id": "trade_payables",
+              "label": "Accounts payable",
+              "type": "input",
+              "values": {
+                "FY2017": 213,
+                "FY2018": 150,
+                "FY2019": 272,
+                "FY2020": 235,
+                "FY2021": 860,
+                "FY2022": 728,
+                "FY2023": 790,
+                "FY2024": 858,
+                "FY2025": 1013
+              },
+              "min_label": "FY2017"
+            },
+            {
+              "id": "short_term_insurance_reserves",
+              "label": "Short-term insurance reserves",
+              "type": "input",
+              "values": {
+                "FY2019": 1121,
+                "FY2020": 1243,
+                "FY2021": 1442,
+                "FY2022": 1692,
+                "FY2023": 2016,
+                "FY2024": 2754,
+                "FY2025": 3387
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "operating_lease_liab_current",
+              "label": "Operating lease liabilities, current",
+              "type": "input",
+              "values": {
+                "FY2019": 196,
+                "FY2020": 175,
+                "FY2021": 185,
+                "FY2022": 201,
+                "FY2023": 190,
+                "FY2024": 175,
+                "FY2025": 169
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "accrued_other_current",
+              "label": "Accrued and other current liabilities",
+              "type": "input",
+              "values": {
+                "FY2019": 4050,
+                "FY2020": 5112,
+                "FY2021": 6537,
+                "FY2022": 6232,
+                "FY2023": 6458,
+                "FY2024": 7689,
+                "FY2025": 7751
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "liabilities_held_for_sale",
+              "label": "Liabilities held for sale",
+              "type": "input",
+              "values": {
+                "FY2020": 100
+              },
+              "min_label": "FY2020",
+              "max_label": "FY2020"
+            },
+            {
+              "id": "current_liabilities",
+              "label": "Total current liabilities",
+              "type": "input",
+              "values": {
+                "FY2017": 3847,
+                "FY2018": 4259,
+                "FY2019": 5639,
+                "FY2020": 6865,
+                "FY2021": 9024,
+                "FY2022": 8853,
+                "FY2023": 9454,
+                "FY2024": 11476,
+                "FY2025": 12320
+              },
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2017"
+            },
+            {
+              "id": "bs_check_cl",
+              "label": "Check: Sum of current liability detail vs. Total current liabilities (should be ~0)",
+              "type": "check",
+              "expr": "{trade_payables}+{short_term_insurance_reserves}+{operating_lease_liab_current}+{accrued_other_current}+{liabilities_held_for_sale}-{current_liabilities}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2019"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "long_term_insurance_reserves",
+              "label": "Long-term insurance reserves",
+              "type": "input",
+              "values": {
+                "FY2019": 2297,
+                "FY2020": 2223,
+                "FY2021": 2546,
+                "FY2022": 3028,
+                "FY2023": 4722,
+                "FY2024": 7042,
+                "FY2025": 9076
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "long_term_debt",
+              "label": "Long-term debt, net of current portion",
+              "type": "input",
+              "values": {
+                "FY2016": 3087,
+                "FY2017": 3048,
+                "FY2018": 6869,
+                "FY2019": 5707,
+                "FY2020": 7560,
+                "FY2021": 9276,
+                "FY2022": 9265,
+                "FY2023": 9459,
+                "FY2024": 8347,
+                "FY2025": 10521
+              }
+            },
+            {
+              "id": "operating_lease_liab_noncurrent",
+              "label": "Operating lease liabilities, non-current",
+              "type": "input",
+              "values": {
+                "FY2019": 1523,
+                "FY2020": 1544,
+                "FY2021": 1644,
+                "FY2022": 1673,
+                "FY2023": 1550,
+                "FY2024": 1454,
+                "FY2025": 1390
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "other_lt_liabilities",
+              "label": "Other long-term liabilities",
+              "type": "input",
+              "values": {
+                "FY2019": 1412,
+                "FY2020": 1306,
+                "FY2021": 935,
+                "FY2022": 786,
+                "FY2023": 832,
+                "FY2024": 449,
+                "FY2025": 412
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "total_liabilities_bs",
+              "label": "Total liabilities",
+              "type": "input",
+              "values": {
+                "FY2016": 9198,
+                "FY2017": 11773,
+                "FY2018": 17196,
+                "FY2019": 16578,
+                "FY2020": 19498,
+                "FY2021": 23425,
+                "FY2022": 23605,
+                "FY2023": 26017,
+                "FY2024": 28768,
+                "FY2025": 33719
+              },
+              "bold": true,
+              "border_top": true
+            }
+          ]
+        },
+        {
+          "title": "EQUITY",
+          "rows": [
+            {
+              "id": "redeemable_nci",
+              "label": "Redeemable non-controlling interests (mezzanine)",
+              "type": "input",
+              "values": {
+                "FY2016": 11111,
+                "FY2017": 12210,
+                "FY2018": 14177,
+                "FY2019": 311,
+                "FY2020": 787,
+                "FY2021": 204,
+                "FY2022": 430,
+                "FY2023": 654,
+                "FY2024": 93,
+                "FY2025": 165
+              }
+            },
+            {
+              "id": "additional_paid_in_capital",
+              "label": "Additional paid-in capital",
+              "type": "input",
+              "values": {
+                "FY2019": 30739,
+                "FY2020": 35931,
+                "FY2021": 38608,
+                "FY2022": 40550,
+                "FY2023": 42264,
+                "FY2024": 42801,
+                "FY2025": 38101
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "aoci",
+              "label": "Accumulated other comprehensive income (loss)",
+              "type": "input",
+              "values": {
+                "FY2019": -187,
+                "FY2020": -535,
+                "FY2021": -524,
+                "FY2022": -443,
+                "FY2023": -421,
+                "FY2024": -517,
+                "FY2025": -432
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "accumulated_deficit",
+              "label": "Accumulated deficit",
+              "type": "input",
+              "values": {
+                "FY2019": -16362,
+                "FY2020": -23130,
+                "FY2021": -23626,
+                "FY2022": -32767,
+                "FY2023": -30594,
+                "FY2024": -20726,
+                "FY2025": -10628
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "total_uber_equity",
+              "label": "Total Uber Technologies, Inc. stockholders' equity (deficit)",
+              "type": "input",
+              "values": {
+                "FY2016": -4596,
+                "FY2017": -8557,
+                "FY2018": -7385,
+                "FY2019": 14190,
+                "FY2020": 12266,
+                "FY2021": 14458,
+                "FY2022": 7340,
+                "FY2023": 11249,
+                "FY2024": 21558,
+                "FY2025": 27041
+              },
+              "bold": true
+            },
+            {
+              "id": "nci",
+              "label": "Non-redeemable non-controlling interests",
+              "type": "input",
+              "values": {
+                "FY2016": 0,
+                "FY2017": 0,
+                "FY2018": 0,
+                "FY2019": 682,
+                "FY2020": 701,
+                "FY2021": 687,
+                "FY2022": 734,
+                "FY2023": 779,
+                "FY2024": 825,
+                "FY2025": 877
+              }
+            },
+            {
+              "id": "total_equity",
+              "label": "Total equity (deficit)",
+              "type": "input",
+              "values": {
+                "FY2016": -4596,
+                "FY2017": -8557,
+                "FY2018": -7385,
+                "FY2019": 14872,
+                "FY2020": 12967,
+                "FY2021": 15145,
+                "FY2022": 8074,
+                "FY2023": 12028,
+                "FY2024": 22383,
+                "FY2025": 27918
+              },
+              "bold": true,
+              "border_top": true
+            },
+            {
+              "id": "bs_check",
+              "label": "Balance Check: Assets - Liabilities - Redeemable NCI - Equity (should be ~0)",
+              "type": "check",
+              "expr": "{total_assets}-{total_liabilities_bs}-{redeemable_nci}-{total_equity}",
+              "fmt": "num",
+              "memo": true
+            }
+          ]
+        },
+        {
+          "title": "WORKING CAPITAL ANALYTICS",
+          "rows": [
+            {
+              "id": "wc_dso",
+              "label": "Days Sales Outstanding (AR)",
+              "type": "calc",
+              "expr": "{trade_receivables}/{IS:revenue}*365",
+              "fmt": "num1",
+              "memo": true,
+              "min_label": "FY2017"
+            },
+            {
+              "id": "wc_dpo",
+              "label": "Days Payable Outstanding (AP)",
+              "type": "calc",
+              "expr": "{trade_payables}/{IS:cost_of_revenue}*365",
+              "fmt": "num1",
+              "memo": true,
+              "min_label": "FY2017"
+            },
+            {
+              "id": "wc_net_cycle",
+              "label": "Net Trade Cycle (DSO - DPO)",
+              "type": "calc",
+              "expr": "{wc_dso}-{wc_dpo}",
+              "fmt": "num1",
+              "memo": true,
+              "min_label": "FY2017",
+              "note": "Uber carries no inventory (asset-light platform business); DIO is not applicable and is omitted"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cash Flow",
+      "short": "CF",
+      "kind": "statement",
+      "tab_color": "1F4E79",
+      "contents": true,
+      "blocks": [
+        {
+          "title": "OPERATING ACTIVITIES",
+          "rows": [
+            {
+              "id": "ni_incl_nci",
+              "label": "Net income (loss) including non-controlling interests",
+              "type": "input",
+              "values": {
+                "FY2016": -370,
+                "FY2017": -4033,
+                "FY2018": 987,
+                "FY2019": -8512,
+                "FY2020": -6788,
+                "FY2021": -570,
+                "FY2022": -9138,
+                "FY2023": 2156,
+                "FY2024": 9845,
+                "FY2025": 10093
+              },
+              "bold": true
+            },
+            {
+              "id": "da_cf",
+              "label": "Depreciation and amortization",
+              "type": "input",
+              "values": {
+                "FY2018": 426,
+                "FY2019": 472,
+                "FY2020": 575,
+                "FY2021": 902,
+                "FY2022": 947,
+                "FY2023": 823,
+                "FY2024": 737,
+                "FY2025": 747
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "bad_debt_expense",
+              "label": "Bad debt expense",
+              "type": "input",
+              "values": {
+                "FY2018": 71,
+                "FY2019": 92,
+                "FY2020": 76,
+                "FY2021": 109,
+                "FY2022": 114,
+                "FY2023": 92
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023",
+              "note": "Folded into Other starting the FY2025 10-K presentation"
+            },
+            {
+              "id": "sbc_cf",
+              "label": "Stock-based compensation",
+              "type": "input",
+              "values": {
+                "FY2016": 107,
+                "FY2017": 124,
+                "FY2018": 170,
+                "FY2019": 4596,
+                "FY2020": 827,
+                "FY2021": 1168,
+                "FY2022": 1793,
+                "FY2023": 1935,
+                "FY2024": 1796,
+                "FY2025": 1826
+              }
+            },
+            {
+              "id": "loss_gain_sale_investments",
+              "label": "Loss (gain) from sale of investments",
+              "type": "input",
+              "values": {
+                "FY2021": -413,
+                "FY2022": 0,
+                "FY2023": 74
+              },
+              "min_label": "FY2021",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "gain_business_divestitures",
+              "label": "Gain on business divestitures, net",
+              "type": "input",
+              "values": {
+                "FY2018": -3214,
+                "FY2019": 0,
+                "FY2020": -204,
+                "FY2021": -1684,
+                "FY2022": -14,
+                "FY2023": -204
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "deferred_income_taxes",
+              "label": "Deferred income taxes",
+              "type": "input",
+              "values": {
+                "FY2018": 35,
+                "FY2019": -88,
+                "FY2020": -266,
+                "FY2021": -692,
+                "FY2022": -441,
+                "FY2023": 26,
+                "FY2024": -6027,
+                "FY2025": -4779
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "gain_extinguishment_convertible",
+              "label": "Gain on extinguishment of convertible notes and settlement of derivatives",
+              "type": "input",
+              "values": {
+                "FY2019": -444
+              }
+            },
+            {
+              "id": "revaluation_derivative_liab",
+              "label": "Revaluation of derivative liabilities",
+              "type": "input",
+              "values": {
+                "FY2018": 501,
+                "FY2019": -58
+              }
+            },
+            {
+              "id": "accretion_discount_lt_debt",
+              "label": "Accretion of discount on long-term debt",
+              "type": "input",
+              "values": {
+                "FY2018": 318,
+                "FY2019": 82,
+                "FY2020": 45
+              }
+            },
+            {
+              "id": "payment_in_kind_interest",
+              "label": "Payment-in-kind interest",
+              "type": "input",
+              "values": {
+                "FY2018": 71,
+                "FY2019": 10
+              }
+            },
+            {
+              "id": "impairment_debt_equity_securities",
+              "label": "Impairment of debt and equity securities",
+              "type": "input",
+              "values": {
+                "FY2020": 1690
+              }
+            },
+            {
+              "id": "impairments_goodwill_other",
+              "label": "Impairments of goodwill, long-lived and other assets",
+              "type": "input",
+              "values": {
+                "FY2018": 197,
+                "FY2020": 404,
+                "FY2021": 116,
+                "FY2022": 28,
+                "FY2023": 86
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "impairment_equity_method_investment",
+              "label": "Impairment of equity method investment",
+              "type": "input",
+              "values": {
+                "FY2022": 182
+              }
+            },
+            {
+              "id": "equity_method_income_cf",
+              "label": "Loss (income) from equity method investments, net",
+              "type": "input",
+              "values": {
+                "FY2018": 42,
+                "FY2019": 34,
+                "FY2020": 34,
+                "FY2021": 37,
+                "FY2022": -107,
+                "FY2023": -48
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "unrealized_gain_loss_debt_equity",
+              "label": "Unrealized (gain) loss on debt and equity securities, net",
+              "type": "input",
+              "values": {
+                "FY2018": -1996,
+                "FY2019": -2,
+                "FY2020": 125,
+                "FY2021": -1142,
+                "FY2022": 7045,
+                "FY2023": -1610,
+                "FY2024": -1832,
+                "FY2025": 97
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "accretion_discount_mkt_securities",
+              "label": "Accretion of discounts on marketable debt securities, net",
+              "type": "input",
+              "values": {
+                "FY2023": -154,
+                "FY2024": -251,
+                "FY2025": -158
+              },
+              "min_label": "FY2023",
+              "note": "Separately broken out starting the FY2025 10-K; previously embedded in unrealized gain/loss line"
+            },
+            {
+              "id": "revaluation_mlu_call_option",
+              "label": "Revaluation of MLU B.V. call option",
+              "type": "input",
+              "values": {
+                "FY2022": -191
+              }
+            },
+            {
+              "id": "gain_forfeiture_warrants",
+              "label": "Gain on forfeiture of unvested warrants and related share repurchases",
+              "type": "input",
+              "values": {
+                "FY2018": -152
+              }
+            },
+            {
+              "id": "unrealized_fx_transactions_cf",
+              "label": "Unrealized foreign currency transactions",
+              "type": "input",
+              "values": {
+                "FY2018": 53,
+                "FY2019": 16,
+                "FY2020": 48,
+                "FY2021": 38,
+                "FY2022": 96,
+                "FY2023": 138,
+                "FY2024": 308,
+                "FY2025": -120
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "other_operating_cf",
+              "label": "Other",
+              "type": "input",
+              "values": {
+                "FY2018": 60,
+                "FY2019": -19,
+                "FY2020": -43,
+                "FY2021": 4,
+                "FY2022": -7,
+                "FY2023": 106,
+                "FY2024": 187,
+                "FY2025": 166
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "chg_accounts_receivable",
+              "label": "Change in accounts receivable",
+              "type": "input",
+              "values": {
+                "FY2018": -279,
+                "FY2019": -407,
+                "FY2020": 142,
+                "FY2021": -597,
+                "FY2022": -542,
+                "FY2023": -758,
+                "FY2024": -142,
+                "FY2025": -466
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "chg_prepaid_other_assets",
+              "label": "Change in prepaid expenses and other assets",
+              "type": "input",
+              "values": {
+                "FY2018": -473,
+                "FY2019": -478,
+                "FY2020": 94,
+                "FY2021": -236,
+                "FY2022": -196,
+                "FY2023": -1462,
+                "FY2024": -694,
+                "FY2025": -1028
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "chg_collateral_held_insurer",
+              "label": "Change in collateral held by insurer",
+              "type": "input",
+              "values": {
+                "FY2019": -1199,
+                "FY2020": 339,
+                "FY2021": 860
+              },
+              "min_label": "FY2019",
+              "max_label": "FY2021"
+            },
+            {
+              "id": "chg_operating_lease_rou",
+              "label": "Change in operating lease right-of-use assets",
+              "type": "input",
+              "values": {
+                "FY2019": 201,
+                "FY2020": 341,
+                "FY2021": 165,
+                "FY2022": 193,
+                "FY2023": 191,
+                "FY2024": 196,
+                "FY2025": 177
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "chg_accounts_payable",
+              "label": "Change in accounts payable",
+              "type": "input",
+              "values": {
+                "FY2018": -39,
+                "FY2019": 95,
+                "FY2020": -133,
+                "FY2021": 90,
+                "FY2022": -133,
+                "FY2023": 64,
+                "FY2024": 86,
+                "FY2025": 126
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "chg_accrued_insurance_reserves",
+              "label": "Change in accrued insurance reserves",
+              "type": "input",
+              "values": {
+                "FY2018": 943,
+                "FY2019": 481,
+                "FY2020": -3,
+                "FY2021": 516,
+                "FY2022": 736,
+                "FY2023": 2230,
+                "FY2024": 2819,
+                "FY2025": 2660
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "chg_accrued_other_liabilities",
+              "label": "Change in accrued expenses and other liabilities",
+              "type": "input",
+              "values": {
+                "FY2018": 738,
+                "FY2019": 960,
+                "FY2020": 83,
+                "FY2021": 1068,
+                "FY2022": 492,
+                "FY2023": 80,
+                "FY2024": 330,
+                "FY2025": 967
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "chg_operating_lease_liab",
+              "label": "Change in operating lease liabilities",
+              "type": "input",
+              "values": {
+                "FY2019": -153,
+                "FY2020": -131,
+                "FY2021": -184,
+                "FY2022": -215,
+                "FY2023": -180,
+                "FY2024": -221,
+                "FY2025": -209
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "cfo_total",
+              "label": "Net cash provided by (used in) operating activities",
+              "type": "calc",
+              "expr": "{ni_incl_nci}+{da_cf}+{bad_debt_expense}+{sbc_cf}+{loss_gain_sale_investments}+{gain_business_divestitures}+{deferred_income_taxes}+{gain_extinguishment_convertible}+{revaluation_derivative_liab}+{accretion_discount_lt_debt}+{payment_in_kind_interest}+{impairment_debt_equity_securities}+{impairments_goodwill_other}+{impairment_equity_method_investment}+{equity_method_income_cf}+{unrealized_gain_loss_debt_equity}+{accretion_discount_mkt_securities}+{revaluation_mlu_call_option}+{gain_forfeiture_warrants}+{unrealized_fx_transactions_cf}+{other_operating_cf}+{chg_accounts_receivable}+{chg_prepaid_other_assets}+{chg_collateral_held_insurer}+{chg_operating_lease_rou}+{chg_accounts_payable}+{chg_accrued_insurance_reserves}+{chg_accrued_other_liabilities}+{chg_operating_lease_liab}",
+              "bold": true,
+              "border_top": true,
+              "fmt": "num"
+            },
+            {
+              "id": "cfo_reported",
+              "label": "Net cash provided by (used in) operating activities (as reported)",
+              "type": "input",
+              "values": {
+                "FY2016": -2913,
+                "FY2017": -1418,
+                "FY2018": -1541,
+                "FY2019": -4321,
+                "FY2020": -2745,
+                "FY2021": -445,
+                "FY2022": 642,
+                "FY2023": 3585,
+                "FY2024": 7137,
+                "FY2025": 10099
+              },
+              "bold": true,
+              "note": "As-reported figure (used for FY2016-2017 where full add-back detail is unavailable, and for cross-check FY2018-2025)"
+            },
+            {
+              "id": "cfo_tie_check",
+              "label": "Check: Calculated CFO vs. As-Reported CFO (should be ~0)",
+              "type": "check",
+              "expr": "{cfo_total}-{cfo_reported}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            }
+          ]
+        },
+        {
+          "title": "INVESTING ACTIVITIES",
+          "rows": [
+            {
+              "id": "proceeds_sale_disposal_ppe",
+              "label": "Proceeds from sale and disposal of property and equipment",
+              "type": "input",
+              "values": {
+                "FY2018": 369,
+                "FY2019": 51,
+                "FY2020": 3
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2020"
+            },
+            {
+              "id": "capex_ppe",
+              "label": "Purchases of property and equipment",
+              "type": "input",
+              "values": {
+                "FY2016": -1629,
+                "FY2017": -821,
+                "FY2018": -558,
+                "FY2019": -588,
+                "FY2020": -616,
+                "FY2021": -298,
+                "FY2022": -252,
+                "FY2023": -223,
+                "FY2024": -242,
+                "FY2025": -336
+              },
+              "bold": true
+            },
+            {
+              "id": "purchases_equity_method_investments",
+              "label": "Purchases of equity method investments",
+              "type": "input",
+              "values": {
+                "FY2018": -412
+              }
+            },
+            {
+              "id": "purchases_nonmarketable_equity",
+              "label": "Purchases of non-marketable equity securities",
+              "type": "input",
+              "values": {
+                "FY2019": -100,
+                "FY2020": -10,
+                "FY2021": -982,
+                "FY2022": -14,
+                "FY2023": -52,
+                "FY2024": -289,
+                "FY2025": -676
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "purchases_marketable_securities",
+              "label": "Purchases of marketable securities",
+              "type": "input",
+              "values": {
+                "FY2019": -441,
+                "FY2020": -2101,
+                "FY2021": -1113,
+                "FY2022": -1708,
+                "FY2023": -8774,
+                "FY2024": -12765,
+                "FY2025": -21447
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "proceeds_maturities_sales_mkt_sec",
+              "label": "Proceeds from maturities and sales of marketable securities",
+              "type": "input",
+              "values": {
+                "FY2019": 2,
+                "FY2020": 1360,
+                "FY2021": 2291,
+                "FY2022": 376,
+                "FY2023": 5069,
+                "FY2024": 10204,
+                "FY2025": 20046
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "proceeds_sale_nonmarketable_equity",
+              "label": "Proceeds from sale of non-marketable equity securities",
+              "type": "input",
+              "values": {
+                "FY2021": 500
+              }
+            },
+            {
+              "id": "proceeds_business_disposal",
+              "label": "Proceeds from business disposal, net of cash divested",
+              "type": "input",
+              "values": {
+                "FY2019": 293,
+                "FY2022": 26
+              }
+            },
+            {
+              "id": "proceeds_sale_equity_method_inv",
+              "label": "Proceeds from sale of equity method investments",
+              "type": "input",
+              "values": {
+                "FY2021": 1000,
+                "FY2023": 721,
+                "FY2024": 17
+              }
+            },
+            {
+              "id": "acquisitions_net_cash",
+              "label": "Acquisition of businesses, net of cash acquired",
+              "type": "input",
+              "values": {
+                "FY2018": -64,
+                "FY2019": -7,
+                "FY2020": -1471,
+                "FY2021": -2314,
+                "FY2022": -59,
+                "FY2025": -815
+              }
+            },
+            {
+              "id": "purchase_notes_receivable",
+              "label": "Purchase of notes receivable",
+              "type": "input",
+              "values": {
+                "FY2020": -185,
+                "FY2021": -297
+              }
+            },
+            {
+              "id": "return_capital_equity_method_inv",
+              "label": "Return of capital from equity method investee",
+              "type": "input",
+              "values": {
+                "FY2020": 91
+              }
+            },
+            {
+              "id": "other_investing",
+              "label": "Other investing activities",
+              "type": "input",
+              "values": {
+                "FY2018": -30,
+                "FY2020": 60,
+                "FY2021": 12,
+                "FY2022": -6,
+                "FY2023": 33,
+                "FY2024": -102,
+                "FY2025": -336
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "cfi_total",
+              "label": "Net cash used in investing activities",
+              "type": "calc",
+              "expr": "{proceeds_sale_disposal_ppe}+{capex_ppe}+{purchases_equity_method_investments}+{purchases_nonmarketable_equity}+{purchases_marketable_securities}+{proceeds_maturities_sales_mkt_sec}+{proceeds_sale_nonmarketable_equity}+{proceeds_business_disposal}+{proceeds_sale_equity_method_inv}+{acquisitions_net_cash}+{purchase_notes_receivable}+{return_capital_equity_method_inv}+{other_investing}",
+              "bold": true,
+              "border_top": true,
+              "fmt": "num",
+              "min_label": "FY2018"
+            },
+            {
+              "id": "cfi_reported",
+              "label": "Net cash used in investing activities (as reported)",
+              "type": "input",
+              "values": {
+                "FY2016": -1858,
+                "FY2017": -487,
+                "FY2018": -695,
+                "FY2019": -790,
+                "FY2020": -2869,
+                "FY2021": -1201,
+                "FY2022": -1637,
+                "FY2023": -3226,
+                "FY2024": -3177,
+                "FY2025": -3564
+              },
+              "bold": true
+            },
+            {
+              "id": "cfi_tie_check",
+              "label": "Check: Calculated CFI vs. As-Reported CFI (should be ~0)",
+              "type": "check",
+              "expr": "{cfi_total}-{cfi_reported}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            }
+          ]
+        },
+        {
+          "title": "FINANCING ACTIVITIES",
+          "rows": [
+            {
+              "id": "proceeds_ipo",
+              "label": "Proceeds from issuance of common stock upon IPO, net of offering costs",
+              "type": "input",
+              "values": {
+                "FY2019": 7973
+              }
+            },
+            {
+              "id": "taxes_net_share_settlement",
+              "label": "Taxes paid related to net share settlement of equity awards",
+              "type": "input",
+              "values": {
+                "FY2019": -1573,
+                "FY2020": -17
+              }
+            },
+            {
+              "id": "proceeds_common_stock_private_placement",
+              "label": "Proceeds from issuance of common stock, private placement",
+              "type": "input",
+              "values": {
+                "FY2019": 500
+              }
+            },
+            {
+              "id": "proceeds_subsidiary_preferred_units",
+              "label": "Proceeds from issuance of subsidiary preferred stock units",
+              "type": "input",
+              "values": {
+                "FY2019": 1000,
+                "FY2020": 247
+              }
+            },
+            {
+              "id": "proceeds_espp",
+              "label": "Proceeds from issuance of common stock under ESPP",
+              "type": "input",
+              "values": {
+                "FY2019": 49,
+                "FY2020": 125,
+                "FY2021": 107,
+                "FY2022": 92,
+                "FY2023": 130,
+                "FY2024": 156,
+                "FY2025": 183
+              },
+              "min_label": "FY2019"
+            },
+            {
+              "id": "proceeds_subsidiary_stock_units",
+              "label": "Proceeds from issuance and sale of subsidiary stock units",
+              "type": "input",
+              "values": {
+                "FY2021": 675,
+                "FY2022": 255
+              }
+            },
+            {
+              "id": "issuance_term_loan_notes",
+              "label": "Issuance of term loan and notes, net of issuance costs",
+              "type": "input",
+              "values": {
+                "FY2018": 3466,
+                "FY2019": 1189,
+                "FY2020": 2628,
+                "FY2021": 1766,
+                "FY2023": 2824,
+                "FY2024": 3972,
+                "FY2025": 3359
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "principal_repay_term_loan",
+              "label": "Principal repayment on term loan and notes",
+              "type": "input",
+              "values": {
+                "FY2018": -19,
+                "FY2019": -27,
+                "FY2020": -527,
+                "FY2021": -309,
+                "FY2023": -2675,
+                "FY2024": -3986,
+                "FY2025": -2350
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "principal_repay_careem_notes",
+              "label": "Principal repayment on Careem Notes",
+              "type": "input",
+              "values": {
+                "FY2020": -891,
+                "FY2021": -307,
+                "FY2022": -80
+              },
+              "max_label": "FY2022",
+              "note": "Folded into Other financing activities from the FY2025 10-K presentation onward"
+            },
+            {
+              "id": "principal_repay_revolving_credit",
+              "label": "Principal repayment on revolving lines of credit",
+              "type": "input",
+              "values": {
+                "FY2018": -491
+              }
+            },
+            {
+              "id": "principal_payments_finance_leases",
+              "label": "Principal payments on capital and finance leases",
+              "type": "input",
+              "values": {
+                "FY2018": -89,
+                "FY2019": -138,
+                "FY2020": -224,
+                "FY2021": -226,
+                "FY2022": -184,
+                "FY2023": -171,
+                "FY2024": -172,
+                "FY2025": -157
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "proceeds_redeemable_conv_preferred",
+              "label": "Proceeds from issuance of redeemable convertible preferred stock",
+              "type": "input",
+              "values": {
+                "FY2018": 1750
+              }
+            },
+            {
+              "id": "repurchase_stock_put_options_yandex",
+              "label": "Repurchase of stock subject to put options related to Yandex",
+              "type": "input",
+              "values": {
+                "FY2019": -74
+              }
+            },
+            {
+              "id": "repurchases_common_stock",
+              "label": "Repurchases of common stock",
+              "type": "input",
+              "values": {
+                "FY2024": -1252,
+                "FY2025": -6523
+              }
+            },
+            {
+              "id": "redemption_nci",
+              "label": "Redemption of non-controlling interests",
+              "type": "input",
+              "values": {
+                "FY2024": -851,
+                "FY2025": -109
+              }
+            },
+            {
+              "id": "other_financing",
+              "label": "Other financing activities",
+              "type": "input",
+              "values": {
+                "FY2018": 23,
+                "FY2019": 40,
+                "FY2020": 38,
+                "FY2021": 74,
+                "FY2022": -68,
+                "FY2023": -203,
+                "FY2024": 46,
+                "FY2025": -116
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "cff_total",
+              "label": "Net cash provided by (used in) financing activities",
+              "type": "calc",
+              "expr": "{proceeds_ipo}+{taxes_net_share_settlement}+{proceeds_common_stock_private_placement}+{proceeds_subsidiary_preferred_units}+{proceeds_espp}+{proceeds_subsidiary_stock_units}+{issuance_term_loan_notes}+{principal_repay_term_loan}+{principal_repay_careem_notes}+{principal_repay_revolving_credit}+{principal_payments_finance_leases}+{proceeds_redeemable_conv_preferred}+{repurchase_stock_put_options_yandex}+{repurchases_common_stock}+{redemption_nci}+{other_financing}",
+              "bold": true,
+              "border_top": true,
+              "fmt": "num",
+              "min_label": "FY2018"
+            },
+            {
+              "id": "cff_reported",
+              "label": "Net cash provided by (used in) financing activities (as reported)",
+              "type": "input",
+              "values": {
+                "FY2016": 6194,
+                "FY2017": 1015,
+                "FY2018": 4640,
+                "FY2019": 8939,
+                "FY2020": 1379,
+                "FY2021": 1780,
+                "FY2022": 15,
+                "FY2023": -95,
+                "FY2024": -2087,
+                "FY2025": -5713
+              },
+              "bold": true
+            },
+            {
+              "id": "cff_tie_check",
+              "label": "Check: Calculated CFF vs. As-Reported CFF (should be ~0)",
+              "type": "check",
+              "expr": "{cff_total}-{cff_reported}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            }
+          ]
+        },
+        {
+          "title": "CASH WALK & FCF ANALYTICS",
+          "rows": [
+            {
+              "id": "fx_effect",
+              "label": "Effect of exchange rate changes on cash",
+              "type": "input",
+              "values": {
+                "FY2016": -25,
+                "FY2017": 22,
+                "FY2018": -119,
+                "FY2019": -4,
+                "FY2020": -92,
+                "FY2021": -69,
+                "FY2022": -148,
+                "FY2023": 63,
+                "FY2024": -267,
+                "FY2025": 215
+              }
+            },
+            {
+              "id": "net_change_in_cash",
+              "label": "Net increase (decrease) in cash, cash equivalents and restricted cash",
+              "type": "input",
+              "values": {
+                "FY2018": 2285,
+                "FY2019": 3824,
+                "FY2020": -4327,
+                "FY2021": 65,
+                "FY2022": -1128,
+                "FY2023": 327,
+                "FY2024": 1606,
+                "FY2025": 1037
+              },
+              "bold": true,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "cf_check",
+              "label": "Cash Walk Check: CFO+CFI+CFF+FX - Net Change in Cash (should be ~0)",
+              "type": "check",
+              "expr": "{cfo_reported}+{cfi_reported}+{cff_reported}+{fx_effect}-{net_change_in_cash}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "fcf",
+              "label": "Free Cash Flow (CFO - Capex)",
+              "type": "calc",
+              "expr": "{cfo_reported}+{capex_ppe}",
+              "bold": true,
+              "fmt": "num"
+            },
+            {
+              "id": "fcf_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "fcf",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "capex_pct_revenue",
+              "label": "  Capex % of Revenue",
+              "type": "calc",
+              "expr": "0-{capex_ppe}/{IS:revenue}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "fcf_margin",
+              "label": "  FCF Margin",
+              "type": "calc",
+              "expr": "{fcf}/{IS:revenue}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "interest_paid",
+              "label": "Supplemental: Cash paid for interest",
+              "type": "input",
+              "values": {
+                "FY2018": 124,
+                "FY2019": 332,
+                "FY2020": 412,
+                "FY2021": 449,
+                "FY2022": 513,
+                "FY2023": 629,
+                "FY2024": 475,
+                "FY2025": 386
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "income_taxes_paid",
+              "label": "Supplemental: Cash paid for income taxes",
+              "type": "input",
+              "values": {
+                "FY2018": 289,
+                "FY2019": 133,
+                "FY2020": 82,
+                "FY2021": 87,
+                "FY2022": 175,
+                "FY2023": 234
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Segments",
+      "short": "SEG",
+      "kind": "statement",
+      "tab_color": "548235",
+      "contents": true,
+      "blocks": [
+        {
+          "title": "SEGMENT REVENUE",
+          "rows": [
+            {
+              "id": "seg_mobility_rev",
+              "label": "Mobility",
+              "type": "input",
+              "values": {
+                "FY2018": 9288,
+                "FY2019": 10707,
+                "FY2020": 6089,
+                "FY2021": 6953,
+                "FY2022": 14029,
+                "FY2023": 19832,
+                "FY2024": 25087,
+                "FY2025": 29670
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_delivery_rev",
+              "label": "Delivery",
+              "type": "input",
+              "values": {
+                "FY2018": 772,
+                "FY2019": 1401,
+                "FY2020": 3904,
+                "FY2021": 8362,
+                "FY2022": 10901,
+                "FY2023": 12204,
+                "FY2024": 13750,
+                "FY2025": 17248
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_freight_rev",
+              "label": "Freight",
+              "type": "input",
+              "values": {
+                "FY2018": 356,
+                "FY2019": 731,
+                "FY2020": 1011,
+                "FY2021": 2132,
+                "FY2022": 6947,
+                "FY2023": 5245,
+                "FY2024": 5141,
+                "FY2025": 5099
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_atg_rev",
+              "label": "ATG and Other Technology Programs",
+              "type": "input",
+              "values": {
+                "FY2019": 42,
+                "FY2020": 100
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2020",
+              "note": "Divested; segment discontinued after FY2020"
+            },
+            {
+              "id": "seg_allother_rev",
+              "label": "All Other",
+              "type": "input",
+              "values": {
+                "FY2018": 17,
+                "FY2019": 119,
+                "FY2020": 35,
+                "FY2021": 8
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2021",
+              "note": "Phased out; not reported as a separate segment from FY2021 10-K onward"
+            },
+            {
+              "id": "seg_total_rev",
+              "label": "Total Segment Revenue",
+              "type": "subtotal",
+              "children": [
+                "seg_mobility_rev",
+                "seg_delivery_rev",
+                "seg_freight_rev",
+                "seg_atg_rev",
+                "seg_allother_rev"
+              ],
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_rev_check",
+              "label": "Check: Total Segment Revenue vs. IS Revenue (should be ~0)",
+              "type": "check",
+              "expr": "{seg_total_rev}-{IS:revenue}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            }
+          ]
+        },
+        {
+          "title": "SEGMENT ADJUSTED EBITDA & RECONCILIATION TO OPERATING INCOME",
+          "rows": [
+            {
+              "id": "seg_mobility_ebitda",
+              "label": "Mobility Adjusted EBITDA",
+              "type": "input",
+              "values": {
+                "FY2018": 1541,
+                "FY2019": 2071,
+                "FY2020": 1169,
+                "FY2021": 1596,
+                "FY2022": 3299,
+                "FY2023": 4963,
+                "FY2024": 6497,
+                "FY2025": 7899
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_delivery_ebitda",
+              "label": "Delivery Adjusted EBITDA",
+              "type": "input",
+              "values": {
+                "FY2018": -601,
+                "FY2019": -1372,
+                "FY2020": -873,
+                "FY2021": -348,
+                "FY2022": 551,
+                "FY2023": 1506,
+                "FY2024": 2471,
+                "FY2025": 3572
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_freight_ebitda",
+              "label": "Freight Adjusted EBITDA",
+              "type": "input",
+              "values": {
+                "FY2018": -102,
+                "FY2019": -217,
+                "FY2020": -227,
+                "FY2021": -130,
+                "FY2022": 0,
+                "FY2023": -64,
+                "FY2024": -74,
+                "FY2025": -33
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_atg_ebitda",
+              "label": "ATG and Other Technology Programs Adjusted EBITDA",
+              "type": "input",
+              "values": {
+                "FY2018": -537,
+                "FY2019": -499,
+                "FY2020": -375
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2020"
+            },
+            {
+              "id": "seg_allother_ebitda",
+              "label": "All Other Adjusted EBITDA",
+              "type": "input",
+              "values": {
+                "FY2018": -50,
+                "FY2019": -251,
+                "FY2020": -86,
+                "FY2021": -11
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2021"
+            },
+            {
+              "id": "seg_total_ebitda",
+              "label": "Total Segment Adjusted EBITDA",
+              "type": "subtotal",
+              "children": [
+                "seg_mobility_ebitda",
+                "seg_delivery_ebitda",
+                "seg_freight_ebitda",
+                "seg_atg_ebitda",
+                "seg_allother_ebitda"
+              ],
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2018"
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "recon_corporate_ga",
+              "label": "Less: Corporate G&A and Platform R&D",
+              "type": "input",
+              "values": {
+                "FY2018": -1971,
+                "FY2019": -2457,
+                "FY2020": -2136,
+                "FY2021": -1881,
+                "FY2022": -2137,
+                "FY2023": -2353,
+                "FY2024": -2410,
+                "FY2025": -2708
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_da",
+              "label": "Less: Depreciation and amortization",
+              "type": "input",
+              "values": {
+                "FY2018": -426,
+                "FY2019": -472,
+                "FY2020": -575,
+                "FY2021": -902,
+                "FY2022": -947,
+                "FY2023": -823
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_sbc",
+              "label": "Less: Stock-based compensation",
+              "type": "input",
+              "values": {
+                "FY2018": -172,
+                "FY2019": -4596,
+                "FY2020": -827,
+                "FY2021": -1168,
+                "FY2022": -1793,
+                "FY2023": -1935
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_legal_tax_reg",
+              "label": "Less: Legal, tax, and regulatory reserve changes and settlements",
+              "type": "input",
+              "values": {
+                "FY2018": -340,
+                "FY2019": -353,
+                "FY2020": 35,
+                "FY2021": -526,
+                "FY2022": -732,
+                "FY2023": -9
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_driver_appreciation",
+              "label": "Less: Driver appreciation award",
+              "type": "input",
+              "values": {
+                "FY2019": -299
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_payroll_tax_ipo",
+              "label": "Less: Payroll tax on IPO stock-based compensation",
+              "type": "input",
+              "values": {
+                "FY2019": -86
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_goodwill_impairments",
+              "label": "Less: Goodwill/asset impairments, loss on sale of assets, net",
+              "type": "input",
+              "values": {
+                "FY2018": -237,
+                "FY2019": -8,
+                "FY2020": -317,
+                "FY2021": -157,
+                "FY2022": -25,
+                "FY2023": -84
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_acquisition_expenses",
+              "label": "Less: Acquisition, financing and divestiture related expenses",
+              "type": "input",
+              "values": {
+                "FY2018": -15,
+                "FY2020": -86,
+                "FY2021": -102,
+                "FY2022": -46,
+                "FY2023": -36
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_accelerated_lease",
+              "label": "Less: Accelerated lease costs related to cease-use of ROU assets",
+              "type": "input",
+              "values": {
+                "FY2020": -102,
+                "FY2021": -5
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_covid",
+              "label": "Less: COVID-19 response initiatives",
+              "type": "input",
+              "values": {
+                "FY2020": -106,
+                "FY2021": -54
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_gain_lease",
+              "label": "Add (less): Gain (loss) on lease arrangement, net",
+              "type": "input",
+              "values": {
+                "FY2018": 4,
+                "FY2020": 5,
+                "FY2021": 0,
+                "FY2022": -7,
+                "FY2023": -4
+              },
+              "min_label": "FY2018",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_divested_2018",
+              "label": "Less: Impact of 2018 Divested Operations",
+              "type": "input",
+              "values": {
+                "FY2018": -127
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_restructuring",
+              "label": "Less: Restructuring and related charges",
+              "type": "input",
+              "values": {
+                "FY2019": -57,
+                "FY2020": -362,
+                "FY2021": 0,
+                "FY2022": -2,
+                "FY2023": -51
+              },
+              "min_label": "FY2019",
+              "max_label": "FY2023"
+            },
+            {
+              "id": "recon_legacy_auto_insurance",
+              "label": "Less: Legacy auto insurance transfer",
+              "type": "input",
+              "values": {
+                "FY2021": -103
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "recon_mass_arbitration",
+              "label": "Add (less): Mass arbitration fees, net",
+              "type": "input",
+              "values": {
+                "FY2021": 43,
+                "FY2022": 14
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_op_income",
+              "label": "Income (loss) from operations",
+              "type": "subtotal",
+              "children": [
+                "seg_total_ebitda",
+                "recon_corporate_ga",
+                "recon_da",
+                "recon_sbc",
+                "recon_legal_tax_reg",
+                "recon_driver_appreciation",
+                "recon_payroll_tax_ipo",
+                "recon_goodwill_impairments",
+                "recon_acquisition_expenses",
+                "recon_accelerated_lease",
+                "recon_covid",
+                "recon_gain_lease",
+                "recon_divested_2018",
+                "recon_restructuring",
+                "recon_legacy_auto_insurance",
+                "recon_mass_arbitration"
+              ],
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "seg_op_income_check",
+              "label": "Check: Segment-derived Op. Income vs. IS Op. Income (should be ~0)",
+              "type": "check",
+              "expr": "{seg_op_income}-{IS:operating_profit}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018",
+              "max_label": "FY2023",
+              "expect_nonzero": true,
+              "note": "From FY2024 (10-K-2025 vintage), the reconciliation bridge starts from Net income and no longer isolates a segment-EBITDA-to-operating-income subtotal in the same structure; see IS Non-GAAP Reconciliation block for FY2024-2025 bridge detail. Small residuals in FY2021-FY2022 (<3% of operating income) reflect de minimis reconciling items not separately itemized in the filings."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Geography",
+      "short": "GEO",
+      "kind": "statement",
+      "tab_color": "548235",
+      "contents": true,
+      "blocks": [
+        {
+          "title": "REVENUE BY REGION",
+          "rows": [
+            {
+              "id": "geo_us_can",
+              "label": "United States and Canada",
+              "type": "input",
+              "values": {
+                "FY2018": 6226,
+                "FY2019": 8465,
+                "FY2020": 6611,
+                "FY2021": 10094,
+                "FY2022": 19474,
+                "FY2023": 20436,
+                "FY2024": 23618,
+                "FY2025": 26469
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_latam",
+              "label": "Latin America",
+              "type": "input",
+              "values": {
+                "FY2018": 1963,
+                "FY2019": 1862,
+                "FY2020": 1295,
+                "FY2021": 1417,
+                "FY2022": 1978,
+                "FY2023": 2512,
+                "FY2024": 2795,
+                "FY2025": 3327
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_emea",
+              "label": "Europe, Middle East and Africa",
+              "type": "input",
+              "values": {
+                "FY2018": 1495,
+                "FY2019": 1852,
+                "FY2020": 2086,
+                "FY2021": 3213,
+                "FY2022": 6944,
+                "FY2023": 9904,
+                "FY2024": 12529,
+                "FY2025": 16364
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_apac",
+              "label": "Asia Pacific",
+              "type": "input",
+              "values": {
+                "FY2018": 749,
+                "FY2019": 821,
+                "FY2020": 1147,
+                "FY2021": 2731,
+                "FY2022": 3481,
+                "FY2023": 4429,
+                "FY2024": 5036,
+                "FY2025": 5857
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_total_region",
+              "label": "Total Revenue by Region",
+              "type": "subtotal",
+              "children": [
+                "geo_us_can",
+                "geo_latam",
+                "geo_emea",
+                "geo_apac"
+              ],
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_region_check",
+              "label": "Check: Total by Region vs. IS Revenue (should be ~0)",
+              "type": "check",
+              "expr": "{geo_total_region}-{IS:revenue}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            }
+          ]
+        },
+        {
+          "title": "REVENUE BY COUNTRY",
+          "rows": [
+            {
+              "id": "geo_us",
+              "label": "United States",
+              "type": "input",
+              "values": {
+                "FY2018": 5824,
+                "FY2019": 7968,
+                "FY2020": 6082,
+                "FY2021": 9058,
+                "FY2022": 17953,
+                "FY2023": 18620,
+                "FY2024": 21429,
+                "FY2025": 23771
+              },
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_uk",
+              "label": "United Kingdom",
+              "type": "input",
+              "values": {
+                "FY2023": 6522,
+                "FY2024": 8373,
+                "FY2025": 10609
+              },
+              "min_label": "FY2023",
+              "note": "Separately disclosed as a distinct country line starting the FY2023 10-K; previously included within All other countries"
+            },
+            {
+              "id": "geo_other_countries",
+              "label": "All other countries",
+              "type": "input",
+              "values": {
+                "FY2018": 4609,
+                "FY2019": 5032,
+                "FY2020": 5057,
+                "FY2021": 8397,
+                "FY2022": 13924,
+                "FY2023": 12139,
+                "FY2024": 14176,
+                "FY2025": 17637
+              },
+              "min_label": "FY2018",
+              "note": "FY2018-2022 figure includes United Kingdom (not yet broken out separately)"
+            },
+            {
+              "id": "geo_total_country",
+              "label": "Total Revenue by Country",
+              "type": "subtotal",
+              "children": [
+                "geo_us",
+                "geo_uk",
+                "geo_other_countries"
+              ],
+              "bold": true,
+              "border_top": true,
+              "min_label": "FY2018"
+            },
+            {
+              "id": "geo_country_check",
+              "label": "Check: Total by Country vs. IS Revenue (should be ~0)",
+              "type": "check",
+              "expr": "{geo_total_country}-{IS:revenue}",
+              "fmt": "num",
+              "memo": true,
+              "min_label": "FY2018"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Operating Metrics",
+      "short": "OP",
+      "kind": "statement",
+      "tab_color": "548235",
+      "contents": true,
+      "blocks": [
+        {
+          "title": "OPERATING METRICS",
+          "rows": [
+            {
+              "id": "gross_bookings",
+              "label": "Gross Bookings",
+              "type": "input",
+              "values": {
+                "FY2016": 19236,
+                "FY2017": 34409,
+                "FY2018": 49799,
+                "FY2019": 65001,
+                "FY2020": 57897,
+                "FY2021": 90415,
+                "FY2022": 115395,
+                "FY2023": 137865,
+                "FY2024": 162773,
+                "FY2025": 193454
+              },
+              "bold": true
+            },
+            {
+              "id": "gross_bookings_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "gross_bookings",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "mapcs",
+              "label": "Monthly Active Platform Consumers (millions)",
+              "type": "input",
+              "values": {
+                "FY2016": 45,
+                "FY2017": 68,
+                "FY2018": 91,
+                "FY2019": 111,
+                "FY2020": 93,
+                "FY2021": 118,
+                "FY2022": 131,
+                "FY2023": 150,
+                "FY2024": 171,
+                "FY2025": 202
+              },
+              "bold": true
+            },
+            {
+              "id": "mapcs_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "mapcs",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "trips",
+              "label": "Trips (millions)",
+              "type": "input",
+              "values": {
+                "FY2016": 1818,
+                "FY2017": 3736,
+                "FY2018": 5220,
+                "FY2019": 6904,
+                "FY2020": 5025,
+                "FY2021": 6368,
+                "FY2022": 7642,
+                "FY2023": 9448,
+                "FY2024": 11273,
+                "FY2025": 13567
+              },
+              "bold": true
+            },
+            {
+              "id": "trips_yoy",
+              "label": "  YoY Growth",
+              "type": "growth_yoy",
+              "of": "trips",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "id": "take_rate",
+              "label": "Platform Take Rate (Revenue / Gross Bookings)",
+              "type": "calc",
+              "expr": "{IS:revenue}/{gross_bookings}",
+              "fmt": "pct",
+              "memo": true
+            },
+            {
+              "id": "bookings_per_mapc",
+              "label": "Gross Bookings per MAPC ($)",
+              "type": "calc",
+              "expr": "{gross_bookings}/{mapcs}*1000",
+              "fmt": "num1",
+              "memo": true
+            },
+            {
+              "id": "trips_per_mapc",
+              "label": "Trips per MAPC",
+              "type": "calc",
+              "expr": "{trips}/{mapcs}",
+              "fmt": "num1",
+              "memo": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Derived Metrics",
+      "short": "DM",
+      "kind": "statement",
+      "tab_color": "7030A0",
+      "blocks": [
+        {
+          "title": "CASH CONVERSION",
+          "rows": [
+            {
+              "id": "dm_cash_conversion_cfo_margin",
+              "label": "CFO margin",
+              "type": "input",
+              "values": {
+                "FY2016": -0.7576,
+                "FY2017": -0.1788,
+                "FY2018": -0.1477,
+                "FY2019": -0.33240000000000003,
+                "FY2020": -0.2464,
+                "FY2021": -0.0255,
+                "FY2022": 0.020099999999999996,
+                "FY2023": 0.0962,
+                "FY2024": 0.1623,
+                "FY2025": 0.1941
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_cash_conversion_cfo_ebitda",
+              "label": "CFO / EBITDA",
+              "type": "input",
+              "values": {
+                "FY2023": 1.85,
+                "FY2024": 2.03,
+                "FY2025": 1.61
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_cash_conversion_capex_intensity",
+              "label": "Capex intensity",
+              "type": "input",
+              "values": {
+                "FY2016": 0.4252,
+                "FY2017": 0.1045,
+                "FY2018": 0.0535,
+                "FY2019": 0.0452,
+                "FY2020": 0.0553,
+                "FY2021": 0.0171,
+                "FY2022": 0.0079,
+                "FY2023": 0.006,
+                "FY2024": 0.0055000000000000005,
+                "FY2025": 0.006500000000000001
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_cash_conversion_cfo_capex",
+              "label": "CFO / capex",
+              "type": "input",
+              "values": {
+                "FY2016": -1.78,
+                "FY2017": -1.71,
+                "FY2018": -2.76,
+                "FY2019": -7.35,
+                "FY2020": -4.46,
+                "FY2021": -1.49,
+                "FY2022": 2.55,
+                "FY2023": 16.08,
+                "FY2024": 29.49,
+                "FY2025": 30.06
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_cash_conversion_cash_flow_after_capex_margin",
+              "label": "Cash flow after capex margin",
+              "type": "input",
+              "values": {
+                "FY2016": -1.1828,
+                "FY2017": -0.2833,
+                "FY2018": -0.20120000000000002,
+                "FY2019": -0.3776,
+                "FY2020": -0.3017,
+                "FY2021": -0.0426,
+                "FY2022": 0.012199999999999999,
+                "FY2023": 0.0902,
+                "FY2024": 0.1568,
+                "FY2025": 0.1877
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_cash_conversion_cash_flow_after_capex",
+              "label": "Cash flow after capex",
+              "type": "input",
+              "values": {
+                "FY2016": -4548.0,
+                "FY2017": -2247.0,
+                "FY2018": -2099.0,
+                "FY2019": -4909.0,
+                "FY2020": -3361.0,
+                "FY2021": -743.0,
+                "FY2022": 390.0,
+                "FY2023": 3362.0,
+                "FY2024": 6895.0,
+                "FY2025": 9763.0
+              },
+              "fmt": "num1"
+            },
+            {
+              "id": "dm_cash_conversion_d_a_capex",
+              "label": "D&A / capex",
+              "type": "input",
+              "values": {
+                "FY2016": 0.2,
+                "FY2017": 0.62,
+                "FY2018": 0.76,
+                "FY2019": 0.8,
+                "FY2020": 0.93,
+                "FY2021": 3.03,
+                "FY2022": 3.76,
+                "FY2023": 3.69,
+                "FY2024": 2.94,
+                "FY2025": 2.14
+              },
+              "fmt": "x"
+            }
+          ]
+        },
+        {
+          "title": "COMMON SIZE",
+          "rows": [
+            {
+              "id": "dm_common_size_cash_total_assets",
+              "label": "Cash / total assets",
+              "type": "input",
+              "values": {
+                "FY2016": 0.3972,
+                "FY2017": 0.2848,
+                "FY2018": 0.2671,
+                "FY2019": 0.3423,
+                "FY2020": 0.1698,
+                "FY2021": 0.1108,
+                "FY2022": 0.1311,
+                "FY2023": 0.1209,
+                "FY2024": 0.115,
+                "FY2025": 0.115
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_common_size_receivables_total_assets",
+              "label": "Receivables / total assets",
+              "type": "input",
+              "values": {
+                "FY2017": 0.0479,
+                "FY2018": 0.0383,
+                "FY2019": 0.0382,
+                "FY2020": 0.0323,
+                "FY2021": 0.0629,
+                "FY2022": 0.08650000000000001,
+                "FY2023": 0.08800000000000001,
+                "FY2024": 0.065,
+                "FY2025": 0.061900000000000004
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_common_size_pp_e_total_assets",
+              "label": "PP&E / total assets",
+              "type": "input",
+              "values": {
+                "FY2017": 0.07730000000000001,
+                "FY2018": 0.0684,
+                "FY2019": 0.0545,
+                "FY2020": 0.0546,
+                "FY2021": 0.0478,
+                "FY2022": 0.06480000000000001,
+                "FY2023": 0.0536,
+                "FY2024": 0.0381,
+                "FY2025": 0.030699999999999998
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_common_size_right_of_use_assets_total_assets",
+              "label": "Right-of-use assets / total assets",
+              "type": "input",
+              "values": {
+                "FY2019": 0.050199999999999995,
+                "FY2020": 0.0383,
+                "FY2021": 0.0358,
+                "FY2022": 0.0451,
+                "FY2023": 0.0321,
+                "FY2024": 0.0226,
+                "FY2025": 0.018000000000000002
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_common_size_goodwill_total_assets",
+              "label": "Goodwill / total assets",
+              "type": "input",
+              "values": {
+                "FY2017": 0.0025,
+                "FY2018": 0.0064,
+                "FY2019": 0.0053,
+                "FY2020": 0.1837,
+                "FY2021": 0.21719999999999998,
+                "FY2022": 0.25730000000000003,
+                "FY2023": 0.21059999999999998,
+                "FY2024": 0.1574,
+                "FY2025": 0.1445
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_common_size_intangible_assets_total_assets",
+              "label": "Intangible assets / total assets",
+              "type": "input",
+              "values": {
+                "FY2017": 0.0034999999999999996,
+                "FY2018": 0.0034000000000000002,
+                "FY2019": 0.0022,
+                "FY2020": 0.047,
+                "FY2021": 0.0622,
+                "FY2022": 0.0584,
+                "FY2023": 0.0368,
+                "FY2024": 0.022000000000000002,
+                "FY2025": 0.017
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_common_size_cost_of_revenue_revenue",
+              "label": "Cost of revenue / revenue",
+              "type": "input",
+              "values": {
+                "FY2016": 0.5795,
+                "FY2017": 0.5245000000000001,
+                "FY2018": 0.4587,
+                "FY2019": 0.46619999999999995,
+                "FY2020": 0.46270000000000006,
+                "FY2021": 0.5357,
+                "FY2022": 0.6167,
+                "FY2023": 0.6024,
+                "FY2024": 0.606,
+                "FY2025": 0.6025
+              },
+              "fmt": "pct"
+            }
+          ]
+        },
+        {
+          "title": "COVERAGE",
+          "rows": [
+            {
+              "id": "dm_coverage_ebit_interest_coverage",
+              "label": "EBIT interest coverage",
+              "type": "input",
+              "values": {
+                "FY2016": -9.05,
+                "FY2017": -8.52,
+                "FY2018": -4.68,
+                "FY2019": -15.38,
+                "FY2020": -10.62,
+                "FY2021": -7.94,
+                "FY2022": -3.24,
+                "FY2023": 7.45
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_coverage_cfo_cash_interest_coverage",
+              "label": "CFO cash-interest coverage",
+              "type": "input",
+              "values": {
+                "FY2020": -6.66,
+                "FY2021": -0.99,
+                "FY2022": 1.25,
+                "FY2023": 5.7,
+                "FY2024": 15.03,
+                "FY2025": 26.16
+              },
+              "fmt": "x"
+            }
+          ]
+        },
+        {
+          "title": "DEBT BRIDGE",
+          "rows": [
+            {
+              "id": "dm_debt_bridge_gross_debt_excluding_leases",
+              "label": "Gross debt excluding leases",
+              "type": "input",
+              "values": {
+                "FY2019": 5791.0,
+                "FY2020": 7914.0,
+                "FY2021": 9388.0,
+                "FY2022": 9361.0,
+                "FY2023": 9560.0,
+                "FY2024": 9575.0,
+                "FY2025": 10600.0
+              },
+              "fmt": "num1"
+            },
+            {
+              "id": "dm_debt_bridge_lease_liabilities",
+              "label": "Lease liabilities",
+              "type": "input",
+              "values": {
+                "FY2019": 1719.0,
+                "FY2020": 1719.0,
+                "FY2021": 1829.0,
+                "FY2022": 1874.0,
+                "FY2023": 1740.0,
+                "FY2024": 1629.0,
+                "FY2025": 1559.0
+              },
+              "fmt": "num1"
+            },
+            {
+              "id": "dm_debt_bridge_net_debt_excluding_leases",
+              "label": "Net debt excluding leases",
+              "type": "input",
+              "values": {
+                "FY2019": -5522.0,
+                "FY2020": 1087.0,
+                "FY2021": 5093.0,
+                "FY2022": 5050.0,
+                "FY2023": 4153.0,
+                "FY2024": 2598.0,
+                "FY2025": 2967.0
+              },
+              "fmt": "num1"
+            },
+            {
+              "id": "dm_debt_bridge_net_debt_including_leases",
+              "label": "Net debt including leases",
+              "type": "input",
+              "values": {
+                "FY2019": -3803.0,
+                "FY2020": 2806.0,
+                "FY2021": 6922.0,
+                "FY2022": 6924.0,
+                "FY2023": 5893.0,
+                "FY2024": 4227.0,
+                "FY2025": 4526.0
+              },
+              "fmt": "num1"
+            }
+          ]
+        },
+        {
+          "title": "EARNINGS QUALITY",
+          "rows": [
+            {
+              "id": "dm_earnings_quality_cfo_consolidated_net_income",
+              "label": "CFO / consolidated net income",
+              "type": "input",
+              "values": {
+                "FY2018": -1.56,
+                "FY2023": 1.66,
+                "FY2024": 0.72,
+                "FY2025": 1.0
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_earnings_quality_accrual_ratio",
+              "label": "Accrual ratio",
+              "type": "input",
+              "values": {
+                "FY2017": -0.168,
+                "FY2018": 0.1283,
+                "FY2019": -0.15039999999999998,
+                "FY2020": -0.1244,
+                "FY2021": -0.0034999999999999996,
+                "FY2022": -0.2759,
+                "FY2023": -0.0404,
+                "FY2024": 0.0602,
+                "FY2025": -0.0001
+              },
+              "fmt": "pct"
+            }
+          ]
+        },
+        {
+          "title": "GROWTH",
+          "rows": [
+            {
+              "id": "dm_growth_revenue_growth",
+              "label": "Revenue growth",
+              "type": "input",
+              "values": {
+                "FY2017": 1.0629,
+                "FY2018": 0.3153,
+                "FY2019": 0.24600000000000002,
+                "FY2020": -0.1432,
+                "FY2021": 0.5670000000000001,
+                "FY2022": 0.8262,
+                "FY2023": 0.16949999999999998,
+                "FY2024": 0.1796,
+                "FY2025": 0.18280000000000002
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_growth_consolidated_profit_growth",
+              "label": "Consolidated profit growth",
+              "type": "input",
+              "values": {
+                "FY2019": -9.6241,
+                "FY2024": 3.5663,
+                "FY2025": 0.0252
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_growth_parent_profit_growth",
+              "label": "Parent profit growth",
+              "type": "input",
+              "values": {
+                "FY2019": -9.5316,
+                "FY2024": 4.2231,
+                "FY2025": 0.02
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_growth_revenue_cagr_since_first_supplied_period",
+              "label": "Revenue CAGR since first supplied period",
+              "type": "input",
+              "values": {
+                "FY2025": 0.3357
+              },
+              "fmt": "pct"
+            }
+          ]
+        },
+        {
+          "title": "ISSUER APM",
+          "rows": [
+            {
+              "id": "dm_issuer_apm_company_reported_fcf_margin",
+              "label": "Company-reported FCF margin",
+              "type": "input",
+              "values": {
+                "FY2021": -0.0426,
+                "FY2022": 0.012199999999999999,
+                "FY2023": 0.0902,
+                "FY2024": 0.1568,
+                "FY2025": 0.1877
+              },
+              "fmt": "pct"
+            }
+          ]
+        },
+        {
+          "title": "LEVERAGE",
+          "rows": [
+            {
+              "id": "dm_leverage_net_debt_ex_leases_ebitda",
+              "label": "Net debt ex leases / EBITDA",
+              "type": "input",
+              "values": {
+                "FY2023": 2.15,
+                "FY2024": 0.74,
+                "FY2025": 0.47
+              },
+              "fmt": "x"
+            }
+          ]
+        },
+        {
+          "title": "LIQUIDITY",
+          "rows": [
+            {
+              "id": "dm_liquidity_current_ratio",
+              "label": "Current ratio",
+              "type": "input",
+              "values": {
+                "FY2017": 1.78,
+                "FY2018": 2.03,
+                "FY2019": 2.47,
+                "FY2020": 1.44,
+                "FY2021": 0.98,
+                "FY2022": 1.04,
+                "FY2023": 1.19,
+                "FY2024": 1.07,
+                "FY2025": 1.14
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_liquidity_quick_ratio",
+              "label": "Quick ratio",
+              "type": "input",
+              "values": {
+                "FY2017": 1.33,
+                "FY2018": 1.72,
+                "FY2019": 2.22,
+                "FY2020": 1.15,
+                "FY2021": 0.75,
+                "FY2022": 0.8,
+                "FY2023": 0.93,
+                "FY2024": 0.9,
+                "FY2025": 0.93
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_liquidity_cash_only_ratio",
+              "label": "Cash-only ratio",
+              "type": "input",
+              "values": {
+                "FY2017": 1.14,
+                "FY2018": 1.5,
+                "FY2019": 1.93,
+                "FY2020": 0.82,
+                "FY2021": 0.48,
+                "FY2022": 0.48,
+                "FY2023": 0.5,
+                "FY2024": 0.51,
+                "FY2025": 0.58
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_liquidity_cfo_average_current_liabilities",
+              "label": "CFO / average current liabilities",
+              "type": "input",
+              "values": {
+                "FY2018": -0.38020000000000004,
+                "FY2019": -0.8731,
+                "FY2020": -0.4391,
+                "FY2021": -0.055999999999999994,
+                "FY2022": 0.0718,
+                "FY2023": 0.3917,
+                "FY2024": 0.682,
+                "FY2025": 0.8488
+              },
+              "fmt": "pct"
+            }
+          ]
+        },
+        {
+          "title": "PROFITABILITY",
+          "rows": [
+            {
+              "id": "dm_profitability_gross_margin",
+              "label": "Gross margin",
+              "type": "input",
+              "values": {
+                "FY2016": 0.4205,
+                "FY2017": 0.4755,
+                "FY2018": 0.5413,
+                "FY2019": 0.5338,
+                "FY2020": 0.5373,
+                "FY2021": 0.4643,
+                "FY2022": 0.3833,
+                "FY2023": 0.39759999999999995,
+                "FY2024": 0.39399999999999996,
+                "FY2025": 0.3975
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_profitability_operating_margin",
+              "label": "Operating margin",
+              "type": "input",
+              "values": {
+                "FY2016": -0.7862,
+                "FY2017": -0.5144,
+                "FY2018": -0.2907,
+                "FY2019": -0.6612,
+                "FY2020": -0.4366,
+                "FY2021": -0.21969999999999998,
+                "FY2022": -0.0575,
+                "FY2023": 0.0298,
+                "FY2024": 0.0636,
+                "FY2025": 0.107
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_profitability_ebitda_margin",
+              "label": "EBITDA margin",
+              "type": "input",
+              "values": {
+                "FY2016": -0.703,
+                "FY2017": -0.4501,
+                "FY2018": -0.24989999999999998,
+                "FY2019": -0.6249,
+                "FY2020": -0.385,
+                "FY2021": -0.168,
+                "FY2022": -0.0278,
+                "FY2023": 0.0518,
+                "FY2024": 0.07980000000000001,
+                "FY2025": 0.1208
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_profitability_consolidated_net_margin",
+              "label": "Consolidated net margin",
+              "type": "input",
+              "values": {
+                "FY2016": -0.0962,
+                "FY2017": -0.5084000000000001,
+                "FY2018": 0.0946,
+                "FY2019": -0.6548,
+                "FY2020": -0.6093999999999999,
+                "FY2021": -0.0327,
+                "FY2022": -0.2867,
+                "FY2023": 0.057800000000000004,
+                "FY2024": 0.22390000000000002,
+                "FY2025": 0.19399999999999998
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_profitability_parent_net_margin",
+              "label": "Parent net margin",
+              "type": "input",
+              "values": {
+                "FY2016": -0.0962,
+                "FY2017": -0.5084000000000001,
+                "FY2018": 0.0956,
+                "FY2019": -0.6543000000000001,
+                "FY2020": -0.6076,
+                "FY2021": -0.028399999999999998,
+                "FY2022": -0.2868,
+                "FY2023": 0.0506,
+                "FY2024": 0.2241,
+                "FY2025": 0.19329999999999997
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_profitability_effective_tax_rate",
+              "label": "Effective tax rate",
+              "type": "input",
+              "values": {
+                "FY2016": -0.0087,
+                "FY2017": 0.1185,
+                "FY2018": 0.2157,
+                "FY2019": -0.0053,
+                "FY2020": 0.0276,
+                "FY2021": 0.48,
+                "FY2022": 0.0192,
+                "FY2023": 0.09179999999999999,
+                "FY2024": -1.3959000000000001,
+                "FY2025": -0.7493000000000001
+              },
+              "fmt": "pct"
+            }
+          ]
+        },
+        {
+          "title": "RETURNS",
+          "rows": [
+            {
+              "id": "dm_returns_roa",
+              "label": "ROA",
+              "type": "input",
+              "values": {
+                "FY2017": -0.259,
+                "FY2018": 0.0501,
+                "FY2019": -0.3054,
+                "FY2020": -0.20879999999999999,
+                "FY2021": -0.0158,
+                "FY2022": -0.25780000000000003,
+                "FY2023": 0.060899999999999996,
+                "FY2024": 0.2189,
+                "FY2025": 0.17859999999999998
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_returns_parent_roe",
+              "label": "Parent ROE",
+              "type": "input",
+              "values": {
+                "FY2017": 0.6132,
+                "FY2018": -0.1251,
+                "FY2019": -2.4999000000000002,
+                "FY2020": -0.5115999999999999,
+                "FY2021": -0.0371,
+                "FY2022": -0.8387,
+                "FY2023": 0.203,
+                "FY2024": 0.6008,
+                "FY2025": 0.41369999999999996
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_returns_consolidated_roe",
+              "label": "Consolidated ROE",
+              "type": "input",
+              "values": {
+                "FY2017": 0.6132,
+                "FY2018": -0.12380000000000001,
+                "FY2019": -2.2738,
+                "FY2020": -0.4877,
+                "FY2021": -0.0406,
+                "FY2022": -0.7870999999999999,
+                "FY2023": 0.2145,
+                "FY2024": 0.5722,
+                "FY2025": 0.40130000000000005
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_returns_asset_turnover",
+              "label": "Asset turnover",
+              "type": "input",
+              "values": {
+                "FY2017": 0.51,
+                "FY2018": 0.53,
+                "FY2019": 0.47,
+                "FY2020": 0.34,
+                "FY2021": 0.48,
+                "FY2022": 0.9,
+                "FY2023": 1.05,
+                "FY2024": 0.98,
+                "FY2025": 0.92
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_returns_invested_capital_turnover",
+              "label": "Invested capital turnover",
+              "type": "input",
+              "values": {
+                "FY2020": 0.82,
+                "FY2021": 0.89,
+                "FY2022": 1.72,
+                "FY2023": 2.26,
+                "FY2024": 1.94,
+                "FY2025": 1.73
+              },
+              "fmt": "x"
+            }
+          ]
+        },
+        {
+          "title": "SOLVENCY",
+          "rows": [
+            {
+              "id": "dm_solvency_equity_ratio",
+              "label": "Equity ratio",
+              "type": "input",
+              "values": {
+                "FY2016": -0.2925,
+                "FY2017": -0.5547,
+                "FY2018": -0.3079,
+                "FY2019": 0.4682,
+                "FY2020": 0.39,
+                "FY2021": 0.3906,
+                "FY2022": 0.2515,
+                "FY2023": 0.31079999999999997,
+                "FY2024": 0.4368,
+                "FY2025": 0.4517
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_solvency_gross_debt_ex_leases_assets",
+              "label": "Gross debt ex leases / assets",
+              "type": "input",
+              "values": {
+                "FY2019": 0.18230000000000002,
+                "FY2020": 0.23800000000000002,
+                "FY2021": 0.2421,
+                "FY2022": 0.2915,
+                "FY2023": 0.247,
+                "FY2024": 0.1869,
+                "FY2025": 0.17149999999999999
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_solvency_gross_debt_incl_leases_assets",
+              "label": "Gross debt incl leases / assets",
+              "type": "input",
+              "values": {
+                "FY2019": 0.2365,
+                "FY2020": 0.2897,
+                "FY2021": 0.2893,
+                "FY2022": 0.34990000000000004,
+                "FY2023": 0.292,
+                "FY2024": 0.2186,
+                "FY2025": 0.1967
+              },
+              "fmt": "pct"
+            },
+            {
+              "id": "dm_solvency_debt_equity_ex_leases",
+              "label": "Debt / equity ex leases",
+              "type": "input",
+              "values": {
+                "FY2019": 0.39,
+                "FY2020": 0.61,
+                "FY2021": 0.62,
+                "FY2022": 1.16,
+                "FY2023": 0.79,
+                "FY2024": 0.43,
+                "FY2025": 0.38
+              },
+              "fmt": "x"
+            },
+            {
+              "id": "dm_solvency_debt_equity_incl_leases",
+              "label": "Debt / equity incl leases",
+              "type": "input",
+              "values": {
+                "FY2019": 0.5,
+                "FY2020": 0.74,
+                "FY2021": 0.74,
+                "FY2022": 1.39,
+                "FY2023": 0.94,
+                "FY2024": 0.5,
+                "FY2025": 0.44
+              },
+              "fmt": "x"
+            }
+          ]
+        },
+        {
+          "title": "WORKING CAPITAL",
+          "rows": [
+            {
+              "id": "dm_working_capital_days_sales_outstanding",
+              "label": "Days sales outstanding",
+              "type": "input",
+              "values": {
+                "FY2018": 29.0,
+                "FY2019": 29.9,
+                "FY2020": 37.5,
+                "FY2021": 36.7,
+                "FY2022": 29.9,
+                "FY2023": 30.3,
+                "FY2024": 28.0,
+                "FY2025": 25.1
+              },
+              "fmt": "num1"
+            },
+            {
+              "id": "dm_working_capital_days_payables_outstanding",
+              "label": "Days payables outstanding",
+              "type": "input",
+              "values": {
+                "FY2018": 13.8,
+                "FY2019": 12.7,
+                "FY2020": 18.0,
+                "FY2021": 21.4,
+                "FY2022": 14.7,
+                "FY2023": 12.3,
+                "FY2024": 11.3,
+                "FY2025": 10.9
+              },
+              "fmt": "num1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sources",
+      "kind": "table",
+      "tab_color": "1F4E79",
+      "col_widths": [
+        14,
+        40,
+        45,
+        14
+      ],
+      "table": [
+        [
+          {
+            "text": "Source ID",
+            "bold": true
+          },
+          {
+            "text": "Filing / Document",
+            "bold": true
+          },
+          {
+            "text": "Path",
+            "bold": true
+          },
+          {
+            "text": "Tier",
+            "bold": true
+          }
+        ],
+        [
+          "S106",
+          "Uber Technologies, Inc. curated financial_input.json (FY2016-2025 annual aggregates)",
+          "data/curated/companies/US/UBER-uber/financial_input.json",
+          "1"
+        ],
+        [
+          "S081",
+          "Uber 10-K for FY2018 (restated FY2018 comparatives)",
+          "data/curated/companies/US/UBER-uber/financial_input.json (source ref)",
+          "1"
+        ],
+        [
+          "10-K-2025",
+          "Uber 10-K for fiscal year 2025 (filed 2026)",
+          "sources/companies/US/UBER-uber/sec/10-k-2025/source.html",
+          "2"
+        ],
+        [
+          "10-K-2023",
+          "Uber 10-K for fiscal year 2023 (filed 2024)",
+          "sources/companies/US/UBER-uber/sec/10-k-2023/source.html",
+          "2"
+        ],
+        [
+          "10-K-2021",
+          "Uber 10-K for fiscal year 2021 (filed 2022)",
+          "sources/companies/US/UBER-uber/sec/10-k-2021/source.html",
+          "2"
+        ],
+        [
+          "10-K-2020",
+          "Uber 10-K for fiscal year 2020 (filed 2021) \u2014 restated FY2018-2019 comparatives",
+          "sources/companies/US/UBER-uber/sec/10-k-2020/source.html",
+          "2"
+        ],
+        [
+          "10-K-2019",
+          "Uber 10-K for fiscal year 2019 (filed 2020)",
+          "sources/companies/US/UBER-uber/sec/10-k-2019/source.html",
+          "2"
+        ],
+        [
+          "10-K-2022",
+          "Uber 10-K for fiscal year 2022 (filed 2023)",
+          "sources/companies/US/UBER-uber/sec/10-k-2022/source.html",
+          "2"
+        ],
+        [
+          "10-K-2024",
+          "Uber 10-K for fiscal year 2024 (filed 2025)",
+          "sources/companies/US/UBER-uber/sec/10-k-2024/source.html",
+          "2"
+        ],
+        [
+          "10-Q-2026Q2",
+          "Uber 10-Q for Q2 2026",
+          "sources/companies/US/UBER-uber/sec/10-q-2026q2/source.html",
+          "2"
+        ],
+        [
+          "sec-cleaned",
+          "S-1 / 424B4 prospectus and 2026 Q1/Q2 earnings press releases (cleaned markdown)",
+          "research/companies/US/UBER-uber/data/sec-cleaned/",
+          "3"
+        ],
+        [
+          "metrics.md",
+          "Curated derived-metrics workbook (ratios for Derived Metrics sheet)",
+          "data/curated/companies/US/UBER-uber/metrics.md",
+          "4"
+        ]
+      ]
+    }
+  ]
+}

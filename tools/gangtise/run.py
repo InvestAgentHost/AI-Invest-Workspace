@@ -67,11 +67,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run a Gangtise skill script without writing runtime data under .github/."
     )
-    parser.add_argument(
+    proxy_group = parser.add_mutually_exclusive_group()
+    proxy_group.add_argument(
         "--inherit-proxy",
+        dest="use_proxy",
         action="store_true",
-        help="Preserve HTTP(S)/ALL_PROXY variables instead of using a direct connection.",
+        help="Preserve HTTP(S)/ALL_PROXY variables (default).",
     )
+    proxy_group.add_argument(
+        "--direct",
+        dest="use_proxy",
+        action="store_false",
+        help="Remove HTTP(S)/ALL_PROXY variables and force a direct connection.",
+    )
+    parser.set_defaults(use_proxy=True)
     parser.add_argument(
         "--output-subdir",
         help="Isolate output under sources, such as companies/CN/688234-sicc/gangtise.",
@@ -88,7 +97,7 @@ def main() -> None:
     env = os.environ.copy()
     env["WORK_PATH"] = str(output_root)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    if not args.inherit_proxy:
+    if not args.use_proxy:
         for name in ("ALL_PROXY", "HTTPS_PROXY", "HTTP_PROXY", "all_proxy", "https_proxy", "http_proxy"):
             env.pop(name, None)
 

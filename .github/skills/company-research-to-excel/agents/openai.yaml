@@ -1,0 +1,4 @@
+interface:
+  display_name: "Company Research to Excel"
+  short_description: "Arrange cleaned company panels in polished Excel"
+  default_prompt: "Use $company-research-to-excel to group the cleaned company disclosure panels by economic logic and export them to a polished, verified Excel workbook."

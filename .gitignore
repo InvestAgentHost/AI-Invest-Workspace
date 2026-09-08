@@ -52,6 +52,14 @@ research/companies/**/_file/
 # Rebuildable company-research intake and preprocessing artifacts.
 # Keep durable report Markdown at the company directory root tracked.
 research/companies/**/data/**
+# ResearchFoundry runtime roots are rebuildable and must not appear as report changes.
+# Raw external files remain under sources/; durable conclusions remain at the company root.
+research/companies/**/artifacts/**
+research/companies/**/runs/**
+research/companies/**/cache/**
+research/companies/**/logs/**
+research/companies/**/state/**
+research/companies/**/targets/**
 
 # Rebuildable data and knowledge products
 data/curated/**
