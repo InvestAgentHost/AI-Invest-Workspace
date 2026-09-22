@@ -421,7 +421,7 @@ def _official(args: argparse.Namespace) -> int:
         _write_json(args.output, plan)
         _print(plan)
     elif command == "run":
-        _print(execute_official_site_plan(_load_document(args.plan)))
+        _print(execute_official_site_plan(args.plan))
     elif command == "review-coverage":
         _print(review_official_site_coverage(args.workspace, args.run_id, OfficialSiteCoverageReview.model_validate(_load_document(args.input))))
     elif command == "publish":

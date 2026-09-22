@@ -662,6 +662,18 @@ Send the workbook to the user with:
 - Data completeness notes (which filing years were used for gap-filling)
 - Comparability notes (restatements, re-segmentations, FYE changes if any)
 
+### Optional next phase — deeper derived analysis
+
+This skill's Derived Metrics sheet (4h) covers standard ratios computed as
+in-workbook formulas. If the user wants a deeper output pack — multi-year asset
+structure, net cash, working capital trend, a full cash-flow attribution bridge,
+interval (multi-year cumulative) conversion tables, or a broader growth-CAGR
+set, with charts — that is a separate, optional follow-on step. Use the
+[derived-financial-analysis](../derived-financial-analysis/SKILL.md) skill against
+the workbook this skill just built. It is not part of this pipeline: it appends new
+sheets to a copy of the finished workbook rather than going through model.json, and
+computes each table by agent judgment per company rather than a shared formula set.
+
 ---
 
 ## Expected sheet structure

@@ -1,0 +1,29 @@
+---
+schema_version: research_foundry_official_site_deliverable.v1
+document_type: strategy_and_developments
+target_name: "AVGO-broadcom"
+as_of: 2026-09-22
+snapshot_id: oss_manual_avgo_20260922a1
+run_id: run_manual_avgo_20260922b2
+quality_status: partial
+---
+
+# Strategy and Developments
+
+**Methodology note:** investors.broadcom.com — Broadcom's primary channel for press releases and investor materials — is blocked by bot-management/WAF protection and could not be crawled by any tool available in this environment (see `data/acquisition-attempt-log.md` A004-A012). Per the user's explicit instruction, this deliverable substitutes wire-service mirrors of Broadcom's own press releases (GlobeNewswire) and Broadcom's own SEC Form 8-K disclosures — both of which are fetchable and are company-issued — plus one counterparty-issued press release (Apple Newsroom), clearly flagged as such. Development items are limited to the 24-month window ending at the 2026-09-22 as-of date (window starts ~2024-09-22). All content below is COMPANY_CLAIM unless explicitly marked as counterparty-issued or analyst-estimated.
+
+## Recent developments (within 24-month window)
+
+- **2025-10-13 — OpenAI strategic collaboration announced.** OpenAI and Broadcom announced a multi-year collaboration to co-develop and deploy 10 gigawatts of custom AI accelerators (ASICs) designed by OpenAI, paired with Broadcom's Ethernet and networking systems, for OpenAI's own facilities and partner data centers. Rack deployment is set to begin in the second half of 2026, with full rollout targeted by the end of 2029. Broadcom CEO Hock Tan called it "a pivotal moment in the pursuit of artificial general intelligence"; OpenAI CEO Sam Altman called it "a critical step in building the infrastructure needed to unlock AI's potential" [S029] [E008].
+
+- **2026-03-02 — Board retirement disclosed.** Eddy W. Hartenstein, Lead Independent Director, will retire from the Board upon conclusion of his term at the 2026 Annual Meeting, having offered his resignation upon reaching age 75 per Broadcom's Corporate Governance Guidelines (not the result of any dispute with the company). The Board will shrink from nine to eight members [S025] [E007].
+
+- **2026-04-02 — CFO transition announced.** Kirsten M. Spears, CFO and Chief Accounting Officer for six years, notified the company of her retirement effective June 12, 2026; she will remain as a consulting advisor through March 15, 2027. The Board appointed Amie Thuener — previously Vice President, Corporate Controller and Chief Accounting Officer of Alphabet Inc. since 2018 — as successor CFO effective June 12, 2026 (employment start May 4, 2026). CEO Hock Tan stated Thuener would bring "deep experience in financial reporting, corporate governance, AI-related transactions and leading complex, global organizations" [S026] [E006]. This transition is independently corroborated by Broadcom's own FY2026 Q3 Form 10-Q, filed 2026-09-10, which lists Amie Thuener as CFO in its signature block [S018].
+
+- **2026-04-06 — Expanded Google and Anthropic AI infrastructure agreements disclosed.** Broadcom disclosed a long-term agreement to develop and supply future generations of Google's custom Tensor Processing Units, plus a Supply Assurance Agreement covering networking and other components for Google's next-generation AI racks, through 2031. Separately, Broadcom, Google, and Anthropic PBC expanded their existing collaboration: beginning in 2027, Anthropic will access approximately 3.5 gigawatts of TPU-based AI compute capacity through Broadcom, as part of a larger multi-gigawatt commitment, with consumption of the expanded capacity contingent on Anthropic's continued commercial success. Financial terms were not disclosed in the filing itself [S028] [E009]. (Third-party analyst estimates — e.g., Mizuho's estimate of $21B in 2026 and $42B in 2027 AI revenue from the Anthropic relationship — were surfaced via WebSearch but are analyst estimates, not company disclosures, and are noted here for context only, not as a company claim.)
+
+- **2026-07-08 — Apple custom-silicon and U.S. manufacturing commitment (counterparty-issued).** Apple announced a new multiyear commitment with Broadcom, expected to exceed $30 billion, to design and produce custom silicon components and wireless-connectivity technologies for Apple products, including a $1.5 billion Broadcom investment to expand its Fort Collins, Colorado manufacturing facility, under Apple's American Manufacturing Program. This announcement was issued by **Apple**, not Broadcom; Bloomberg reporting (surfaced via WebSearch, not independently fetched in this run) indicates Broadcom separately disclosed an extended-through-2031 ASIC partnership with Apple two days earlier, but that underlying Broadcom-issued filing was not independently verified in this pass [S030] [E010].
+
+## Scope note / limitation
+
+The above items were assembled via manual/web intake (SEC EDGAR direct fetches for company-issued 8-K disclosures, plus a GlobeNewswire wire-service mirror for the OpenAI release) rather than a crawl of investors.broadcom.com, which remains technically unreachable in this environment. This is not a full newsroom archive: it reflects only the strategic developments independently located and verified in this research pass, and is known to be incomplete — additional developments referenced in third-party media but not independently fetched from a primary source in this run (e.g., a Nationwide Building Society engagement, a Kyndryl partnership, a reported ~$100 billion debt financing, and a reported $2 trillion market-capitalization milestone) are deliberately **omitted** rather than cited without primary-source verification, consistent with this package's evidence-discipline standard. A future pass could fetch primary sources for these items to close the gap.

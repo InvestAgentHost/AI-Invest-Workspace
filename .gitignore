@@ -101,3 +101,4 @@ inbox/**
 # durable research output and should be tracked in git, unlike other binary
 # formats above.
 !research/companies/**/outputs/**/*.xlsx
+!research/companies/**/*.docx
