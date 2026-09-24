@@ -102,7 +102,7 @@ Always analyze asset-disposal proceeds separately. Disposal cash can fund deleve
 | Consolidated ROE | consolidated net income / average total equity | Return for all equity holders | Keep separate from parent ROE. |
 | Asset turnover | revenue / average total assets | Revenue generated per unit of assets | Carrying values and acquisitions affect comparability. |
 | Invested-capital turnover | revenue / average invested capital | Revenue productivity of operating capital | Define invested capital consistently. |
-| ROIC | normalized NOPAT / average invested capital | After-tax operating return on debt and equity capital | Requires a defensible normalized tax rate and operating/non-operating split. |
+| ROIC | NOPAT / average invested capital | After-tax operating return on debt and equity capital | Requires a defensible operating/non-operating split; NOPAT uses the period's actual reported income tax expense, not an assumed or normalized rate. |
 
 Recommended invested capital bridge:
 
@@ -113,7 +113,7 @@ invested capital = interest-bearing debt
                  - excess cash and non-operating investments
 ```
 
-`NOPAT = normalized operating profit * (1 - normalized cash tax rate)`. Do not use a negative or one-off effective tax rate mechanically. Document all normalization.
+`NOPAT = EBIT (operating profit, adjusted only for a disclosed, bridgeable one-off) - income tax expense (the period's as-reported provision for income taxes)`. Use the actual reported tax line every period — do not substitute an assumed or multi-year-average "normalized" tax rate. Where the reported provision is volatile or contains a one-off (e.g., a tax-reform remeasurement), carry it as reported and footnote the outlier rather than smoothing it into a rate assumption.
 
 Negative ROA/ROE is economically interpretable, but percentage changes in a negative return usually are not.
 

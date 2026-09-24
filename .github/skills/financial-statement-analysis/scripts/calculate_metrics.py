@@ -880,10 +880,9 @@ def calculate_metrics(
                     + prior_total_equity_for_ic - prior_cash
                 )
             avg_invested_capital = average(current_invested_capital, prior_invested_capital)
-            normalized_tax_rate = get("normalized_tax_rate")
-            normalized_nopat = None
-            if operating_profit is not None and normalized_tax_rate is not None:
-                normalized_nopat = operating_profit * (1 - normalized_tax_rate)
+            nopat = None
+            if operating_profit is not None and income_tax_expense is not None:
+                nopat = operating_profit - income_tax_expense
             for metric_id, label, num, den, num_name, den_name, formula, note in [
                 (
                     "invested_capital_turnover",
@@ -896,14 +895,14 @@ def calculate_metrics(
                     "invested capital = debt + leases + total equity - cash - liquid investments",
                 ),
                 (
-                    "roic_normalized",
-                    "ROIC (normalized tax rate)",
-                    normalized_nopat,
+                    "roic",
+                    "ROIC",
+                    nopat,
                     avg_invested_capital,
-                    "normalized NOPAT",
+                    "NOPAT",
                     "average invested capital",
-                    "normalized operating profit * (1 - normalized tax rate) / average invested capital",
-                    "analyst calculation; normalized tax rate is an explicit input assumption",
+                    "(operating profit - income tax expense) / average invested capital",
+                    "NOPAT uses the period's actual reported income tax expense; do not substitute an assumed or normalized tax rate",
                 ),
             ]:
                 add_if_visible(

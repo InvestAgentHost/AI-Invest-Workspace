@@ -79,9 +79,13 @@ EBIT               = operating profit (as reported), adjusted only for a disclos
                      bridgeable one-off (impairment, disposal gain/loss) — footnote
                      every adjustment
 EBITDA             = EBIT + depreciation & amortization
-Normalized tax rate = a multi-year average cash or effective tax rate, not one
-                     outlier year
-NOPAT              = EBIT x (1 - normalized tax rate)
+NOPAT              = EBIT - income tax expense (the period's as-reported provision
+                     for income taxes line item). Use the actual reported tax
+                     figure every period — do not substitute an assumed or
+                     multi-year-average tax rate. A volatile or one-off tax
+                     provision (e.g., a tax-reform remeasurement) still goes in
+                     as reported; footnote the outlier rather than smoothing it
+                     away with a rate assumption.
 Cash earnings       = net income + D&A + other material non-cash items (impairment,
                      stock comp, deferred tax) - footnote each add-back
 ```
