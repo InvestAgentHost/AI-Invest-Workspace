@@ -70,6 +70,10 @@ For `research_panel.v1`, use the bundle's panel metadata and `cell_evidence` to 
 
 ## Verification
 
+### Valuation extension
+
+For requested valuation sheets, read the valuation skill's [workbook contract](../../valuation-binding-methodology/references/workbook-contract.md). Its forecast-left/history-right layout is a related same-metric panel and is required in both remaining-quarter and future-year sections. The provenance metadata line above remains compact; long explanations/indexes belong at the end or in Sources. Use compact content-fitted heights, preserve existing user changes and native features, and validate scoped edits rather than rebuilding a manually edited workbook from stale inputs.
+
 Before export:
 
 1. Confirm that every selected table ID appears exactly once in the layout plan and workbook. No table may be silently omitted or duplicated.

@@ -1,6 +1,8 @@
-使用 `$company-deep-investment-research` 对【公司名 / ticker / 市场】执行完整公开公司深度研究，研究截止日为【YYYY-MM-DD】。
+使用 `$company-deep-investment-research` 对【公司名 / ticker / 市场】执行完整公开公司深度研究，研究截止日为【YYYY-MM-DD】。遵守 [公司深度投研人机交互规范](../../../../docs/research-interaction-protocol.md)：先恢复上下文和范围，再按阶段推进；每个模块先给结论，随后给完整数据和推导；关键参数由分析师拍板并留痕。
 
 默认覆盖最近五个已审计财年、最新 10-Q、相关 8-K/业绩材料、官方 IR/官网、电话会或会议纪要、监管/独立行业资料和 dated market data。按阶段 0-7 执行：身份与边界、资料获取、业务路由、行业与结构性主题、五年三表和衍生指标、资本配置/治理/风险、SOTP/交叉估值与股东 IRR、报告组装和独立发布审核。阶段 4 同时按 `prompts/04-financial-series-reconstruction.zh-CN.md` 重建原始报表、Note 表格、标准化时序、映射台账和验证结果。
+
+估值阶段使用 `$valuation-binding-methodology`，先完成当前财年剩余季度，再推未来年度，预测右侧列历史数值；遵守直接退出 PE、现金分红和净缩股口径，完成资金约束和可追溯接管记录。
 
 先提交阶段 0 计划；身份、来源、权限或估值边界出现实质歧义时暂停确认，其他步骤在已确认范围内自动继续。所有材料放入正确的 sources/research/data 路径，原始资料不覆盖。严格区分事实、公司主张、计算、判断、假设和未解决问题；允许但必须解释 PARTIAL。
 

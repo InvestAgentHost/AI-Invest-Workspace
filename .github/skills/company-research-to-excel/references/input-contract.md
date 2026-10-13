@@ -32,6 +32,10 @@ Period regexes match a complete wide-table header or a complete value in a `peri
 
 ## Value typing
 
+### Opt-in valuation inputs
+
+An explicit valuation request routes to [valuation-binding-methodology](../../valuation-binding-methodology/SKILL.md). Keep disclosed actuals distinct from adopted forecasts and judgments. Actuals link canonical panels/filings; a report may supply an approved assumption with its decision record, never a filed number. Stable metric IDs and period/unit metadata map to the existing workbook, so later layout changes do not change economic definitions. Detect and register manual workbook inputs before refreshing from structured assumptions; blank scenarios remain unavailable, not zero.
+
 - A standalone integer/decimal, optionally with thousands separators, is typed as a number.
 - A standalone percentage is stored as a decimal fraction and displayed as `0.0%`.
 - Numeric fields whose column or metric name ends in `_pct`, `percent`, or `percentage` are interpreted as percentage points (`38.4` becomes `0.384` with `38.4%` display). Decimal-fraction inputs must carry explicit format metadata or a literal `%` representation instead of relying on that suffix.

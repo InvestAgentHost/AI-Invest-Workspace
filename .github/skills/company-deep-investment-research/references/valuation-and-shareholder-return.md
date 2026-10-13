@@ -27,42 +27,22 @@ operating segment values
 - lease liabilities when included in the denominator boundary
 - pensions, supplier financing, latent tax, NCI, and other obligations
 = equity value
-/ diluted shares at valuation date
+/ applicable diluted equity share count (with current outstanding shares separately identified)
 = per-share value (only when inputs are valid)
 ```
 
 Use after-tax normalized EBIT/EBITDA/FCF only when maintenance versus growth investment is understood. Keep company APMs separate from analyst calculations.
 
-## 3. Scenario inputs
+## 3. Forecasts, model and handoff
 
-For 5-year and, when decision-relevant, differentiated 2-year low/base/high cases, disclose:
+Read [valuation-binding-methodology](../../valuation-binding-methodology/SKILL.md). It owns the calculation contract and the reusable forecast/update workflow; do not maintain a second equation here.
 
-```text
-base_net_income | horizon CAGR | FCF conversion | payout ratio |
-future PE or other terminal multiple | current market cap |
-net debt/lease boundary | diluted shares | valuation date/currency
-```
+Build remaining-quarter forecasts into a full fiscal-year base, then derive future annual profits from business drivers. Forecasts must have same-metric numeric historical anchors on their right. Begin with a defensible base case; unapproved low/high cases may remain blank. Extract CAGR after annual profit forecasts rather than forcing a target growth rate.
 
-Anchor assumptions to audited statements, operating evidence, dated market data, and explicit analyst judgment. Do not use a loss-year CAGR, one-year spike, or unverified denominator.
+Under the default shareholder-return route, use direct exit PE × terminal earnings, cash dividends only, and a separately modelled net share-count path. FCF conversion is a cash-feasibility constraint, not an extra multiplier on direct PE. Distinguish current outstanding shares, period-end forecast shares and weighted diluted EPS shares. Use actual valuation/payment dates, including the residual current fiscal year.
 
-## 4. IRR and payout conventions
+For non-PE routes, match cash flow, discount rate, terminal assumptions and EV-to-equity bridge to the business. Do not force positive-NI valuation on losses or peak-cycle earnings.
 
-For horizon `H` under a positive-NI P/E/FCF-conversion solver:
+## 4. Decision use
 
-```text
-NI_t = NI_base * (1 + CAGR)^t
-Terminal Value = NI_H * FCF_conversion * Future_PE
-Dividend_t = NI_t * Payout
-Market Cap = Terminal Value/(1+IRR)^H + sum(Dividend_t/(1+IRR)^t)
-```
-
-Choose exactly one buyback policy per output:
-
-- **Cash-return convention:** treat dividends plus buybacks as shareholder cash; terminal share count is unchanged for the return calculation.
-- **Per-share accretion convention:** reduce diluted shares for repurchases; count dividends as cash return; do not also add repurchase cash to payout.
-
-Never combine the two. If market cap, normalized positive earnings, or future multiple is unavailable or non-positive, emit a structured pending result instead of an IRR.
-
-## 5. Sensitivities and decision use
-
-Show sensitivity to the actual value drivers: organic growth, price/mix, margin, FCF conversion, payout, terminal multiple, leverage, capex, pension/lease treatment, and diluted shares. State what evidence would upgrade or downgrade the valuation and which assumptions are unresolved.
+Show sensitivities to actual drivers and terminal valuation, with cash, debt and dilution constraints. Persist adopted assumptions, evidence, analyst decisions, forecast vintages and thesis-review triggers using the valuation skill's handoff contract. Follow Workspace report-delivery preferences; do not create extra narrative files or edit personal Word documents without authorization.

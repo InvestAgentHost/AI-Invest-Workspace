@@ -2,26 +2,25 @@
 
 ## 用户投递
 
-新公司资料不需要预分类，直接放进：
+新公司资料不需要预分类。研究期间可以按使用习惯直接放进：
 
 ```text
-sources/companies/<market>/<ticker>-<slug>/inbox/
+research/companies/<market>/<ticker>-<slug>/data/
 ```
 
-随后让 Codex 整理该公司资料。整理结果仍然留在同一个公司目录：
+研究完成后，Codex 先生成归档清单并询问是否归档。用户确认后，原始资料归入：
 
 ```text
 sources/companies/<market>/<ticker>-<slug>/
 ├── inbox/              新收到、尚未整理的资料
-├── filings/            财报和公告
-├── broker-research/    券商研报
-├── official-website/   官网抓取
-├── gangtise/           Gangtise 下载
-├── user-materials/     用户上传但暂时不确定类型的资料
-└── models/             自制模型和工作簿
+├── sec/                财报和公告
+├── ir/                 公司 IR 和官网材料
+├── transcripts/        业绩会和会议纪要
+├── sellside/           券商研报
+└── user-provided/      用户上传的原始资料
 ```
 
-不要求为每个文件维护 manifest、哈希或 Git 索引。需要知道资料是否存在时，直接查看公司目录。
+归档使用哈希和来源索引，不覆盖同名文件。未确认归档前，资料继续留在研究目录的 `data/` 收件区。
 
 ## 研究结论
 

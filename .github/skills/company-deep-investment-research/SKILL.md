@@ -7,6 +7,8 @@ description: Build, refresh, or audit a provenance-preserving deep investment re
 
 Use this skill as the research lead for a public-company deep dive. The output is a durable Markdown report under `research/`, supported by raw external material under `sources/` and small, reproducible data under `data/curated/` or `data/derived/`.
 
+For the analyst–Agent interaction contract, read [research-interaction-protocol.md](../../../docs/research-interaction-protocol.md). It defines the plan/execute/decision/handoff rhythm; this skill supplies the company-research execution details.
+
 ## Operating contract
 
 - Read the repository `AGENTS.md` before changing files and preserve unrelated user work.
@@ -29,12 +31,16 @@ Follow the stages in order. Load the linked reference only when that stage is ac
 4. **Stage 3 - industry and operating analysis.** Explain the demand event, value chain, supply constraints, competition, customer choice, and cycle. Add only route-relevant modules. Separate company claims from independently verified facts. See [industry-and-theme-analysis.md](references/industry-and-theme-analysis.md).
 5. **Stage 4 - fundamentals and derived metrics.** Extract reported consolidated statements first, then build a source-linked mapping ledger, restatement bridge, segment bridge, APM bridge, and auditable derived metrics. Use the Workspace financial calculator with `--strict` when available. See [financial-reconstruction.md](references/financial-reconstruction.md).
 6. **Stage 5 - capital allocation, governance, risk, and monitoring.** Trace acquisitions, disposals, capex, inventory/capacity, debt, leases, pensions, goodwill, dividends, buybacks, incentives, controls, and stress paths to statements and cash.
-7. **Stage 6 - valuation and shareholder return.** Select a route-appropriate primary method before assumptions. Prefer SOTP for heterogeneous groups; use EV/EBITDA or FCF as cross-checks only when perimeter and denominator match. Model dividends and buybacks under one explicit convention. See [valuation-and-shareholder-return.md](references/valuation-and-shareholder-return.md).
+7. **Stage 6 - valuation and shareholder return.** Use [valuation-binding-methodology](../valuation-binding-methodology/SKILL.md) as the owner of fiscal-year driver forecasts, valuation formulas, cash/share constraints, and the ongoing-update handoff. Forecast the current incomplete fiscal year first, then later fiscal years; show numeric history to the right of both forecast blocks. Select a route-appropriate method; prefer SOTP for heterogeneous groups. Default shareholder IRR uses cash dividends and net share shrink, with direct exit PE. See [valuation-and-shareholder-return.md](references/valuation-and-shareholder-return.md) for route selection.
 8. **Stage 7 - report assembly and release review.** Draft the adaptive report spine, show reported tables before interpretation, cite claims inline, run deterministic checks, conduct a clean second-pass review, and publish `PASS`, `PARTIAL`, or `BLOCKED`. See [output-contract.md](references/output-contract.md) and [release-gates.md](references/release-gates.md).
 
 ## Automatic run and human handoff
 
 The `prompts/full-research.zh-CN.md` prompt is the default autonomous entry. Show the Stage 0 plan first, request one confirmation for identity/scope and access, then run the confirmed stages in sequence using the bundled bridge and ordinary terminal web tools. Do not ask the user to copy internal commands. Pause only for a material ambiguity, missing authorization, unsafe source choice, or a valuation boundary that would change the decision. After deterministic validation and release review, deliver the report and ledgers, state `PASS`/`PARTIAL`/`BLOCKED`, and enter a human review turn with unresolved questions, key sensitivities, and explicit approval points.
+
+### Research-material inbox and archival handoff
+
+For this Workspace, users may place uploads directly under `research/companies/<market>/<company-id>/data/` for convenience. Treat that location as an inbox during research; do not silently reorganize it. At Stage 7/release review, inventory newly added files, classify each proposed destination under `sources/companies/<market>/<company-id>/` or the company `outputs/` tree, and ask whether the user wants archival. Until confirmation, keep files in place and write only a non-destructive manifest if needed. After confirmation, compare hashes, avoid same-name overwrites, update source/index references, preserve a recoverable trail, and report what moved or was copied. The Word report is context and analyst judgment; it does not replace filed actuals.
 
 For a focused data task, route natural-language requests such as “重建最近五年三表时序”“拼接债务和养老金 Note”“补齐缺失年份并检查重述” to [04-financial-series-reconstruction.zh-CN.md](prompts/04-financial-series-reconstruction.zh-CN.md). Load [financial-series-reconstruction.md](references/financial-series-reconstruction.md) for the two-layer raw/standardized data model, metadata contract, cross-year stitching rules, and reconciliation gates. This focused route may stop after structured data and validation; it does not imply that a valuation or narrative report is requested.
 

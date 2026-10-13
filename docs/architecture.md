@@ -1,6 +1,6 @@
 # Workspace 架构
 
-截至：2026-08-03
+截至：2026-10-13
 
 ## 目录职责
 
@@ -26,7 +26,7 @@ Workspace/
 - Obsidian：只索引 Git 层，不索引 `sources/`、`knowledge/` 和 `.local/`。
 - 每台机器重建：`.venv/`、`.local/`、`knowledge/` 和 `data/derived/`。
 
-不维护逐文件索引、哈希清单或 library/catalog 副本。原始文件的可用性以本机目录是否存在为准。
+研究期间不要求用户逐文件分类。研究交付时，归档工具生成哈希清单和待确认归档计划；确认后更新来源索引。原始文件仍以本机目录为准，归档计划和索引用于可追溯性，不替代原件。
 
 公司研究、公司原始资料和公司精选数据共用 `<market>/<ticker>-<slug>` 标识。`<market>` 指实际投资或交易市场，而不是公司注册地，例如 Nokia ADR 使用 `US/NOK-nokia`。
 

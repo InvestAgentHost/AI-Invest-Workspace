@@ -5,13 +5,17 @@ name: <公司名称>
 aliases: []
 tickers: []
 research_path: research/companies/<market>/<ticker>-<slug>
-inbox_path: sources/companies/<market>/<ticker>-<slug>/inbox
+inbox_path: research/companies/<market>/<ticker>-<slug>/data
 destinations:
-  filings: sources/companies/<market>/<ticker>-<slug>/filings
-  broker_research: sources/companies/<market>/<ticker>-<slug>/broker-research
-  company_materials: sources/companies/<market>/<ticker>-<slug>/user-materials
-  structured_data: sources/companies/<market>/<ticker>-<slug>/structured-data
-  models: sources/companies/<market>/<ticker>-<slug>/models
-  outputs: outputs/reports/company/<slug>
+  sec: sources/companies/<market>/<ticker>-<slug>/sec
+  ir: sources/companies/<market>/<ticker>-<slug>/ir
+  transcripts: sources/companies/<market>/<ticker>-<slug>/transcripts
+  sellside: sources/companies/<market>/<ticker>-<slug>/sellside
+  user_provided: sources/companies/<market>/<ticker>-<slug>/user-provided
+  reports: research/companies/<market>/<ticker>-<slug>/outputs/reports
+  workbooks: research/companies/<market>/<ticker>-<slug>/outputs/workbooks
+  valuation_snapshots: research/companies/<market>/<ticker>-<slug>/outputs/valuation-snapshots
+curated_data: data/curated/companies/<market>/<ticker>-<slug>
+derived_data: data/derived/companies/<market>/<ticker>-<slug>
 manual_sync_paths:
   - sources/companies/<market>/<ticker>-<slug>

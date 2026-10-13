@@ -67,14 +67,44 @@ def main() -> int:
     curated_dir = root / "data" / "curated" / "companies" / market / company_id
     derived_dir = root / "data" / "derived" / "companies" / market / company_id
     research_data_dir = research_dir / "data"
+    research_subdirs = (
+        research_data_dir / "inbox",
+        research_data_dir / "context",
+        research_data_dir / "evidence",
+        research_data_dir / "valuation",
+        research_data_dir / "monitoring",
+        research_dir / "outputs" / "reports",
+        research_dir / "outputs" / "workbooks",
+        research_dir / "outputs" / "valuation-snapshots",
+    )
+    source_subdirs = (
+        sources_dir / "inbox", sources_dir / "sec", sources_dir / "ir",
+        sources_dir / "transcripts", sources_dir / "sellside", sources_dir / "user-provided",
+    )
+    curated_subdirs = (
+        curated_dir / "financials", curated_dir / "operating", curated_dir / "valuation",
+    )
+    derived_subdirs = (
+        derived_dir / "financials", derived_dir / "operating", derived_dir / "valuation",
+    )
 
-    for directory in (research_dir, research_data_dir, sources_dir, curated_dir, derived_dir):
+    for directory in (research_dir, research_data_dir, sources_dir, curated_dir, derived_dir,
+                      *research_subdirs, *source_subdirs, *curated_subdirs, *derived_subdirs):
         directory.mkdir(parents=True, exist_ok=True)
 
     context = f"""# Research Context\n\n- Status: `INITIALIZED`\n- Issuer: {args.issuer}\n- Ticker: `{args.ticker}`\n- Market: `{args.market}`\n- Research as-of date: {args.as_of}\n- Fiscal year end: {args.fiscal_year_end}\n- Historical window: {args.history_start or 'to be confirmed'} to {args.history_end or 'to be confirmed'}\n- Latest interim: {args.latest_interim}\n- Report language: {args.language}\n- Research directory: `{research_dir.relative_to(root)}`\n- Sources directory: `{sources_dir.relative_to(root)}`\n- Curated data directory: `{curated_dir.relative_to(root)}`\n- Derived data directory: `{derived_dir.relative_to(root)}`\n\n## Scope decisions\n\n- Accounting basis, consolidation perimeter, share class, currency, units, legal entity, and fiscal comparability: to be verified from authoritative filings.\n- Reference reports, if supplied, may inform method and evidence organization only; target-company facts, assumptions, numbers, and conclusions must be independently sourced.\n- Record all optional dependency checks and limitations in `validation-log.md`.\n"""
     created: list[Path] = []
     if write_if_missing(research_data_dir / "research-context.md", context):
         created.append(research_data_dir / "research-context.md")
+    context_pack = f"""# Context Pack\n\n- Company: {args.issuer}\n- Company ID: `{company_id}`\n- As-of: {args.as_of}\n- User-provided reports and other context files: record relative paths, hashes, versions, and intended use here.\n- Context reports inform research judgments but do not replace filed historical actuals.\n\n## Linked artifacts\n\n- Current workbook: to be recorded\n- Current report: to be recorded\n- Valuation handoff: `data/curated/companies/{market}/{company_id}/valuation/handoff.json`\n"""
+    if write_if_missing(research_data_dir / "context" / "context-pack.md", context_pack):
+        created.append(research_data_dir / "context" / "context-pack.md")
+    decision_ledger = """# Valuation Decision Ledger\n\n| Decision ID | Metric ID | Date | Origin | Adopted value | Reason | Locked | Review condition | Evidence |\n|---|---|---|---|---|---|---|---|---|\n"""
+    if write_if_missing(research_data_dir / "valuation" / "decision-ledger.md", decision_ledger):
+        created.append(research_data_dir / "valuation" / "decision-ledger.md")
+    update_ledger = """# Valuation Update Ledger\n\n| As-of | New actual/source | Previous forecast | Actual vs forecast | Input changes | Valuation attribution | Trigger status | Validation | Snapshot |\n|---|---|---|---|---|---|---|---|---|\n"""
+    if write_if_missing(research_data_dir / "valuation" / "update-ledger.md", update_ledger):
+        created.append(research_data_dir / "valuation" / "update-ledger.md")
     for name, template in LEDGER_TEMPLATES.items():
         if write_if_missing(research_data_dir / name, template):
             created.append(research_data_dir / name)

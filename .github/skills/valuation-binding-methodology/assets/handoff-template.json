@@ -1,0 +1,48 @@
+{
+  "schema_version": "valuation-handoff.v1",
+  "config": {
+    "company_id": null,
+    "market": null,
+    "as_of": null,
+    "valuation_date": null,
+    "fiscal_year_end": null,
+    "fiscal_calendar_note": null,
+    "currency": null,
+    "amount_unit": null,
+    "share_unit": null,
+    "method_version": null,
+    "latest_actual_period": null,
+    "base_period_end": null,
+    "workbook_path": null,
+    "report_path": null,
+    "source_index_path": null,
+    "thesis": [],
+    "review_triggers": []
+  },
+  "sources": [],
+  "metrics": [
+    {
+      "id": null,
+      "label": null,
+      "definition": null,
+      "unit": null,
+      "scope": null,
+      "kind": "input",
+      "dependencies": [],
+      "formula": null,
+      "update_policy": "analyst_review",
+      "update_rule": null,
+      "needs_forecast_history": true,
+      "history_window": {"annual_periods": [], "quarter_periods": []},
+      "history": [],
+      "adopted": [],
+      "forecast_layout": [],
+      "workbook_mapping": []
+    }
+  ],
+  "decisions": [],
+  "previous_snapshot_path": null,
+  "updates": [],
+  "validation": {"status": "PARTIAL", "checks": []},
+  "pending": []
+}

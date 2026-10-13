@@ -22,7 +22,7 @@ Data integrity depends on strict source discipline.
 | 1 | `financial_input.json` / `financial-input-*.json` | IS, BS, CF, Operating Metrics — curated, highest confidence |
 | 2 | 10-K / 10-Q source HTML (via `--sec-source`) | Complete as-reported line items for gap-filling; always preferred over press releases |
 | 3 | sec-cleaned files (press releases, S-1) | Latest unfiled quarter, non-GAAP tables, supplementary KPIs |
-| **Banned** | Deep-research markdown report | NOT a data source — ever |
+| **Banned for actuals** | Deep-research markdown report | Never a source of filed numbers; approved forecasts require assumption/decision provenance |
 | **Banned** | Third-party sources | Never acceptable for filed numbers |
 
 When the same line item appears in multiple sources, prefer the higher tier.
@@ -638,8 +638,7 @@ The verifier runs numeric checks (re-evaluates all formulas, flags check rows
 with |value| > 0.5) and structural checks (sheets exist, period headers match,
 gridlines hidden, panes frozen).
 
-If verification fails, fix model.json and rebuild.  **Never patch the .xlsx
-directly.**
+For this initial disclosure-workbook pipeline, fix model.json and rebuild when verification fails; do not patch the generated .xlsx to conceal a source-model error. For an existing user-edited valuation workbook, use the scoped update workflow below instead of rebuilding from stale model.json.
 
 **Layer 2: Completeness gate** (you, the agent)
 
@@ -714,14 +713,24 @@ Sheets are created only when data exists.
    - **Phase 4**: Customize — apply all analytical judgment
    - **Phase 5-6**: Build → verify (multi-layer)
    - **Phase 7**: Deliver
-5. If verification fails, fix model.json and rebuild.
+5. For the initial pipeline, fix model.json and rebuild if verification fails. Existing valuation updates follow the scoped workflow below.
 6. Deliver the workbook (SendUserFile).
 
 ## Boundaries
 
 - Do not invent data.  Every number must trace to a source file.
-- Do not use the deep-research markdown report as a data source.
+- Do not use the deep-research report as a source of historical actuals. Approved forecast judgments may be recovered from it only with explicit assumption/decision provenance.
 - Never replace source files.  Keep outputs under `outputs/`.
-- Never hand-format the .xlsx.  Fix model.json and rebuild.
+- Initial disclosure exports are formatted through model.json and the builder. Existing user-edited valuation sheets may receive authorized scoped formula/layout updates using the platform spreadsheet skill; preserve unrelated workbook content and native features.
 - Do not annualize interim figures or convert issuer-defined APMs.
 - Numbers live in exactly one place.  Everywhere else is formula or link.
+
+## Optional valuation build or update
+
+When valuation is requested, use [valuation-binding-methodology](../valuation-binding-methodology/SKILL.md) for research decisions, formulas, adopted inputs and ongoing-update records. This exporter remains the owner of disclosed actuals; valuation assumptions are an explicit opt-in extension, not filed data. Read its [workbook contract](../valuation-binding-methodology/references/workbook-contract.md) before adding or updating valuation sheets.
+
+Append a driver-build sheet and a fiscal-year valuation sheet only when needed. Sequence: remaining quarters → current full-year base → future annual forecasts → cash/share constraints → adopted parameters. In both forecast blocks show same-metric annual and recent-quarter historical values on the right, linked to existing actual/derived sheets. Move detailed provenance and indexes to the end; use compact content-fitted row heights and normal readable fonts.
+
+For a user-edited workbook, inspect the latest save and manual inputs, keep a recoverable backup, and modify only the authorized ranges/sheets. Do not regenerate the entire workbook from older model.json. Preserve formulas, formatting, naming, validations, charts and other native features; if the chosen tool cannot preserve them, use a faithful alternative or deliver a verified separate version. Recalculate, independently check values/formulas and render modified blocks before delivery. Never overwrite a live unsaved workbook.
+
+Uploaded files may remain in the company research `data/` inbox while analysis is in progress. Do not move them as part of workbook construction. At release, hand the file list and proposed archive locations to the deep-research archival handoff; archive only after the user confirms.

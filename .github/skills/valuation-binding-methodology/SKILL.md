@@ -1,173 +1,65 @@
 ---
 name: valuation-binding-methodology
-description: Use for evidence-bound company valuation in the AI Invest Workspace, especially when converting audited financial statements, operating KPIs, analyst judgments, and scenario assumptions into formula-driven 5-year/2-year IRR outputs, valuation tables, and a traceable valuation memo. Apply for Cellnex and other infrastructure companies where recurring cash flow, leverage, leases, CapEx, and shareholder returns must be separated.
+description: Build, audit, or update an evidence-bound company valuation from historical disclosures and operating drivers through fiscal-year forecasts, cash and share-count constraints, shareholder IRR or DCF, and a traceable analyst handoff. Use when deep research reaches valuation or subsequent results require refreshing an existing valuation workbook and its assumptions.
 ---
 
-# Valuation Binding Methodology
+# 估值推导与持续更新
 
-## Purpose and scope
+本 skill 负责从已完成的公司研究到估值、再到后续跟踪的闭环。公司业务、行业和会计分析由相关研究 skill 负责；Excel 实际数据整理和文件操作分别复用 `company-research-to-excel` 与平台 spreadsheet skill。不要另建重复的估值方法。
 
-Use this skill to turn a company's evidence set into an auditable valuation. The output must show assumptions before conclusions and must distinguish reported facts, analyst adjustments, and model-generated inferences.
+## 入口与边界
 
-This skill owns:
+- **初次推导**：读取现有原始资料、底稿、报告和分析师决定，按下列流程形成可复算的模型与交接记录。
+- **持续更新**：先读 [tracking-contract.md](references/tracking-contract.md)，恢复上一轮投资逻辑、预测版本、人工锁定参数与更新规则，再更新依赖链。
+- **核查**：只读审计，除非用户同时授权修复。不以检查模型为由改写用户参数。
+- **遗留模型迁移**：先读 [model-contract.md](references/model-contract.md) 的版本迁移规则，不悄悄改变现有计算约定。
 
-1. selection and documentation of valuation anchors;
-2. low/base/high assumptions for 5-year and differentiated 2-year horizons;
-3. the formula-driven IRR calculation and solver guardrails;
-4. traceability between source data, assumptions, calculations, tables, and memo prose.
+尊重本次任务范围与已有授权。常规更新在已授权范围内继续；新资料不足、预测待决与重大投资逻辑转变分别列示，不把所有更新都变成批准流程。本 skill 不授权交易、外发消息、云上传或创建定时任务。
 
-It does not replace the financial-statement-analysis skill, industry research, business-model analysis, accounting judgment, or report publishing. Read the financial-statement-analysis skill first when valuation uses annual-report statements.
+## 推导流程
 
-## Workspace adaptation
+1. **接续研究**：确认估值日、财年、币种、单位、权益口径、业务边界、最新实际期、原始资料与产物路径。提取投资主线、反证、未决问题和已批准假设。正式披露是历史数据来源；报告只提供研究判断和决策背景。
+2. **补齐历史**：依 [research-workflow.md](references/research-workflow.md) 重整完整年度窗口及连续近期季度；补 Note、现金用途、股数和指引，保留重述与口径变化。可比口径下 Q4=全年−前三季度是确定性计算。
+3. **先完成当前财年**：剩余季度逐项预测，与已披露季度相加得到完整财年基期。先摆历史数值，再讨论假设；不用 TTM 与年结日并列维护两套正式预测。
+4. **逐年推导未来**：公司自身经营驱动→收入与成本→经营利润→利息、税及其他损益→归母净利润。先预测驱动和年度数值，再计算 CAGR；不为凑目标 CAGR 反推经营假设。
+5. **现金与股数闭环**：独立推导 FCF、现金分红、发行与回购、净缩股、债务与其他必要现金用途。资本支出的现金时点不等于损益摊销时点。
+6. **估值计算**：先选择适用方法。盈利公司默认采用直接退出 PE、分红现金流、净缩股的股东回报模型；标准 FCFF/FCFE DCF、SOTP 等另按匹配口径计算。依 [model-contract.md](references/model-contract.md) 固定定义、日期与公式。
+7. **校验与交付**：实际数据→假设→推导→估值→报告一致。交付当前模型、EPS、关键敏感性、所需回报对应买入价、资金约束及尚未解决的问题。报告以观点与推导链为主，附必要表格；遵循用户指定的对话/文件交付方式。
 
-The source project version refers to formal Stage 05/06 artifacts. This Workspace has no mandatory Stage 05/06 runtime contracts. Use the following local equivalents:
+## 底稿要求
 
-| Formal concept | Workspace equivalent |
-|---|---|
-| adjudication evidence | report's sourced facts, explicit analyst judgments, unresolved questions, and `来源审计` sheet |
-| run context | valuation date, share price/market cap, currency, consolidation perimeter, and scenario horizon recorded in the memo/workbook |
-| valuation input packet | `估值输入` or `估值情景` worksheet/table with source IDs and rationale |
-| parameter decision | low/base/high assumption table with adopted, adjusted, or unavailable status |
-| valuation artifacts | valuation sheets in the clean workbook plus a Markdown valuation memo |
+创建或修改工作簿前读 [workbook-contract.md](references/workbook-contract.md)。
 
-Never invent missing runtime files or pretend that a third-party source is an adjudication artifact. If a required anchor is unavailable, label it unavailable and explain the consequence.
+- `Valuation Driver Build` 或等效推导 sheet：**预测在左，历史数值在右，同一指标对齐**。剩余季度和未来年度预测都必须有可读的历史参考，不以来源链接代替数值。
+- 顺序：剩余季度→本财年全年基期→未来年度→现金与股数约束→估值输入；详细解释、索引和溯源统一放最后。
+- `Year-End Valuation` 或等效估值 sheet：链接已采用参数，逐年计算利润、股数、EPS、分红与退出价值，不重复硬编码。
+- 紧凑行高、正常字号、明确实际/预测/输入/公式、少量留白；在正常缩放下检查实际版面。
+- 修改已有工作簿时保留人工输入与未涉及 sheet、格式、公式及原生功能。不得从过期中间数据整本重建覆盖用户修改。
 
-## Required evidence and read order
+## 持续接管的最小记录
 
-Before setting assumptions, read in this order:
+采用 [tracking-contract.md](references/tracking-contract.md) 与 [handoff-template.json](assets/handoff-template.json)。它是字段骨架，不是预测样例；不得把空值当作零，也不得直接交付未填模板。
 
-1. the latest audited consolidated income statement, balance sheet, and cash-flow statement;
-2. the issuer's APM reconciliation and debt/lease/CapEx notes;
-3. the clean workbook's `披露财务数据`, `经营KPI`, `衍生指标`, and `来源审计` sheets;
-4. the research report sections on industry demand/supply, business model, management, risks, and unresolved evidence gaps;
-5. current market data used for the valuation date (price, shares, market cap, net debt), with an original URL and as-of date.
+记录方法版本、业务主线与重审触发条件、数据定义、历史锚点、依赖/公式、已采用数值、来源定位、人工决策、更新策略、Excel 映射、上一版预测和验证状态。已有等效台账可复用，不重复创建同类文件。
 
-For every input, record value, unit, period, source locator, evidence type, and rationale. Use repository-relative paths in tracked outputs. Do not use raw report prose as a substitute for audited statements when a statement line is required.
+稳定 metric ID 表示经济含义；单元格地址只是可变的展示映射。先检测用户在 Excel 的修改，将其纳入已采用输入，再更新；不能被后台记录静默覆盖。
 
-## Required model inputs
+## 确定性核验工具
 
-At minimum define or explicitly mark unavailable:
+通过 Workspace `.venv` 执行：
 
-- `future_pe`
-- horizon-specific net-income CAGR (`future_ni_cagr_5y`; use a separate 2-year CAGR field)
-- `fcf_conversion`
-- `payout_ratio` and the buyback inclusion policy
-- `base_net_income`
-- `current_market_cap`
+```text
+.venv/bin/python .github/skills/valuation-binding-methodology/scripts/valuation_checks.py calculate <model-input.json>
+.venv/bin/python .github/skills/valuation-binding-methodology/scripts/valuation_checks.py validate <handoff.json>
+.venv/bin/python -m unittest discover -s .github/skills/valuation-binding-methodology/scripts -p 'test_*.py'
+```
 
-For infrastructure companies also disclose, even when not direct solver parameters:
+`calculate` 独立复算直接 PE/净缩股的日期现金流及资金预算；输入契约见 model reference。`validate` 检查交接记录的关键字段、来源、依赖和右侧历史映射。它们不抓取数据、不修改 Excel、不代替会计判断、图形检查或标准 DCF 实现。缺失必要现金用途时输出 `PARTIAL`，不得称资金已闭环。
 
-- recurring levered FCF / EBITDAaL and FCF definitions;
-- net debt including/excluding leases and the matching denominator;
-- maintenance, expansion, BTS, and remedy CapEx;
-- shares outstanding and any planned buyback/dividend policy;
-- perimeter, restatement, FX, and discontinued-operation treatment.
+## 发布条件
 
-Do not use negative statutory net income as the base for this positive-NI P/E solver. If normalized earnings are needed, build them explicitly from reported lines and disclose every adjustment; otherwise mark the P/E/IRR model pending and use a separate cash-flow valuation only if requested.
+- **PASS**：重要数据和假设可追溯；实际表、推导表、估值表与报告一致；独立计算、资金约束及版面验收通过。
+- **PARTIAL**：可计算，但存在重要未验证判断、未披露现金用途或其他实质缺口；明确结果的适用边界。
+- **BLOCKED**：核心口径或必需输入缺失/矛盾，使对应结果不成立；其余研究仍可继续。
 
-## Baseline and scenario discipline
-
-For estimated parameters:
-
-1. start from numeric historical anchors in the audited statements, APMs, KPI sheet, or clearly dated market data;
-2. decompose the anchor into operating drivers (organic revenue, tenancy/PoP, ARPT, escalators, margin, CapEx, interest, tax, and share count where relevant);
-3. map evidence-backed judgments to directional adjustments;
-4. apply explicit penalties or wider ranges for downgraded judgments, rejected claims, concentration, leverage, refinancing, churn, or disclosure gaps;
-5. enforce low/base/high monotonicity and state when a scenario intentionally violates a normal policy band.
-
-Recommended anchors:
-
-- `future_pe`: historical company PE distribution only when positive, comparable earnings exist; otherwise use peer/sector evidence and label the substitution;
-- net-income CAGR: historical normalized earnings decomposition, never a blind CAGR from a loss year;
-- `fcf_conversion`: interval anchor such as FCF / normalized earnings or RLFCF / EBITDAaL, with the exact convention fixed across scenarios;
-- `payout_ratio`: interval payout anchor, explicitly stating whether dividends, buybacks, or both are included;
-- `base_net_income`: latest normalized positive earnings or a clearly defined cash-flow proxy; keep currency and unit identical to market cap;
-- `current_market_cap`: price × diluted shares at a stated date, or a sourced market-cap figure.
-
-For Cellnex, do not call `RLFCF / assets`, `EBITDAaL / assets`, or similar ratios ROIC. A true ROIC requires tax-normalized operating profit and invested capital. Prefer an explicit FCF/EV or FCF-yield framework when statutory net income remains negative, and show the P/E model as unavailable rather than forcing it.
-
-## Scenario structure
-
-Produce:
-
-1. primary 5-year low/base/high scenarios;
-2. companion 2-year low/base/high scenarios differentiated by near-term catalysts, refinancing, CapEx commitments, asset disposals, and capital-allocation constraints.
-
-Each horizon should expose the same five solver parameters: `base_ni`, `cagr`, `fcf_conv`, `payout`, and `future_pe`; `current_market_cap` is a boundary input shared by scenarios. Do not mechanically copy 5-year assumptions into 2-year assumptions.
-
-## IRR formula contract
-
-For horizon `H`:
-
-\[
-NI_t = NI_{base}(1+CAGR)^t, \quad t=1,\ldots,H
-\]
-
-\[
-Terminal\ Value = NI_H \times FCF_{conversion} \times PE_{future}
-\]
-
-\[
-Dividend_t = NI_t \times Payout
-\]
-
-\[
-MKT = \frac{Terminal\ Value}{(1+IRR)^H} + \sum_{t=1}^{H}\frac{Dividend_t}{(1+IRR)^t}
-\]
-
-Map equation variables consistently:
-
-| Equation | Input field |
-|---|---|
-| `PE_future` | `future_pe` |
-| `Cagr_future` | horizon-specific CAGR |
-| `FCF_conversion` | `fcf_conversion` |
-| `Payout` | `payout_ratio` |
-| `NI_base` | `base_net_income` |
-| `MKT` | `current_market_cap` |
-
-## Solver guardrails
-
-Before solving:
-
-- `current_market_cap > 0`;
-- `base_net_income > 0` for the P/E solver;
-- `future_pe > 0`;
-- all monetary inputs use the same currency and unit;
-- decimals are stored as decimals, not percent strings;
-- default root interval is `[-0.99, 5.0]`.
-
-If no root exists, emit a structured scenario failure and explain the conflicting assumptions. Never fabricate an IRR. If market cap or normalized positive earnings are unavailable, mark the relevant result pending.
-
-## Output requirements
-
-At minimum create or update:
-
-1. `估值输入` / `估值情景` table or worksheet;
-2. `IRR_5Y` and `IRR_2Y` tables with low/base/high results or structured failures;
-3. `估值备忘录.md` (or an equivalent report section).
-
-Every output must include:
-
-- all five parameters by scenario and the market-cap boundary input;
-- 5-year versus 2-year IRR comparison;
-- equation and unit context;
-- top sensitivity drivers;
-- source IDs/paths and evidence type for each assumption;
-- explicit treatment of buybacks and dividends;
-- uncertainty, unavailable data, policy-band exceptions, and unresolved questions.
-
-For spreadsheet outputs, use the spreadsheet skill: formulas must remain auditable, inputs and derived metrics must be separated, source URLs/paths must be visible, and render all modified sheets before finalizing. Do not overwrite raw source workbooks; create a clean valuation version or add clearly named valuation sheets.
-
-## Hard rules
-
-1. Do not treat rejected or unresolved judgments as positive valuation drivers.
-2. Do not mix statutory figures and issuer APMs without labeling the bridge.
-3. Do not mix payout conventions across scenarios.
-4. Do not report naked IRR numbers; always show assumptions and the equation context.
-5. Do not use a single-year spike, loss-year CAGR, or unverified denominator as a normal growth anchor.
-6. Do not present a P/E-derived value when normalized positive earnings are unavailable.
-7. Do not silently change perimeter, restatement status, currency, or lease treatment.
-8. Keep source facts, analyst judgments, and model inferences visibly separate.
-9. Report sensitivity to the parameters that actually drive value: earnings/CAGR, conversion, payout, terminal multiple, leverage, CapEx, and share count.
-10. Preserve a human-auditable trail from each output cell or paragraph back to the source locator and assumption rationale.
+“可计算”只说明输入满足公式条件，不说明参数合理、资金可行或研究已完成。不可将参考公司的分部、策略、数值、合同期限或现金安排带入新公司。

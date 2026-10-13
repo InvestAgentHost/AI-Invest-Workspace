@@ -12,6 +12,14 @@ sources/providers/sec/
 knowledge/databases/x.sqlite
 ```
 
+研究期间的便利上传入口为：
+
+```text
+research/companies/<market>/<ticker>-<slug>/data/
+```
+
+研究完成并经用户确认后，原始资料才归档到对应的 `sources/companies/.../` 分类目录。详见 [company-package-layout.md](company-package-layout.md)。
+
 公司原始资料和 Gangtise 数据放在同一个公司目录，因此换设备时通常只压缩一个目录：
 
 ```text
