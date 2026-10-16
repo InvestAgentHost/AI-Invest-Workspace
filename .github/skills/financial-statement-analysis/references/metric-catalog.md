@@ -101,17 +101,15 @@ Always analyze asset-disposal proceeds separately. Disposal cash can fund deleve
 | Parent ROE | parent net income / average parent equity | Return attributable to parent shareholders | Do not divide by equity including NCI. |
 | Consolidated ROE | consolidated net income / average total equity | Return for all equity holders | Keep separate from parent ROE. |
 | Asset turnover | revenue / average total assets | Revenue generated per unit of assets | Carrying values and acquisitions affect comparability. |
-| Invested-capital turnover | revenue / average invested capital | Revenue productivity of operating capital | Define invested capital consistently. |
-| ROIC | NOPAT / average invested capital | After-tax operating return on debt and equity capital | Requires a defensible operating/non-operating split; NOPAT uses the period's actual reported income tax expense, not an assumed or normalized rate. |
+| 经营IC turnover | revenue / average 经营IC | Revenue productivity of the approved operating asset base | Use the lead research skill's asset-side capital definition. |
+| 经营ROIC | NOPAT / average 经营IC | Reported-tax operating earnings relative to operating capital occupied | Use the approved capital definition and actual reported income tax expense, not an assumed or normalized rate. |
 
-Recommended invested capital bridge:
-
-```text
-invested capital = interest-bearing debt
-                 + lease liabilities if leases are in NOPAT
-                 + total equity
-                 - excess cash and non-operating investments
-```
+The Workspace research definition is maintained in the lead skill's
+[经营IC / 经营ROIC method](../../company-deep-investment-research/references/financial-reconstruction.md#41-经营ic与经营roic的统一口径).
+Do not substitute debt-plus-equity capital or subtract operating liabilities.
+If the calculator's built-in `roic` still uses financing-side capital, calculate
+the approved operating metric separately with traceable inputs; do not relabel
+the built-in result. Preserve distinct issuer or historical definitions when relevant.
 
 `NOPAT = EBIT (operating profit, adjusted only for a disclosed, bridgeable one-off) - income tax expense (the period's as-reported provision for income taxes)`. Use the actual reported tax line every period — do not substitute an assumed or multi-year-average "normalized" tax rate. Where the reported provision is volatile or contains a one-off (e.g., a tax-reform remeasurement), carry it as reported and footnote the outlier rather than smoothing it into a rate assumption.
 

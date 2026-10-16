@@ -1,6 +1,6 @@
 ---
 name: derived-financial-analysis
-description: Compute and append company-specific derived financial-analysis tables (asset structure, net cash, working capital, cash-flow attribution, yearly/interval/growth factor tables, and charts) into an already-built company workbook, using agent judgment per company rather than a shared calculator script — account structures vary too much across companies for one rigid schema to hold up. Does not replace company-research-to-excel (build the base IS/BS/CF workbook there first) or financial-statement-analysis (use that calculator instead when the user needs a fully audited, reconciliation-checked ratio set).
+description: Compute company-specific asset structure, net cash, operating working capital, cash-flow attribution, and interval or growth tables and charts from assembled financial statements; optionally append them to an existing workbook when requested. Use company-specific account mapping and the audited calculator for standard ratios. Does not build the base statements or replace financial-statement-analysis for a fully audited ratio set.
 ---
 
 # Derived Financial Analysis
@@ -9,10 +9,16 @@ Take a company whose income statement, balance sheet, and cash-flow statement ar
 already assembled — in a workbook, in JSON, or simply gathered earlier in the
 conversation — and produce the second layer of analysis: multi-year structural and
 attribution tables that no single generic formula covers well across companies,
-because their account structures diverge too much. Compute every number by direct
-reasoning against that company's actual reported line items. Do not build or invoke
-a shared calculation script — the judgment of what maps to what, and how to handle
-what's missing, is the point of this skill.
+because their account structures diverge too much. Map inputs against that company's
+actual reported line items; do not force them into one shared account schema. Use
+reproducible company-specific calculations for these structural tables, and reuse
+the audited financial-statement calculator for standard ratios where applicable.
+
+When this work supports a balance-sheet chapter, first read
+[the company-research balance-sheet method](../company-deep-investment-research/references/financial-reconstruction.md#6-资产负债表章节分析与写作).
+That reference owns the narrative sequence, operating/non-operating boundaries,
+asset grouping and chart design. Deliver only the requested modules and medium;
+chat-only analysis does not authorize workbook or Word edits.
 
 ## When to use this
 
@@ -113,52 +119,39 @@ Net cash            = cash & equivalents + short-term investments considered
                      readily available - total interest-bearing debt (all
                      maturities, include finance leases only if the company
                      capitalizes them as debt-like)
-Invested capital     = total interest-bearing debt + lease liabilities (if leases
-                     sit inside NOPAT) + total equity - excess cash and
-                     non-operating investments
-Operating ROIC      = NOPAT / average invested capital
-Full-capital ROIC   = NOPAT / average (invested capital + excess cash) — use when
-                     the user wants a return measure unadjusted for the company's
-                     cash policy
 ```
 
-Document which invested-capital bridge was used; it will not match every data
-provider's convention and does not need to.
+For invested capital and returns, follow the lead research skill's approved
+[经营IC / 经营ROIC definition](../company-deep-investment-research/references/financial-reconstruction.md#41-经营ic与经营roic的统一口径).
+It uses the asset side without subtracting operating liabilities. Recompute old
+financing-side ratios rather than relabeling them. Preserve old definitions for
+comparison, and calculate the approved metric transparently if the generic
+calculator does not implement it.
 
 ### Asset structure
 
-Bucket the balance sheet's asset side into groups that reflect *this company's* own
-disclosure, not a fixed 11-line template. A reasonable starting set — drop or merge
-buckets that this company doesn't disclose separately, and add a bucket for anything
-material that doesn't fit:
-
-```
-Cash & equivalents
-Short-term investments / marketable securities
-Receivables (trade + other, note if combined)
-Inventory
-Other current assets
-Property, plant & equipment (net)
-Right-of-use / lease assets
-Goodwill
-Other intangible assets
-Equity-method / long-term investments
-Other non-current assets
-```
-
-Each yearly column must reconcile to reported total assets. If it doesn't within
-rounding, find the gap before publishing the table.
+Follow [asset grouping and presentation](../company-deep-investment-research/references/financial-reconstruction.md#66-资产结构一张图同时表达金额与占比).
+Choose company-specific, mutually exclusive buckets; retain the source-row mapping
+and reconcile every period to total assets. Never count held-for-sale or other
+embedded subcategories twice, or treat undisaggregated items as absent.
 
 ### Working capital
 
 ```
-Operating current assets      = current assets - cash & equivalents - short-term
-                               investments (exclude anything non-operating/financial)
-Operating current liabilities = current liabilities - short-term debt - current
-                               portion of long-term debt
+Operating current assets      = current assets - cash/equivalents - identified
+                               financial and other non-operating current assets
+Operating current liabilities = current liabilities - current interest-bearing
+                               debt - identified non-operating current liabilities
 Net working capital           = operating current assets - operating current
                                liabilities
 ```
+
+These are mapping starting points. Apply the
+[working-capital requirements](../company-deep-investment-research/references/financial-reconstruction.md#65-运营资本先明确经营范围再解释资金占用)
+before calculating: acquisition/divestiture balances, disposal groups, tax and
+lease treatment can materially change the result. Preserve a sourced bridge for
+material adjustments. For DPO use trade payables, not all payables and accruals;
+follow the metric catalog for average balances, period matching and missing inputs.
 
 Skip this table (or replace with a one-line note) when the business model makes NWC
 not meaningful — e.g., a company with negligible inventory/receivables relative to
@@ -195,12 +188,17 @@ reconciliation check, not a rounding nicety.
 
 ## Required output pack
 
-Produce these tables (and matching charts) for every fiscal year the base workbook
-already covers. Use the workbook's existing fiscal-year labels verbatim (`FY2025`,
-not `2025`, if that's the house convention already in use).
+For a full derived-analysis pack, produce the modules below; for a focused request,
+produce only the relevant modules. Cover every fiscal year in the agreed base and
+include available recent periods with appropriate stock/flow matching. Use the
+workbook's existing fiscal-year labels verbatim (`FY2025`, not `2025`, if that's the
+house convention already in use).
 
-1. **Asset Structure** — yearly $ and % columns per bucket above, reconciled to
-   total assets; stacked column chart of the % mix over time.
+1. **Asset Structure** — underlying yearly amounts and shares per company-specific
+   bucket, reconciled to total assets; default report visual is one amount-stacked
+   column chart with total assets atop each bar and percentage labels for every
+   nonzero segment. Use leader labels for small segments. Do not add a redundant
+   percentage-stacked chart unless it answers a distinct requested question.
 2. **Net Cash** — yearly cash-like assets, total debt, net cash/(net debt); line
    chart of the net cash trend.
 3. **Working Capital** — yearly operating current assets, operating current
@@ -210,8 +208,8 @@ not `2025`, if that's the house convention already in use).
    a stacked/waterfall chart of the latest year's composition.
 5. **Yearly Factor Table** — one column per year, one row per metric: revenue,
    revenue growth, gross margin (if identifiable), operating margin, EBITDA margin,
-   effective tax rate, net margin, NOPAT, invested capital, operating ROIC,
-   full-capital ROIC, asset turnover, net cash/(net debt), FCF, FCF margin, OCF
+   effective tax rate, net margin, NOPAT, 经营IC, 经营ROIC,
+   经营IC turnover, asset turnover, net cash/(net debt), FCF, FCF margin, OCF
    conversion, FCF conversion, dividend per share, buybacks, payout ratio
    (dividends+buybacks / net income or FCF — state which), cash earnings, cash
    earnings per share, diluted shares outstanding.
@@ -230,6 +228,9 @@ disclosed), include it with an explicit "not disclosed" note rather than omittin
 silently — matching `financial-statement-analysis`'s own quality gate.
 
 ## Writing into the workbook
+
+Use this section only when a workbook deliverable or modification is requested.
+Analysis and chart requests alone do not require adding sheets.
 
 There is no existing tool anywhere in this Workspace for opening an already-built
 `.xlsx` and appending sheets to it — `company-research-to-excel`'s
@@ -274,5 +275,6 @@ an independently-appended layer, not part of that skill's own model.
 - Every CAGR and interval figure states its window explicitly.
 - Any issuer-defined APM used anywhere is labeled as such, separate from
   analyst-calculated figures.
-- Tables are delivered before narrative interpretation, and any conclusion in prose
-  explicitly points back to a cell/row in one of these tables.
+- Relevant tables or the permitted annotated asset-composition chart precede
+  detailed interpretation; an opening conclusion may come first. Narrative claims
+  remain traceable to the underlying amounts, ratios and evidence.

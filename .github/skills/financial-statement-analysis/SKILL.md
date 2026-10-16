@@ -5,7 +5,7 @@ description: Extract consolidated balance sheets, income statements, and cash-fl
 
 # Financial Statement Analysis
 
-Build financial analysis from the issuer's reported statements upward. Preserve the source presentation, make every normalization explicit, calculate deterministically, and separate facts from interpretation. Always expose the derived metrics in tables before narrative analysis so an analyst can inspect the numbers directly.
+Build financial analysis from the issuer's reported statements upward. Preserve complete source statements in the evidence base, make every normalization explicit, calculate deterministically, and separate facts from interpretation. Present decision-useful tables before detailed interpretation; an opening conclusion may precede them. A report chapter selects material rows from the complete base rather than reproducing every source row.
 
 ## Load the right references
 
@@ -15,6 +15,7 @@ Read these files before doing the corresponding work:
 - Read [references/metric-catalog.md](references/metric-catalog.md) before selecting or interpreting metrics.
 - Read [references/input-schema.md](references/input-schema.md) before using the calculator.
 - Read [references/sector-overrides.md](references/sector-overrides.md) when the issuer is a bank, insurer, REIT, infrastructure/utility company, marketplace, SaaS company, commodity producer, or other business for which generic ratios can mislead.
+- Read [the company-research balance-sheet method](../company-deep-investment-research/references/financial-reconstruction.md#6-资产负债表章节分析与写作) before drafting, reviewing, or planning a balance-sheet chapter, including chat-only drafts. It owns the historical narrative, material-account selection, operating working-capital boundaries, integrated asset-structure chart, and chapter completion criteria.
 
 ## 1. Establish the evidence set
 
@@ -29,7 +30,7 @@ Do not treat a parent-company-only statement, preliminary results release, or in
 
 ## 2. Extract the three statements before calculating
 
-Display the reported statements first, in their original row order. Preserve:
+Extract complete reported statements in their original row order into the evidence base. Show the full statements when the requested deliverable is statement reconstruction; for a report chapter with an existing base, show the material rows and relevant history instead of duplicating all three statements. Preserve:
 
 - original-language label and an optional translated label;
 - reported value, parentheses/minus sign, currency, and unit;
@@ -92,7 +93,7 @@ Never replace the script's formulas with mental arithmetic for final figures. If
 
 ## 6. Present the derived metrics before analysis
 
-Always include visible derived-metric tables in the research output before discussing what the metrics mean. A prose-only financial analysis is incomplete even when the calculations were performed correctly. For a full three-statement analysis, provide separate tables for profitability/returns, balance-sheet liquidity/leverage, and cash-flow/capital intensity; one mixed dashboard does not satisfy this requirement. A single table is sufficient only when the user's scope is genuinely narrow.
+Include visible derived-metric tables in the research output before detailed interpretation. A prose-only financial analysis is incomplete even when the calculations were performed correctly. For a full three-statement analysis, provide separate tables for profitability/returns, balance-sheet liquidity/leverage, and cash-flow/capital intensity; one mixed dashboard does not satisfy this requirement. A focused chapter includes only its relevant metrics. For asset composition, the annotated amount-stacked chart in [the company-research asset-structure method](../company-deep-investment-research/references/financial-reconstruction.md#66-资产结构一张图同时表达金额与占比) may replace a duplicate composition table in the prose, while the underlying amounts and shares remain traceable.
 
 The table must include:
 
@@ -120,7 +121,7 @@ Do not infer a business cause from the statements alone when the notes or operat
 
 ## 8. Produce the research output
 
-Use this order unless the user requests another structure:
+For a full three-statement analysis, use this order unless the user requests another structure. This is not a requirement to repeat full statements in an individual report chapter; use [the company-research balance-sheet method](../company-deep-investment-research/references/financial-reconstruction.md#6-资产负债表章节分析与写作) for that chapter's sequence and evidence presentation.
 
 1. Scope, accounting basis, units, periods, and comparability decisions.
 2. Consolidated balance sheet in original row order.
@@ -149,9 +150,10 @@ Before delivery, confirm all of the following:
 - Lease treatment is consistent between numerator and denominator.
 - ROE uses ownership-consistent income and equity.
 - APMs remain labeled as issuer-defined and are not presented as IFRS.
-- At least one analyst-readable derived-metric table appears before narrative analysis and includes periods, units, and formula labels.
+- At least one relevant analyst-readable derived-metric table, or the permitted annotated asset-composition chart for that focused request, appears before detailed analysis and identifies periods, units and definitions; its inputs remain traceable.
 - A full three-statement analysis contains separate balance-sheet and cash-flow metric tables rather than only one mixed ratio table.
 - Narrative conclusions explicitly connect back to the displayed metrics rather than replacing the tables.
 - Material movements have evidence-backed drivers or are marked unresolved.
+- A balance-sheet chapter also passes the completion criteria in [the company-research chapter completion criteria](../company-deep-investment-research/references/financial-reconstruction.md#67-交付前的完成判定): material history and recent periods, asset and funding perspectives, defensible working capital, and a readable nonduplicative asset-structure visual.
 
 Stop and report the limitation rather than manufacture a metric when the source does not support a defensible mapping.

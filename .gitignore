@@ -70,6 +70,7 @@ knowledge/databases/**
 !knowledge/databases/README.md
 
 # Generated deliverables and temporary intake
+research/**/figures/
 outputs/**
 !outputs/README.md
 inbox/**

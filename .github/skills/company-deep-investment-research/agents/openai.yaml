@@ -1,4 +1,4 @@
 interface:
   display_name: "Company Deep Investment Research"
-  short_description: "Evidence-led public-company research workflow"
-  default_prompt: "Use $company-deep-investment-research to build a provenance-preserving, decision-ready deep research report for a public company."
+  short_description: "Interactive company research and report writing"
+  default_prompt: "Use $company-deep-investment-research to plan or continue a public-company study, restoring existing context and completing the requested research module with official evidence and clear analysis."

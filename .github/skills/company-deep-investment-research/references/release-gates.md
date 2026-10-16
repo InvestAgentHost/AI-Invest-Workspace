@@ -2,6 +2,11 @@
 
 Use a clean second pass after drafting. The final status cannot exceed the weakest mandatory gate.
 
+These are full-package release gates. For chapter-by-chapter collaboration, apply
+the relevant evidence, calculation and writing checks to the requested module;
+do not treat unrequested valuation work as a chapter blocker. For a balance-sheet
+module, use the [chapter completion criteria](financial-reconstruction.md#67-交付前的完成判定).
+
 ## A. Scope and provenance
 
 - **A1 Identity/boundary:** issuer, security, CIK, fiscal periods, accounting, units, currency, consolidation, and as-of date are explicit.
@@ -20,7 +25,8 @@ Use a clean second pass after drafting. The final status cannot exceed the weake
 ## D. Fundamentals
 
 - **D1 Reconciliation:** three statements, segment bridges, attribution, cash bridge, units, signs, restatements, and APM separation reconcile.
-- **D2 Derived analysis:** profitability, liquidity, leverage, working capital, capex, cash conversion, debt/lease, tax, impairment, and route-specific metrics are shown before narrative or marked unavailable.
+- **D2 Derived analysis:** relevant profitability, liquidity, leverage, working capital, capex, cash conversion, debt/lease, tax, impairment, and route-specific metrics appear in tables or the permitted annotated asset-structure figure before detailed interpretation, or are marked unavailable. An opening conclusion may precede the evidence.
+- **D3 Balance-sheet chapter:** where included, explains material historical capital-allocation changes, covers relevant annual and recent data, uses defensible operating working capital, and presents a reconciled asset structure without redundant visuals; follow section 6 of `financial-reconstruction.md`.
 
 ## E. Valuation
 

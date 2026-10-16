@@ -1,0 +1,4 @@
+interface:
+  display_name: "CEO 传记撰写"
+  short_description: "撰写有来源、定性分析为主的上市公司 CEO 传记，讲清职业成长与重要选择"
+  default_prompt: "请使用 $ceo-biography，先读取 references/agent-task-prompt.md 的完整启动提示词，再按其中要求为指定上市公司的 CEO 撰写传记。"

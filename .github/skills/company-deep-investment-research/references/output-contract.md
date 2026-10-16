@@ -24,7 +24,7 @@ Use `data/curated/` for small normalized inputs, mappings, metrics, and meeting-
 
 ## 2. Report architecture
 
-Use one H1 title, stable H2 chapters, and H3 subsections. Each chapter opens with a scope sentence. The default spine is:
+For a full written report, use one H1 title, stable H2 chapters, and H3 subsections. Each chapter opens with a concise conclusion that establishes its question and scope. A chat-only chapter follows the agreed report structure without generating a separate report or artifact. The default spine is:
 
 1. Company identity and research boundary
 2. Industry/economic context and competitive structure
@@ -39,11 +39,23 @@ Use one H1 title, stable H2 chapters, and H3 subsections. Each chapter opens wit
 
 Insert only relevant route modules. Do not add empty chapters to imitate another company.
 
+For an existing report, keep its accepted sequence. Operating working capital,
+turnover efficiency and asset structure belong with the balance-sheet discussion
+when that is the agreed structure; do not repeat them in separate derived-analysis
+chapters. Follow the [balance-sheet completion criteria](financial-reconstruction.md#67-交付前的完成判定)
+before declaring that module complete or proposing the next one.
+
+When the report includes a company-history chapter, write it as a dated narrative per [company-history-chapter.md](company-history-chapter.md): no tables, from founding to the present, external research required for early history.
+
 ## 3. Writing and tables
 
-- Put reported facts before calculations, calculations before judgments, and assumptions/unresolved items visibly.
+- Distinguish reported facts, analyst calculations, and judgments; support judgments with source facts and traceable calculations, and label assumptions/unresolved items visibly.
+- Apply the [logic-led research-writing requirements](../../../../docs/research-interaction-protocol.md#研究写作以逻辑为主线), including chat-only chapter drafts. Organize prose around material economic drivers and causal relationships; use data as evidence, scale detail to its importance, and preserve necessary counterevidence and comparability notes. Complete historical tables do not require year-by-year commentary.
+- For a balance-sheet chapter, apply [the balance-sheet chapter method](financial-reconstruction.md#6-资产负债表章节分析与写作). Select material rows from a complete evidence base, explain the historical capital-allocation sequence, and integrate operating working capital, applicable turnover metrics and asset composition. The default asset visual is one amount-stacked chart with total assets and segment percentage annotations; do not require a second percentage chart or duplicate composition table when the first chart already serves the comparison. Keep the full grouping data auditable in the base.
 - Use tables for statement rows, segment bridges, route cards, KPIs, scenarios, sensitivities, coverage, and evidence status.
 - Include period, unit, scope, formula/definition, and source ID in or immediately below every table.
+- For revenue and profit tables, including chat-only drafts, apply the [table requirements in the interaction protocol](../../../../docs/research-interaction-protocol.md#收入与利润表格的默认展示要求). Default to one cell per metric containing `amount (YoY)`, with headers such as `Revenue (YoY)` or `Operating profit (YoY)`; keep shares and margins in separate columns. Show each listed item's own YoY, including every geography, segment, business category, and cross-classification rather than only the consolidated total. Preserve numeric cells and formulas in the underlying Excel data; combine them only in the presentation layer.
+- In Chinese narrative, follow the [amount-unit convention](../../../../docs/research-interaction-protocol.md#正文金额采用中文习惯单位): express monetary amounts naturally in 万 or 亿 where appropriate, preserving currency and meaningful precision (e.g., USD 761 million → 7.61亿美元; USD 60 million → 6000万美元 or 0.6亿美元). Keep tables in their original source or workbook units and numeric scale.
 - Cite material claims inline with `[Sxxx]`, `[T####]`, or `[calc:...]`.
 - Use plain declarative language. Avoid promotional labels without a mechanism and falsification condition.
 - Preserve contradictions, unavailable metrics, accounting nuance, and negative evidence.

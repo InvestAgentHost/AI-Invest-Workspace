@@ -1,5 +1,19 @@
 # Workflow and Phase Gates
 
+## Continuing a report or one chapter
+
+Use the lead skill's continuing-research mode when an existing report, workbook or
+accepted plan establishes the context. Restore completed sections, current actual
+periods, accepted definitions and the next question. Execute only the requested
+module with the relevant evidence and checks; the full phase sequence below is
+for a complete study, not a repeated setup requirement for each chapter.
+
+For a balance-sheet chapter, follow
+[the fundamentals writing method](financial-reconstruction.md#6-资产负债表章节分析与写作)
+from scope through completion. Deliver in the agreed medium and state only material
+remaining gaps and the next unfinished module. Keep calculator logs and detailed
+validation records out of the report prose.
+
 ## 1. Start with a bounded brief
 
 Capture the following in `research-context.md` before collecting evidence:

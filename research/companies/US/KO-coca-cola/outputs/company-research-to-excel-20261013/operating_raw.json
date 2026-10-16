@@ -1,0 +1,9439 @@
+{
+ "unit_case_volume_bn": {
+  "2016": {
+   "value": 29.3,
+   "filing": "FY2016 10-K",
+   "line": 274,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2015": {
+   "value": 29.2,
+   "filing": "FY2016 10-K",
+   "line": 274,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2014": {
+   "value": 28.6,
+   "filing": "FY2016 10-K",
+   "line": 274,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "value": 29.2,
+   "filing": "FY2017 10-K",
+   "line": 271,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "value": 29.6,
+   "filing": "FY2018 10-K",
+   "line": 238,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "value": 30.3,
+   "filing": "FY2019 10-K",
+   "line": 242,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "value": 29.0,
+   "filing": "FY2020 10-K",
+   "line": 239,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "value": 31.3,
+   "filing": "FY2021 10-K",
+   "line": 233,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "value": 32.7,
+   "filing": "FY2022 10-K",
+   "line": 239,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "value": 33.3,
+   "filing": "FY2023 10-K",
+   "line": 240,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "value": 33.7,
+   "filing": "FY2024 10-K",
+   "line": 241,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "value": 33.8,
+   "filing": "FY2025 10-K",
+   "line": 243,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "volume_growth": {
+  "2017": {
+   "rows": [
+    [
+     "Worldwide",
+     0,
+     0,
+     1,
+     0
+    ],
+    [
+     "Europe, Middle East & Africa",
+     1,
+     1,
+     1,
+     0
+    ],
+    [
+     "Latin America",
+     -2,
+     -3,
+     -1,
+     -1
+    ],
+    [
+     "North America",
+     0,
+     null,
+     null,
+     null
+    ],
+    [
+     "Asia Pacific",
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "Bottling Investments",
+     -41,
+     -16,
+     null,
+     null
+    ]
+   ],
+   "line": 1314,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md",
+   "periods": [
+    [
+     2017,
+     2016
+    ],
+    [
+     2016,
+     2015
+    ]
+   ]
+  },
+  "2018": {
+   "rows": [
+    [
+     "Worldwide",
+     2,
+     3,
+     0,
+     0
+    ],
+    [
+     "Europe, Middle East & Africa",
+     2,
+     6,
+     1,
+     1
+    ],
+    [
+     "Latin America",
+     0,
+     -2,
+     -3,
+     null
+    ],
+    [
+     "North America",
+     -1,
+     0,
+     null,
+     null
+    ],
+    [
+     "Asia Pacific",
+     10,
+     null,
+     null,
+     null
+    ],
+    [
+     "Bottling Investments",
+     -15,
+     -41,
+     null,
+     null
+    ]
+   ],
+   "line": 1297,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md",
+   "periods": [
+    [
+     2018,
+     2017
+    ],
+    [
+     2017,
+     2016
+    ]
+   ]
+  },
+  "2019": {
+   "rows": [
+    [
+     "Worldwide",
+     2,
+     2,
+     2,
+     3
+    ],
+    [
+     "Europe, Middle East & Africa",
+     2,
+     1,
+     2,
+     6
+    ],
+    [
+     "Latin America",
+     0,
+     null,
+     null,
+     null
+    ],
+    [
+     "North America",
+     0,
+     -1,
+     0,
+     -2
+    ],
+    [
+     "Asia Pacific",
+     10,
+     null,
+     null,
+     null
+    ],
+    [
+     "Global Ventures",
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "Bottling Investments",
+     24,
+     -15,
+     null,
+     null
+    ]
+   ],
+   "line": 1213,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md",
+   "periods": [
+    [
+     2019,
+     2018
+    ],
+    [
+     2018,
+     2017
+    ]
+   ]
+  },
+  "2020": {
+   "rows": [
+    [
+     "Worldwide",
+     -6,
+     null,
+     -7,
+     null
+    ],
+    [
+     "Europe, Middle East & Africa",
+     -6,
+     null,
+     -8,
+     null
+    ],
+    [
+     "Latin America",
+     -2,
+     null,
+     -2,
+     null
+    ],
+    [
+     "North America",
+     -7,
+     null,
+     -7,
+     null
+    ],
+    [
+     "Asia Pacific",
+     -9,
+     null,
+     -9,
+     null
+    ],
+    [
+     "Global Ventures",
+     -13,
+     null,
+     -13,
+     null
+    ],
+    [
+     "Bottling Investments",
+     -15,
+     null,
+     null,
+     null
+    ]
+   ],
+   "line": 1175,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md",
+   "periods": [
+    [
+     2020,
+     2019
+    ]
+   ]
+  },
+  "2021": {
+   "rows": [
+    [
+     "Worldwide",
+     8,
+     null,
+     9,
+     null
+    ],
+    [
+     "Europe, Middle East & Africa",
+     9,
+     null,
+     12,
+     null
+    ],
+    [
+     "Latin America",
+     6,
+     null,
+     6,
+     null
+    ],
+    [
+     "North America",
+     5,
+     null,
+     7,
+     null
+    ],
+    [
+     "Asia Pacific",
+     10,
+     null,
+     11,
+     null
+    ],
+    [
+     "Global Ventures",
+     17,
+     null,
+     20,
+     null
+    ],
+    [
+     "Bottling Investments",
+     11,
+     null,
+     null,
+     null
+    ]
+   ],
+   "line": 1140,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md",
+   "periods": [
+    [
+     2021,
+     2020
+    ]
+   ]
+  },
+  "2022": {
+   "rows": [
+    [
+     "Worldwide",
+     5,
+     null,
+     5,
+     null
+    ],
+    [
+     "Europe, Middle East & Africa",
+     3,
+     null,
+     2,
+     null
+    ],
+    [
+     "Latin America",
+     6,
+     null,
+     7,
+     null
+    ],
+    [
+     "North America",
+     2,
+     null,
+     1,
+     null
+    ],
+    [
+     "Asia Pacific",
+     6,
+     null,
+     8,
+     null
+    ],
+    [
+     "Global Ventures",
+     13,
+     null,
+     13,
+     null
+    ],
+    [
+     "Bottling Investments",
+     12,
+     null,
+     null,
+     null
+    ]
+   ],
+   "line": 1117,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md",
+   "periods": [
+    [
+     2022,
+     2021
+    ]
+   ]
+  },
+  "2023": {
+   "rows": [
+    [
+     "Worldwide",
+     2,
+     null,
+     2,
+     null
+    ],
+    [
+     "Europe, Middle East & Africa",
+     -2,
+     null,
+     0,
+     null
+    ],
+    [
+     "Latin America",
+     5,
+     null,
+     6,
+     null
+    ],
+    [
+     "North America",
+     -1,
+     null,
+     -1,
+     null
+    ],
+    [
+     "Asia Pacific",
+     3,
+     null,
+     0,
+     null
+    ],
+    [
+     "Global Ventures",
+     4,
+     null,
+     5,
+     null
+    ],
+    [
+     "Bottling Investments",
+     -1,
+     null,
+     null,
+     null
+    ]
+   ],
+   "line": 1128,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md",
+   "periods": [
+    [
+     2023,
+     2022
+    ]
+   ]
+  },
+  "2024": {
+   "rows": [
+    [
+     "Worldwide",
+     1,
+     null,
+     1,
+     null
+    ],
+    [
+     "Europe, Middle East & Africa",
+     0,
+     null,
+     -1,
+     null
+    ],
+    [
+     "Latin America",
+     3,
+     null,
+     3,
+     null
+    ],
+    [
+     "North America",
+     0,
+     null,
+     1,
+     null
+    ],
+    [
+     "Asia Pacific",
+     1,
+     null,
+     3,
+     null
+    ],
+    [
+     "Global Ventures",
+     2,
+     null,
+     4,
+     null
+    ],
+    [
+     "Bottling Investments",
+     -23,
+     null,
+     null,
+     null
+    ]
+   ],
+   "line": 1107,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md",
+   "periods": [
+    [
+     2024,
+     2023
+    ]
+   ]
+  },
+  "2025": {
+   "rows": [
+    [
+     "Worldwide",
+     0,
+     null,
+     1,
+     null
+    ],
+    [
+     "EMEA",
+     3,
+     null,
+     3,
+     null
+    ],
+    [
+     "Latin America",
+     0,
+     null,
+     -1,
+     null
+    ],
+    [
+     "North America",
+     -1,
+     null,
+     -1,
+     null
+    ],
+    [
+     "Asia Pacific",
+     0,
+     null,
+     0,
+     null
+    ],
+    [
+     "Bottling Investments",
+     -8,
+     null,
+     null,
+     null
+    ]
+   ],
+   "line": 1104,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md",
+   "periods": [
+    [
+     2025,
+     2024
+    ]
+   ]
+  }
+ },
+ "revenue_factors": {
+  "2019": {
+   "headers": [
+    "Volume 1",
+    "Price, Product & Geographic Mix",
+    "Foreign Currency Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     1,
+     5,
+     -4,
+     7,
+     9
+    ],
+    [
+     "Europe, Middle East & Africa",
+     1,
+     4,
+     -9,
+     3,
+     -1
+    ],
+    [
+     "Latin America",
+     1,
+     13,
+     -10,
+     0,
+     3
+    ],
+    [
+     "North America",
+     0,
+     3,
+     0,
+     0,
+     2
+    ],
+    [
+     "Asia Pacific",
+     5,
+     0,
+     -1,
+     -1,
+     null
+    ],
+    [
+     "Global Ventures",
+     8,
+     -1,
+     -16,
+     242,
+     233
+    ],
+    [
+     "Bottling Investments",
+     6,
+     3,
+     -5,
+     10,
+     null
+    ]
+   ],
+   "line": 1309,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "headers": [
+    "Volume 1",
+    "Price, Product & Geographic Mix",
+    "Foreign Currency Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     -7,
+     -2,
+     -2,
+     0,
+     -11
+    ],
+    [
+     "Europe, Middle East & Africa",
+     -8,
+     -5,
+     -2,
+     0,
+     -14
+    ],
+    [
+     "Latin America",
+     -2,
+     2,
+     -14,
+     0,
+     -15
+    ],
+    [
+     "North America",
+     -7,
+     2,
+     0,
+     2,
+     -4
+    ],
+    [
+     "Asia Pacific",
+     -10,
+     -2,
+     0,
+     0,
+     -11
+    ],
+    [
+     "Global Ventures",
+     -13,
+     -9,
+     1,
+     0,
+     -22
+    ],
+    [
+     "Bottling Investments",
+     -13,
+     2,
+     -4,
+     -2,
+     -16
+    ]
+   ],
+   "line": 1231,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "headers": [
+    "Volume 1",
+    "Price, Product & Geographic Mix",
+    "Foreign Currency Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     9,
+     6,
+     1,
+     0,
+     17
+    ],
+    [
+     "Europe, Middle East & Africa",
+     12,
+     6,
+     1,
+     0,
+     19
+    ],
+    [
+     "Latin America",
+     6,
+     12,
+     0,
+     0,
+     18
+    ],
+    [
+     "North America",
+     7,
+     7,
+     0,
+     0,
+     15
+    ],
+    [
+     "Asia Pacific",
+     11,
+     -2,
+     3,
+     0,
+     12
+    ],
+    [
+     "Global Ventures",
+     20,
+     13,
+     7,
+     0,
+     41
+    ],
+    [
+     "Bottling Investments",
+     11,
+     2,
+     2,
+     0,
+     15
+    ]
+   ],
+   "line": 1184,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "headers": [
+    "Volume 1",
+    "Price, Product & Geographic Mix",
+    "Foreign Currency Exchange Rate Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     5,
+     11,
+     -7,
+     2,
+     11
+    ],
+    [
+     "Europe, Middle East & Africa",
+     2,
+     16,
+     -14,
+     0,
+     5
+    ],
+    [
+     "Latin America",
+     7,
+     17,
+     -5,
+     0,
+     19
+    ],
+    [
+     "North America",
+     1,
+     12,
+     0,
+     6,
+     19
+    ],
+    [
+     "Asia Pacific",
+     8,
+     3,
+     -9,
+     0,
+     3
+    ],
+    [
+     "Global Ventures",
+     13,
+     0,
+     -11,
+     0,
+     1
+    ],
+    [
+     "Bottling Investments",
+     12,
+     7,
+     -9,
+     0,
+     10
+    ]
+   ],
+   "line": 1161,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "headers": [
+    "Volume 1",
+    "Price, Product & Geographic Mix",
+    "Foreign Currency Exchange Rate Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     2,
+     10,
+     -4,
+     -1,
+     6
+    ],
+    [
+     "Europe, Middle East & Africa",
+     0,
+     19,
+     -12,
+     0,
+     7
+    ],
+    [
+     "Latin America",
+     6,
+     16,
+     -3,
+     0,
+     19
+    ],
+    [
+     "North America",
+     -1,
+     8,
+     0,
+     0,
+     7
+    ],
+    [
+     "Asia Pacific",
+     0,
+     5,
+     -5,
+     1,
+     0
+    ],
+    [
+     "Global Ventures",
+     5,
+     2,
+     0,
+     0,
+     8
+    ],
+    [
+     "Bottling Investments",
+     6,
+     8,
+     -7,
+     -8,
+     0
+    ]
+   ],
+   "line": 1172,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "headers": [
+    "Volume 1",
+    "Price, Product & Geographic Mix",
+    "Foreign Currency Exchange Rate Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     2,
+     11,
+     -5,
+     -4,
+     3
+    ],
+    [
+     "Europe, Middle East & Africa",
+     -1,
+     17,
+     -16,
+     0,
+     1
+    ],
+    [
+     "Latin America",
+     3,
+     21,
+     -14,
+     0,
+     11
+    ],
+    [
+     "North America",
+     1,
+     10,
+     0,
+     0,
+     11
+    ],
+    [
+     "Asia Pacific",
+     2,
+     2,
+     -3,
+     0,
+     2
+    ],
+    [
+     "Global Ventures",
+     4,
+     -3,
+     2,
+     0,
+     2
+    ],
+    [
+     "Bottling Investments",
+     5,
+     5,
+     -2,
+     -28,
+     -21
+    ]
+   ],
+   "line": 1155,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "headers": [
+    "Volume 1",
+    "Price/Mix",
+    "Foreign Currency Exchange Rate Fluctuations",
+    "Acquisitions & Divestitures 2",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Consolidated",
+     1,
+     4,
+     -2,
+     -1,
+     2
+    ],
+    [
+     "EMEA",
+     4,
+     2,
+     0,
+     -1,
+     5
+    ],
+    [
+     "Latin America",
+     -1,
+     11,
+     -12,
+     0,
+     -2
+    ],
+    [
+     "North America",
+     -1,
+     5,
+     0,
+     0,
+     4
+    ],
+    [
+     "Asia Pacific",
+     1,
+     4,
+     -3,
+     -1,
+     1
+    ],
+    [
+     "Bottling Investments",
+     0,
+     2,
+     -2,
+     -7,
+     -8
+    ]
+   ],
+   "line": 1149,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "line_of_business": {
+  "2018": {
+   "blocks": {
+    "2018": {
+     "Concentrate operations": [
+      4571,
+      15886,
+      20457
+     ],
+     "Finished product operations": [
+      6773,
+      4626,
+      11399
+     ],
+     "Total": [
+      11344,
+      20512,
+      31856
+     ]
+    }
+   },
+   "line": 2871,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "blocks": {
+    "2019": {
+     "Concentrate operations": [
+      5252,
+      15247,
+      20499
+     ],
+     "Finished product operations": [
+      6463,
+      10304,
+      16767
+     ],
+     "Total": [
+      11715,
+      25551,
+      37266
+     ]
+    },
+    "2018": {
+     "Concentrate operations": [
+      4571,
+      15323,
+      19894
+     ],
+     "Finished product operations": [
+      6773,
+      7633,
+      14406
+     ],
+     "Total": [
+      11344,
+      22956,
+      34300
+     ]
+    }
+   },
+   "line": 2490,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "blocks": {
+    "2020": {
+     "Concentrate operations": [
+      5443,
+      13139,
+      18582
+     ],
+     "Finished product operations": [
+      5838,
+      8594,
+      14432
+     ],
+     "Total": [
+      11281,
+      21733,
+      33014
+     ]
+    },
+    "2019": {
+     "Concentrate operations": [
+      5252,
+      15247,
+      20499
+     ],
+     "Finished product operations": [
+      6463,
+      10304,
+      16767
+     ],
+     "Total": [
+      11715,
+      25551,
+      37266
+     ]
+    },
+    "2018": {
+     "Concentrate operations": [
+      4571,
+      15323,
+      19894
+     ],
+     "Finished product operations": [
+      6773,
+      7633,
+      14406
+     ],
+     "Total": [
+      11344,
+      22956,
+      34300
+     ]
+    }
+   },
+   "line": 2262,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "blocks": {
+    "2021": {
+     "Concentrate operations": [
+      6551,
+      15248,
+      21799
+     ],
+     "Finished product operations": [
+      6459,
+      10397,
+      16856
+     ],
+     "Total": [
+      13010,
+      25645,
+      38655
+     ]
+    },
+    "2020": {
+     "Concentrate operations": [
+      5443,
+      13139,
+      18582
+     ],
+     "Finished product operations": [
+      5838,
+      8594,
+      14432
+     ],
+     "Total": [
+      11281,
+      21733,
+      33014
+     ]
+    },
+    "2019": {
+     "Concentrate operations": [
+      5252,
+      15247,
+      20499
+     ],
+     "Finished product operations": [
+      6463,
+      10304,
+      16767
+     ],
+     "Total": [
+      11715,
+      25551,
+      37266
+     ]
+    }
+   },
+   "line": 2170,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "blocks": {
+    "2022": {
+     "Concentrate operations": [
+      7702,
+      16369,
+      24071
+     ],
+     "Finished product operations": [
+      7711,
+      11222,
+      18933
+     ],
+     "Total": [
+      15413,
+      27591,
+      43004
+     ]
+    },
+    "2021": {
+     "Concentrate operations": [
+      6551,
+      15248,
+      21799
+     ],
+     "Finished product operations": [
+      6459,
+      10397,
+      16856
+     ],
+     "Total": [
+      13010,
+      25645,
+      38655
+     ]
+    },
+    "2020": {
+     "Concentrate operations": [
+      5443,
+      13139,
+      18582
+     ],
+     "Finished product operations": [
+      5838,
+      8594,
+      14432
+     ],
+     "Total": [
+      11281,
+      21733,
+      33014
+     ]
+    }
+   },
+   "line": 2140,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "blocks": {
+    "2023": {
+     "Concentrate operations": [
+      8780,
+      17759,
+      26539
+     ],
+     "Finished product operations": [
+      7770,
+      11445,
+      19215
+     ],
+     "Total": [
+      16550,
+      29204,
+      45754
+     ]
+    },
+    "2022": {
+     "Concentrate operations": [
+      7702,
+      16369,
+      24071
+     ],
+     "Finished product operations": [
+      7711,
+      11222,
+      18933
+     ],
+     "Total": [
+      15413,
+      27591,
+      43004
+     ]
+    },
+    "2021": {
+     "Concentrate operations": [
+      6551,
+      15248,
+      21799
+     ],
+     "Finished product operations": [
+      6459,
+      10397,
+      16856
+     ],
+     "Total": [
+      13010,
+      25645,
+      38655
+     ]
+    }
+   },
+   "line": 2146,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "blocks": {
+    "2024": {
+     "Concentrate operations": [
+      8813,
+      18912,
+      27725
+     ],
+     "Finished product operations": [
+      9549,
+      9787,
+      19336
+     ],
+     "Total": [
+      18362,
+      28699,
+      47061
+     ]
+    },
+    "2023": {
+     "Concentrate operations": [
+      8780,
+      17759,
+      26539
+     ],
+     "Finished product operations": [
+      7770,
+      11445,
+      19215
+     ],
+     "Total": [
+      16550,
+      29204,
+      45754
+     ]
+    },
+    "2022": {
+     "Concentrate operations": [
+      7702,
+      16369,
+      24071
+     ],
+     "Finished product operations": [
+      7711,
+      11222,
+      18933
+     ],
+     "Total": [
+      15413,
+      27591,
+      43004
+     ]
+    }
+   },
+   "line": 2126,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "blocks": {
+    "2025": {
+     "Concentrate operations": [
+      8956,
+      19506,
+      28462
+     ],
+     "Finished product operations": [
+      10171,
+      9308,
+      19479
+     ],
+     "Total": [
+      19127,
+      28814,
+      47941
+     ]
+    },
+    "2024": {
+     "Concentrate operations": [
+      8813,
+      18912,
+      27725
+     ],
+     "Finished product operations": [
+      9549,
+      9787,
+      19336
+     ],
+     "Total": [
+      18362,
+      28699,
+      47061
+     ]
+    },
+    "2023": {
+     "Concentrate operations": [
+      8780,
+      17759,
+      26539
+     ],
+     "Finished product operations": [
+      7770,
+      11445,
+      19215
+     ],
+     "Total": [
+      16550,
+      29204,
+      45754
+     ]
+    }
+   },
+   "line": 2096,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "segment_revenue_pct": {
+  "2018": {
+   "years": [
+    2018,
+    2017,
+    2016
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     22.8,
+     20.7,
+     16.8
+    ],
+    "Latin America": [
+     12.7,
+     11.2,
+     8.9
+    ],
+    "North America": [
+     36.7,
+     24.9,
+     15.8
+    ],
+    "Asia Pacific": [
+     15.4,
+     13.5,
+     11.4
+    ],
+    "Bottling Investments": [
+     12.1,
+     29.3,
+     46.8
+    ],
+    "Corporate": [
+     0.3,
+     0.4,
+     0.3
+    ],
+    "Total": [
+     100,
+     100,
+     100
+    ]
+   },
+   "line": 1509,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "years": [
+    2019,
+    2018,
+    2017
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     17.3,
+     19.1,
+     18.7
+    ],
+    "Latin America": [
+     11,
+     11.6,
+     10.9
+    ],
+    "North America": [
+     31.9,
+     33.1,
+     24
+    ],
+    "Asia Pacific": [
+     12.7,
+     14,
+     13.1
+    ],
+    "Global Ventures": [
+     6.9,
+     2.2,
+     2
+    ],
+    "Bottling Investments": [
+     19.9,
+     19.7,
+     31
+    ],
+    "Corporate": [
+     0.3,
+     0.3,
+     0.3
+    ],
+    "Total": [
+     100,
+     100,
+     100
+    ]
+   },
+   "line": 1413,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "years": [
+    2020,
+    2019
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     16.8,
+     17.3
+    ],
+    "Latin America": [
+     10.6,
+     11
+    ],
+    "North America": [
+     34.7,
+     31.9
+    ],
+    "Asia Pacific": [
+     12.8,
+     12.7
+    ],
+    "Global Ventures": [
+     6,
+     6.9
+    ],
+    "Bottling Investments": [
+     19,
+     19.9
+    ],
+    "Corporate": [
+     0.1,
+     0.3
+    ],
+    "Total": [
+     100,
+     100
+    ]
+   },
+   "line": 1279,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "years": [
+    2021,
+    2020
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     17,
+     16.8
+    ],
+    "Latin America": [
+     10.7,
+     10.6
+    ],
+    "North America": [
+     34.1,
+     34.7
+    ],
+    "Asia Pacific": [
+     12.1,
+     12.8
+    ],
+    "Global Ventures": [
+     7.3,
+     6
+    ],
+    "Bottling Investments": [
+     18.6,
+     19
+    ],
+    "Corporate": [
+     0.2,
+     0.1
+    ],
+    "Total": [
+     100,
+     100
+    ]
+   },
+   "line": 1230,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "years": [
+    2022,
+    2021
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     16,
+     17
+    ],
+    "Latin America": [
+     11.4,
+     10.7
+    ],
+    "North America": [
+     36.5,
+     34.1
+    ],
+    "Asia Pacific": [
+     11,
+     12.1
+    ],
+    "Global Ventures": [
+     6.6,
+     7.3
+    ],
+    "Bottling Investments": [
+     18.3,
+     18.6
+    ],
+    "Corporate": [
+     0.2,
+     0.2
+    ],
+    "Total": [
+     100,
+     100
+    ]
+   },
+   "line": 1207,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "years": [
+    2023,
+    2022
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     16.2,
+     16
+    ],
+    "Latin America": [
+     12.7,
+     11.4
+    ],
+    "North America": [
+     36.6,
+     36.5
+    ],
+    "Asia Pacific": [
+     10.3,
+     11
+    ],
+    "Global Ventures": [
+     6.7,
+     6.6
+    ],
+    "Bottling Investments": [
+     17.2,
+     18.3
+    ],
+    "Corporate": [
+     0.3,
+     0.2
+    ],
+    "Total": [
+     100,
+     100
+    ]
+   },
+   "line": 1218,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "years": [
+    2024,
+    2023
+   ],
+   "rows": {
+    "Europe, Middle East & Africa": [
+     15.8,
+     16.2
+    ],
+    "Latin America": [
+     13.7,
+     12.7
+    ],
+    "North America": [
+     39.6,
+     36.6
+    ],
+    "Asia Pacific": [
+     10.8,
+     10.3
+    ],
+    "Global Ventures": [
+     6.7,
+     6.7
+    ],
+    "Bottling Investments": [
+     13.2,
+     17.2
+    ],
+    "Corporate": [
+     0.2,
+     0.3
+    ],
+    "Total": [
+     100,
+     100
+    ]
+   },
+   "line": 1201,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "years": [
+    2025,
+    2024
+   ],
+   "rows": {
+    "EMEA": [
+     22.6,
+     21.8
+    ],
+    "Latin America": [
+     13.2,
+     13.8
+    ],
+    "North America": [
+     40.8,
+     40.1
+    ],
+    "Asia Pacific": [
+     11.1,
+     10.9
+    ],
+    "Bottling Investments": [
+     12,
+     13.2
+    ],
+    "Corporate": [
+     0.3,
+     0.2
+    ],
+    "Total": [
+     100,
+     100
+    ]
+   },
+   "line": 1194,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "equity_method_summary": {
+  "2016": {
+   "years": [
+    2016,
+    2015,
+    2014
+   ],
+   "rows": {
+    "Net operating revenues": [
+     58054,
+     47498,
+     52627
+    ],
+    "Cost of goods sold": [
+     34338,
+     28749,
+     31810
+    ],
+    "Gross profit": [
+     23716,
+     18749,
+     20817
+    ],
+    "Operating income": [
+     5652,
+     4483,
+     4489
+    ],
+    "Consolidated net income": [
+     2967,
+     2299,
+     2440
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     78,
+     65,
+     74
+    ],
+    "Net income attributable to common shareowners": [
+     2889,
+     2234,
+     2366
+    ],
+    "Equity income (loss) — net": [
+     835,
+     489,
+     769
+    ]
+   },
+   "line": 3070,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "years": [
+    2017,
+    2016,
+    2015
+   ],
+   "rows": {
+    "Net operating revenues": [
+     73339,
+     58054,
+     47498
+    ],
+    "Cost of goods sold": [
+     42867,
+     34338,
+     28749
+    ],
+    "Gross profit": [
+     30472,
+     23716,
+     18749
+    ],
+    "Operating income": [
+     7577,
+     5652,
+     4483
+    ],
+    "Consolidated net income": [
+     4545,
+     2967,
+     2299
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     120,
+     78,
+     65
+    ],
+    "Net income attributable to common shareowners": [
+     4425,
+     2889,
+     2234
+    ],
+    "Equity income (loss) — net": [
+     1071,
+     835,
+     489
+    ]
+   },
+   "line": 3207,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "years": [
+    2018,
+    2017,
+    2016
+   ],
+   "rows": {
+    "Net operating revenues": [
+     75462,
+     73339,
+     58054
+    ],
+    "Cost of goods sold": [
+     44914,
+     42867,
+     34338
+    ],
+    "Gross profit": [
+     30548,
+     30472,
+     23716
+    ],
+    "Operating income": [
+     7511,
+     7577,
+     5652
+    ],
+    "Consolidated net income": [
+     4645,
+     4545,
+     2967
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     101,
+     120,
+     78
+    ],
+    "Net income attributable to common shareowners": [
+     4544,
+     4425,
+     2889
+    ],
+    "Equity income (loss) — net": [
+     1008,
+     1071,
+     835
+    ]
+   },
+   "line": 3231,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "years": [
+    2019,
+    2018,
+    2017
+   ],
+   "rows": {
+    "Net operating revenues": [
+     75980,
+     75482,
+     73343
+    ],
+    "Cost of goods sold": [
+     44881,
+     44933,
+     42871
+    ],
+    "Gross profit": [
+     31099,
+     30549,
+     30472
+    ],
+    "Operating income": [
+     7748,
+     7511,
+     7577
+    ],
+    "Consolidated net income": [
+     4597,
+     4646,
+     4545
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     63,
+     101,
+     120
+    ],
+    "Net income attributable to common shareowners": [
+     4534,
+     4545,
+     4425
+    ],
+    "Company equity income (loss) — net": [
+     1049,
+     1008,
+     1072
+    ]
+   },
+   "line": 2835,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "years": [
+    2020,
+    2019,
+    2018
+   ],
+   "rows": {
+    "Net operating revenues": [
+     69384,
+     75980,
+     75482
+    ],
+    "Cost of goods sold": [
+     41139,
+     44881,
+     44933
+    ],
+    "Gross profit": [
+     28245,
+     31099,
+     30549
+    ],
+    "Operating income": [
+     7056,
+     7748,
+     7511
+    ],
+    "Consolidated net income": [
+     4176,
+     4597,
+     4646
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     54,
+     63,
+     101
+    ],
+    "Net income attributable to common shareowners": [
+     4122,
+     4534,
+     4545
+    ],
+    "Company equity income (loss) — net": [
+     978,
+     1049,
+     1008
+    ]
+   },
+   "line": 2590,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "years": [
+    2021,
+    2020,
+    2019
+   ],
+   "rows": {
+    "Net operating revenues": [
+     79934,
+     69384,
+     75980
+    ],
+    "Cost of goods sold": [
+     47847,
+     41139,
+     44881
+    ],
+    "Gross profit": [
+     32087,
+     28245,
+     31099
+    ],
+    "Operating income": [
+     9089,
+     7056,
+     7748
+    ],
+    "Consolidated net income": [
+     6050,
+     4176,
+     4597
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     91,
+     54,
+     63
+    ],
+    "Net income attributable to common shareowners": [
+     5959,
+     4122,
+     4534
+    ],
+    "Company equity income (loss) — net": [
+     1438,
+     978,
+     1049
+    ]
+   },
+   "line": 2485,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "years": [
+    2022,
+    2021,
+    2020
+   ],
+   "rows": {
+    "Net operating revenues": [
+     85116,
+     79934,
+     69384
+    ],
+    "Cost of goods sold": [
+     52051,
+     47847,
+     41139
+    ],
+    "Gross profit": [
+     33065,
+     32087,
+     28245
+    ],
+    "Operating income": [
+     9719,
+     9089,
+     7056
+    ],
+    "Consolidated net income": [
+     6373,
+     6050,
+     4176
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     102,
+     91,
+     54
+    ],
+    "Net income attributable to common shareowners": [
+     6271,
+     5959,
+     4122
+    ],
+    "Company equity income (loss) — net": [
+     1472,
+     1438,
+     978
+    ]
+   },
+   "line": 2449,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "years": [
+    2023,
+    2022,
+    2021
+   ],
+   "rows": {
+    "Net operating revenues": [
+     93862,
+     85116,
+     79934
+    ],
+    "Cost of goods sold": [
+     55780,
+     52051,
+     47847
+    ],
+    "Gross profit": [
+     38082,
+     33065,
+     32087
+    ],
+    "Operating income": [
+     11868,
+     9719,
+     9089
+    ],
+    "Consolidated net income": [
+     7657,
+     6373,
+     6050
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     75,
+     102,
+     91
+    ],
+    "Net income attributable to common shareowners": [
+     7582,
+     6271,
+     5959
+    ],
+    "Company equity income (loss) — net": [
+     1691,
+     1472,
+     1438
+    ]
+   },
+   "line": 2451,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "years": [
+    2024,
+    2023,
+    2022
+   ],
+   "rows": {
+    "Net operating revenues": [
+     99043,
+     93862,
+     85116
+    ],
+    "Cost of goods sold": [
+     58527,
+     55780,
+     52051
+    ],
+    "Gross profit": [
+     40516,
+     38082,
+     33065
+    ],
+    "Operating income": [
+     12536,
+     11868,
+     9719
+    ],
+    "Consolidated net income": [
+     8439,
+     7657,
+     6373
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     98,
+     75,
+     102
+    ],
+    "Net income attributable to common shareowners": [
+     8341,
+     7582,
+     6271
+    ],
+    "Company equity income (loss) — net": [
+     1770,
+     1691,
+     1472
+    ]
+   },
+   "line": 2428,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "years": [
+    2025,
+    2024,
+    2023
+   ],
+   "rows": {
+    "Net operating revenues": [
+     102800,
+     99043,
+     93862
+    ],
+    "Cost of goods sold": [
+     60622,
+     58527,
+     55780
+    ],
+    "Gross profit": [
+     42178,
+     40516,
+     38082
+    ],
+    "Operating income": [
+     13426,
+     12536,
+     11868
+    ],
+    "Consolidated net income": [
+     9355,
+     8439,
+     7657
+    ],
+    "Less: Net income attributable to noncontrolling interests": [
+     153,
+     98,
+     75
+    ],
+    "Net income attributable to common shareowners": [
+     9202,
+     8341,
+     7582
+    ],
+    "Company equity income (loss) — net": [
+     2031,
+     1770,
+     1691
+    ]
+   },
+   "line": 2403,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "equity_fair_value": {
+  "2016": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     4528,
+     3240,
+     1288
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     3725,
+     1370,
+     2355
+    ],
+    [
+     "Coca-Cola European Partners plc 1",
+     2762,
+     3224,
+     -462
+    ],
+    [
+     "Coca-Cola HBC AG",
+     1867,
+     1140,
+     727
+    ],
+    [
+     "Coca-Cola Amatil Limited",
+     1681,
+     724,
+     957
+    ],
+    [
+     "Coca-Cola East Japan Co., Ltd.",
+     904,
+     511,
+     393
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     493,
+     208,
+     285
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     491,
+     274,
+     217
+    ],
+    [
+     "Coca-Cola Bottling Co. Consolidated",
+     444,
+     116,
+     328
+    ],
+    [
+     "Corporaci ó n Lindley S.A.",
+     196,
+     105,
+     91
+    ],
+    [
+     "Total",
+     17091,
+     10912,
+     6179
+    ]
+   ],
+   "line": 1097,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     6463,
+     3382,
+     3081
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     4065,
+     1865,
+     2200
+    ],
+    [
+     "Coca-Cola European Partners plc 1",
+     3505,
+     3701,
+     -196
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2754,
+     1315,
+     1439
+    ],
+    [
+     "Coca-Cola Amatil Limited",
+     1449,
+     721,
+     728
+    ],
+    [
+     "Coca-Cola Bottlers Japan Inc.",
+     1251,
+     1151,
+     100
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     647,
+     293,
+     354
+    ],
+    [
+     "Coca-Cola Bottling Co. Consolidated",
+     534,
+     116,
+     418
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     449,
+     221,
+     228
+    ],
+    [
+     "Corporaci ó n Lindley S.A.",
+     283,
+     131,
+     152
+    ],
+    [
+     "Total",
+     21400,
+     12896,
+     8504
+    ]
+   ],
+   "line": 1116,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     5026,
+     3573,
+     1453
+    ],
+    [
+     "Coca-Cola European Partners plc",
+     4033,
+     3551,
+     482
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     3401,
+     1714,
+     1687
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2681,
+     1260,
+     1421
+    ],
+    [
+     "Coca-Cola Amatil Limited",
+     1325,
+     656,
+     669
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc. 1",
+     978,
+     1142,
+     -164
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     497,
+     263,
+     234
+    ],
+    [
+     "Coca – Cola Consolidated, Inc. 2",
+     440,
+     138,
+     302
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     299,
+     174,
+     125
+    ],
+    [
+     "Total",
+     18680,
+     12471,
+     6209
+    ]
+   ],
+   "line": 1106,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     6490,
+     3781,
+     2709
+    ],
+    [
+     "Coca-Cola European Partners plc",
+     4475,
+     3604,
+     871
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     3461,
+     1758,
+     1703
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2801,
+     1109,
+     1692
+    ],
+    [
+     "Coca-Cola Amatil Limited",
+     1674,
+     611,
+     1063
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc.",
+     866,
+     765,
+     101
+    ],
+    [
+     "Coca-Cola Consolidated, Inc.",
+     705,
+     142,
+     563
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     347,
+     210,
+     137
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     163,
+     109,
+     54
+    ],
+    [
+     "Total",
+     20982,
+     12089,
+     8893
+    ]
+   ],
+   "line": 2867,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     9444,
+     4020,
+     5424
+    ],
+    [
+     "Coca-Cola European Partners plc",
+     4383,
+     3959,
+     424
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     2657,
+     1632,
+     1025
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2657,
+     1282,
+     1375
+    ],
+    [
+     "Coca-Cola Amatil Limited",
+     2222,
+     707,
+     1515
+    ],
+    [
+     "Coca-Cola Consolidated, Inc.",
+     661,
+     169,
+     492
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc.",
+     522,
+     522,
+     0
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     440,
+     197,
+     243
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     143,
+     116,
+     27
+    ],
+    [
+     "Total",
+     23129,
+     12604,
+     10525
+    ]
+   ],
+   "line": 2609,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     9808,
+     4323,
+     5485
+    ],
+    [
+     "Coca-Cola Europacific Partners plc",
+     4919,
+     3578,
+     1341
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     3182,
+     1568,
+     1614
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2705,
+     1115,
+     1590
+    ],
+    [
+     "Coca-Cola Consolidated, Inc.",
+     1537,
+     224,
+     1313
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc. 1",
+     387,
+     474,
+     -87
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     340,
+     123,
+     217
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     130,
+     98,
+     32
+    ],
+    [
+     "Total",
+     23008,
+     11503,
+     11505
+    ]
+   ],
+   "line": 2504,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     10368,
+     4514,
+     5854
+    ],
+    [
+     "Coca-Cola Europacific Partners plc",
+     4865,
+     3643,
+     1222
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     3952,
+     1729,
+     2223
+    ],
+    [
+     "Coca-Cola HBC AG",
+     1868,
+     1119,
+     749
+    ],
+    [
+     "Coca-Cola Consolidated, Inc.",
+     1272,
+     339,
+     933
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc. 1",
+     369,
+     398,
+     -29
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     559,
+     207,
+     352
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     134,
+     97,
+     37
+    ],
+    [
+     "Total",
+     23387,
+     12046,
+     11341
+    ]
+   ],
+   "line": 2468,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     11766,
+     4837,
+     6929
+    ],
+    [
+     "Coca-Cola Europacific Partners plc",
+     5870,
+     3858,
+     2012
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     5549,
+     2092,
+     3457
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2296,
+     1252,
+     1044
+    ],
+    [
+     "Coca-Cola Consolidated, Inc.",
+     2304,
+     473,
+     1831
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc.",
+     484,
+     367,
+     117
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     911,
+     228,
+     683
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     137,
+     90,
+     47
+    ],
+    [
+     "Total",
+     29317,
+     13197,
+     16120
+    ]
+   ],
+   "line": 2481,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     10735,
+     5186,
+     5549
+    ],
+    [
+     "Coca-Cola Europacific Partners plc",
+     6755,
+     3655,
+     3100
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     4544,
+     1786,
+     2758
+    ],
+    [
+     "Coca-Cola HBC AG",
+     2675,
+     1147,
+     1528
+    ],
+    [
+     "Coca-Cola Consolidated, Inc.",
+     2373,
+     342,
+     2031
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc.",
+     536,
+     332,
+     204
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     954,
+     257,
+     697
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     168,
+     90,
+     78
+    ],
+    [
+     "Total",
+     28740,
+     12795,
+     15945
+    ]
+   ],
+   "line": 2458,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "rows": [
+    [
+     "Monster Beverage Corporation",
+     15659,
+     5593,
+     10066
+    ],
+    [
+     "Coca-Cola Europacific Partners plc",
+     7163,
+     3926,
+     3237
+    ],
+    [
+     "Coca-Cola FEMSA, S.A.B. de C.V.",
+     5543,
+     2236,
+     3307
+    ],
+    [
+     "Coca-Cola HBC AG",
+     4051,
+     1391,
+     2660
+    ],
+    [
+     "Coca-Cola Bottlers Japan Holdings Inc.",
+     822,
+     459,
+     363
+    ],
+    [
+     "Coca-Cola İ ç ecek A. Ş.",
+     770,
+     288,
+     482
+    ],
+    [
+     "Embotelladora Andina S.A.",
+     278,
+     106,
+     172
+    ],
+    [
+     "Total",
+     34286,
+     13999,
+     20287
+    ]
+   ],
+   "line": 2435,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "tax_pretax": {
+  "2016": {
+   "years": [
+    2016,
+    2015,
+    2014
+   ],
+   "rows": {
+    "United States": [
+     113,
+     1801,
+     1567
+    ],
+    "International": [
+     8023,
+     7804,
+     7758
+    ],
+    "Total": [
+     8136,
+     9605,
+     9325
+    ]
+   },
+   "line": 3805,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2019": {
+   "years": [
+    2019,
+    2018,
+    2017
+   ],
+   "rows": {
+    "United States": [
+     3249,
+     888,
+     -690
+    ],
+    "International": [
+     7537,
+     7337,
+     7580
+    ],
+    "Total": [
+     10786,
+     8225,
+     6890
+    ]
+   },
+   "line": 3665,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "years": [
+    2020,
+    2019,
+    2018
+   ],
+   "rows": {
+    "United States": [
+     3149,
+     3249,
+     888
+    ],
+    "International": [
+     6600,
+     7537,
+     7337
+    ],
+    "Total": [
+     9749,
+     10786,
+     8225
+    ]
+   },
+   "line": 3357,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "years": [
+    2021,
+    2020,
+    2019
+   ],
+   "rows": {
+    "United States": [
+     3538,
+     3149,
+     3249
+    ],
+    "International": [
+     8887,
+     6600,
+     7537
+    ],
+    "Total": [
+     12425,
+     9749,
+     10786
+    ]
+   },
+   "line": 3168,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "years": [
+    2022,
+    2021,
+    2020
+   ],
+   "rows": {
+    "United States": [
+     3452,
+     3538,
+     3149
+    ],
+    "International": [
+     8234,
+     8887,
+     6600
+    ],
+    "Total": [
+     11686,
+     12425,
+     9749
+    ]
+   },
+   "line": 3129,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "years": [
+    2023,
+    2022,
+    2021
+   ],
+   "rows": {
+    "United States": [
+     2766,
+     3452,
+     3538
+    ],
+    "International": [
+     10186,
+     8234,
+     8887
+    ],
+    "Total": [
+     12952,
+     11686,
+     12425
+    ]
+   },
+   "line": 3128,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "years": [
+    2024,
+    2023,
+    2022
+   ],
+   "rows": {
+    "United States": [
+     3757,
+     2766,
+     3452
+    ],
+    "International": [
+     9329,
+     10186,
+     8234
+    ],
+    "Total": [
+     13086,
+     12952,
+     11686
+    ]
+   },
+   "line": 3038,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "years": [
+    2025,
+    2024,
+    2023
+   ],
+   "rows": {
+    "United States": [
+     5678,
+     2499,
+     1991
+    ],
+    "International": [
+     10320,
+     10587,
+     10961
+    ],
+    "Total": [
+     15998,
+     13086,
+     12952
+    ]
+   },
+   "line": 3015,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "tax_current_deferred": {
+  "2019": {
+   "blocks": {
+    "2019": {
+     "Current": [
+      508,
+      94,
+      1479,
+      2081
+     ],
+     "Deferred": [
+      -65,
+      52,
+      -267,
+      -280
+     ]
+    },
+    "2018": {
+     "Current": [
+      591,
+      145,
+      1426,
+      2162
+     ],
+     "Deferred": [
+      -386,
+      -81,
+      54,
+      -413
+     ]
+    },
+    "2017": {
+     "Current": [
+      5438,
+      121,
+      1300,
+      6859
+     ],
+     "Deferred": [
+      -1783,
+      14,
+      517,
+      -1252
+     ]
+    }
+   },
+   "line": 3677,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "blocks": {
+    "2020": {
+     "Current": [
+      296,
+      396,
+      1307,
+      1999
+     ],
+     "Deferred": [
+      -220,
+      21,
+      181,
+      -18
+     ]
+    },
+    "2019": {
+     "Current": [
+      508,
+      94,
+      1479,
+      2081
+     ],
+     "Deferred": [
+      -65,
+      52,
+      -267,
+      -280
+     ]
+    },
+    "2018": {
+     "Current": [
+      591,
+      145,
+      1426,
+      2162
+     ],
+     "Deferred": [
+      -386,
+      -81,
+      54,
+      -413
+     ]
+    }
+   },
+   "line": 3365,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "blocks": {
+    "2021": {
+     "Current": [
+      243,
+      106,
+      1378,
+      1727
+     ],
+     "Deferred": [
+      229,
+      -10,
+      675,
+      894
+     ]
+    },
+    "2020": {
+     "Current": [
+      296,
+      396,
+      1307,
+      1999
+     ],
+     "Deferred": [
+      -220,
+      21,
+      181,
+      -18
+     ]
+    },
+    "2019": {
+     "Current": [
+      508,
+      94,
+      1479,
+      2081
+     ],
+     "Deferred": [
+      -65,
+      52,
+      -267,
+      -280
+     ]
+    }
+   },
+   "line": 3176,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "blocks": {
+    "2022": {
+     "Current": [
+      468,
+      118,
+      1651,
+      2237
+     ],
+     "Deferred": [
+      -121,
+      -4,
+      3,
+      -122
+     ]
+    },
+    "2021": {
+     "Current": [
+      243,
+      106,
+      1378,
+      1727
+     ],
+     "Deferred": [
+      229,
+      -10,
+      675,
+      894
+     ]
+    },
+    "2020": {
+     "Current": [
+      296,
+      396,
+      1307,
+      1999
+     ],
+     "Deferred": [
+      -220,
+      21,
+      181,
+      -18
+     ]
+    }
+   },
+   "line": 3137,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "blocks": {
+    "2023": {
+     "Current": [
+      83,
+      129,
+      2039,
+      2251
+     ],
+     "Deferred": [
+      -135,
+      -78,
+      211,
+      -2
+     ]
+    },
+    "2022": {
+     "Current": [
+      468,
+      118,
+      1651,
+      2237
+     ],
+     "Deferred": [
+      -121,
+      -4,
+      3,
+      -122
+     ]
+    },
+    "2021": {
+     "Current": [
+      243,
+      106,
+      1378,
+      1727
+     ],
+     "Deferred": [
+      229,
+      -10,
+      675,
+      894
+     ]
+    }
+   },
+   "line": 3136,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "blocks": {
+    "2024": {
+     "Current": [
+      324,
+      143,
+      1981,
+      2448
+     ],
+     "Deferred": [
+      -254,
+      -134,
+      377,
+      -11
+     ]
+    },
+    "2023": {
+     "Current": [
+      83,
+      129,
+      2039,
+      2251
+     ],
+     "Deferred": [
+      -135,
+      -78,
+      211,
+      -2
+     ]
+    },
+    "2022": {
+     "Current": [
+      468,
+      118,
+      1651,
+      2237
+     ],
+     "Deferred": [
+      -121,
+      -4,
+      3,
+      -122
+     ]
+    }
+   },
+   "line": 3046,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "blocks": {
+    "2025": {
+     "Current": [
+      86,
+      178,
+      2080,
+      2344
+     ],
+     "Deferred": [
+      220,
+      123,
+      174,
+      517
+     ]
+    },
+    "2024": {
+     "Current": [
+      324,
+      143,
+      1981,
+      2448
+     ],
+     "Deferred": [
+      -254,
+      -134,
+      377,
+      -11
+     ]
+    },
+    "2023": {
+     "Current": [
+      83,
+      129,
+      2039,
+      2251
+     ],
+     "Deferred": [
+      -135,
+      -78,
+      211,
+      -2
+     ]
+    }
+   },
+   "line": 3027,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "unrecognized_tax_benefits": {
+  "2016": {
+   "years": [
+    2016,
+    2015,
+    2014
+   ],
+   "rows": {
+    "Beginning balance of unrecognized tax benefits": [
+     168,
+     211,
+     230
+    ],
+    "Increase related to prior period tax positions": [
+     163,
+     13,
+     null
+    ],
+    "Decrease related to prior period tax positions": [
+     0,
+     -9,
+     -2
+    ],
+    "Increase related to current period tax positions": [
+     17,
+     5,
+     11
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -40,
+     -5,
+     -5
+    ],
+    "Decrease due to lapse of the applicable statute of limitations": [
+     0,
+     -23,
+     -32
+    ],
+    "Increase (decrease) due to effect of foreign currency exchange rate changes": [
+     -6,
+     -15,
+     -4
+    ],
+    "Ending balance of unrecognized tax benefits": [
+     302,
+     168,
+     211
+    ]
+   },
+   "line": 1729,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "years": [
+    2017,
+    2016,
+    2015
+   ],
+   "rows": {
+    "Beginning balance of unrecognized tax benefits": [
+     302,
+     168,
+     211
+    ],
+    "Increase related to prior period tax positions": [
+     18,
+     163,
+     null
+    ],
+    "Decrease related to prior period tax positions": [
+     -13,
+     0,
+     -9
+    ],
+    "Increase related to current period tax positions": [
+     13,
+     17,
+     5
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     0,
+     -40,
+     -5
+    ],
+    "Decrease due to lapse of the applicable statute of limitations": [
+     0,
+     0,
+     -23
+    ],
+    "Increase (decrease) due to effect of foreign currency exchange rate changes": [
+     11,
+     -6,
+     -15
+    ],
+    "Ending balance of unrecognized tax benefits": [
+     331,
+     302,
+     168
+    ]
+   },
+   "line": 1780,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "years": [
+    2018,
+    2017,
+    2016
+   ],
+   "rows": {
+    "Beginning balance of unrecognized tax benefits": [
+     331,
+     302,
+     168
+    ],
+    "Increase related to prior period tax positions": [
+     11,
+     18,
+     163
+    ],
+    "Decrease related to prior period tax positions": [
+     -2,
+     -13,
+     0
+    ],
+    "Increase related to current period tax positions": [
+     17,
+     13,
+     17
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -4,
+     0,
+     -40
+    ],
+    "Decrease due to lapse of the applicable statute of limitations": [
+     0,
+     0,
+     0
+    ],
+    "Increase (decrease) due to effect of foreign currency exchange rate changes": [
+     -17,
+     11,
+     -6
+    ],
+    "Ending balance of unrecognized tax benefits": [
+     336,
+     331,
+     302
+    ]
+   },
+   "line": 1735,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "years": [
+    2019,
+    2018,
+    2017
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     336,
+     331,
+     302
+    ],
+    "Increase related to prior period tax positions": [
+     204,
+     11,
+     18
+    ],
+    "Decrease related to prior period tax positions": [
+     0,
+     -2,
+     -13
+    ],
+    "Increase related to current period tax positions": [
+     29,
+     17,
+     13
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -174,
+     -4,
+     0
+    ],
+    "Increase (decrease) due to effect of foreign currency exchange rate changes": [
+     -3,
+     -17,
+     11
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     392,
+     336,
+     331
+    ]
+   },
+   "line": 1659,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "years": [
+    2020,
+    2019
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     392,
+     336
+    ],
+    "Increase related to prior period tax positions": [
+     528,
+     204
+    ],
+    "Decrease related to prior period tax positions": [
+     -1,
+     0
+    ],
+    "Increase related to current period tax positions": [
+     26,
+     29
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -19,
+     -174
+    ],
+    "Increase (decrease) due to effect of foreign currency exchange rate changes": [
+     -11,
+     -3
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     915,
+     392
+    ]
+   },
+   "line": 1457,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "years": [
+    2021,
+    2020
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     915,
+     392
+    ],
+    "Increase related to prior period tax positions": [
+     9,
+     528
+    ],
+    "Decrease related to prior period tax positions": [
+     -50,
+     -1
+    ],
+    "Increase related to current period tax positions": [
+     37,
+     26
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -4,
+     -19
+    ],
+    "Effect of foreign currency translation": [
+     -1,
+     -11
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     906,
+     915
+    ]
+   },
+   "line": 1408,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "years": [
+    2022,
+    2021
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     906,
+     915
+    ],
+    "Increase related to prior period tax positions": [
+     6,
+     9
+    ],
+    "Decrease related to prior period tax positions": [
+     0,
+     -50
+    ],
+    "Increase related to current period tax positions": [
+     38,
+     37
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -2,
+     -4
+    ],
+    "Effect of foreign currency translation": [
+     -22,
+     -1
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     926,
+     906
+    ]
+   },
+   "line": 1377,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "years": [
+    2023,
+    2022
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     926,
+     906
+    ],
+    "Increase related to prior period tax positions": [
+     2,
+     6
+    ],
+    "Decrease related to prior period tax positions": [
+     -25,
+     0
+    ],
+    "Increase related to current period tax positions": [
+     32,
+     38
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     0,
+     -2
+    ],
+    "Decrease due to lapse of the applicable statute of limitations": [
+     -2,
+     0
+    ],
+    "Effect of foreign currency translation": [
+     -4,
+     -22
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     929,
+     926
+    ]
+   },
+   "line": 1382,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "years": [
+    2024,
+    2023
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     929,
+     926
+    ],
+    "Increase related to prior period tax positions": [
+     33,
+     2
+    ],
+    "Decrease related to prior period tax positions": [
+     -52,
+     -25
+    ],
+    "Increase related to current period tax positions": [
+     30,
+     32
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     -57,
+     0
+    ],
+    "Decrease due to lapse of the applicable statute of limitations": [
+     0,
+     -2
+    ],
+    "Effect of foreign currency translation": [
+     -3,
+     -4
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     880,
+     929
+    ]
+   },
+   "line": 1363,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "years": [
+    2025,
+    2024,
+    2023
+   ],
+   "rows": {
+    "Balance of unrecognized tax benefits at beginning of year": [
+     880,
+     929,
+     926
+    ],
+    "Increase related to prior period tax positions": [
+     19,
+     33,
+     2
+    ],
+    "Decrease related to prior period tax positions": [
+     -46,
+     -52,
+     -25
+    ],
+    "Increase related to current period tax positions": [
+     31,
+     30,
+     32
+    ],
+    "Decrease related to settlements with taxing authorities": [
+     0,
+     -57,
+     0
+    ],
+    "Decrease due to lapse of the applicable statute of limitations": [
+     -13,
+     0,
+     -2
+    ],
+    "Effect of foreign currency translation": [
+     -14,
+     -3,
+     -4
+    ],
+    "Balance of unrecognized tax benefits at end of year": [
+     857,
+     880,
+     929
+    ]
+   },
+   "line": 3127,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "debt_by_type": {
+  "2016": {
+   "years": [
+    2016,
+    2015
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2017 – 2093",
+     16922,
+     15853
+    ],
+    [
+     "U.S. dollar debentures due 2017 – 2098",
+     2111,
+     2122
+    ],
+    [
+     "U.S. dollar zero coupon notes due 2020 2",
+     153,
+     148
+    ],
+    [
+     "Australian dollar notes due 2020 – 2024",
+     741,
+     0
+    ],
+    [
+     "Euro notes due 2017 – 2036 3",
+     11567,
+     11318
+    ],
+    [
+     "Swiss franc notes due 2017 – 2028 3",
+     1304,
+     1286
+    ],
+    [
+     "Other, due through 2098 4",
+     316,
+     307
+    ],
+    [
+     "Fair value adjustment 5",
+     97,
+     -47
+    ],
+    [
+     "Total 6,7",
+     33211,
+     30987
+    ],
+    [
+     "Less current portion",
+     3527,
+     2676
+    ],
+    [
+     "Long-term debt",
+     29684,
+     28311
+    ]
+   ],
+   "line": 3316,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "years": [
+    2017,
+    2016
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2018 – 2093",
+     16854,
+     16922
+    ],
+    [
+     "U.S. dollar debentures due 2018 – 2098",
+     1559,
+     2111
+    ],
+    [
+     "U.S. dollar zero coupon notes due 2020 2",
+     158,
+     153
+    ],
+    [
+     "Australian dollar notes due 2020 – 2024",
+     760,
+     741
+    ],
+    [
+     "Euro notes due 2019 – 2036",
+     13663,
+     11567
+    ],
+    [
+     "Swiss franc notes due 2022 – 2028",
+     1148,
+     1304
+    ],
+    [
+     "Other, due through 2098 3",
+     325,
+     316
+    ],
+    [
+     "Fair value adjustment 4",
+     13,
+     97
+    ],
+    [
+     "Total 5,6",
+     34480,
+     33211
+    ],
+    [
+     "Less current portion",
+     3298,
+     3527
+    ],
+    [
+     "Long-term debt",
+     31182,
+     29684
+    ]
+   ],
+   "line": 3493,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "years": [
+    2018,
+    2017
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2019 – 2093",
+     13619,
+     16854
+    ],
+    [
+     "U.S. dollar debentures due 2020 – 2098",
+     1390,
+     1559
+    ],
+    [
+     "U.S. dollar zero coupon notes due 2020 2",
+     163,
+     158
+    ],
+    [
+     "Australian dollar notes due 2020 – 2024",
+     723,
+     760
+    ],
+    [
+     "Euro notes due 2019 – 2036",
+     12994,
+     13663
+    ],
+    [
+     "Swiss franc notes due 2022 – 2028",
+     1128,
+     1148
+    ],
+    [
+     "Other, due through 2098 3",
+     282,
+     325
+    ],
+    [
+     "Fair value adjustments 4",
+     62,
+     13
+    ],
+    [
+     "Total 5,6",
+     30361,
+     34480
+    ],
+    [
+     "Less current portion",
+     4997,
+     3298
+    ],
+    [
+     "Long-term debt",
+     25364,
+     31182
+    ]
+   ],
+   "line": 3487,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "years": [
+    2019,
+    2018
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2020 – 2093",
+     14621,
+     13619
+    ],
+    [
+     "U.S. dollar debentures due 2022 – 2098",
+     1366,
+     1390
+    ],
+    [
+     "U.S. dollar zero coupon notes due 2020 2",
+     168,
+     163
+    ],
+    [
+     "Australian dollar notes due 2020 – 2024",
+     677,
+     723
+    ],
+    [
+     "Euro notes due 2021 – 2036",
+     12807,
+     12994
+    ],
+    [
+     "Swiss franc notes due 2022 – 2028",
+     1129,
+     1128
+    ],
+    [
+     "Other, due through 2098 3",
+     548,
+     300
+    ],
+    [
+     "Fair value adjustments 4",
+     453,
+     62
+    ],
+    [
+     "Total 5,6",
+     31769,
+     30379
+    ],
+    [
+     "Less: Current portion",
+     4253,
+     5003
+    ],
+    [
+     "Long-term debt",
+     27516,
+     25376
+    ]
+   ],
+   "line": 3174,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "years": [
+    2020,
+    2019
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2023 – 2093",
+     22550,
+     14621
+    ],
+    [
+     "U.S. dollar debentures due 2022 – 2098",
+     1342,
+     1366
+    ],
+    [
+     "U.S. dollar zero coupon notes due 2020 2",
+     0,
+     168
+    ],
+    [
+     "Australian dollar notes due 2020 – 2024",
+     400,
+     677
+    ],
+    [
+     "Euro notes due 2021 – 2040",
+     13821,
+     12807
+    ],
+    [
+     "Swiss franc notes due 2022 – 2028",
+     1236,
+     1129
+    ],
+    [
+     "Other, due through 2098 3",
+     615,
+     548
+    ],
+    [
+     "Fair value adjustments 4",
+     646,
+     453
+    ],
+    [
+     "Total 5,6",
+     40610,
+     31769
+    ],
+    [
+     "Less: Current portion",
+     485,
+     4253
+    ],
+    [
+     "Long-term debt",
+     40125,
+     27516
+    ]
+   ],
+   "line": 2869,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "years": [
+    2021,
+    2020
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2023-2093",
+     21953,
+     22550
+    ],
+    [
+     "U.S. dollar debentures due 2022-2098",
+     1316,
+     1342
+    ],
+    [
+     "Australian dollar notes due 2024",
+     398,
+     400
+    ],
+    [
+     "Euro notes due 2023-2041",
+     13249,
+     13369
+    ],
+    [
+     "Swiss franc notes due 2022-2028",
+     1234,
+     1236
+    ],
+    [
+     "Variable interest rate long-term debt:",
+     null,
+     null
+    ],
+    [
+     "Euro notes due 2021",
+     0,
+     452
+    ],
+    [
+     "Other, due through 2098 2",
+     821,
+     615
+    ],
+    [
+     "Fair value adjustments 3",
+     483,
+     646
+    ],
+    [
+     "Total 4,5",
+     39454,
+     40610
+    ],
+    [
+     "Less: Current portion",
+     1338,
+     485
+    ],
+    [
+     "Long-term debt",
+     38116,
+     40125
+    ]
+   ],
+   "line": 2682,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "years": [
+    2022,
+    2021
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2024-2093",
+     21966,
+     21953
+    ],
+    [
+     "U.S. dollar debentures due 2023-2098",
+     891,
+     1316
+    ],
+    [
+     "Australian dollar notes due 2024",
+     374,
+     398
+    ],
+    [
+     "Euro notes due 2024-2041",
+     12485,
+     13249
+    ],
+    [
+     "Swiss franc notes due 2022-2028",
+     623,
+     1234
+    ],
+    [
+     "Other, due through 2098 2,3",
+     1906,
+     821
+    ],
+    [
+     "Fair value adjustments 4",
+     -1469,
+     483
+    ],
+    [
+     "Total 5,6",
+     36776,
+     39454
+    ],
+    [
+     "Less: Current portion",
+     399,
+     1338
+    ],
+    [
+     "Long-term debt",
+     36377,
+     38116
+    ]
+   ],
+   "line": 2638,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "years": [
+    2023,
+    2022
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2024-2093",
+     21982,
+     21966
+    ],
+    [
+     "U.S. dollar debentures due 2023-2098",
+     788,
+     891
+    ],
+    [
+     "Australian dollar notes due 2024",
+     374,
+     374
+    ],
+    [
+     "Euro notes due 2024-2041",
+     12888,
+     12485
+    ],
+    [
+     "Swiss franc notes due 2028",
+     684,
+     623
+    ],
+    [
+     "Other, due through 2098 2",
+     1763,
+     1906
+    ],
+    [
+     "Fair value adjustments 3",
+     -972,
+     -1469
+    ],
+    [
+     "Total 4,5",
+     37507,
+     36776
+    ],
+    [
+     "Less: Current portion",
+     1960,
+     399
+    ],
+    [
+     "Long-term debt",
+     35547,
+     36377
+    ]
+   ],
+   "line": 2634,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "years": [
+    2024,
+    2023
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2024-2093",
+     26931,
+     21982
+    ],
+    [
+     "U.S. dollar debentures due 2026-2098",
+     778,
+     788
+    ],
+    [
+     "Australian dollar notes due 2024",
+     0,
+     374
+    ],
+    [
+     "Euro notes due 2024-2053",
+     13619,
+     12888
+    ],
+    [
+     "Swiss franc notes due 2028",
+     635,
+     684
+    ],
+    [
+     "Other, due through 2098 2",
+     1845,
+     1763
+    ],
+    [
+     "Fair value adjustments 3",
+     -785,
+     -972
+    ],
+    [
+     "Total 4,5",
+     43023,
+     37507
+    ],
+    [
+     "Less: Current portion",
+     648,
+     1960
+    ],
+    [
+     "Long-term debt",
+     42375,
+     35547
+    ]
+   ],
+   "line": 2583,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "years": [
+    2025,
+    2024
+   ],
+   "rows": [
+    [
+     "U.S. dollar notes due 2027-2093",
+     26945,
+     26931
+    ],
+    [
+     "U.S. dollar debentures due 2026-2098",
+     767,
+     778
+    ],
+    [
+     "Euro notes due 2026-2053",
+     15470,
+     13619
+    ],
+    [
+     "Swiss franc notes due 2028",
+     726,
+     635
+    ],
+    [
+     "Other, due through 2098 2",
+     651,
+     1845
+    ],
+    [
+     "Fair value adjustments 3",
+     -618,
+     -785
+    ],
+    [
+     "Total 4,5",
+     43941,
+     43023
+    ],
+    [
+     "Less: Current portion",
+     1822,
+     648
+    ],
+    [
+     "Long-term debt",
+     42119,
+     42375
+    ]
+   ],
+   "line": 2561,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "goodwill_by_segment": {
+  "2016": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2015: Balance at beginning of year",
+     746,
+     147,
+     8568,
+     131,
+     2508,
+     12100
+    ],
+    [
+     "2015: Effect of foreign currency translation",
+     -105,
+     -24,
+     0,
+     2,
+     -37,
+     -164
+    ],
+    [
+     "2015: Acquisitions 1",
+     0,
+     0,
+     26,
+     0,
+     1,
+     27
+    ],
+    [
+     "2015: Adjustments related to the finalization of purchase accounting 1",
+     0,
+     0,
+     0,
+     0,
+     4,
+     4
+    ],
+    [
+     "2015: Impairment",
+     0,
+     0,
+     0,
+     0,
+     -4,
+     -4
+    ],
+    [
+     "2015: Divestitures, deconsolidations and other 1",
+     -3,
+     0,
+     -283,
+     0,
+     -388,
+     -674
+    ],
+    [
+     "2015: Balance at end of year",
+     638,
+     123,
+     8311,
+     133,
+     2084,
+     11289
+    ],
+    [
+     "2016: Balance at beginning of year",
+     638,
+     123,
+     8311,
+     133,
+     2084,
+     11289
+    ],
+    [
+     "2016: Effect of foreign currency translation",
+     -10,
+     -6,
+     0,
+     -11,
+     -6,
+     -33
+    ],
+    [
+     "2016: Acquisitions 1",
+     0,
+     0,
+     0,
+     6,
+     0,
+     6
+    ],
+    [
+     "2016: Adjustments related to the finalization of purchase accounting 1",
+     0,
+     0,
+     10,
+     0,
+     0,
+     10
+    ],
+    [
+     "2016: Impairment",
+     0,
+     0,
+     0,
+     0,
+     -10,
+     -10
+    ],
+    [
+     "2016: Divestitures, deconsolidations and other 1,2",
+     0,
+     0,
+     0,
+     0,
+     -633,
+     -633
+    ],
+    [
+     "2016: Balance at end of year",
+     628,
+     117,
+     8321,
+     128,
+     1435,
+     10629
+    ]
+   ],
+   "line": 3144,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2016: Balance at beginning of year",
+     638,
+     123,
+     8311,
+     133,
+     2084,
+     11289
+    ],
+    [
+     "2016: Effect of foreign currency translation",
+     -10,
+     -6,
+     0,
+     -11,
+     -6,
+     -33
+    ],
+    [
+     "2016: Acquisitions 1",
+     0,
+     0,
+     0,
+     6,
+     0,
+     6
+    ],
+    [
+     "2016: Adjustments related to the finalization of purchase accounting 1",
+     0,
+     0,
+     10,
+     0,
+     0,
+     10
+    ],
+    [
+     "2016: Impairment",
+     0,
+     0,
+     0,
+     0,
+     -10,
+     -10
+    ],
+    [
+     "2016: Divestitures, deconsolidations and other 1",
+     0,
+     0,
+     0,
+     0,
+     -633,
+     -633
+    ],
+    [
+     "2016: Balance at end of year",
+     628,
+     117,
+     8321,
+     128,
+     1435,
+     10629
+    ],
+    [
+     "2017: Balance at beginning of year",
+     628,
+     117,
+     8321,
+     128,
+     1435,
+     10629
+    ],
+    [
+     "2017: Effect of foreign currency translation",
+     75,
+     8,
+     0,
+     -1,
+     5,
+     87
+    ],
+    [
+     "2017: Acquisitions 1",
+     0,
+     25,
+     28,
+     0,
+     3,
+     56
+    ],
+    [
+     "2017: Adjustments related to the finalization of purchase accounting 1",
+     0,
+     0,
+     0,
+     18,
+     0,
+     18
+    ],
+    [
+     "2017: Impairment",
+     0,
+     0,
+     0,
+     0,
+     -390,
+     -390
+    ],
+    [
+     "2017: Divestitures, deconsolidations and other 1,2",
+     0,
+     0,
+     0,
+     0,
+     -999,
+     -999
+    ],
+    [
+     "2017: Balance at end of year",
+     703,
+     150,
+     8349,
+     145,
+     54,
+     9401
+    ]
+   ],
+   "line": 3278,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2017: Balance at beginning of year",
+     628,
+     117,
+     8321,
+     128,
+     1435,
+     10629
+    ],
+    [
+     "2017: Effect of foreign currency translation",
+     75,
+     8,
+     0,
+     -1,
+     5,
+     87
+    ],
+    [
+     "2017: Acquisitions 1",
+     0,
+     25,
+     28,
+     0,
+     3,
+     56
+    ],
+    [
+     "2017: Adjustments related to the finalization of purchase accounting 1",
+     0,
+     0,
+     0,
+     18,
+     0,
+     18
+    ],
+    [
+     "2017: Impairment charges",
+     0,
+     0,
+     0,
+     0,
+     -390,
+     -390
+    ],
+    [
+     "2017: Divestitures, deconsolidations and other 1,2",
+     0,
+     0,
+     0,
+     0,
+     -999,
+     -999
+    ],
+    [
+     "2017: Balance at end of year",
+     703,
+     150,
+     8349,
+     145,
+     54,
+     9401
+    ],
+    [
+     "2018: Balance at beginning of year",
+     703,
+     150,
+     8349,
+     145,
+     54,
+     9401
+    ],
+    [
+     "2018: Effect of foreign currency translation",
+     -58,
+     -9,
+     0,
+     -4,
+     -2,
+     -73
+    ],
+    [
+     "2018: Acquisitions 1,3",
+     12,
+     0,
+     0,
+     13,
+     488,
+     513
+    ],
+    [
+     "2018: Adjustments related to the finalization of purchase accounting 1,4",
+     411,
+     27,
+     -11,
+     0,
+     0,
+     427
+    ],
+    [
+     "2018: Divestitures, deconsolidations and other 1",
+     0,
+     0,
+     0,
+     0,
+     -5,
+     -5
+    ],
+    [
+     "2018: Balance at end of year",
+     1068,
+     168,
+     8338,
+     154,
+     535,
+     10263
+    ]
+   ],
+   "line": 3298,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2019": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2018: Balance at beginning of year",
+     689,
+     150,
+     7954,
+     143,
+     411,
+     4302
+    ],
+    [
+     "2018: Effect of foreign currency translation",
+     -58,
+     -9,
+     0,
+     -4,
+     0,
+     -202
+    ],
+    [
+     "2018: Acquisitions 1",
+     12,
+     0,
+     0,
+     13,
+     0,
+     773
+    ],
+    [
+     "2018: Purchase accounting adjustments 1,2",
+     408,
+     27,
+     -11,
+     0,
+     3,
+     -487
+    ],
+    [
+     "2018: Divestitures, deconsolidations and other 1",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -5
+    ],
+    [
+     "2018: Balance at end of year",
+     1051,
+     168,
+     7943,
+     152,
+     414,
+     4381
+    ],
+    [
+     "2019: Balance at beginning of year",
+     1051,
+     168,
+     7943,
+     152,
+     414,
+     4381
+    ],
+    [
+     "2019: Effect of foreign currency translation",
+     -8,
+     0,
+     1,
+     1,
+     79,
+     75
+    ],
+    [
+     "2019: Acquisitions 1",
+     141,
+     0,
+     0,
+     0,
+     2505,
+     173
+    ],
+    [
+     "2019: Purchase accounting adjustments 1,3",
+     110,
+     0,
+     0,
+     17,
+     -114,
+     -252
+    ],
+    [
+     "2019: Balance at end of year",
+     1294,
+     170,
+     7943,
+     170,
+     2806,
+     4381
+    ]
+   ],
+   "line": 2917,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2019/psp_405c783f553d43c9b2011bba81319d93/prepared/document.md"
+  },
+  "2020": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2019: Balance at beginning of year",
+     1051,
+     168,
+     7943,
+     152,
+     414,
+     4381
+    ],
+    [
+     "2019: Effect of foreign currency translation",
+     -8,
+     2,
+     0,
+     1,
+     1,
+     79
+    ],
+    [
+     "2019: Acquisitions 1",
+     141,
+     0,
+     0,
+     0,
+     2505,
+     173
+    ],
+    [
+     "2019: Purchase accounting adjustments 1,2",
+     110,
+     0,
+     0,
+     17,
+     -114,
+     -252
+    ],
+    [
+     "2019: Balance at end of year",
+     1294,
+     170,
+     7943,
+     170,
+     2806,
+     4381
+    ],
+    [
+     "2020: Balance at beginning of year",
+     1294,
+     170,
+     7943,
+     170,
+     2806,
+     4381
+    ],
+    [
+     "2020: Effect of foreign currency translation",
+     40,
+     -6,
+     0,
+     7,
+     84,
+     -216
+    ],
+    [
+     "2020: Acquisitions 1",
+     0,
+     0,
+     775,
+     0,
+     0,
+     0
+    ],
+    [
+     "2020: Purchase accounting adjustments 1,3",
+     -26,
+     0,
+     74,
+     24,
+     2,
+     -2
+    ],
+    [
+     "2020: Impairments",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -14
+    ],
+    [
+     "2020: Balance at end of year",
+     1308,
+     164,
+     8792,
+     201,
+     2892,
+     4149
+    ]
+   ],
+   "line": 2645,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2020/psp_b79ab798eb324e1d912ca3860d0fc698/prepared/document.md"
+  },
+  "2021": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2020: Balance at beginning of year",
+     1294,
+     170,
+     7943,
+     170,
+     2806,
+     4381
+    ],
+    [
+     "2020: Effect of foreign currency translation",
+     40,
+     -6,
+     0,
+     7,
+     84,
+     -216
+    ],
+    [
+     "2020: Acquisitions 1",
+     0,
+     0,
+     775,
+     0,
+     0,
+     0
+    ],
+    [
+     "2020: Purchase accounting adjustments 1,2",
+     -26,
+     0,
+     74,
+     24,
+     2,
+     -2
+    ],
+    [
+     "2020: Impairments",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -14
+    ],
+    [
+     "2020: Balance at end of year",
+     1308,
+     164,
+     8792,
+     201,
+     2892,
+     4149
+    ],
+    [
+     "2021: Balance at beginning of year",
+     1308,
+     164,
+     8792,
+     201,
+     2892,
+     4149
+    ],
+    [
+     "2021: Effect of foreign currency translation",
+     -83,
+     -8,
+     0,
+     -6,
+     46,
+     -285
+    ],
+    [
+     "2021: Acquisitions 1",
+     55,
+     44,
+     1886,
+     227,
+     45,
+     0
+    ],
+    [
+     "2021: Impairments",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -7
+    ],
+    [
+     "2021: Divestitures, deconsolidations and other 3",
+     0,
+     0,
+     -13,
+     0,
+     -7,
+     -37
+    ],
+    [
+     "2021: Balance at end of year",
+     1280,
+     200,
+     10665,
+     422,
+     2976,
+     3820
+    ]
+   ],
+   "line": 2541,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2021: Balance at beginning of year",
+     1308,
+     164,
+     8792,
+     201,
+     2892,
+     4149
+    ],
+    [
+     "2021: Effect of foreign currency translation",
+     -83,
+     -8,
+     0,
+     -6,
+     46,
+     -285
+    ],
+    [
+     "2021: Acquisitions 1",
+     55,
+     44,
+     1886,
+     227,
+     45,
+     0
+    ],
+    [
+     "2021: Impairments",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -7
+    ],
+    [
+     "2021: Divestitures, deconsolidations and other 2",
+     0,
+     0,
+     -13,
+     0,
+     -7,
+     -37
+    ],
+    [
+     "2021: Balance at end of year",
+     1280,
+     200,
+     10665,
+     422,
+     2976,
+     3820
+    ],
+    [
+     "2022: Balance at beginning of year",
+     1280,
+     200,
+     10665,
+     422,
+     2976,
+     3820
+    ],
+    [
+     "2022: Effect of foreign currency translation",
+     -83,
+     3,
+     0,
+     -12,
+     -272,
+     -239
+    ],
+    [
+     "2022: Acquisitions",
+     0,
+     0,
+     0,
+     0,
+     0,
+     4
+    ],
+    [
+     "2022: Purchase accounting adjustments",
+     0,
+     0,
+     12,
+     2,
+     9,
+     0
+    ],
+    [
+     "2022: Divestitures, deconsolidations and other",
+     0,
+     0,
+     0,
+     0,
+     -5,
+     0
+    ],
+    [
+     "2022: Balance at end of year",
+     1197,
+     203,
+     10677,
+     412,
+     2708,
+     3585
+    ]
+   ],
+   "line": 2503,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2022: Balance at beginning of year",
+     1280,
+     200,
+     10665,
+     422,
+     2976,
+     3820
+    ],
+    [
+     "2022: Effect of foreign currency translation",
+     -83,
+     3,
+     0,
+     -12,
+     -272,
+     -239
+    ],
+    [
+     "2022: Acquisitions",
+     0,
+     0,
+     0,
+     0,
+     0,
+     4
+    ],
+    [
+     "2022: Purchase accounting adjustments",
+     0,
+     0,
+     12,
+     2,
+     9,
+     0
+    ],
+    [
+     "2022: Divestitures, deconsolidations and other",
+     0,
+     0,
+     0,
+     0,
+     -5,
+     0
+    ],
+    [
+     "2022: Balance at end of year",
+     1197,
+     203,
+     10677,
+     412,
+     2708,
+     3585
+    ],
+    [
+     "2023: Balance at beginning of year",
+     1197,
+     203,
+     10677,
+     412,
+     2708,
+     3585
+    ],
+    [
+     "2023: Effect of foreign currency translation",
+     -44,
+     6,
+     0,
+     -11,
+     120,
+     -264
+    ],
+    [
+     "2023: Divestitures, deconsolidations and other 1",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -231
+    ],
+    [
+     "2023: Balance at end of year",
+     1153,
+     209,
+     10677,
+     401,
+     2828,
+     3090
+    ]
+   ],
+   "line": 2514,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2023: Balance at beginning of year",
+     1197,
+     203,
+     10677,
+     412,
+     2708,
+     3585
+    ],
+    [
+     "2023: Effect of foreign currency translation",
+     -44,
+     6,
+     0,
+     -11,
+     120,
+     -264
+    ],
+    [
+     "2023: Divestitures 1",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -231
+    ],
+    [
+     "2023: Balance at end of year",
+     1153,
+     209,
+     10677,
+     401,
+     2828,
+     3090
+    ],
+    [
+     "2024: Balance at beginning of year",
+     1153,
+     209,
+     10677,
+     401,
+     2828,
+     3090
+    ],
+    [
+     "2024: Effect of foreign currency translation",
+     -66,
+     -11,
+     0,
+     -10,
+     -41,
+     -84
+    ],
+    [
+     "2024: Impairment charges",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -6
+    ],
+    [
+     "2024: Divestitures",
+     0,
+     0,
+     0,
+     0,
+     0,
+     -1
+    ],
+    [
+     "2024: Balance at end of year",
+     1087,
+     198,
+     10677,
+     391,
+     2787,
+     2999
+    ]
+   ],
+   "line": 2478,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "rows": [
+    [
+     "---",
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     "2024: Balance at beginning of year",
+     3647,
+     226,
+     10978,
+     417,
+     3090,
+     18358
+    ],
+    [
+     "2024: Effect of foreign currency translation",
+     -107,
+     -11,
+     0,
+     -10,
+     -84,
+     -212
+    ],
+    [
+     "2024: Impairment charges",
+     0,
+     0,
+     0,
+     0,
+     -6,
+     -6
+    ],
+    [
+     "2024: Divestitures",
+     0,
+     0,
+     0,
+     0,
+     -1,
+     -1
+    ],
+    [
+     "2024: Balance at end of year",
+     3540,
+     215,
+     10978,
+     407,
+     2999,
+     18139
+    ],
+    [
+     "2025: Balance at beginning of year",
+     3540,
+     215,
+     10978,
+     407,
+     2999,
+     18139
+    ],
+    [
+     "2025: Effect of foreign currency translation",
+     311,
+     12,
+     0,
+     2,
+     396,
+     721
+    ],
+    [
+     "2025: Divestitures and assets held for sale 1",
+     -8,
+     0,
+     0,
+     0,
+     -3361,
+     -3369
+    ],
+    [
+     "2025: Balance at end of year",
+     3843,
+     227,
+     10978,
+     409,
+     34,
+     15491
+    ]
+   ],
+   "line": 2454,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "held_for_sale": {
+  "2016": {
+   "years": [
+    2016,
+    2015
+   ],
+   "rows": [
+    [
+     "Cash, cash equivalents and short-term investments",
+     49,
+     143
+    ],
+    [
+     "Trade accounts receivable, less allowances",
+     43,
+     485
+    ],
+    [
+     "Inventories",
+     264,
+     276
+    ],
+    [
+     "Prepaid expenses and other assets",
+     114,
+     83
+    ],
+    [
+     "Equity method investments",
+     1,
+     92
+    ],
+    [
+     "Other investments",
+     42,
+     0
+    ],
+    [
+     "Other assets",
+     17,
+     25
+    ],
+    [
+     "Property, plant and equipment — net",
+     1780,
+     2021
+    ],
+    [
+     "Bottlers' franchise rights with indefinite lives",
+     1388,
+     1020
+    ],
+    [
+     "Goodwill",
+     390,
+     333
+    ],
+    [
+     "Other intangible assets",
+     51,
+     115
+    ],
+    [
+     "Allowance for reduction of assets held for sale",
+     -1342,
+     -693
+    ],
+    [
+     "Total assets",
+     2797,
+     3900
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     393,
+     712
+    ],
+    [
+     "Current maturities of long-term debt",
+     0,
+     12
+    ],
+    [
+     "Accrued income taxes",
+     13,
+     4
+    ],
+    [
+     "Long-term debt",
+     0,
+     74
+    ],
+    [
+     "Other liabilities",
+     1,
+     79
+    ],
+    [
+     "Deferred income taxes",
+     303,
+     252
+    ],
+    [
+     "Total liabilities",
+     710,
+     1133
+    ]
+   ],
+   "line": 2721,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2016/psp_0ed5b72f27fe4226b9b05bf29fe7e76c/prepared/document.md"
+  },
+  "2017": {
+   "years": [
+    2017,
+    2016
+   ],
+   "rows": [
+    [
+     "Cash, cash equivalents and short-term investments",
+     13,
+     49
+    ],
+    [
+     "Trade accounts receivable, less allowances",
+     10,
+     43
+    ],
+    [
+     "Inventories",
+     11,
+     264
+    ],
+    [
+     "Prepaid expenses and other assets",
+     12,
+     114
+    ],
+    [
+     "Equity method investments",
+     0,
+     1
+    ],
+    [
+     "Other investments",
+     0,
+     42
+    ],
+    [
+     "Other assets",
+     7,
+     17
+    ],
+    [
+     "Property, plant and equipment — net",
+     85,
+     1780
+    ],
+    [
+     "Bottlers' franchise rights with indefinite lives",
+     5,
+     1388
+    ],
+    [
+     "Goodwill",
+     103,
+     390
+    ],
+    [
+     "Other intangible assets",
+     1,
+     51
+    ],
+    [
+     "Allowance for reduction of assets held for sale",
+     -28,
+     -1342
+    ],
+    [
+     "Assets held for sale",
+     219,
+     2797
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     22,
+     393
+    ],
+    [
+     "Accrued income taxes",
+     0,
+     13
+    ],
+    [
+     "Other liabilities",
+     12,
+     1
+    ],
+    [
+     "Deferred income taxes",
+     3,
+     303
+    ],
+    [
+     "Liabilities held for sale",
+     37,
+     710
+    ]
+   ],
+   "line": 2815,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2017/psp_64d67d2812744e7eb64a5759a5b0d2cc/prepared/document.md"
+  },
+  "2018": {
+   "years": [
+    2018,
+    2017
+   ],
+   "rows": [
+    [
+     "Trade accounts receivable, less allowances",
+     10,
+     10
+    ],
+    [
+     "Inventories",
+     11,
+     11
+    ],
+    [
+     "Prepaid expenses and other assets",
+     12,
+     12
+    ],
+    [
+     "Other assets",
+     7,
+     7
+    ],
+    [
+     "Property, plant and equipment — net",
+     85,
+     85
+    ],
+    [
+     "Bottlers' franchise rights with indefinite lives",
+     5,
+     5
+    ],
+    [
+     "Goodwill",
+     103,
+     103
+    ],
+    [
+     "Other intangible assets",
+     1,
+     1
+    ],
+    [
+     "Allowance for reduction of assets held for sale",
+     -28,
+     -28
+    ],
+    [
+     "Assets held for sale",
+     219,
+     null
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     22,
+     null
+    ],
+    [
+     "Other liabilities",
+     12,
+     12
+    ],
+    [
+     "Deferred income taxes",
+     3,
+     3
+    ],
+    [
+     "Liabilities held for sale",
+     37,
+     null
+    ]
+   ],
+   "line": 2738,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2018/psp_cd9dabfed2e24fdf9f06fd9f8d8cc6c7/prepared/document.md"
+  },
+  "2021": {
+   "years": [
+    2021,
+    2020
+   ],
+   "rows": [
+    [
+     "Trade accounts receivable, less allowances",
+     21,
+     21
+    ],
+    [
+     "Inventories",
+     55,
+     55
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     36,
+     36
+    ],
+    [
+     "Other noncurrent assets",
+     9,
+     9
+    ],
+    [
+     "Deferred income tax assets",
+     6,
+     6
+    ],
+    [
+     "Property, plant and equipment — net",
+     282,
+     282
+    ],
+    [
+     "Goodwill",
+     37,
+     37
+    ],
+    [
+     "Assets held for sale",
+     674,
+     null
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     139,
+     null
+    ],
+    [
+     "Accrued income taxes",
+     4,
+     4
+    ],
+    [
+     "Other noncurrent liabilities",
+     9,
+     9
+    ],
+    [
+     "Deferred income tax liabilities",
+     5,
+     5
+    ],
+    [
+     "Liabilities held for sale",
+     157,
+     null
+    ]
+   ],
+   "line": 2132,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2021/psp_4fff57be228c498ea65921f9a13be0aa/prepared/document.md"
+  },
+  "2022": {
+   "years": [
+    2022,
+    2021
+   ],
+   "rows": [
+    [
+     "Cash, cash equivalents and short-term investments",
+     229,
+     228
+    ],
+    [
+     "Trade accounts receivable, less allowances",
+     12,
+     21
+    ],
+    [
+     "Inventories",
+     50,
+     55
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     43,
+     36
+    ],
+    [
+     "Other noncurrent assets",
+     29,
+     9
+    ],
+    [
+     "Deferred income tax assets",
+     8,
+     6
+    ],
+    [
+     "Property, plant and equipment — net",
+     197,
+     282
+    ],
+    [
+     "Goodwill",
+     34,
+     37
+    ],
+    [
+     "Assets held for sale",
+     602,
+     674
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     154,
+     139
+    ],
+    [
+     "Accrued income taxes",
+     3,
+     4
+    ],
+    [
+     "Other noncurrent liabilities",
+     3,
+     9
+    ],
+    [
+     "Deferred income tax liabilities",
+     0,
+     5
+    ],
+    [
+     "Liabilities held for sale",
+     160,
+     157
+    ]
+   ],
+   "line": 2101,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2022/psp_6bf10915d7ef409c929d7a30212965c0/prepared/document.md"
+  },
+  "2023": {
+   "years": [
+    2023,
+    2022
+   ],
+   "rows": [
+    [
+     "Cash, cash equivalents and short-term investments",
+     37,
+     229
+    ],
+    [
+     "Marketable securities",
+     8,
+     0
+    ],
+    [
+     "Trade accounts receivable, less allowances",
+     95,
+     12
+    ],
+    [
+     "Inventories",
+     299,
+     50
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     60,
+     43
+    ],
+    [
+     "Equity method investments",
+     4,
+     0
+    ],
+    [
+     "Other noncurrent assets",
+     51,
+     29
+    ],
+    [
+     "Deferred income tax assets",
+     28,
+     8
+    ],
+    [
+     "Property, plant and equipment — net",
+     1267,
+     197
+    ],
+    [
+     "Goodwill",
+     231,
+     34
+    ],
+    [
+     "Other intangible assets",
+     14,
+     0
+    ],
+    [
+     "Assets held for sale",
+     2094,
+     602
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     464,
+     154
+    ],
+    [
+     "Loans and notes payable",
+     63,
+     0
+    ],
+    [
+     "Accrued income taxes",
+     24,
+     3
+    ],
+    [
+     "Long-term debt",
+     2,
+     0
+    ],
+    [
+     "Other noncurrent liabilities",
+     108,
+     3
+    ],
+    [
+     "Deferred income tax liabilities",
+     58,
+     0
+    ],
+    [
+     "Liabilities held for sale",
+     719,
+     160
+    ]
+   ],
+   "line": 2108,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2023/psp_db84d64043d94eb59996e93ad7e18711/prepared/document.md"
+  },
+  "2024": {
+   "years": [
+    2024,
+    2023
+   ],
+   "rows": [
+    [
+     "Cash, cash equivalents and short-term investments",
+     0,
+     37
+    ],
+    [
+     "Marketable securities",
+     0,
+     8
+    ],
+    [
+     "Trade accounts receivable, less allowances",
+     0,
+     95
+    ],
+    [
+     "Inventories",
+     23,
+     299
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     0,
+     60
+    ],
+    [
+     "Equity method investments",
+     0,
+     4
+    ],
+    [
+     "Other noncurrent assets",
+     0,
+     51
+    ],
+    [
+     "Deferred income tax assets",
+     0,
+     28
+    ],
+    [
+     "Property, plant and equipment — net",
+     108,
+     1267
+    ],
+    [
+     "Goodwill",
+     0,
+     231
+    ],
+    [
+     "Other intangible assets",
+     0,
+     14
+    ],
+    [
+     "Assets held for sale",
+     131,
+     2094
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     2,
+     464
+    ],
+    [
+     "Loans and notes payable",
+     0,
+     63
+    ],
+    [
+     "Accrued income taxes",
+     0,
+     24
+    ],
+    [
+     "Long-term debt",
+     0,
+     2
+    ],
+    [
+     "Other noncurrent liabilities",
+     1,
+     108
+    ],
+    [
+     "Deferred income tax liabilities",
+     0,
+     58
+    ],
+    [
+     "Liabilities held for sale",
+     3,
+     719
+    ]
+   ],
+   "line": 2088,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2024/psp_96ebc5b07f714c29808ae5a23d0ea839/prepared/document.md"
+  },
+  "2025": {
+   "years": [
+    2025,
+    2024
+   ],
+   "rows": [
+    [
+     "Cash, cash equivalents and short-term investments",
+     178,
+     0
+    ],
+    [
+     "Trade accounts receivable, less allowances",
+     389,
+     0
+    ],
+    [
+     "Inventories",
+     466,
+     23
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     147,
+     0
+    ],
+    [
+     "Equity method investments",
+     5,
+     0
+    ],
+    [
+     "Deferred income tax assets",
+     46,
+     0
+    ],
+    [
+     "Property, plant and equipment — net",
+     1964,
+     108
+    ],
+    [
+     "Trademarks with indefinite lives",
+     2,
+     0
+    ],
+    [
+     "Goodwill",
+     3350,
+     0
+    ],
+    [
+     "Other noncurrent assets",
+     60,
+     0
+    ],
+    [
+     "Allowance for reduction of assets held for sale",
+     -1265,
+     0
+    ],
+    [
+     "Assets held for sale",
+     5342,
+     131
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     816,
+     2
+    ],
+    [
+     "Loans and notes payable",
+     187,
+     0
+    ],
+    [
+     "Current maturities of long-term debt",
+     398,
+     0
+    ],
+    [
+     "Accrued income taxes",
+     5,
+     0
+    ],
+    [
+     "Long-term debt",
+     850,
+     0
+    ],
+    [
+     "Other noncurrent liabilities",
+     154,
+     1
+    ],
+    [
+     "Deferred income tax liabilities",
+     160,
+     0
+    ],
+    [
+     "Liabilities held for sale",
+     2570,
+     3
+    ]
+   ],
+   "line": 2053,
+   "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+  }
+ },
+ "customer_concentration": {
+  "2025": [
+   {
+    "kind": "bottler",
+    "pct": 10,
+    "line": 521,
+    "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+   },
+   {
+    "kind": "bottler",
+    "pct": 10,
+    "line": 3600,
+    "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+   },
+   {
+    "kind": "none",
+    "pct": null,
+    "line": 3600,
+    "path": "sources/companies/US/KO-coca-cola/artifacts/ten_k/KO-coca-cola/FY2025/psp_49eb40deba72424d91379bb74482f553/prepared/document.md"
+   }
+  ]
+ },
+ "checks": [
+  {
+   "table": "revenue_factors",
+   "year": 2019,
+   "label": "Consolidated: components - Total",
+   "lhs": 9,
+   "rhs": 9,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2019,
+   "label": "Europe, Middle East & Africa: components - Total",
+   "lhs": -1,
+   "rhs": -1,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2019,
+   "label": "Latin America: components - Total",
+   "lhs": 4,
+   "rhs": 3,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2019,
+   "label": "North America: components - Total",
+   "lhs": 3,
+   "rhs": 2,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2019,
+   "label": "Global Ventures: components - Total",
+   "lhs": 233,
+   "rhs": 233,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "Consolidated: components - Total",
+   "lhs": -11,
+   "rhs": -11,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "Europe, Middle East & Africa: components - Total",
+   "lhs": -15,
+   "rhs": -14,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "Latin America: components - Total",
+   "lhs": -14,
+   "rhs": -15,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "North America: components - Total",
+   "lhs": -3,
+   "rhs": -4,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "Asia Pacific: components - Total",
+   "lhs": -12,
+   "rhs": -11,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "Global Ventures: components - Total",
+   "lhs": -21,
+   "rhs": -22,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2020,
+   "label": "Bottling Investments: components - Total",
+   "lhs": -17,
+   "rhs": -16,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "Consolidated: components - Total",
+   "lhs": 16,
+   "rhs": 17,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "Europe, Middle East & Africa: components - Total",
+   "lhs": 19,
+   "rhs": 19,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "Latin America: components - Total",
+   "lhs": 18,
+   "rhs": 18,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "North America: components - Total",
+   "lhs": 14,
+   "rhs": 15,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "Asia Pacific: components - Total",
+   "lhs": 12,
+   "rhs": 12,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "Global Ventures: components - Total",
+   "lhs": 40,
+   "rhs": 41,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2021,
+   "label": "Bottling Investments: components - Total",
+   "lhs": 15,
+   "rhs": 15,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "Consolidated: components - Total",
+   "lhs": 11,
+   "rhs": 11,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "Europe, Middle East & Africa: components - Total",
+   "lhs": 4,
+   "rhs": 5,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "Latin America: components - Total",
+   "lhs": 19,
+   "rhs": 19,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "North America: components - Total",
+   "lhs": 19,
+   "rhs": 19,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "Asia Pacific: components - Total",
+   "lhs": 2,
+   "rhs": 3,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "Global Ventures: components - Total",
+   "lhs": 2,
+   "rhs": 1,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2022,
+   "label": "Bottling Investments: components - Total",
+   "lhs": 10,
+   "rhs": 10,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "Consolidated: components - Total",
+   "lhs": 7,
+   "rhs": 6,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "Europe, Middle East & Africa: components - Total",
+   "lhs": 7,
+   "rhs": 7,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "Latin America: components - Total",
+   "lhs": 19,
+   "rhs": 19,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "North America: components - Total",
+   "lhs": 7,
+   "rhs": 7,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "Asia Pacific: components - Total",
+   "lhs": 1,
+   "rhs": 0,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "Global Ventures: components - Total",
+   "lhs": 7,
+   "rhs": 8,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2023,
+   "label": "Bottling Investments: components - Total",
+   "lhs": -1,
+   "rhs": 0,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "Consolidated: components - Total",
+   "lhs": 4,
+   "rhs": 3,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "Europe, Middle East & Africa: components - Total",
+   "lhs": 0,
+   "rhs": 1,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "Latin America: components - Total",
+   "lhs": 10,
+   "rhs": 11,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "North America: components - Total",
+   "lhs": 11,
+   "rhs": 11,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "Asia Pacific: components - Total",
+   "lhs": 1,
+   "rhs": 2,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "Global Ventures: components - Total",
+   "lhs": 3,
+   "rhs": 2,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2024,
+   "label": "Bottling Investments: components - Total",
+   "lhs": -20,
+   "rhs": -21,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2025,
+   "label": "Consolidated: components - Total",
+   "lhs": 2,
+   "rhs": 2,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2025,
+   "label": "EMEA: components - Total",
+   "lhs": 5,
+   "rhs": 5,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2025,
+   "label": "Latin America: components - Total",
+   "lhs": -2,
+   "rhs": -2,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2025,
+   "label": "North America: components - Total",
+   "lhs": 4,
+   "rhs": 4,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2025,
+   "label": "Asia Pacific: components - Total",
+   "lhs": 1,
+   "rhs": 1,
+   "ok": true
+  },
+  {
+   "table": "revenue_factors",
+   "year": 2025,
+   "label": "Bottling Investments: components - Total",
+   "lhs": -7,
+   "rhs": -8,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2018,
+   "label": "concentrate + finished - Total",
+   "lhs": 31856,
+   "rhs": 31856,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2018,
+   "label": "US + International - Total",
+   "lhs": 31856,
+   "rhs": 31856,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2019,
+   "label": "concentrate + finished - Total",
+   "lhs": 37266,
+   "rhs": 37266,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2019,
+   "label": "US + International - Total",
+   "lhs": 37266,
+   "rhs": 37266,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2018,
+   "label": "concentrate + finished - Total",
+   "lhs": 34300,
+   "rhs": 34300,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2018,
+   "label": "US + International - Total",
+   "lhs": 34300,
+   "rhs": 34300,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2020,
+   "label": "concentrate + finished - Total",
+   "lhs": 33014,
+   "rhs": 33014,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2020,
+   "label": "US + International - Total",
+   "lhs": 33014,
+   "rhs": 33014,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2019,
+   "label": "concentrate + finished - Total",
+   "lhs": 37266,
+   "rhs": 37266,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2019,
+   "label": "US + International - Total",
+   "lhs": 37266,
+   "rhs": 37266,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2018,
+   "label": "concentrate + finished - Total",
+   "lhs": 34300,
+   "rhs": 34300,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2018,
+   "label": "US + International - Total",
+   "lhs": 34300,
+   "rhs": 34300,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2021,
+   "label": "concentrate + finished - Total",
+   "lhs": 38655,
+   "rhs": 38655,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2021,
+   "label": "US + International - Total",
+   "lhs": 38655,
+   "rhs": 38655,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2020,
+   "label": "concentrate + finished - Total",
+   "lhs": 33014,
+   "rhs": 33014,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2020,
+   "label": "US + International - Total",
+   "lhs": 33014,
+   "rhs": 33014,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2019,
+   "label": "concentrate + finished - Total",
+   "lhs": 37266,
+   "rhs": 37266,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2019,
+   "label": "US + International - Total",
+   "lhs": 37266,
+   "rhs": 37266,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2022,
+   "label": "concentrate + finished - Total",
+   "lhs": 43004,
+   "rhs": 43004,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2022,
+   "label": "US + International - Total",
+   "lhs": 43004,
+   "rhs": 43004,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2021,
+   "label": "concentrate + finished - Total",
+   "lhs": 38655,
+   "rhs": 38655,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2021,
+   "label": "US + International - Total",
+   "lhs": 38655,
+   "rhs": 38655,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2020,
+   "label": "concentrate + finished - Total",
+   "lhs": 33014,
+   "rhs": 33014,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2020,
+   "label": "US + International - Total",
+   "lhs": 33014,
+   "rhs": 33014,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2023,
+   "label": "concentrate + finished - Total",
+   "lhs": 45754,
+   "rhs": 45754,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2023,
+   "label": "US + International - Total",
+   "lhs": 45754,
+   "rhs": 45754,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2022,
+   "label": "concentrate + finished - Total",
+   "lhs": 43004,
+   "rhs": 43004,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2022,
+   "label": "US + International - Total",
+   "lhs": 43004,
+   "rhs": 43004,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2021,
+   "label": "concentrate + finished - Total",
+   "lhs": 38655,
+   "rhs": 38655,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2021,
+   "label": "US + International - Total",
+   "lhs": 38655,
+   "rhs": 38655,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2024,
+   "label": "concentrate + finished - Total",
+   "lhs": 47061,
+   "rhs": 47061,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2024,
+   "label": "US + International - Total",
+   "lhs": 47061,
+   "rhs": 47061,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2023,
+   "label": "concentrate + finished - Total",
+   "lhs": 45754,
+   "rhs": 45754,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2023,
+   "label": "US + International - Total",
+   "lhs": 45754,
+   "rhs": 45754,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2022,
+   "label": "concentrate + finished - Total",
+   "lhs": 43004,
+   "rhs": 43004,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2022,
+   "label": "US + International - Total",
+   "lhs": 43004,
+   "rhs": 43004,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2025,
+   "label": "concentrate + finished - Total",
+   "lhs": 47941,
+   "rhs": 47941,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2025,
+   "label": "US + International - Total",
+   "lhs": 47941,
+   "rhs": 47941,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2024,
+   "label": "concentrate + finished - Total",
+   "lhs": 47061,
+   "rhs": 47061,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2024,
+   "label": "US + International - Total",
+   "lhs": 47061,
+   "rhs": 47061,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2023,
+   "label": "concentrate + finished - Total",
+   "lhs": 45754,
+   "rhs": 45754,
+   "ok": true
+  },
+  {
+   "table": "line_of_business",
+   "year": 2023,
+   "label": "US + International - Total",
+   "lhs": 45754,
+   "rhs": 45754,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2018,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2017,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2016,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2019,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2018,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2017,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2020,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2019,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2021,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2020,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2022,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2021,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2023,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2022,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2024,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2023,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2025,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "segment_revenue_pct",
+   "year": 2024,
+   "label": "segments + Corporate - Total",
+   "lhs": 100.0,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2016,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 23716,
+   "rhs": 23716,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2016,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 2889,
+   "rhs": 2889,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2015,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 18749,
+   "rhs": 18749,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2015,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 2234,
+   "rhs": 2234,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2014,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 20817,
+   "rhs": 20817,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2014,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 2366,
+   "rhs": 2366,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2017,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 30472,
+   "rhs": 30472,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2017,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4425,
+   "rhs": 4425,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2016,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 23716,
+   "rhs": 23716,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2016,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 2889,
+   "rhs": 2889,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2015,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 18749,
+   "rhs": 18749,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2015,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 2234,
+   "rhs": 2234,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2018,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 30548,
+   "rhs": 30548,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2018,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4544,
+   "rhs": 4544,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2017,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 30472,
+   "rhs": 30472,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2017,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4425,
+   "rhs": 4425,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2016,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 23716,
+   "rhs": 23716,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2016,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 2889,
+   "rhs": 2889,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2019,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 31099,
+   "rhs": 31099,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2019,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4534,
+   "rhs": 4534,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2018,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 30549,
+   "rhs": 30549,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2018,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4545,
+   "rhs": 4545,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2017,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 30472,
+   "rhs": 30472,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2017,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4425,
+   "rhs": 4425,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2020,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 28245,
+   "rhs": 28245,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2020,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4122,
+   "rhs": 4122,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2019,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 31099,
+   "rhs": 31099,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2019,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4534,
+   "rhs": 4534,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2018,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 30549,
+   "rhs": 30549,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2018,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4545,
+   "rhs": 4545,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2021,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 32087,
+   "rhs": 32087,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2021,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 5959,
+   "rhs": 5959,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2020,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 28245,
+   "rhs": 28245,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2020,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4122,
+   "rhs": 4122,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2019,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 31099,
+   "rhs": 31099,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2019,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4534,
+   "rhs": 4534,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2022,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 33065,
+   "rhs": 33065,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2022,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 6271,
+   "rhs": 6271,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2021,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 32087,
+   "rhs": 32087,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2021,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 5959,
+   "rhs": 5959,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2020,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 28245,
+   "rhs": 28245,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2020,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 4122,
+   "rhs": 4122,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2023,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 38082,
+   "rhs": 38082,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2023,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 7582,
+   "rhs": 7582,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2022,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 33065,
+   "rhs": 33065,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2022,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 6271,
+   "rhs": 6271,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2021,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 32087,
+   "rhs": 32087,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2021,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 5959,
+   "rhs": 5959,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2024,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 40516,
+   "rhs": 40516,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2024,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 8341,
+   "rhs": 8341,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2023,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 38082,
+   "rhs": 38082,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2023,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 7582,
+   "rhs": 7582,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2022,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 33065,
+   "rhs": 33065,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2022,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 6271,
+   "rhs": 6271,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2025,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 42178,
+   "rhs": 42178,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2025,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 9202,
+   "rhs": 9202,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2024,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 40516,
+   "rhs": 40516,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2024,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 8341,
+   "rhs": 8341,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2023,
+   "label": "revenue - COGS - gross profit",
+   "lhs": 38082,
+   "rhs": 38082,
+   "ok": true
+  },
+  {
+   "table": "equity_method_summary",
+   "year": 2023,
+   "label": "consolidated NI - NCI - NI to common",
+   "lhs": 7582,
+   "rhs": 7582,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 1288,
+   "rhs": 1288,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 2355,
+   "rhs": 2355,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola European Partners plc 1: fair - carrying - difference",
+   "lhs": -462,
+   "rhs": -462,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 727,
+   "rhs": 727,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola Amatil Limited: fair - carrying - difference",
+   "lhs": 957,
+   "rhs": 957,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola East Japan Co., Ltd.: fair - carrying - difference",
+   "lhs": 393,
+   "rhs": 393,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 285,
+   "rhs": 285,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 217,
+   "rhs": 217,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Coca-Cola Bottling Co. Consolidated: fair - carrying - difference",
+   "lhs": 328,
+   "rhs": 328,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2016,
+   "label": "Corporaci ó n Lindley S.A.: fair - carrying - difference",
+   "lhs": 91,
+   "rhs": 91,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 3081,
+   "rhs": 3081,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 2200,
+   "rhs": 2200,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola European Partners plc 1: fair - carrying - difference",
+   "lhs": -196,
+   "rhs": -196,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1439,
+   "rhs": 1439,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola Amatil Limited: fair - carrying - difference",
+   "lhs": 728,
+   "rhs": 728,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola Bottlers Japan Inc.: fair - carrying - difference",
+   "lhs": 100,
+   "rhs": 100,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 354,
+   "rhs": 354,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola Bottling Co. Consolidated: fair - carrying - difference",
+   "lhs": 418,
+   "rhs": 418,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 228,
+   "rhs": 228,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2017,
+   "label": "Corporaci ó n Lindley S.A.: fair - carrying - difference",
+   "lhs": 152,
+   "rhs": 152,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 1453,
+   "rhs": 1453,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca-Cola European Partners plc: fair - carrying - difference",
+   "lhs": 482,
+   "rhs": 482,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 1687,
+   "rhs": 1687,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1421,
+   "rhs": 1421,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca-Cola Amatil Limited: fair - carrying - difference",
+   "lhs": 669,
+   "rhs": 669,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc. 1: fair - carrying - difference",
+   "lhs": -164,
+   "rhs": -164,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 234,
+   "rhs": 234,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca – Cola Consolidated, Inc. 2: fair - carrying - difference",
+   "lhs": 302,
+   "rhs": 302,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2018,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 125,
+   "rhs": 125,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 2709,
+   "rhs": 2709,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola European Partners plc: fair - carrying - difference",
+   "lhs": 871,
+   "rhs": 871,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 1703,
+   "rhs": 1703,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1692,
+   "rhs": 1692,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola Amatil Limited: fair - carrying - difference",
+   "lhs": 1063,
+   "rhs": 1063,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc.: fair - carrying - difference",
+   "lhs": 101,
+   "rhs": 101,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola Consolidated, Inc.: fair - carrying - difference",
+   "lhs": 563,
+   "rhs": 563,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 137,
+   "rhs": 137,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2019,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 54,
+   "rhs": 54,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 5424,
+   "rhs": 5424,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola European Partners plc: fair - carrying - difference",
+   "lhs": 424,
+   "rhs": 424,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 1025,
+   "rhs": 1025,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1375,
+   "rhs": 1375,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola Amatil Limited: fair - carrying - difference",
+   "lhs": 1515,
+   "rhs": 1515,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola Consolidated, Inc.: fair - carrying - difference",
+   "lhs": 492,
+   "rhs": 492,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc.: fair - carrying - difference",
+   "lhs": 0,
+   "rhs": 0,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 243,
+   "rhs": 243,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2020,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 27,
+   "rhs": 27,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 5485,
+   "rhs": 5485,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Coca-Cola Europacific Partners plc: fair - carrying - difference",
+   "lhs": 1341,
+   "rhs": 1341,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 1614,
+   "rhs": 1614,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1590,
+   "rhs": 1590,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Coca-Cola Consolidated, Inc.: fair - carrying - difference",
+   "lhs": 1313,
+   "rhs": 1313,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc. 1: fair - carrying - difference",
+   "lhs": -87,
+   "rhs": -87,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 217,
+   "rhs": 217,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2021,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 32,
+   "rhs": 32,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 5854,
+   "rhs": 5854,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Coca-Cola Europacific Partners plc: fair - carrying - difference",
+   "lhs": 1222,
+   "rhs": 1222,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 2223,
+   "rhs": 2223,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 749,
+   "rhs": 749,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Coca-Cola Consolidated, Inc.: fair - carrying - difference",
+   "lhs": 933,
+   "rhs": 933,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc. 1: fair - carrying - difference",
+   "lhs": -29,
+   "rhs": -29,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 352,
+   "rhs": 352,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2022,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 37,
+   "rhs": 37,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 6929,
+   "rhs": 6929,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Coca-Cola Europacific Partners plc: fair - carrying - difference",
+   "lhs": 2012,
+   "rhs": 2012,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 3457,
+   "rhs": 3457,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1044,
+   "rhs": 1044,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Coca-Cola Consolidated, Inc.: fair - carrying - difference",
+   "lhs": 1831,
+   "rhs": 1831,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc.: fair - carrying - difference",
+   "lhs": 117,
+   "rhs": 117,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 683,
+   "rhs": 683,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2023,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 47,
+   "rhs": 47,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 5549,
+   "rhs": 5549,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Coca-Cola Europacific Partners plc: fair - carrying - difference",
+   "lhs": 3100,
+   "rhs": 3100,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 2758,
+   "rhs": 2758,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 1528,
+   "rhs": 1528,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Coca-Cola Consolidated, Inc.: fair - carrying - difference",
+   "lhs": 2031,
+   "rhs": 2031,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc.: fair - carrying - difference",
+   "lhs": 204,
+   "rhs": 204,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 697,
+   "rhs": 697,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2024,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 78,
+   "rhs": 78,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Monster Beverage Corporation: fair - carrying - difference",
+   "lhs": 10066,
+   "rhs": 10066,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Coca-Cola Europacific Partners plc: fair - carrying - difference",
+   "lhs": 3237,
+   "rhs": 3237,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Coca-Cola FEMSA, S.A.B. de C.V.: fair - carrying - difference",
+   "lhs": 3307,
+   "rhs": 3307,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Coca-Cola HBC AG: fair - carrying - difference",
+   "lhs": 2660,
+   "rhs": 2660,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Coca-Cola Bottlers Japan Holdings Inc.: fair - carrying - difference",
+   "lhs": 363,
+   "rhs": 363,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Coca-Cola İ ç ecek A. Ş.: fair - carrying - difference",
+   "lhs": 482,
+   "rhs": 482,
+   "ok": true
+  },
+  {
+   "table": "equity_fair_value",
+   "year": 2025,
+   "label": "Embotelladora Andina S.A.: fair - carrying - difference",
+   "lhs": 172,
+   "rhs": 172,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2016,
+   "label": "US + International - Total",
+   "lhs": 8136,
+   "rhs": 8136,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2015,
+   "label": "US + International - Total",
+   "lhs": 9605,
+   "rhs": 9605,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2014,
+   "label": "US + International - Total",
+   "lhs": 9325,
+   "rhs": 9325,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2019,
+   "label": "US + International - Total",
+   "lhs": 10786,
+   "rhs": 10786,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2018,
+   "label": "US + International - Total",
+   "lhs": 8225,
+   "rhs": 8225,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2017,
+   "label": "US + International - Total",
+   "lhs": 6890,
+   "rhs": 6890,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2020,
+   "label": "US + International - Total",
+   "lhs": 9749,
+   "rhs": 9749,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2019,
+   "label": "US + International - Total",
+   "lhs": 10786,
+   "rhs": 10786,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2018,
+   "label": "US + International - Total",
+   "lhs": 8225,
+   "rhs": 8225,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2021,
+   "label": "US + International - Total",
+   "lhs": 12425,
+   "rhs": 12425,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2020,
+   "label": "US + International - Total",
+   "lhs": 9749,
+   "rhs": 9749,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2019,
+   "label": "US + International - Total",
+   "lhs": 10786,
+   "rhs": 10786,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2022,
+   "label": "US + International - Total",
+   "lhs": 11686,
+   "rhs": 11686,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2021,
+   "label": "US + International - Total",
+   "lhs": 12425,
+   "rhs": 12425,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2020,
+   "label": "US + International - Total",
+   "lhs": 9749,
+   "rhs": 9749,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2023,
+   "label": "US + International - Total",
+   "lhs": 12952,
+   "rhs": 12952,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2022,
+   "label": "US + International - Total",
+   "lhs": 11686,
+   "rhs": 11686,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2021,
+   "label": "US + International - Total",
+   "lhs": 12425,
+   "rhs": 12425,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2024,
+   "label": "US + International - Total",
+   "lhs": 13086,
+   "rhs": 13086,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2023,
+   "label": "US + International - Total",
+   "lhs": 12952,
+   "rhs": 12952,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2022,
+   "label": "US + International - Total",
+   "lhs": 11686,
+   "rhs": 11686,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2025,
+   "label": "US + International - Total",
+   "lhs": 15998,
+   "rhs": 15998,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2024,
+   "label": "US + International - Total",
+   "lhs": 13086,
+   "rhs": 13086,
+   "ok": true
+  },
+  {
+   "table": "tax_pretax",
+   "year": 2023,
+   "label": "US + International - Total",
+   "lhs": 12952,
+   "rhs": 12952,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2019,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2081,
+   "rhs": 2081,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2019,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -280,
+   "rhs": -280,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2018,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2162,
+   "rhs": 2162,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2018,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -413,
+   "rhs": -413,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2017,
+   "label": "US + state + international - Total (current)",
+   "lhs": 6859,
+   "rhs": 6859,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2017,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -1252,
+   "rhs": -1252,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2020,
+   "label": "US + state + international - Total (current)",
+   "lhs": 1999,
+   "rhs": 1999,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2020,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -18,
+   "rhs": -18,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2019,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2081,
+   "rhs": 2081,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2019,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -280,
+   "rhs": -280,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2018,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2162,
+   "rhs": 2162,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2018,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -413,
+   "rhs": -413,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2021,
+   "label": "US + state + international - Total (current)",
+   "lhs": 1727,
+   "rhs": 1727,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2021,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": 894,
+   "rhs": 894,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2020,
+   "label": "US + state + international - Total (current)",
+   "lhs": 1999,
+   "rhs": 1999,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2020,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -18,
+   "rhs": -18,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2019,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2081,
+   "rhs": 2081,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2019,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -280,
+   "rhs": -280,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2022,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2237,
+   "rhs": 2237,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2022,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -122,
+   "rhs": -122,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2021,
+   "label": "US + state + international - Total (current)",
+   "lhs": 1727,
+   "rhs": 1727,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2021,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": 894,
+   "rhs": 894,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2020,
+   "label": "US + state + international - Total (current)",
+   "lhs": 1999,
+   "rhs": 1999,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2020,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -18,
+   "rhs": -18,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2023,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2251,
+   "rhs": 2251,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2023,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -2,
+   "rhs": -2,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2022,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2237,
+   "rhs": 2237,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2022,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -122,
+   "rhs": -122,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2021,
+   "label": "US + state + international - Total (current)",
+   "lhs": 1727,
+   "rhs": 1727,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2021,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": 894,
+   "rhs": 894,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2024,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2448,
+   "rhs": 2448,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2024,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -11,
+   "rhs": -11,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2023,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2251,
+   "rhs": 2251,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2023,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -2,
+   "rhs": -2,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2022,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2237,
+   "rhs": 2237,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2022,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -122,
+   "rhs": -122,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2025,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2344,
+   "rhs": 2344,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2025,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": 517,
+   "rhs": 517,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2024,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2448,
+   "rhs": 2448,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2024,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -11,
+   "rhs": -11,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2023,
+   "label": "US + state + international - Total (current)",
+   "lhs": 2251,
+   "rhs": 2251,
+   "ok": true
+  },
+  {
+   "table": "tax_current_deferred",
+   "year": 2023,
+   "label": "US + state + international - Total (deferred)",
+   "lhs": -2,
+   "rhs": -2,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2019,
+   "label": "begin + movements - end",
+   "lhs": 392,
+   "rhs": 392,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2018,
+   "label": "begin + movements - end",
+   "lhs": 336,
+   "rhs": 336,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2017,
+   "label": "begin + movements - end",
+   "lhs": 331,
+   "rhs": 331,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2020,
+   "label": "begin + movements - end",
+   "lhs": 915,
+   "rhs": 915,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2019,
+   "label": "begin + movements - end",
+   "lhs": 392,
+   "rhs": 392,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2021,
+   "label": "begin + movements - end",
+   "lhs": 906,
+   "rhs": 906,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2020,
+   "label": "begin + movements - end",
+   "lhs": 915,
+   "rhs": 915,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2022,
+   "label": "begin + movements - end",
+   "lhs": 926,
+   "rhs": 926,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2021,
+   "label": "begin + movements - end",
+   "lhs": 906,
+   "rhs": 906,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2023,
+   "label": "begin + movements - end",
+   "lhs": 929,
+   "rhs": 929,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2022,
+   "label": "begin + movements - end",
+   "lhs": 926,
+   "rhs": 926,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2024,
+   "label": "begin + movements - end",
+   "lhs": 880,
+   "rhs": 880,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2023,
+   "label": "begin + movements - end",
+   "lhs": 929,
+   "rhs": 929,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2025,
+   "label": "begin + movements - end",
+   "lhs": 857,
+   "rhs": 857,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2024,
+   "label": "begin + movements - end",
+   "lhs": 880,
+   "rhs": 880,
+   "ok": true
+  },
+  {
+   "table": "unrecognized_tax_benefits",
+   "year": 2023,
+   "label": "begin + movements - end",
+   "lhs": 929,
+   "rhs": 929,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2016,
+   "label": "total - current portion - long-term debt",
+   "lhs": 29684,
+   "rhs": 29684,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2015,
+   "label": "total - current portion - long-term debt",
+   "lhs": 28311,
+   "rhs": 28311,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2017,
+   "label": "total - current portion - long-term debt",
+   "lhs": 31182,
+   "rhs": 31182,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2016,
+   "label": "total - current portion - long-term debt",
+   "lhs": 29684,
+   "rhs": 29684,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2018,
+   "label": "total - current portion - long-term debt",
+   "lhs": 25364,
+   "rhs": 25364,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2017,
+   "label": "total - current portion - long-term debt",
+   "lhs": 31182,
+   "rhs": 31182,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2019,
+   "label": "total - current portion - long-term debt",
+   "lhs": 27516,
+   "rhs": 27516,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2018,
+   "label": "total - current portion - long-term debt",
+   "lhs": 25376,
+   "rhs": 25376,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2020,
+   "label": "total - current portion - long-term debt",
+   "lhs": 40125,
+   "rhs": 40125,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2019,
+   "label": "total - current portion - long-term debt",
+   "lhs": 27516,
+   "rhs": 27516,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2021,
+   "label": "total - current portion - long-term debt",
+   "lhs": 38116,
+   "rhs": 38116,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2020,
+   "label": "total - current portion - long-term debt",
+   "lhs": 40125,
+   "rhs": 40125,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2022,
+   "label": "total - current portion - long-term debt",
+   "lhs": 36377,
+   "rhs": 36377,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2021,
+   "label": "total - current portion - long-term debt",
+   "lhs": 38116,
+   "rhs": 38116,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2023,
+   "label": "total - current portion - long-term debt",
+   "lhs": 35547,
+   "rhs": 35547,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2022,
+   "label": "total - current portion - long-term debt",
+   "lhs": 36377,
+   "rhs": 36377,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2024,
+   "label": "total - current portion - long-term debt",
+   "lhs": 42375,
+   "rhs": 42375,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2023,
+   "label": "total - current portion - long-term debt",
+   "lhs": 35547,
+   "rhs": 35547,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2025,
+   "label": "total - current portion - long-term debt",
+   "lhs": 42119,
+   "rhs": 42119,
+   "ok": true
+  },
+  {
+   "table": "debt_by_type",
+   "year": 2024,
+   "label": "total - current portion - long-term debt",
+   "lhs": 42375,
+   "rhs": 42375,
+   "ok": true
+  }
+ ]
+}
