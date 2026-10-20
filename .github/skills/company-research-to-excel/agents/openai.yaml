@@ -1,4 +1,4 @@
 interface:
   display_name: "Company Research to Excel"
-  short_description: "Arrange cleaned company panels in polished Excel"
-  default_prompt: "Use $company-research-to-excel to group the cleaned company disclosure panels by economic logic and export them to a polished, verified Excel workbook."
+  short_description: "Build source-bound historical Excel from 10-K/10-Q"
+  default_prompt: "Use $company-research-to-excel to build the historical workbook from original 10-K/10-Q filings. Exercise judgment over extraction, mappings, material disclosures and applicable checks. Use bundled scripts and compact table mappings by default; choose an equivalent source-based route when they do not fit, without forcing unsupported data into a schema. Keep accuracy and source traceability in external metadata; avoid mass cell comments and technical index tabs. Use the approved functional tab order/colors, compact Contents and blank unavailable values. Deliver one current workbook and remove temporary previews/scripts from outputs. Distinguish automatic results from Agent-verified exceptions and delegate final source-to-Excel data review to a fresh independent Agent with a minimal handoff. Hand forecasting and valuation to $valuation-binding-methodology, reusing the latest actuals and shared visual profile."

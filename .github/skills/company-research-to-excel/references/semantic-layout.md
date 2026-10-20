@@ -1,57 +1,67 @@
 # Semantic Layout Planning
 
-Create an internal plan that maps every selected bundle `table_id` to a worksheet and section before authoring. The collector's `topic_hint` is advisory; inspect titles, headers, row labels, units, periods, and source context before accepting it.
+Plan economic ownership before exporting. topic_hint is advisory; read original
+headings, row labels, units, scope, period grain and definition changes.
 
-Each planned section must remain a wide panel in Excel: identifying columns for metric/item names stay on the left, and reporting periods run chronologically from left to right. Stacking multiple sections on one worksheet does not change this orientation.
+## Routing
 
-## Default topic routing
-
-| Worksheet | Put here |
+| Owner | Content |
 |---|---|
-| `Financials` | Consolidated income statement, balance sheet, cash flow statement, statement-level reconciliations, and directly related per-share/share-count panels |
-| `Segments` | Reportable-segment revenue, profit/loss, assets, capex, eliminations, and segment KPIs tied to the same segment definition |
-| `Products & Geography` | Revenue or volume by product/service, geography/region/country, customer type, channel, or end market |
-| `Operating KPIs` | Orders, backlog, bookings, units, volume, pricing, users, subscribers, utilization, capacity, stores, employees, and other non-statement operating series |
-| `Capital & Returns` | Capex, working capital, dividends, repurchases, share counts, capital allocation, and return-related actuals |
-| `Debt & Liquidity` | Debt instruments, maturities, facilities, interest rates, covenant/liquidity tables, cash and investments, and lease liabilities when material |
-| `Assets & Intangibles` | PP&E, inventory, goodwill, intangible assets, impairment, acquisitions, and rollforwards |
-| `Tax & Shares` | Tax components/rate reconciliation, stock compensation, options/RSUs, equity rollforwards, and EPS detail |
-| `Other Notes` | Material note panels that do not fit a clearer economic schedule |
+| IS | Consolidated reported income, share/EPS detail and formula bridges |
+| BS | Consolidated reported balances and directly linked composition checks |
+| CF | Reported cash flows, cash reconciliation; YTD/discrete kept distinct |
+| SEG | Reportable-segment revenue/profit/assets/capex with eliminations/Corporate |
+| GEO | Products/services/countries/regions, with each reporting axis separate |
+| OP | Official volumes, pricing, utilization, units, customers and other KPIs |
+| DM | Formula-linked profitability, cash conversion, liquidity, NWC and returns |
+| Note schedules | Material debt/investments/intangibles/acquisitions/tax/SBC details |
 
-These are routing options, not mandatory tabs. For example, three small debt, lease, and share tables can live as sections under `Capital & Returns`; a dense debt maturity schedule merits `Debt & Liquidity`.
+These are choices, not a required sheet inventory beyond the requested statements.
+Combine short related notes; split long or incompatible schedules. More tabs and
+more ratios do not mean a more complete workbook. Preserve source-native order
+within statements and use economically sensible order for supporting sections.
 
-## Consolidation rules
+## Comparability and deduplication
 
-- Prefer a maintained normalized/curated panel over duplicate tables extracted from individual filings. Export both only when the user requests source-native tables or the second table preserves a different basis that matters.
-- Several annual and quarterly extracts for the same statement should become one section only when the cleaned data already establish compatible labels, units, periods, and restatement precedence. Otherwise preserve separate sections and label the comparability break.
-- Keep consolidated, segment, parent-only, discontinued-operations, pro-forma, and issuer-adjusted panels distinct. Similar row labels do not make them comparable.
-- Put a note table beside its economic owner: debt detail with liquidity, goodwill by segment with assets/intangibles, deferred revenue with products/revenue, stock compensation with shares. Do not put every note in one undifferentiated sheet.
-- Preserve source row order within each panel. Reorder complete panels on a worksheet to follow economic logic: headline statement first, then disaggregation, then rollforward/reconciliation, then supporting KPI.
-- Stack sections vertically with two blank rows. Use side-by-side placement only for two small complementary tables with the same periods and no risk of reading rows across the wrong table.
+- Choose original/recast precedence based on filed versions and document it.
+  A curated panel may organize data but does not outrank original filings.
+- Same text label does not prove the same measure. Scope, unit, currency, GAAP/
+  non-GAAP, continuing/discontinued perimeter and definition must match.
+- Treat business-line, geography and reportable-segment views as separate axes.
+  Do not sum crossing views or interpret their unmatched difference as a new
+  business without an official cross-classification.
+- Distinguish official growth attribution from an analyst calculation. Keep
+  official organic growth separate from volume/price arithmetic.
+- Give each economically comparable fact one calculation owner and link repeated
+  presentations. Retain independently reported totals/components for source-based
+  reconciliation; matching numbers do not justify merging different scopes,
+  intervals or cash definitions.
+- A complete face statement uses all in-scope lines; economically immaterial
+  detail may be a collapsed block rather than omitted without a disposition.
 
-## Density decisions
+## Layout-plan contract
 
-- Up to about 60 populated rows: combine closely related sections freely.
-- About 60-140 rows: combine only when sections share the same reader and period structure; add internal section links if useful.
-- Above about 140 rows, more than 20 period columns, or materially different column structures: split into a dedicated worksheet.
-- A single large statement or note schedule may own a worksheet. This is a readability decision, not a mechanical one-table rule.
+Select financial source views rather than requiring a disposition for every
+collected HTML layout/header table. Source metadata and the workbook model
+already describe placement; a separate layout JSON is optional. If used, place
+each SELECTED view once. Financial exclusions/version replacements need reasons.
 
-## Plan shape
-
-Keep the plan as a temporary JSON object or in-memory structure:
-
-```json
+~~~json
 {
-  "sheets": [
-    {
-      "name": "Segments",
-      "sections": [
-        {"title": "Segment revenue and profit", "table_ids": ["T004", "T007"]},
-        {"title": "Segment operating KPIs", "table_ids": ["T009"]}
-      ]
-    }
-  ]
+  "sheets": [{
+    "name": "Income Statement",
+    "sections": [{
+      "title": "Consolidated income",
+      "table_ids": ["IS_2024", "IS_2025_RECAST"],
+      "note": "Units/scope/periods are inherited from shared source views"
+    }]
+  }],
+  "excluded_tables": [{"table_id": "IS_2025_ORIGINAL", "reason": "Superseded by selected recast view IS_2025_RECAST"}]
 }
-```
+~~~
 
-Validate that the union of all `table_ids` equals the selected bundle IDs exactly once. The plan does not authorize merging or calculating new source values.
+validate_layout.py checks optional selected-view placement only, never data
+correctness. Keep economic metadata in shared source mappings rather than repeat
+it in each layout section. Explain source tables not represented by periods
+(e.g. maturity schedules) in native non-period table sections; those numeric
+tables still require source evidence and verification before release.

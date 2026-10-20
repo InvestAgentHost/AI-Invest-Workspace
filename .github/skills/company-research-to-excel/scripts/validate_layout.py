@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate that a thematic Excel layout places every bundle table exactly once."""
+"""Check an optional selected-view layout plan, not source or financial correctness."""
 
 from __future__ import annotations
 
@@ -30,10 +30,13 @@ def main() -> int:
 
     bundle = load_object(args.bundle)
     layout = load_object(args.layout)
-    if bundle.get("schema") != "company-research-excel-bundle.v2":
+    if bundle.get("schema") not in {"company-research-excel-bundle.v2", "company-research-excel-bundle.v3", "company-research-excel-bundle.v4"}:
         raise ValueError("Unsupported or missing bundle schema")
 
-    expected = [table.get("table_id") for table in bundle.get("tables", [])]
+    compact = bundle.get("schema") == "company-research-excel-bundle.v4"
+    expected = ([view.get("table_id") for table in bundle.get("tables", [])
+                 for view in table.get("metadata", {}).get("views", [])] if compact
+                else [table.get("table_id") for table in bundle.get("tables", [])])
     if not expected or any(not table_id for table_id in expected):
         raise ValueError("Bundle contains no valid table IDs")
     if len(expected) != len(set(expected)):
@@ -46,6 +49,14 @@ def main() -> int:
     sheet_names: list[str] = []
     placements: list[str] = []
     section_count = 0
+    failures = []
+    excluded = layout.get("excluded_tables", [])
+    excluded_ids = []
+    for item in excluded:
+        if not item.get("table_id") or not item.get("reason"):
+            failures.append("Excluded table needs table_id and a scope/redundancy reason")
+        else:
+            excluded_ids.append(item["table_id"])
     for sheet in sheets:
         if not isinstance(sheet, dict):
             raise ValueError("Every sheet entry must be an object")
@@ -67,15 +78,15 @@ def main() -> int:
                 raise ValueError(f"Section without title on sheet: {name}")
             if not isinstance(table_ids, list) or not table_ids:
                 raise ValueError(f"Section has no table IDs: {name} / {title}")
+            # Economic metadata belongs to source mappings, not a second ledger.
             placements.extend(str(table_id) for table_id in table_ids)
             section_count += 1
 
     duplicate_sheets = sorted(name for name, count in Counter(sheet_names).items() if count > 1)
-    counts = Counter(placements)
-    missing = sorted(set(expected) - set(placements))
-    unknown = sorted(set(placements) - set(expected))
+    counts = Counter(placements + excluded_ids)
+    missing = sorted(set(expected) - set(placements + excluded_ids))
+    unknown = sorted(set(placements + excluded_ids) - set(expected))
     duplicates = sorted(table_id for table_id, count in counts.items() if count > 1)
-    failures = []
     if duplicate_sheets:
         failures.append("Duplicate sheet names: " + ", ".join(duplicate_sheets))
     if missing:
@@ -87,6 +98,7 @@ def main() -> int:
 
     result = {
         "status": "FAIL" if failures else "PASS",
+        "gate": "layout_dispositions_only",
         "tables": len(expected),
         "sheets": len(sheets),
         "sections": section_count,

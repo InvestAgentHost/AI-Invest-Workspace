@@ -1,513 +1,245 @@
-# model.json Schema Reference
+# Compact historical model.json — v4
 
-This document describes the complete schema for `model.json`, the intermediate
-specification consumed by `build_workbook.py`.  The assembler produces a bare
-draft; the agent customizes it by adding formatting, growth rows, calculations,
-checks, and links before building.
+This is the interface to the bundled builder/verifier, not a universal schema
+for every issuer. Use it for the default route. When a disclosure is poorly
+represented, the Agent may use a company-specific mapping or another authoring
+route with equivalent source traceability and verification; it need not expand
+the common schema or convert every exception into this representation. The
+Agent judgment section in SKILL.md governs that choice.
 
-## Top-level structure
+Use **table-level context, value coordinates, documented exceptions, automated
+checks**. The agent declares a source view once; the assembler generates compact
+value bindings. Do not expand the resolved evidence back into model.json.
 
-```json
+## Root
+
+~~~json
 {
-  "company": { ... },
-  "periods": { ... },
-  "sheets": [ ... ]
+  "schema": "historical-research-model.v4",
+  "export_scope": "historical_10k_10q",
+  "status": "mapped",
+  "draft_gaps": [],
+  "company": {
+    "name": "Example", "ticker": "EXAMPLE", "currency": "USD",
+    "units": "USD million, except EPS/shares as labeled",
+    "reporting_framework": "US GAAP", "as_of_date": "2026-10-19"
+  },
+  "periods": {
+    "annual": [
+      {"label":"FY2025","fiscal_year":2025,"start":"2025-01-01","end":"2025-12-31","grain":"annual"}
+    ],
+    "quarterly": [], "scrap_cols": 0
+  },
+  "sources": [],
+  "tables": [],
+  "coverage": [],
+  "sheets": []
 }
-```
+~~~
 
-## company
+Examples are fictional. A release cannot leave sources/tables/coverage empty.
+Use issuer fiscal dates, including 52/53-week years. Each (fiscal_year,
+fiscal_quarter) is unique; annual fiscal_quarter is null. Same-quarter YoY uses
+fiscal keys, not visible column positions. Optional comparatives maps justified
+calendar changes. Default required_statements is IS/BS/CF. Optional
+required_topics/coverage_scope_reason and required_check_groups/
+check_group_periods/check_scope_reason adapt coverage and checks as described
+below; they need no separate approval or layout ledger.
 
-Company metadata displayed on Cover and sheet headers.
+sources registers each original ONCE: source_id, Workspace-relative path,
+sha256, filing_type, filing_date, url, optional accession/version. Non-inline
+filings may need form_evidence (submission header path/hash/exact_text).
+Do not duplicate file metadata in every table or numeric fact.
 
-| Field | Type | Example |
-|---|---|---|
-| `name` | string | `"Uber Technologies, Inc."` |
-| `ticker` | string | `"UBER"` |
-| `currency` | string | `"USD"` |
-| `units` | string | `"$ in millions except per-share data"` |
-| `reporting_framework` | string | `"US GAAP"` |
-| `fiscal_year_end` | string | `"December 31"` |
-| `consolidation_scope` | string | `""` |
-| `as_of_date` | string | `"2025-12-31"` |
-| `model_date` | string | `"2026-09-08"` |
+## Shared source view
 
-## periods
+tables stores each selected financial view once:
 
-Controls the column layout on every statement sheet.
-
-```json
+~~~json
 {
-  "annual": [
-    {"label": "FY2020"},
-    {"label": "FY2021"},
-    {"label": "FY2022"},
-    {"label": "FY2023"},
-    {"label": "FY2024"},
-    {"label": "FY2025"}
-  ],
-  "scrap_cols": 5,
-  "quarterly": [
-    {"label": "1Q2024"},
-    {"label": "2Q2024"},
-    {"label": "3Q2024"},
-    {"label": "4Q2024"},
-    {"label": "1Q2025"},
-    {"label": "2Q2025"}
-  ]
-}
-```
-
-- **annual**: left block of columns.  Each entry has `"label"` and optional
-  `"end"` (period end date).
-- **scrap_cols**: number of grey scratch columns between annual and quarterly
-  blocks.  Set to 0 if no quarterly data.
-- **quarterly**: right block of columns.
-
-## sheets
-
-Array of sheet objects.  Two kinds:
-
-### kind: "statement"
-
-Statement sheets use the shared period column layout and contain typed rows.
-
-```json
-{
-  "name": "Income Statement",
-  "short": "IS",
-  "kind": "statement",
-  "tab_color": "1F4E79",
-  "contents": true,
-  "blocks": [ ... ]
-}
-```
-
-| Field | Required | Description |
-|---|---|---|
-| `name` | yes | Full sheet name (max 31 chars after sanitization) |
-| `short` | yes | Short code used in cross-sheet references (e.g., IS, BS, CF) |
-| `kind` | yes | `"statement"` |
-| `tab_color` | no | Hex color for the sheet tab |
-| `contents` | no | If true, adds a CONTENTS hyperlink list at the top |
-| `blocks` | yes | Array of block objects |
-
-### kind: "table"
-
-Free-form grid sheets (Cover, Sources).  Uses `table` array instead of
-`blocks`.
-
-```json
-{
-  "name": "Cover",
-  "kind": "table",
-  "col_widths": [28, 60],
-  "tab_color": "1F4E79",
-  "table": [
-    [{"text": "Company Name", "bold": true}],
-    [],
-    ["Ticker", "UBER"]
-  ]
-}
-```
-
-## blocks
-
-Each block is a titled section within a statement sheet, rendered with a
-dark-navy header bar.
-
-```json
-{
-  "title": "INCOME STATEMENT",
-  "rows": [ ... ]
-}
-```
-
-The builder auto-numbers blocks as "1. INCOME STATEMENT", "2. NON-GAAP
-METRICS", etc.
-
-## Row types
-
-### input
-
-Hardcoded values from filings.  Rendered in blue.
-
-```json
-{
-  "id": "total_revenue",
-  "label": "Total Revenue",
-  "type": "input",
-  "values": {"FY2020": 11139, "FY2021": 17455, "FY2022": 31877},
-  "bold": true
-}
-```
-
-### subtotal
-
-Sum of child rows.  Rendered in black with a top border.
-
-```json
-{
-  "id": "total_opex",
-  "label": "Total Operating Expenses",
-  "type": "subtotal",
-  "children": ["cost_of_revenue", "research_dev", "sales_marketing", "general_admin"],
-  "bold": true
-}
-```
-
-### calc
-
-Arbitrary formula.  Rendered in black.
-
-```json
-{
-  "id": "gross_margin",
-  "label": "  Gross Margin",
-  "type": "calc",
-  "expr": "{gross_profit}/{total_revenue}",
-  "fmt": "pct",
-  "memo": true
-}
-```
-
-For quarterly-specific formulas, add `"expr_q"`:
-
-```json
-{
-  "id": "annualized_rev",
-  "label": "Annualized Revenue",
-  "type": "calc",
-  "expr": "{total_revenue}",
-  "expr_q": "{total_revenue}*4",
-  "fmt": "num"
-}
-```
-
-### growth_yoy
-
-Year-over-year growth of another row.  Renders `=cur/prior-1`.
-- Annual columns: compares to previous annual column.
-- Quarterly columns: compares to same quarter prior year (4 columns back).
-
-```json
-{
-  "id": "rev_yoy",
-  "label": "  YoY Growth",
-  "type": "growth_yoy",
-  "of": "total_revenue",
-  "fmt": "pct",
-  "memo": true
-}
-```
-
-### growth_qoq
-
-Quarter-over-quarter growth.  Renders `=cur/prev_quarter-1`.
-- Annual columns: blank (QoQ not meaningful for annual data).
-- Quarterly columns: compares to previous quarter.
-
-```json
-{
-  "id": "rev_qoq",
-  "label": "  QoQ Growth",
-  "type": "growth_qoq",
-  "of": "total_revenue",
-  "fmt": "pct",
-  "memo": true
-}
-```
-
-### link
-
-Cross-sheet reference.  Rendered in green.
-
-```json
-{
-  "id": "rev_link",
-  "label": "Revenue (from IS)",
-  "type": "link",
-  "ref": "IS:total_revenue"
-}
-```
-
-The `ref` format is `"SHORT:row_id"` where SHORT is the target sheet's
-`short` code.
-
-### check
-
-Verification row.  Expression should evaluate to ~0.  Rendered with
-conditional formatting: red bold when |value| > 0.5.
-
-```json
-{
-  "id": "bs_check",
-  "label": "Balance Check (should be ~0)",
-  "type": "check",
-  "expr": "{total_assets}-{total_liabilities}-{total_equity}",
-  "fmt": "num",
-  "memo": true
-}
-```
-
-Set `"expect_nonzero": true` for reconciliation rows that are informational
-(rendered amber, not enforced by the verifier).
-
-### spacer
-
-Blank row for visual separation.
-
-```json
-{"type": "spacer"}
-```
-
-## Row-level options
-
-These optional fields can be set on any row:
-
-| Field | Type | Effect |
-|---|---|---|
-| `bold` | bool | Bold label and values |
-| `indent` | int | Indent level (1 = one tab, 2 = two tabs) |
-| `memo` | bool | Grey italic font (for calculated annotations) |
-| `fmt` | string | Number format (see below) |
-| `note` | string | Text in the collapsed note/source column B |
-| `group` | bool | Row is collapsible (outline level 1) |
-| `border_top` | bool | Thin grey top border |
-| `min_label` | string | First period where this row has data |
-| `max_label` | string | Last period where this row has data |
-
-## Number formats
-
-| Code | Renders as | Use for |
-|---|---|---|
-| `num` | `1,234` / `(1,234)` / `"-"` | Most financial data (default) |
-| `num1` | `1,234.0` | Single-decimal precision |
-| `ps` | `1,234.00` | Per-share data |
-| `pct` | `12.3%` / `(12.3%)` | Margins, growth rates, percentages |
-| `x` | `12.3x` | Multiples (P/E, EV/EBITDA) |
-| `txt` | raw text | Text values |
-
-## Expression syntax
-
-Expressions appear in `calc` and `check` rows.  They are Python-like math
-strings with token references:
-
-| Token | Meaning | Example |
-|---|---|---|
-| `{row_id}` | Same sheet, same column | `{total_revenue}` |
-| `{SHORT:row_id}` | Cross-sheet, same column | `{IS:total_revenue}` |
-| `{row_id@-n}` | Same sheet, n columns back | `{total_revenue@-1}` |
-
-Expressions support standard Python operators: `+`, `-`, `*`, `/`, `()`.
-
-Examples:
-- Gross margin: `{gross_profit}/{total_revenue}`
-- FCF: `{cfo_total}+{capex_ppe}` (when capex is negative)
-- Balance check: `{total_assets}-{total_liabilities}-{total_equity}`
-- Revenue growth (manual): `{total_revenue}/{total_revenue@-1}-1`
-
-## Complete example: adding growth and margin to IS
-
-Starting from the draft (input rows only), insert after `total_revenue`:
-
-```json
-{"id": "rev_yoy", "label": "  YoY Growth", "type": "growth_yoy",
- "of": "total_revenue", "fmt": "pct", "memo": true},
-{"id": "rev_qoq", "label": "  QoQ Growth", "type": "growth_qoq",
- "of": "total_revenue", "fmt": "pct", "memo": true}
-```
-
-After `gross_profit`:
-
-```json
-{"id": "gross_margin", "label": "  Gross Margin", "type": "calc",
- "expr": "{gross_profit}/{total_revenue}", "fmt": "pct", "memo": true}
-```
-
-After `operating_income`:
-
-```json
-{"id": "op_margin", "label": "  Operating Margin", "type": "calc",
- "expr": "{operating_income}/{total_revenue}", "fmt": "pct", "memo": true},
-{"id": "oi_yoy", "label": "  YoY Growth", "type": "growth_yoy",
- "of": "operating_income", "fmt": "pct", "memo": true}
-```
-
-After `net_income`:
-
-```json
-{"id": "net_margin", "label": "  Net Margin", "type": "calc",
- "expr": "{net_income}/{total_revenue}", "fmt": "pct", "memo": true},
-{"id": "ni_yoy", "label": "  YoY Growth", "type": "growth_yoy",
- "of": "net_income", "fmt": "pct", "memo": true}
-```
-
-## Analytics patterns
-
-These blocks are added by the agent during Phase 4 customization.  Each
-pattern shows the rows to insert and where they go.
-
-### EPS & Share Count (IS sheet, after net income)
-
-```json
-{"type": "spacer"},
-{"id": "basic_eps", "label": "Basic EPS", "type": "input",
- "values": {"FY2024": 4.75, "FY2025": 4.97}, "fmt": "ps", "bold": true},
-{"id": "diluted_eps", "label": "Diluted EPS", "type": "input",
- "values": {"FY2024": 4.56, "FY2025": 4.81}, "fmt": "ps", "bold": true},
-{"id": "eps_yoy", "label": "  YoY Growth", "type": "growth_yoy",
- "of": "diluted_eps", "fmt": "pct", "memo": true},
-{"id": "waso_basic", "label": "Weighted Avg Shares — Basic", "type": "input",
- "values": {"FY2024": 2074, "FY2025": 2023}, "fmt": "num"},
-{"id": "waso_diluted", "label": "Weighted Avg Shares — Diluted", "type": "input",
- "values": {"FY2024": 2160, "FY2025": 2089}, "fmt": "num"}
-```
-
-### Non-GAAP bridge (IS sheet, separate block or after EPS)
-
-The bridge reconciles GAAP net income to the company's non-GAAP metric (e.g.,
-Adjusted EBITDA).  Include the company's own reconciliation items:
-
-```json
-{"title": "NON-GAAP RECONCILIATION", "rows": [
-  {"id": "ni_bridge", "label": "Net income (from above)", "type": "link",
-   "ref": "IS:net_income", "bold": true},
-  {"id": "add_interest", "label": "Interest expense, net", "type": "input",
-   "values": {...}, "indent": 1},
-  {"id": "add_tax", "label": "Provision for income taxes", "type": "input",
-   "values": {...}, "indent": 1},
-  {"id": "add_da", "label": "Depreciation and amortization", "type": "input",
-   "values": {...}, "indent": 1},
-  {"id": "add_sbc", "label": "Stock-based compensation", "type": "input",
-   "values": {...}, "indent": 1},
-  {"id": "add_restructuring", "label": "Restructuring charges", "type": "input",
-   "values": {...}, "indent": 1},
-  {"id": "adj_ebitda", "label": "Adjusted EBITDA", "type": "input",
-   "values": {...}, "bold": true},
-  {"id": "adj_ebitda_margin", "label": "  Adjusted EBITDA Margin", "type": "calc",
-   "expr": "{adj_ebitda}/{IS:total_revenue}", "fmt": "pct", "memo": true},
-  {"id": "adj_ebitda_yoy", "label": "  YoY Growth", "type": "growth_yoy",
-   "of": "adj_ebitda", "fmt": "pct", "memo": true},
-  {"id": "nongaap_check", "label": "Bridge Check (should be ~0)", "type": "check",
-   "expr": "{ni_bridge}+{add_interest}+{add_tax}+{add_da}+{add_sbc}+{add_restructuring}-{adj_ebitda}",
-   "fmt": "num", "memo": true, "expect_nonzero": true}
-]}
-```
-
-The check uses `"expect_nonzero": true` because the bridge often has small
-rounding differences or unlisted adjustment items — amber, not red.
-
-### Working capital analytics (BS sheet, after balance check)
-
-Only add if the company has inventory and receivables.  Use `expr_q` for
-quarterly columns where the denominator should be one quarter's revenue (≈91
-days), not full-year:
-
-```json
-{"type": "spacer"},
-{"id": "wc_dso", "label": "Days Sales Outstanding", "type": "calc",
- "expr": "{accounts_receivable}/{IS:total_revenue}*365",
- "expr_q": "{accounts_receivable}/{IS:total_revenue}*91",
- "fmt": "num1", "memo": true},
-{"id": "wc_dio", "label": "Days Inventory Outstanding", "type": "calc",
- "expr": "{inventories}/{IS:cost_of_revenue}*365",
- "expr_q": "{inventories}/{IS:cost_of_revenue}*91",
- "fmt": "num1", "memo": true},
-{"id": "wc_dpo", "label": "Days Payable Outstanding", "type": "calc",
- "expr": "{accounts_payable}/{IS:cost_of_revenue}*365",
- "expr_q": "{accounts_payable}/{IS:cost_of_revenue}*91",
- "fmt": "num1", "memo": true},
-{"id": "wc_ccc", "label": "Cash Conversion Cycle", "type": "calc",
- "expr": "{wc_dso}+{wc_dio}-{wc_dpo}", "fmt": "num1", "memo": true}
-```
-
-Skip DIO/DPO for pure-software or platform companies with no inventory.
-
-### FCF analytics (CF sheet, after section totals)
-
-```json
-{"type": "spacer"},
-{"id": "fcf", "label": "Free Cash Flow", "type": "calc",
- "expr": "{cfo_total}+{capex_ppe}", "bold": true, "fmt": "num"},
-{"id": "fcf_yoy", "label": "  YoY Growth", "type": "growth_yoy",
- "of": "fcf", "fmt": "pct", "memo": true},
-{"id": "capex_pct", "label": "  Capex % of Revenue", "type": "calc",
- "expr": "0-{capex_ppe}/{IS:total_revenue}", "fmt": "pct", "memo": true},
-{"id": "fcf_margin", "label": "  FCF Margin", "type": "calc",
- "expr": "{fcf}/{IS:total_revenue}", "fmt": "pct", "memo": true},
-{"id": "fcf_conversion", "label": "  FCF Conversion", "type": "calc",
- "expr": "{fcf}/{IS:net_income}", "fmt": "pct", "memo": true},
-{"id": "cf_check", "label": "Cash Walk Check (should be ~0)", "type": "check",
- "expr": "{cfo_total}+{cfi_total}+{cff_total}+{fx_effect}-{net_change_in_cash}",
- "fmt": "num", "memo": true}
-```
-
-Check capex sign convention: if capex is reported as negative (outflow), use
-`+` in the FCF formula; if positive, use `-`.  The `0-{capex_ppe}` in capex %
-flips the sign so the percentage reads as a positive number.
-
-### BS Detail sheet pattern
-
-A separate sheet (`short: "BSD"`, `"contents": true`) for disaggregated
-footnote data.  One block per face line, components as grouped rows:
-
-```json
-{
-  "name": "BS Detail",
-  "short": "BSD",
-  "kind": "statement",
-  "tab_color": "1F4E79",
-  "contents": true,
-  "blocks": [
-    {
-      "title": "GOODWILL BY SEGMENT",
-      "rows": [
-        {"id": "gw_mobility", "label": "Mobility", "type": "input",
-         "values": {...}, "indent": 1, "group": true},
-        {"id": "gw_delivery", "label": "Delivery", "type": "input",
-         "values": {...}, "indent": 1, "group": true},
-        {"id": "gw_freight", "label": "Freight", "type": "input",
-         "values": {...}, "indent": 1, "group": true},
-        {"id": "gw_total", "label": "Total Goodwill", "type": "subtotal",
-         "children": ["gw_mobility", "gw_delivery", "gw_freight"], "bold": true},
-        {"id": "gw_check", "label": "Check vs Face (should be ~0)",
-         "type": "check", "expr": "{gw_total}-{BS:goodwill}",
-         "fmt": "num", "memo": true}
-      ]
+  "table_id": "IS_2025", "source_id": "F_2025_10K",
+  "topic": "IS", "html_table_index": 38,
+  "defaults": {
+    "unit":"USD million","currency":"USD","scope":"consolidated",
+    "basis":"gaap","version":"as-filed-2025"
+  },
+  "periods": {
+    "FY2025": {
+      "column":6,
+      "headers":[{"r":1,"c":6,"text":"2025"}]
     }
-  ]
+  },
+  "context": {
+    "unit":{"r":2,"c":0,"text":"In millions except per-share data"},
+    "scope":{"kind":"text","start":100,"end":125,"text":"<exact original substring>"}
+  },
+  "data_rows":[8,40],
+  "rows":{
+    "revenue":{"r":8,"c":0,"label":"Net operating revenues"},
+    "eps":{"r":35,"c":0,"label":"Diluted earnings per share","unit":"USD/share"}
+  }
 }
-```
+~~~
 
-`"group": true` makes component rows collapsible in Excel.
+All locators are illustrative. html_table_index/r/c are zero-based PHYSICAL
+original HTML elements. periods.*.column is the EXPANDED source-grid column,
+preserving blank cells and spans. Exact headers/unit/scope locators are shared,
+not repeated for every value. A short locator r/c/text defaults to this table;
+a text locator uses decoded-original HTML character offsets and exact text.
 
-### Segment tie-out (Segments sheet)
+Metadata inheritance:
+1. table.defaults;
+2. table.rows[metric] exceptions (EPS unit, special normalization, etc.);
+3. value binding overrides, only if needed and with reason.
 
-Segment revenue must tie to IS total revenue:
+periods keys inherit global dates/grain; declare only differences such as
+start/end/grain=ytd or grain=instant. Source and exported intervals must agree.
+A row may use period_rule=opening_balance/closing_balance for cash reconciliation
+stocks inside a flow table. The assembler computes the matching instant dates;
+the raw auditor checks them against original XBRL/context. Unusual calendars
+may use row period_overrides instead.
 
-```json
-{"id": "seg_mobility_rev", "label": "Mobility Revenue", "type": "input",
- "values": {...}},
-{"id": "seg_delivery_rev", "label": "Delivery Revenue", "type": "input",
- "values": {...}},
-{"id": "seg_freight_rev", "label": "Freight Revenue", "type": "input",
- "values": {...}},
-{"id": "seg_total_rev", "label": "Total Segment Revenue", "type": "subtotal",
- "children": ["seg_mobility_rev", "seg_delivery_rev", "seg_freight_rev"],
- "bold": true},
-{"id": "seg_rev_check", "label": "vs IS Revenue (should be ~0)",
- "type": "check", "expr": "{seg_total_rev}-{IS:total_revenue}",
- "fmt": "num", "memo": true}
-```
+data_rows=[first,last] defines the financial body once. Scripts skip blank,
+title and label-only rows mechanically. A genuinely excluded financial row
+requires exclude_rows={"14":"reason"}, with replacement information when
+superseded. No per-HTML-row header/nonnumeric disposition ledger is required.
 
-Use `min_label`/`max_label` if segment definitions changed mid-window (e.g.,
-a segment was created or merged).
+Three-month and nine-month views of the same HTML table receive different
+table_ids, shared-context periods and distinct canonical metric IDs. Do not put
+two columns with different grain into one fiscal-label slot.
 
-## Tab colors (house style)
+## Numeric owners and compact bindings
 
-| Sheet type | Color |
+~~~json
+{
+  "id":"revenue","label":"Net operating revenues","type":"input",
+  "unit":"USD million","currency":"USD","scope":"consolidated",
+  "measure_basis":"gaap","metric_kind":"flow","additive":true,
+  "bold":true,
+  "values":{"FY2025":1234},
+  "evidence":{"FY2025":{"table":"IS_2025","r":8,"c":6}}
+}
+~~~
+
+A normal fact needs ONLY the shared table ID and physical value coordinates.
+The assembler generates these from the source grid. The original token is
+reopened from the immutable source during audit; it is not manually copied
+into a second per-value dossier. No per-value reviewed/status/hash/period/
+unit/source-label object is needed.
+
+An exceptional fact adds overrides:
+~~~json
+{
+  "table":"IS_2025","r":8,"c":6,
+  "overrides":{
+    "reason":"Original negative sign is in the preceding physical cell",
+    "normalization":{"sign":-1,"reason":"Original parentheses"},
+    "sign_locator":{"r":8,"c":5,"text":"("}
+  }
+}
+~~~
+
+Normalization defaults to multiplier=1/sign=1. Scale/sign changes need source
+support and reason. A source dash is zero only if normalization.dash_means_zero
+and its reason explicitly establish that convention; share it at table/metric
+level when applicable. Never infer percentage scale from a metric name.
+
+For a narrative figure, define a small shared view with locator_kind=text,
+source_id/defaults/periods/rows. Its row mapping includes label and locator for
+the original sentence; the value binding uses text={kind:text,start,end,text}
+for the isolated numeric token. Unit/scope/period context is still shared.
+No fictional HTML table is required.
+
+Native non-period schedules use kind=table, table=[rows] and cell_evidence
+entries: row/column (output positions), id/period_label, plus the same compact
+table/r/c binding. The shared reporting period is the statement date; a maturity
+year is a payment bucket. External strings remain literal, never formulas.
+
+## Workbook rows and derived values
+
+Statement sheets: kind=statement, short=IS/BS/CF/etc., name, blocks of title,
+optional note, rows. Formatting fields and approved style are unchanged.
+An optional sheet role (contents/operating/income_statement/balance_sheet/
+cash_flow/metrics/notes) overrides name-based presentation grouping without
+changing accounting meaning. The workbook contract owns tab order/colors.
+Source/table/value mappings remain external; no generated Sources tab or mass
+cell comments are needed. Missing-value states/reasons remain in metadata,
+while numeric displays are blank and formula guards return ""; n.m. is retained.
+
+| Row type | Wiring |
 |---|---|
-| Core financial statements (IS, BS, CF) | `1F4E79` (dark navy) |
-| Operating / segment sheets | `548235` (forest green) |
-| Derived metrics | `7030A0` (purple) |
-| Cover | `1F4E79` |
+| input | values/evidence; reported hardcodes |
+| link | ref="IS:revenue"; numeric/missing guard |
+| subtotal | children; any missing component makes result unavailable |
+| calc | expr, optional expr_q / expr_by_period |
+| growth_yoy / growth_qoq | of metric; semantic fiscal comparison |
+| check | expr, check_group, explicit source-unit tolerance |
+| note / spacer | explanatory merged row / gap |
+
+The bundled expression translator accepts arithmetic only: numeric constants,
+`+ - * / **`, parentheses
+and references {metric}, {IS:revenue}, {metric@-1}, {CF:ocf[FY2025]}.
+@-1 means preceding fiscal year/quarter, never preceding visible column.
+It does not execute arbitrary Python/Excel functions. A disclosure needing other
+formula syntax can use a suitable authoring/checking route; this grammar is not
+a restriction on financial analysis. Derived results remain linked formulas.
+
+One input cell can instead have cell_expr[label], with no values[label] entry.
+Its cell_meta.status is calculated; cross-period derivation supplies inputs and
+reason. Quarter differences use kind=quarter_difference, additive=true and two
+actual inputs in subtraction order. The auditor verifies matching basis/unit,
+shared fiscal start and contiguous output interval. EPS/WASO/ratios/balances
+cannot be annual-minus-nine-month calculations.
+
+period_overrides on workbook rows are normally generated from shared source
+periods. Explicit applicable_periods / min_label / max_label define genuine
+applicability. Explain unavailable results via unavailable_reason_by_period;
+do not use applicability to conceal missing required history.
+
+Default check groups: income_bridge, balance_equation, cash_bridge. Missing
+inputs never pass. Tolerance defaults to 1e-9 arithmetic noise; a larger amount
+requires tolerance_reason in the metric's stored unit. expect_nonzero is invalid.
+Use required_check_groups to name the economically applicable groups. A departure
+from the defaults or narrower check_group_periods needs a brief check_scope_reason;
+this explains the scope rather than authorizes omission of a substantive bridge.
+
+## One coverage matrix
+
+~~~json
+[
+  {"topic":"IS","tables":["IS_2025"]},
+  {"topic":"BS","tables":["BS_2025"]},
+  {"topic":"CF","tables":["CF_2025"]},
+  {"topic":"segments","tables":["SEG_2025"]},
+  {"topic":"products_geography","tables":["GEO_2025"]},
+  {"topic":"operating_metrics","tables":["KPI_2025"]},
+  {"topic":"material_notes","tables":["DEBT_2025","SBC_2025"]}
+]
+~~~
+
+These topic names are defaults, not an enumeration. Custom non-empty topic names
+are accepted, and every selected view must appear in the matrix under its topic.
+required_topics defaults to required_statements plus segments,
+products_geography, operating_metrics and material_notes. The Agent can set a
+different list; a brief coverage_scope_reason explains any replaced default
+groupings. Regrouping does not remove the obligation to search relevant original
+disclosures across the requested history.
+
+Use status=not_disclosed/not_applicable with reason only after reading the
+originals. An unresolved gap uses gaps=[{period,reason}] and prevents full PASS.
+No separate filing_coverage + disclosure_inventory + per-row disposition copies.
+Agent review independently checks every original's coverage and the full history;
+the matrix alone cannot prove that an omitted source topic was searched.
+
+## Agent review and migration
+
+The final semantic review is performed by a different, independent Agent directly
+against originals and final Excel. Its compact review.json records distinct
+producer/reviewer Agent IDs and binds the data fingerprint and final workbook
+hash, reviewed source/table IDs, six review themes, findings and a concise conclusion. It does not
+repeat every numeric fact. See [Agent review](agent-data-review.md).
+
+Do not silently accept old v3 per-value evidence objects as v4 bindings. Convert
+old DRAFT mappings to shared tables explicitly. Do not rebuild an existing
+manually maintained company workbook as part of migration. Valuation extensions
+keep their existing route.

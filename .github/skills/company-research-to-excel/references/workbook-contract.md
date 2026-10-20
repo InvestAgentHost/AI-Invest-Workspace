@@ -1,84 +1,133 @@
-# Workbook Contract
+# Workbook Contract — initial historical export
 
-Use Artifact Tool for authoring, recalculation, inspection, rendering, and `.xlsx` export. Read the platform spreadsheet skill before using its runtime.
+## Structure and ownership
 
-## Workbook structure
+Use separate Income Statement (IS), Balance Sheet (BS) and Cash Flow (CF)
+worksheets. Order the workbook **Contents → operating schedules (Segments,
+KPI, Products & Geography, etc.) → Income Statement → Balance Sheet → Cash Flow
+→ Derivate Metrics → Note and material note schedules**. Combine ordinary
+supporting notes in Note; give material, substantial schedules their own tabs.
+Do not add technical Sources/Evidence/index tabs by default. Match sheet language to the research
+package. Never copy another company's extra tabs or leave empty placeholders.
 
-Build an investment-research workbook, not a collection of mechanically generated tabs. Use only the worksheets supported by the selected data. A normal order is:
+Each section is a wide panel: metrics down rows, chronological annual periods
+on the left and quarterly periods on the right. Use one unfilled narrow
+separator when both blocks exist. Distinguish source YTD cash-flow data and
+derived discrete-quarter cash flows in separately labeled sections.
 
-Every section is a wide panel: metric/item labels are in the identifying columns on the left, and periods run left to right across the numeric columns. Keep this orientation in every worksheet section, even when several sections are stacked on one sheet.
+Keep related notes with their economic owner. Separate incompatible units,
+scopes, reporting bases and restated segment definitions into labeled blocks.
+Complete face statements belong in the workbook even if report prose is selective.
 
-1. `Contents` when the workbook has four or more data worksheets
-2. `Financials`
-3. `Segments`
-4. `Products & Geography`
-5. `Operating KPIs`
-6. Relevant note schedules such as `Capital & Returns`, `Debt & Liquidity`, `Assets & Intangibles`, or `Tax & Shares`
-7. `Sources`
+## Approved design
 
-Do not create empty placeholder worksheets. Combine sparse adjacent topics when that improves navigation. Split a topic only when the result would be hard to scan, such as a worksheet exceeding roughly 140 populated rows, more than 20 period columns, or several tables with incompatible column structures. One table per worksheet is an exception, not the default.
+The single machine-readable authority is
+[style-profile.json](../assets/style-profile.json), approved 2026-10-19.
+Use it in any authoring tool; do not clone uncoordinated constants.
 
-`Contents` is a compact index, not a marketing cover. Show company name, ticker, reporting currency/scale, fiscal year end, research as-of date, latest covered period, and linked worksheet/section names when those facts are available. Do not add narrative conclusions, KPI cards, or charts unless requested.
+| Role | Font and color | Minimum height |
+|---|---|---:|
+| Main title | Arial 14 bold, white on #1F4E79 | 28 pt |
+| Section band | Arial 10 bold, white on #1F4E79 | 22 pt |
+| Period header | Arial 10 bold, white; annual #18324F, quarter #20746C | 24 pt |
+| Body | Arial 10.5, #243447 | 22 pt |
+| Reported/formula totals | Arial 10.5 bold, pale #EAF0F8, thin top border | 24 pt |
+| Ratios/growth | Arial 10.5 italic | 20 pt |
+| Notes | Arial 9, #64748B | 18 pt |
+| Dates | Arial 8.5, real date cells | 18 pt |
 
-Match worksheet and section language to the user's request and the research package. For a Chinese workbook, use concise equivalents such as `目录`, `合并报表`, `分部`, `产品与地区`, `经营指标`, `资本配置`, `债务与流动性`, `资产与无形资产`, `税务与股本`, and `来源`.
+A two-line label needs at least 36 pt; three lines about 50 pt; longer content
+grows further. Never shrink title/body fonts to force fit. Use adaptive heights,
+including hidden notes if users expand them. Inspect at 100% zoom; estimated
+text fit is not a substitute for rendering.
 
-## Sheet composition
+Contents uses uniform **22 pt directory rows**, short single-line descriptions,
+and no oversized directory cards. Title/header rows keep their normal roles.
+Use the profile's functional tab colors: slate Contents, teal operating,
+blue three statements, purple metrics and muted ochre notes. Same-group tabs
+share a color; do not make every tab the same color or use a rainbow per tab.
 
-Place related tables as vertical sections on the same worksheet. Do not place unrelated tables side by side merely to use space.
+Widths: label 60, collapsed business note 34 when used, otherwise gutter 2.2, period 12.2,
+separator 3. Source paths do not belong in metric names. Detailed source/evidence
+locators stay in external model/review metadata, not worksheet cells. Keep periods wide enough for
+real values; correct #### by widening columns without shrinking fonts.
 
-- Row 1: blank.
-- Row 2: worksheet title, 14 pt, dark text, no fill.
-- Row 3: concise scope line with periods, currency/units, or as-of date when relevant.
-- Row 4: thin rule and spacing.
-- Row 6 onward: repeated table sections.
+Use blue #2454A4 for reported hardcoded numbers, dark body color for same-sheet
+formulas and green #20746C for cross-sheet formulas. Official reported totals
+remain blue; a total does not become a hardcoded calculated value for styling.
+Display unavailable/not-disclosed/not-applicable numeric results as blank;
+formulas return "" while preserving COUNT/denominator guards. Keep missing
+reasons and applicability in metadata, and retain n.m. where a computed rate
+is not meaningful. A blank is never a numeric zero. Keep failures visible and red. No universal body grid,
+gradients, gray scratch blocks or decorative dashboard cards.
 
-Each section contains:
+Formats: parenthesized negatives, dash for numerical zero, percentages one
+decimal, per-share two decimals, multiples one decimal+x; stored precision is
+unchanged. Real dates use yyyy-mm-dd. Hide gridlines; top/center-align wrapped
+headers, left-align labels, right-align numbers. Freeze C6 on statement panels.
 
-1. A continuous dark navy section band with the economic table title.
-2. A compact metadata line below it: filing/report period, units/basis, and source locator. Keep this visually secondary.
-3. The original or normalized column headers.
-4. The complete data rows.
-5. Two blank rows before the next section.
+## Default statement layout
 
-Use one common left edge and align comparable period columns across sections when the existing panels share the same period grain. Keep periods chronological from left to right. When annual and quarterly series coexist, keep each as a clearly labeled block separated by one blank unfilled column. Do not stitch tables across different units, consolidation scopes, segment definitions, or accounting bases; place them in separate labeled sections and preserve the break.
+- Row 1: continuous blue worksheet title band.
+- Row 2: secondary currency/scale/framework/as-of metadata.
+- Row 3: annual and quarterly period headers.
+- Row 4: real period-end dates.
+- Row 5: period grain; block notes make row overrides explicit.
+- Row 6: breathing room.
+- Row 7 onward: section band, optional wrapped note, metric rows, one small gap.
 
-## Financial presentation
+Optional section contents shifts blocks by a deterministic offset. The shared
+registry owns cell positions; do not duplicate a separate row-count algorithm.
+Section bands may span the separator; body separators stay white and empty.
 
-- Use Arial throughout: 14 pt worksheet titles and 10 pt headers/body. Use 9 pt italic grey for scope and source metadata.
-- Use a white background, dark charcoal text, navy section bands, dark blue column headers with white text, and restrained light blue/grey fills for period headers or alternating rows. Avoid gradients and decorative blocks.
-- Use blue font for hardcoded reported numeric values. Use black for labels and any explicitly requested formulas. Keep passing checks neutral; use light red fill and bold red text only for actual failures or missing required inputs.
-- Hide gridlines. Use thin structural borders only around headers, totals, and section boundaries; do not box every body cell.
-- Left-align labels, right-align numbers, center headers, and top-align wrapped descriptions. Use indentation for reported sub-lines and bold top borders for issuer-reported totals where the source structure identifies them.
-- Use accounting formats with parenthesized negatives and dash zeros. Display percentages with one decimal, per-share values with two decimals, and multiples with one decimal plus `x`. Preserve the stored precision.
-- Use real date cells with `yyyy-mm-dd`. Preserve fiscal labels such as `FY2025` or `1QFY2026` when those are the issuer's labels; do not relabel periods without knowing the fiscal calendar.
-- Set widths and only the necessary row heights explicitly after autofit. Long headers may wrap to two lines; values, labels, source IDs, and units must not be clipped or display `####`.
-- Freeze the smallest useful header area and first identifying column on long sheets. A multi-section worksheet may use a short contents block with internal hyperlinks near the top when it materially improves navigation.
+## Formulas and source display
 
-Convert every `typed_cells` entry before writing:
+Follow the economic ownership and comparability rules in
+[semantic layout](semantic-layout.md#comparability-and-deduplication). Show filed
+totals separately from calculated checks; links/subtotals guard missing numeric
+cells instead of treating blanks as zero.
 
-- `number`: keep the numeric JSON value and use the accounting-compatible format.
-- `percentage`: keep the decimal value (for example `0.375`) and use `0.0%`.
-- `date`: replace the ISO string with a JavaScript `Date` and use `yyyy-mm-dd`.
+Retain original paths, SEC forms/dates/URLs/hashes, shared table context, compact
+value coordinates and coverage in external model/review files. Do not create
+per-cell source comments/notes or large technical indexes in the delivered
+workbook. Include only brief business/accounting explanations needed to read
+the figures. Traceability and full original-source verification remain required;
+removing visual source clutter does not remove evidence or reduce checking.
 
-Apply formats to exact cells because one section or column can mix identifiers, dates, numbers, and missing markers. Never convert missing text to zero.
+## Authoring and release
 
-## Sources
+The default build_workbook.py is the deterministic new-file builder and reads
+the shared profile. It uses openpyxl for layout/formula serialization; setting
+fullCalcOnLoad does not calculate results. Use the available platform spreadsheet
+skill/runtime for engine recalculation, inspection and rendered QA, preserving
+the profile and formulas. Verify the workbook again after engine saving.
 
-`Sources` contains one row per exported logical table: table ID, worksheet, section, table title, filing/report period when known, repository-relative input path, source line/page/locator, kind, and SHA-256. Preserve any cell-level evidence table emitted from normalized financial JSON. Do not repeat the same citation in every data cell when a complete table shares one source.
+Do not overwrite a manually edited workbook using the initial generator. Its
+current save, manual inputs and native objects require authorized scoped edits.
 
-For `research_panel.v1`, use the bundle's panel metadata and `cell_evidence` to preserve disclosure status, derivation formulas, comparability notes, missing periods, and exact source references. Keep this evidence in compact source/evidence sections rather than expanding every value into a separate worksheet or crowding every data cell with citations.
+For visual QA, inspect each sheet at 100% zoom, including the title/section
+bands, long labels, expandable notes and both annual/quarter blocks. No clipped
+text, unreadable contrast, undersized rows or ####. Increase content-fitted
+heights/widths or correct authoring behavior while preserving the approved font,
+palette and minimum heights. An engine save can change styles: inspect the final
+saved artifact, not only the pre-recalculation version.
 
-## Verification
+Render QA views in memory or a temporary directory; remove them after inspection.
+Do not accumulate preview PNGs, one-off builder scripts, logs or duplicate
+workbook versions in company outputs. Publish one current historical workbook;
+keep reusable source mappings/review metadata under company data/derived paths.
+Clean Agent-owned scratch files, preserving original sources, unrelated outputs
+and user work; superseded user-edited files require the user's cleanup scope.
+
+Data/formula gates are defined once in [source verification](source-verification.md);
+independent-Agent semantic review and final-version binding are defined in
+[Agent data review](agent-data-review.md). Script PASS does not certify visual QA.
+
 
 ### Valuation extension
 
-For requested valuation sheets, read the valuation skill's [workbook contract](../../valuation-binding-methodology/references/workbook-contract.md). Its forecast-left/history-right layout is a related same-metric panel and is required in both remaining-quarter and future-year sections. The provenance metadata line above remains compact; long explanations/indexes belong at the end or in Sources. Use compact content-fitted heights, preserve existing user changes and native features, and validate scoped edits rather than rebuilding a manually edited workbook from stale inputs.
-
-Before export:
-
-1. Confirm that every selected table ID appears exactly once in the layout plan and workbook. No table may be silently omitted or duplicated.
-2. Recalculate once.
-3. Inspect every worksheet's key ranges and representative typed cells. Check units, period order, labels, negative signs, missing markers, totals, and any restatement/reclassification boundary.
-4. Scan for `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, `#N/A`, `#NUM!`, `#NULL!`, `#SPILL!`, and `#CALC!`. Distinguish deliberate text markers from formula errors.
-5. Render every created worksheet at normal zoom. Fix clipped content, `####`, excessive whitespace, accidental overlaps, poor contrast, broken section hierarchy, and visually ambiguous period blocks.
-6. Export one final `.xlsx`. Do not deliver previews or the intermediate bundle/layout plan unless requested.
+Requested valuation sheets inherit the shared profile and Approved design above.
+Their forecasting/valuation content, model layout and update rules belong to the
+valuation skill's [workbook contract](../../valuation-binding-methodology/references/workbook-contract.md).
+Use scoped edits on the current workbook, preserving historical data, manual
+changes and native features; do not run the initial generator as an updater.

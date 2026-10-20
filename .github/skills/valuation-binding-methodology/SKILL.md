@@ -5,7 +5,9 @@ description: Build, audit, or update an evidence-bound company valuation from hi
 
 # 估值推导与持续更新
 
-本 skill 负责从已完成的公司研究到估值、再到后续跟踪的闭环。公司业务、行业和会计分析由相关研究 skill 负责；Excel 实际数据整理和文件操作分别复用 `company-research-to-excel` 与平台 spreadsheet skill。不要另建重复的估值方法。
+本 skill 负责预测假设、情景、估值方法与公式、现金和股数约束，以及估值核验、交付和后续跟踪。公司业务、行业和会计分析由相关研究 skill 负责；历史实际数据、历史衍生指标及其数据质量由 [company-research-to-excel](../company-research-to-excel/SKILL.md) 负责。平台 spreadsheet 能力执行 Excel 文件操作。
+
+复用已完成的历史底稿；新增或修改的估值 sheet 与历史底稿共用其 [style-profile.json](../company-research-to-excel/assets/style-profile.json)，具体格式继承见本 skill 的 [workbook contract](references/workbook-contract.md)。历史底稿 skill 只保留估值转交和文件衔接，不另行维护预测与估值规则。
 
 ## 入口与边界
 
@@ -19,7 +21,7 @@ description: Build, audit, or update an evidence-bound company valuation from hi
 ## 推导流程
 
 1. **接续研究**：确认估值日、财年、币种、单位、权益口径、业务边界、最新实际期、原始资料与产物路径。提取投资主线、反证、未决问题和已批准假设。正式披露是历史数据来源；报告只提供研究判断和决策背景。
-2. **补齐历史**：依 [research-workflow.md](references/research-workflow.md) 重整完整年度窗口及连续近期季度；补 Note、现金用途、股数和指引，保留重述与口径变化。可比口径下 Q4=全年−前三季度是确定性计算。
+2. **补齐历史**：复用已核验的历史底稿，依 [research-workflow.md](references/research-workflow.md) 检查完整年度窗口及连续近期季度，只补估值所需缺项。10-K／10-Q 数据补充遵循历史底稿 skill 的来源和复核要求；指引与预测单独标识，保留重述与口径变化。可比口径下 Q4=全年−前三季度适用于可加总流量。
 3. **先完成当前财年**：剩余季度逐项预测，与已披露季度相加得到完整财年基期。先摆历史数值，再讨论假设；不用 TTM 与年结日并列维护两套正式预测。
 4. **逐年推导未来**：公司自身经营驱动→收入与成本→经营利润→利息、税及其他损益→归母净利润。先预测驱动和年度数值，再计算 CAGR；不为凑目标 CAGR 反推经营假设。
 5. **现金与股数闭环**：独立推导 FCF、现金分红、发行与回购、净缩股、债务与其他必要现金用途。资本支出的现金时点不等于损益摊销时点。
@@ -33,7 +35,7 @@ description: Build, audit, or update an evidence-bound company valuation from hi
 - `Valuation Driver Build` 或等效推导 sheet：**预测在左，历史数值在右，同一指标对齐**。剩余季度和未来年度预测都必须有可读的历史参考，不以来源链接代替数值。
 - 顺序：剩余季度→本财年全年基期→未来年度→现金与股数约束→估值输入；详细解释、索引和溯源统一放最后。
 - `Year-End Valuation` 或等效估值 sheet：链接已采用参数，逐年计算利润、股数、EPS、分红与退出价值，不重复硬编码。
-- 紧凑行高、正常字号、明确实际/预测/输入/公式、少量留白；在正常缩放下检查实际版面。
+- 字体、字号、配色、数字格式及行高沿用共享样式配置；按内容增加高度，不另设更小字号或更低行高。明确实际/预测/输入/公式，在正常缩放下检查实际版面。
 - 修改已有工作簿时保留人工输入与未涉及 sheet、格式、公式及原生功能。不得从过期中间数据整本重建覆盖用户修改。
 
 ## 持续接管的最小记录

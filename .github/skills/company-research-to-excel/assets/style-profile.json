@@ -1,0 +1,18 @@
+{
+  "profile_id": "historical-10k-10q-v1",
+  "approved_on": "2026-10-19",
+  "font": "Arial",
+  "sizes": {"title": 14, "section": 10, "body": 10.5, "header": 10, "note": 9, "date": 8.5},
+  "colors": {
+    "title": "1F4E79", "annual_header": "18324F", "quarter_header": "20746C",
+    "text": "243447", "input": "2454A4", "link": "20746C", "note": "64748B",
+    "subtotal": "EAF0F8", "date_fill": "F2F5F9", "white": "FFFFFF",
+    "missing_fill": "FFF3D6", "error_fill": "FCE8E6", "error_text": "A61B1B", "border": "BBC8D6"
+  },
+  "heights": {"title": 28, "section": 22, "header": 24, "date": 18, "body": 22, "contents": 22, "total": 24, "ratio": 20, "note": 18, "two_lines": 36, "three_lines": 50, "gap": 8},
+  "tab_colors": {"contents": "64748B", "operating": "20746C", "statements": "4472C4", "metrics": "8064A2", "notes": "B08958"},
+  "sheet_order": ["contents", "operating", "income_statement", "balance_sheet", "cash_flow", "metrics", "notes"],
+  "widths": {"label": 60, "note": 34, "gutter": 2.2, "period": 12.2, "separator": 3},
+  "zoom": 100,
+  "formats": {"num": "#,##0;(#,##0);\"–\"", "num1": "#,##0.0;(#,##0.0);\"–\"", "ps": "0.00;(0.00);\"–\"", "pct": "0.0%;(0.0%);\"–\"", "x": "0.0\"x\";(0.0\"x\");\"–\"", "txt": "@"}
+}

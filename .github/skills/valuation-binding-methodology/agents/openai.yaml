@@ -1,7 +1,7 @@
 interface:
   display_name: "估值推导与持续更新"
   short_description: "从历史披露与经营驱动到财年预测、现金股数闭环、估值和可追溯更新"
-  default_prompt: "使用 $valuation-binding-methodology 接续公司研究，构建或更新历史有据、现金与股数闭环、可追溯的年结日估值底稿。"
+  default_prompt: "使用 $valuation-binding-methodology 接续已核验的历史底稿，推导预测与估值并受控更新 Excel；估值 sheet 复用 company-research-to-excel 的共享样式配置，保持字体、配色和行高一致。"
 
 policy:
   allow_implicit_invocation: true

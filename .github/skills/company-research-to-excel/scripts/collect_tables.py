@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect prepared company-research tables into an Artifact Tool-ready JSON bundle."""
+"""Collect native 10-K/10-Q tables and source-bound intermediate panels as a draft."""
 
 from __future__ import annotations
 
@@ -16,6 +16,8 @@ from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+
+from filing_tables import extract_tables, read_manifest, source_record
 
 
 SKIP_PARTS = {
@@ -133,6 +135,10 @@ def normalize_orientation(table: Table) -> Table:
         ])
     table.headers = ["metric", *periods]
     table.rows = transposed_rows
+    table.cell_evidence = [
+        {**item, "row": item["column"] - 1, "column": item["row"] + 1}
+        for item in table.cell_evidence if item.get("column", 0) > 0
+    ]
     table.orientation = "transposed_to_metric_by_period"
     table.metadata["source_orientation"] = "period_by_metric"
     table.metadata["orientation_transform"] = "transpose_period_rows_to_metric_rows"
@@ -144,7 +150,7 @@ def typed_value(value: Any, header: str = "") -> tuple[Any, str | None, str | No
         return value, None, None
     if isinstance(value, (int, float)):
         return value, "number", "#,##0.0;(#,##0.0);-"
-    text = clean_text(value)
+    text = clean_text(value).replace("\u2212", "-")
     if not text or text.lower() in MISSING_MARKERS:
         return text, None, None
     if ISO_DATE_RE.match(text):
@@ -178,6 +184,7 @@ def type_table(table: Table) -> Table:
                     "column": column_index,
                     "type": cell_type,
                     "number_format": number_format,
+                    "raw_text": str(raw),
                 })
         typed_rows.append(typed_row)
     table.rows = typed_rows
@@ -429,14 +436,17 @@ def parse_financial_periods(source: str, digest: str, obj: dict[str, Any]) -> li
                 metrics.append(metric)
     panel_rows = []
     evidence_rows = []
+    cell_evidence = []
     source_labels: dict[str, str] = {}
     statements: dict[str, str] = {}
     for metric in metrics:
         row = [metric]
-        for period in order:
+        for pi, period in enumerate(order):
             item = ((periods.get(period) or {}).get("values") or {}).get(metric)
             row.append(scalar(item))
             if isinstance(item, dict):
+                if item.get("evidence"):
+                    cell_evidence.append({**item["evidence"], "row": len(panel_rows), "column": pi + 1})
                 if item.get("source_label"):
                     source_labels[metric] = str(item["source_label"])
                 if item.get("statement"):
@@ -458,7 +468,9 @@ def parse_financial_periods(source: str, digest: str, obj: dict[str, Any]) -> li
         source, digest, "Financial data panel", ["metric", *order], panel_rows,
         kind="financial-json",
         metadata={"source_labels": source_labels, "statements": statements,
-                  "panel_meta": panel_meta},
+                  "panel_meta": panel_meta, "sources": obj.get("sources", []),
+                  "coverage": obj.get("coverage", [])},
+        cell_evidence=cell_evidence,
     )]
     if evidence_rows:
         result.append(Table(
@@ -523,6 +535,7 @@ def parse_research_panel(source: str, digest: str, obj: dict[str, Any]) -> list[
             value = entry.get("value")
             output_row.append(status_markers.get(status, scalar(value)))
             cell_evidence.append({
+                **(entry.get("evidence") or {}),
                 "row": row_index,
                 "column": 4 + period_index,
                 "period": period,
@@ -540,6 +553,8 @@ def parse_research_panel(source: str, digest: str, obj: dict[str, Any]) -> list[
         "default_unit": obj.get("default_unit"),
         "comparability_notes": obj.get("comparability_notes") or [],
         "missing_periods": obj.get("missing_periods") or [],
+        "sources": obj.get("sources", []),
+        "coverage": obj.get("coverage", []),
     }
     return [Table(
         source=source,
@@ -582,41 +597,36 @@ def parse_json(path: Path, source: str, digest: str) -> list[Table]:
     return tables
 
 
-def parse_sec_html(dir_path: Path, workspace: Path) -> list[Table]:
-    """Parse SEC filing source HTML (iXBRL) to extract financial tables."""
-    source_html = dir_path / "source.html"
+def parse_sec_html(dir_path: Path, workspace: Path, manifest=None) -> list[Table]:
+    """Preserve original geometry and physical locators; periods require review."""
+    source_html = dir_path if dir_path.is_file() else dir_path / "source.html"
     if not source_html.is_file():
         source_html = dir_path / "raw" / "source.html"
     if not source_html.is_file():
         return []
 
-    html_content = source_html.read_text(encoding="utf-8", errors="replace")
     source = relative_source(source_html, workspace)
-    digest = sha256(source_html)
+    record, html_content = source_record(source_html, workspace, (manifest or {}).get(source))
     lines = html_content.splitlines()
-
-    parser = ResearchHTMLTableParser()
-    parser.feed(html_content)
-
     tables: list[Table] = []
-    for item in parser.tables:
-        raw_rows = [compact_row(row) for row in item["rows"]]
-        rows = normalize_grid(raw_rows)
-        nonempty = sum(1 for row in rows for cell in row if cell)
-        if len(rows) < 2 or len(rows[0]) < 2 or nonempty < 4:
-            continue
-        start, end = item["start"], item["end"]
+    for item in extract_tables(html_content):
+        rows = item["grid"]
+        start, end = item["start_line"], item["end_line"]
         title = nearby_title(lines, start, f"SEC Table {len(tables) + 1}")
         tables.append(Table(
             source=source,
-            sha256=digest,
+            sha256=record["sha256"],
             title=title,
-            headers=rows[0],
-            rows=rows[1:],
+            headers=[f"source_column_{ci}" for ci in range(len(rows[0]))],
+            rows=rows,
             heading="",
             start_line=start,
             end_line=end,
             kind="sec-html",
+            metadata={"source_record": record, "html_table_index": item["index"],
+                      "views": [], "geometry": "expanded_spans_no_compaction"},
+            cell_evidence=[{k: v for k, v in e.items() if k != "html_table_index"}
+                           for e in item["evidence"]],
         ))
 
     return sorted(tables, key=lambda t: t.start_line or 0)
@@ -658,6 +668,12 @@ def select_tables(tables: list[Table], table_patterns: list[str], period_pattern
     period_re = [re.compile(pattern, re.I) for pattern in period_patterns]
     filtered: list[Table] = []
     for table in selected:
+        if table.kind == "sec-html":
+            # Native multi-row headings must first be mapped to explicit fiscal
+            # columns. Filtering by a guessed first heading would destroy data.
+            filtered.append(table)
+            warnings.append(f"Native period filter deferred to selected metadata.views periods: {table.source}/{table.title}")
+            continue
         columns = [index for index, header in enumerate(table.headers) if any(pattern.fullmatch(str(header)) for pattern in period_re)]
         if columns:
             keep = sorted(set([0, *columns, *[
@@ -720,12 +736,14 @@ def main() -> int:
         help="SEC source directory containing source.html (e.g., sources/.../sec/10-k-2025/)",
     )
     parser.add_argument("--strict", action="store_true", help="Fail on parse/selection warnings")
+    parser.add_argument("--filing-manifest", type=Path, help="Workspace-relative original paths and SEC filing metadata")
     args = parser.parse_args()
 
     if not args.input and not args.sec_source:
         parser.error("At least one input path or --sec-source directory is required")
 
     workspace = Path.cwd()
+    manifest = read_manifest(args.filing_manifest)
     input_paths = [item.resolve() for item in args.input]
     missing_inputs = [path for path in input_paths if not path.exists()]
     if missing_inputs:
@@ -760,17 +778,17 @@ def main() -> int:
 
     sec_source_paths = [item.resolve() for item in args.sec_source]
     for sec_dir in sec_source_paths:
-        if not sec_dir.is_dir():
+        if not sec_dir.exists():
             message = f"SEC source directory not found: {sec_dir}"
             if args.strict:
                 raise ValueError(message)
             warnings.append(message)
             continue
         try:
-            sec_tables = parse_sec_html(sec_dir, workspace)
+            sec_tables = parse_sec_html(sec_dir, workspace, manifest)
             if not sec_tables:
                 warnings.append(f"No tables extracted from SEC source: {sec_dir}")
-            tables.extend(normalize_orientation(table) for table in sec_tables)
+            tables.extend(sec_tables)
         except Exception as exc:
             message = f"Failed to parse SEC source {sec_dir}: {exc}"
             if args.strict:
@@ -792,12 +810,34 @@ def main() -> int:
     all_sources.extend(relative_source(p, workspace) for p in sec_source_paths)
     sec_files = []
     for sec_dir in sec_source_paths:
-        if (sec_dir / "source.html").is_file():
+        if sec_dir.is_file():
+            sec_files.append(sec_dir)
+        elif (sec_dir / "source.html").is_file():
             sec_files.append(sec_dir / "source.html")
         elif (sec_dir / "raw" / "source.html").is_file():
             sec_files.append(sec_dir / "raw" / "source.html")
+    originals = {}
+    for table in tables:
+        records = ([table.metadata["source_record"]] if "source_record" in table.metadata
+                   else table.metadata.get("sources", []))
+        for record in records:
+            sid = record["source_id"]
+            existing = originals.get(sid, {})
+            for key in ("path", "sha256", "filing_type", "filing_date", "url"):
+                if existing.get(key) and record.get(key) and existing[key] != record[key]:
+                    raise ValueError(f"Conflicting original catalog: {sid}/{key}")
+            originals[sid] = {**existing, **record}
+    # File metadata lives once in the catalog; native candidates retain only ID.
+    for table in tables:
+        record = table.metadata.pop("source_record", None)
+        if record:
+            table.metadata["source_id"] = record["source_id"]
+        table.metadata.pop("sources", None)
     bundle = {
-        "schema": "company-research-excel-bundle.v2",
+        "schema": "company-research-excel-bundle.v4",
+        "status": "draft",
+        "export_scope": "historical_10k_10q",
+        "sources": list(originals.values()),
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "input": all_sources[0] if len(all_sources) == 1 else all_sources,
         "filters": {"include": args.include, "exclude": args.exclude, "table": args.table, "period": args.period},
@@ -808,10 +848,19 @@ def main() -> int:
         "warnings": warnings,
         "tables": [asdict(table) for table in tables],
     }
+    protected = {path.resolve() for path in [*files, *sec_files]}
+    if args.filing_manifest:
+        protected.add(args.filing_manifest.resolve())
+    for record in originals.values():
+        protected.add((workspace / record["path"]).resolve())
+        if record.get("form_evidence", {}).get("path"):
+            protected.add((workspace / record["form_evidence"]["path"]).resolve())
+    if args.output.resolve() in protected:
+        raise ValueError("Collector output cannot overwrite an input, original or filing manifest")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(bundle, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
-        "status": "PASS",
+        "status": "DRAFT",
         "input_files": len(files),
         "sec_sources": len(sec_source_paths),
         "tables": len(tables),
