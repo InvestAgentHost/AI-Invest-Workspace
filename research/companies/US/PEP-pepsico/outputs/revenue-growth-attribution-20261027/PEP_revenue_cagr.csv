@@ -1,0 +1,5 @@
+﻿start_fiscal_year,end_fiscal_year,growth_intervals,start_revenue_usd_million,end_revenue_usd_million,revenue_cagr_pct,basis
+2016,2025,9,62799.0,93925.0,4.574401131109518,"reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+2016,2019,3,62799.0,67161.0,2.2636937368387677,"reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+2019,2023,4,67161.0,91471.0,8.029301557995684,"reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+2023,2025,2,91471.0,93925.0,1.3325305639810825,"reported consolidated revenue; includes FX, transactions and reporting-calendar effects"

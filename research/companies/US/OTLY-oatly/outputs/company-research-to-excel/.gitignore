@@ -1,0 +1,3 @@
+# Generated local workbook; the README records its rebuild and review metadata paths.
+*.xlsx
+*.inspect.ndjson

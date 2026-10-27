@@ -1,0 +1,224 @@
+{
+ "name": "services_distribution_transport",
+ "as_of": "2026-10-23",
+ "note": "Fixed-schedule litigation settlement liabilities ($m, fiscal year-end balances) for companies in the services, distribution and transport universe. Engine v4.7 adds current + non-current to debt for every company in an Industry group. Copy to $U/raw_extra/debt_like.json. Checked against the filings by an independent pass on 23 Oct 2026 (88 of 94 figures confirmed, 6 corrected and applied here).",
+ "companies": {
+  "NYSE_MCK": {
+   "t": "MCK",
+   "label": "Opioid-related litigation liabilities: current part in 'Other accrued liabilities' (note table row 'Current litigation liabilities'), non-current = face line 'Long-term litigation liabilities' (Financial Note 'Commitments and Contingent Liabilities')",
+   "years": {
+    "2021": {
+     "noncurrent": 8067,
+     "current": 0,
+     "filing": "10-K FY2022 (period 2022-03-31), accession 0000927653-22-000051",
+     "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765322000051/mck-20220331.htm",
+     "quote": "(In millions)March 31, 2022March 31, 2021 Current litigation liabilities (1) (2) $1,046 $— Long-term litigation liabilities7,220 8,067 Total litigation liabilities$8,266 $8,067 (1)This amount, recorded in “Other accrued liabilities” in the Consolidated Balance Sheet, is the amount estimated to be paid prior to March 31, 2023. (2)In light of the uncertainty of the timing of amounts that would be paid with respect to the charge, the charge was recorded in “Long-term litigation liabilities” in our Consolidated Balance Sheet as of March 31, 2021."
+    },
+    "2022": {
+     "noncurrent": 7220,
+     "current": 1046,
+     "filing": "10-K FY2022 (period 2022-03-31), accession 0000927653-22-000051",
+     "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765322000051/mck-20220331.htm",
+     "quote": "(In millions)March 31, 2022March 31, 2021 Current litigation liabilities (1) (2) $1,046 $— Long-term litigation liabilities7,220 8,067 Total litigation liabilities$8,266 $8,067 (1)This amount, recorded in “Other accrued liabilities” in the Consolidated Balance Sheet, is the amount estimated to be paid prior to March 31, 2023. (2)In light of the uncertainty of the timing of amounts that would be paid with respect to the charge, the charge was recorded in “Long-term litigation liabilities” in our Consolidated Balance Sheet as of March 31, 2021."
+    },
+    "2023": {
+     "noncurrent": 6625,
+     "current": 548,
+     "filing": "10-K FY2024 (period 2024-03-31), accession 0000927653-24-000035",
+     "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765324000035/mck-20240331.htm",
+     "quote": "(In millions)March 31, 2024March 31, 2023 Current litigation liabilities (1) $665 $548 Long-term litigation liabilities6,113 6,625 Total litigation liabilities$6,778 $7,173 (1)These amounts, recorded in “Other accrued liabilities” in the Consolidated Balance Sheets, are the amounts estimated to be paid within the next twelve months following each respective period end date."
+    },
+    "2024": {
+     "noncurrent": 6113,
+     "current": 665,
+     "filing": "10-K FY2024 (period 2024-03-31), accession 0000927653-24-000035",
+     "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765324000035/mck-20240331.htm",
+     "quote": "(In millions)March 31, 2024March 31, 2023 Current litigation liabilities (1) $665 $548 Long-term litigation liabilities6,113 6,625 Total litigation liabilities$6,778 $7,173 (1)These amounts, recorded in “Other accrued liabilities” in the Consolidated Balance Sheets, are the amounts estimated to be paid within the next twelve months following each respective period end date."
+    },
+    "2025": {
+     "noncurrent": 5601,
+     "current": 776,
+     "filing": "10-K FY2026 (period 2026-03-31), accession 0000927653-26-000069",
+     "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765326000069/mck-20260331.htm",
+     "quote": "(In millions)March 31, 2026March 31, 2025 Current litigation liabilities (1) $601 $776 Long-term litigation liabilities5,091 5,601 Total litigation liabilities$5,692 $6,377 (1)These amounts, recorded in “Other accrued liabilities” in the Consolidated Balance Sheets, are the amounts estimated to be paid within the next twelve months following each respective period end date."
+    },
+    "2026": {
+     "noncurrent": 5091,
+     "current": 601,
+     "filing": "10-K FY2026 (period 2026-03-31), accession 0000927653-26-000069",
+     "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765326000069/mck-20260331.htm",
+     "quote": "(In millions)March 31, 2026March 31, 2025 Current litigation liabilities (1) $601 $776 Long-term litigation liabilities5,091 5,601 Total litigation liabilities$5,692 $6,377 (1)These amounts, recorded in “Other accrued liabilities” in the Consolidated Balance Sheets, are the amounts estimated to be paid within the next twelve months following each respective period end date."
+    }
+   },
+   "includes_unsettled": "Includes an accrual for non-participating governmental subdivisions; no settled/estimated split is filed."
+  },
+  "NYSE_COR": {
+   "t": "COR",
+   "label": "Opioid accrued litigation liability (Distributor Settlement Agreement and other settled opioid litigation): current part in 'Accrued expenses and other'; non-current = face line 'Accrued litigation liability' (Note 'Legal Matters and Contingencies')",
+   "years": {
+    "2020": {
+     "noncurrent": 6198.943,
+     "current": 408.0,
+     "filing": "10-K FY2020 (period 2020-09-30), accession 0001140859-20-000050",
+     "url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085920000050/abc-20200930.htm",
+     "quote": "The Company currently estimates that $408.0 million will be paid prior to September 30, 2021, which is recorded in Accrued Expenses and Other on the Company’s Consolidated Balance Sheet. The remaining liability of $6.2 billion is recorded in Accrued Litigation Liability on the Company's Consolidated Balance Sheet."
+    },
+    "2021": {
+     "noncurrent": 5961.953,
+     "current": 764.8,
+     "filing": "10-K FY2021 (period 2021-09-30), accession 0001140859-21-000058",
+     "url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085921000058/abc-20210930.htm",
+     "quote": "The Company currently estimates that $764.8 million will be paid prior to September 30, 2022, which is recorded in Accrued Expenses and Other on the Company’s Consolidated Balance Sheet. On September 30, 2021, $288.4 million of the total $764.8 million short-term liability was paid into escrow."
+    },
+    "2022": {
+     "noncurrent": 5461.758,
+     "current": 528.7,
+     "filing": "10-K FY2022 (period 2022-09-30), accession 0001140859-22-000098",
+     "url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085922000098/abc-20220930.htm",
+     "quote": "was $6.0 billion as of September 30, 2022 and $6.7 billion as of September 30, 2021. The Company currently estimates that $528.7 million will be paid prior to September 30, 2023, which is recorded in Accrued Expenses and Other on the Company’s Consolidated Balance Sheet. The remaining long-term liability of $5.5 billion is recorded in Accrued Litigation Liability"
+    },
+    "2023": {
+     "noncurrent": 5061.795,
+     "current": 407.5,
+     "filing": "10-K FY2023 (period 2023-09-30), accession 0001140859-23-000197",
+     "url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085923000197/cor-20230930.htm",
+     "quote": "was $5.5 billion as of September 30, 2023 and $6.0 billion as of September 30, 2022. The Company currently estimates that $407.5 million will be paid prior to September 30, 2024, which is recorded in Accrued Expenses and Other on the Company’s Consolidated Balance Sheet. The remaining long-term liability of $5.1 billion is recorded in Accrued Litigation Liability"
+    },
+    "2024": {
+     "noncurrent": 4296.902,
+     "current": 630.2,
+     "filing": "10-K FY2024 (period 2024-09-30), accession 0001140859-24-000177",
+     "url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085924000177/cor-20240930.htm",
+     "quote": "was $4.9 billion as of September 30, 2024 and $5.5 billion as of September 30, 2023. The $4.9 billion liability will be paid over 14 years. The Company currently estimates that $630.2 million will be paid prior to September 30, 2025, which is recorded in Accrued Expenses and Other on the Company’s Consolidated Balance Sheet."
+    },
+    "2025": {
+     "noncurrent": 3881.283,
+     "current": 416.0,
+     "filing": "10-K FY2025 (period 2025-09-30), accession 0001140859-25-000131",
+     "url": "https://www.sec.gov/Archives/edgar/data/1140859/000114085925000131/cor-20250930.htm",
+     "quote": "was $4.3 billion as of September 30, 2025 and $4.9 billion as of September 30, 2024. The $4.3 billion liability will be paid over 13 years. The Company currently estimates that $416.0 million will be paid prior to September 30, 2026, which is recorded in Accrued Expenses and Other on the Company’s Consolidated Balance Sheet. The remaining long-term liability of $3.9 billion is recorded in Accrued Litigation Liability"
+    }
+   },
+   "includes_unsettled": "Includes an estimate for the State of Alabama from FY2022 and for non-participating government subdivisions from FY2023; no split is filed."
+  },
+  "NYSE_CAH": {
+   "t": "CAH",
+   "label": "Opioid litigation accrual (national opioid settlement agreement and related settlements); non-current = filed total less filed current part where no table states it",
+   "years": {
+    "2020": {
+     "noncurrent": 5560,
+     "current": 0,
+     "noncurrent_basis": "filed",
+     "total_as_written": "$5.56 billion",
+     "filing": "CAH 10-K FY2020 (filed 2020-08-13), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137120000089/a20q410k063020form10-k.htm",
+     "quote": "In connection with these matters, we have $5.56 billion accrued at June 30, 2020, included in deferred income taxes and other liabilities in the consolidated balance sheets, which represents the cash component."
+    },
+    "2021": {
+     "noncurrent": 6325,
+     "current": 405,
+     "noncurrent_basis": "derived: filed total less filed current part",
+     "total_as_written": "$6.73 billion",
+     "filing": "CAH 10-K FY2021 (filed 2021-08-16), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137121000080/cah-20210630.htm",
+     "quote": "In total, we have $6.73 billion accrued at June 30, 2021, of which $405 million is included in other accrued liabilities and the remainder is included in deferred income taxes and other liabilities in the consolidated balance sheets."
+    },
+    "2022": {
+     "noncurrent": 5828,
+     "current": 532,
+     "noncurrent_basis": "derived: filed total less filed current part",
+     "total_as_written": "$6.36 billion",
+     "filing": "CAH 10-K FY2022 (filed 2022-08-11), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137122000058/cah-20220630.htm",
+     "quote": "In total, we have $6.36 billion accrued at June 30, 2022, of which $532 million is included in other accrued liabilities and the remainder is included in deferred income taxes and other liabilities in the consolidated balance sheets."
+    },
+    "2023": {
+     "noncurrent": 5444,
+     "current": 426,
+     "noncurrent_basis": "derived: filed total less filed current part",
+     "total_as_written": "$5.87 billion",
+     "filing": "CAH 10-K FY2023 (filed 2023-08-15), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137123000060/cah-20230630.htm",
+     "quote": "In total, as of June 30, 2023, we have $5.87 billion accrued for these matters, of which $426 million is included in other accrued liabilities and the remainder is included in deferred income taxes and other liabilities in our consolidated balance sheets."
+    },
+    "2024": {
+     "noncurrent": 4757,
+     "current": 643,
+     "noncurrent_basis": "derived: filed total less filed current part",
+     "total_as_written": "$5.4 billion",
+     "filing": "CAH 10-K FY2024 (filed 2024-08-14), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137124000056/cah-20240630.htm",
+     "quote": "In total, as of June 30, 2024, we have $5.4 billion accrued for these matters, of which $643 million is included in other accrued liabilities and the remainder is included in deferred income taxes and other liabilities in our consolidated balance sheets."
+    },
+    "2025": {
+     "noncurrent": 4272,
+     "current": 628,
+     "noncurrent_basis": "derived: filed total less filed current part",
+     "total_as_written": "$4.9 billion",
+     "filing": "CAH 10-K FY2025 (filed 2025-08-12), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137125000079/cah-20250630.htm",
+     "quote": "As of June 30, 2025, we have $4.9 billion accrued for the opioid-related matters described below, of which $628 million is included in other accrued liabilities and the remainder is included in deferred income taxes and other liabilities in our consolidated balance sheets."
+    },
+    "2026": {
+     "noncurrent": 3832,
+     "current": 468,
+     "noncurrent_basis": "derived: filed total less filed current part",
+     "total_as_written": "$4.3 billion",
+     "filing": "CAH 10-K FY2026 (filed 2026-08-11), Note 7",
+     "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137126000038/cah-20260630.htm",
+     "quote": "As of June 30, 2026, we have $4.3 billion accrued for the opioid-related matters described below, of which $468 million is included in other accrued liabilities and the remainder is included in deferred income taxes and other liabilities in our consolidated balance sheets."
+    }
+   },
+   "includes_unsettled": {
+    "answer": "Not quantified. The accrual is described as covering all the opioid 'matters described below', which include still-pending unsettled suits, but no filing says how much (if any) is reserved for parties that have not settled, and management says it cannot estimate further losses. FY2020's accrual covered only the cash component of the Settlement Framework; private-plaintiff claims and the non-cash components were not accrued.",
+    "quotes": [
+     {
+      "filing": "10-K FY2026 Note 7",
+      "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137126000038/cah-20260630.htm",
+      "quote": "The NOSA does not address claims by private parties, which includes unions and other health and welfare funds, hospital systems and other healthcare providers, businesses, and individuals alleging personal injury. To date, there are approximately 73 lawsuits brought by private plaintiffs pending."
+     },
+     {
+      "filing": "10-K FY2026 Note 7",
+      "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137126000038/cah-20260630.htm",
+      "quote": "Through July 2026, we have paid the Settling Governmental Entities approximately $2.6 billion and we expect to pay Settling Governmental Entities additional amounts up to $3.7 billion through 2038."
+     },
+     {
+      "filing": "10-K FY2024 Note 7",
+      "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137124000056/cah-20240630.htm",
+      "quote": "The amount of ultimate loss may differ materially from this accrual, whether as a result of settlement discussions, a judicial decision or verdict or otherwise, but we are not able to estimate a range of reasonably possible additional losses for these matters."
+     },
+     {
+      "filing": "10-K FY2021 MD&A",
+      "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137121000080/cah-20210630.htm",
+      "quote": "We had $6.73 billion accrued at June 30, 2021 related to certain opioid litigation, including the Proposed Settlement Agreement"
+     },
+     {
+      "filing": "10-K FY2020 Note 7",
+      "url": "https://www.sec.gov/Archives/edgar/data/721371/000072137120000089/a20q410k063020form10-k.htm",
+      "quote": "We are unable to reasonably estimate the liability or cost associated with the other components of the Settlement Framework ... The Settlement Framework does not address claims by private plaintiffs"
+     }
+    ]
+   }
+  }
+ },
+ "not_settlements": {
+  "JHX": {
+   "ruling": "no",
+   "why": "AICF annual payments are variable: they depend on JHX free cash flow (as defined in the AFFA), actuarial estimates, claims actually paid, AICF costs, AUD/USD and an annual cash-flow cap. The liability is KPMG's undiscounted actuarial central estimate of future claims through 2074, not a settled amount on a fixed schedule. The FY2026 10-K and FY2025 20-F do not state the 35% FCF percentage; it was not verified from the AFFA exhibit.",
+   "quote": "The amount of these annual payments is dependent on several factors, including our free cash flow (as defined in the AFFA), actuarial estimations, actual claims paid, operating expenses of AICF, changes in the AUD/USD exchange rate and the annual cash flow cap.",
+   "current": 128.3,
+   "noncurrent": 880.3,
+   "filing": "JHX 10-K FY2026 (FYE 2026-03-31, filed 2026-05-19), Item 1/MD&A, Consolidated Balance Sheets, Note 12",
+   "url": "https://www.sec.gov/Archives/edgar/data/1159152/000115915226000045/jhx-20260331.htm"
+  },
+  "LPX": {
+   "ruling": "no",
+   "why": "An estimate of future cash needs for contingencies, mainly environmental remediation reserves (27 total; 1 paid in 2025). No settled amount and no fixed payment schedule.",
+   "quote": "Contingency reserves, which represent an estimate of future cash needs for various contingencies (principally, environmental reserves), totaled $27 million at December 31, 2025, of which $1 million is estimated to be payable within one year of such date.",
+   "current": 1,
+   "noncurrent": 26,
+   "filing": "LPX 10-K FY2025 (filed 2026-02-17), MD&A Contingency Reserves, balance sheet, environmental note",
+   "url": "https://www.sec.gov/Archives/edgar/data/60519/000006051926000012/lpx-20251231.htm"
+  }
+ }
+}

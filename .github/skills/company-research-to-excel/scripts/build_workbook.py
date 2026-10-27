@@ -120,7 +120,7 @@ class Builder:
         ws.row_dimensions[3].height = heights["header"]
         ws.row_dimensions[4].height = heights["date"]
         ws.row_dimensions[5].height = heights["note"]
-        self.text(ws, 3, 1, "Metric / 科目").font = self.font("header", bold=True)
+        self.text(ws, 3, 1, "Metric").font = self.font("header", bold=True)
         self.text(ws, 5, 1, "Units / period basis: see section notes").font = self.font("note", "note")
         for info in self.layout.entries:
             label, ci = info["label"], self.layout.col_of[info["label"]]

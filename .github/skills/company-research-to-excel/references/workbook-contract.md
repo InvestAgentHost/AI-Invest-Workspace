@@ -7,8 +7,10 @@ worksheets. Order the workbook **Contents → operating schedules (Segments,
 KPI, Products & Geography, etc.) → Income Statement → Balance Sheet → Cash Flow
 → Derivate Metrics → Note and material note schedules**. Combine ordinary
 supporting notes in Note; give material, substantial schedules their own tabs.
-Do not add technical Sources/Evidence/index tabs by default. Match sheet language to the research
-package. Never copy another company's extra tabs or leave empty placeholders.
+Do not add technical Sources/Evidence/index tabs by default. Follow the skill's
+Language requirement: preserve original English disclosure captions and use
+English workbook text by default. Never copy another company's extra tabs or
+leave empty placeholders.
 
 Each section is a wide panel: metrics down rows, chronological annual periods
 on the left and quarterly periods on the right. Use one unfilled narrow
@@ -18,6 +20,77 @@ derived discrete-quarter cash flows in separately labeled sections.
 Keep related notes with their economic owner. Separate incompatible units,
 scopes, reporting bases and restated segment definitions into labeled blocks.
 Complete face statements belong in the workbook even if report prose is selective.
+
+## Reading hierarchy
+
+The operating-sheet hierarchy accepted on 2026-10-21 is the presentation baseline
+for this skill. Adapt the actual groups and accounts to the issuer. Use the
+following layers to make the workbook readable before applying colors:
+
+1. **Worksheet title and shared period axis.** Show the company, the schedule,
+   essential units and the financial-information as-of date once.
+2. **Topic or reporting-basis section.** Separate subjects such as sales channels,
+   customer countries, EBITDA reconciliations, and current versus legacy segments.
+3. **Region or account subheading.** Choose the dimension the reader should hold
+   constant while reading the following rows.
+4. **Metric rows and meaningful totals.** Use concise account labels, aligned
+   numbers, growth rows near their owning revenue and clearly styled subtotals.
+
+Choose **region-first** when the reader needs a complete set of accounts for one
+region. Choose **account-first** when comparison across regions is more useful.
+Within a panel use one grouping consistently and present all applicable members.
+Do not duplicate a complete view solely to show both orientations.
+
+For example, replace repeated labels such as
+`Europe & International | Revenue from external customers` with:
+
+```text
+Europe & International                 [region heading]
+  Revenue                              [account subgroup]
+    Revenue from external customers
+    YoY change
+    Intersegment revenue
+    Total segment revenue
+  EBITDA and adjustments               [account subgroup]
+    Adjusted EBITDA
+    Share-based compensation expense
+    ...complete applicable accounts...
+    EBITDA
+```
+
+An account-first panel instead places an account such as `Adjusted EBITDA` in
+the heading and lists the regions below it. Pipes, slashes or repeated prefixes
+must not serve as a substitute for these visible groups. Keep composite IDs and
+full scope keys in the mapping metadata; preserve meaningful punctuation in an
+actual account name. A short row label inherits its scope from the heading.
+
+### Operating schedules and revenue bridges
+
+| Schedule | Preferred reading structure |
+|---|---|
+| Segments | Separate reporting bases, then regional account panels or account panels containing the regions. Distinguish revenue, earnings/adjustments and totals within each panel. |
+| Revenue and operations | Separate channel cross-classifications, country-of-customer geography, company-defined reconciliations and physical operating measures. A consolidated channel panel may precede regional channel panels. |
+| Recurring revenue bridges | Comparable years/quarters across columns, with a region/scope heading and rows for reported revenue, the prior-year comparison, filed FX impact and constant-currency revenue. Put reported growth, constant-currency growth, volume and price/mix in a separate rate subgroup. |
+
+For repeated annual/interim bridge disclosures, build the longitudinal matrix
+rather than stack a copy of each filing's multi-level table. Align comparable
+periods with the rest of the workbook. Use a distinct, clearly labelled YTD
+panel and a local cumulative-period row when quarterly column headings otherwise
+could be mistaken for discrete-quarter measures. Keep legacy reporting axes in
+their own panel. Essential unit or sign-convention explanations belong once
+beside the affected panel.
+
+Remove redundant *presentations* when they repeat the same economic fact, such
+as current reported revenue appearing twice in one bridge or an identical
+schedule repeated in the same filing. Give it one visible owner and retain the
+original locators in metadata, following the existing comparability rules.
+Keep independently meaningful comparisons and components. Do not relabel a
+repeated reported-revenue amount as a revenue increment.
+
+Irregular schedules such as maturities, equity movements and instrument counts
+may require their disclosed non-period axes. Design clear grouped headers and
+row sections for those axes; native geometry is not a reason to reproduce raw
+filing formatting, repeated units, note-reference columns or generic boilerplate.
 
 ## Approved design
 
@@ -29,6 +102,8 @@ Use it in any authoring tool; do not clone uncoordinated constants.
 |---|---|---:|
 | Main title | Arial 14 bold, white on #1F4E79 | 28 pt |
 | Section band | Arial 10 bold, white on #1F4E79 | 22 pt |
+| Region/scope heading | Arial 10 bold, white on the profile's #20746C | 24 pt |
+| Account subgroup | Arial 10.5 bold, #243447, thin light bottom rule, no fill | 24 pt |
 | Period header | Arial 10 bold, white; annual #18324F, quarter #20746C | 24 pt |
 | Body | Arial 10.5, #243447 | 22 pt |
 | Reported/formula totals | Arial 10.5 bold, pale #EAF0F8, thin top border | 24 pt |
@@ -79,6 +154,9 @@ headers, left-align labels, right-align numbers. Freeze C6 on statement panels.
 Optional section contents shifts blocks by a deterministic offset. The shared
 registry owns cell positions; do not duplicate a separate row-count algorithm.
 Section bands may span the separator; body separators stay white and empty.
+Use a small gap between complete regional/account panels. Avoid a new colored
+band for every ordinary metric. A color role should identify the same level of
+hierarchy throughout the schedule.
 
 ## Formulas and source display
 
@@ -111,6 +189,27 @@ text, unreadable contrast, undersized rows or ####. Increase content-fitted
 heights/widths or correct authoring behavior while preserving the approved font,
 palette and minimum heights. An engine save can change styles: inspect the final
 saved artifact, not only the pre-recalculation version.
+
+Accept the layout only after checking representative openings, later groups and
+long-label sections in the rendered saved workbook:
+
+- The region/account grouping is evident without reading a concatenated key on
+  every row. Headings identify the following complete group, not just its first
+  item; labels return to the same left edge within each level.
+- Annual/quarter columns line up across comparable panels. Cumulative periods,
+  reporting bases and non-period axes are visible where they differ.
+- Monetary bridge rows and percentage-driver rows are distinct. Repeated filing
+  headers and duplicate presentations do not interrupt period comparisons.
+- Labels wrap inside their own column at word boundaries. Increase only the row
+  heights that need it; use explicit line breaks if the renderer lets text spill.
+  Do not squeeze type, overlap a blank numeric column or stretch every row.
+- Totals, group boundaries and modest whitespace make the reading order clear.
+  Repeated unit/source boilerplate does not crowd out the financial content.
+
+An opening range alone does not establish these checks: include another region
+or account group, a legacy/YTD section when present, and a dense bridge or note
+header. During a scoped restyle, review the changed views and preserve the
+unrelated sheets rather than redesigning the whole workbook.
 
 Render QA views in memory or a temporary directory; remove them after inspection.
 Do not accumulate preview PNGs, one-off builder scripts, logs or duplicate

@@ -1,0 +1,31 @@
+schema_version: 1
+id: US-COCO-vita-coco
+source_path: sources/companies/US/COCO-vita-coco
+name: The Vita Coco Company
+aliases: []
+tickers: [COCO]
+research_path: research/companies/US/COCO-vita-coco
+inbox_path: research/companies/US/COCO-vita-coco/data
+status: watchlist
+research_stage: initial-screen-follow-up
+as_of: 2026-10-26
+decision_origin: user-reported-weekly-meeting
+decision: "跟踪；后续安排资源进行深度研究。"
+resource_decision: "待后续安排深度研究资源；本次未启动深度研究。"
+current_report: research/companies/US/COCO-vita-coco/data/inbox/2026-10-26/COCO.docx
+current_report_sha256: 7fabf7687c4eb47a08fd14d82d8960ce79ae86303c07b5be3a93a361603bae08
+current_round_materials: user-provided-word-only
+automated_monitoring: not-configured-by-this-task
+destinations:
+  sec: sources/companies/US/COCO-vita-coco/sec
+  ir: sources/companies/US/COCO-vita-coco/ir
+  transcripts: sources/companies/US/COCO-vita-coco/transcripts
+  sellside: sources/companies/US/COCO-vita-coco/sellside
+  user_provided: sources/companies/US/COCO-vita-coco/user-provided
+  reports: research/companies/US/COCO-vita-coco/outputs/reports
+  workbooks: research/companies/US/COCO-vita-coco/outputs/workbooks
+  valuation_snapshots: research/companies/US/COCO-vita-coco/outputs/valuation-snapshots
+curated_data: data/curated/companies/US/COCO-vita-coco
+derived_data: data/derived/companies/US/COCO-vita-coco
+manual_sync_paths:
+  - research/companies/US/COCO-vita-coco/data/inbox/2026-10-26

@@ -1,0 +1,3 @@
+# Local binary research artifacts; keep conclusions and path notes in Git.
+*.docx
+*.xlsx

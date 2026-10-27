@@ -1,0 +1,31 @@
+schema_version: 1
+id: UK-CCH-coca-cola-hbc
+source_path: sources/companies/UK/CCH-coca-cola-hbc
+name: Coca-Cola HBC
+aliases: []
+tickers: [CCH]
+research_path: research/companies/UK/CCH-coca-cola-hbc
+inbox_path: research/companies/UK/CCH-coca-cola-hbc/data
+status: watchlist
+research_stage: initial-screen-follow-up
+as_of: 2026-10-26
+decision_origin: user-reported-weekly-meeting
+decision: "跟踪；等待价格回落，现在不值得投入增量资源，等待 CCBA 事件落地。"
+resource_decision: "当前不投入增量研究资源，等待价格回落及 CCBA 事件落地。"
+current_report: research/companies/UK/CCH-coca-cola-hbc/data/inbox/2026-10-26/CCH.docx
+current_report_sha256: 9b0a90b6aff5230b43f23d49e82b69bb7694f82a641bc69b010bdf08b454bbcf
+current_round_materials: user-provided-word-only
+automated_monitoring: not-configured-by-this-task
+destinations:
+  sec: sources/companies/UK/CCH-coca-cola-hbc/sec
+  ir: sources/companies/UK/CCH-coca-cola-hbc/ir
+  transcripts: sources/companies/UK/CCH-coca-cola-hbc/transcripts
+  sellside: sources/companies/UK/CCH-coca-cola-hbc/sellside
+  user_provided: sources/companies/UK/CCH-coca-cola-hbc/user-provided
+  reports: research/companies/UK/CCH-coca-cola-hbc/outputs/reports
+  workbooks: research/companies/UK/CCH-coca-cola-hbc/outputs/workbooks
+  valuation_snapshots: research/companies/UK/CCH-coca-cola-hbc/outputs/valuation-snapshots
+curated_data: data/curated/companies/UK/CCH-coca-cola-hbc
+derived_data: data/derived/companies/UK/CCH-coca-cola-hbc
+manual_sync_paths:
+  - research/companies/UK/CCH-coca-cola-hbc/data/inbox/2026-10-26

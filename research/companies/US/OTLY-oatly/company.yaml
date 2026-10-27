@@ -1,0 +1,32 @@
+schema_version: 1
+id: US-OTLY-oatly
+source_path: sources/companies/US/OTLY-oatly
+name: Oatly
+aliases: []
+tickers: [OTLY]
+research_path: research/companies/US/OTLY-oatly
+inbox_path: research/companies/US/OTLY-oatly/data
+status: watchlist
+research_stage: initial-screen-follow-up
+as_of: 2026-10-26
+decision_origin: user-reported-weekly-meeting
+decision: "跟踪；事件驱动，关注后续业绩及债务解决路径。"
+resource_decision: "保持事件驱动跟踪；本次仅建档，不启动新增研究。"
+current_report: research/companies/US/OTLY-oatly/data/inbox/2026-10-26/OTLY.docx
+current_report_sha256: d79e758450ecf338767a07472c7e120e2fe876c12158fc0ffeacadb0169fec39
+current_round_materials: user-provided-word-only
+automated_monitoring: not-configured-by-this-task
+destinations:
+  sec: sources/companies/US/OTLY-oatly/sec
+  ir: sources/companies/US/OTLY-oatly/ir
+  transcripts: sources/companies/US/OTLY-oatly/transcripts
+  sellside: sources/companies/US/OTLY-oatly/sellside
+  user_provided: sources/companies/US/OTLY-oatly/user-provided
+  reports: research/companies/US/OTLY-oatly/outputs/reports
+  workbooks: research/companies/US/OTLY-oatly/outputs/workbooks
+  valuation_snapshots: research/companies/US/OTLY-oatly/outputs/valuation-snapshots
+curated_data: data/curated/companies/US/OTLY-oatly
+derived_data: data/derived/companies/US/OTLY-oatly
+manual_sync_paths:
+  - research/companies/US/OTLY-oatly/data/inbox/2026-10-26
+  - sources/companies/US/OTLY-oatly

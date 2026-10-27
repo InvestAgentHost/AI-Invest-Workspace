@@ -1,0 +1,11 @@
+interface:
+  display_name: "股票 AI 初筛：批量与个股"
+  short_description: "批量 v4.7.3 信号灯与历史估值；个股先审商业质量，再判断当前价格下的研究行动"
+  default_prompt: "使用 $stock-initial-screen 分析我提供的公司或股票名单：单家公司默认走独立个股筛选，名单默认走批量初筛，明确指定的模式优先；FocusAlpha优先，缺口检查Gangtise数据并核验原始披露，研报、纪要及一页通只作已标明的辅助；批量交付前核查逐家公司估值覆盖，HTML用连贯、专业且符合中文阅读习惯的投资研究语言，Fiscal.ai停用。"
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "focusalpha"
+      description: "FA = FocusAlpha. Primary source for financials, earnings, guidance, 13F holdings, insider trades, short interest, Japan/Korea/Taiwan/mainland China/Hong Kong filings, macro data and ETF holdings. Check before other sources; attribute figures to the exact tool."

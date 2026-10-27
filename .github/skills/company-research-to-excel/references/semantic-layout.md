@@ -21,6 +21,22 @@ Combine short related notes; split long or incompatible schedules. More tabs and
 more ratios do not mean a more complete workbook. Preserve source-native order
 within statements and use economically sensible order for supporting sections.
 
+## From source axes to visible groups
+
+Choose the reader's grouping before mapping display rows. Store region/account
+identity and scope in the model keys; put the chosen group in a block title or
+visible subheading and the remaining account/region in the short row label.
+Keep the scope identity when shortening labels. A flattened extraction key is
+not a worksheet design.
+
+The bundled builder does not infer hierarchy from concatenated labels. Supply
+properly grouped blocks, or use an equivalent authoring route when an additional
+subheading level is needed. Repeated source tables should feed comparable
+period panels; a native non-period axis still needs a designed header hierarchy.
+The [workbook contract](workbook-contract.md#reading-hierarchy) owns the approved
+regional/account patterns and their visual acceptance criteria. Do not require
+another planning file solely to express them.
+
 ## Comparability and deduplication
 
 - Choose original/recast precedence based on filed versions and document it.

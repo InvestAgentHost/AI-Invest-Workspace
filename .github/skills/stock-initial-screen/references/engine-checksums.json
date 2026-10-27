@@ -1,0 +1,30 @@
+{
+  "upstream_skill": "4.7.3",
+  "upstream_engine": "4.7.2",
+  "rules_version": "2026-10-23c",
+  "local_adaptation": "focusalpha-gangtise-reliability-zh-2026-10-26-r1",
+  "files": {
+    "scripts/screener.py": "719f8bd904c9f15f18c38058428acdad4c53f3f6b08fc40e0186f7c35fe54f41",
+    "scripts/make_html.py": "c6b2612a5e85b512598a6e7af05517526631c7d8b6d63aa6630d8184b38b22ea",
+    "scripts/redesign.py": "b779255f57aec9994250295704fee0d65def7d3261fd2d5b81a9c8f2ebf2df65",
+    "scripts/vault_records.py": "afe65d20cc5f4db638988dc2acca4bf15ea121c5132e61af690f12f9095d30e1",
+    "scripts/shot.js": "6265587d9023baeef93741006b8e0aaf1ad5f7b8810fb6c9a84538230ef49934",
+    "references/fact_brief_template.md": "7c25740702e9529d4da87b5d519c2586d8c9fb4d4f91f1b67764f0876e423a4c",
+    "references/config_example.json": "4f8160b4ff415ff93881cef0621a81148a8abe6cff7af8e22bb4511beed5ec1b",
+    "references/universe_aero_industrials.json": "83963e64e52c2f0058676d0b54c340a52972e80c823d4d3a486f83d82e3e29be",
+    "references/universe_beverages.json": "e65f2009edf44674f0b804d4ef8aad141a77069934a1ac95660011cfc2fcde1c",
+    "references/universe_services_distribution_transport.json": "e18e7c2c5978555b830a1b385facf42b4ea9e276b741aa1b59de7ed6df3116ad",
+    "references/debt_like_services_distribution_transport.json": "01f82945d530bc07ac3b610c51fb3a75eb6be4f9122eeb6c966b33b084207bea",
+    "SKILL.md": "9dc43dd8cbd6258edc9bac8ba8d775e36a46c0dc6eaa07618ede1396e778228e",
+    "agents/openai.yaml": "796877931e7c857eb351b4fc587650cb286ecba8af144cfd64d97793aff5232f",
+    "scripts/valuation_pipeline.py": "b74d2e3bc6033b5aa84933c8dfb3d7f7eaa93394dcae1194574339cdbe73cf40",
+    "scripts/checked_build.py": "013ef3f7761343c57a7bc62a4f2bdc4d4f7fb600a9382c2b362ce184c44ea483",
+    "scripts/test_valuation_pipeline.py": "8729e14f7a827fe4ce5ab6545b78f954be0bf6f6ce97929edd014ecf74c74a22",
+    "references/batch-screen.md": "614c2f37ce64b06ad507a3b9191acc5556e67916c82867df1304894df9a508e3",
+    "references/valuation-reliability.md": "dbb49d3b81b7f174f08231f1d61f5d74e13f8f31f418cdbb7abef21fbd6f127d",
+    "references/chinese-report-style.md": "013e29c85d6299259c0eab07925c51ba58c80dd9e7f9c5a1f7eaa2d30c875c1c",
+    "references/focusalpha-normalization.md": "d129b94211fa089a9a7bc39780bad17195ab2c300188c2562102f59abf9fb1c8",
+    "references/gangtise-screening.md": "8e4e2e1162c0a7acb47d1e9d3e6c0fdefbdac4ca67637992a8fd6dc26872223b",
+    "references/single-company-screen.md": "e4d49f0c557dccc43127fa79392567463755606636b28a501a87cf239c1f4d0f"
+  }
+}

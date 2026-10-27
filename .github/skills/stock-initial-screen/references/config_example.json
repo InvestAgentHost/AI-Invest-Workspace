@@ -1,0 +1,82 @@
+{
+  "title": "<Run title>: screener run",
+  "as_of": "YYYY-MM-DD",
+  "rules_version": "2026-10-23c",
+  "valuation_pipeline_required": true,
+  "output": "<Short_name>_screener.html",
+  "universe_dir": "universe",
+  "companies": {
+    "AAA": {
+      "key": "NYSE_AAA",
+      "name": "Example normal company",
+      "group": "<sub-industry>"
+    },
+    "BBB": {
+      "key": "NYSE_BBB",
+      "name": "Example acquirer (deal above 25% of revenue)",
+      "group": "<sub-industry>",
+      "perimeter_start": 2024,
+      "downturn": {
+        "type": "merger"
+      },
+      "perimeter_note": "<deal> closed <date> (FY2023), about 40% of prior-year revenue (revenue test); FY2024 is the first year with both balance sheets after it.",
+      "deal_flags_ok": {
+        "2024": "full-year effect of the <deal> acquisition, which closed in FY2023"
+      },
+      "pe_from": "YYYY-MM-DD",
+      "pe_from_why": "<deal> close"
+    },
+    "CCC": {
+      "key": "NYSE_CCC",
+      "name": "Example spin-off",
+      "group": "<sub-industry>",
+      "perimeter_start": 2024,
+      "growth_start": 2024,
+      "growth_start_why": "separation from <parent> in FY2023",
+      "downturn": {
+        "type": "separation",
+        "segment": "<predecessor segment>",
+        "margins": {
+          "2016": 0.0,
+          "2017": 0.0,
+          "2018": 0.0
+        },
+        "source": "<parent 10-K segment notes>"
+      },
+      "dil_base": 2023,
+      "pe_from": "YYYY-MM-DD",
+      "pe_from_why": "listing after the separation"
+    },
+    "DDD": {
+      "key": "XLON_DDD",
+      "name": "Example non-SEC filer with a data fix",
+      "group": "<sub-industry>",
+      "data_fixes": {
+        "zero_am": true
+      },
+      "data_overrides": {
+        "sbc": {
+          "2025": 0.0
+        }
+      },
+      "red_flag_overrides": {
+        "<label>": "clear"
+      },
+      "measure_notes": {
+        "B1": "<company-specific caveat>"
+      }
+    },
+    "EEE": {
+      "key": "NYSE_EEE",
+      "name": "Example: deal that fails only the goodwill test (v4.4: no perimeter_start; the engine keeps the window and checks B1/B4 on the years after the deal)",
+      "group": "<sub-industry>",
+      "perimeter_note": "<deal> closed <date> (FY2024): 13% of prior-year revenue, goodwill + intangibles +34% of invested capital. Goodwill test only, so the 10-year window is kept; B1 and B4 also count FY2025 onward.",
+      "held_for_sale": {
+        "years": "FY2023–FY2024",
+        "why": "Dec 2022 and Dec 2023 balance sheets carry the sold <unit> as held for sale; income statements restated to continuing operations"
+      },
+      "b3_mix": "early years include businesses sold in <years>"
+    }
+  },
+  "report_language": "zh-CN"
+}

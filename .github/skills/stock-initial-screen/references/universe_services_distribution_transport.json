@@ -1,0 +1,549 @@
+{
+ "name": "Services, distribution, freight transport and building products",
+ "as_of": "2026-10-23",
+ "status": "draft: tags proposed by Claude from the GICS sub-industry, the Fiscal.ai business description and segment mix; not yet reviewed by the user",
+ "min_peers": 6,
+ "tags": {
+  "waste": {
+   "parent": "services",
+   "label": "Solid and hazardous waste",
+   "def": "Collection, transfer, landfill, recycling and hazardous-waste disposal under long municipal and commercial contracts; landfill permits limit new entry and pricing runs above inflation."
+  },
+  "route_services": {
+   "parent": "services",
+   "label": "Route-based recurring services",
+   "def": "Uniform rental, pest control, hygiene, cleaning and facility services delivered on regular routes or under service contracts; revenue recurs, capital is mostly route vehicles and garment or product stock."
+  },
+  "deathcare": {
+   "parent": "services",
+   "label": "Deathcare",
+   "def": "Funeral homes and cemeteries, including preneed contracts and memorialisation products; demand follows deaths, cash is collected in advance through preneed trusts."
+  },
+  "mro_dist": {
+   "parent": "distribution",
+   "label": "Industrial MRO distribution",
+   "def": "Distributors of maintenance, repair and operating supplies, fasteners, bearings, electrical and industrial products to manufacturers, contractors and institutions."
+  },
+  "bldg_dist": {
+   "parent": "distribution",
+   "label": "Building, HVAC and water distribution",
+   "def": "Distributors of HVAC equipment, plumbing, waterworks, pool, landscape and lumber products to contractors; earnings follow replacement demand and new construction."
+  },
+  "health_dist": {
+   "parent": "distribution",
+   "label": "Healthcare distribution",
+   "def": "Wholesale distributors of pharmaceuticals and medical or dental supplies to pharmacies, hospitals and practices; thin margins on very large revenue, little capital per dollar of sales."
+  },
+  "rail": {
+   "parent": "transport",
+   "label": "Freight railroads",
+   "def": "North American Class I freight railroads: own track, yards and locomotives; carry bulk, merchandise and intermodal freight with high fixed costs and long-lived assets."
+  },
+  "truck": {
+   "parent": "transport",
+   "label": "Trucking, LTL and intermodal",
+   "def": "Less-than-truckload carriers, truckload fleets, intermodal and asset-light freight brokers; earnings follow industrial freight volumes and pricing."
+  },
+  "bldg_products": {
+   "parent": "building",
+   "label": "Building products",
+   "def": "Makers of roofing, insulation, siding, decking, drainage, fixtures, HVAC equipment and structural building products sold through distributors and contractors."
+  }
+ },
+ "parents": {
+  "services": "Environmental and business services",
+  "distribution": "Distribution",
+  "transport": "Freight transport",
+  "building": "Building products"
+ },
+ "companies": {
+  "NYSE_WM": {
+   "t": "WM",
+   "name": "Waste Management",
+   "tag": "waste",
+   "why": "Largest US solid-waste collector and landfill owner; acquired Stericycle (medical waste) in Nov 2024.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_RSG": {
+   "t": "RSG",
+   "name": "Republic Services",
+   "tag": "waste",
+   "why": "Second-largest US solid-waste collector and landfill owner; environmental solutions segment for special waste.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_WCN": {
+   "t": "WCN",
+   "name": "Waste Connections",
+   "tag": "waste",
+   "why": "Solid-waste collection and landfills in secondary US markets and Canada, plus E&P waste.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NASDAQ_CWST": {
+   "t": "CWST",
+   "name": "Casella Waste Systems",
+   "tag": "waste",
+   "why": "Solid-waste collection, landfills and recycling in the US Northeast and Mid-Atlantic.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_GFL": {
+   "t": "GFL",
+   "name": "GFL Environmental",
+   "tag": "waste",
+   "why": "Canadian and US solid-waste collector and landfill owner; sold its environmental infrastructure business in 2025.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_CLH": {
+   "t": "CLH",
+   "name": "Clean Harbors",
+   "tag": "waste",
+   "why": "Hazardous-waste incineration and landfill, industrial services and used-oil re-refining (Safety-Kleen).",
+   "gics": "Environmental & Facilities Services"
+  },
+  "XPAR_SCHP": {
+   "t": "SCHP",
+   "name": "Séché Environnement",
+   "tag": "waste",
+   "why": "French hazardous and non-hazardous waste treatment, landfill and incineration.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "XPAR_GPE": {
+   "t": "GPE",
+   "name": "Groupe Pizzorno Environnement",
+   "tag": "waste",
+   "why": "French municipal waste collection, sorting and landfill.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NASDAQ_CTAS": {
+   "t": "CTAS",
+   "name": "Cintas",
+   "tag": "route_services",
+   "why": "Uniform rental and facility services on weekly routes, first aid and safety, fire protection.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_UNF": {
+   "t": "UNF",
+   "name": "UniFirst",
+   "tag": "route_services",
+   "why": "Uniform and workwear rental on routes; first aid and safety.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_VSTS": {
+   "t": "VSTS",
+   "name": "Vestis",
+   "tag": "route_services",
+   "why": "Uniform and workplace supplies rental, spun off from Aramark in Sep 2023.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_ROL": {
+   "t": "ROL",
+   "name": "Rollins",
+   "tag": "route_services",
+   "why": "Residential and commercial pest control (Orkin and regional brands) on recurring service contracts.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_RTO": {
+   "t": "RTO",
+   "name": "Rentokil Initial",
+   "tag": "route_services",
+   "why": "Pest control and hygiene services; acquired Terminix in Oct 2022.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_ECL": {
+   "t": "ECL",
+   "name": "Ecolab",
+   "tag": "route_services",
+   "why": "Cleaning, sanitation and water-treatment programs sold with on-site service routes; GICS specialty chemicals, but most revenue is recurring service-led programs.",
+   "gics": "Specialty Chemicals",
+   "window_from": 2021,
+   "window_why": "ChampionX (upstream energy) separation in Jun 2020"
+  },
+  "NYSE_ABM": {
+   "t": "ABM",
+   "name": "ABM Industries",
+   "tag": "route_services",
+   "why": "Janitorial, facility, parking and engineering services under contracts.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_BV": {
+   "t": "BV",
+   "name": "BrightView",
+   "tag": "route_services",
+   "why": "Commercial landscaping maintenance under recurring contracts.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NASDAQ_HCSG": {
+   "t": "HCSG",
+   "name": "Healthcare Services Group",
+   "tag": "route_services",
+   "why": "Housekeeping, laundry and dining services for nursing homes.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_SCI": {
+   "t": "SCI",
+   "name": "Service Corporation International",
+   "tag": "deathcare",
+   "why": "Largest North American funeral home and cemetery operator (Dignity Memorial), with large preneed backlogs.",
+   "gics": "Specialized Consumer Services"
+  },
+  "NYSE_CSV": {
+   "t": "CSV",
+   "name": "Carriage Services",
+   "tag": "deathcare",
+   "why": "US funeral homes and cemeteries in suburban and rural markets.",
+   "gics": "Specialized Consumer Services"
+  },
+  "NASDAQ_MATW": {
+   "t": "MATW",
+   "name": "Matthews International",
+   "tag": "deathcare",
+   "why": "Memorialization products (caskets, bronze memorials, cremation equipment) plus industrial technologies and brand solutions.",
+   "gics": "Specialized Consumer Services"
+  },
+  "NASDAQ_FAST": {
+   "t": "FAST",
+   "name": "Fastenal",
+   "tag": "mro_dist",
+   "why": "Industrial and construction supplies, fasteners and safety products through branches, onsite locations and vending.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_GWW": {
+   "t": "GWW",
+   "name": "W.W. Grainger",
+   "tag": "mro_dist",
+   "why": "Broad-line MRO distribution through High-Touch Solutions and the endless-assortment websites (Zoro, MonotaRO).",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_MSM": {
+   "t": "MSM",
+   "name": "MSC Industrial Direct",
+   "tag": "mro_dist",
+   "why": "Metalworking and MRO supplies to manufacturers.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_WCC": {
+   "t": "WCC",
+   "name": "WESCO International",
+   "tag": "mro_dist",
+   "why": "Electrical, communications and utility products distribution; acquired Anixter in Jun 2020.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_AIT": {
+   "t": "AIT",
+   "name": "Applied Industrial Technologies",
+   "tag": "mro_dist",
+   "why": "Bearings, power transmission, fluid power and automation products to industrial customers.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NASDAQ_DXPE": {
+   "t": "DXPE",
+   "name": "DXP Enterprises",
+   "tag": "mro_dist",
+   "why": "Pumps, MRO supplies and service centres for industrial and energy customers.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_GIC": {
+   "t": "GIC",
+   "name": "Global Industrial",
+   "tag": "mro_dist",
+   "why": "Online and catalog distributor of industrial and MRO products.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NASDAQ_DSGR": {
+   "t": "DSGR",
+   "name": "Distribution Solutions Group",
+   "tag": "mro_dist",
+   "why": "Specialty MRO and OEM supplies distribution (Lawson, TestEquity, Gexpro Services), merged in Apr 2022.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_WSO": {
+   "t": "WSO",
+   "name": "Watsco",
+   "tag": "bldg_dist",
+   "why": "Largest US distributor of residential HVAC/R equipment, parts and supplies to contractors.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_FERG": {
+   "t": "FERG",
+   "name": "Ferguson",
+   "tag": "bldg_dist",
+   "why": "US plumbing, HVAC, waterworks and fire/fabrication products distribution to contractors.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NASDAQ_POOL": {
+   "t": "POOL",
+   "name": "Pool Corporation",
+   "tag": "bldg_dist",
+   "why": "Swimming pool supplies, equipment and outdoor living products distribution.",
+   "gics": "Distributors"
+  },
+  "NYSE_SITE": {
+   "t": "SITE",
+   "name": "SiteOne Landscape Supply",
+   "tag": "bldg_dist",
+   "why": "Landscape supplies, irrigation and hardscape distribution to contractors.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_CNM": {
+   "t": "CNM",
+   "name": "Core & Main",
+   "tag": "bldg_dist",
+   "why": "Waterworks, storm drainage and fire protection products distribution; listed Jul 2021.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_BLDR": {
+   "t": "BLDR",
+   "name": "Builders FirstSource",
+   "tag": "bldg_dist",
+   "why": "Lumber, trusses and building materials supply to homebuilders; merged with BMC in Jan 2021.",
+   "gics": "Building Products"
+  },
+  "NYSE_BXC": {
+   "t": "BXC",
+   "name": "BlueLinx",
+   "tag": "bldg_dist",
+   "why": "Two-step distributor of specialty and structural building products.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_MCK": {
+   "t": "MCK",
+   "name": "McKesson",
+   "tag": "health_dist",
+   "why": "US pharmaceutical wholesale distribution, oncology and specialty, Medical-Surgical supplies, prescription technology.",
+   "gics": "Health Care Distributors"
+  },
+  "NYSE_COR": {
+   "t": "COR",
+   "name": "Cencora",
+   "tag": "health_dist",
+   "why": "US and international pharmaceutical wholesale distribution (formerly AmerisourceBergen).",
+   "gics": "Health Care Distributors"
+  },
+  "NYSE_CAH": {
+   "t": "CAH",
+   "name": "Cardinal Health",
+   "tag": "health_dist",
+   "why": "US pharmaceutical and medical-products distribution.",
+   "gics": "Health Care Distributors"
+  },
+  "NASDAQ_HSIC": {
+   "t": "HSIC",
+   "name": "Henry Schein",
+   "tag": "health_dist",
+   "why": "Dental and medical supplies distribution to office-based practitioners.",
+   "gics": "Health Care Distributors",
+   "window_from": 2020,
+   "window_why": "Covetrus animal-health spin-off (Feb 2019)"
+  },
+  "NASDAQ_MDLN": {
+   "t": "MDLN",
+   "name": "Medline",
+   "tag": "health_dist",
+   "why": "Medical-surgical products maker and distributor to hospitals and care sites; listed in 2025.",
+   "gics": "Health Care Supplies"
+  },
+  "NYSE_CNI": {
+   "t": "CNI",
+   "name": "Canadian National Railway",
+   "tag": "rail",
+   "why": "Class I railroad across Canada and down the Mississippi to the Gulf.",
+   "gics": "Rail Transportation"
+  },
+  "NYSE_CP": {
+   "t": "CP",
+   "name": "Canadian Pacific Kansas City",
+   "tag": "rail",
+   "why": "Class I railroad across Canada, the US Midwest and Mexico; control of Kansas City Southern from Apr 2023.",
+   "gics": "Rail Transportation"
+  },
+  "NASDAQ_CSX": {
+   "t": "CSX",
+   "name": "CSX",
+   "tag": "rail",
+   "why": "Class I railroad in the eastern US.",
+   "gics": "Rail Transportation"
+  },
+  "NYSE_UNP": {
+   "t": "UNP",
+   "name": "Union Pacific",
+   "tag": "rail",
+   "why": "Class I railroad in the western US.",
+   "gics": "Rail Transportation"
+  },
+  "NYSE_NSC": {
+   "t": "NSC",
+   "name": "Norfolk Southern",
+   "tag": "rail",
+   "why": "Class I railroad in the eastern US.",
+   "gics": "Rail Transportation"
+  },
+  "NASDAQ_ODFL": {
+   "t": "ODFL",
+   "name": "Old Dominion Freight Line",
+   "tag": "truck",
+   "why": "US less-than-truckload carrier.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NASDAQ_SAIA": {
+   "t": "SAIA",
+   "name": "Saia",
+   "tag": "truck",
+   "why": "US less-than-truckload carrier.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NYSE_XPO": {
+   "t": "XPO",
+   "name": "XPO",
+   "tag": "truck",
+   "why": "US less-than-truckload carrier after the GXO (2021) and RXO (2022) spin-offs.",
+   "gics": "Cargo Ground Transportation",
+   "window_from": 2023,
+   "window_why": "GXO Logistics spin-off (Aug 2021) and RXO spin-off (Nov 2022); FY2023 is the first year with both balance sheets on the LTL business alone"
+  },
+  "NYSE_TFII": {
+   "t": "TFII",
+   "name": "TFI International",
+   "tag": "truck",
+   "why": "Canadian and US LTL, truckload and logistics.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NYSE_KNX": {
+   "t": "KNX",
+   "name": "Knight-Swift Transportation",
+   "tag": "truck",
+   "why": "US truckload carrier with an LTL network; merged Knight and Swift in Sep 2017.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NASDAQ_JBHT": {
+   "t": "JBHT",
+   "name": "J.B. Hunt Transport Services",
+   "tag": "truck",
+   "why": "Intermodal (with BNSF and others), dedicated and final-mile trucking.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NASDAQ_LSTR": {
+   "t": "LSTR",
+   "name": "Landstar System",
+   "tag": "truck",
+   "why": "Asset-light truckload brokerage through independent agents and owner-operators.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NASDAQ_ARCB": {
+   "t": "ARCB",
+   "name": "ArcBest",
+   "tag": "truck",
+   "why": "US LTL carrier (ABF) plus asset-light logistics.",
+   "gics": "Cargo Ground Transportation"
+  },
+  "NYSE_CSL": {
+   "t": "CSL",
+   "name": "Carlisle Companies",
+   "tag": "bldg_products",
+   "why": "Commercial roofing, waterproofing and insulation (Carlisle Construction Materials, Weatherproofing Technologies); sold its non-building businesses 2021-2024.",
+   "gics": "Building Products"
+  },
+  "NYSE_OC": {
+   "t": "OC",
+   "name": "Owens Corning",
+   "tag": "bldg_products",
+   "why": "Roofing, insulation and doors; sold its glass reinforcements business in 2025.",
+   "gics": "Building Products"
+  },
+  "NYSE_MAS": {
+   "t": "MAS",
+   "name": "Masco",
+   "tag": "bldg_products",
+   "why": "Plumbing fixtures (Delta, Hansgrohe) and paints (Behr).",
+   "gics": "Building Products"
+  },
+  "NYSE_TREX": {
+   "t": "TREX",
+   "name": "Trex",
+   "tag": "bldg_products",
+   "why": "Composite decking and railing.",
+   "gics": "Building Products"
+  },
+  "NYSE_JHX": {
+   "t": "JHX",
+   "name": "James Hardie Industries",
+   "tag": "bldg_products",
+   "why": "Fiber cement siding; acquired AZEK (decking) in Jul 2025.",
+   "gics": "Construction Materials"
+  },
+  "NYSE_SSD": {
+   "t": "SSD",
+   "name": "Simpson Manufacturing",
+   "tag": "bldg_products",
+   "why": "Structural connectors and anchors for wood and concrete construction.",
+   "gics": "Building Products"
+  },
+  "NYSE_FBIN": {
+   "t": "FBIN",
+   "name": "Fortune Brands Innovations",
+   "tag": "bldg_products",
+   "why": "Plumbing (Moen), outdoors and security products; spun off its cabinets business in Dec 2022.",
+   "gics": "Building Products",
+   "window_from": 2023,
+   "window_why": "MasterBrand cabinets spin-off (Dec 2022)"
+  },
+  "NYSE_WMS": {
+   "t": "WMS",
+   "name": "Advanced Drainage Systems",
+   "tag": "bldg_products",
+   "why": "Thermoplastic stormwater and drainage pipe and chambers.",
+   "gics": "Building Products"
+  },
+  "NYSE_LPX": {
+   "t": "LPX",
+   "name": "Louisiana-Pacific",
+   "tag": "bldg_products",
+   "why": "Engineered wood siding and OSB.",
+   "gics": "Forest Products"
+  },
+  "NASDAQ_ROCK": {
+   "t": "ROCK",
+   "name": "Gibraltar Industries",
+   "tag": "bldg_products",
+   "why": "Residential building products (mail, roof ventilation), agtech and structures.",
+   "gics": "Building Products"
+  },
+  "NASDAQ_UFPI": {
+   "t": "UFPI",
+   "name": "UFP Industries",
+   "tag": "bldg_products",
+   "why": "Treated lumber, packaging and construction components.",
+   "gics": "Building Products"
+  },
+  "NYSE_LII": {
+   "t": "LII",
+   "name": "Lennox International",
+   "tag": "bldg_products",
+   "why": "Residential and commercial HVAC equipment.",
+   "gics": "Building Products"
+  },
+  "XETR_BFSA": {
+   "t": "BFSA",
+   "name": "Befesa",
+   "tag": "waste",
+   "why": "Regulated hazardous-waste recycling of steel dust and aluminium salt slags under long service contracts; listed Nov 2017.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NASDAQ_PESI": {
+   "t": "PESI",
+   "name": "Perma-Fix Environmental Services",
+   "tag": "waste",
+   "why": "Nuclear and hazardous waste treatment facilities and waste services.",
+   "gics": "Environmental & Facilities Services"
+  }
+ },
+ "excluded": {
+  "NYSE_OMI": "Owens & Minor, renamed Accendra Health after selling its products business; now home-based patient care (GICS Health Care Services), not distribution.",
+  "NYSE_GMS": "GMS: acquired by Home Depot in Sep 2025; no longer listed.",
+  "NYSE_ARMK": "Aramark: contract food service (GICS Restaurants), not route-based services.",
+  "XPAR_VIE": "Veolia: water, energy and waste multi-utility (GICS Multi-Utilities); waste is under half of revenue.",
+  "NYSE_NVRI": "Enviri: mostly steel-mill services (Harsco Environmental); hazardous waste (Clean Earth) is the smaller part.",
+  "NYSE_VLTO": "Veralto: water quality and product identification instruments, not waste services.",
+  "NASDAQ_TTEK": "Tetra Tech: engineering and consulting, not waste services.",
+  "BMEX_FCC": "FCC: construction, water and cement conglomerate; waste is one of several businesses.",
+  "XLON_MTO": "Mitie and Serco: UK government and facilities outsourcing, contract-margin businesses not comparable with route services."
+ }
+}

@@ -20,6 +20,7 @@ secrets.yml
 .venv/
 venv/
 env/
+data/
 __pycache__/
 *.py[cod]
 *.pyo
@@ -60,9 +61,30 @@ research/companies/**/cache/**
 research/companies/**/logs/**
 research/companies/**/state/**
 research/companies/**/targets/**
+research/pass/**
+
+screens/
 
 # Rebuildable data and knowledge products
 data/curated/**
+# Reviewed screen parameters and small judgments are durable; raw sources and
+# rebuilt financial/valuation series stay in their ignored directories.
+!data/curated/screens/
+!data/curated/screens/2026-10-20-us-beverages-ge500m-v2/
+!data/curated/screens/2026-10-20-us-beverages-ge500m-v2/README.md
+!data/curated/screens/2026-10-20-us-beverages-ge500m-v2/run.json
+!data/curated/screens/2026-10-20-us-beverages-ge500m-v2/assessments.json
+!data/curated/screens/2026-10-20-us-beverages-ge500m-v2/guidance-records.json
+# Source-linked, normalized observations accompanying the industry research.
+!data/curated/industries/
+!data/curated/industries/sugar-free-beverages/
+!data/curated/industries/sugar-free-beverages/observations-2026-10-21.json
+
+# Small source-linked annual KPI dataset; company financial caches stay ignored.
+!data/curated/companies/
+!data/curated/companies/US/
+!data/curated/companies/US/ZVIA-zevia/
+!data/curated/companies/US/ZVIA-zevia/operating-kpis-2021-2025.json
 data/derived/**
 knowledge/indexes/**
 knowledge/databases/**

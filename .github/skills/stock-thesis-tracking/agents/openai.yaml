@@ -1,0 +1,4 @@
+interface:
+  display_name: "股票逻辑跟踪"
+  short_description: "按公司核心逻辑核验正反证、去重并生成日报，保留旧基线及底稿审批边界"
+  default_prompt: "使用 $stock-thesis-tracking 读取指定公司规则，核验新信息并生成日报，保留正反证、覆盖缺口和底稿审批边界。"

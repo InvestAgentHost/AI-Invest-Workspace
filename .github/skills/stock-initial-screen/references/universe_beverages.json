@@ -1,0 +1,547 @@
+{
+ "name": "Beverages, packaged food and beverage shops",
+ "status": "draft: tags proposed by Claude on 21 Oct 2026, not yet reviewed by the user; rebuilt from the 21 Oct page on 23 Oct 2026 (only the Yum! window_from was recovered; other peer windows recomputed by the engine)",
+ "min_peers": 4,
+ "tags": {
+  "branded_non_alcoholic_be": {
+   "parent": "beverages",
+   "label": "Branded non-alcoholic beverages",
+   "def": "Branded non-alcoholic beverages"
+  },
+  "bottlers_and_beverage_di": {
+   "parent": "beverages",
+   "label": "Bottlers and beverage distributors",
+   "def": "Bottlers and beverage distributors"
+  },
+  "packaged_food_with_bever": {
+   "parent": "packaged_food_and_nu",
+   "label": "Packaged food with beverage lines",
+   "def": "Packaged food with beverage lines"
+  },
+  "dairy_and_plant_based_dr": {
+   "parent": "packaged_food_and_nu",
+   "label": "Dairy and plant-based drinks",
+   "def": "Dairy and plant-based drinks"
+  },
+  "packaged_coffee_and_coff": {
+   "parent": "packaged_food_and_nu",
+   "label": "Packaged coffee and coffee supply",
+   "def": "Packaged coffee and coffee supply"
+  },
+  "nutrition_and_protein_pr": {
+   "parent": "packaged_food_and_nu",
+   "label": "Nutrition and protein products",
+   "def": "Nutrition and protein products"
+  },
+  "fresh_produce_and_agri_f": {
+   "parent": "packaged_food_and_nu",
+   "label": "Fresh produce and agri food",
+   "def": "Fresh produce and agri food"
+  },
+  "coffee_and_beverage_shop": {
+   "parent": "restaurants_and_beve",
+   "label": "Coffee and beverage shops",
+   "def": "Coffee and beverage shops"
+  },
+  "quick_service_restaurant": {
+   "parent": "restaurants_and_beve",
+   "label": "Quick-service restaurant chains",
+   "def": "Quick-service restaurant chains"
+  }
+ },
+ "parents": {
+  "beverages": "Beverages",
+  "packaged_food_and_nu": "Packaged food and nutrition",
+  "restaurants_and_beve": "Restaurants and beverage shops"
+ },
+ "companies": {
+  "NASDAQ_COCO": {
+   "t": "COCO",
+   "name": "The Vita Coco Company",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Coconut-water brand owner with outsourced production; also makes private-label drinks for retailers.",
+   "gics": ""
+  },
+  "NASDAQ_FIZZ": {
+   "t": "FIZZ",
+   "name": "National Beverage",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Owns LaCroix, Shasta and Faygo and makes them in its own plants.",
+   "gics": ""
+  },
+  "NASDAQ_KDP": {
+   "t": "KDP",
+   "name": "Keurig Dr Pepper",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Owns and partly bottles Dr Pepper, Canada Dry and other soft-drink brands plus the Keurig coffee system; JDE Peet's added in 2026.",
+   "gics": ""
+  },
+  "NYSE_KO": {
+   "t": "KO",
+   "name": "The Coca-Cola Company",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Sells concentrate and finished drinks under its own brands; bottling is mostly refranchised to independent bottlers.",
+   "gics": ""
+  },
+  "NASDAQ_MNST": {
+   "t": "MNST",
+   "name": "Monster Beverage",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Energy-drink brand owner; manufacturing outsourced and distribution through Coca-Cola bottlers.",
+   "gics": ""
+  },
+  "NASDAQ_PEP": {
+   "t": "PEP",
+   "name": "PepsiCo",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Owns Pepsi, Gatorade and other drink brands; about 40% of revenue is beverages, the rest is Frito-Lay and Quaker snacks and food.",
+   "gics": ""
+  },
+  "NASDAQ_CELH": {
+   "t": "CELH",
+   "name": "Celsius Holdings",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Energy and functional drink brands (Celsius, Alani Nu, Rockstar US/Canada); outsourced production, PepsiCo distribution.",
+   "gics": ""
+  },
+  "NASDAQ_SUJA": {
+   "t": "SUJA",
+   "name": "Suja Life",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Cold-pressed juice and functional drink brands made in its own plant.",
+   "gics": ""
+  },
+  "NYSE_ZVIA": {
+   "t": "ZVIA",
+   "name": "Zevia",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Zero-sugar soda brand; outsourced production.",
+   "gics": ""
+  },
+  "XLON_BAG": {
+   "t": "BAG",
+   "name": "A.G. Barr",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Owns IRN-BRU, Rubicon and other UK soft-drink brands and makes them itself.",
+   "gics": ""
+  },
+  "XLON_FEVR": {
+   "t": "FEVR",
+   "name": "Fevertree Drinks",
+   "tag": "branded_non_alcoholic_be",
+   "why": "Premium mixer brand; outsourced bottling.",
+   "gics": ""
+  },
+  "XLON_CCH": {
+   "t": "CCH",
+   "name": "Coca-Cola HBC",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Coca-Cola bottler for 29 countries in Europe and Africa (Nigeria, Egypt; CCBA added in 2026).",
+   "gics": ""
+  },
+  "NASDAQ_COKE": {
+   "t": "COKE",
+   "name": "Coca-Cola Consolidated",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Largest US Coca-Cola bottler (Southeast and Mid-Atlantic territories).",
+   "gics": ""
+  },
+  "NYSE_FMX": {
+   "t": "FMX",
+   "name": "FEMSA",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Holding company that consolidates Coca-Cola FEMSA (the largest Coca-Cola bottler by volume) and runs OXXO convenience stores; retail is now the larger part of revenue, so the tag is approximate.",
+   "gics": ""
+  },
+  "NASDAQ_CCEP": {
+   "t": "CCEP",
+   "name": "Coca-Cola Europacific Partners",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Coca-Cola bottler for Western Europe, Australia/Pacific and Southeast Asia.",
+   "gics": ""
+  },
+  "NYSE_PRMB": {
+   "t": "PRMB",
+   "name": "Primo Brands",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Spring-water brands (Poland Spring, Pure Life) with its own sourcing, bottling and home/office delivery network.",
+   "gics": ""
+  },
+  "NYSE_AKO.B": {
+   "t": "AKO.B",
+   "name": "Embotelladora Andina",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Coca-Cola bottler for Chile, Argentina, Brazil and Paraguay.",
+   "gics": ""
+  },
+  "NYSE_KOF": {
+   "t": "KOF",
+   "name": "Coca-Cola FEMSA",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Coca-Cola bottler for Mexico, Brazil and other Latin American territories.",
+   "gics": ""
+  },
+  "XPRA_KOFOL": {
+   "t": "KOFOL",
+   "name": "Kofola CeskoSlovensko",
+   "tag": "bottlers_and_beverage_di",
+   "why": "Central European soft-drink maker with its own brands and the PepsiCo bottling licence in Czechia and Slovakia.",
+   "gics": ""
+  },
+  "NYSE_CAG": {
+   "t": "CAG",
+   "name": "Conagra Brands",
+   "tag": "packaged_food_with_bever",
+   "why": "Frozen and shelf-stable packaged food; Swiss Miss cocoa is a small part.",
+   "gics": ""
+  },
+  "NASDAQ_KHC": {
+   "t": "KHC",
+   "name": "The Kraft Heinz Company",
+   "tag": "packaged_food_with_bever",
+   "why": "Packaged food group; Maxwell House, Kool-Aid and MiO drinks are a small part.",
+   "gics": ""
+  },
+  "NASDAQ_CPB": {
+   "t": "CPB",
+   "name": "The Campbell's Company",
+   "tag": "packaged_food_with_bever",
+   "why": "Soups, sauces and snacks; V8 juice is a small part.",
+   "gics": ""
+  },
+  "NASDAQ_JJSF": {
+   "t": "JJSF",
+   "name": "J&J Snack Foods",
+   "tag": "packaged_food_with_bever",
+   "why": "Frozen snacks for food service and retail plus ICEE frozen beverages.",
+   "gics": ""
+  },
+  "NYSE_SJM": {
+   "t": "SJM",
+   "name": "The J. M. Smucker Company",
+   "tag": "packaged_food_with_bever",
+   "why": "Packaged coffee (Folgers, Cafe Bustelo, Dunkin') is the largest segment; also sweet baked goods, spreads and pet food.",
+   "gics": ""
+  },
+  "NYSE_BGS": {
+   "t": "BGS",
+   "name": "B&G Foods",
+   "tag": "packaged_food_with_bever",
+   "why": "Shelf-stable and frozen packaged food brands.",
+   "gics": ""
+  },
+  "NYSE_FLO": {
+   "t": "FLO",
+   "name": "Flowers Foods",
+   "tag": "packaged_food_with_bever",
+   "why": "Packaged bread and baked goods.",
+   "gics": ""
+  },
+  "NYSE_GIS": {
+   "t": "GIS",
+   "name": "General Mills",
+   "tag": "packaged_food_with_bever",
+   "why": "Cereal, snacks, baking, pet food and food service.",
+   "gics": ""
+  },
+  "NASDAQ_HAIN": {
+   "t": "HAIN",
+   "name": "The Hain Celestial Group",
+   "tag": "packaged_food_with_bever",
+   "why": "Natural and organic packaged food and drinks (Celestial Seasonings tea).",
+   "gics": ""
+  },
+  "NYSE_HRL": {
+   "t": "HRL",
+   "name": "Hormel Foods",
+   "tag": "packaged_food_with_bever",
+   "why": "Branded meat and packaged food.",
+   "gics": ""
+  },
+  "NYSE_HSY": {
+   "t": "HSY",
+   "name": "The Hershey Company",
+   "tag": "packaged_food_with_bever",
+   "why": "Chocolate, candy and salty snacks.",
+   "gics": ""
+  },
+  "XSWX_LISN": {
+   "t": "LISN",
+   "name": "Lindt & Sprungli",
+   "tag": "packaged_food_with_bever",
+   "why": "Premium chocolate.",
+   "gics": ""
+  },
+  "NASDAQ_MDLZ": {
+   "t": "MDLZ",
+   "name": "Mondelez International",
+   "tag": "packaged_food_with_bever",
+   "why": "Biscuits, chocolate and candy.",
+   "gics": ""
+  },
+  "NYSE_MKC": {
+   "t": "MKC",
+   "name": "McCormick",
+   "tag": "packaged_food_with_bever",
+   "why": "Spices, seasonings and flavours for retail and food makers.",
+   "gics": ""
+  },
+  "XSWX_NESN": {
+   "t": "NESN",
+   "name": "Nestle",
+   "tag": "packaged_food_with_bever",
+   "why": "Largest food company; coffee (Nescafe, Nespresso, Starbucks at-home) and water are large parts.",
+   "gics": ""
+  },
+  "NASDAQ_SENEA": {
+   "t": "SENEA",
+   "name": "Seneca Foods",
+   "tag": "packaged_food_with_bever",
+   "why": "Canned and frozen vegetables and fruit, mostly private label.",
+   "gics": ""
+  },
+  "NYSE_TR": {
+   "t": "TR",
+   "name": "Tootsie Roll Industries",
+   "tag": "packaged_food_with_bever",
+   "why": "Candy.",
+   "gics": ""
+  },
+  "NYSE_POST": {
+   "t": "POST",
+   "name": "Post Holdings",
+   "tag": "packaged_food_with_bever",
+   "why": "Cereal, refrigerated food, pet food and food service; spun off BellRing in 2022.",
+   "gics": ""
+  },
+  "NASDAQ_LWAY": {
+   "t": "LWAY",
+   "name": "Lifeway Foods",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Kefir and other cultured dairy drinks made in its own plants.",
+   "gics": ""
+  },
+  "NASDAQ_OTLY": {
+   "t": "OTLY",
+   "name": "Oatly Group",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Oat-based milk alternatives, made in own and partner plants.",
+   "gics": ""
+  },
+  "XPAR_BN": {
+   "t": "BN",
+   "name": "Danone",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Dairy and plant-based products are the largest segment; also specialised nutrition and Evian/Volvic water.",
+   "gics": ""
+  },
+  "XSWX_EMMN": {
+   "t": "EMMN",
+   "name": "Emmi",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Swiss dairy processor; milk drinks, yogurt, cheese and ready-to-drink coffee.",
+   "gics": ""
+  },
+  "XTSE_SAP": {
+   "t": "SAP",
+   "name": "Saputo",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Dairy processor (milk, cheese, cultured products) in North America, Europe and Australia.",
+   "gics": ""
+  },
+  "NYSE_BRCC": {
+   "t": "BRCC",
+   "name": "BRC Inc. (Black Rifle Coffee)",
+   "tag": "packaged_coffee_and_coff",
+   "why": "Branded packaged coffee and ready-to-drink coffee sold through grocery, online and a few shops.",
+   "gics": ""
+  },
+  "NASDAQ_WEST": {
+   "t": "WEST",
+   "name": "Westrock Coffee",
+   "tag": "packaged_coffee_and_coff",
+   "why": "Business-to-business coffee, tea and extract roaster and ready-to-drink maker for retail and restaurant brands.",
+   "gics": ""
+  },
+  "NASDAQ_JVA": {
+   "t": "JVA",
+   "name": "Coffee Holding",
+   "tag": "packaged_coffee_and_coff",
+   "why": "Wholesale green and roasted coffee and private-label roasting.",
+   "gics": ""
+  },
+  "NASDAQ_SMPL": {
+   "t": "SMPL",
+   "name": "The Simply Good Foods Company",
+   "tag": "nutrition_and_protein_pr",
+   "why": "Quest, Atkins and OWYN protein bars, snacks and shakes; outsourced production.",
+   "gics": ""
+  },
+  "NYSE_BRBR": {
+   "t": "BRBR",
+   "name": "BellRing Brands",
+   "tag": "nutrition_and_protein_pr",
+   "why": "Premier Protein ready-to-drink shakes and Dymatize powders; outsourced production.",
+   "gics": ""
+  },
+  "XDUB_GL9": {
+   "t": "GL9",
+   "name": "Glanbia",
+   "tag": "nutrition_and_protein_pr",
+   "why": "Optimum Nutrition and other sports-nutrition brands plus dairy nutrition ingredients.",
+   "gics": ""
+  },
+  "NYSE_HLF": {
+   "t": "HLF",
+   "name": "Herbalife",
+   "tag": "nutrition_and_protein_pr",
+   "why": "Protein shakes and supplements sold through direct selling.",
+   "gics": ""
+  },
+  "NYSE_MED": {
+   "t": "MED",
+   "name": "Medifast",
+   "tag": "nutrition_and_protein_pr",
+   "why": "Weight-management meal replacements sold through coaches.",
+   "gics": ""
+  },
+  "NYSE_USNA": {
+   "t": "USNA",
+   "name": "USANA Health Sciences",
+   "tag": "nutrition_and_protein_pr",
+   "why": "Supplements and nutrition products sold through direct selling.",
+   "gics": ""
+  },
+  "NYSE_DMC": {
+   "t": "DMC",
+   "name": "Del Monte (formerly Fresh Del Monte)",
+   "tag": "fresh_produce_and_agri_f",
+   "why": "Grows and distributes bananas, pineapples and fresh-cut produce; juice and packaged products are small.",
+   "gics": ""
+  },
+  "NASDAQ_AVO": {
+   "t": "AVO",
+   "name": "Mission Produce",
+   "tag": "fresh_produce_and_agri_f",
+   "why": "Avocado sourcing, ripening and distribution.",
+   "gics": ""
+  },
+  "NYSE_DOLE": {
+   "t": "DOLE",
+   "name": "Dole plc",
+   "tag": "fresh_produce_and_agri_f",
+   "why": "Fresh fruit and vegetables grower and distributor.",
+   "gics": ""
+  },
+  "NASDAQ_LMNR": {
+   "t": "LMNR",
+   "name": "Limoneira",
+   "tag": "fresh_produce_and_agri_f",
+   "why": "Lemon and avocado grower and packer.",
+   "gics": ""
+  },
+  "NASDAQ_SBUX": {
+   "t": "SBUX",
+   "name": "Starbucks",
+   "tag": "coffee_and_beverage_shop",
+   "why": "Company-run and licensed coffee shops plus packaged-coffee licensing.",
+   "gics": ""
+  },
+  "NASDAQ_BRCB": {
+   "t": "BRCB",
+   "name": "Black Rock Coffee Bar",
+   "tag": "coffee_and_beverage_shop",
+   "why": "Coffee and energy-drink shops with drive-throughs.",
+   "gics": ""
+  },
+  "NYSE_BROS": {
+   "t": "BROS",
+   "name": "Dutch Bros",
+   "tag": "coffee_and_beverage_shop",
+   "why": "Drive-through coffee and energy-drink shops, mostly company-run.",
+   "gics": ""
+  },
+  "NASDAQ_DNUT": {
+   "t": "DNUT",
+   "name": "Krispy Kreme",
+   "tag": "coffee_and_beverage_shop",
+   "why": "Doughnut and coffee shops plus delivered doughnuts to grocery.",
+   "gics": ""
+  },
+  "NASDAQ_THCH": {
+   "t": "THCH",
+   "name": "TH International (Tims China)",
+   "tag": "coffee_and_beverage_shop",
+   "why": "Tim Hortons coffee shops in China.",
+   "gics": ""
+  },
+  "NYSE_CMG": {
+   "t": "CMG",
+   "name": "Chipotle Mexican Grill",
+   "tag": "quick_service_restaurant",
+   "why": "Fast-casual Mexican food; all company-run.",
+   "gics": ""
+  },
+  "NASDAQ_DPZ": {
+   "t": "DPZ",
+   "name": "Domino's Pizza",
+   "tag": "quick_service_restaurant",
+   "why": "Pizza delivery and carry-out; mostly franchised, with its own supply chain.",
+   "gics": ""
+  },
+  "NASDAQ_JACK": {
+   "t": "JACK",
+   "name": "Jack in the Box",
+   "tag": "quick_service_restaurant",
+   "why": "Quick-service burgers; mostly franchised.",
+   "gics": ""
+  },
+  "NYSE_MCD": {
+   "t": "MCD",
+   "name": "McDonald's",
+   "tag": "quick_service_restaurant",
+   "why": "Quick-service burgers; mostly franchised.",
+   "gics": ""
+  },
+  "NYSE_QSR": {
+   "t": "QSR",
+   "name": "Restaurant Brands International",
+   "tag": "quick_service_restaurant",
+   "why": "Tim Hortons, Burger King, Popeyes and Firehouse Subs; mostly franchised.",
+   "gics": ""
+  },
+  "NASDAQ_WEN": {
+   "t": "WEN",
+   "name": "The Wendy's Company",
+   "tag": "quick_service_restaurant",
+   "why": "Quick-service burgers; mostly franchised.",
+   "gics": ""
+  },
+  "NYSE_YUM": {
+   "t": "YUM",
+   "name": "Yum! Brands",
+   "tag": "quick_service_restaurant",
+   "why": "KFC, Taco Bell and Pizza Hut; almost all franchised.",
+   "gics": "",
+   "window_from": 2017,
+   "window_why": "Yum China spin-off Nov 2016; FY2017 is the first year with both balance sheets after it"
+  },
+  "NYSE_YUMC": {
+   "t": "YUMC",
+   "name": "Yum China",
+   "tag": "quick_service_restaurant",
+   "why": "KFC and Pizza Hut in China, mostly company-run; also K Coffee.",
+   "gics": ""
+  }
+ },
+ "excluded": {
+  "NYSE_SAM": "Boston Beer: mostly alcoholic drinks.",
+  "OTCM_LKNCY": "Luckin Coffee: not covered by Fiscal.ai under the keys tested.",
+  "XHKG_9633": "Nongfu Spring: Fiscal.ai has no financial data.",
+  "XNSE_VBL": "Varun Beverages: Fiscal.ai has no financial data.",
+  "Suntory / Ito En / Coca-Cola Bottlers Japan": "Japanese listings not covered by Fiscal.ai under the keys tested.",
+  "Arca Continental / Coca-Cola Icecek": "Not covered by Fiscal.ai under the keys tested.",
+  "Acquired names": "Kellanova, WK Kellogg, SunOpta, JDE Peet's, Britvic, Farmer Bros: acquired; no longer listed.",
+  "BUD / ABEV / CCU": "Alcohol-led."
+ }
+}

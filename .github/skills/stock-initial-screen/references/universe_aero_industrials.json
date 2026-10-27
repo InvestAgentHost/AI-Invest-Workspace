@@ -1,0 +1,591 @@
+{
+ "name": "Aerospace and industrial components",
+ "as_of": "2026-10-21",
+ "status": "draft: tags proposed by Claude; carbon tag and Japanese names added on the 22 Oct 2026 run, rebuilt from that page on 23 Oct 2026",
+ "min_peers": 6,
+ "tags": {
+  "engines": {
+   "parent": "aero_supply",
+   "label": "Engines and engine programmes",
+   "def": "Engine makers and risk-and-revenue-sharing partners: sell engines or engine modules at low or negative margin and earn on spare parts and service over the engine's life."
+  },
+  "components": {
+   "parent": "aero_supply",
+   "label": "Aero components, systems and materials",
+   "def": "Proprietary parts, systems and specialty materials sold to aircraft and engine makers and to airlines; earnings tied to aircraft build rates and the installed fleet."
+  },
+  "aftermarket": {
+   "parent": "aero_supply",
+   "label": "Aftermarket services and distribution",
+   "def": "Maintenance, repair and overhaul, used and new parts distribution; earnings tied to flight hours and shop visits, not to new aircraft builds."
+  },
+  "airframers": {
+   "parent": "aero_oem_defence",
+   "label": "Aircraft makers",
+   "def": "Final assembly of commercial, business or military aircraft."
+  },
+  "defence": {
+   "parent": "aero_oem_defence",
+   "label": "Defence primes and diversified A&D",
+   "def": "Prime contractors whose largest customer is a government defence budget, and diversified aerospace and defence groups."
+  },
+  "motion": {
+   "parent": "industrial_components",
+   "label": "Motion and power transmission",
+   "def": "Bearings, gears, belts, hydraulics, pneumatics and motion control sold to industrial machinery makers and as replacement parts."
+  },
+  "flow": {
+   "parent": "industrial_components",
+   "label": "Flow control and fluid handling",
+   "def": "Pumps, valves, actuators, seals and dispensing equipment for process industries; a large share is replacement and service."
+  },
+  "instruments": {
+   "parent": "industrial_components",
+   "label": "Instruments and electromechanical",
+   "def": "Test, measurement and analytical instruments and engineered electromechanical components sold to process, aerospace, medical, power and industrial customers; a large share is niche, high-margin and acquisition-built."
+  },
+  "carbon": {
+   "parent": "industrial_components",
+   "label": "Carbon, fibres and composite materials",
+   "def": "Carbon fibre, graphite, composite and engineered-fabric materials sold to aerospace, industrial and energy customers; earnings tied to capacity utilisation and input costs."
+  }
+ },
+ "parents": {
+  "aero_supply": "Commercial aerospace supply chain",
+  "aero_oem_defence": "Aircraft makers and defence",
+  "industrial_components": "Industrial components"
+ },
+ "companies": {
+  "NYSE_GE": {
+   "t": "GE",
+   "name": "GE Aerospace",
+   "tag": "engines",
+   "why": "Commercial and military jet engines; services are most of profit. History before FY2024 includes GE Vernova and GE HealthCare.",
+   "gics": "Aerospace & Defense",
+   "window_from": 2025,
+   "window_why": "GE HealthCare spin-off (Jan 2023) and GE Vernova spin-off (Apr 2024); FY2025 is the first year with both balance sheets on GE Aerospace alone"
+  },
+  "XLON_RR.": {
+   "t": "RR.",
+   "name": "Rolls-Royce",
+   "tag": "engines",
+   "why": "Civil Aerospace (wide-body engines, paid per flight hour) is the largest segment; Defence and Power Systems are smaller.",
+   "gics": "Aerospace & Defense"
+  },
+  "XPAR_SAF": {
+   "t": "SAF",
+   "name": "Safran",
+   "tag": "engines",
+   "why": "Propulsion (CFM with GE) is the largest segment; equipment and interiors are the rest.",
+   "gics": "Aerospace & Defense"
+  },
+  "XETR_MTX": {
+   "t": "MTX",
+   "name": "MTU Aero Engines",
+   "tag": "engines",
+   "why": "Engine module partner on GTF, V2500, GE9X and others, plus engine MRO.",
+   "gics": "Aerospace & Defense"
+  },
+  "XLON_MRO": {
+   "t": "MRO",
+   "name": "Melrose (GKN Aerospace)",
+   "tag": "engines",
+   "why": "GKN Engines (risk-and-revenue-sharing engine parts) is the larger profit segment; Structures is the rest.",
+   "gics": "Aerospace & Defense",
+   "window_from": 2024,
+   "window_why": "Dowlais (GKN Automotive and Powder Metallurgy) demerged Apr 2023; FY2024 is the first year with both balance sheets on aerospace alone"
+  },
+  "NYSE_TDG": {
+   "t": "TDG",
+   "name": "TransDigm",
+   "tag": "components",
+   "why": "Proprietary sole-source parts; about half of revenue from the aftermarket.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_HEI": {
+   "t": "HEI",
+   "name": "HEICO",
+   "tag": "components",
+   "why": "Flight Support (approved replacement parts and repair) and Electronic Technologies; parts maker more than service provider.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_HWM": {
+   "t": "HWM",
+   "name": "Howmet Aerospace",
+   "tag": "components",
+   "why": "Engine castings, fasteners and structures for engine and aircraft makers.",
+   "gics": "Aerospace & Defense",
+   "window_from": 2021,
+   "window_why": "Arconic Corporation (rolled products) separated Apr 2020; FY2021 is the first year with both balance sheets on Howmet alone"
+  },
+  "NASDAQ_WWD": {
+   "t": "WWD",
+   "name": "Woodward",
+   "tag": "components",
+   "why": "Fuel, actuation and control systems; Aerospace is the larger segment, Industrial the rest.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_CW": {
+   "t": "CW",
+   "name": "Curtiss-Wright",
+   "tag": "components",
+   "why": "Engineered components for defence electronics, naval and aerospace; mostly defence, but sells components rather than platforms.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_MOG.A": {
+   "t": "MOG.A",
+   "name": "Moog",
+   "tag": "components",
+   "why": "Flight controls and motion components for military and commercial aircraft and space.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_HXL": {
+   "t": "HXL",
+   "name": "Hexcel",
+   "tag": "carbon",
+   "why": "Carbon fibre and composite materials, mostly for commercial aircraft.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_DCO": {
+   "t": "DCO",
+   "name": "Ducommun",
+   "tag": "components",
+   "why": "Electronic and structural assemblies built to customer designs for aerospace and defence.",
+   "gics": "Aerospace & Defense"
+  },
+  "NASDAQ_ATRO": {
+   "t": "ATRO",
+   "name": "Astronics",
+   "tag": "components",
+   "why": "Aircraft power, lighting and connectivity systems; Test Systems is small.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_LOAR": {
+   "t": "LOAR",
+   "name": "Loar Holdings",
+   "tag": "components",
+   "why": "Proprietary niche aircraft components; listed 2024.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_ATI": {
+   "t": "ATI",
+   "name": "ATI",
+   "tag": "components",
+   "why": "Titanium and nickel alloys and forgings; aerospace and defence are most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_CRS": {
+   "t": "CRS",
+   "name": "Carpenter Technology",
+   "tag": "components",
+   "why": "Specialty alloys; aerospace engines and structures are the largest end market.",
+   "gics": "Aerospace & Defense"
+  },
+  "XLON_SNR": {
+   "t": "SNR",
+   "name": "Senior plc",
+   "tag": "components",
+   "why": "Fluid conveyance and structural parts; Aerospace is the larger division, Flexonics the rest.",
+   "gics": "Aerospace & Defense"
+  },
+  "TSX_MAL": {
+   "t": "MAL",
+   "name": "Magellan Aerospace",
+   "tag": "components",
+   "why": "Aero-engine and aerostructure components built to customer designs.",
+   "gics": "Aerospace & Defense"
+  },
+  "NASDAQ_HONA": {
+   "t": "HONA",
+   "name": "Honeywell Aerospace",
+   "tag": "components",
+   "why": "Avionics, engines for business jets, auxiliary power units and other aircraft systems; separated from Honeywell in 2026.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_AIR": {
+   "t": "AIR",
+   "name": "AAR",
+   "tag": "aftermarket",
+   "why": "Parts supply and distribution, repair and engineering, integrated solutions.",
+   "gics": "Aerospace & Defense"
+  },
+  "NASDAQ_VSEC": {
+   "t": "VSEC",
+   "name": "VSE",
+   "tag": "aftermarket",
+   "why": "Aviation parts distribution and repair; pure aviation aftermarket since the 2024–2025 divestitures.",
+   "gics": "Aerospace & Defense",
+   "window_from": 2024,
+   "window_why": "Federal & Defense sold in 2024 and Fleet (Wheeler) sold in 2025, both shown as discontinued operations"
+  },
+  "NYSE_SARO": {
+   "t": "SARO",
+   "name": "StandardAero",
+   "tag": "aftermarket",
+   "why": "Independent engine maintenance, repair and overhaul and component repair.",
+   "gics": "Aerospace & Defense"
+  },
+  "NASDAQ_ASLE": {
+   "t": "ASLE",
+   "name": "AerSale",
+   "tag": "aftermarket",
+   "why": "Used serviceable parts from retired aircraft and engines, plus MRO.",
+   "gics": "Aerospace & Defense"
+  },
+  "NASDAQ_TATT": {
+   "t": "TATT",
+   "name": "TAT Technologies",
+   "tag": "aftermarket",
+   "why": "MRO for heat exchangers, auxiliary power units and landing gear; a small OEM heat-transfer business.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_BA": {
+   "t": "BA",
+   "name": "Boeing",
+   "tag": "airframers",
+   "why": "Commercial aircraft is the largest segment.",
+   "gics": "Aerospace & Defense"
+  },
+  "XPAR_AIR": {
+   "t": "AIR.PA",
+   "name": "Airbus",
+   "tag": "airframers",
+   "why": "Commercial aircraft is the largest segment.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_ERJ": {
+   "t": "ERJ",
+   "name": "Embraer",
+   "tag": "airframers",
+   "why": "Regional and business jets.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_TXT": {
+   "t": "TXT",
+   "name": "Textron",
+   "tag": "airframers",
+   "why": "Cessna and Beechcraft aircraft and Bell helicopters are the largest segments.",
+   "gics": "Aerospace & Defense"
+  },
+  "TSX_BBD.B": {
+   "t": "BBD.B",
+   "name": "Bombardier",
+   "tag": "airframers",
+   "why": "Business jets only since the 2020–2021 divestitures.",
+   "gics": "Aerospace & Defense"
+  },
+  "XPAR_AM": {
+   "t": "AM",
+   "name": "Dassault Aviation",
+   "tag": "airframers",
+   "why": "Rafale fighters and Falcon business jets.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_RTX": {
+   "t": "RTX",
+   "name": "RTX",
+   "tag": "defence",
+   "why": "Collins, Pratt & Whitney and Raytheon in about equal parts; a diversified A&D group rather than a pure engine or component maker.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_LMT": {
+   "t": "LMT",
+   "name": "Lockheed Martin",
+   "tag": "defence",
+   "why": "US government is most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_NOC": {
+   "t": "NOC",
+   "name": "Northrop Grumman",
+   "tag": "defence",
+   "why": "US government is most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_GD": {
+   "t": "GD",
+   "name": "General Dynamics",
+   "tag": "defence",
+   "why": "Defence segments plus Gulfstream business jets.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_LHX": {
+   "t": "LHX",
+   "name": "L3Harris",
+   "tag": "defence",
+   "why": "Defence electronics and space; US government is most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_HII": {
+   "t": "HII",
+   "name": "Huntington Ingalls",
+   "tag": "defence",
+   "why": "Naval shipbuilding for the US Navy.",
+   "gics": "Aerospace & Defense"
+  },
+  "XLON_BA.": {
+   "t": "BA.",
+   "name": "BAE Systems",
+   "tag": "defence",
+   "why": "Defence platforms and electronics for the UK, US and Saudi governments.",
+   "gics": "Aerospace & Defense"
+  },
+  "XETR_RHM": {
+   "t": "RHM",
+   "name": "Rheinmetall",
+   "tag": "defence",
+   "why": "Vehicles, weapons and ammunition; automotive is a shrinking minority.",
+   "gics": "Aerospace & Defense"
+  },
+  "XPAR_HO": {
+   "t": "HO",
+   "name": "Thales",
+   "tag": "defence",
+   "why": "Defence and security is the largest segment; aerospace electronics and digital identity are the rest.",
+   "gics": "Aerospace & Defense"
+  },
+  "XMIL_LDO": {
+   "t": "LDO",
+   "name": "Leonardo",
+   "tag": "defence",
+   "why": "Helicopters, defence electronics, aircraft and aerostructures.",
+   "gics": "Aerospace & Defense"
+  },
+  "XSTO_SAAB.B": {
+   "t": "SAAB.B",
+   "name": "Saab",
+   "tag": "defence",
+   "why": "Fighters, missiles, sensors and submarines.",
+   "gics": "Aerospace & Defense"
+  },
+  "XOSL_KOG": {
+   "t": "KOG",
+   "name": "Kongsberg",
+   "tag": "defence",
+   "why": "Defence and aerospace after the April 2026 demerger of Kongsberg Maritime.",
+   "gics": "Aerospace & Defense",
+   "window_from": 2026,
+   "window_why": "Kongsberg Maritime demerged Apr 2026; no full year on the current perimeter yet"
+  },
+  "NYSE_RBC": {
+   "t": "RBC",
+   "name": "RBC Bearings",
+   "tag": "motion",
+   "why": "Bearings and power transmission (Dodge); Industrial is the larger segment, Aerospace/Defense the rest.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_PH": {
+   "t": "PH",
+   "name": "Parker-Hannifin",
+   "tag": "motion",
+   "why": "Hydraulics, pneumatics, filtration and seals; Diversified Industrial is the larger segment, Aerospace Systems the rest.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_TKR": {
+   "t": "TKR",
+   "name": "Timken",
+   "tag": "motion",
+   "why": "Engineered bearings and industrial motion.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_RRX": {
+   "t": "RRX",
+   "name": "Regal Rexnord",
+   "tag": "motion",
+   "why": "Mechanical power transmission and electric motors.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_GTES": {
+   "t": "GTES",
+   "name": "Gates Industrial",
+   "tag": "motion",
+   "why": "Belts, hoses and fluid power; most revenue is replacement.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XSTO_SKF.B": {
+   "t": "SKF.B",
+   "name": "SKF",
+   "tag": "motion",
+   "why": "Rolling bearings, seals and lubrication.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_EPAC": {
+   "t": "EPAC",
+   "name": "Enerpac Tool Group",
+   "tag": "motion",
+   "why": "Hydraulic cylinders, pumps and torque tools.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_CR": {
+   "t": "CR",
+   "name": "Crane Company",
+   "tag": "flow",
+   "why": "Process Flow Technologies (valves, pumps) is the larger segment; Aerospace & Electronics the rest.",
+   "gics": "Industrial Machinery & Supplies & Components",
+   "window_from": 2023,
+   "window_why": "Crane Holdings separated into Crane Company and Crane NXT in Apr 2023"
+  },
+  "NYSE_ITT": {
+   "t": "ITT",
+   "name": "ITT",
+   "tag": "flow",
+   "why": "Pumps and valves, connectors and motion (brake pads); flow is the largest segment.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_IEX": {
+   "t": "IEX",
+   "name": "IDEX",
+   "tag": "flow",
+   "why": "Pumps, flow meters and fluid-handling components.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_FLS": {
+   "t": "FLS",
+   "name": "Flowserve",
+   "tag": "flow",
+   "why": "Pumps, seals and valves for process industries.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NASDAQ_NDSN": {
+   "t": "NDSN",
+   "name": "Nordson",
+   "tag": "flow",
+   "why": "Precision dispensing of adhesives, coatings and fluids.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_GGG": {
+   "t": "GGG",
+   "name": "Graco",
+   "tag": "flow",
+   "why": "Fluid-handling pumps and spray equipment.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_ROR": {
+   "t": "ROR",
+   "name": "Rotork",
+   "tag": "flow",
+   "why": "Valve actuators and flow control.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_SPX": {
+   "t": "SPX",
+   "name": "Spirax Group",
+   "tag": "flow",
+   "why": "Steam systems, thermal energy and peristaltic pumps.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_IMI": {
+   "t": "IMI",
+   "name": "IMI",
+   "tag": "flow",
+   "why": "Valves, actuators and pneumatic motion control.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XSTO_ALFA": {
+   "t": "ALFA",
+   "name": "Alfa Laval",
+   "tag": "flow",
+   "why": "Heat exchangers, separators and fluid-handling pumps.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_NPO": {
+   "t": "NPO",
+   "name": "Enpro",
+   "tag": "flow",
+   "why": "Seals and engineered components for harsh environments.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_ESE": {
+   "t": "ESE",
+   "name": "ESCO Technologies",
+   "tag": "components",
+   "why": "Largest segment is Aerospace & Defense (filtration, composites, naval signature management after the 2025 Ultra Maritime purchase); also utility test instruments (Doble) and RF test. Tagged to aero components on the largest segment; draft, to confirm with the segment mix.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_AME": {
+   "t": "AME",
+   "name": "AMETEK",
+   "tag": "instruments",
+   "why": "Electronic instruments (analytical, test, aerospace, power) and electromechanical components; not mainly aerospace, so a new tag under industrial components. With fewer than 6 tagged peers the Industry group widens to all industrial components (motion, flow, instruments).",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NASDAQ_BELFB": {
+   "t": "BELFB",
+   "name": "Bel Fuse",
+   "tag": "instruments",
+   "why": "Engineered electronic components (power supplies and converters, connectors, magnetics) sold to aerospace, defence, networking, data-centre and industrial customers; not mainly aerospace, so placed with AMETEK under instruments and electromechanical. With fewer than 6 tagged peers the Industry group widens to all industrial components.",
+   "gics": "Electronic Components"
+  },
+  "TSE_3402": {
+   "t": "3402.T",
+   "name": "Toray Industries",
+   "tag": "carbon",
+   "why": "Fibres and textiles, performance chemicals and carbon fibre composites (the world's largest carbon-fibre maker; Boeing and Airbus supplier); aerospace is a small share of group sales, so tagged with carbon, fibre and composite makers. Data from Japanese filings (FocusAlpha), not Fiscal.ai.",
+   "gics": ""
+  },
+  "TSE_5302": {
+   "t": "5302.T",
+   "name": "Nippon Carbon",
+   "tag": "carbon",
+   "why": "Graphite electrodes and fine carbon for steel and industry, plus silicon-carbide fibre (Nicalon, through a joint venture with GE and Safran for engine ceramic composites). Data from Japanese filings (FocusAlpha), not Fiscal.ai.",
+   "gics": ""
+  },
+  "NYSE_AIN": {
+   "t": "AIN",
+   "name": "Albany International",
+   "tag": "carbon",
+   "why": "Engineered composites for aerospace (3D-woven LEAP fan blades and cases) plus paper-machine clothing.",
+   "gics": ""
+  },
+  "NYSE_EAF": {
+   "t": "EAF",
+   "name": "GrafTech International",
+   "tag": "carbon",
+   "why": "Graphite electrodes for electric arc furnace steelmaking and petroleum needle coke; the closest listed peer of Nippon Carbon's electrode business.",
+   "gics": ""
+  },
+  "XSWX_GURN": {
+   "t": "GURN",
+   "name": "Gurit",
+   "tag": "carbon",
+   "why": "Composite materials (core materials, prepregs) and kitting, mainly for wind blades, plus aerospace and marine.",
+   "gics": ""
+  },
+  "XETR_SGL": {
+   "t": "SGL",
+   "name": "SGL Carbon",
+   "tag": "carbon",
+   "why": "Specialty graphite (semiconductor, battery), carbon fibres and composites; sold its graphite-electrode business to Showa Denko in 2017.",
+   "gics": ""
+  },
+  "XBRU_SYENS": {
+   "t": "SYENS",
+   "name": "Syensqo",
+   "tag": "carbon",
+   "why": "Specialty polymers and composite materials (carbon-fibre prepregs for aerospace) spun off from Solvay in December 2023; carve-out history from 2020.",
+   "gics": "",
+   "window_from": 2020,
+   "window_why": "Separated from Solvay in Dec 2023; earlier years are a carve-out"
+  },
+  "TSE_6268": {
+   "t": "6268.T",
+   "name": "Nabtesco",
+   "tag": "motion",
+   "why": "Precision reduction gears for robots, hydraulics, railway and aircraft flight-control equipment, marine controls and automatic doors; motion control is the largest profit pool. Data from Japanese filings (FocusAlpha), not Fiscal.ai.",
+   "gics": ""
+  },
+  "TSE_6479": {
+   "t": "6479.T",
+   "name": "MinebeaMitsumi",
+   "tag": "motion",
+   "why": "Miniature and small ball bearings (a large aerospace bearing supplier), rod-end and spherical bearings, motors, sensors, semiconductors and access products; bearings are the core profit pool. Data from Japanese filings (FocusAlpha), not Fiscal.ai.",
+   "gics": ""
+  }
+ },
+ "excluded": {
+  "NASDAQ_FTAI": "FTAI Aviation: engine aftermarket parts plus a large aircraft and engine leasing book; lessor balance sheets do not compare on return on capital (sector exclusion rule).",
+  "XETR_SHA0": "Schaeffler: most revenue is automotive parts (GICS Automotive Parts & Equipment).",
+  "NYSE_WTS": "Watts Water: building plumbing and water products (GICS Building Products), not process flow.",
+  "NASDAQ_HON": "Honeywell Technologies: industrial conglomerate after the 2026 aerospace separation."
+ }
+}

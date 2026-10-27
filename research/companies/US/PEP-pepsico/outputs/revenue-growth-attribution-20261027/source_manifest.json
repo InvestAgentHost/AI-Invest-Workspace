@@ -1,0 +1,209 @@
+{
+  "as_of": "2026-10-26",
+  "scope": "PepsiCo FY2016-FY2025 consolidated net revenue",
+  "workbook": "research/companies/US/PEP-pepsico/outputs/company-research-to-excel/PEP_model.xlsx",
+  "workbook_sha256": "76375c0a1ff077d99f61151b7c188b88b705bac1d59f9d4fb1c5d2f88013be16",
+  "workbook_locators": [
+    "Operating Metrics!C17:L32"
+  ],
+  "annual_sources": [
+    {
+      "year": 2016,
+      "source_id": "SEC-10K-2016-12-31",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747617000010/pepsico201610-k.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2016-12-31/document.md",
+      "prepared_sha256": "c4b73f0d2ad0560b38f3d78c77d3229f0559c76d2220435df9710bfc9e486329",
+      "raw_sha256": "83bef96eb1e450815cd06a8fbe5b295a0b15460ffd60fade17dd4bc8a0ac61a7",
+      "acquired_at": "2026-10-20T02:09:35.429755+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1652-1658; Total column/row",
+      "raw_total_bridge_excerpt": [
+        "2 %",
+        "2",
+        "(3)",
+        "—",
+        "(2)",
+        "1",
+        "— %"
+      ]
+    },
+    {
+      "year": 2017,
+      "source_id": "SEC-10K-2017-12-30",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747618000012/pepsico201710-k.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2017-12-30/document.md",
+      "prepared_sha256": "325fe6f4fc202495681ad11a23cf58230a343adf2c2c2079e858e0139eb4816d",
+      "raw_sha256": "0048913c7391fd088ab14305970517fdddb38a58e266441a986838f743a34daf",
+      "acquired_at": "2026-10-20T02:09:45.038792+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1541-1546; Total column/row",
+      "raw_total_bridge_excerpt": [
+        "— %",
+        "3",
+        "—",
+        "—",
+        "(1)",
+        "1 %"
+      ]
+    },
+    {
+      "year": 2018,
+      "source_id": "SEC-10K-2018-12-29",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747619000017/pepsico201810-k.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2018-12-29/document.md",
+      "prepared_sha256": "42e6bca2503c7da53b6a7f5de0f64e864ea066f5d1b86015ff97af50253d7dde",
+      "raw_sha256": "993c3ea8e83d3b47689296fd05f440390700f027da8846544031978bf79f9dcd",
+      "acquired_at": "2026-10-20T02:09:53.829330+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1515-1529; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 2 % | 1 1 — 4 | % 1 3 |"
+    },
+    {
+      "year": 2019,
+      "source_id": "SEC-10K-2019-12-28",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747620000015/pepsico201910-k.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2019-12-28/document.md",
+      "prepared_sha256": "dc0ae9c75951835223ef6c5c7b7964d334eab1294cf9958741569a3539e7875a",
+      "raw_sha256": "a2759215c6180f909805b1680de9a60698b3bde7970c452cb5d81b7fa5fce2e0",
+      "acquired_at": "2026-10-20T02:10:02.697586+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1202-1217; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 4 % | 2 (1) 4.5 | % 0.5 4 |"
+    },
+    {
+      "year": 2020,
+      "source_id": "SEC-10K-2020-12-26",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747621000007/pep-20201226.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2020-12-26/document.md",
+      "prepared_sha256": "805a5e6e4fa8692b539ac32d41f84e25affec38bbe2d441a5ba4f3f8332a6c7d",
+      "raw_sha256": "e06e6cf0738ee369fba8476e6656bf9cf7d3c6302f32fb997e4894b5a781a16d",
+      "acquired_at": "2026-10-20T02:10:09.689710+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 938-953; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 5 % | 2 (3) 4 | 4 % 2 2 |"
+    },
+    {
+      "year": 2021,
+      "source_id": "SEC-10K-2021-12-25",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747622000010/pep-20211225.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2021-12-25/document.md",
+      "prepared_sha256": "ff4f95956bcab0cac761dba954970ae6882900f0b287d2b9e8a732a1c4c4c1b0",
+      "raw_sha256": "d05f95e18094736b32f6e94a9fcd3fea2036bb74f69f64235afaf28e123980eb",
+      "acquired_at": "2026-10-20T02:10:16.661866+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 925-940; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 13 % | (1) (2) 10 | 10 % 4 5 |"
+    },
+    {
+      "year": 2022,
+      "source_id": "SEC-10K-2022-12-31",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747623000007/pep-20221231.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2022-12-31/document.md",
+      "prepared_sha256": "0e9e8c4228f5b7b055c90c135e31d95bb2078fc3e6654b22a1c972b91e5cd28c",
+      "raw_sha256": "a39020c3933a372c7f6c3df443b045a9a572f8821c680f7832be2ac29e002727",
+      "acquired_at": "2026-10-20T02:10:23.797117+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 970-985; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 9 % | 3 4 (1) 14 | 14 % — 14 |"
+    },
+    {
+      "year": 2023,
+      "source_id": "SEC-10K-2023-12-30",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000008/pep-20231230.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2023-12-30/document.md",
+      "prepared_sha256": "acca648e18aa24c3f096c92452174d1016caa699d9cd0c0f2eadaf821434460b",
+      "raw_sha256": "08f4e2d162f9909712945d3965d863026a49937c2560067946fb19652a7ea954",
+      "acquired_at": "2026-10-20T02:10:31.125568+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1025-1040; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 6 % | 2 — 1 9 % | (3) 13 |"
+    },
+    {
+      "year": 2024,
+      "source_id": "SEC-10K-2024-12-28",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2024-12-28/document.md",
+      "prepared_sha256": "fd7ac5076a688dd98efcb6e961b447283558e7f034ba16df81f205e9e6721b77",
+      "raw_sha256": "dba2f6ecbf024aa3a5da29957d3e93378d25f81a057791a89c47ed29d78ece58",
+      "acquired_at": "2026-10-20T02:10:49.713743+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1043-1058; Total column/row",
+      "raw_total_bridge_excerpt": "| Total — % | 1.5 — 2 % | (2) 4 |"
+    },
+    {
+      "year": 2025,
+      "source_id": "SEC-10K-2025-12-27",
+      "original_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm",
+      "prepared_path": "sources/companies/US/PEP-pepsico/sec/prepared-v3/SEC-10K-2025-12-27/document.md",
+      "prepared_sha256": "dad700f8afe6bac06d8f0fe17eb23525fb6e9fef16e70ef796372edab6935287",
+      "raw_sha256": "9b7dabfa9c5b3a6e44c1275335d4b586954a0d90ee7626b68c580603f5d728dc",
+      "acquired_at": "2026-10-20T02:11:03.003772+00:00",
+      "reviewed_as_of": "2026-10-26",
+      "locator": "document.md lines 1014-1028; Total column/row",
+      "raw_total_bridge_excerpt": "| Total 2 % | — (1) 2 % | (2) 4 |"
+    }
+  ],
+  "checks": {
+    "all_ten_years_present": true,
+    "all_bridges_reconcile_with_explicit_rounding_residual": true,
+    "fx_and_ma_signs_cross_checked_to_workbook": true,
+    "workbook_modified": false
+  },
+  "chart_updated_as_of": "2026-10-27",
+  "source_data_cutoff": "2026-10-26; same historical inputs, no new filing refresh",
+  "previous_chart": "research/companies/US/PEP-pepsico/outputs/revenue-growth-attribution-20261026",
+  "revenue_cagrs": [
+    {
+      "start_fiscal_year": 2016,
+      "end_fiscal_year": 2025,
+      "growth_intervals": 9,
+      "start_revenue_usd_million": 62799.0,
+      "end_revenue_usd_million": 93925.0,
+      "revenue_cagr_pct": 4.574401131109518,
+      "basis": "reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+    },
+    {
+      "start_fiscal_year": 2016,
+      "end_fiscal_year": 2019,
+      "growth_intervals": 3,
+      "start_revenue_usd_million": 62799.0,
+      "end_revenue_usd_million": 67161.0,
+      "revenue_cagr_pct": 2.2636937368387677,
+      "basis": "reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+    },
+    {
+      "start_fiscal_year": 2019,
+      "end_fiscal_year": 2023,
+      "growth_intervals": 4,
+      "start_revenue_usd_million": 67161.0,
+      "end_revenue_usd_million": 91471.0,
+      "revenue_cagr_pct": 8.029301557995684,
+      "basis": "reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+    },
+    {
+      "start_fiscal_year": 2023,
+      "end_fiscal_year": 2025,
+      "growth_intervals": 2,
+      "start_revenue_usd_million": 91471.0,
+      "end_revenue_usd_million": 93925.0,
+      "revenue_cagr_pct": 1.3325305639810825,
+      "basis": "reported consolidated revenue; includes FX, transactions and reporting-calendar effects"
+    }
+  ],
+  "zero_volume_disclosures": {
+    "FY2017": "2017 10-K Total column Volume = dash percent, disclosed rounded zero",
+    "FY2022": "2022 10-K Total row Organic volume = dash, disclosed rounded zero"
+  },
+  "chart_checks": {
+    "upper_revenue_yoy_on_secondary_axis": true,
+    "all_ten_price_mix_values_rendered": true,
+    "all_ten_volume_values_rendered_in_aligned_row": true,
+    "zero_volume_markers": [
+      2017,
+      2022
+    ],
+    "cagr_uses_end_year_minus_start_year": true,
+    "original_chart_preserved": true,
+    "workbook_unchanged": true
+  }
+}

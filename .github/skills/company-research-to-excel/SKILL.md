@@ -26,6 +26,14 @@ section below is a handoff, not an additional forecasting or valuation rulebook.
   Markdown, JSON/CSV, previous reports and previous Agent output. Bind every
   reported value to its original location and period/unit/scope/version. Another
   company's workbook supplies layout ideas only.
+- **Language.** For English-language filings, keep the workbook in English by
+  default, regardless of the conversation or research report language. Retain
+  original English captions for reported accounts, segments and disclosures;
+  do not automatically translate them into Chinese. Use concise English for
+  sheet names, navigation, units, analyst-defined metrics and explanatory notes.
+  Preserve meaningful source wording and scope differences when harmonizing
+  comparable rows; distinguish analyst-added labels from issuer disclosures.
+  Follow an explicit user language preference when provided.
 - **Coverage.** Preserve the requested history, complete in-scope face statements
   and economically material supporting disclosures. Do not silently replace a
   long history with the latest three comparative years. Review relevant MD&A,
@@ -41,11 +49,17 @@ section below is a handoff, not an additional forecasting or valuation rulebook.
   Have a different, independent Agent directly review originals and the final
   workbook, following [Agent data review](references/agent-data-review.md).
   Script success alone is insufficient.
-- **Appearance.** Retain the accepted visual profile and readable content-fitted
-  heights, functional tab order/colors and a compact Contents. Keep unavailable
-  values blank and technical evidence outside the reader-facing workbook;
-  no mass source comments or index tabs. [Workbook contract](references/workbook-contract.md) owns layout and
-  visual QA; [style-profile.json](assets/style-profile.json) owns design constants.
+- **Appearance.** Design a research workbook with a visible reading hierarchy:
+  topic/reporting basis → region or account group → concise metric rows. Put a
+  repeated region/account dimension in a heading rather than concatenate it into
+  every metric label. Organize recurring disclosures into comparable period
+  panels instead of reproducing filing tables. Retain the accepted visual profile,
+  readable content-fitted heights, functional tab colors and compact Contents.
+  Keep unavailable values blank and technical evidence outside the reader-facing
+  workbook; no mass source comments or index tabs. Read the
+  [workbook contract](references/workbook-contract.md#reading-hierarchy) before
+  authoring; it owns layout and visual acceptance.
+  [style-profile.json](assets/style-profile.json) owns design constants.
 - **Assets.** Keep originals immutable under sources/, company outputs under the
   company's outputs/, and durable metadata paths Workspace-relative. Do not
   newly track generated XLSX or rebuild a user-edited workbook from stale JSON.
@@ -82,7 +96,9 @@ value-level coordinates and reasoned exceptions. Do not maintain duplicate
 coverage ledgers or full audit dossiers for every cell.
 
 Construct the workbook around separate IS/BS/CF sheets, adding economically
-useful schedules supported by the filings. Each comparable fact has one
+useful schedules supported by the filings. Choose regional or account grouping,
+the visible subheadings and the time axis before populating cells; a separate
+layout-plan file is optional. Each comparable fact has one
 calculation owner; link repeated presentations while retaining independently
 reported totals for reconciliation. Equal numbers alone do not prove equal
 scope. Headline revenue/profit series include formula YoY rows; other ratios
