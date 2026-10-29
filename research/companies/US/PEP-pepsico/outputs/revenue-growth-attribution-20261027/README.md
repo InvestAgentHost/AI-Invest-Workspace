@@ -1,5 +1,7 @@
 # PepsiCo revenue attribution chart, revised 2026-10-27
 
+Version status, 2026-10-29: this is the current reading version. The previous 2026-10-26 PNG/SVG were permanently deleted at the user's explicit request. The initial small data and source records remain at their original paths.
+
 Historical source cutoff: 2026-10-26. Chart revision: 2026-10-27. Scope: FY2016–FY2025 consolidated reported net revenue. No forecast or source refresh.
 
 ## Outputs and changes
@@ -22,7 +24,7 @@ CAGR = (ending reported revenue / starting reported revenue)^(1 / (ending fiscal
 
 Volume is the issuer's consolidated revenue-growth contribution, not the physical volume growth separately reported for foods or beverages. Effective net pricing includes discrete prices, incentives and product/package/country mix. Organic growth is an overlapping subtotal and is shown as a line, not a second contribution bar. Company-rounded contribution points may not sum to exact reported growth; the explicit hatched residual is a reconciliation calculation without an independent business interpretation. Positive and negative contribution stacks must be netted. FX and M&A signs express contribution to reported growth, reversing the adjustment-to-organic signs where applicable.
 
-The original chart and source originals remain unchanged. The workbook was read only; its hash was checked before and after chart generation.
+At generation, the original chart, source originals and workbook were unchanged. During subsequent directory cleanup on2026-10-29, the superseded chart was deleted at the user's request; source originals and workbook contents remained unchanged.
 
 ## Source locations
 

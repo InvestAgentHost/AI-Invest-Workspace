@@ -1,5 +1,7 @@
 # PepsiCo revenue growth attribution, FY2016–FY2025
 
+Version status, 2026-10-29: the initial PNG/SVG layout is retired because some price/mix labels were obscured. Use `research/companies/US/PEP-pepsico/outputs/revenue-growth-attribution-20261027/` for the current chart. The old renders were permanently deleted at the user's explicit request; no render backup is retained. This page, CSV and source manifest retain the initial evidence trail; the image filenames below describe that deleted historical release.
+
 As of: 2026-10-26. Scope: consolidated PepsiCo revenue, full fiscal years. No forecast or workbook changes.
 
 ## Outputs

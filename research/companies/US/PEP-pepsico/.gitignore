@@ -1,0 +1,11 @@
+# Rebuildable chart renders and delivery bundles stay local.
+# Keep the Markdown guides, source-linked small tables and existing model exception.
+/outputs/**/*.png
+/outputs/**/*.jpg
+/outputs/**/*.jpeg
+/outputs/**/*.svg
+/outputs/**/*.zip
+
+# These chart inputs belong under data/derived; guard against legacy regeneration.
+/outputs/cost-trends-20261027/*.csv
+/outputs/pricing-cost-volume-20261027/*.csv
