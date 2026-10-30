@@ -1,48 +1,33 @@
-# Valuation and Shareholder Return
+# 盈利预测与估值模块
 
-## 1. Select the method before the result
+## 入口与交付
 
-Choose the lens that matches the routed economics:
+采用分析师已确认的两表工作流和分红＋退出 P/FCF 模型。Skill 提供框架与范式：预测什么、如何拆分、使用何种驱动与期间粒度，由公司经济机制、披露和研究问题决定；不把范例行项变成必填清单。复用已有研究和最新底稿。
 
-| Route | Primary lens | Caution |
-|---|---|---|
-| Mature cash-generative operations | DCF/FCF, EV/EBIT, EV/EBITDA | EBITDA can overstate value when maintenance capex, rent, or working capital is material. |
-| Heterogeneous group | SOTP/NAV bridge | Do not use one multiple across different risk and capital profiles. |
-| Lender/insurer | P/E, P/B, residual income, embedded value | Generic EBITDA/FCF is usually invalid. |
-| Asset/infrastructure owner | NAV/SOTP, DCF, FFO/AFFO, EV/EBITDAaL | Match leases, debt, maintenance capex, and contracted/merchant cash. |
-| Resource/commodity | NAV, cycle-normalized FCF, EV/EBITDA | Do not value peak-price earnings as maintainable. |
-| Pharma/biotech | rNPV and milestone scenarios | Do not apply mature-company multiples to pre-revenue assets. |
+| 请求 | 交付与范围 |
+|---|---|
+| 作出盈利预测、预测未来五年利润 | 创建或更新 `Profit Forecast`，给出逐年归母净利润、CAGR 和估值接口；仅请求预测时可在此结束。 |
+| 搭建DCF模型、进入估值环节 | 复用或补齐 `Profit Forecast`，交付 `Valuation Model`，同时呈现悲观、基准、乐观三情景。 |
+| 调整预测、更新估值、新财报后的刷新 | 先识别 Excel 手动修改，更新经营依赖和相关情景；共享基础变化时重算全部情景。 |
 
-If no method is defensible, state valuation pending rather than inventing precision.
+具体布局、公式、快照、现金约束和接管规则只维护于 [valuation-binding-methodology](../../valuation-binding-methodology/SKILL.md)，本模块规定研究顺序与完成标准。
 
-## 2. SOTP bridge
+## 研究顺序
 
-Show components, scope, method, normalized metric, multiple or DCF assumptions, source IDs, and status:
+1. 当前财年未结束时，以已披露实际加剩余期间预测形成完整基年。预测右侧展示同指标的适用的可比年度与近期披露期间历史。
+2. 从各分部或经济单元的经营驱动出发，逐年推导未来五年的收入、经营利润、公司层面损益、税及归母净利润。区分调整后与报表利润，明确估值采用口径。由年度路径计算 CAGR，不用 CAGR 代替经营预测。
+3. 五年后另列长期参考，说明增长、利润率与必要再投资；不预设第六年已达稳态。它是长期合理性检查；退出倍数模型不再叠加永续终值。
+4. 情景先改变有研究依据的经营参数，再形成利润路径；注明变动范围与共同假设。部分业务停滞情景不得称为全公司极端压力。缺依据的参数标待定，不能用零制造完整结果。
+5. 根据历史现金转换、股东回报及资本配置，确定估值参数。展示所需回报对应买入价、退出价格、股息现值、利润 CAGR、现金约束和关键敏感性，并区分估值起点与研究日。
 
-```text
-operating segment values
-+ validated investment assets or excess cash
-- corporate costs and holding-company leakage
-- interest-bearing debt
-- lease liabilities when included in the denominator boundary
-- pensions, supplier financing, latent tax, NCI, and other obligations
-= equity value
-/ applicable diluted equity share count (with current outstanding shares separately identified)
-= per-share value (only when inputs are valid)
-```
+## 默认方法与适用边界
 
-Use after-tax normalized EBIT/EBITDA/FCF only when maintenance versus growth investment is understood. Keep company APMs separate from analyst calculations.
+本研究流程中的“DCF”默认指**股东现金流折现：现金分红＋退出 P/FCF**，以该名称标注表内方法。回购通过逐年净股数变化影响每股价值。利润来自 `Profit Forecast` 的年度路径，沿用 PEP 已认可的三情景保存方式和底稿内使用说明。
 
-## 3. Forecasts, model and handoff
+旧版直接退出 PE 不再作为默认方法或并行模板；迁移规则见估值 skill 的 model contract。用户明确指定其他方法时按其要求执行。亏损、金融、重大周期或不可比集团等使本模型口径失效时，说明具体缺口和适合的替代方法；不得悄悄换模型或硬造正利润。其他方法的详细教程不在此模块并列维护。
 
-Read [valuation-binding-methodology](../../valuation-binding-methodology/SKILL.md). It owns the calculation contract and the reusable forecast/update workflow; do not maintain a second equation here.
+## 完成标准
 
-Build remaining-quarter forecasts into a full fiscal-year base, then derive future annual profits from business drivers. Forecasts must have same-metric numeric historical anchors on their right. Begin with a defensible base case; unapproved low/high cases may remain blank. Extract CAGR after annual profit forecasts rather than forcing a target growth rate.
+完整估值交付有两张表、三情景年度路径、可恢复的经营假设、日期与口径、右侧历史、真实单元格对应的使用说明。仅请求预测时按预测范围验收。
 
-Under the default shareholder-return route, use direct exit PE × terminal earnings, cash dividends only, and a separately modelled net share-count path. FCF conversion is a cash-feasibility constraint, not an extra multiplier on direct PE. Distinguish current outstanding shares, period-end forecast shares and weighted diluted EPS shares. Use actual valuation/payment dates, including the residual current fiscal year.
-
-For non-PE routes, match cash flow, discount rate, terminal assumptions and EV-to-equity bridge to the business. Do not force positive-NI valuation on losses or peak-cycle earnings.
-
-## 4. Decision use
-
-Show sensitivities to actual drivers and terminal valuation, with cash, debt and dilution constraints. Persist adopted assumptions, evidence, analyst decisions, forecast vintages and thesis-review triggers using the valuation skill's handoff contract. Follow Workspace report-delivery preferences; do not create extra narrative files or edit personal Word documents without authorization.
+独立核算、实际参数扰动、情景捕获/恢复、更新后快照是否过期、现金缺口和正常缩放下的中文显示均需核验。区分“分红及回购覆盖”与“全部资金用途闭环”；缺少偿债、并购等必要用途时保留 PARTIAL。结论讲清模型成立条件、最敏感假设及未决问题，不因公式可算就宣称投资结论已验证。

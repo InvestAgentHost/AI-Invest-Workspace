@@ -1,5 +1,5 @@
 {
-  "schema_version": "valuation-handoff.v1",
+  "schema_version": "valuation-handoff.v2",
   "config": {
     "company_id": null,
     "market": null,
@@ -10,14 +10,22 @@
     "currency": null,
     "amount_unit": null,
     "share_unit": null,
-    "method_version": null,
+    "method_version": "dividend-pfcf-net-shares-v3",
     "latest_actual_period": null,
     "base_period_end": null,
     "workbook_path": null,
     "report_path": null,
     "source_index_path": null,
     "thesis": [],
-    "review_triggers": []
+    "review_triggers": [],
+    "scope": "valuation",
+    "forecast_sheet": "Profit Forecast",
+    "valuation_sheet": "Valuation Model",
+    "net_income_basis": null,
+    "base_net_income": null,
+    "common_basis_version": null,
+    "forecast_periods": [],
+    "operation": "initial"
   },
   "sources": [],
   "metrics": [
@@ -33,7 +41,10 @@
       "update_policy": "analyst_review",
       "update_rule": null,
       "needs_forecast_history": true,
-      "history_window": {"annual_periods": [], "quarter_periods": []},
+      "history_window": {
+        "annual_periods": [],
+        "interim_periods": []
+      },
       "history": [],
       "adopted": [],
       "forecast_layout": [],
@@ -43,6 +54,10 @@
   "decisions": [],
   "previous_snapshot_path": null,
   "updates": [],
-  "validation": {"status": "PARTIAL", "checks": []},
-  "pending": []
+  "validation": {
+    "status": "PARTIAL",
+    "checks": []
+  },
+  "pending": [],
+  "cases": []
 }

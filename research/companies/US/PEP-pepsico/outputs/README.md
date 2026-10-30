@@ -1,6 +1,6 @@
 # PEP图表与专题索引
 
-整理日期：2026-10-29。以下“当前版”表示本轮研究的主要阅读版本；不同主题各有用途，不按文件修改时间自动挑选。PNG供阅读或插入Word，SVG供矢量输出，ZIP只用于打包转移；这些文件保留本地，不进入Git。
+整理日期：2026-10-30。以下“当前版”表示本轮研究的主要阅读版本；不同主题各有用途，不按文件修改时间自动挑选。PNG供阅读或插入Word，SVG供矢量输出，ZIP只用于打包转移；这些文件保留本地，不进入Git。
 
 ## 当前主要阅读版本
 
@@ -24,6 +24,7 @@
 | 现金流与股东回报 | [cash-flow-20261028](cash-flow-20261028/README.md) | 五图；含十年累计流向、分红回购与年化净缩股率 |
 | 利润表与资本回报 | [income-returns-20261028](income-returns-20261028/README.md) | 成本利润率、盈利桥、ROIC/ROE；净利润EPS历史图引用合并盈利目录的唯一文件 |
 | 薪酬计划 | [management-20261029](management-20261029/README.md) | 采用下表中的五张独立图 |
+| Elliott材料研读 | [Word研读报告](elliott-review-20261030/PEP_Elliott_Review_2026-10-30.docx) | 按逻辑组织经营诊断、北美改革、治理与估值；原文主要市场数据截至2025-08-29 |
 
 ### 薪酬图的固定阅读顺序
 
@@ -62,4 +63,5 @@
 
 - 底稿和使用说明：[company-research-to-excel](company-research-to-excel/README.md)。
 - 原件：`sources/companies/US/PEP-pepsico/`；图表数据与生成程序：`data/derived/companies/US/PEP-pepsico/`。这些目录位于Workspace内并被Git忽略。
+- Elliott演示文稿原件与来源记录：`sources/companies/US/PEP-pepsico/investor-presentations/elliott-2025/`。报告原图节选与版面检查位于同公司`data/derived`下的`elliott-reading-20261030/`，不作为额外交付版本。
 - 需要在另一设备继续研究时，手工转移被忽略的材料和图表。Git只承担研究文本、配置及既有底稿的版本管理。

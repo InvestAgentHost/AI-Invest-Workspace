@@ -1,0 +1,40 @@
+{
+  "font_preferences": [
+    "PingFangSC-Regular",
+    "NotoSansCJKsc-Regular",
+    "NotoSansSC-Regular",
+    "SourceHanSansSC-Regular",
+    "SourceHanSansCN-Regular",
+    "MicrosoftYaHei"
+  ],
+  "colors": {
+    "text": "#244559",
+    "muted": "#627D90",
+    "grid": "#E2EBF0",
+    "blue": "#24577C",
+    "blue_light": "#D8E7F0",
+    "teal": "#23868A",
+    "teal_light": "#ABD0CA",
+    "orange": "#DCA658",
+    "negative": "#C98C7C",
+    "purple": "#9584AF",
+    "gray": "#B5C2CA"
+  },
+  "font_sizes": {
+    "title": 16,
+    "subtitle": 9,
+    "body": 9,
+    "tick": 8.5,
+    "label": 8.5,
+    "footnote": 7.5
+  },
+  "figure": {
+    "width_inches": 7.28,
+    "height_inches": 6.3,
+    "dpi": 300,
+    "left": 0.1,
+    "right": 0.97,
+    "top": 0.8,
+    "bottom": 0.16
+  }
+}

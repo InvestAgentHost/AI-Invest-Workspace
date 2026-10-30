@@ -31,13 +31,14 @@ module, use the [chapter completion criteria](financial-reconstruction.md#67-交
 ## E. Valuation
 
 - **E1 Method/boundary:** selected method fits the route; market price, share count, currency, perimeter, debt, leases, and date are valid.
-- **E2 Model completeness:** assumptions precede results; component bridge, scenarios, sensitivities, double-count checks, and shareholder-return convention are explicit.
+- **E2 Model completeness:** `Profit Forecast` derives the current-year base and five individual future years; history is visible beside the forecasts. A full valuation also delivers `Valuation Model` under the approved dividend/exit-P/FCF contract, with three saved annual profit paths, restorable drivers, consistent snapshot versions, applicable sensitivities and cell-specific usage instructions. An explicitly requested method exception is documented. Separate dividend/buyback coverage from complete funding and verify capture/restore behavior; a forecast-only request does not require a valuation sheet.
 
 ## R. Release
 
 - **R1 Coverage/depth:** every `covered` matrix row is analyzed; unsupported rows are not hidden by a generic disclaimer.
 - **R2 Benchmark integrity:** a reference report, if used, affected method only; no reference-company facts, assumptions, or numbers leaked into the target report.
 - **R3 Independent review:** validators, parser/calculator checks, Markdown checks, and a clean review pass are recorded. Layout or rendering checks are performed where relevant.
+- **R4 Requested charts:** the saved figure answers the analytical question, reconciles to the source data and passes the [chart checks](research-charting.md#核验与交付), including actual Simplified Chinese face/glyph validation and visual inspection at intended reading size. A successful export or bounds check alone cannot pass this gate; only requested/current deliverables remain in the output directory.
 
 ## Status rules
 
