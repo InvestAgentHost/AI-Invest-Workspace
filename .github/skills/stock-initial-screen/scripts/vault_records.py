@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Screening records (初筛记录) in the Obsidian vault — company initial screener engine v4.3.
+"""Screening records (初筛记录) in the Obsidian vault — company initial screener engine v4.3 (reasons list extended in v4.8).
 
 One permanent note per company that has ever been screened, in `08 Screener/初筛记录/` of the vault
 ("<Company> - 初筛记录.md"). The frontmatter holds the latest state (Bases reads only frontmatter);
@@ -25,7 +25,7 @@ stdlib only.
 """
 import json, os, re, sys, glob, datetime, argparse
 
-ENGINE = 'v4.7.2'   # the version of this script (writes the records); the scoring engine comes from run_meta.json
+ENGINE = 'v4.9.1'   # the version of this script (writes the records); the scoring engine comes from run_meta.json
 LIGHT = {'g': 'green', 'y': 'yellow', 'r': 'red', 'range': 'grey', 'q': 'grey', 'na': 'not scored'}
 SYMBOL = {'green': '✓', 'yellow': '◐', 'red': '✗', 'grey': '?', 'not scored': '–', None: '–', '': '–'}
 DIRW = {'cheaper': 'getting cheaper', 'steady': 'steady', 'dearer': 'getting dearer'}
@@ -40,9 +40,10 @@ REASONS = {   # screen_reason (closed list, vault rule 20) -> what the label mea
     'weak-business': 'Not now: weak business',
     'too-early': 'Not now: too early (short history after a deal, or a missing measure decides the Business light)',
     'red-flag': 'Not now: accounting red flag',
+    'earnings-falling': 'Not now: earnings falling now (recent quarters, guidance cuts, or a price fall far larger than the earnings fall); check the recent quarters first',   # v4.8 (user, 2026-10-26)
     'out-of-scope': 'Skipped sector (bank, insurer, asset manager, REIT, lessor, SPAC, fund, trust)',
 }
-SCREENER_KEYS = ['type', '生成方式', '核验状态', '来源说明', '行业', '更新日期', 'company', 'ticker', 'group', 'currency',
+SCREENER_KEYS = ['type', '生成方式', '核验状态', '来源说明', '行业', '更新日期', 'company', 'ticker', 'group', 'currency', 'price_currency', 'quote_symbol',
                  'first_screened', 'last_screened', 'rules_version', 'run_file', 'screener_label', 'screen_reason', 'reason_line',
                  'business_light', 'industry_light', 'management_light', 'ceo_tag', 'flags', 'median_pct', 'direction',
                  'price_at_screen', 'price_date', 'research_line', 'latest_fy', 'lead_fy', 'b1_latest', 'b1_median', 'b4_latest',
@@ -73,6 +74,18 @@ def relkey(s):
 
 def ordn(n): return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 def sym(cur): return {'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥'}.get(cur or '', (cur or '') + ' ')
+# v4.8.1 (2026-10-27): prices in a record are in the currency of the listing the screener priced, which can differ from the reporting currency
+# (CCEP reports EUR, priced on Nasdaq in USD). FocusAlpha symbol of that listing, from the Fiscal.ai key prefix.
+FA_SUFFIX = {'NASDAQ': '', 'NYSE': '', 'NYSEAMERICAN': '', 'AMEX': '', 'BATS': '', 'OTCM': '', 'TSE': '.T', 'TSX': '.TO', 'XTSE': '.TO',
+             'XLON': '.L', 'XETR': '.DE', 'XPAR': '.PA', 'XAMS': '.AS', 'XBRU': '.BR', 'XDUB': '.IR', 'XMIL': '.MI', 'XMAD': '.MC',
+             'XSTO': '.ST', 'XCSE': '.CO', 'XOSL': '.OL', 'XHEL': '.HE', 'XSWX': '.SW', 'XHKG': '.HK', 'XNSE': '.NS', 'XPRA': '.PR', 'BMEX': '.MX', 'XATH': '.AT'}
+def fa_symbol(key, t):
+    if not key or '_' not in str(key): return t
+    pre, code = str(key).split('_', 1)
+    if pre not in FA_SUFFIX: return t
+    if pre == 'TSE' and code.isdigit(): return code + '.T'
+    if pre == 'XHKG' and code.isdigit(): return code.zfill(4) + '.HK'
+    return code + FA_SUFFIX[pre]
 def money(x, cur):
     return '–' if x in (None, '') else f"{sym(cur)}{float(x):,.2f}"
 def pctx(x):
@@ -88,14 +101,14 @@ def screen_reason(label, kind):
     if label == 'Research now': return 'good-cheap'
     if label == 'Quick look': return 'average-cheap'
     if label == 'Research at lower price': return 'good-not-cheap'
-    return {'average': 'average-not-cheap', 'weak': 'weak-business', 'early': 'too-early', 'redflag': 'red-flag',
+    return {'average': 'average-not-cheap', 'weak': 'weak-business', 'early': 'too-early', 'redflag': 'red-flag', 'falling': 'earnings-falling',
             'scope': 'out-of-scope'}.get(kind, 'average-not-cheap')
 
 def kind_from_lines(label, lines):
     if label in ('Research now', 'Research at lower price'): return 'good'
     if label == 'Quick look': return 'average'
     first = (lines or [''])[0]
-    for pre, k in (('Accounting red flag', 'redflag'), ('Weak business', 'weak'), ('Too early', 'early'), ('Average business', 'average')):
+    for pre, k in (('Accounting red flag', 'redflag'), ('Weak business', 'weak'), ('Too early', 'early'), ('Earnings falling now', 'falling'), ('Average business', 'average')):
         if first.startswith(pre): return k
     return 'average'
 
@@ -117,8 +130,10 @@ def snapshot_from_page_data(run):
     if META and C.get('rules_version') and C['rules_version'] != META['rules_version']:
         sys.exit(f"{run}: config.json says rules_version {C['rules_version']}, but page_data.json was built under rules {META['rules_version']}")
     snap = {}
+    CC = C.get('companies', C)
     for t, c in D.items():
         res, mx, pe = c['result'], c.get('mult') or {}, c.get('pe') or {}
+        key = (CC.get(t) or {}).get('key') if isinstance(CC.get(t), dict) else None
         meas = {m['code']: m for m in c['measures']}
         lead = c.get('lead') or {}
         if not lead:   # older page_data: rebuild from the B1/B4 inputs (whole-percent precision)
@@ -129,15 +144,17 @@ def snapshot_from_page_data(run):
         m_ = re.search(r'Revisit after FY(\d{4})', ' '.join(lines))
         if m_: rv = int(m_.group(1))
         snap[t] = dict(
-            ticker=t, name=c.get('name', t), group=c.get('group', ''), cur=mx.get('cur') or pe.get('cur') or c.get('cur'),
+            ticker=t, name=c.get('name', t), group=c.get('group', ''), cur=c.get('cur') or mx.get('cur'),
+            pcur=mx.get('cur') or pe.get('cur') or c.get('cur'), quote_symbol=fa_symbol(key, t),
             as_of=C.get('as_of'), rules_version=rules_v, engine=META.get('engine'),
             label=res['cat'], kind=res.get('kind'), lines=lines,
             lights=dict(business=LIGHT.get(c['business']['light'], c['business']['light']), industry=LIGHT.get(c['industry']['light'], c['industry']['light']),
                         management=LIGHT.get(c['management']['light'], c['management']['light'])),
             ceo_tag=(c.get('ceo') or {}).get('label') or '', flags=c.get('flags') or [],
             redflags=[r['label'] for r in c.get('redflags') or []], relook=res.get('relook') or [],
+            falling=(c.get('now') or {}).get('falling'),   # v4.8: the earnings checks that fired, whatever the label
             median_pct=mx.get('pct') if mx.get('band') else None, direction=DIRW.get(mx.get('direction'), mx.get('direction') or ''),
-            price=mx.get('price') or pe.get('price'), price_date=pe.get('price_date') or pe.get('to') or C.get('as_of'), research_line=mx.get('trigger'),
+            price=mx.get('price') or pe.get('price'), price_date=pe.get('to') or C.get('as_of'), research_line=mx.get('trigger'),
             lead=dict(fy=lead.get('fy'), b1_latest=_p(lead.get('b1Latest')), b1_median=_p(lead.get('b1Med')),
                       b4_latest=_p(lead.get('b4Latest')), b4_median=_p(lead.get('b4Med'))),
             latest_fy=(c.get('window') or {}).get('L'), fy_end=lead.get('fyEnd'), revisit_fy=rv,
@@ -202,7 +219,7 @@ def snapshot_from_html(path, as_of, fy_end_over=None):
         fe_src = 'page' if fe else ''
         if not fe and t in (fy_end_over or {}): fe_src = (fy_end_over[t].get('source') or 'override'); fe = fy_end_over[t]['date']
         else: fe = fe.group(1) if fe else None
-        pd_ = re.search(r'Daily trailing GAAP P/E from .*?, \d{4}-\d{2}-\d{2} to (\d{4}-\d{2}-\d{2})', stext)
+        pd_ = re.search(r'Daily trailing GAAP P/E from [^,<]+, \d{4}-\d{2}-\d{2} to (\d{4}-\d{2}-\d{2})', stext)
         rvf = re.search(r'Revisit after FY(\d{4})', ' '.join(lines))
         kind = kind_from_lines(label, lines)
         relook = []
@@ -212,7 +229,7 @@ def snapshot_from_html(path, as_of, fy_end_over=None):
         if kind == 'redflag':
             rf = [x.strip() for x in re.sub(r'^Accounting red flag: ', '', lines[0]).replace('; revisit when resolved', '').split(',')]
         snap[t] = dict(
-            ticker=t, name=a.get_text(strip=True), group=(g.group(1).strip() if g else ''), cur=cur,
+            ticker=t, name=a.get_text(strip=True), group=(g.group(1).strip() if g else ''), cur=cur, pcur=cur, quote_symbol=t,
             as_of=as_of, rules_version=rv, engine=eng, label=label, kind=kind, lines=lines,
             lights=dict(business=lights[0], industry=lights[1], management=lights[2]),
             ceo_tag=ceo.get_text(strip=True) if ceo else '', flags=[] if flags_txt in ('–', '') else [x for x in flags_txt.split(' | ') if x],
@@ -287,6 +304,8 @@ def next_check(snap):
     if fe and L:   # the fiscal year is named after the calendar year it ends in; align the year-end with the latest fiscal year
         fe = fe.replace(year=L) if not (fe.month == 2 and fe.day == 29) else fe.replace(year=L, day=28)
     asof = d_(snap.get('as_of')) or datetime.date.today()
+    if snap.get('reason') == 'earnings-falling':   # v4.8: the next quarterly report decides whether the earnings checks pass
+        return (asof + datetime.timedelta(days=95)).isoformat(), 'next quarterly report: about 3 months after this run'
     target = (snap.get('revisit_fy') if snap.get('reason') == 'too-early' and snap.get('revisit_fy') else None) or ((L + 1) if L else None)
     if fe and L and target:
         d = add_years(fe, target - L) + datetime.timedelta(days=75)
@@ -298,7 +317,7 @@ def weak_codes(snap, factor='B'):
     return [k for k, v in (snap.get('scores') or {}).items() if k.startswith(factor) and isinstance(v, int) and v <= 2]
 
 def reopen_text(snap):
-    r = snap['reason']; cur = snap.get('cur')
+    r = snap['reason']; cur = snap.get('pcur') or snap.get('cur')
     tail = '; or a new re-look signal (new CEO, deal above 25% of revenue)'
     if r in ('good-cheap', 'average-cheap'):
         return f"Not excluded: the label ({snap['label']}) already says spend research time now"
@@ -316,6 +335,8 @@ def reopen_text(snap):
         if snap.get('revisit_fy'):
             return f"FY{snap['revisit_fy']} results reported (enough clean years): rerun; reopens when the label is no longer 'too early'" + tail
         return "The missing Business measure becomes available (a filed fact or a longer history): rerun; reopens when the Business light is no longer open" + tail
+    if r == 'earnings-falling':
+        return "The earnings checks pass on the next run (recent quarters, guidance, price against earnings); the record is then read by its Business light" + tail
     if r == 'red-flag':
         return f"The red flag ({', '.join(snap.get('redflags') or []) or 'see the run page'}) is gone in the latest filing" + tail
     return 'Out of scope for this screen'
@@ -377,7 +398,7 @@ def reopen_test(prev, now, as_of):
         if now.get('direction') == 'getting cheaper': why.append('multiples getting cheaper')
         try:
             if now.get('price') is not None and prev.get('research_line') not in (None, '') and float(now['price']) <= float(prev['research_line']):
-                why.append(f"price {money(now['price'], now.get('cur'))} at or below the recorded research line {money(prev['research_line'], now.get('cur'))}")
+                why.append(f"price {money(now['price'], now.get('pcur') or now.get('cur'))} at or below the recorded research line {money(prev['research_line'], now.get('pcur') or now.get('cur'))}")
         except ValueError: pass
     if r == 'average-not-cheap':   # v4.7 (user, 2026-10-23): reopens when the company now counts as a good business, whichever light made it average
         nb, nm = now['lights'].get('business'), now['lights'].get('management')
@@ -391,7 +412,12 @@ def reopen_test(prev, now, as_of):
         if up: why.append('weak measure scored higher: ' + ', '.join(f"{k} {p_sc[k]} → {now['scores'][k]}" for k in up))
     if r == 'too-early' and now.get('kind') != 'early': why.append('no longer too early')
     if r == 'red-flag' and not now.get('redflags') and now.get('kind') != 'redflag': why.append('red flag no longer present')
+    if r == 'earnings-falling' and not (now.get('falling') if now.get('falling') is not None else now.get('kind') == 'falling'):
+        why.append('earnings checks now pass')   # v4.8: none of E1-E3 fires (not only a different label)
     p_rel = set(relkey(x) for x in str(prev.get('relook') or '').split(';') if x.strip())   # v4.7.1: compare by meaning, not wording
+    # v4.9.1: a CEO change or a deal the record already showed (CEO tag, Business changing flag) is not new when a label change first lists it as a re-look signal
+    if prev.get('ceo_tag'): p_rel.add(relkey(prev['ceo_tag']))
+    p_rel |= set(relkey(x) for x in str(prev.get('flags') or '').split(' | ') if x.strip().startswith('Business changing'))
     new_rel = [x for x in now.get('relook') or [] if relkey(x) not in p_rel]
     if new_rel: why.append('new re-look signal: ' + '; '.join(new_rel))
     ocd = d_(prev.get('our_check_date'))
@@ -469,7 +495,7 @@ def read(run, notes_dir):
 def safe_name(n): return re.sub(r'[\\/:*?"<>|#^\[\]]', '-', n).strip()
 
 def latest_block(s):
-    cur = s.get('cur')
+    cur = s.get('pcur') or s.get('cur')
     lines = [M_LATEST[0],
              f"**Latest: {s['label']}** ({s['as_of']}, rules {s.get('rules_version')}) — " + ' · '.join(s.get('lines') or []),
              '',
@@ -486,7 +512,7 @@ def latest_block(s):
     return '\n'.join(lines)
 
 def hist_row(s, change_txt, our_then):
-    cur = s.get('cur'); L = s['lights']
+    cur = s.get('pcur') or s.get('cur'); L = s['lights']
     cells = [s['as_of'], s.get('rules_version') or '', s['label'] + (f": {s['lines'][0]}" if s.get('lines') and s['label'] == 'Not now' else ''),
              f"{SYMBOL.get(L['business'])} · {SYMBOL.get(L['industry'])} · {SYMBOL.get(L['management'])}",
              ordn(s['median_pct']) if s.get('median_pct') is not None else 'n/a', s.get('direction') or '–',
@@ -519,7 +545,7 @@ def write(run, notes_dir, run_file, industry, vault=None, snap_file=None, note_t
                + (f"; fiscal year-end {s.get('fy_end')} from {s['fy_end_source']}" if s.get('fy_end_source') not in (None, '', 'page') else '')
                + (f"; {note_txt}" if note_txt else ''))
         vals = {'type': '初筛记录', '生成方式': 'AI 生成', '核验状态': '待核验', '来源说明': src, '行业': industry, '更新日期': today,
-                'company': s['name'], 'ticker': t, 'group': s.get('group') or '', 'currency': s.get('cur') or '',
+                'company': s['name'], 'ticker': t, 'group': s.get('group') or '', 'currency': s.get('cur') or '', 'price_currency': s.get('pcur') or s.get('cur') or '', 'quote_symbol': s.get('quote_symbol') or t,
                 'last_screened': s['as_of'], 'rules_version': s.get('rules_version') or '', 'run_file': run_file,
                 'screener_label': s['label'], 'screen_reason': s['reason'], 'reason_line': '; '.join(s.get('lines') or []),
                 'business_light': s['lights']['business'], 'industry_light': s['lights']['industry'], 'management_light': s['lights']['management'],

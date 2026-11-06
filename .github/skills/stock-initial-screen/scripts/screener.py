@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Company initial screener - engine v4.7.2 (facts only, traffic lights, three separate factors). Rules version 2026-10-23c (2026-10-23c: Industry computed once per tag over every company with data, the run company included, with the company count shown and groups under 6 marked thin; settlement debt counts its current part too, for run companies and peers alike; the CEO-sale penalty cannot take M1 below 2; M3 uses the current CEO's years when there are at least 5 and counts losses on businesses sold or held for sale. 2026-10-23b: a deal that fails only the goodwill test keeps the window and B1/B4 take the lower of the full window and the years after the deal; litigation settlements payable on a fixed schedule count as debt; peer groups decided per tag; short history is tested before a weak Business light. 2026-10-23a: the AAER horizon counts from the end of the misconduct; v4.3 adds display-only items: the B1/B4 leading indicator and the screening-record fields).
+"""Company initial screener - engine v4.8 (facts only, traffic lights, three separate factors). Rules version 2026-10-26 (2026-10-26, after the BellRing miss: earnings-falling checks (recent quarters, guidance cuts, a price collapse) put a company in the Not judged yet band; a latest-year profit fall on rising revenue caps the Business light at yellow; an industry whose companies are mostly far below their own 5-year profit peak caps the Industry light at yellow; a thin group or a tag that mixes sales channels gets a grey Industry light; a run company keeps its own B1 window inside its Industry group; concentration and earnings-expected-to-fall flags. 2026-10-23c: Industry computed once per tag over every company with data, the run company included, with the company count shown and groups under 6 marked thin; settlement debt counts its current part too, for run companies and peers alike; the CEO-sale penalty cannot take M1 below 2; M3 uses the current CEO's years when there are at least 5 and counts losses on businesses sold or held for sale. 2026-10-23b: a deal that fails only the goodwill test keeps the window and B1/B4 take the lower of the full window and the years after the deal; litigation settlements payable on a fixed schedule count as debt; peer groups decided per tag; short history is tested before a weak Business light. 2026-10-23a: the AAER horizon counts from the end of the misconduct; v4.3 adds display-only items: the B1/B4 leading indicator and the screening-record fields).
 
   python3 screener.py RUN_DIR score   -> prints the data measures and the automatic perimeter flags (needs raw/main*.json)
-  python3 screener.py RUN_DIR build   -> RUN_DIR/page_data.json (needs raw/main*.json, raw/pe.json, facts/<T>.json)
+  python3 screener.py RUN_DIR build   -> RUN_DIR/page_data.json (needs raw/main*.json, raw/pe.json, facts/<T>.json; raw/quarters.json for the
+                                         recent-quarter check, v4.8: without it the check says 'not run')
 
 RUN_DIR/config.json holds the company list and run settings. Every threshold sits in RULES below;
 change it there (and in the SKILL.md rules section) when a rule changes.
@@ -10,8 +11,8 @@ change it there (and in the SKILL.md rules section) when a rule changes.
 import json, math, os, re, sys, glob, datetime, statistics as st
 from decimal import Decimal, ROUND_HALF_UP
 
-ENGINE_VERSION = 'v4.7.2'
-RULES_VERSION = '2026-10-23c'   # change together with RULES; the page and the vault records take the label from here (run_meta.json), not from config.json
+ENGINE_VERSION = 'v4.11.4'
+RULES_VERSION = '2026-11-04'   # change together with RULES; the page and the vault records take the label from here (run_meta.json), not from config.json
 
 RULES = {
     'nopat_tax': 0.25,                        # fixed tax in NOPAT (B1, B3, B4)
@@ -41,6 +42,8 @@ RULES = {
     'lev_max': 5.0, 'cov_min': 2.0,           # financial-risk gate: net debt / EBITDA above 5x, or EBIT / interest below 2x
     'pe_min_pos_share': 60, 'pe_min_pos_days': 250, 'pe_short_years': 5,   # a multiple's range needs >= 250 positive days (about one year) and positive on >= 60% of days
     'pe_distorted': 1.5,                      # trailing / forward P/E above this -> "P/E distorted"
+    'data_route_max': .5,                     # v4.11.3: more than half the run companies off Fiscal.ai -> build stops unless config data_route records the user's approval
+    'op_bridge_gap': .15, 'op_bridge_years': 3,   # v4.11.2 (Codex, user 2026-11-04): operating profit more than 15% above pretax + net interest in 3 or more of the last 5 years -> the fact collector checks the income statement
     'pe_stale_days': 20,                      # last daily P/E older than this before the as-of date -> 'P/E series stale' flag
     # ---- multiples: P/E, EV/EBIT and EV/EBITDA, each placed in its own history; the median of the three percentiles is the reading used by the Result
     'deal_delay_months': 12,                  # after a merger or separation (config pe_from) every multiple's window starts 12 months later: trailing earnings first cover only the current business then
@@ -54,7 +57,7 @@ RULES = {
     'pe_trend_move': .10,                     # multiple change beyond +/-10% -> rising / falling arrow
     # ---- lights: measure score 4-5 green, 3 yellow, 1-2 red; factor average >= 3.5 green, 3.0-3.5 yellow, < 3.0 red
     'light_green': 4, 'light_yellow': 3, 'factor_green': 3.5, 'factor_yellow': 3.0,
-    # ---- Industry (peers from the tagged coverage universe; normalized inputs (see source_ledger.json) only, no repairs from filings)
+    # ---- Industry (peers from the tagged coverage universe; Fiscal.ai data only, no repairs from filings)
     'I1': [.15, .12, .09, .06],               # peer median of 10-yr median ROIC incl. goodwill -> 5, 4, 3, 2; below -> 1 (B4 formula)
     'I2': [.10, .07, .04, .02],               # peer median 10-yr revenue growth -> 5, 4, 3, 2; below -> 1
     'I3': [-.05, -.10, -.20, -.30],           # worst year of the peers' median revenue change: better than -5% -> 5, -10% -> 4, -20% -> 3, -30% -> 2, else 1
@@ -63,7 +66,9 @@ RULES = {
     'group_min': 4,                           # v4.7 (user, 2026-10-23): I1 and I2 are medians over the whole group, the run company included, and need 4 companies with a value (= 3 peers + the company)
     'i3_min_cos': 4,                          # v4.7: an I3 year needs 4 companies in the group with a revenue change (was 3 peers)
     'near_cut': .01,                         # v4.7.1 (user, 2026-10-23): an Industry measure within 1 percentage point of a score cut-off is marked 'near the cut-off'
-    'thin_group': 6,                          # v4.7: a group with fewer than 6 companies with an I1 value is shown as 'thin group'
+    'falling_trouble': 2,                     # v4.10 (user, 2026-10-27): 2 or more of E1-E3 firing = troubled: Not now whatever the multiples; with 1 the company is read as an average business (Quick look at or below the 33rd)
+    'chan_major': 2 / 3,                      # v4.9 (2026-10-27; the user asked Claude to decide): the tag is 'mixed' when its most common main channel covers less than this share of the tag's companies with a channel; 1.0 = any second channel makes it mixed (the v4.8 rule)
+    'thin_group': 6,                          # v4.7: a group with fewer than 6 companies with an I1 value is shown as 'thin group'; v4.8 (user, 2026-10-26): its Industry light is grey ('too few true peers'), the measures stay shown
     'm1_sale_floor': 2,                       # v4.7 (user, 2026-10-23): the CEO-sale penalty cannot take M1 below 2; a holding that already scores 1-2 shows the result of the selling
     'm3_ceo_min_years': 5,                    # v4.7 (user, 2026-10-23): M3 uses only the current CEO's fiscal years when the window holds at least 5 of them; else the full window
     'gw_only_keeps_window': True,             # v4.4: a deal flagged only by the goodwill test (no deal-caused revenue or share flag in that year or the next) keeps the window; B1 and B4 take the lower of the full window and the years after the deal
@@ -76,11 +81,26 @@ RULES = {
     'near_line_pts': 5,                       # Research at lower price: within this many percentile points above the line -> ' — close' (test)
     'low_in_range_pe': 33,                    # average business with the median multiple percentile at or below this -> Quick look (test)
     'peer_cut_gw_ic': .25, 'peer_cut_rev': .25, 'peer_cut_share': .50,   # a peer's window starts after a separation (revenue down > 25% AND goodwill + intangibles down > 25% of invested capital) or a diluted share jump > 50%; acquisitions stay in (ROIC incl. goodwill charges the price paid)
+    # ---- v4.8 (user, 2026-10-26, after BellRing): checks of the current direction, kept apart from the long-window measures.
+    #      Earnings falling now (any one puts the company in the Not judged yet band, label Not now, 'check the recent quarters first'):
+    'recent_drop': -.15,                      # (1) latest reported quarters vs the same quarters a year earlier: gross profit or operating income down more than 15% ...
+    'recent_gm_pts': -.03,                    #     ... or gross margin down more than 3 points
+    'recent_min_after': 2,                    #     quarters after the latest fiscal year-end needed for a year-to-date comparison; otherwise the last 4 quarters vs the 4 before
+    'guide_cuts': 2, 'guide_total': -.15,     # (2) current-year profit guidance cut 2 or more times, or by more than 15% in total (first guide to latest, midpoints)
+    'guide_cut_min': .02,                     #     a step counts as a cut when the midpoint falls more than 2% (a narrowing that barely moves the midpoint is not a cut)
+    'collapse_price': -.50,                   # (4) share price down more than 50% in 12 months ...
+    'collapse_earn_share': .50,               #     ... while trailing earnings fell less than half as much: the multiple is low because of the price, so the percentile cannot give Research now
+    'last_year_drop': -.10,                   # (A) latest fiscal year NOPAT down more than 10% while revenue rose -> Business light at most yellow
+    'ind_now_drop': -.25, 'ind_now_years': 5, # (B) a group company counts as falling when its latest-year operating income (before impairments) is more than 25% below its own peak of the last 5 fiscal years (the latest included) ...
+    'ind_now_share': .50, 'ind_now_min': 3,   #     ... half the group or more falling (needs 3 companies with the test) -> Industry light at most yellow
+    'conc_customers': 50, 'conc_product': 70, # (D) flag 'concentrated' when the top customers are >= 50% of sales or one product line >= 70%
+    'fwd_fall': 1.15,                         # (E) forward P/E more than 15% above trailing P/E -> flag 'earnings expected to fall' (analyst estimates)
 }
 
 RUN = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.getcwd()
 P = lambda *a: os.path.join(RUN, *a)
 CFG = json.load(open(P('config.json')))
+SRCN = 'FocusAlpha' if CFG.get('data_route') else 'Fiscal.ai'   # v4.11.4: the data source named on the page (FocusAlpha-only version sets config data_route)
 if CFG.get('rules_version') and CFG['rules_version'] != RULES_VERSION:
     sys.exit(f"config.json says rules_version {CFG['rules_version']}, but this engine ({ENGINE_VERSION}) scores under rules {RULES_VERSION}. "
              f"Set rules_version to {RULES_VERSION} (or leave it out), or run the engine that carries {CFG['rules_version']}.")
@@ -95,7 +115,8 @@ RAW = {}
 for f in sorted(glob.glob(P('raw', 'main*.json'))):
     RAW.update({k: v for k, v in json.load(open(f)).items() if isinstance(v, dict)})
 PE = _load(P('raw', 'pe.json'), {})
-EV = _load(P('raw', 'ev.json'), {})       # daily EV/EBIT, EV/EBITDA, enterprise value (millions) and share price from normalized inputs; actual sources in source_ledger.json
+EV = _load(P('raw', 'ev.json'), {})
+RAWQ = _load(P('raw', 'quarters.json'), {})   # v4.8: quarterly revenue, gross profit, operating income from Fiscal.ai (pull_q.js), for the recent-quarter check       # daily EV/EBIT, EV/EBITDA, enterprise value (millions) and share price from Fiscal.ai (pull_ev.js)
 
 n0 = lambda x: 0 if x is None else x
 def r1(x): return float(Decimal(str(x)).quantize(Decimal('0.1'), rounding=ROUND_HALF_UP))
@@ -106,7 +127,7 @@ def ordn(n): return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3:
 def num(v):
     if isinstance(v, bool) or v is None: return None
     if isinstance(v, (int, float)): return v
-    try: return float(str(v).replace(',', ''))
+    try: return float(str(v).replace(',', '').replace('%', '').strip())
     except Exception: return None
 def years_ago(n):
     y, m, d = AS_OF.split('-'); return f"{int(y) - n}-{m}-{d}"
@@ -158,6 +179,12 @@ def s_dil(x):
 def facts(t):
     return _load(P('facts', f'{t}.json'), {})
 
+_RC = {}
+def rows_cache(t):
+    """rows(t) with the fact repairs, computed once (v4.8: the recent-quarter check reconciles quarterly impairments to the annual figure)."""
+    if t not in _RC: _RC[t] = rows(t, use_facts=os.path.isdir(P('facts')))
+    return _RC[t]
+
 def rows(t, use_facts=True):
     """Fiscal-year rows, with config data_fixes and the fact collector's repairs (amortization, impairments, continuing CFO)."""
     k = KEY[t]; d = RAW[k]; fx = CO[t].get('data_fixes') or {}; R = {}; rep = []
@@ -176,16 +203,35 @@ def rows(t, use_facts=True):
         for col, fk, lab in (('am', 'amortization_acquired_intangibles', 'amortization of acquired intangibles'),
                              ('imp', 'impairments_gw_intangibles', 'goodwill and intangible impairments'),
                              ('cfo', 'cfo_continuing', 'operating cash flow from continuing operations')):
-            ch = []
+            ch = []; blank = []
             for y, v in (F.get(fk) or {}).items():
-                y = int(str(y)[:4]); v = num(v)
-                if v is None or y not in R: continue
+                try: y = int(str(y)[:4])
+                except ValueError: continue
+                v = num(v)
+                if y not in R: continue
+                if v is None: blank.append(y); continue   # v4.11.2: 'unresolved', null or text = not found; the Fiscal.ai value stays (rule), never a blocked measure
                 if col in ('am', 'imp'): v = abs(v)
                 old = R[y].get(col)
                 if old is None or abs(n0(old) - v) > 0.05:
                     ch.append(f"FY{y} {m0(old) if old is not None else 'blank'}→{v:,.1f}")
                 R[y][col] = v
             if ch: rep.append(f"{lab.capitalize()} from filings (fact collector): " + ', '.join(sorted(ch)))
+            if blank: rep.append(f"{lab.capitalize()} not found in the filings for {fyspan(sorted(blank))}: the {SRCN} value is kept, as the rules say (blank amortization or impairment = 0; total operating cash flow when no continuing line)")
+        # v4.11.2 (Codex, user 2026-11-04): operating profit rebuilt from filed lines when the Fiscal.ai field stops above operating deductions
+        # (Emerson: the field is gross profit less SG&A, before 'Other deductions, net', which holds the acquired-intangibles amortization).
+        # operating profit = earnings before income taxes + net interest expense - non-operating items the face statement shows (gain +, loss -).
+        ob = F.get('operating_profit_bridge') or {}; ch = []
+        for y, v in ((ob.get('years') if isinstance(ob, dict) else None) or {}).items():
+            try: y = int(str(y)[:4])
+            except ValueError: continue
+            if y not in R or not isinstance(v, dict): continue
+            pt_, ni_ = num(v.get('pretax')), num(v.get('net_interest'))
+            if pt_ is None or ni_ is None: continue
+            rm = [num(x.get('amount')) for x in (v.get('remove') or []) if isinstance(x, dict) and num(x.get('amount')) is not None]
+            val = pt_ + ni_ - sum(rm); old = R[y].get('op')
+            R[y]['op'] = val; R[y]['_opBridge'] = True
+            ch.append(f"FY{y} {m0(old) if old is not None else 'blank'}→{val:,.1f}")
+        if ch: rep.append("Operating profit from the filed bridge, earnings before tax + net interest − non-operating items (fact collector): " + ', '.join(sorted(ch)))
         dl = F.get('debt_like') or {}          # v4.4: litigation settlements payable on a fixed schedule count as debt; v4.7: current + non-current part
         ch, nocur = [], []
         # v4.7.1: a flat {year: value}, one {label, years} item, or several named {label, years} items
@@ -214,6 +260,8 @@ def rows(t, use_facts=True):
         for col, ys in (CO[t].get('data_overrides') or {}).items():
             for y, v in ys.items():
                 if int(y) in R: R[int(y)][col] = v; rep.append(f"{col} FY{y} set to {v} (config)")
+    if d.get('src'):   # v4.11.4: statements built outside Fiscal.ai (FocusAlpha) are named in the company's data section, with the years on an earlier basis
+        rep.append('Statements: ' + d['src'] + (f" ({d['basis_note']})" if d.get('basis_note') else ''))
     return R, d['L'], rep
 
 def settle_parts(v):
@@ -264,11 +312,11 @@ if UDIR:
         RAWU.update({k: v for k, v in json.load(open(f)).items() if isinstance(v, dict) and 'rows' in v})
 AMFA = (_load(os.path.join(UDIR, 'raw_extra', 'am_focusalpha.json'), {}) or {}).get('companies', {}) if UDIR else {}
 # v4.7 (user, 2026-10-23): one settlement-debt definition for run companies and peers. Fixed-schedule settlement liabilities
-# (current + non-current) for universe companies, from filings; the one exception to 'peers use normalized inputs (see source_ledger.json) only'.
+# (current + non-current) for universe companies, from filings; the one exception to 'peers use Fiscal.ai data only'.
 DLU = (_load(os.path.join(UDIR, 'raw_extra', 'debt_like.json'), {}) or {}).get('companies', {}) if UDIR else {}
 
 def fa_amortization(k, R):
-    """FocusAlpha amortization by normalized fiscal year: match each FocusAlpha row to the year whose net income agrees within 2%, else by period-end year."""
+    """FocusAlpha amortization by Fiscal.ai fiscal year: match each FocusAlpha row to the year whose net income agrees within 2%, else by period-end year."""
     out = {}
     for r in (AMFA.get(k) or {}).get('rows') or []:
         am = r.get('amortization')
@@ -289,8 +337,8 @@ def peer_measures(k):
     Window: latest 10 fiscal years, starting after the latest separation (revenue down > 25% and goodwill + intangibles down > 25% of invested capital)
     or diluted share jump > 50%, or at window_from in universe.json. Acquisitions stay in: ROIC including goodwill charges the price paid."""
     if k in _PM: return _PM[k]
-    d = RAWU.get(k) or RAW.get(k); u = (UNI.get('companies') or {}).get(k, {})
-    if not d or 'rows' not in d: _PM[k] = dict(ok=False, why='no normalized statement data (see source_ledger.json)'); return _PM[k]
+    d = (RAW.get(k) if k in KEY.values() else None) or RAWU.get(k) or RAW.get(k); u = (UNI.get('companies') or {}).get(k, {})   # v4.8: a run company's own fresh data
+    if not d or 'rows' not in d: _PM[k] = dict(ok=False, why=f'no data in {SRCN}'); return _PM[k]
     R = {}; notes = []
     bad = lambda src: bool(__import__('re').search(r'profit|before|excluding', src or '', __import__('re').I))
     zam, zimp = bad(d.get('amSrc')), bad(d.get('impSrc'))
@@ -327,6 +375,10 @@ def peer_measures(k):
     if u.get('window_from') and int(u['window_from']) > start: start = int(u['window_from']); notes.append(f"window starts FY{start}: {u.get('window_why', 'set in universe.json')}")
     rt = next((t for t, kk in KEY.items() if kk == k), None)          # a run company used as a peer keeps the perimeter set in this run's config
     if rt and (CO[rt].get('perimeter_start') or 0) > start: start = CO[rt]['perimeter_start']; notes.append(f"window starts FY{start}: perimeter set for this company in the run")
+    if rt and KEY[rt] in RAW:   # v4.8 (user, 2026-10-26): a run company keeps its own B1 window inside the group (BellRing: the spin-off share conversion cut its peer window to 3 years while B1 used 8)
+        mt_ = measures(rt)
+        if mt_['yrs'] and mt_['yrs'][0] != start:
+            start = mt_['yrs'][0]; notes[:] = [n for n in notes if not n.startswith('window starts')] + [f"window FY{start}–FY{mt_['L']} = this company's B1 window in the run"]
     yrs = [y for y in range(start, L + 1) if y in R and y - 1 in R and R[y].get('op') is not None and ic(R[y]) is not None and ic(R[y - 1]) is not None]
     roic, neg = {}, 0
     for y in yrs:
@@ -344,8 +396,18 @@ def peer_measures(k):
         o.update(revG=(b / a) ** (1 / (len(gy) - e)) - 1 if a > 0 and b > 0 else None, revYrs=(gy[0], gy[-1]))
     else: o.update(revG=None, revYrs=None)
     o['revChg'] = {y: R[y]['rev'] / R[y - 1]['rev'] - 1 for y in range(start + 1, L + 1) if y in R and y - 1 in R and R[y].get('rev') and R[y - 1].get('rev') and R[y - 1]['rev'] > 0}
+    # v4.8 (B): latest-year operating income against the company's own peak of the last 5 years (inside its window)
+    ops = {y: R[y]['op'] + n0(R[y].get('imp')) for y in range(max(start, L - RULES['ind_now_years'] + 1), L + 1) if y in R and R[y].get('op') is not None}   # before impairments, as NOPAT
+    if len(ops) >= 4 and L in ops and max(ops.values()) > 0:
+        pk = max(ops.values()); pfy = max(ops, key=ops.get)
+        o['opNow'] = dict(last=ops[L], peak=pk, peakFy=pfy, L=L, chg=ops[L] / pk - 1, down=ops[L] / pk - 1 < RULES['ind_now_drop'])
+    else: o['opNow'] = None
     _PM[k] = o
     return o
+
+def chan_norm(v):
+    """v4.8: a sales channel compared without case or bracketed examples ('Regulated or contracted (utilities, waste, rail)' = 'regulated or contracted')."""
+    return re.sub(r'\s+', ' ', re.sub(r'\([^)]*\)', '', str(v or ''))).strip().lower()
 
 def peer_group(t):
     """Group for the Industry light (v4.7, user 2026-10-23): every company in the run company's tag, the run company included, so every
@@ -358,10 +420,10 @@ def peer_group(t):
     mem_all = [x for x, v in U.items() if v['tag'] == tag]
     mem = [x for x in mem_all if peer_measures(x).get('roicMed') is not None]
     if len(mem) >= RULES['peer_tag_min']:
-        return dict(tag=tag, label=T['label'], level='tag', members=mem_all, others=[x for x in mem_all if x != k],
+        return dict(tag=tag, label=T['label'], level='tag', members=mem_all, others=[x for x in mem_all if x != k], ntag=len(mem),
                     why=f"{len(mem)} companies with data in '{T['label']}'" + (f", {u.get('t', t)} included" if k in mem else f"; {u.get('t', t)} has no I1 value of its own"))
     wide = [x for x, v in U.items() if UNI['tags'][v['tag']]['parent'] == par]
-    return dict(tag=tag, label=T['label'], level='parent', parent=par, plabel=UNI['parents'][par], members=wide, others=[x for x in wide if x != k],
+    return dict(tag=tag, label=T['label'], level='parent', parent=par, plabel=UNI['parents'][par], members=wide, others=[x for x in wide if x != k], ntag=len(mem),
                 why=f"only {len(mem)} companies with data in '{T['label']}' (needs {RULES['peer_tag_min']}), so the tag widens to '{UNI['parents'][par]}'")
 
 def industry(t, L):
@@ -372,20 +434,23 @@ def industry(t, L):
     out = []
     grp = g['label'] if g['level'] == 'tag' else f"{g['plabel']} (widened from {g['label']})"
     rv = [p['roicMed'] for p in pm if p.get('roicMed') is not None]
-    thin = len(rv) < RULES['thin_group']
-    cnt = f"{len(rv)} companies" + (' · thin group' if thin else '')
+    TD = UNI['tags'].get(g['tag'], {})
+    complete = bool(TD.get('complete')) and g['level'] == 'tag'   # v4.9 (user, 2026-10-27): a tag the user confirmed lists every listed company in its industry is the whole industry, not a thin sample
+    thin = g.get('ntag', len(rv)) < RULES['thin_group'] and not complete   # v4.8: true peers = the company's own tag; a tag that widens to its parent is thin too
+    ntag = g.get('ntag', len(rv))
+    cnt = f"{len(rv)} companies" + ((f" in the wider group · thin tag ({ntag} with data)" if g['level'] == 'parent' else ' · thin group') if thin else (' · complete industry' if complete and ntag < RULES['thin_group'] else ''))
     me = (UNI.get('companies') or {}).get(k, {}).get('t', t)
     selfp = next((p for p in pm if p['key'] == k), {})
     inc = lambda fld: f"{me} included" if selfp.get(fld) is not None else f"{me} has no value of its own"
     med1 = st.median(rv) if len(rv) >= RULES['group_min'] else None
     i1 = s_i1(med1) if med1 is not None else None
     fmtr = lambda v: '>100% (capital ≤ 0)' if v == float('inf') else pct(v)
-    rule_grp = f"Group = every company in the tag with data, {me} included, so every company in the tag gets the same Industry light; needs {RULES['group_min']} companies with a value; under {RULES['thin_group']} it is marked thin."
+    rule_grp = f"Group = every company in the tag with data, {me} included, so every company in the tag gets the same Industry light; needs {RULES['group_min']} companies with a value; under {RULES['thin_group']} the light is grey (too few true peers) unless the user marked the tag as the complete listed industry (v4.9), and a tag whose companies sell through different main channels is grey too (v4.8); half the group or more with latest-year operating income more than {abs(RULES['ind_now_drop']) * 100:.0f}% below its own {RULES['ind_now_years']}-year peak caps the light at yellow (v4.8)."
     n1 = near_cut(med1, RULES['I1'])
     out.append(dict(code='I1', name='Industry return on all capital', factor='Industry', kind='Data (group)', score=i1, near=(near_txt(med1, n1) if n1 is not None else ''),
                     inputs=[['Group', grp], ['Companies with a value', f"{len(rv)} of {len(pm)}, {inc('roicMed')}" + (' · thin group' if thin else '')]],
                     calc=(f"Median of the group's 10-year median ROIC including goodwill = {fmtr(med1)} → {i1}" if med1 is not None else f"Not scored: {len(rv)} companies with a value (needs {RULES['group_min']})"),
-                    note='', rule='Each company in the group: NOPAT ÷ average (debt + leases + settlement liabilities + equity − cash), median over its latest 10 fiscal years (B4 formula, normalized inputs (see source_ledger.json) plus filed settlement liabilities). Group value = median across the group. ≥15% → 5, ≥12% → 4, ≥9% → 3, ≥6% → 2, <6% → 1. ' + rule_grp))
+                    note='', rule='Each company in the group: NOPAT ÷ average (debt + leases + settlement liabilities + equity − cash), median over its latest 10 fiscal years (B4 formula, ' + SRCN + ' data plus filed settlement liabilities). Group value = median across the group. ≥15% → 5, ≥12% → 4, ≥9% → 3, ≥6% → 2, <6% → 1. ' + rule_grp))
     gv = [p['revG'] for p in pm if p.get('revG') is not None]
     med2 = st.median(gv) if len(gv) >= RULES['group_min'] else None
     i2 = s_i2(med2) if med2 is not None else None
@@ -411,16 +476,35 @@ def industry(t, L):
                     calc=calc, note='',
                     rule=f"For each of the last 10 fiscal years, the median revenue change across the group (a year needs {RULES['i3_min_cos']} companies); the worst of those years: better than −5% → 5, −5% to −10% → 4, −10% to −20% → 3, −20% to −30% → 2, worse than −30% → 1. " + rule_grp))
     tbl = sorted([dict(t=p['t'], name=p['name'], tag=UNI['tags'][p['tag']]['label'], window=f"FY{p['start']}–FY{p['L']}", roic=(None if p.get('roicMed') is None else ('inf' if p['roicMed'] == float('inf') else round(p['roicMed'], 4))),
-                        roicWhy=p.get('roicWhy', ''), revG=None if p.get('revG') is None else round(p['revG'], 4), cur=p['cur'], notes='; '.join(p['notes']), self=p['key'] == k) for p in pm],
+                        roicWhy=p.get('roicWhy', ''), revG=None if p.get('revG') is None else round(p['revG'], 4), cur=p['cur'], notes='; '.join(p['notes']), self=p['key'] == k,
+                        opNow=None if not p.get('opNow') else round(p['opNow']['chg'], 4), opNowFy=None if not p.get('opNow') else p['opNow']['peakFy'],
+                        channel=str(((UNI.get('companies') or {}).get(p['key']) or {}).get('channel') or '')) for p in pm],
                  key=lambda r: -(1e9 if r['roic'] == 'inf' else (r['roic'] if r['roic'] is not None else -1e9)))
     nom = sum(1 for p in pm if any('no amortization' in n for n in p['notes']))
+    # ---- v4.8 (user, 2026-10-26): (B) industry earnings falling now; (C) a tag that mixes sales channels, or a thin group, gets a grey light
+    nw = [(p['t'], p['opNow']) for p in pm if p.get('opNow')]
+    dn = [(tk, x) for tk, x in nw if x['down']]
+    now = dict(n=len(nw), drop=RULES['ind_now_drop'], years=RULES['ind_now_years'], down=[tk for tk, _ in dn], detail=[f"{tk} FY{x['L']} {m0(x['last'])} vs peak FY{x['peakFy']} {m0(x['peak'])} ({x['chg'] * 100:+.0f}%)" for tk, x in dn],
+               fired=len(nw) >= RULES['ind_now_min'] and len(dn) >= RULES['ind_now_share'] * len(nw))
+    U_ = UNI.get('companies') or {}
+    tagmem = [x for x, v in U_.items() if v.get('tag') == g['tag']]   # the channel check is about the tag itself, even when the group widens
+    chans = {}
+    for x in tagmem:
+        ch = chan_norm((U_.get(x) or {}).get('channel'))
+        if ch: chans.setdefault(ch, []).append((U_.get(x) or {}).get('t', x))
+    ntot = sum(len(v) for v in chans.values()); top = max((len(v) for v in chans.values()), default=0)
+    mixed = chans if len(chans) > 1 and top < RULES['chan_major'] * ntot - 1e-9 else None
+    major = max(chans, key=lambda c: len(chans[c])) if chans else None
+    chanOut = {c: v for c, v in chans.items() if c != major} if (chans and not mixed and len(chans) > 1) else {}
+    nochan = sum(1 for x in tagmem if not chan_norm((U_.get(x) or {}).get('channel')))
     # the 'returns vs peers' line compares the company with everyone else: the group without the run company, over the company's own scoring years
     po = [p for p in pm if p['key'] != k]
     cy = set(measures(t)['yrs']) if t in KEY else set()
     need = min(3, max(2, len(cy) - 1))
     same = [st.median([v for y, v in p['roic'].items() if y in cy]) for p in po if len([y for y in p['roic'] if y in cy]) >= need]
     i1_same = st.median(same) if len(same) >= RULES['peer_min'] else None
-    return dict(group=g, label=grp, table=tbl, noAm=nom, n=len(pm), nVal=len(rv), thin=thin, count=cnt, i1=med1, i1_same=i1_same, i1_same_n=len(same), byYear={y: round(v[0], 4) for y, v in byy.items()}), out
+    return dict(group=g, label=grp, table=tbl, noAm=nom, n=len(pm), nVal=len(rv), thin=thin, complete=complete, completeWhy=TD.get('complete_why') or '', count=cnt, i1=med1, i2=med2, cuts=dict(I1=RULES['I1'], I2=RULES['I2']), i1_same=i1_same, i1_same_n=len(same), byYear={y: round(v[0], 4) for y, v in byy.items()},
+                now=now, mixed=mixed, chanMajor=major, chanOut=chanOut, noChannel=nochan, nTagMem=len(tagmem), nTag=ntag), out
 
 def factor(ms, name):
     """Average of the factor's measures; a missing measure becomes a range (missing = 1 to missing = 5), never an average of what is left."""
@@ -460,6 +544,9 @@ def ceo_years(Fc, ys):
 
 def measures(t, use_facts=True):
     c = CO[t]; R, L, rep = rows(t, use_facts); W = RULES['window_years']
+    if c.get('perimeter_start') and int(c['perimeter_start']) > L + 1:   # v4.11.2 (Codex): a deal after the latest year-end is a flag, never a window cut (FY L+1 = a deal inside FY L, 0 clean years)
+        sys.exit(f"{t}: perimeter_start FY{c['perimeter_start']} is after the latest fiscal year FY{L}. A deal after the year-end is the 'business changing' flag "
+                 f"(facts: after_year_end) and, for the multiples, pe_from; it never cuts the B1-B4 window. A deal inside FY{L} gives perimeter_start FY{L + 1}; set a year up to FY{L + 1}.")
     start = max(c.get('perimeter_start') or (L - W + 1), L - W + 1)
     yrs = [y for y in range(start, L + 1) if y in R and (y - 1) in R and R[y].get('op') is not None and ic(R[y]) is not None and ic(R[y - 1]) is not None]
     o = dict(L=L, start=start, yrs=yrs, n=len(yrs), perim=start > L - W + 1, repairs=rep, cur=RAW[KEY[t]].get('cur'))
@@ -472,6 +559,16 @@ def measures(t, use_facts=True):
         if ce > 0: ex.append(nop / ce)
         else: ex.append(inc[-1]); fb.append(y)
     o.update(nopat={y: round(v, 1) for y, v in zip(yrs, nops)}, roicEx=ex, roicIn=inc, fallbackYrs=fb)
+    # v4.8 (user, 2026-10-26): (A) latest-year profit test, and the latest year's ROIC split into margin x capital turnover (display)
+    o['lastYr'] = None; o['turn'] = None
+    if L in R and L - 1 in R and L - 1 >= start and R[L].get('op') is not None and R[L - 1].get('op') is not None and R[L].get('rev') and R[L - 1].get('rev'):
+        n1, np_ = nopat(R[L]), nopat(R[L - 1])
+        o['lastYr'] = dict(L=L, nop=n1, nopP=np_, rev=R[L]['rev'], revP=R[L - 1]['rev'], nopChg=(n1 / np_ - 1) if np_ > 0 else None,
+                           revChg=R[L]['rev'] / R[L - 1]['rev'] - 1,
+                           fired=bool(np_ > 0 and n1 / np_ - 1 < RULES['last_year_drop'] and R[L]['rev'] > R[L - 1]['rev']))
+    if yrs and yrs[-1] == L and R[L].get('rev'):
+        a_, p_ = R[L], R[L - 1]; ce_ = ((ic(a_) - n0(a_['gw'])) + (ic(p_) - n0(p_['gw']))) / 2
+        if ce_ > 0: o['turn'] = dict(L=L, margin=nopat(a_) / a_['rev'], turnover=a_['rev'] / ce_, roic=nopat(a_) / ce_)
     v = [x for x in ex if x is not None]
     if v:
         srt = sorted(v); k = max(1, math.ceil(len(srt) * RULES['B1_low_quantile']))
@@ -596,6 +693,16 @@ def measures(t, use_facts=True):
     if noam: chk.append(f"amortization of acquired intangibles missing for FY{noam[0]}–FY{noam[-1]} ({len(noam)} yrs) while intangibles are on the balance sheet")
     disc = [y for y in W10 if R[y].get('cfoDisc')]
     if disc: chk.append(f"cash flow shows discontinued operations in FY{disc[0]}–FY{disc[-1]}: operating cash flow must be from continuing operations")
+    gap = []   # v4.11.2 (Codex): operating profit against earnings before tax + net interest, last 5 years
+    for y in [y for y in W10 if y > L - 5]:
+        x = R[y]
+        if x.get('_opBridge') or x.get('op') is None or x.get('pt') is None or x['op'] <= 0: continue
+        g = x['op'] - (x['pt'] + n0(x.get('int')) - n0(x.get('intInc')))
+        if g > RULES['op_bridge_gap'] * x['op']: gap.append((y, g, g / x['op']))   # profit line above deductions; a gap below (non-operating gains) leaves NOPAT lower, so it is not checked
+    gap = gap if len(gap) >= RULES['op_bridge_years'] else []
+    o['opGap'] = gap
+    if gap: chk.append("operating profit is more than 15% above earnings before tax + net interest in " + ', '.join(f"FY{y} ({g:+,.0f}, {r * 100:+.0f}% of operating profit)" for y, g, r in gap)
+                       + f": check the income statement for operating deductions below the {SRCN} operating-profit line (fact brief, operating_profit_bridge)")
     nosbc = [y for y in W10 if R[y].get('sbc') is None]
     if nosbc: chk.append(f"stock compensation missing for {len(nosbc)} of {len(W10)} years")
     o['dataChecks'] = chk
@@ -624,6 +731,179 @@ def score():
         print(f"{t:5} FY{m['start']}-{m['L']} {m['n']:2} | {pct(m['b1Med']):>6} / {pct(m['b1Low']):>6} (k={m['b1K']}) {fmt(m['B1']):2} | {fmt(m['B2']):2} ({pct(m['b2'])}) | {fmt(m['B3']):2} {pct(m['b3'])} ({pct(m['revG'])}, {len(m['gYrs'])}y) | {fmt(m['B4']):2} {pct(m['b4Med'])} | {pct(m['sbcR'])} {fmt(m['M2sbc'])} | {fmt(m['M3'])}")
         if fl: print('      perimeter flags:', fl)
         for x in m['dataChecks']: print('      data check:', x)
+
+# ---------------- v4.8 (user, 2026-10-26): earnings falling now. Three checks of the current direction, kept apart from the
+#      long-window measures. Any one that fires puts the company in the Not judged yet band (label Not now, 'check the recent quarters first').
+#      config.json `trend_ok: {"recent" | "guidance" | "price": "<reason>"}` waives one check for a company with a stated reason (e.g. a disposal).
+PROFIT_RE = re.compile(r'ebitda|ebit\b|operating (income|profit|earnings)|\beps\b|earnings per share|net (income|earnings)|profit', re.I)
+
+def _qmon(d):
+    y = _ymd0(d); return f"{MON[y[1] - 1]} {y[0]}" if y else '?'
+
+def recent_check(t, L, Fc):
+    """(1) The quarters reported after the latest fiscal year-end against the same quarters a year earlier (2 or more quarters),
+    else the last 4 reported quarters against the 4 before them. Gross profit or operating income down more than 15%, or gross
+    margin down more than 3 points, fires. Fiscal.ai quarterly statements (pull_q.js), counted only when reported by the as-of date.
+    Operating income is before goodwill and intangible impairments (quarterly lines, reconciled to the annual figure in Q4)."""
+    q = RAWQ.get(KEY[t])
+    if not q or not q.get('rows'): return dict(run=False, fired=False, why='no quarterly data (raw/quarters.json)')
+    rows = [dict(zip(q['cols'], r)) for r in q['rows']]
+    rows = [r for r in rows if str(r.get('earn') or r.get('end') or '9999') <= AS_OF and r.get('rev') is not None and r.get('op') is not None]
+    Q = {(int(r['fy']), int(r['q'])): dict(r) for r in rows if r.get('fy') and r.get('q')}
+    if not Q: return dict(run=False, fired=False, why='no quarter reported by the as-of date in raw/quarters.json')
+    # impairments filed only in the 10-K: put the gap between the annual figure and the four quarters into Q4
+    RA, _, _ = rows_cache(t); recon = []
+    for fy in sorted({k[0] for k in Q}):
+        ks = [(fy, i) for i in (1, 2, 3, 4)]
+        if all(k in Q for k in ks) and fy in RA and RA[fy].get('imp') is not None:
+            gap = n0(RA[fy]['imp']) - sum(n0(Q[k].get('imp')) for k in ks)
+            if gap > 0.5: Q[(fy, 4)]['imp'] = n0(Q[(fy, 4)].get('imp')) + gap; recon.append(f"FY{fy} {m0(gap)}")
+    after = sorted(k for k in Q if k[0] > L)
+    cur = after if len(after) >= RULES['recent_min_after'] else sorted(Q)[-4:]
+    prev = [(fy - 1, qq) for fy, qq in cur]
+    if len(cur) < (RULES['recent_min_after'] if cur == after else 4):
+        return dict(run=False, fired=False, why=f"only {len(cur)} reported quarters in the data")
+    if any(k not in Q for k in prev):
+        return dict(run=False, fired=False, why='the same quarters a year earlier are not in the data')
+    S = lambda ks, f: sum(Q[k][f] for k in ks) if all(Q[k].get(f) is not None for k in ks) else None
+    rv, rvP, gp, gpP, op, opP = S(cur, 'rev'), S(prev, 'rev'), S(cur, 'gp'), S(prev, 'gp'), S(cur, 'op'), S(prev, 'op')
+    ia = lambda ks: sum(n0(Q[k].get('imp')) for k in ks)
+    if op is not None: op += ia(cur)
+    if opP is not None: opP += ia(prev)
+    qs = sorted(qq for _, qq in cur); contig = qs == list(range(qs[0], qs[-1] + 1))
+    qtxt = (f"Q{qs[0]}–Q{qs[-1]}" if contig else ', '.join(f"Q{x}" for x in qs)) + f" FY{cur[-1][0]}"
+    lbl = (f"{3 * len(cur)} months to {_qmon(Q[cur[-1]].get('end'))} ({qtxt})" if cur == after
+           else f"4 quarters to {_qmon(Q[cur[-1]].get('end'))}") + ' against the same quarters a year earlier'
+    out = dict(run=True, label=lbl, rev=rv, revP=rvP, gp=gp, gpP=gpP, op=op, opP=opP, hits=[], hitVals=[], recon=recon)
+    chg = lambda a, b: (a - b) / abs(b) if a is not None and b not in (None, 0) else None   # a loss that deepens is a fall too
+    out['revChg'] = chg(rv, rvP)
+    out['gpChg'] = chg(gp, gpP) if gpP and gpP > 0 else None
+    out['opChg'] = chg(op, opP)
+    out['gm'], out['gmP'] = (gp / rv if gp is not None and rv else None), (gpP / rvP if gpP is not None and rvP else None)
+    out['gmChg'] = out['gm'] - out['gmP'] if out['gm'] is not None and out['gmP'] is not None else None
+    if out['gpChg'] is not None and out['gpChg'] < RULES['recent_drop']:
+        out['hits'].append(f"gross profit {out['gpChg'] * 100:+.1f}%"); out['hitVals'].append(f"{out['gpChg'] * 100:+.1f}%")
+    if out['opChg'] is not None and out['opChg'] < RULES['recent_drop']:
+        out['hits'].append(f"operating income {out['opChg'] * 100:+.1f}%" + (' (a deeper loss)' if opP < 0 else '')); out['hitVals'].append(f"{out['opChg'] * 100:+.1f}%")
+    if out['gmChg'] is not None and out['gmChg'] < RULES['recent_gm_pts']:
+        out['hits'].append(f"gross margin {out['gmP'] * 100:.1f}% → {out['gm'] * 100:.1f}% ({out['gmChg'] * 100:+.1f} points)"); out['hitVals'].append(f"{out['gmChg'] * 100:+.1f} pts")
+    per = Fc.get('perimeter') or {}
+    evs = [d for d in (per.get('after_year_end') or []) + (per.get('events') or []) if isinstance(d, dict)]
+    out['disposal'] = list(dict.fromkeys(d.get('name', 'deal') for d in (per.get('after_year_end') or []) if isinstance(d, dict)
+                                         and re.search(r'dispos|divest|sale|sold|spin|separ', str(d.get('type', '')) + ' ' + str(d.get('status', '')), re.I)))
+    e0 = _ymd0(Q[prev[0]].get('end'))   # a deal of 10% or more of revenue inside the compared quarters: a note for the coordinator (not like for like)
+    w0 = (e0[0] * 12 + e0[1] - 3) if e0 else None
+    out['dealsIn'] = list(dict.fromkeys(f"{d.get('name', 'deal')} ({str(d.get('date', ''))[:10]}, about {num(d.get('revenue_effect_pct')):.0f}% of revenue)" for d in evs
+                      if w0 is not None and _ymd0(d.get('date')) and (_ymd0(d.get('date'))[0] * 12 + _ymd0(d.get('date'))[1]) >= w0
+                      and (num(d.get('revenue_effect_pct')) or 0) >= 10))
+    big = [d.get('name', 'deal') for d in (per.get('after_year_end') or []) if isinstance(d, dict) and (num(d.get('revenue_effect_pct')) or 0) > RULES['deal_after_ye'] * 100
+           and not re.search(r'pending|announced|not closed', str(d.get('status', '')), re.I)]
+    out['onlyOp'] = bool(out['hits']) and all(h.startswith('operating income') for h in out['hits'])
+    if big and out['hits']:   # a deal above 25% of revenue closed after the year-end: the quarters are not like for like
+        out['notComparable'] = ', '.join(big); out['fired'] = False
+        out['why'] = f"not counted: the quarters are not like for like after {out['notComparable']} (above {RULES['deal_after_ye'] * 100:.0f}% of revenue, closed after the year-end)"
+        return out
+    out['fired'] = bool(out['hits'])
+    return out
+
+def guidance_check(t, L, Fc):
+    """(2) Current-year profit guidance (fact file `guidance`, from FocusAlpha get_guidance_changes or the earnings releases): cut 2 or more
+    times (a cut = midpoint down more than 2%), or down more than 15% from the first guide to the latest. Growth guides (percent) are compared
+    as 1 + growth. Revenue and margin guides do not count; only the earliest full fiscal year after FY L; changes dated after the as-of date
+    are left out; a change recorded twice counts once."""
+    G = Fc.get('guidance')
+    if not isinstance(G, dict): return dict(run=False, fired=False, why='guidance not collected in the fact file')
+    ck = str(G.get('checked') or '')[:10]
+    q = RAWQ.get(KEY[t]) or {}
+    lastrep = max([str(dict(zip(q.get('cols') or [], r)).get('earn') or '') for r in (q.get('rows') or [])
+                   if str(dict(zip(q.get('cols') or [], r)).get('earn') or '9999') <= AS_OF] or [''])
+    if ck and lastrep and ck < lastrep[:10]:
+        return dict(run=False, fired=False, why=f"guidance checked {ck}, before the latest report ({lastrep[:10]}): collect it again")
+    seen, by = set(), {}
+    for x in G.get('changes') or []:
+        if not isinstance(x, dict) or not PROFIT_RE.search(str(x.get('metric', ''))) or re.search(r'margin', str(x.get('metric', '')), re.I): continue
+        per = str(x.get('period', ''))
+        if re.search(r'\bQ[1-4]\b|\bH[12]\b|quarter|half|month', per, re.I): continue
+        py = re.search(r'(\d{4})', per); dt = str(x.get('date') or '')[:10]
+        if not py or int(py.group(1)) <= L or not dt or dt > AS_OF: continue
+        try:
+            lo0, hi0 = [float(v) for v in (x['prior'] if isinstance(x['prior'], list) else [x['prior'], x['prior']])]
+            lo1, hi1 = [float(v) for v in (x['current'] if isinstance(x['current'], list) else [x['current'], x['current']])]
+        except Exception: continue
+        key = (str(x.get('metric', '')).lower(), int(py.group(1)), dt, lo0, hi0, lo1, hi1)
+        if key in seen: continue
+        seen.add(key)
+        lev = (lambda m: 1 + m / 100) if str(x.get('kind', 'level')) == 'growth' else (lambda m: m)
+        kd = 'growth' if str(x.get('kind', 'level')) == 'growth' else 'level'   # v4.9.1: a growth guide and a level guide of the same metric are separate series (Simply Good Foods switched from growth % to $ in 2026)
+        by.setdefault((str(x.get('metric')) + ('' if kd == 'level' else ' growth'), int(py.group(1))), []).append(dict(date=dt, p=lev((lo0 + hi0) / 2), c=lev((lo1 + hi1) / 2),
+                      txt=f"{dt}: {x.get('prior')} → {x.get('current')}", src=x.get('source', ''), url=x.get('url', '')))
+    if by:
+        y0 = min(y for _, y in by); by = {k: v for k, v in by.items() if k[1] == y0}   # the current year only, not later targets
+    res = []
+    for (mt, yy), xs in by.items():
+        xs.sort(key=lambda z: z['date'])
+        if not xs[0]['p']: continue
+        ch = lambda a, b: (a - b) / abs(b) if b else None   # v4.9.1: a guided loss that deepens is a cut (change against the size of the base, as in E1)
+        cuts = sum(1 for z in xs if z['p'] and ch(z['c'], z['p']) < -RULES['guide_cut_min'])
+        tot = ch(xs[-1]['c'], xs[0]['p'])
+        res.append(dict(metric=mt, period=f"FY{yy}", cuts=cuts, total=tot, steps=[z['txt'] for z in xs], ev=[dict(fact=z['txt'], source=z['src'], url=z['url'], tag='Fact') for z in xs if z['src'] or z['url']],
+                        fired=cuts >= RULES['guide_cuts'] or tot < RULES['guide_total']))
+    if not res: return dict(run=False, fired=False, why=('no change to profit guidance recorded for a fiscal year after FY%d' % L) + (f" ({G.get('how_checked')})" if G.get('how_checked') else ''), items=[])
+    res.sort(key=lambda r: (not r['fired'], r['total']))
+    return dict(run=True, fired=res[0]['fired'], items=res, worst=res[0], why='')
+
+def price_change_1y(t):
+    e = EV.get(KEY[t]) or {}
+    px = [x for x in _ser(e.get('px')) if x[1]]
+    if not px: return None
+    b = _at(px, _d6(AS_OF), max_gap=10); a = _at(px, _d6(years_ago(1)))
+    return (b[1] / a[1] - 1) if a and b and a[1] else None
+
+def trailing_op(t, Fc):
+    """v4.9 (user, 2026-10-27): trailing operating income before goodwill and intangible impairments, last 4 quarters reported by the
+    as-of date against the same 4 quarters a year earlier (quarterly lines; impairments filed only in the 10-K put into Q4, as in E1).
+    None when the quarters are missing or a deal above 25% of revenue closed inside the last 12 months (not like for like)."""
+    q = RAWQ.get(KEY[t])
+    if not q or not q.get('rows'): return None
+    rows = [dict(zip(q['cols'], r)) for r in q['rows']]
+    rows = [r for r in rows if str(r.get('earn') or r.get('end') or '9999') <= AS_OF and r.get('op') is not None]
+    Q = {(int(r['fy']), int(r['q'])): dict(r) for r in rows if r.get('fy') and r.get('q')}
+    if len(Q) < 8: return None
+    RA, _, _ = rows_cache(t)
+    for fy in sorted({k[0] for k in Q}):
+        ks = [(fy, i) for i in (1, 2, 3, 4)]
+        if all(k in Q for k in ks) and fy in RA and RA[fy].get('imp') is not None:
+            gap = n0(RA[fy]['imp']) - sum(n0(Q[k].get('imp')) for k in ks)
+            if gap > 0.5: Q[(fy, 4)]['imp'] = n0(Q[(fy, 4)].get('imp')) + gap
+    cur = sorted(Q)[-4:]; prev = [(fy - 1, qq) for fy, qq in cur]
+    if any(k not in Q for k in prev): return None
+    per = Fc.get('perimeter') or {}
+    e1 = _ymd0(Q[cur[0]].get('end'))
+    w = (e1[0] * 12 + e1[1] - 3) if e1 else None
+    for d in (per.get('after_year_end') or []) + (per.get('events') or []):
+        if isinstance(d, dict) and (num(d.get('revenue_effect_pct')) or 0) > RULES['deal_after_ye'] * 100 and w is not None and _ymd0(d.get('date')) \
+                and (_ymd0(d.get('date'))[0] * 12 + _ymd0(d.get('date'))[1]) >= w and not re.search(r'pending|announced|not closed', str(d.get('status', '')), re.I):
+            return dict(skip=f"a deal above {RULES['deal_after_ye'] * 100:.0f}% of revenue ({d.get('name', 'deal')}, {str(d.get('date', ''))[:10]}) closed inside the last 12 months, so the quarters are not like for like")
+    op = sum(Q[k]['op'] + n0(Q[k].get('imp')) for k in cur); opP = sum(Q[k]['op'] + n0(Q[k].get('imp')) for k in prev)
+    if opP <= 0: return dict(skip=f"operating loss a year earlier ({m0(opP)}), so no comparable change")
+    return dict(chg=(op - opP) / abs(opP), op=op, opP=opP, to=_qmon(Q[cur[-1]].get('end')))
+
+def collapse_check(t, mx, Fc=None):
+    """(4) Share price down more than 50% in 12 months while trailing earnings fell less than half as much: the multiple is low because
+    of the price, so its percentile cannot give Research now. v4.9 (user, 2026-10-27): earnings = trailing operating income before
+    impairments from the quarterly data (the E1 and NOPAT measure); trailing EPS (else EBITDA) only when the quarters are missing.
+    Not run when the price a year ago or today, or a comparable earnings change, is missing."""
+    pc = price_change_1y(t)
+    if pc is None: return dict(run=False, fired=False, why='no share price a year ago and today in the data')
+    one = (mx or {}).get('one') or {}
+    tq = trailing_op(t, Fc or {})
+    if tq is not None and tq.get('skip'): return dict(run=False, fired=False, price=pc, why=f"price {pc * 100:+.0f}% in 12 months, but no comparable trailing operating income: {tq['skip']}")
+    if tq is not None: ec, en = tq['chg'], f"trailing operating income (4 quarters to {tq['to']}, before impairments: {m0(tq['opP'])} → {m0(tq['op'])})"
+    elif one.get('epsChg') is not None: ec, en = one['epsChg'], 'trailing EPS (no quarterly operating income)'
+    elif one.get('ebitdaChg') is not None: ec, en = one['ebitdaChg'], 'trailing EBITDA (no quarterly operating income)'
+    else: return dict(run=False, fired=False, price=pc, why=f"price {pc * 100:+.0f}% in 12 months, but no comparable trailing earnings a year ago (losses, or a deal inside the last 12 months)")
+    fired = pc <= RULES['collapse_price'] and ec > pc * RULES['collapse_earn_share']
+    return dict(run=True, fired=fired, price=pc, earn=ec, earnName=en, text=f"price {pc * 100:+.0f}% in 12 months, {en.split(' (')[0]} {ec * 100:+.0f}%")
 
 # ---------------- Result category
 SHORT = {'B1': 'return on capital', 'B2': 'cash conversion', 'B3': 'growth', 'B4': 'return on all capital incl. acquisitions',
@@ -673,7 +953,7 @@ def ceo_trace(Fc, m):
     return dict(name=name, since=f"{sy:04d}-{sm:02d}-{sd:02d}", months=ms, tier=tier, label=('New CEO · ' if tier == 'new' else 'CEO since ') + mon_(since),
                 count=len(ch), changes=ch, m2=list(m2), imp=list(imp), sh=list(sh) if sh else None, voteBefore=vote_before, voteFY=vy, underShare=(K / N if N else None), text=text)
 
-def result(c, out, bus, mgt, pe, rem, short, flags_out, Fc, b4=None, i1=None, n_clean=None, L_fy=None):
+def result(c, out, bus, mgt, pe, rem, short, flags_out, Fc, b4=None, i1=None, n_clean=None, L_fy=None, falling=None):
     """Action label (Research now / Quick look / Research at lower price / Not now) with the reason as the first line, plus re-look signals.
     `pe` here is the combined multiples reading from mult_band() (median percentile of P/E, EV/EBIT, EV/EBITDA)."""
     L = {x['code']: x for x in out}
@@ -692,6 +972,14 @@ def result(c, out, bus, mgt, pe, rem, short, flags_out, Fc, b4=None, i1=None, n_
         if pct is not None: why.append(f"multiples at the {ordn(pct)} percentile")
     elif bus['light'] == 'r':
         cat = 'Pass for now'; why = ['weak business: weak on ' + ', '.join(weak('Business', ('r',)))]
+    elif bus['light'] == 'range':   # v4.9: an open Business light is tested before earnings falling now (falling is read as an average business)
+        cat = 'Too early to judge'; why = ['a business measure is missing and the Business light depends on it']
+        if pct is not None: why.append(f"multiples at the {ordn(pct)} percentile")
+    elif falling:   # v4.8 (user, 2026-10-26): earnings falling now comes before any good or average reading of the record;
+        # v4.9 (user, 2026-10-27, option 2): it no longer forces Not now. It blocks Research now and Research at lower price and is read as an
+        # average business: Quick look when the multiples are low in their own history (33rd or below), otherwise Not now.
+        cat = 'Earnings falling now'; why = ['earnings falling now: ' + '; '.join(f['long'] for f in falling) + '. The lights describe the record to FY%s; check whether the fall is the company or the cycle' % L_fy]
+        if pct is not None: why.append(f"multiples at the {ordn(pct)} percentile")
     elif bus['light'] == 'g' and mgt['light'] != 'r' and not short:
         if pct is not None and pct <= RULES['research_now_pe']:
             cat = 'Research now'; why = [f"good business; multiples at the {ordn(pct)} percentile of their own history (median of P/E, EV/EBIT, EV/EBITDA), below their usual level (not a valuation: the price still has to be checked against the 15% hurdle)"]
@@ -704,16 +992,18 @@ def result(c, out, bus, mgt, pe, rem, short, flags_out, Fc, b4=None, i1=None, n_
         if pct is not None: why.append(f"multiples at the {ordn(pct)} percentile")
     else:
         cat = 'Average business'; why = []
-        if bus['light'] == 'y':
+        if bus.get('capped'):   # v4.8 (A): say the cap, not the yellow measures, when the cap made the business average
+            why.append('Business light capped at yellow: profit falling on rising sales (' + (bus.get('caps') or [''])[0] + ')')
+        elif bus['light'] == 'y':
             wy, wr = weak('Business', ('y',)), weak('Business', ('r',))
             why.append('business average: average on ' + ', '.join(wy) + ('; weak on ' + ', '.join(wr) if wr else '') if wy or wr else 'business average')
         if mgt['light'] == 'r': why.append('good business but weak management record, weak on ' + ', '.join(weak('Management', ('r',))))
         if pct is not None: why.append(f"multiples at the {ordn(pct)} percentile")
     # ---- action label: answers "should I spend research time on this now?"; the reason becomes the first line
-    kind = {'Research now': 'good', 'Watchlist': 'good', 'Average business': 'average', 'Too early to judge': 'early'}.get(cat) or ('redflag' if rem else 'weak')
+    kind = {'Research now': 'good', 'Watchlist': 'good', 'Average business': 'average', 'Too early to judge': 'early', 'Earnings falling now': 'falling'}.get(cat) or ('redflag' if rem else 'weak')
     cheaper = pe.get('direction') == 'cheaper'
     if kind == 'good': action = 'Research now' if ((pct is not None and pct <= RULES['research_now_pe']) or (cheaper and RULES['cheaper_counts'])) else 'Research at lower price'
-    elif kind == 'average' and pct is not None and pct <= RULES['low_in_range_pe']: action = 'Quick look'
+    elif (kind == 'average' or (kind == 'falling' and len(falling or []) < RULES['falling_trouble'])) and pct is not None and pct <= RULES['low_in_range_pe']: action = 'Quick look'
     else: action = 'Not now'
     TINY = {'B1': 'returns', 'B2': 'cash conversion', 'B3': 'growth', 'B4': 'returns incl. deals', 'M1': 'CEO ownership', 'M2': 'stock pay', 'M3': 'write-downs/dilution'}
     tw = lambda f, lt: [TINY.get(x['code'], x['code']) for x in out if x['factor'] == f and x.get('light') == lt]
@@ -737,12 +1027,23 @@ def result(c, out, bus, mgt, pe, rem, short, flags_out, Fc, b4=None, i1=None, n_
             if pe.get('trigger') and pe.get('price'):
                 lines.append(f"Research below {sym}{pe['trigger']:,.2f} ({(pe['trigger'] / pe['price'] - 1) * 100:+.0f}% from today)" + (' — close' if pct - RULES['research_now_pe'] <= RULES['near_line_pts'] else ''))
         else: lines.append('Good business; multiples not meaningful today')
+    elif action == 'Quick look' and kind == 'falling':   # v4.9: a short, time-boxed check of the fall
+        lines.append('Earnings falling now: ' + '; '.join(f['short'] for f in falling))
+        lines.append(f"Multiples low in their own history ({ordn(pct)}); check whether the fall is the company or the cycle: the lights describe the record to FY{L_fy}")
+        if bus.get('capped'): lines.append('Business light capped at yellow: profit falling on rising sales (' + (bus.get('caps') or [''])[0] + ')')
     elif action == 'Quick look':
         lines.append(f"Average business, but multiples low in their own history ({ordn(pct)})")
-        if avg_txt(): lines.append('Check why it is ' + avg_txt())
+        if bus.get('capped'): lines.append('Check why: Business light capped at yellow, profit falling on rising sales (' + (bus.get('caps') or [''])[0] + ')')
+        elif avg_txt(): lines.append('Check why it is ' + avg_txt())
     else:
         if kind == 'redflag': lines.append('Accounting red flag: ' + ', '.join(next((v for k2, v in RFS.items() if r.startswith(k2)), r) for r in rem) + '; revisit when resolved')
         elif kind == 'weak': lines.append('Weak business: weak on ' + ', '.join(tw('Business', 'r')))
+        elif kind == 'falling':
+            trouble = len(falling) >= RULES['falling_trouble']
+            lines.append(('Earnings falling now, troubled (%d of 3 checks): ' % len(falling) if trouble else 'Earnings falling now: ') + '; '.join(f['short'] for f in falling))
+            if trouble: lines.append('Two or more checks confirm the fall, so it is Not now at any multiple' + (f" (multiples at the {ordn(pct)} percentile)" if pct is not None else ''))
+            else: lines.append(('Multiples not low in their own history (' + ordn(pct) + ')') if pct is not None else 'Multiples not meaningful')
+            lines.append(f"Check the recent quarters first: the lights describe the record to FY{L_fy}")
         elif kind == 'early':
             if short and n_clean is not None and L_fy:
                 lines.append(f"Too early: only {n_clean} clean years on the current business")
@@ -750,14 +1051,16 @@ def result(c, out, bus, mgt, pe, rem, short, flags_out, Fc, b4=None, i1=None, n_
             else: lines.append('Too early: a missing measure decides the Business light')
         else:
             lines.append('Average business, ' + (f"multiples not low in their own history ({ordn(pct)})" if pct is not None else 'multiples not meaningful'))
-            if bus['light'] == 'g' and mgt['light'] == 'r':   # run fix 2026-10-23: green Business with a red Management light is 'average' for the label; say why
+            if bus.get('capped'):
+                lines.append('Business light capped at yellow: profit falling on rising sales (' + (bus.get('caps') or [''])[0] + ')' + ('' if mgt['light'] != 'r' else '; weak management record'))
+            elif bus['light'] == 'g' and mgt['light'] == 'r':   # run fix 2026-10-23: green Business with a red Management light is 'average' for the label; say why
                 lines.append('Business light green, but weak management record: weak on ' + ', '.join(tw('Management', 'r')))
             else:
                 lines.append((avg_txt() or 'Business light yellow').capitalize() + ('' if mgt['light'] != 'r' else '; weak management record'))
     if action != 'Not now' and b4 is not None and i1 is not None and i1 != float('inf'):
         d = b4 - i1
         lines.append(f"Returns {b4 * 100:.1f}% vs peers {i1 * 100:.1f}%: " + ('above' if d > .01 else 'below' if d < -.01 else 'in line'))
-        why.append(f"return on all capital {b4 * 100:.1f}% (B4, with amortization added back) against the peer median {i1 * 100:.1f}% over the same years (amortization on the normalized source basis, with the established US-peer FocusAlpha fill; see source_ledger.json)")
+        why.append(f"return on all capital {b4 * 100:.1f}% (B4, with amortization added back) against the peer median {i1 * 100:.1f}% over the same years " + ('(amortization from FocusAlpha cash flow statements)' if CFG.get('data_route') else '(amortization from FocusAlpha for US-listed peers; non-US peers from Fiscal.ai without it)'))
     if pe.get('disagree') and action != 'Not now':
         dz = pe['disagree']; lines.append(f"Multiples disagree: {dz['hi']} {ordn(dz['hiPct'])}, {dz['lo']} {ordn(dz['loPct'])}; check why")
     sig = []
@@ -906,7 +1209,7 @@ def mult_band(t, pe):
         if (asof - datetime.date.fromisoformat(_iso(last))).days > RULES['pe_stale_days'] and tev_now and now:
             tl = _at(tev, last)
             if tl and tl[1]:
-                d['note'] = (f"the normalized source data (see source_ledger.json) series ends {_iso(last)}; today's value = {now}× × enterprise value today {tev_now:,.0f} ÷ enterprise value on {_iso(last)} {tl[1]:,.0f} "
+                d['note'] = (f"the {SRCN} series ends {_iso(last)}; today's value = {now}× × enterprise value today {tev_now:,.0f} ÷ enterprise value on {_iso(last)} {tl[1]:,.0f} "
                              f"(operating profit as of that date)")
                 now = round(now * tev_now / tl[1], 1)
         d['now'] = now; share = round(len(pos) / len(sr) * 100)
@@ -1009,6 +1312,23 @@ def mult_band(t, pe):
                 trends=rows, one=one, notes=notes)
 
 # ---------------- assembly
+def cap_light(f, why):
+    """v4.8: cap a factor light at yellow (rules A and B). A range keeps its two ends, each capped."""
+    if not f or f.get('point') is None: return False
+    lo, hi = f.get('lightLo', f['light']), f.get('lightHi', f['light'])
+    f.setdefault('caps', []).append(why)
+    if 'g' not in (f['light'], lo, hi): return False
+    cp = lambda x: 'y' if x == 'g' else x
+    lo, hi = cp(lo), cp(hi); f['lightLo'], f['lightHi'] = lo, hi
+    f['light'] = lo if lo == hi else 'range'
+    f['calc'] += f"; capped at yellow: {why}"; f['capped'] = True
+    return True
+
+def grey_light(f, why):
+    """v4.8 (C): Industry light shown grey with the reason (thin group, or a tag that mixes sales channels); the measures stay shown."""
+    if not f or f.get('point') is None: return
+    f['light'] = 'range'; f.setdefault('greyWhy', []).append(why); f['calc'] += f"; shown grey: {why}"
+
 def build(t, RANK):
     c = CO[t]; MN = c.get('measure_notes') or {}; m = measures(t); Fc = facts(t); cur = m['cur'] or ''
     out = []; flags_out = []
@@ -1107,7 +1427,7 @@ def build(t, RANK):
         if adj: calc += '; ' + '; '.join(adj) + f" → {m1}"
     cut = lambda s, n=200: (s[:n].rsplit(' ', 1)[0] + ' …') if len(s) > n else s
     ins = [['CEO', f"{f1.get('ceo', '–')}" + (f" (since {f1.get('ceo_since')})" if f1.get('ceo_since') else '')], ['Shares owned, excl. options and unvested', m0(sh)],
-           ['Shares calculation', cut(str(f1.get('shares_calc') or '–'))], [f"Price ({pe['cur']}; see source ledger)", fmt(price)], [f"Base salary ({f1.get('salary_year', '')})", m0(sal)],
+           ['Shares calculation', cut(str(f1.get('shares_calc') or '–'))], [f"Price ({pe['cur']}, {SRCN})", fmt(price)], [f"Base salary ({f1.get('salary_year', '')})", m0(sal)],
            ['Insider trades, 24 months', cut(str(f1.get('trades_note') or '–'))]]
     evm1 = ev_list(f1.get('evidence'), 4) + ([dict(fact='Shares calculation: ' + str(f1['shares_calc']), source='', url='', tag='Fact')] if len(str(f1.get('shares_calc') or '')) > 200 else []) \
         + ([dict(fact='Insider trades: ' + str(f1['trades_note']), source='', url='', tag='Fact')] if len(str(f1.get('trades_note') or '')) > 200 else [])
@@ -1151,13 +1471,65 @@ def build(t, RANK):
     ind, ims = industry(t, m['L'])
     out[-1:-1] = ims                                    # Industry rows sit before the risk gate
     for x in out: x['light'] = light(x['score']) if x['factor'] != 'Risk' else ('r' if m['risk'] else 'g')
+    # ---- v4.8 (user, 2026-10-26): earnings falling now (E1 recent quarters, E2 guidance cuts, E3 price fall against earnings)
+    tok = c.get('trend_ok') if isinstance(c.get('trend_ok'), dict) else {}
+    waived = []
+    rc, gc, cc = recent_check(t, m['L'], Fc), guidance_check(t, m['L'], Fc), collapse_check(t, mx, Fc)
+    falling = []
+    pm_ = lambda a, b: f"{m0(b)} → {m0(a)}" + ('' if a is None or not b else (f" ({(a - b) / abs(b) * 100:+.1f}%)" if b > 0 else f" ({(a - b) / abs(b) * 100:+.1f}% of the loss)"))
+    def erow(code, name, kind, chk, ins, calc_hit, rule, short_, long_, ev=None, extra_note='', decide=None):
+        w = tok.get({'E1': 'recent', 'E2': 'guidance', 'E3': 'price'}[code])
+        hit = chk.get('fired') and not w
+        if chk.get('fired') and decide: ins = [['Deciding change', decide]] + ins   # the tile shows this number
+        if chk.get('fired') and w:
+            calc = f"Triggered but waived for this company: {w}. " + calc_hit; waived.append(f"{code} {name.lower()}: {w}")
+        elif chk.get('fired'): calc = 'Triggered: ' + calc_hit
+        elif chk.get('notComparable'): calc = f"Not counted ({chk['why'].replace('not counted: ', '')}): " + ', '.join(chk.get('hits') or [])
+        elif chk.get('run'): calc = 'Not triggered' + (': ' + calc_hit if calc_hit else '')
+        else: calc = 'Not run: ' + chk.get('why', 'no data')
+        if hit: falling.append(dict(code=code, short=short_, long=long_))
+        out.append(dict(code=code, name=name, factor='Now', kind=kind, score=None, inputs=ins, calc=calc, note=extra_note, evidence=ev or [], rule=rule,
+                        light=('r' if hit else 'na' if chk.get('notComparable') or not chk.get('run') or (chk.get('fired') and w) else 'g'),
+                        state=('fired' if hit else 'waived' if chk.get('fired') and w else 'not counted' if chk.get('notComparable') else 'not triggered' if chk.get('run') else 'not run')))
+    if rc.get('run'):
+        ins = [['Period', rc['label']], [f"Revenue, {cur}m", pm_(rc['rev'], rc['revP'])], [f"Gross profit, {cur}m", pm_(rc['gp'], rc['gpP']) if rc['gp'] is not None else 'not in the data'],
+               [f"Operating income before impairments, {cur}m", pm_(rc['op'], rc['opP'])], ['Gross margin', (f"{rc['gmP'] * 100:.1f}% → {rc['gm'] * 100:.1f}% ({rc['gmChg'] * 100:+.1f} points)" if rc['gmChg'] is not None else '–')]]
+        dn = ' '.join(x for x in (
+            ('A disposal after the year-end may explain part of the change: ' + ', '.join(rc['disposal']) + '. If it does, set trend_ok.recent in config.json with the reason.') if rc['disposal'] and rc['fired'] else '',
+            ('Only operating income fell: check the 10-Q for an impairment, restructuring or other one-off charge booked inside another line; if one explains it, set trend_ok.recent in config.json with the reason.') if rc.get('onlyOp') and rc['fired'] else '',
+            ('A deal of 10% or more of revenue falls inside the compared quarters: ' + '; '.join(rc['dealsIn']) + '. Check whether the change is like for like; if the deal explains it, set trend_ok.recent in config.json with the reason.') if rc.get('dealsIn') and rc['fired'] else '',
+            (rc['why'][0].upper() + rc['why'][1:] + '.') if rc.get('notComparable') else '',
+            ('Impairments filed only in the annual report were put into Q4: ' + ', '.join(rc['recon']) + '.') if rc.get('recon') else '') if x)
+    else: ins, dn = [], ''
+    erow('E1', 'Recent quarters', 'Data', rc, ins, ', '.join(rc.get('hits') or []),
+         f"The quarters reported after the latest fiscal year-end against the same quarters a year earlier (needs {RULES['recent_min_after']}), else the last 4 reported quarters against the 4 before them; {SRCN} quarterly statements reported by the as-of date. Triggered if gross profit or operating income fell more than {abs(RULES['recent_drop']) * 100:.0f}%, or gross margin fell more than {abs(RULES['recent_gm_pts']) * 100:.0f} points.",
+         'recent quarters ' + ', '.join(rc.get('hits') or []), (rc.get('label', '') + ': ' + ', '.join(rc.get('hits') or [])), extra_note=dn,
+         decide=(rc.get('hitVals') or [None])[0])
+    wv = gc.get('worst') or {}
+    ins = ([['Metric', f"{wv.get('metric')} ({wv.get('period')})"], ['Guides (prior → new)', ' · '.join(wv.get('steps') or [])], [f"Cuts (midpoint down more than {RULES['guide_cut_min'] * 100:.0f}%)", str(wv.get('cuts'))],
+            ['First guide to latest', f"{wv.get('total', 0) * 100:+.1f}%"]] if wv else ([['Checked', gc.get('why', '')]] if gc.get('run') else []))
+    erow('E2', 'Guidance cuts', 'Fact', gc, ins, (f"{wv.get('metric')} {wv.get('period')}: {wv.get('cuts')} cuts, {wv.get('total', 0) * 100:+.1f}% from the first guide" if wv else gc.get('why', '')),
+         f"Current-year profit guidance (EBITDA, EBIT, operating income, EPS or net income; not revenue or margins), from FocusAlpha get_guidance_changes or the earnings releases. A cut = the midpoint falls more than {RULES['guide_cut_min'] * 100:.0f}% from the previous guide; growth guides are compared as 1 + growth. Triggered if cut {RULES['guide_cuts']} or more times, or down more than {abs(RULES['guide_total']) * 100:.0f}% from the first guide to the latest.",
+         (f"{wv.get('metric')} guidance cut {wv.get('cuts')} times, {wv.get('total', 0) * 100:+.0f}% ({wv.get('period')})" if wv else ''), (f"{wv.get('metric')} guidance for {wv.get('period')} cut {wv.get('cuts')} times, {wv.get('total', 0) * 100:+.1f}% from the first guide to the latest" if wv else ''),
+         ev=(wv.get('ev') if wv else []), decide=(f"{wv.get('total', 0) * 100:+.1f}%" if wv else None))
+    ins = [['Share price, 12 months', f"{cc['price'] * 100:+.1f}%"], [cc['earnName'][0].upper() + cc['earnName'][1:] + ', 12 months', f"{cc['earn'] * 100:+.1f}%"]] if cc.get('run') else []
+    erow('E3', 'Price fall against earnings', 'Data', cc, ins, cc.get('text', ''),
+         f"Share price down more than {abs(RULES['collapse_price']) * 100:.0f}% in 12 months while trailing operating income before impairments (last 4 reported quarters against the same quarters a year earlier, {SRCN} quarterly statements; trailing EPS, else EBITDA, only when the quarters are missing) fell less than half as much. The multiples are then low because of the price, so their percentile cannot give Research now and 'getting cheaper' does not count. {SRCN} prices.",
+         cc.get('text', ''), ('the multiples are low because of the price: ' + cc.get('text', '')), decide=(f"{cc['price'] * 100:+.1f}%" if cc.get('run') else None))
     # ---- three factors, never combined; a missing measure becomes a range (1 to 5), never an average of what is left
     for x in out:
         if x['score'] is None and (c.get('measure_gaps') or {}).get(x['code']): x['gap'] = c['measure_gaps'][x['code']]
     bus = factor([x for x in out if x['factor'] == 'Business'], 'Business')
     if m['short'] and bus['point'] is not None: bus['calc'] += f"; short history ({m['n']} clean years): shown for information"
+    ly = m.get('lastYr'); capA = None; capA_on = False
+    if ly and ly['fired'] and not m['short']:   # v4.8 (A)
+        capA = (f"latest year FY{ly['L']}: NOPAT {m0(ly['nopP'])} → {m0(ly['nop'])} ({ly['nopChg'] * 100:+.0f}%) while revenue rose "
+                f"{m0(ly['revP'])} → {m0(ly['rev'])} ({ly['revChg'] * 100:+.0f}%)")
+        capA_on = cap_light(bus, capA)
     indf = factor(ims, 'Industry') if ims else dict(lo=None, hi=None, point=None, light='na', calc='Not scored: company not in the coverage universe')
-    if ind: indf.update(count=ind['count'], nVal=ind['nVal'], thin=ind['thin'])   # v4.7: the company count sits next to the Industry light
+    if ind: indf.update(count=ind['count'], nVal=ind['nVal'], thin=ind['thin'], complete=ind.get('complete'))
+    if ind and ind.get('complete') and ind['nVal'] < RULES['thin_group']:   # v4.9 (D30 d)
+        indf['calc'] += f"; not grey: the tag is the complete listed industry ({ind['nVal']} companies with data){': ' + ind['completeWhy'] if ind.get('completeWhy') else ''}"   # v4.7: the company count sits next to the Industry light
     # v4.7.1 (user, 2026-10-23): an Industry measure near its cut-off is marked; when one score step on that measure would change the light, a flag says so
     nearm = []
     for x in ims or []:
@@ -1169,12 +1541,24 @@ def build(t, RANK):
                 S = sum(vals); flips = {flight(r1((S + d) / len(ims))) for d in (-1, 1) if 1 <= x['score'] + d <= 5} - {indf.get('light')}
                 if flips: nearm.append(f"{x['code']} ({x['near'].split(': ', 1)[1].split(',')[0]})")
     indf['near'] = nearm
+    capB = None; capB_on = False
+    if ind:   # v4.8 (B) and (C)
+        nw = ind.get('now') or {}
+        if nw.get('fired'):
+            capB = (f"{len(nw['down'])} of {nw['n']} companies in the group have latest-year operating income more than {abs(RULES['ind_now_drop']) * 100:.0f}% below their own "
+                    f"{RULES['ind_now_years']}-year peak ({', '.join(nw['detail'])})")
+            capB_on = cap_light(indf, capB)
+        if ind.get('mixed'):
+            grey_light(indf, 'the group mixes sales channels (' + '; '.join(f"{k}: {', '.join(v)}" for k, v in ind['mixed'].items()) + '), so it is not one industry: split the tag in universe.json')
+        if ind.get('thin'):
+            grey_light(indf, f"too few true peers: {ind.get('nTag', ind['nVal'])} companies in the tag '{ind['group']['label']}' have an I1 value (needs {RULES['thin_group']})" + (f"; the measures use the wider group '{ind['group'].get('plabel')}' and are shown for information" if ind['group'].get('level') == 'parent' else '; the measures are shown for information'))
     mgt = factor([x for x in out if x['factor'] == 'Management'], 'Management')
     # ---- red flags
     rf = red_flags(t, Fc); rem = list(dict.fromkeys(lab for lab, _ in rf))
     # ---- placement on the quadrant
     QL, QB = RULES['quality_line'], RULES['quality_band_low']
     if bus['point'] is None: qz = 'Business not scored'
+    elif bus.get('capped'): qz = 'Business capped at yellow'
     elif bus['lo'] < QL <= bus['hi'] and bus['lo'] != bus['hi']: qz = f"Business range crosses {QL:g}"
     elif bus['point'] >= QL: qz = f"Business ≥ {QL:g}"
     elif bus['point'] >= QB: qz = f"Business {QB:g}–{QL:g}"
@@ -1198,7 +1582,36 @@ def build(t, RANK):
     elif pe.get('stale'): flags_out.append(f"P/E series stale: the daily P/E ends {pe['stale']}")
     for nt in mx['notes']:
         if not nt.startswith('P/E'): flags_out.append('EV multiple rebuilt: ' + nt)
+    _ms = RAW[KEY[t]].get('src') or ('' if 'amSrc' in RAW[KEY[t]] else 'not the pull_main.js format')   # v4.11.3: statements outside Fiscal.ai
+    if _ms and not CFG.get('data_route'): flags_out.append('Financial data outside Fiscal.ai: ' + _ms + (f" ({RAW[KEY[t]]['basis_note']})" if RAW[KEY[t]].get('basis_note') else '') + '; results may differ from a Fiscal.ai run')
+    _ps, _es = (PE.get(KEY[t]) or {}).get('src'), (EV.get(KEY[t]) or {}).get('src')   # v4.11.2 (Codex): multiples rebuilt outside Fiscal.ai
+    if (_ps or _es) and not CFG.get('data_route'): flags_out.append('Multiples rebuilt outside Fiscal.ai: ' + '; '.join(dict.fromkeys(x for x in (_ps, _es) if x)))
+    _ob = (Fc.get('data') or {}).get('operating_profit_bridge') if isinstance(Fc.get('data'), dict) else None
+    if m.get('opGap') and not (isinstance(_ob, dict) and _ob.get('checked')):
+        flags_out.append("Operating profit not reconciled: " + ', '.join(f"FY{y} operating profit {g:+,.0f} ({r * 100:+.0f}%) above earnings before tax + net interest" for y, g, r in m['opGap'])
+                         + "; the fact collector has not checked the income statement, so B1–B4 may use a profit line above operating deductions")
     if pe['distorted']: flags_out.append(f"P/E distorted: trailing {pe['now']}× ÷ forward {pe['fwd']:.1f}× = {pe['ratio']:.1f} (above {RULES['pe_distorted']})")
+    # ---- v4.8 (user, 2026-10-26)
+    for f in falling: flags_out.append(f"Earnings falling now: {f['long']}")
+    for w_ in waived: flags_out.append(f"Earnings check waived: {w_}")
+    if capA: flags_out.append(f"Profit falling on rising sales: {capA}; " + ('Business light capped at yellow' if capA_on else 'the Business light is already below green'))
+    if capB: flags_out.append(f"Industry earnings falling now: {capB}; " + ('Industry light capped at yellow' if capB_on and not indf.get('greyWhy') else 'the Industry light is grey for another reason' if indf.get('greyWhy') else 'the Industry light is already below green'))
+    if ind and ind.get('chanOut') and ((UNI.get('companies') or {}).get(KEY[t]) or {}).get('t', t) in [x for v in ind['chanOut'].values() for x in v]:
+        flags_out.append(f"Sales channel differs from most of its tag ({ind['chanMajor']}): " + '; '.join(f"{k}: {', '.join(v)}" for k, v in ind['chanOut'].items()) + '; check the tag')
+    if ind and ind.get('mixed'): flags_out.append('Peer group mixes sales channels: ' + '; '.join(f"{k}: {', '.join(v)}" for k, v in ind['mixed'].items()) + '; Industry light grey until the tag is split')
+    if pe.get('now') and pe['now'] > 0 and pe.get('fwd') and pe['fwd'] > 0 and pe['fwd'] > pe['now'] * RULES['fwd_fall']:   # (E)
+        flags_out.append(f"Earnings expected to fall: forward P/E {pe['fwd']:.1f}× against trailing {pe['now']}× (analyst estimates: forward EPS {(pe['now'] / pe['fwd'] - 1) * 100:+.0f}% against trailing)")
+    Bz = Fc.get('business') if isinstance(Fc.get('business'), dict) else {}   # (D) concentration facts from the 10-K
+    tc_, lp_ = num(Bz.get('top_customers_pct')), num(Bz.get('largest_product_line_pct'))
+    if (tc_ is not None and tc_ >= RULES['conc_customers']) or (lp_ is not None and lp_ >= RULES['conc_product']):
+        parts_ = []
+        if tc_ is not None: parts_.append(f"{Bz.get('top_customers') or 'top customers'} {tc_:.1f}% of net sales")
+        if lp_ is not None: parts_.append(f"{Bz.get('largest_product_line') or 'largest product line'} {lp_:.1f}% of net sales")
+        if str(Bz.get('production', '')).lower().startswith(('contract', 'mixed')): parts_.append('production ' + ('by contract manufacturers' if str(Bz['production']).lower().startswith('contract') else 'partly by contract manufacturers'))
+        flags_out.append('Concentrated: ' + '; '.join(parts_) + (f" (FY{Bz['fy']} 10-K)" if Bz.get('fy') else ''))
+    uch = str(((UNI.get('companies') or {}).get(KEY[t]) or {}).get('channel') or '').strip()
+    if Bz.get('main_channel') and uch and chan_norm(Bz['main_channel']) != chan_norm(uch):   # (C) the 10-K against the universe tag
+        flags_out.append(f"Sales channel: the 10-K says '{Bz['main_channel']}', universe.json says '{uch}'; correct the universe")
     per = Fc.get('perimeter') or {}
     for d in per.get('after_year_end') or []:
         eff = num(d.get('revenue_effect_pct')) if isinstance(d, dict) else None
@@ -1224,7 +1637,7 @@ def build(t, RANK):
         if isinstance(x, dict) and not any(lab == 'SEC AAER' for lab, _ in rf):
             cs, ce = str(x.get('conduct_start') or '')[:4], str(x.get('conduct_end') or '')[:4]
             flags_out.append(f"Past SEC enforcement: {x.get('number', 'AAER')} ({x.get('date', '')}), misconduct {cs + '–' if cs and cs != ce else ''}{ce}; outside the {RULES['redflag_aaer_years']}-year horizon, not a red flag")
-    if indf.get('near'): flags_out.append('Industry light near a cut-off: ' + '; '.join(indf['near']) + ' — one step on that measure would change the light')
+    if indf.get('near') and not indf.get('greyWhy') and not indf.get('capped'): flags_out.append('Industry light near a cut-off: ' + '; '.join(indf['near']) + ' — one step on that measure would change the light')
     flags_out += c.get('extra_flags') or []
     # ---- leading indicator (display only, v4.3; user 2026-10-22): the latest year against the window median for B1 and B4.
     #      The lights use 10-year windows and 3-year medians, so a real turn shows late; this line shows it first. No score uses it.
@@ -1237,7 +1650,13 @@ def build(t, RANK):
             if a_ is not None and md_ is not None:
                 x['note'] = (x['note'] + ' ' if x['note'] else '') + (f"Latest year FY{m['L']}: {pct(a_)} against the window median {pct(md_)} "
                             f"({'above' if a_ > md_ + .005 else 'below' if a_ < md_ - .005 else 'in line'}; shown only, the score uses the median).")
-    res = result(c, out, bus, mgt, mx, rem, m['short'], flags_out, Fc, n_clean=m['n'], L_fy=m['L'], b4=m.get('b4Med'), i1=(ind or {}).get('i1_same'))
+            if x['code'] == 'B1' and m.get('turn'):   # v4.8: the ROIC level is margin x turnover; with high turnover a small margin change moves ROIC a lot
+                tu = m['turn']
+                x['note'] += (f" FY{tu['L']} split: NOPAT margin {pct(tu['margin'])} × capital turnover {tu['turnover']:.1f}× (revenue ÷ average capital excl. goodwill) = {pct(tu['roic'])}; "
+                              f"so 1 point of operating margin moves ROIC by 0.75 × {tu['turnover']:.1f} = {0.75 * tu['turnover']:.1f} points.")
+    res = result(c, out, bus, mgt, mx, rem, m['short'], flags_out, Fc, n_clean=m['n'], L_fy=m['L'], b4=m.get('b4Med'), i1=(ind or {}).get('i1_same'), falling=falling)
+    steps.insert(5, ['Earnings falling now', ('Yes: ' + '; '.join(f['long'] for f in falling)) if falling else
+                     'No: ' + ', '.join(f"{x['name'].lower()} {x['state']}" for x in out if x['factor'] == 'Now')])
     steps.insert(0, ['Result', res['cat'] + ' — ' + '; '.join(res['lines']) + '. Detail: ' + '; '.join(res['why']) + ('. Re-look signal: ' + '; '.join(res['relook']) if res['relook'] else '') + ('. Note: ' + '; '.join(res['caution']) if res['caution'] else '')])
     sc = {x['code']: x['score'] for x in out}
     return dict(ticker=t, name=c.get('name', t), group=c.get('group', ''), cur=cur, measures=out, business=bus, industry=indf, management=mgt, ceo=ceo_trace(Fc, m), peers=ind, result=res, zone=dict(quality=qz, price=pz),
@@ -1245,9 +1664,24 @@ def build(t, RANK):
                 redflags=[dict(label=a, detail=short_desc(b)) for a, b in rf], redflag_check=Fc.get('red_flags') or {}, sec=Fc.get('sec_registrant', True),
                 info=Fc.get('info') or {}, perimeter=per, autoflags=m['flags'],
                 window=dict(start=m['start'], first=m['yrs'][0] if m['yrs'] else None, L=m['L'], n=m['n'], perim=m['perim'], short=m['short'], growth=[gy[0], gy[-1]] if gy else None),
-                repairs=m['repairs'], perimeter_note=c.get('perimeter_note', ''), notes=Fc.get('notes', ''), lead=lead)
+                repairs=m['repairs'], perimeter_note=c.get('perimeter_note', ''), notes=Fc.get('notes', ''), lead=lead,
+                now=dict(recent=rc, guidance=gc, price=cc, falling=[f['code'] for f in falling]))
+
+def data_route():
+    """v4.11.3 (user, 2026-11-04, after a Codex run built every company from FocusAlpha and dropped the years it marks 'not_comparable'):
+    Fiscal.ai is the data source of the screen; FocusAlpha rows (build_rows_focusalpha.py) only for a company Fiscal.ai lacks.
+    Returns {ticker: source line} for run companies not on Fiscal.ai; stops when more than half the run is off Fiscal.ai,
+    unless config.json `data_route` records the user's approval."""
+    off = {t: RAW[KEY[t]].get('src') for t in KEY if KEY[t] in RAW and (RAW[KEY[t]].get('src') or 'amSrc' not in RAW[KEY[t]])}
+    off = {t: (v or 'not the pull_main.js format') for t, v in off.items()}
+    if len(off) > RULES['data_route_max'] * len(KEY) and not CFG.get('data_route'):
+        sys.exit(f"{len(off)} of {len(KEY)} run companies have financial data from outside Fiscal.ai ({', '.join(sorted(off))}). The screen runs on Fiscal.ai; "
+                 "FocusAlpha rows are for a company Fiscal.ai lacks. Fix the Fiscal.ai connection, or record the user's approval in config.json "
+                 "\"data_route\": \"<the user's words and date>\" and say on the page that the results are not comparable with Fiscal.ai runs.")
+    return off
 
 def build_all():
+    OFF = data_route()
     M = {t: measures(t) for t in KEY if KEY[t] in RAW}
     RANK = {}
     for code, fld in (('B1', 'b1Med'), ('B4', 'b4Med')):
@@ -1256,13 +1690,13 @@ def build_all():
     res = {t: build(t, RANK) for t in M}
     json.dump(res, open(P('page_data.json'), 'w'), default=str)
     json.dump(dict(engine=ENGINE_VERSION, rules_version=RULES_VERSION, built=datetime.datetime.now().isoformat(timespec='seconds'), as_of=AS_OF,
-                   companies=len(res)), open(P('run_meta.json'), 'w'), indent=1)   # v4.7.2: the label the page and the records print
+                   companies=len(res), data_route=CFG.get('data_route') or 'Fiscal.ai'), open(P('run_meta.json'), 'w'), indent=1)   # v4.7.2: the label the page and the records print
     if UNI:   # coverage-universe summary for the page: every company, its tag, the reason, and the tag medians
         U = UNI['companies']; tags = []
         for tg, T in UNI['tags'].items():
             mem = [k for k, v in U.items() if v['tag'] == tg]; pm = [peer_measures(k) for k in mem]
             rv = [x['roicMed'] for x in pm if x.get('roicMed') is not None]; gv = [x['revG'] for x in pm if x.get('revG') is not None]
-            tags.append(dict(tag=tg, label=T['label'], parent=UNI['parents'][T['parent']], definition=T['def'], n=len(mem), nRoic=len(rv),
+            tags.append(dict(tag=tg, label=T['label'], parent=UNI['parents'][T['parent']], definition=T['def'], n=len(mem), nRoic=len(rv), complete=bool(T.get('complete')), completeWhy=T.get('complete_why') or '',
                              roic=None if not rv else ('inf' if st.median(rv) == float('inf') else round(st.median(rv), 4)), revG=round(st.median(gv), 4) if gv else None))
         comp = [dict(key=k, t=v['t'], name=v['name'], tag=UNI['tags'][v['tag']]['label'], tagCode=v['tag'], why=v['why'], gics=v.get('gics', ''), window=v.get('window_why', ''), run=k in KEY.values(),
                      data=peer_measures(k).get('roicMed') is not None) for k, v in U.items()]

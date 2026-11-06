@@ -1,22 +1,19 @@
 #!/usr/bin/env python3
 """Company initial screener v4 - HTML page with traffic lights for three separate factors (no chart of the factors). python3 make_html.py RUN_DIR -> RUN_DIR/<config.output or screener_scores.html>
 Reads RUN_DIR/page_data.json (from screener.py build), RUN_DIR/config.json and RUN_DIR/page_text.json (run-specific text)."""
-import json, html, datetime, os, re, sys, hashlib
-from pathlib import Path
+import json, html, datetime, os, re, sys
 RUN = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.getcwd()
 P = lambda *a: os.path.join(RUN, *a)
 D = json.load(open(P('page_data.json')))
 CFG = json.load(open(P('config.json')))
 TXT = json.load(open(P('page_text.json'))) if os.path.exists(P('page_text.json')) else {}
-if CFG.get('valuation_pipeline_required'):
-    from valuation_pipeline import check_run
-    _preflight = check_run(Path(RUN))
-    if not _preflight['passed']:
-        sys.exit('Delivery checks failed: ' + '; '.join(_preflight['errors']))
 # v4.7.2: the rules version and engine come from the build that made page_data.json, never from hand-typed text
 if not os.path.exists(P('run_meta.json')):
     sys.exit('run_meta.json is missing: run screener.py RUN_DIR build with this engine first (it writes the rules version the page prints)')
 META = json.load(open(P('run_meta.json')))
+FA_ROUTE = (META.get('data_route') or 'Fiscal.ai') != 'Fiscal.ai'   # v4.11.4: FocusAlpha-only version
+SRCN = 'FocusAlpha' if FA_ROUTE else 'Fiscal.ai'
+MSRC = 'FocusAlpha prices and filed statements (rebuilt)' if FA_ROUTE else 'Fiscal.ai'   # no comma: vault_records.py reads the P/E caption
 RV, ENG = META['rules_version'], META['engine']
 if CFG.get('rules_version') and CFG['rules_version'] != RV:
     sys.exit(f"config.json says rules_version {CFG['rules_version']}, but page_data.json was built under rules {RV}: rebuild, or correct config.json")
@@ -36,7 +33,7 @@ def _later(a, b, days=31):
     return (datetime.date.fromisoformat(a) - datetime.date.fromisoformat(b)).days > days
 CATS = ['Research now', 'Quick look', 'Research at lower price', 'Not now']
 CATCLS = {'Research now': 'r-now', 'Quick look': 'r-quick', 'Research at lower price': 'r-watch', 'Not now': 'r-pass'}
-KINDS = ['good', 'average', 'early', 'weak', 'redflag']
+KINDS = ['good', 'average', 'early', 'falling', 'weak', 'redflag']
 def _rank(t):
     r = D[t].get('result') or {}
     sub = (KINDS.index(r.get('kind')) if r.get('kind') in KINDS else 9, r.get('pct') if r.get('pct') is not None else 999)
@@ -95,6 +92,96 @@ def mult_strip():
     body.append('</svg>')
     return ''.join(body)
 
+def ind_strip():
+    """v4.11 (user, 2026-10-26): page-level Industry chart, built like the multiples chart. One row per run company, grouped by the
+    peer group behind its Industry light. Left panel I1 (10-year median ROIC including goodwill), right panel I2 (revenue growth per
+    year): small dots = the other companies in the group, dark tick = the group median that sets the score, blue dot = the company,
+    shading = the measure's light. Display only."""
+    INF = float('inf')
+    have = [t for t in ORDER if (D[t].get('peers') or {}).get('table')]
+    if not have: return ''
+    cuts = D[have[0]]['peers'].get('cuts') or {}
+    if not cuts: return ''
+    groups = {}
+    for t in have: groups.setdefault(D[t]['peers']['label'], []).append(t)
+    num = lambda v: None if v is None else (INF if v == 'inf' else float(v))
+    own = lambda t: next((num(r.get('roic')) for r in D[t]['peers']['table'] if r.get('self')), None)
+    gm = lambda g: (lambda v: -1e9 if v is None else (1e9 if v == INF else v))(D[groups[g][0]]['peers'].get('i1'))
+    order = sorted(groups, key=lambda g: -gm(g))
+    P = {'I1': (232, 300, 'roic', 'i1'), 'I2': (602, 300, 'revG', 'i2')}
+    dom = {c: (-cuts[c][0], 3 * cuts[c][0]) for c in P}
+    def X(c, v):
+        x0, w, _, _ = P[c]; lo, hi = dom[c]
+        v = hi if v == INF else v
+        return x0 + (min(max(v, lo), hi) - lo) / (hi - lo) * w
+    pc = lambda v: '–' if v is None else ('>100%' if v == INF else f"{v * 100:.1f}%")
+    LT = {'g': ('green', 'it-g'), 'y': ('yellow', 'it-y'), 'r': ('red', 'it-r'), 'na': ('not scored', 'it-na'), 'range': ('grey ? (range)', 'it-na')}
+    nrow = sum(len(v) for v in groups.values()); H = 108 + 28 * nrow + 64 * len(groups) + 34
+    # v4.11.1 (user, 2026-10-27: "better format the labels so I can track the numbers better on the axis"): labels every 10%, faint gridlines every 5% through every row,
+    # the light cut-offs on their own line, and the axis repeated under each group heading and at the bottom
+    def steps(c, st_):
+        lo, hi = dom[c]; k = int(round(lo / st_)); out = []
+        while k * st_ <= hi + 1e-9:
+            if k * st_ >= lo - 1e-9: out.append(round(k * st_, 4))
+            k += 1
+        return out
+    def axis(yl):
+        o = []
+        for c in P:
+            hi = dom[c][1]
+            for v in steps(c, .10): o.append(f"<text x='{X(c, v):.1f}' y='{yl}' class='ig-ax{' ig-ax0' if v == 0 else ''}' text-anchor='middle'>{v * 100:.0f}%{'+' if abs(v - hi) < 1e-9 else ''}</text>")
+        return ''.join(o)
+    def grid(c, cy):
+        return ''.join(f"<line x1='{X(c, v):.1f}' x2='{X(c, v):.1f}' y1='{cy - 9}' y2='{cy + 9}' class='{'ig-gM' if abs(v * 100) % 10 < 1e-6 else 'ig-gm'}'/>" for v in steps(c, .05) if v != 0)
+    b = [f"<svg viewBox='0 0 1010 {H}' class='istrip' role='img' aria-label='Industry: where each company lands in its peer group, returns and revenue growth'>",
+         "<text x='0' y='16' class='tick'>Grey dots = the other companies in the group · dark tick = group median (it sets the score) · blue dot = the company · shading = the measure's light (green 4–5, yellow 3, red 1–2)</text>"]
+    for c, title in (('I1', 'I1 · Return on all capital incl. goodwill (10-yr median)'), ('I2', 'I2 · Revenue growth per year (10-yr window)')):
+        x0, w, _, _ = P[c]; lo, hi = dom[c]; ct = cuts[c]
+        b.append(f"<text x='{x0}' y='40' class='hdr'>{E(title)}</text>")
+        for v, cl_ in ((ct[2], 'it-y'), (ct[1], 'it-g')):
+            b.append(f"<line x1='{X(c, v):.1f}' x2='{X(c, v):.1f}' y1='58' y2='64' class='ig-cutm'/><text x='{X(c, v) + (-3 if v == ct[2] else 3):.1f}' y='56' class='ig-cut {cl_}' text-anchor='{'end' if v == ct[2] else 'start'}'>{'yellow ' if v == ct[2] else 'green '}{v * 100:.0f}%</text>")
+    b.append("<text x='1005' y='40' class='hdr' text-anchor='end'>Values</text><text x='1005' y='80' class='tick' text-anchor='end'>I1 · I2</text>")
+    b.append("<text x='0' y='56' class='tick'>Light cut-offs</text><text x='0' y='80' class='tick'>Axis</text>" + axis(80))
+    y = 98
+    for g in order:
+        ts = sorted(groups[g], key=lambda t: -(lambda v: -1e9 if v is None else (1e9 if v == INF else v))(own(t)))
+        p0 = D[ts[0]]['peers']; f0 = D[ts[0]]['industry']
+        lt = 'na' if f0.get('greyWhy') else f0.get('light', 'na'); word, cl = LT.get(lt, LT['na'])
+        gw = ' '.join(f0['greyWhy']) if isinstance(f0.get('greyWhy'), list) else str(f0.get('greyWhy') or '')
+        if gw: word = 'grey ? (' + ('the group mixes sales channels' if 'channel' in gw else 'too few true peers' if 'peers' in gw else 'see the company section') + ')'
+        sc = {m['code']: m.get('score') for m in D[ts[0]]['measures'] if m['code'] in ('I1', 'I2', 'I3')}
+        b.append(f"<line x1='0' x2='1010' y1='{y - 6}' y2='{y - 6}' class='ig-rule'/><text x='0' y='{y + 12}' class='ig-h'>{E(g)}</text>"
+                 f"<text x='0' y='{y + 29}' class='ig-l {cl}'>Industry light {E(word)}<tspan class='ig-s'> · scores I1 {fnum(sc.get('I1'))}, I2 {fnum(sc.get('I2'))}, I3 {fnum(sc.get('I3'))} · {E(p0.get('count') or '')}</tspan></text>")
+        y += 46
+        b.append(axis(y + 2)); y += 18
+        for t in ts:
+            p = D[t]['peers']; cy = y + 8
+            b.append(f"<a href='#{t}' data-open='{t}'><text x='0' y='{cy + 4}' class='lbl'>{E(D[t]['name'])}</text></a>")
+            vals = {}
+            for c, (x0, w, fld, mk) in P.items():
+                ct = cuts[c]; lo, hi = dom[c]
+                for a_, z, cls in ((lo, ct[2], 'pz-r'), (ct[2], ct[1], 'pz-y'), (ct[1], hi, 'pz-g')):
+                    b.append(f"<rect x='{X(c, a_):.1f}' y='{cy - 9}' width='{X(c, z) - X(c, a_):.1f}' height='18' class='{cls}'/>")
+                b.append(grid(c, cy))
+                if lo < 0: b.append(f"<line x1='{X(c, 0):.1f}' x2='{X(c, 0):.1f}' y1='{cy - 9}' y2='{cy + 9}' class='pc-zero'/>")
+                for r in p['table']:
+                    v = num(r.get(fld))
+                    if v is None or r.get('self'): continue
+                    b.append(f"<circle cx='{X(c, v):.1f}' cy='{cy}' r='2.6' class='ip-o'><title>{E(r['t'])} {pc(v)}</title></circle>")
+                md = p.get(mk)
+                if md is not None: b.append(f"<line x1='{X(c, md):.1f}' x2='{X(c, md):.1f}' y1='{cy - 10}' y2='{cy + 10}' class='ip-med'><title>Group median {pc(md)}</title></line>")
+                me = next((num(r.get(fld)) for r in p['table'] if r.get('self')), None); vals[c] = me
+                if me is not None:
+                    edge = me == INF or me > hi or me < lo
+                    b.append(f"<circle cx='{X(c, me):.1f}' cy='{cy}' r='5.5' class='ip-me{' ip-edge' if edge else ''}'><title>{E(t)} {pc(me)} · group median {pc(md)}</title></circle>")
+            b.append(f"<text x='1005' y='{cy + 4}' text-anchor='end' class='val'>{pc(vals.get('I1'))} · {pc(vals.get('I2'))}</text>")
+            y += 28
+        y += 0
+    b.append(f"<line x1='0' x2='1010' y1='{y - 6}' y2='{y - 6}' class='ig-rule'/>" + axis(y + 10))
+    b.append('</svg>')
+    miss = [t for t in ORDER if t not in have]
+    return ''.join(b) + (f"<p class='cap'>Not in the coverage universe, so no Industry group: {E(', '.join(D[t]['name'] for t in miss))}.</p>" if miss else '')
+
 def trend_html(m, small=False):
     """EV/EBITDA change lines; the P/E split sits in the hover text."""
     out = ''
@@ -108,7 +195,7 @@ def trend_html(m, small=False):
         tip = (f"From {r['date']}: EV/EBITDA {r['multY']}× → {r['mult']}× today ({r['chg'] * 100:+.0f}%) = enterprise value {r['evChg'] * 100:+.0f}% and EBITDA {r['ebitdaChg'] * 100:+.0f}%: "
                f"(1 {r['evChg']:+.3f}) ÷ (1 {r['ebitdaChg']:+.3f}) − 1. "
                + (f"P/E {r['peY']}× → today ({r['peChg'] * 100:+.0f}%) = price {r['priceChg'] * 100:+.0f}% and EPS {r['epsChg'] * 100:+.0f}%. " if 'peChg' in r else (r.get('peNa', '') + '. ' if r.get('peNa') else ''))
-               + (r.get('why', '') + '. ' if r.get('why') else '') + "Source: normalized source data (see source_ledger.json) daily EV/EBITDA, enterprise value, P/E and share price." + ex)
+               + (r.get('why', '') + '. ' if r.get('why') else '') + ("Source: EV/EBITDA, enterprise value and P/E rebuilt daily from FocusAlpha prices and filed statements." if FA_ROUTE else "Source: Fiscal.ai daily EV/EBITDA, enterprise value, P/E and share price.") + ex)
         out += (f"<div class='trend t-{r['dir']}' title='{E(tip)}'>{arrow} {E(r['label'])}: EV/EBITDA {r['chg'] * 100:+.0f}% "
                 f"<span class='muted'>(EV {r['evChg'] * 100:+.0f}%, EBITDA {r['ebitdaChg'] * 100:+.0f}%)</span></div>")
     return out
@@ -148,17 +235,17 @@ def mult_table(c):
     rows = ''.join(f"<tr><td>{E(nm)}</td><td class='num'>{'–' if d['now'] is None else str(d['now']) + '×'}</td><td class='num'>{'–' if d['p50'] is None else str(d['p50']) + '×'}</td>"
                    f"<td class='num'>{ordn(d['pct']) if d['pct'] is not None else '–'}</td><td class='num'>{money(d.get('implied'), cur) if d.get('implied') else '–'}</td><td>{E(d['why'] or d.get('note') or '')}</td></tr>"
                    for k, nm, _ in MK for d in [m['metrics'][k]])
-    head = (f"Median {ordn(m['pct'])} percentile · research line {money(m['trigger'], cur)} vs price {money(m['price'], cur)}" if m['band'] else f"历史估值分位不可用：{m['why']}")
+    head = (f"Median {ordn(m['pct'])} percentile · research line {money(m['trigger'], cur)} vs price {money(m['price'], cur)}" if m['band'] else f"Not meaningful: {m['why']}")
     return (f"<div class='pel'>{E(head)}</div><table class='mt mx'><thead><tr><th>Multiple</th><th>Today</th><th>Own median</th><th>Percentile</th><th>Price at its median</th><th>Note</th></tr></thead><tbody>{rows}</tbody></table>"
             f"<p class='cap'>Window from {E(m['window'])} ({E(m['windowWhy'])}). Research line = middle of the three share prices at which each multiple would sit at its own median "
-            f"(enterprise value moves one for one with market value; net debt held at today's level). EV/EBIT and EV/EBITDA: normalized source data (see source_ledger.json) daily, trailing operating profit and EBITDA. Not a valuation.</p>"
+            f"(enterprise value moves one for one with market value; net debt held at today's level). EV/EBIT and EV/EBITDA: {MSRC} daily, trailing operating profit and EBITDA. Not a valuation.</p>"
             f"<h5>Against its own level</h5>{level_html(m)}<h5>EV/EBITDA change from single days</h5><div class='trends'>{trend_html(m)}</div>")
 
 # ---------------- P/E range strip (all names, each row on its own scale)
 def strip_row(t, y, w=560, x0=230):
     p = D[t]['pe']
     if p['band'] is None:
-        why = p.get('why') or ('当前EPS缺项' if p['now'] is None else '利润分母非正' if p['now'] <= 0 else '历史分位不足')
+        why = 'loss-making today (negative trailing P/E)' if (p['now'] is None or p['now'] <= 0) else f"positive P/E on only {p['posShare']}% of days"
         return (f"<a href='#{t}' data-open='{t}'><text x='0' y='{y + 5}' class='lbl'>{E(D[t]['name'])}</text></a>"
                 f"<text x='{x0}' y='{y + 5}' class='muted'>Not meaningful: {why}</text>")
     lo, hi_true = p['p10'], p['p90']
@@ -207,7 +294,7 @@ def pe_chart(t):
     vals = [v for _, v in pts if v is not None]
     meaningful = p['band'] is not None
     if not vals:
-        return "<p class='muted'>No positive trailing P/E in the window.</p>", f"Daily trailing GAAP P/E from normalized source data (see source_ledger.json) since {p['from_']}; the company has been loss-making throughout."
+        return "<p class='muted'>No positive trailing P/E in the window.</p>", f"Daily trailing GAAP P/E from {MSRC} since {p['from_']}; the company has been loss-making throughout."
     if meaningful:
         ymax = max(p['p90'] * 1.35, p['now'] * 1.15); ymin = max(0, min(p['p10'] * 0.7, p['now'] * 0.85))
     else:
@@ -257,9 +344,9 @@ def pe_chart(t):
         out.append(f"<circle cx='{nx:.1f}' cy='{ny:.1f}' r='5' class='now now-bot'><title>Today {p['now']}×, {ordn(p['pct'])} percentile</title></circle>")
         out.append(f"<text x='{L + 4}' y='{sy(p['p50']) - 5:.1f}' class='tick'>median {p['p50']:g}×</text>")
     out.append('</svg>')
-    cap = f"Daily trailing GAAP P/E from normalized source data (see source_ledger.json), {p['from_']} to {p['to']} ({p['years']} years), sampled weekly." + (f" Thirds and median computed on the days with a positive P/E; the dot is today." if meaningful else '')
+    cap = f"Daily trailing GAAP P/E from {MSRC}, {p['from_']} to {p['to']} ({p['years']} years), sampled weekly." + (f" Thirds and median computed on the days with a positive P/E; the dot is today." if meaningful else '')
     if clipped: cap += f" Values above {ymax:.0f}× are cut at the top edge (high was {max(vals):g}×)."
-    if not meaningful: cap += ' No range is drawn: ' + (p.get('why') or 'current input/history unavailable') + '; chart gaps can represent missing data or nonpositive profit, as distinguished in the coverage table.'
+    if not meaningful: cap += " No range is drawn: " + ('the company is loss-making today' if (p['now'] is None or p['now'] <= 0) else f"positive P/E on only {p['posShare']}% of days") + "; gaps are loss periods."
     return ''.join(out), cap
 
 # ---------------- company section
@@ -279,13 +366,16 @@ def flight(f, name='', num=True):
     num=False (summary table, company headers): symbol only, no number."""
     if f is None or f.get('point') is None:
         return f"<span class='lt lt-na{' wide' if num else ' big'}' title='{E(name)}: not scored'>–{' n/a' if num else ''}</span>"
+    if f.get('greyWhy'):   # v4.8: thin group or a tag that mixes sales channels
+        tip = f"{name}: shown grey, {'; '.join(f['greyWhy'])}. The measures average {f['point']}" + (f", capped at yellow ({'; '.join(f.get('caps') or [])})" if f.get('capped') else f" ({LWORD.get(f.get('lightLo'), '')})") + '.'
+        return f"<span class='lt lt-q{' wide' if num else ' big'}' title='{E(tip)}'>?{(' ' + format(f['point'], '.1f')) if num else ''}</span>"
     if f['light'] == 'range':
         a, b = f['lightLo'], f['lightHi']
         tip = f"{name}: could be {LWORD[a]} or {LWORD[b]} ({h1(f['lo'])}–{h1(f['hi'])}). Missing: " + '; '.join((g if len(g) <= 230 else g[:230].rsplit(' ', 1)[0] + ' … (full reason in the company section)') for g in (f.get('gaps') or ['a measure'])) + '.'
         return f"<span class='lt lt-q{' wide' if num else ' big'}' title='{E(tip)}'>?{(' ' + h1(f['lo']) + '–' + h1(f['hi'])) if num else ''}</span>"
     rng = f" ({h1(f['lo'])}–{h1(f['hi'])})" if f['lo'] != f['hi'] else ''
-    tip = f"{name}: {f['point']}{rng} → {LWORD[f['light']]}"
-    return f"<span class='lt lt-{f['light']}{' wide' if num else ' big'}' title='{E(tip)}'>{SYMB[f['light']]}{(' ' + format(f['point'], '.1f')) if num else ''}</span>"
+    tip = f"{name}: {f['point']}{rng} → {LWORD[f['light']]}" + (f" (capped at yellow: {'; '.join(f.get('caps') or [])})" if f.get('capped') else '')
+    return f"<span class='lt lt-{f['light']}{' wide' if num else ' big'}' title='{E(tip)}'>{SYMB[f['light']]}{(' ' + format(f['point'], '.1f') + (' capped' if f.get('capped') else '')) if num else ''}</span>"
 def minis(c, codes):
     return "<span class='minis'>" + ''.join(mlight(k, c['scores'].get(k)) for k in codes) + "</span>"
 
@@ -301,7 +391,7 @@ def measure_rows(m):
     return (f"<tr><td class='mcode'><b>{E(m['code'])}</b><div>{E(m['name'])}</div><span class='kind'>{E(m['kind'])}</span></td>"
             f"<td>{ins or '<span class=muted>–</span>'}</td>"
             f"<td><div class='calc'>{E(m['calc'])}</div>{note}<div class='rule'>Rule: {E(m['rule'])}</div>{det}</td>"
-            f"<td class='scol'>{mlight(m['code'], m['score'], m.get('light') if m['factor'] == 'Risk' else None) if m['factor'] != 'Risk' else ('<span class=\'lt lt-r\' title=\'gate triggered\'>✗</span>' if m.get('light') == 'r' else '<span class=\'lt lt-g\' title=\'gate not triggered\'>✓</span>')}</td></tr>")
+            f"<td class='scol'>{mlight(m['code'], m['score']) if m['factor'] not in ('Risk', 'Now') else ('<span class=\'lt lt-r\' title=\'triggered\'>✗</span>' if m.get('light') == 'r' else '<span class=\'lt lt-na\' title=\'not run or not counted\'>–</span>' if m.get('light') == 'na' else '<span class=\'lt lt-g\' title=\'not triggered\'>✓</span>')}</td></tr>")
 
 def verdict_cls(v):
     return 'v-now' if v.startswith('Research now') else 'v-watch' if v.startswith('Watch') else 'v-out' if v.startswith(('Removed', 'Fails', 'Manual')) else 'v-neutral'
@@ -378,16 +468,88 @@ def peer_block(c):
     if not p: return ''
     g = p['group']
     pc = lambda v: '–' if v is None else ('>100%' if v == 'inf' else f"{v * 100:.1f}%")
-    rows = ''.join(f"<tr{' class=run' if r.get('self') else ''}><td>{'<b>' + E(r['t']) + '</b>' if r.get('self') else E(r['t'])}</td><td>{E(r['name'])}{' (this company)' if r.get('self') else ''}</td><td>{E(r['tag'])}</td><td>{E(r['window'])}</td><td class='num'>{pc(r['roic'])}</td><td class='num'>{pc(r['revG'])}</td><td>{E(r['roicWhy'])}{'; ' if r['roicWhy'] and r['notes'] else ''}{E(r['notes'])}</td></tr>" for r in p['table'])
+    rows = ''.join(f"<tr{' class=run' if r.get('self') else ''}><td>{'<b>' + E(r['t']) + '</b>' if r.get('self') else E(r['t'])}</td><td>{E(r['name'])}{' (this company)' if r.get('self') else ''}</td><td>{E(r['tag'])}</td><td>{E(r['window'])}</td><td class='num'>{pc(r['roic'])}</td><td class='num'>{pc(r['revG'])}</td><td class='num'>{pc(r.get('opNow')) if r.get('opNow') is not None else '–'}</td><td>{E(r.get('channel') or '–')}</td><td>{E(r['roicWhy'])}{'; ' if r['roicWhy'] and r['notes'] else ''}{E(r['notes'])}</td></tr>" for r in p['table'])
     yrs = ', '.join(f"FY{y}: {v * 100:+.1f}%" for y, v in sorted(p['byYear'].items()))
-    thin = (f" Thin group: {p.get('nVal')} companies with an I1 value (under {6}); one company's data moves the median, so read the table." if p.get('thin') else '')
+    thin = (f" Thin group: {p.get('nTag', p.get('nVal'))} companies in the tag have an I1 value (under 6), so the Industry light is grey (too few true peers); the measures are shown for information." if p.get('thin') else (f" Complete industry: the tag lists every listed company in its industry (confirmed by the user), so a group under 6 is not grey{': ' + p['completeWhy'] if p.get('completeWhy') else ''}." if p.get('complete') and p.get('nVal', 6) < 6 else ''))
+    nw = p.get('now') or {}
+    if nw.get('n'): thin += f" Earnings falling now: {len(nw.get('down') or [])} of {nw.get('n')} companies have latest-year operating income (before impairments) more than {abs(nw.get('drop', -.25)) * 100:.0f}% below their own peak of the last {nw.get('years', 5)} fiscal years" + (' (half or more, so the Industry light is at most yellow).' if nw.get('fired') else '.')
+    if p.get('mixed'): thin += ' The group mixes sales channels (' + '; '.join(f"{k}: {', '.join(v)}" for k, v in p['mixed'].items()) + '), so the Industry light is grey until the tag is split.'
+    elif p.get('noChannel') and p['noChannel'] >= (p.get('nTagMem') or 0): thin += ' Sales channel not set in universe.json for any company in the tag, so the channel check did not run.'
+    elif p.get('noChannel'): thin += f" Sales channel not set in universe.json for {p['noChannel']} of {p.get('nTagMem')} companies in the tag, so the channel check covers only the rest."
     return (f"<details class='ev'><summary>Group ({E(p.get('count') or str(p['n']) + ' companies')}) and how it was chosen</summary><p class='note'>Tag: {E(g['label'])}. {E(g['why'])}. "
             f"Every company in the tag is scored against the same group, this company included, so they all get the same Industry light.{E(thin)} "
-            f"Group companies use normalized inputs (see source_ledger.json) plus filed settlement liabilities, with no other repairs from filings; {p['noAm']} of {p['n']} have no amortization of acquired intangibles in the data, so their returns are understated.</p>"
+            f"Group companies use {SRCN} data plus filed settlement liabilities, with no other repairs from filings; {p['noAm']} of {p['n']} have no amortization of acquired intangibles in the data, so their returns are understated.</p>"
             f"<p class='note'>Median revenue change by year: {E(yrs.replace('-0.0%', '0.0%'))}</p>"
-            f"<table class='mt small'><thead><tr><th>Ticker</th><th>Company</th><th>Tag</th><th>Window</th><th>ROIC incl. goodwill (median)</th><th>Revenue growth</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></details>")
+            f"<table class='mt small'><thead><tr><th>Ticker</th><th>Company</th><th>Tag</th><th>Window</th><th>ROIC incl. goodwill (median)</th><th>Revenue growth</th><th>Latest operating income vs own 5-yr peak</th><th>Main sales channel</th><th>Notes</th></tr></thead><tbody>{rows}</tbody></table></details>")
 
-BLK = {'Business': 'bu', 'Industry': 'in', 'Management': 'ma', 'Risk': 'rk'}
+def peer_chart(p, code):
+    """v4.11 (user, 2026-10-26): one ranked bar chart per Industry measure (I1 returns, I2 revenue growth) over the group behind the
+    Industry light, so the reader sees where each company lands. Display only: the values are the peer table's, the median line is the
+    group value the score uses, the shaded zones are the measure's light cut-offs (green = score 4-5, yellow = 3, red = 1-2)."""
+    cuts = (p.get('cuts') or {}).get(code)
+    if not cuts: return ''
+    fld, med = ('roic', p.get('i1')) if code == 'I1' else ('revG', p.get('i2'))
+    title = 'I1 · Return on all capital incl. goodwill (each company\'s 10-year median)' if code == 'I1' else 'I2 · Revenue growth per year (each company\'s 10-year window)'
+    INF = float('inf'); own = (p.get('group') or {}).get('label')
+    rows = []; miss = []
+    for r in p['table']:
+        v = r.get(fld)
+        if v is None: miss.append(r); continue
+        rows.append((INF if v == 'inf' else float(v), r))
+    if not rows: return ''
+    rows.sort(key=lambda x: -x[0])
+    fin = [v for v, _ in rows if v != INF] + ([med] if med is not None and med != INF else [])
+    top = cuts[0]
+    lo = max(-top, min([0.0] + fin) - top * .08); hi = min(3 * top, max([top * 1.3] + fin) + top * .08)
+    if any(v == INF for v, _ in rows) or max(fin or [0]) > hi: hi = 3 * top
+    W, LX, RX, RH, TOP = 380, 52, 326, 18, 40
+    H = TOP + len(rows) * RH + 26
+    X = lambda v: LX + (min(max(v, lo), hi) - lo) / (hi - lo) * (RX - LX)
+    pc = lambda v: '>100%' if v == INF else f"{v * 100:.1f}%"
+    y0, y1 = TOP - 4, TOP + len(rows) * RH + 2
+    g = [f"<svg viewBox='0 0 {W} {H}' class='pch' role='img' aria-label='{E(title)}: where each company in the group lands'>"]
+    for a, b, cl in ((lo, cuts[2], 'pz-r'), (cuts[2], cuts[1], 'pz-y'), (cuts[1], hi, 'pz-g')):
+        if b > a: g.append(f"<rect x='{X(a):.1f}' y='{y0}' width='{X(b) - X(a):.1f}' height='{y1 - y0}' class='{cl}'/>")
+    for c, sc in zip(cuts, ('5', '4', '3', '2')):
+        if lo < c < hi: g.append(f"<line x1='{X(c):.1f}' x2='{X(c):.1f}' y1='{y0}' y2='{y1}' class='pc-cut'><title>{c * 100:.0f}%: score {sc} at or above</title></line>")
+    if lo < 0 < hi: g.append(f"<line x1='{X(0):.1f}' x2='{X(0):.1f}' y1='{y0}' y2='{y1}' class='pc-zero'/>")
+    labs = [v for v in (0.0, cuts[2], cuts[1]) if lo <= v <= hi]; last = None; row = 0   # axis labels: 0% and the two light boundaries; a label too close to the one before moves up a row
+    for v in labs:
+        row = 1 - row if last is not None and X(v) - last < 26 and row == 0 else 0
+        g.append(f"<text x='{X(v):.1f}' y='{y0 - 4 - row * 11}' class='pc-ax' text-anchor='middle'>{v * 100:.0f}%</text>"); last = X(v)
+    for i, (v, r) in enumerate(rows):
+        y = TOP + i * RH; me = bool(r.get('self')); other = own and r.get('tag') != own
+        xa, xb = sorted((X(0 if lo < 0 else lo), X(v)))
+        clip = v > hi or v < lo
+        tip = f"{r['t']} · {r['name']} · {r['window']} · {pc(v)}" + (f" · tag: {r['tag']}" if other else '') + (f" · {r['notes']}" if r.get('notes') else '')
+        g.append(f"<g class='pr{' me' if me else ''}'><title>{E(tip)}</title>"
+                 + (f"<rect x='0' y='{y}' width='{W}' height='{RH}' class='pr-hl'/>" if me else '')
+                 + f"<text x='{LX - 5}' y='{y + 13}' text-anchor='end' class='pr-t{' pr-o' if other else ''}'>{E(r['t'])}{'†' if other else ''}</text>"
+                 + f"<rect x='{xa:.1f}' y='{y + 4}' width='{max(xb - xa, 1.5):.1f}' height='{RH - 8}' class='pr-b'/>"
+                 + (f"<path d='M{X(v) + (4 if v > hi else -4):.1f} {y + RH / 2:.1f} l{-5 if v > hi else 5} -4 v8 z' class='pr-b'/>" if clip else '')
+                 + f"<text x='{W - 2}' y='{y + 13}' text-anchor='end' class='pr-v'>{pc(v)}</text></g>")
+    if med is not None:
+        xm = X(INF if med == INF else med)
+        g.append(f"<line x1='{xm:.1f}' x2='{xm:.1f}' y1='{y0 - 2}' y2='{y1 + 4}' class='pc-med'/><text x='{min(max(xm, LX + 50), RX - 50):.1f}' y='{y1 + 16}' text-anchor='middle' class='pc-medt'>group median {pc(med)}</text>")
+    g.append('</svg>')
+    foot = []
+    if any(own and r.get('tag') != own for _, r in rows): foot.append('† from another tag in the wider parent group')
+    if miss: foot.append('no value: ' + ', '.join(f"{r['t']} ({r.get('roicWhy') or 'too few years'})" if fld == 'roic' else f"{r['t']}" for r in miss))
+    if any(v > hi or v < lo for v, _ in rows): foot.append('an arrow marks a bar cut at the edge of the scale; the number on the right is the full value')
+    zones = f"Light: red below {cuts[2] * 100:.0f}% · yellow {cuts[2] * 100:.0f}% to {cuts[1] * 100:.0f}% · green {cuts[1] * 100:.0f}% and above · score cut-offs (dashed) {', '.join(f'{c * 100:.0f}%' for c in reversed(cuts))}"
+    return (f"<figure class='pc'><figcaption>{E(title)}<span class='pc-z'>{E(zones)}</span></figcaption>{''.join(g)}"
+            + (f"<div class='pc-foot'>{E(' · '.join(foot))}</div>" if foot else '') + "</figure>")
+
+def peer_charts(c):
+    p = c.get('peers')
+    if not p or not p.get('table'): return ''
+    a, b = peer_chart(p, 'I1'), peer_chart(p, 'I2')
+    if not (a or b): return ''
+    return (f"<div class='pcharts'><div class='pc-key'>Where each company in the group lands. Every bar is one company; {E(c.get('ticker') or '')} is highlighted. "
+            "The dark line is the group median, which sets the score. Shaded zones are the measure's light: green = score 4–5, yellow = 3, red = 1–2; "
+            "dashed lines are the score cut-offs. Hover a bar for the company, its window and notes.</div><div class='pc-grid'>" + a + b + "</div></div>")
+
+BLK = {'Business': 'bu', 'Industry': 'in', 'Management': 'ma', 'Risk': 'rk', 'Now': 'rk'}
 def blk(kind, html):
     return f"<section class='blk blk-{kind}'>{html}</section>" if html else ''
 
@@ -396,14 +558,14 @@ def company(t, rank):
     chart, cap = pe_chart(t)
     facs = ''
     FK = {'Business': 'business', 'Industry': 'industry', 'Management': 'management'}
-    for f, head in (('Business', 'Business'), ('Industry', 'Industry'), ('Management', 'Management'), ('Risk', 'Financial risk gate')):
+    for f, head in (('Business', 'Business'), ('Industry', 'Industry'), ('Management', 'Management'), ('Risk', 'Financial risk gate'), ('Now', 'Earnings falling now')):
         ms = [m for m in c['measures'] if m['factor'] == f]
         if not ms: continue
         facs += blk(BLK[f], f"<h4>{head} " + (flight(c[FK[f]], f) if f in FK else '') + "</h4>" + (ceo_note(c) if f == 'Management' else '') + ""
                  f"<table class='mt'><thead><tr><th>Measure</th><th>Inputs</th><th>How it is set</th><th>Light</th></tr></thead><tbody>{''.join(measure_rows(m) for m in ms)}</tbody></table>"
                  + (f"<div class='favg'>{f} = {E(c[FK[f]]['calc'])}</div>" if f in FK else '')
                  + (f"<div class='favg'><b>Missing:</b> {E('; '.join(c[FK[f]]['gaps']))}</div>" if f in FK and c[FK[f]].get('gaps') else '')
-                 + (peer_block(c) if f == 'Industry' else ''))
+                 + (peer_charts(c) if f == 'Industry' else '') + (peer_block(c) if f == 'Industry' else ''))
     steps = ''.join(f"<li><span>{E(a)}</span><b>{E(b)}</b></li>" for a, b in c['steps'])
     p = c['pe']
     fw = f"{p['fwd']:.1f}×" if p['fwd'] else 'not available'
@@ -439,13 +601,13 @@ def quad_map():
     PW = W - LM - RM - NAW - GAP
     X = lambda p: LM + PAD + p / 100 * (PW - 2 * PAD)
     XNA0 = LM + PW + GAP
-    ROWS = [('g', 'Good'), ('y', 'Average'), ('r', 'Weak'), ('n', 'Not judged')]
+    ROWS = [('g', 'Good'), ('y', 'Average'), ('f', 'Earnings falling'), ('r', 'Weak'), ('n', 'Not judged')]   # v4.10: own row for earnings falling now
     pts = {r: [] for r, _ in ROWS}; nam = {r: [] for r, _ in ROWS}
     for t in ORDER:
         c = D[t]; r = c['result']; k = r.get('kind'); bl = c['business']['light']; m = c['mult']
-        row = 'n' if (k in ('redflag', 'early') or bl not in ('g', 'y', 'r')) else bl
+        row = 'n' if (k in ('redflag', 'early') or bl not in ('g', 'y', 'r')) else ('f' if k == 'falling' else bl)   # v4.10 (user, 2026-10-27): earnings falling now has its own row between Average and Weak
         (pts if m.get('band') and m.get('pct') is not None else nam)[row].append(t)
-    if not (pts['n'] or nam['n']): ROWS = ROWS[:3]
+    ROWS = [(r, l) for r, l in ROWS if r in ('g', 'y', 'r') or pts[r] or nam[r]]
     LANE, TOPP = 24, 34
     NROW = set(pts['n'] + nam['n'])
     RF_PLAIN = {'material weakness': 'material weakness in controls', 'SEC enforcement (AAER)': 'SEC accounting case (AAER)',
@@ -460,11 +622,20 @@ def quad_map():
         if t in NROW:
             if k == 'redflag':
                 f = l0.split(':', 1)[1].split(';')[0].strip(); out.append(('red flag: ' + RF_PLAIN.get(f, f), 'q-whyr'))
+            elif k == 'falling':   # v4.8: earnings falling now; the band line stays short, the checks go in the note box
+                ws = [w.strip() for w in l0.split(':', 1)[1].split(';')] if ':' in l0 else []
+                out.append(('earnings falling', 'q-whya'))
+                for w in ws: out.append((w, 'q-whya'))
             elif k == 'early':
                 rv = next((x for x in r['lines'] if x.startswith('Revisit after')), '')
                 out.append(('too early · revisit ' + rv.replace('Revisit after ', '').replace(' results', ''), 'q-why'))
             else:
                 out.append(('Business light open', 'q-why'))
+        if k == 'falling' and t not in NROW:   # v4.9: amber notes, one per check that fired
+            l1 = next((x for x in r['lines'] if x.startswith('Earnings falling now')), '')
+            ws = [w.strip() for w in l1.split(':', 1)[1].split(';')] if ':' in l1 else []
+            out.append(('earnings falling' + (', troubled' if 'troubled' in l1.split(':')[0] else ''), 'q-whya'))
+            for w in ws: out.append((w, 'q-whya'))
         for f in fl:
             if f.startswith('Past SEC enforcement'):
                 m = _re.search(r'misconduct (\d{4})(?:[–-](\d{4}))?', f)
@@ -490,20 +661,8 @@ def quad_map():
     REAS = {t: reasons(t) for t in ORDER}
     # v4.6.1 (user, 2026-10-23): the notes sit in a closed box around the ticker and open over the map, so they never move another ticker.
     # The band names keep their one reason line under the ticker (the band always had room for it); every other note goes in the box.
-    def valuation_reason(t):
-        c=D[t]
-        if c['mult'].get('band'): return None
-        qs=(c.get('valuation_quality') or {}).get('metrics') or {}
-        states={q['state'] for q in qs.values()}
-        if states=={'nonpositive_denominator'}: return ('亏损分母','q-why')
-        if 'current_gap' in states: return ('当前输入缺项','q-why')
-        if 'history_gap' in states: return ('历史资料不足','q-why')
-        if states & {'short_history','positive_days_short'}: return ('比较历史不足','q-why')
-        if states: return ('正值覆盖不足','q-why')
-        return None
-    VREAS={t:valuation_reason(t) for t in ORDER}
-    BANDR = {t: (VREAS[t] or (REAS[t][0] if t in NROW and REAS[t] else None)) for t in ORDER}
-    NOTES = {t: (REAS[t] if VREAS[t] else (REAS[t][1:] if t in NROW and REAS[t] else REAS[t])) for t in ORDER}
+    BANDR = {t: (REAS[t][0] if t in NROW and REAS[t] else None) for t in ORDER}
+    NOTES = {t: (REAS[t][1:] if t in NROW and REAS[t] else REAS[t]) for t in ORDER}
     SEV = {t: ('r' if any(c == 'q-whyr' for _, c in REAS[t]) else 'a' if any(c == 'q-whya' for _, c in REAS[t]) else 'g') for t in ORDER}
     CHIP = 24                                    # width of the '▸ n' toggle inside the box
     def tickw(t):
@@ -511,7 +670,7 @@ def quad_map():
     def wid(t):
         w = tickw(t) + (CHIP if NOTES[t] else 0)
         return max(w, len(BANDR[t][0]) * 6.1) if BANDR[t] else w
-    LN = {r: LANE + (14 if r == 'n' or any(BANDR[t] for t in nam[r]) else 0) for r, _ in ROWS}
+    LN = {r: LANE + (14 if r == 'n' else 0) for r, _ in ROWS}
     NOTE_SVG, NOTE_LOW = [], []                  # drawn last, so an open note lies over the map instead of pushing it
     lay, RH = {}, {}
     for r, _ in ROWS:
@@ -537,15 +696,16 @@ def quad_map():
     box('g', L, M, 'q-now', 'RESEARCH NOW'); box('g', M, Rr, 'q-low', 'RESEARCH AT LOWER PRICE')
     box('y', L, M, 'q-ql', 'QUICK LOOK', 'below the 33rd'); box('y', M, Rr, 'q-not', 'NOT NOW', 'average, not cheap')
     box('r', L, Rr, 'q-not', 'NOT NOW', 'weak business')
+    if 'f' in RY: box('f', L, Rr, 'q-fall', 'NOT NOW', 'earnings falling now · Quick look (ring) only when one check fires and the multiples sit at or below the 33rd')
     s.insert(1, "<defs><pattern id='qhatch' width='8' height='8' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'><rect width='8' height='8' class='q-hb'/><line x1='0' y1='0' x2='0' y2='8' class='q-hl'/></pattern></defs>")
-    if len(ROWS) == 4: box('n', L, Rr, 'q-np', 'NOT JUDGED YET', 'red flag, too early after a deal, or Business light open · the dot shows only where the multiples sit')
+    if 'n' in RY: box('n', L, Rr, 'q-np', 'NOT JUDGED YET', 'red flag, too early or Business light open · the dot shows where the multiples sit')
     for p in (33, 67):
-        for r, _ in ROWS[:3]:
+        for r, _ in [x for x in ROWS if x[0] != 'n']:
             s.append(f"<line x1='{X(p):.1f}' x2='{X(p):.1f}' y1='{RY[r] + 28}' y2='{RY[r] + RH[r]}' class='q-tick'/>")
     for r, _ in ROWS:
         s.append(f"<rect x='{XNA0}' y='{RY[r]}' width='{NAW}' height='{RH[r]}' class='q-na'/>")
-    s.append(f"<text x='{XNA0 + NAW / 2:.1f}' y='{TOP - 22}' text-anchor='middle' class='q-ax'>历史估值分位</text><text x='{XNA0 + NAW / 2:.1f}' y='{TOP - 8}' text-anchor='middle' class='q-ax'>不可用</text>")
-    LBL = {'g': ('Good', 'business'), 'y': ('Average', 'business'), 'r': ('Weak', 'business'), 'n': ('Not judged', 'yet')}
+    s.append(f"<text x='{XNA0 + NAW / 2:.1f}' y='{TOP - 22}' text-anchor='middle' class='q-ax'>No meaningful</text><text x='{XNA0 + NAW / 2:.1f}' y='{TOP - 8}' text-anchor='middle' class='q-ax'>multiple</text>")
+    LBL = {'g': ('Good', 'business'), 'y': ('Average', 'business'), 'f': ('Earnings', 'falling now'), 'r': ('Weak', 'business'), 'n': ('Not judged', 'yet')}
     for r, _ in ROWS:
         yc = RY[r] + RH[r] / 2
         s.append(f"<rect x='2' y='{RY[r] + 6}' width='4' height='{RH[r] - 12}' rx='2' class='q-sw-{r}'/>")
@@ -603,33 +763,11 @@ def quad_map():
            "<svg width='10' height='10'><circle cx='5' cy='5' r='3.5' class='qd-not'/></svg> Not now &nbsp; "
            "<b class='q-dc'>↓</b> getting cheaper &nbsp; <b class='q-dd'>↑</b> getting dearer. "
            "Left to right: the median of P/E, EV/EBIT and EV/EBITDA as a percentile of the stock's own history; the line between the boxes is its usual level (50th). "
-           "Rows: the Business light" + ("; the hatched band holds names not judged yet (accounting red flag, too early after a deal, or a Business light that a missing measure decides), placed by their multiples only. " if len(ROWS) == 4 else ". ") +
-           ("A box around a ticker holds its notes; click <b>▸</b> to open them over the map (they never move another ticker), or use Show all notes. Box colour: <b class='q-keyr'>red</b> = accounting red flag; <b class='q-keya'>amber</b> = a past issue outside the red-flag horizon (for example an SEC case for misconduct that ended more than 5 years ago; not a red flag) or high debt; grey = business changing, new CEO or multiples that disagree. " if any(NOTES.values()) else '') +
-           "右列表示历史估值分位不可用，仍可能有当前倍数；亏损、历史不足与取数缺口分别列示。Hover a ticker for its label and reason; click to open its section.</p>")
+           "Rows: the Business light" + ("; the row Earnings falling now holds companies where at least one earnings check fired (recent quarters, guidance cuts, price fall against earnings): Not now, or Quick look when only one fired and the multiples sit at or below the 33rd" if 'f' in RY else '') + ("; the hatched band holds names not judged yet (accounting red flag, too early after a deal, or a Business light that a missing measure decides), placed by their multiples only. " if 'n' in RY else ". ") +
+           ("A box around a ticker holds its notes; click <b>▸</b> to open them over the map (they never move another ticker), or use Show all notes. Box colour: <b class='q-keyr'>red</b> = accounting red flag; <b class='q-keya'>amber</b> = earnings falling now, a past issue outside the red-flag horizon (for example an SEC case for misconduct that ended more than 5 years ago; not a red flag) or high debt; grey = business changing, new CEO or multiples that disagree. " if any(NOTES.values()) else '') +
+           "Hover a ticker for its label and reason; click to open its section.</p>")
     tools = "<div class='q-tools'><button type='button' class='q-allnotes'>Show all notes</button></div>" if any(NOTES.values()) else ''
     return f"<div class='wrap qwrap'>{tools}{''.join(s)}</div>{key}"
-
-def valuation_coverage():
-    audited=[t for t in ORDER if D[t].get('valuation_quality')]
-    if not audited:return ''
-    usable=sum(bool(D[t]['mult']['band']) for t in audited)
-    rows=[]
-    for t in audited:
-        c=D[t];a=c['valuation_quality'];m=c['mult'];approx=a.get('approximate_current') or {}
-        values=approx.get('values') or {}
-        cells=[]
-        for k,nm,_ in MK:
-            q=a['metrics'][k];v=m['metrics'][k]['now'];is_approx=v is None and k in values
-            if is_approx:v=values[k]
-            shown='—' if v is None else f'{v:.2f}×'+('（分母≤0）' if v<=0 else '')+(' ≈' if is_approx else '')
-            note=(f"第{m['metrics'][k]['pct']}分位" if m['metrics'][k]['pct'] is not None else q['reason'])
-            cells.append(f"<td title='{E(note)}'>{E(shown)}<div class='grp'>{E(note)}</div></td>")
-        extra=approx.get('reason') or '; '.join(a.get('limitations') or [])
-        rows.append(f"<tr><td><a href='#{t}' data-open='{t}'>{E(t)}</a></td>{''.join(cells)}<td>{E(extra)}</td></tr>")
-    return (f"<details class='valuation-coverage'><summary>估值覆盖：{usable}/{len(audited)}家公司有合格历史分位；查看当前倍数与逐项原因</summary>"
-            "<p class='muted'>当前倍数与历史分位分开判断。正值、非正值、缺失交易日分别统计；缺失不等于亏损。≈为单列近似值，不参与分位。具体来源与日期见估值底稿。</p>"
-            "<div class='wrap'><table class='probs'><thead><tr><th>公司</th><th>P/E</th><th>EV/EBIT</th><th>EV/EBITDA</th><th>口径与限制</th></tr></thead><tbody>"+''.join(rows)+"</tbody></table></div>"
-            "<p><a href='valuation_coverage.csv'>下载逐项覆盖</a> · <a href='valuation_audit.json'>原始输入与来源</a> · <a href='source_ledger.json'>来源总索引</a></p></details>")
 
 def overview():
     rows = ''
@@ -749,7 +887,7 @@ details.co>summary::-webkit-details-marker{display:none}details.co>summary:befor
 .ev{margin-top:6px}.ev summary{cursor:pointer;color:var(--acc);font-size:12.5px}.ev p{margin:6px 0}.ev ul{margin:0;padding-left:18px;font-size:12.5px}.ev li{margin-bottom:4px}
 .tag{font-size:10.5px;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;padding:0 4px;color:var(--ink2)}.src{color:var(--ink2)}
 .tools{display:flex;gap:8px;margin:10px 0}.tools button{font:inherit;font-size:13px;padding:5px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);cursor:pointer}
-:root{--q1:#e4eefb;--q2:#f1f6fd}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--q1:#1a2a40;--q2:#1f252d}}:root[data-theme="dark"]{--q1:#1a2a40;--q2:#1f252d}.qwrap{overflow-x:auto}.qmap{width:100%;min-width:760px;display:block}.q-now{fill:var(--q1);stroke:var(--line)}.q-low,.q-ql{fill:var(--q2);stroke:var(--line)}.q-not{fill:var(--panel);stroke:var(--line)}.q-na{fill:var(--chip);stroke:var(--line)}.qt{font-size:12.5px;font-weight:700;letter-spacing:.06em}.q-now-t,.q-low-t,.q-ql-t{fill:var(--acc)}.q-not-t{fill:var(--ink3)}.qs{font-size:11.5px;fill:var(--ink3)}.q-tick{stroke:var(--grid);stroke-width:1}.q-rn{font-size:14px;font-weight:650;fill:var(--ink)}.q-rn2{font-size:12px;fill:var(--ink2)}.q-sw-g{fill:var(--lg)}.q-sw-y{fill:var(--ly)}.q-sw-r{fill:var(--lr)}.q-ax{font-size:12px;fill:var(--ink2);font-weight:600}.q-tk{font-size:11px;fill:var(--ink3)}.qd-now{fill:var(--acc)}.qd-ring{fill:var(--panel);stroke:var(--acc);stroke-width:2}.qd-not{fill:var(--ink3)}.q-lb{font:650 12.5px ui-monospace,Menlo,monospace;fill:var(--ink)}.q-lbn{fill:var(--ink2);font-weight:500}.q-dc{fill:var(--lg);color:var(--lg);font-weight:800}.q-dd{fill:var(--lr);color:var(--lr);font-weight:800}.q-hit{fill:transparent}.q-hlw{fill:var(--ly-t);stroke:var(--ly);stroke-width:1.2}.q-np{fill:url(#qhatch);stroke:var(--line)}.q-np-t{fill:var(--ink3)}.q-hb{fill:var(--panel)}.q-hl{stroke:var(--chip);stroke-width:5}.q-sw-n{fill:var(--ink3)}.q-why{font-size:11px;fill:var(--ink3)}.q-whyr{fill:var(--lr);font-weight:600}.q-whya{fill:var(--ly);font-weight:600}.q-bx{stroke-width:1.2}.q-bx-r{fill:var(--lr-t);stroke:var(--lr)}.q-bx-a{fill:var(--ly-t);stroke:var(--ly)}.q-bx-g{fill:var(--chip);stroke:var(--ink3)}.q-tog{cursor:pointer}.q-tgb{fill:var(--panel);stroke:var(--line)}.q-tog:hover .q-tgb,.q-tog:focus .q-tgb{stroke:var(--ink2)}.q-tog:focus{outline:none}.q-tgt{font:700 10.5px -apple-system,Segoe UI,sans-serif;fill:var(--ink2)}.q-tg-r .q-tgt{fill:var(--lr)}.q-tg-a .q-tgt{fill:var(--ly)}.q-tog .g-open,.q-tog.open .g-closed,.qmap.notes-all .q-tog .g-closed{display:none}.q-tog.open .g-open,.qmap.notes-all .q-tog .g-open{display:inline}.q-note{display:none}.q-note.open,.qmap.notes-all .q-note{display:inline}.q-nb{stroke-width:1.2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}.q-tools{display:flex;justify-content:flex-end;margin:-4px 0 6px}.q-allnotes{font:600 12px -apple-system,Segoe UI,sans-serif;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);cursor:pointer}.q-allnotes:hover{border-color:var(--ink3)}.q-keyr{color:var(--lr)}.q-keya{color:var(--ly)}.q-pt:hover .q-lb{text-decoration:underline}.q-key{margin:6px 0 0;font-size:12px;color:var(--ink3)}.q-hlk{font:650 11px ui-monospace,Menlo,monospace;color:var(--ink);background:var(--ly-t);border:1px solid var(--ly);border-radius:3px;padding:0 4px}.ceo{display:inline-block;margin-top:4px;font-size:11px;font-weight:600;line-height:1.25;padding:2px 6px;border-radius:4px;border:1px solid;white-space:normal;max-width:120px}.ceo.sm{margin-top:0;vertical-align:middle;max-width:none;white-space:nowrap}.ceo-new{color:var(--ly);background:var(--ly-t);border-color:var(--ly)}.ceo-recent{color:var(--ink2);background:var(--chip);border-color:var(--line)}.ceo-note{margin:4px 0 8px;padding:7px 10px;border-left:3px solid;font-size:13px;line-height:1.45}.cn-new{border-color:var(--ly);background:var(--ly-t)}.cn-recent{border-color:var(--line);background:var(--chip)}.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin:8px 0}.sw{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
+:root{--q1:#e4eefb;--q2:#f1f6fd}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--q1:#1a2a40;--q2:#1f252d}}:root[data-theme="dark"]{--q1:#1a2a40;--q2:#1f252d}.qwrap{overflow-x:auto}.qmap{width:100%;min-width:760px;display:block}.q-now{fill:var(--q1);stroke:var(--line)}.q-low,.q-ql{fill:var(--q2);stroke:var(--line)}.q-not{fill:var(--panel);stroke:var(--line)}.q-na{fill:var(--chip);stroke:var(--line)}.qt{font-size:12.5px;font-weight:700;letter-spacing:.06em}.q-now-t,.q-low-t,.q-ql-t{fill:var(--acc)}.q-not-t{fill:var(--ink3)}.qs{font-size:11.5px;fill:var(--ink3)}.q-tick{stroke:var(--grid);stroke-width:1}.q-rn{font-size:14px;font-weight:650;fill:var(--ink)}.q-rn2{font-size:12px;fill:var(--ink2)}.q-sw-g{fill:var(--lg)}.q-sw-y{fill:var(--ly)}.q-sw-r{fill:var(--lr)}.q-ax{font-size:12px;fill:var(--ink2);font-weight:600}.q-tk{font-size:11px;fill:var(--ink3)}.qd-now{fill:var(--acc)}.qd-ring{fill:var(--panel);stroke:var(--acc);stroke-width:2}.qd-not{fill:var(--ink3)}.q-lb{font:650 12.5px ui-monospace,Menlo,monospace;fill:var(--ink)}.q-lbn{fill:var(--ink2);font-weight:500}.q-dc{fill:var(--lg);color:var(--lg);font-weight:800}.q-dd{fill:var(--lr);color:var(--lr);font-weight:800}.q-hit{fill:transparent}.q-hlw{fill:var(--ly-t);stroke:var(--ly);stroke-width:1.2}.q-np{fill:url(#qhatch);stroke:var(--line)}.q-np-t{fill:var(--ink3)}.q-hb{fill:var(--panel)}.q-hl{stroke:var(--chip);stroke-width:5}.q-sw-n{fill:var(--ink3)}.q-sw-f{fill:var(--ly)}.q-fall{fill:var(--panel);stroke:var(--line)}.q-fall-t{fill:var(--ly)}.q-why{font-size:11px;fill:var(--ink3)}.q-whyr{fill:var(--lr);font-weight:600}.q-whya{fill:var(--ly);font-weight:600}.q-bx{stroke-width:1.2}.q-bx-r{fill:var(--lr-t);stroke:var(--lr)}.q-bx-a{fill:var(--ly-t);stroke:var(--ly)}.q-bx-g{fill:var(--chip);stroke:var(--ink3)}.q-tog{cursor:pointer}.q-tgb{fill:var(--panel);stroke:var(--line)}.q-tog:hover .q-tgb,.q-tog:focus .q-tgb{stroke:var(--ink2)}.q-tog:focus{outline:none}.q-tgt{font:700 10.5px -apple-system,Segoe UI,sans-serif;fill:var(--ink2)}.q-tg-r .q-tgt{fill:var(--lr)}.q-tg-a .q-tgt{fill:var(--ly)}.q-tog .g-open,.q-tog.open .g-closed,.qmap.notes-all .q-tog .g-closed{display:none}.q-tog.open .g-open,.qmap.notes-all .q-tog .g-open{display:inline}.q-note{display:none}.q-note.open,.qmap.notes-all .q-note{display:inline}.q-nb{stroke-width:1.2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}.q-tools{display:flex;justify-content:flex-end;margin:-4px 0 6px}.q-allnotes{font:600 12px -apple-system,Segoe UI,sans-serif;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);cursor:pointer}.q-allnotes:hover{border-color:var(--ink3)}.q-keyr{color:var(--lr)}.q-keya{color:var(--ly)}.q-pt:hover .q-lb{text-decoration:underline}.q-key{margin:6px 0 0;font-size:12px;color:var(--ink3)}.q-hlk{font:650 11px ui-monospace,Menlo,monospace;color:var(--ink);background:var(--ly-t);border:1px solid var(--ly);border-radius:3px;padding:0 4px}.ceo{display:inline-block;margin-top:4px;font-size:11px;font-weight:600;line-height:1.25;padding:2px 6px;border-radius:4px;border:1px solid;white-space:normal;max-width:120px}.ceo.sm{margin-top:0;vertical-align:middle;max-width:none;white-space:nowrap}.ceo-new{color:var(--ly);background:var(--ly-t);border-color:var(--ly)}.ceo-recent{color:var(--ink2);background:var(--chip);border-color:var(--line)}.ceo-note{margin:4px 0 8px;padding:7px 10px;border-left:3px solid;font-size:13px;line-height:1.45}.cn-new{border-color:var(--ly);background:var(--ly-t)}.cn-recent{border-color:var(--line);background:var(--chip)}.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin:8px 0}.sw{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
 .method li{margin-bottom:6px}.grp{font-size:11.5px;color:var(--ink3)}.ov td:nth-child(6){white-space:nowrap}.probs td{font-size:13.5px}
 .flag{font-size:11.5px;color:var(--ink2);margin-top:3px}.flag.warn{display:inline-block;font-weight:600;color:var(--ink);background:var(--ly-t);border-left:3px solid var(--ly);padding:2px 6px;border-radius:3px}.flags{margin:0;padding-left:18px;font-size:13px}.flags li{margin-bottom:4px}
 .small{font-size:12.5px}.mt.small td{padding:6px 8px}.bad{color:#c4342b}
@@ -772,7 +910,7 @@ i.gsw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right
 .res{display:inline-block;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:650;white-space:nowrap;border:1.5px solid var(--line)}
 .r-now{background:var(--acc);border-color:var(--acc);color:#fff}.r-watch{border-color:var(--acc);color:var(--acc)}.r-border{border-color:var(--ink3);color:var(--ink2)}.r-quick{border-color:var(--acc);border-style:dashed;color:var(--acc)}.r-pass{border-style:dashed;color:var(--ink3)}
 .rwhy{font-size:12px;color:var(--ink2);margin-top:4px;max-width:300px;line-height:1.35}td.rc{min-width:230px}
-.trend{font-size:12px;margin-top:3px;color:var(--ink)}.trend .muted{font-size:11.5px}.t-falling{color:var(--acc)}.dir{display:inline-block;font-size:11.5px;font-weight:600;line-height:1;padding:3px 7px;border-radius:10px;border:1px solid;white-space:nowrap}.dir-cheap{color:var(--lg);background:var(--lg-t);border-color:var(--lg)}.dir-dear{color:var(--lr);background:var(--lr-t);border-color:var(--lr)}.dir-steady{color:var(--ink2);background:var(--chip);border-color:var(--line)}.lvl{font-size:11.5px;color:var(--ink2)}.t-rising{color:var(--ink)}.t-steady{color:var(--ink2)}h5{margin:10px 0 4px;font-size:12px;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em}.peerboxes{display:grid;gap:12px;margin:8px 0}.parbox{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--panel)}.pb-h{font-weight:600;margin-bottom:8px}.tagrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}.tagbox{border:1px solid var(--grid);border-radius:6px;padding:8px}.tb-h{font-size:13px;margin-bottom:6px}.tb-h .wide{font-size:11px;color:var(--acc)}.chips{display:flex;flex-wrap:wrap;gap:4px}.chip{font:12px/1 ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:4px;padding:4px 6px;background:var(--chip)}.chip.run{font-weight:700;border-color:var(--ink2)}.chip.nodata{color:var(--ink3);background:transparent;border-style:dashed}.mline{font-size:12px;color:var(--ink2);margin-top:2px}.mk{fill:var(--panel);stroke:var(--ink2);stroke-width:1.5}.trends{margin-top:6px}table.mx td,table.mx th{font-size:12.5px}.t-one{font-size:11.5px;margin-top:2px}.t-na{color:var(--ink2)}
+.trend{font-size:12px;margin-top:3px;color:var(--ink)}.trend .muted{font-size:11.5px}.t-falling{color:var(--acc)}.dir{display:inline-block;font-size:11.5px;font-weight:600;line-height:1;padding:3px 7px;border-radius:10px;border:1px solid;white-space:nowrap}.dir-cheap{color:var(--lg);background:var(--lg-t);border-color:var(--lg)}.dir-dear{color:var(--lr);background:var(--lr-t);border-color:var(--lr)}.dir-steady{color:var(--ink2);background:var(--chip);border-color:var(--line)}.lvl{font-size:11.5px;color:var(--ink2)}.t-rising{color:var(--ink)}.t-steady{color:var(--ink2)}h5{margin:10px 0 4px;font-size:12px;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em}.peerboxes{display:grid;gap:12px;margin:8px 0}.parbox{border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--panel)}.pb-h{font-weight:600;margin-bottom:8px}.tagrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}.tagbox{border:1px solid var(--grid);border-radius:6px;padding:8px}.tb-h{font-size:13px;margin-bottom:6px}.tb-h .wide{font-size:11px;color:var(--acc)}.chips{display:flex;flex-wrap:wrap;gap:4px}.chip{font:12px/1 ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:4px;padding:4px 6px;background:var(--chip)}.chip.run{font-weight:700;border-color:var(--ink2)}.chip.nodata{color:var(--ink3);background:transparent;border-style:dashed}.mline{font-size:12px;color:var(--ink2);margin-top:2px}.mk{fill:var(--panel);stroke:var(--ink2);stroke-width:1.5}.trends{margin-top:6px}.sub.route{color:var(--acc);font-size:12.5px;margin-top:4px}svg.istrip{display:block;width:100%;min-width:820px;height:auto}.ig-rule{stroke:var(--line);stroke-width:1}.ig-ax{font-size:11px;fill:var(--ink2);font-variant-numeric:tabular-nums}.ig-ax0{font-weight:700;fill:var(--ink)}.ig-gm{stroke:var(--ink3);stroke-width:.6;stroke-opacity:.35}.ig-gM{stroke:var(--ink3);stroke-width:.8;stroke-opacity:.7}.ig-cut{font-size:11px;font-weight:700}.ig-cutm{stroke:var(--ink2);stroke-width:1.2}.ig-h{font-size:12.5px;font-weight:700;fill:var(--ink)}.ig-l{font-size:12px;font-weight:600}.ig-s{fill:var(--ink2);font-weight:400}.it-g{fill:var(--lg)}.it-y{fill:var(--ly)}.it-r{fill:var(--lr)}.it-na{fill:var(--ink2)}.ip-o{fill:var(--ink3);fill-opacity:.75}.ip-med{stroke:var(--ink);stroke-width:2.2}.ip-me{fill:var(--acc);stroke:var(--panel);stroke-width:1.5}.ip-edge{stroke:var(--acc);stroke-width:2;fill:var(--panel)}.pcharts{margin:10px 0 6px}.pc-key{font-size:12px;color:var(--ink2);margin-bottom:6px}.pc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}figure.pc{margin:0;border:1px solid var(--grid);border-radius:6px;padding:8px;background:var(--panel)}figure.pc figcaption{font-size:12.5px;font-weight:600;margin-bottom:4px}.pc-z{display:block;font-size:11px;font-weight:400;color:var(--ink2);margin-top:2px}svg.pch{width:100%;max-width:470px;height:auto;display:block}.pz-g{fill:var(--lg-t)}.pz-y{fill:var(--ly-t)}.pz-r{fill:var(--lr-t)}.pc-cut{stroke:var(--ink3);stroke-width:.8;stroke-dasharray:3 3}.pc-zero{stroke:var(--ink2);stroke-width:1}.pc-ax{font-size:10px;fill:var(--ink2)}.pc-med{stroke:var(--ink);stroke-width:2}.pc-medt{font-size:10.5px;font-weight:600;fill:var(--ink)}.pr-t{font:11.5px ui-monospace,Menlo,monospace;fill:var(--ink)}.pr-o{font-style:italic;fill:var(--ink2)}.pr-b{fill:var(--ink3)}.pr-v{font-size:11px;fill:var(--ink2)}.pr.me .pr-b{fill:var(--acc)}.pr.me .pr-t,.pr.me .pr-v{font-weight:700;fill:var(--ink)}.pr-hl{fill:var(--acc);fill-opacity:.12}.pc-foot{font-size:11px;color:var(--ink2);margin-top:4px}@media (max-width:640px){svg.pch .pr-t{font-size:15px}svg.pch .pr-v{font-size:14px}svg.pch .pc-ax{font-size:13px}svg.pch .pc-medt{font-size:13.5px}}table.mx td,table.mx th{font-size:12.5px}.t-one{font-size:11.5px;margin-top:2px}.t-na{color:var(--ink2)}
 svg.half{width:14px;height:14px;display:block}
 .lt-q{color:var(--ink2);background:var(--chip);border-color:var(--ink3)}.lt.big{min-width:34px;height:28px;font-size:16px}td.lc,th.lc{text-align:center}
 .minis{display:inline-flex;gap:3px;margin-top:4px}.minis .lt{min-width:20px;height:18px;font-size:11px;padding:0 4px}
@@ -806,14 +944,15 @@ METHOD = [
     ('Facts only.', 'Every measure is calculated from reported numbers or read as a fact from a primary document (10-K, proxy, 8-K, annual report, AGM results, SEC release). No judgment scores and no verdict labels.'),
     ('Lights.', 'Each measure is still set on 1–5 by a fixed rule (the arithmetic is shown); 4–5 shows green ✓ (good), 3 yellow half circle (average), 1–2 red ✗ (weak). A factor light is the average of its measures: 3.5 or more green, 3.0–3.5 yellow, below 3.0 red. A missing measure makes a range (missing = 1 to missing = 5); if the light is the same colour at both ends it is shown, and if the colour depends on the missing measure the light is a grey ?.'),
     ('Three factors, never combined.', 'Business (B1–B4), Industry (I1–I3) and Management (M1–M3) each get their own light in the results table. Each company section shows every measure behind them.'),
-    ('Industry.', 'Groups come from a tagged coverage universe: each company carries one sub-industry tag. The Industry light is computed once per tag, over every company in the tag with data, the run company included, so every company in a tag gets the same Industry light; the number of companies sits under the light, and a group with fewer than 6 companies with data is marked thin. A tag keeps its own group when at least 4 of its companies have data; otherwise the whole tag widens to its parent group. I1 = median of the group\'s 10-year median ROIC including goodwill (same formula as B4): ≥12% green, 9–12% yellow, <9% red. I2 = median of the group\'s 10-year revenue growth: ≥7% green, 4–7% yellow, <4% red. I3 = the worst of the last 10 years for the group\'s median revenue change: better than −10% green, −10% to −20% yellow, worse than −20% red. Group companies use normalized inputs (see source_ledger.json) plus filed settlement liabilities (the same debt definition as the run companies); a company\'s window starts after a separation or a share-count jump above 50%, and acquisitions stay in. The line "Returns X% vs peers Y%" still compares the company with the others only.'),
-    ('Business.', 'Average of B1 (return on capital excluding goodwill), B2 (cash conversion), B3 (growth in NOPAT per share, median end points) and B4 (return on all capital including goodwill). A missing measure is not averaged away: it gives a range from "missing = 1" to "missing = 5".'),
+    ('Industry.', 'Groups come from a tagged coverage universe: each company carries one sub-industry tag. The Industry light is computed once per tag, over every company in the tag with data, the run company included, so every company in a tag gets the same Industry light; the number of companies sits under the light. A group with fewer than 6 companies with data, or a tag whose companies sell through different main channels, gets a grey ? light (too few true peers), with the measures still shown, unless the tag is marked as the complete listed industry (v4.9: an industry with few listed companies, such as North American railroads). When half the group or more has latest-year operating income more than 25% below its own peak of the last 5 years, the Industry light is at most yellow (industry earnings falling now). A run company keeps its own B1 window inside the group. A tag keeps its own group when at least 4 of its companies have data; otherwise the whole tag widens to its parent group. I1 = median of the group\'s 10-year median ROIC including goodwill (same formula as B4): ≥12% green, 9–12% yellow, <9% red. I2 = median of the group\'s 10-year revenue growth: ≥7% green, 4–7% yellow, <4% red. I3 = the worst of the last 10 years for the group\'s median revenue change: better than −10% green, −10% to −20% yellow, worse than −20% red. Group companies use ' + SRCN + ' data plus filed settlement liabilities (the same debt definition as the run companies); a company\'s window starts after a separation or a share-count jump above 50%, and acquisitions stay in. The line "Returns X% vs peers Y%" still compares the company with the others only.'),
+    ('Business.', 'Average of B1 (return on capital excluding goodwill), B2 (cash conversion), B3 (growth in NOPAT per share, median end points) and B4 (return on all capital including goodwill). A missing measure is not averaged away: it gives a range from "missing = 1" to "missing = 5". When NOPAT fell more than 10% in the latest fiscal year while revenue rose, the Business light is at most yellow (profit falling on rising sales). B1 also shows the latest year split into NOPAT margin × capital turnover.'),
+    ('Earnings falling now.', 'Three checks of the current direction, kept apart from the long-window measures: E1 the quarters reported after the latest fiscal year-end against the same quarters a year earlier, or the last 4 quarters against the 4 before them when fewer than 2 quarters are out (gross profit or operating income before impairments down more than 15%, or gross margin down more than 3 points); E2 current-year profit guidance cut 2 or more times, or by more than 15% in total; E3 the share price down more than 50% in 12 months while trailing operating income before impairments (last 4 quarters; EPS only when the quarters are missing) fell less than half as much. Any one blocks Research now and Research at lower price. With two or more the business is troubled: Not now at any multiple (v4.10). With one the company is read as an average business: Quick look when its multiples sit at or below the 33rd percentile of their own history, otherwise Not now. An accounting red flag, too early or a weak business comes first. On the map these companies have their own row, Earnings falling now, between Average and Weak. The lights describe the record to the latest fiscal year, so the check is whether the fall is the company or the cycle.'),
     ('Multiples.', "P/E, EV/EBIT and EV/EBITDA, each as a percentile of the stock's own daily history: 10 years, or from 12 months after a merger or separation above 25% of revenue (trailing earnings then cover only the current business), or since listing. A multiple needs at least 250 positive days and a positive value on 60% of days. The reading is the median of the percentiles available, so one distorted multiple cannot move it. Research line = the middle of the three share prices at which each multiple would sit at its own median."),
     ('Accounting red flags.', 'An 8-K Item 4.02 non-reliance in the last 3 years, a material weakness at the latest fiscal year-end, or an SEC Accounting and Auditing Enforcement Release (AAER) in the last 5 years. Non-SEC filers: a restatement the company calls an error correction, a modified audit opinion, or an accounting-regulator finding. These names should not get research time until the issue is resolved.'),
     ('Financial risk gate.', 'Net debt ÷ EBITDA above 5× (or EBITDA ≤ 0 with net debt), or operating income ÷ gross interest below 2×, latest fiscal year.'),
     ('Short history.', 'Fewer than 3 clean years on the current business. A year counts only if its income statement and both balance sheets are on the current business; a deal that moves revenue more than 25%, a separation, or a share-count jump above 50% starts the window after it. A deal flagged only by goodwill + intangibles (>25% of invested capital) keeps the window, and B1 and B4 take the lower of the full window and the years after the deal. Short history is tested before a weak Business light.'),
     ('Management.', 'CEO ownership as a multiple of base salary (M1: ≥15× green, 6–15× yellow; the −1 for a CEO selling more than 30% of held shares never takes M1 below 2), stock comp ÷ operating income and the pay vote (M2: lower of the two), impairments plus losses on businesses sold or held for sale, and the share count (M3), over the current CEO\'s years when there are at least 5 of them, otherwise over the full window. A CEO change in the last 5 years puts a tag under the Management light (amber under 2 years in office, grey from 2 to 5 years) and a line at the top of the Management block: who changed and when, and how many of the years behind M2 and M3 fall under the current CEO (a year counts when the CEO held the job for at least 6 of its 12 months; the pay vote covers the last fiscal year before the meeting). The tag itself changes no light; M3 uses the same year count to choose its window.'),
-    ('Flags.', '"P/E distorted" = trailing P/E ÷ forward P/E above 1.5. "EV multiple rebuilt" = the daily series stopped updating, so today\'s value scales the last value by the change in enterprise value. "Business changing" = a deal above 25% of revenue after the latest year-end.'),
+    ('Flags.', '"Earnings expected to fall" = forward P/E more than 15% above trailing P/E (analyst estimates; forward is mostly adjusted EPS, trailing is GAAP). "Peer group mixes sales channels" = the tag holds companies with different main channels in universe.json. "Sales channel" = the 10-K\'s main channel differs from universe.json. "Earnings check waived" = a check set aside in config.json with a stated reason. "Concentrated" = the top customers 50% of sales or more, or one product line 70% or more (10-K). "P/E distorted" = trailing P/E ÷ forward P/E above 1.5. "EV multiple rebuilt" = the daily series stopped updating, so today\'s value scales the last value by the change in enterprise value. "Business changing" = a deal above 25% of revenue after the latest year-end.'),
 ]
 
 def universe_section():
@@ -831,14 +970,14 @@ def universe_section():
             chips = ''.join(f"<span class='chip{' run' if c['run'] else ''}{'' if c.get('data') else ' nodata'}' title='{E(c['name'] + ' — ' + c['why'])}'>{E(c['t'])}</span>" for c in mem)
             ok = sum(1 for c in mem if c.get('data'))
             cards += (f"<div class='tagbox'><div class='tb-h'><b>{E(x['label'])}</b> <span class='muted'>{len(mem)} companies · {ok} with data</span>"
-                      + (f" <span class='wide'>under {U.get('tag_min', U['min_peers'] + 1)}: widens to the parent</span>" if ok < U.get('tag_min', U['min_peers'] + 1) else (f" <span class='wide'>thin group</span>" if ok < U.get('thin', 6) else '')) + f"</div><div class='chips'>{chips}</div></div>")
+                      + (f" <span class='wide'>under {U.get('tag_min', U['min_peers'] + 1)}: widens to the parent</span>" if ok < U.get('tag_min', U['min_peers'] + 1) else (f" <span class='wide'>complete industry</span>" if x.get('complete') and ok < U.get('thin', 6) else (f" <span class='wide'>thin group</span>" if ok < U.get('thin', 6) else ''))) + f"</div><div class='chips'>{chips}</div></div>")
         boxes += f"<div class='parbox'><div class='pb-h'>{E(par)}</div><div class='tagrow'>{cards}</div></div>"
     boxes = (f"<div class='peerboxes'>{boxes}</div><p class='cap'>Bold = company in this run · grey = not enough clean years to count as a peer · hover a ticker for the company and the reason for its tag. "
              f"Every company in a box is scored against the whole box, itself included; a box with fewer than {U.get('tag_min', 4)} companies with data widens to its whole parent group.</p>")
     return (f"<h2>Peer groups: the coverage universe</h2>{boxes}<p class='muted'>{E(U.get('name') or '')} · {len(U['companies'])} companies · {E(U.get('status') or '')}. "
             f"A tag with fewer than {U.get('tag_min', 4)} companies that have data widens to its parent group; under {U.get('thin', 6)} it is marked thin. Bold rows are companies in this run.</p>"
             f"<div class='wrap'><table class='uni'><thead><tr><th>Tag</th><th>What belongs here</th><th>Companies</th><th>With ROIC data</th><th>Median ROIC incl. goodwill</th><th>Median revenue growth</th></tr></thead><tbody>{tg}</tbody></table></div>"
-            f"<details class='ev'><summary>Every company, its tag and the reason (correct a tag in universe.json and rerun)</summary><table class='uni'><thead><tr><th>Ticker</th><th>Company</th><th>Tag</th><th>Why this tag</th><th>GICS sub-industry</th></tr></thead><tbody>{co}</tbody></table>"
+            f"<details class='ev'><summary>Every company, its tag and the reason (correct a tag in universe.json and rerun)</summary><div class='wrap'><table class='uni'><thead><tr><th>Ticker</th><th>Company</th><th>Tag</th><th>Why this tag</th><th>GICS sub-industry</th></tr></thead><tbody>{co}</tbody></table></div>"
             + (f"<p class='note'>Left out of the universe:</p><ul class='small'>{ex}</ul>" if ex else '') + "</details>")
 
 def method_list():
@@ -850,24 +989,25 @@ title = TXT.get('title') or CFG.get('title') or 'Screener scores'
 n = len(D)
 sub = TXT.get('sub') or f"{n} companies · rules version {RV} (engine {ENG}) · prices and P/E to {max((D[t]['pe'].get('to') or '') for t in D) or AS_OF}"
 page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="screen-data-sha256" content="{hashlib.sha256(Path(P('page_data.json')).read_bytes()).hexdigest()}">
-<meta name="screen-config-sha256" content="{hashlib.sha256(Path(P('config.json')).read_bytes()).hexdigest()}">
 <title>{E(TXT.get('tab_title') or 'Screener Scores')}</title><style>{CSS}</style></head><body><main>
 <h1>{E(title)}</h1>
 <div class="sub">{E(sub)}</div>
+{('<div class="sub route">Data route: ' + E(META.get('data_route')) + '. Statements, quarters and balance sheets from FocusAlpha (SEC filers); daily multiples rebuilt from FocusAlpha prices (from Sep 2018) and the run&#39;s own fundamentals, with earlier closes from the web where checked; peers without FocusAlpha statements are left out of the Industry groups. Results are not directly comparable with a Fiscal.ai run.</div>') if META.get('data_route') and META.get('data_route') != 'Fiscal.ai' else ''}
 <p class="lead">{E(TXT.get('lead', ''))}</p>
 <h2>Where each company lands</h2>
 {quad_map()}
-{valuation_coverage()}
 <h2>Results</h2>
 <p class="muted">One light per factor; the three are never combined. Click a company to open its section with every measure behind the lights. Order: no red flag first, then by Business.</p>
 <div class="wrap">{overview()}</div>
 {lights_legend()}
 {reopen_section()}
+<h2>Industry: where each company lands in its peer group</h2>
+<p class="muted">One row per company, grouped by the peer group behind its Industry light; every company in a group gets the same Industry light, shown on the group line. Left: each company's 10-year median return on all capital including goodwill (I1). Right: its revenue growth per year over its 10-year window (I2). The dark tick is the group median, which sets the score; the shading is the measure's light (green = score 4–5, yellow = 3, red = 1–2). A ring dot or a tick at the edge of the scale is beyond it; the number on the right is the full value, and hovering a dot or tick shows its value. Click a name to open its section, where the full group is drawn bar by bar.</p>
+<div class="wrap">{ind_strip()}</div>
 <h2>Multiples today against each stock's own history</h2>
 <p class="muted">One row per company, on a percentile axis. The three shapes are P/E, EV/EBIT and EV/EBITDA; the dot is their median, which the Result uses. Shapes far apart mean one multiple is distorted. Research line = the share price at which the median would reach the 50th percentile, with its distance from today's price.{E(windows_note())}</p>
 <div class="wrap">{mult_strip()}</div>
-<p class="cap">P/E = price ÷ diluted GAAP EPS of the last four quarters. EV/EBIT and EV/EBITDA = enterprise value ÷ trailing operating profit and EBITDA. Daily series use the sources recorded in source_ledger.json; derived ratios are analysis calculations. Forward P/E is in each company section.</p>
+<p class="cap">P/E = price ÷ diluted GAAP EPS of the last four quarters. EV/EBIT and EV/EBITDA = enterprise value ÷ trailing operating profit and EBITDA. All daily from {MSRC}. Forward P/E is in each company section.</p>
 {moves_table()}
 {problems_table()}
 {universe_section()}
@@ -876,7 +1016,7 @@ page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name
 <div class="tools"><button id="openall">Open all</button><button id="closeall">Close all</button></div>
 {''.join(company(t, i) for i, t in enumerate(ORDER, 1))}
 {method_list()}
-<p class="cap">{E(TXT.get('sources') or f"Sources: see source_ledger.json for actual providers, exact tools, periods and documents (report cutoff {AS_OF}). Derived values are analysis calculations. Company filings and governance facts are cited under each item. Built {AS_OF}.")}</p>
+<p class="cap">{E(TXT.get('sources') or (f"Sources: FocusAlpha filed statements (annual and quarterly), daily prices and splits (pulled {AS_OF}), with any earlier closes from the web named in each company's multiples source;" if FA_ROUTE else f"Sources: Fiscal.ai standardized and as-reported financials, daily P/E, prices and forecasts (pulled {AS_OF});") + f" company filings, proxies, 8-Ks, annual reports and SEC releases cited under each fact. Built {AS_OF}.")}</p>
 </main><script>{JS}</script></body></html>"""
 from redesign import redesign
 page, _nco = redesign(page)

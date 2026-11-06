@@ -7,18 +7,43 @@ tickers: [COCO]
 research_path: research/companies/US/COCO-vita-coco
 inbox_path: research/companies/US/COCO-vita-coco/data
 status: watchlist
-research_stage: initial-screen-follow-up
-as_of: 2026-10-26
+research_stage: historical-excel
+as_of: 2026-11-03
+decision_as_of: 2026-10-26
 decision_origin: user-reported-weekly-meeting
 decision: "跟踪；后续安排资源进行深度研究。"
-resource_decision: "待后续安排深度研究资源；本次未启动深度研究。"
+resource_decision: "用户已授权历史Excel底稿生产；本轮止于历史实际值、公式指标与数据复核，不含预测、估值或深度研究正文。"
 current_report: research/companies/US/COCO-vita-coco/data/inbox/2026-10-26/COCO.docx
 current_report_sha256: 7fabf7687c4eb47a08fd14d82d8960ce79ae86303c07b5be3a93a361603bae08
-current_round_materials: user-provided-word-only
+current_round_materials: sec-originals-and-historical-excel
+historical_workbook:
+  as_of: 2026-11-03
+  status: complete
+  automatic_verification: pass
+  independent_data_review: pass
+  visual_qa: pass
+  operating_recheck_as_of: 2026-11-03
+  operating_verification: data/derived/companies/US/COCO-vita-coco/excel/operating-verification.json
+  source_policy: SEC-original-10K-10Q-only
+  workbook: research/companies/US/COCO-vita-coco/outputs/company-research-to-excel/COCO_model.xlsx
+  coverage_note: research/companies/US/COCO-vita-coco/excel-workbook-2026-11-03.md
+  audit_directory: data/derived/companies/US/COCO-vita-coco/excel
+data_preparation:
+  as_of: 2026-11-03
+  status: partial
+  sec_status: pass
+  official_site_status: partial
+  source_policy: SEC-originals-only-for-financials-no-third-party-data-services
+  annual_periods: [FY2021, FY2022, FY2023, FY2024, FY2025]
+  latest_quarters: [FY2025Q4, FY2026Q1, FY2026Q2, FY2026Q3]
+  handoff: research/companies/US/COCO-vita-coco/data-preparation-2026-11-03.md
+  context: research/companies/US/COCO-vita-coco/data/context/2026-11-03-source-preparation
+  validation: data/derived/companies/US/COCO-vita-coco/2026-11-03/data-preparation-validation.json
 automated_monitoring: not-configured-by-this-task
 destinations:
   sec: sources/companies/US/COCO-vita-coco/sec
   ir: sources/companies/US/COCO-vita-coco/ir
+  official_site: sources/companies/US/COCO-vita-coco/official-site
   transcripts: sources/companies/US/COCO-vita-coco/transcripts
   sellside: sources/companies/US/COCO-vita-coco/sellside
   user_provided: sources/companies/US/COCO-vita-coco/user-provided
@@ -29,3 +54,7 @@ curated_data: data/curated/companies/US/COCO-vita-coco
 derived_data: data/derived/companies/US/COCO-vita-coco
 manual_sync_paths:
   - research/companies/US/COCO-vita-coco/data/inbox/2026-10-26
+  - research/companies/US/COCO-vita-coco/data/context/2026-11-03-source-preparation
+  - sources/companies/US/COCO-vita-coco
+  - research/companies/US/COCO-vita-coco/outputs/company-research-to-excel
+  - data/derived/companies/US/COCO-vita-coco/excel

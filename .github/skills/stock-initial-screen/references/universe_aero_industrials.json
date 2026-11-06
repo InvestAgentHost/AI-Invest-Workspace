@@ -105,8 +105,8 @@
   "NYSE_HEI": {
    "t": "HEI",
    "name": "HEICO",
-   "tag": "components",
-   "why": "Flight Support (approved replacement parts and repair) and Electronic Technologies; parts maker more than service provider.",
+   "tag": "aftermarket",
+   "why": "Flight Support (approved replacement parts and repair) and Electronic Technologies; parts maker more than service provider. Moved from components on 2026-10-27: Flight Support Group 69% of FY2025 revenue and 70% of segment operating income (Fiscal.ai segments).",
    "gics": "Aerospace & Defense"
   },
   "NYSE_HWM": {
@@ -580,6 +580,111 @@
    "tag": "motion",
    "why": "Miniature and small ball bearings (a large aerospace bearing supplier), rod-end and spherical bearings, motors, sensors, semiconductors and access products; bearings are the core profit pool. Data from Japanese filings (FocusAlpha), not Fiscal.ai.",
    "gics": ""
+  },
+  "NYSE_TDY": {
+   "t": "TDY",
+   "name": "Teledyne Technologies",
+   "tag": "instruments",
+   "why": "Acquisition-built maker of specialised instrumentation, digital imaging and aerospace and defence electronics - the closest US analogue to AMETEK's model. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NYSE_KEYS": {
+   "t": "KEYS",
+   "name": "Keysight Technologies",
+   "tag": "instruments",
+   "why": "Electronic design, test and measurement instruments and software; the whole company is test and measurement. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NYSE_MTD": {
+   "t": "MTD",
+   "name": "Mettler-Toledo",
+   "tag": "instruments",
+   "why": "Precision weighing and analytical instruments and service for laboratory, industrial and food-retail customers. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "XLON_HLMA": {
+   "t": "HLMA",
+   "name": "Halma",
+   "tag": "instruments",
+   "why": "Decentralised group of acquired niche safety, environmental-analysis and healthcare technology companies - same acquisition-built niche model as AMETEK. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "XLON_JDG": {
+   "t": "JDG",
+   "name": "Judges Scientific",
+   "tag": "instruments",
+   "why": "Buys and develops small scientific-instrument companies (Materials Sciences and Vacuum segments). (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "XLON_OXIG": {
+   "t": "OXIG",
+   "name": "Oxford Instruments",
+   "tag": "instruments",
+   "why": "High-technology tools and systems that image, analyse and manipulate materials, sold to industry and research. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "XLON_RSW": {
+   "t": "RSW",
+   "name": "Renishaw",
+   "tag": "instruments",
+   "why": "Precision measurement (metrology, position encoders) and healthcare engineering products. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NASDAQ_NOVT": {
+   "t": "NOVT",
+   "name": "Novanta",
+   "tag": "instruments",
+   "why": "Engineered photonics, vision and precision-motion components and subsystems for medical and industrial OEMs; acquisition-built. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NYSE_BMI": {
+   "t": "BMI",
+   "name": "Badger Meter",
+   "tag": "instruments",
+   "why": "Flow measurement, water-quality and control instruments for water utilities and industrial customers. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NYSE_VPG": {
+   "t": "VPG",
+   "name": "Vishay Precision Group",
+   "tag": "instruments",
+   "why": "Precision sensors, weighing solutions and measurement systems. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "XHEL_VAIAS": {
+   "t": "VAIAS",
+   "name": "Vaisala",
+   "tag": "instruments",
+   "why": "Environmental and industrial measurement instruments and systems (weather, humidity, gases, liquids). (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "XSWX_IFCN": {
+   "t": "IFCN",
+   "name": "INFICON",
+   "tag": "instruments",
+   "why": "Instruments for gas analysis, measurement and leak detection used in HVAC, automotive and semiconductor manufacturing. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "NASDAQ_LFUS": {
+   "t": "LFUS",
+   "name": "Littelfuse",
+   "tag": "instruments",
+   "why": "Circuit protection, power control and sensing components (fuses, switches, power semiconductors) - a component maker like Bel Fuse. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Components"
+  },
+  "NYSE_CTS": {
+   "t": "CTS",
+   "name": "CTS Corporation",
+   "tag": "instruments",
+   "why": "Custom-engineered sensors, actuators and electronic components (piezo sensing, switches, frequency controls). (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Components"
+  },
+  "XLON_DSCV": {
+   "t": "DSCV",
+   "name": "discoverIE Group",
+   "tag": "instruments",
+   "why": "Designs and makes customised electronic components for industrial OEMs; acquisition-built. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Electronic Components"
   }
  },
  "excluded": {

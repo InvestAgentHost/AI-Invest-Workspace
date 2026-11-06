@@ -1,14 +1,18 @@
 # PEP图表与专题索引
 
-整理日期：2026-10-30。以下“当前版”表示本轮研究的主要阅读版本；不同主题各有用途，不按文件修改时间自动挑选。PNG供阅读或插入Word，SVG供矢量输出，ZIP只用于打包转移；这些文件保留本地，不进入Git。
+整理日期：2026-11-02。完整主报告在[归档版](reports/2026-11-02/PEP.docx)；[归档说明](../archive.md)记录版本、口径问题及只读边界。Elliott补充资料沿用下表唯一版本。
+
+以下“当前版”表示本轮研究的主要阅读版本；不同主题各有用途，不按文件修改时间自动挑选。PNG供阅读或插入Word，SVG供矢量输出，ZIP只用于打包转移；这些文件保留本地，不进入Git。
 
 ## 当前主要阅读版本
 
 | 主题 | 当前目录 | 内容 |
 |---|---|---|
+| 盈利预测与估值 | [Excel底稿](company-research-to-excel/PEP_model.xlsx) | 2026-11-04采用Downloads新版：远期权益P/FCF＋期间留存现金，补齐2026剩余分配；期初净负债仅作杠杆检查。原三情景参数保留，现金桥见估值页94—115行 |
 | 渠道分工 | [channel-responsibilities-20261026](channel-responsibilities-20261026/) | 食品、公司装瓶、特许经营三图 |
 | 产品组合 | [product-portfolio-20261026](product-portfolio-20261026/) | 食品与饮料产品图 |
 | 国家收入 | [country-revenue-20261027](country-revenue-20261027/README.md) | 国家收入与集中度 |
+| 美国咸味零食行业需求 | [2016—2025增速图](figures/us-salty-snacks-growth-2016-2025.png) | 销售额与包装件数同比；标明缺失值、滚动52周截止日及2024—2025版本口径断点。数据与来源见`data/curated/companies/US/PEP-pepsico/us-salty-snacks-annual-observations-2016-2025.csv` |
 | 集团收入增长归因 | [revenue-growth-attribution-20261027](revenue-growth-attribution-20261027/README.md) | 完整FY2016—FY2025；披露的集团volume贡献；保留所有关键标签及数值条 |
 | 成本趋势 | [cost-trends-20261027](cost-trends-20261027/) | 成本与收入比较；可重建CSV已迁至同名`data/derived`目录 |
 | 价格、成本与销量 | [pricing-cost-volume-20261027](pricing-cost-volume-20261027/) | 价格及销量变化；可重建CSV已迁至同名`data/derived`目录 |

@@ -26,6 +26,11 @@
 - Preserve contradictory evidence and unresolved questions.
 - Do not overwrite raw source files during normalization.
 
+## Data sources
+
+- **FA = FocusAlpha.** For financial statements, earnings and calls, guidance, 13F holdings, insider trades, short interest, filings from Japan, Korea, Taiwan, China and Hong Kong, macro data and ETF holdings, check FocusAlpha first, before any other source.
+- Name the source of every figure in an answer: `FocusAlpha (<tool>)` or the actual other source. Do not present an unverified number as FocusAlpha data.
+
 ## File conventions
 
 - Use UTF-8 text files.

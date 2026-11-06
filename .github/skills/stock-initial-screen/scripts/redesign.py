@@ -14,8 +14,9 @@ from bs4 import BeautifulSoup
 E = lambda x: html.escape(str(x), quote=True)
 SHORT = {'B1': 'Return excl. goodwill', 'B2': 'Cash conversion', 'B3': 'Growth per share', 'B4': 'Return incl. goodwill',
          'I1': 'Industry returns', 'I2': 'Industry growth', 'I3': 'Worst industry year',
-         'M1': 'CEO ownership', 'M2': 'Stock pay and vote', 'M3': 'Capital allocation', 'R1': 'Financial risk gate'}
-PANEL = {'Business': 'bu', 'Industry': 'in', 'Management': 'ma', 'Financial risk gate': 'rk'}
+         'M1': 'CEO ownership', 'M2': 'Stock pay and vote', 'M3': 'Capital allocation', 'R1': 'Financial risk gate',
+         'E1': 'Recent quarters', 'E2': 'Guidance cuts', 'E3': 'Price vs earnings'}
+PANEL = {'Business': 'bu', 'Industry': 'in', 'Management': 'ma', 'Financial risk gate': 'rk', 'Earnings falling now': 'rk'}
 SERIES_RE = re.compile(r'FY(\d{2,4})\s+([+\-−]?\d[\d,]*\.?\d*)(%?)')
 RULES = {}
 
@@ -122,6 +123,11 @@ def tile(T, m, grp):
     v = key_value(m['calc'], m['kvs']) if 'lt-n' not in m['lcls'] else 'n/a'
     if m['code'] == 'R1':
         v = next((val for lab, val in m['kvs'] if lab.startswith('Net debt ÷')), v)
+    if m['code'] in ('E1', 'E2', 'E3'):   # v4.8: the one number that decides the check ('Deciding change' when it fired)
+        want = ('Deciding change',) if any(lab == 'Deciding change' for lab, _ in m['kvs']) else {'E1': ('Gross profit', 'Operating income'), 'E2': ('First guide to latest',), 'E3': ('Share price',)}[m['code']]
+        val = next((val for lab, val in m['kvs'] if lab.startswith(want) and val not in ('not in the data', '–')), '')
+        mm = re.search(r'\(([+\-−]?\d[\d.]*%)\)', val)
+        v = mm.group(1) if mm else (val if len(val) <= 12 else ('n/a' if not val else val[:12]))
     if m['code'] == 'M3':
         pick = [val for lab, val in m['kvs'] if lab.startswith(('Impairments', '(Impairments')) or lab.startswith('Diluted share change')]   # v4.7: the ratio and the share change, wherever they sit in the row
         vs = [val for val in (pick if len(pick) == 2 else [val for lab, val in m['kvs'][:2]]) if val.strip() not in ('–', '-', '')]
@@ -130,8 +136,8 @@ def tile(T, m, grp):
     sm = re.search(r'score (\d+(?:\.\d+)?) of 5', m['ltitle'])
     if sm:
         chip = sm.group(1)
-    elif m['code'] == 'R1':
-        chip = 'Fail' if lc == 'lt-r' else '待核验' if lc in ('lt-na','lt-q') else 'Pass'
+    elif m['code'] in ('R1', 'E1', 'E2', 'E3'):
+        chip = 'Fail' if lc == 'lt-r' else ('Waived' if m['calc'].startswith('Triggered but waived') else 'n/a' if lc == 'lt-na' else 'Pass')
     else:
         chip = '–'
     return (f"<a class='tile t-{grp}' href='#{T}-{m['code']}' title='{E(m['ltitle'])}. {E(m['name'])}: {E(m['calc'])}'>"
@@ -196,6 +202,7 @@ def company(co):
         favgs = [txt(d) for d in s.find_all('div', class_='favg')]
         ceo = s.find('div', class_='ceo-note')
         peers = s.find('details', class_='ev', recursive=False)
+        pch = s.find('div', class_='pcharts', recursive=False)   # v4.11: Industry peer charts, shown open above the group table
         drop = (); sub = ''
         if head == 'Industry':
             g = next((v for l, v in rows[0]['kvs'] if l in ('Group', 'Peer group')), '')
@@ -208,11 +215,13 @@ def company(co):
             nd = next((v for l, v in kv.items() if l.startswith('Net debt ÷')), '')
             ic = next((v for l, v in kv.items() if l.startswith('Operating income ÷')), '')
             calcline = ' · '.join(x for x in [rows[0]['calc'], ('net debt ÷ EBITDA ' + nd) if nd else '', ('interest cover ' + ic) if ic else ''] if x)
+        if head == 'Earnings falling now' and rows and not calcline:   # v4.8: the closed panel keeps one summary line
+            calcline = ' · '.join(f"{r_['code']} {r_['calc'].split(':')[0].split(' (')[0].lower()}" for r_ in rows)
         missing = [f for f in favgs if f.startswith('Missing')]
         hlh = str(hl) if hl else ''
         panels.append(f"<details class='blk blk-{grp} fold' open><summary><div class='phead'><h4>{E(head)} {hlh}</h4>{('<span class=pcalc>' + E(calcline) + '</span>') if calcline else ''}</div></summary>{sub}"
                       f"{str(ceo) if ceo else ''}{''.join(render_row(T, m, drop) for m in rows)}"
-                      f"{''.join('<div class=favg>' + E(x) + '</div>' for x in missing)}{str(peers) if peers else ''}</details>")
+                      f"{''.join('<div class=favg>' + E(x) + '</div>' for x in missing)}{str(pch) if pch else ''}{str(peers) if peers else ''}</details>")
         groups.append(f"<div class='tg t-{grp}'><div class='tgh'>{E(head if head != 'Financial risk gate' else 'Checks')} {hlh.replace('wide', '') if head != 'Financial risk gate' else ''}</div><div class='tiles'>"
                       + ''.join(tile(T, m, grp) for m in rows)
                       + (f"<a class='tile t-rf' href='#{T}-rf' title='{E(rf_head)}'><span class='tl'><span class='lt {'lt-r' if rf_bad else 'lt-g'} tsc'>{'Fail' if rf_bad else 'Pass'}</span></span><span class='tc'>RF</span><span class='tv'>{'Found' if rf_bad else ('<span class=\"rfwarn\">Past AAER</span>' if 'past SEC enforcement' in rf_head else 'None')}</span><span class='tn'>Accounting red flags</span></a>" if head == 'Financial risk gate' else '')

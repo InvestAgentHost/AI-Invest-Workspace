@@ -17,9 +17,13 @@ Resolve these fields before extraction:
 | note set | debt, lease, pension, goodwill/intangibles, inventory, working capital, tax, segment, equity, other |
 | output boundary | raw reported tables only, standardized series, derived metrics, or all three |
 
-If the user says “five-year financial series” without further qualification,
-use the latest five audited fiscal years plus the latest 10-Q and request
-confirmation only when the issuer identity or fiscal calendar is ambiguous.
+If no window is specified, use the latest 10 published complete fiscal years
+and latest 4 disclosed discrete quarters. An explicit annual window such as
+“five-year financial series” overrides the annual default; preserve the agreed
+quarterly scope. Apply [initial-operating-context.md](initial-operating-context.md)
+for fiscal timing, derived fourth quarters, comparability and disclosure gaps.
+Request confirmation only when issuer identity or fiscal calendar is ambiguous,
+not merely because the user has left the window at its default.
 
 ## 2. Two-layer data model
 

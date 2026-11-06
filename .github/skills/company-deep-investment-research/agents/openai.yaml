@@ -1,4 +1,4 @@
 interface:
   display_name: "Company Deep Investment Research"
   short_description: "Interactive company research and report writing"
-  default_prompt: "Use $company-deep-investment-research to plan or continue a public-company study, restoring existing context and completing the requested research module with official evidence and clear analysis."
+  default_prompt: "使用 $company-deep-investment-research 研究【公司名/ticker】：先建立公司经营认知，默认近10个完整财年和最近4个季度，以简洁专业中文、完整表格和聊天内图片解释原因、未来走势与经营策略；已有研究则接续当前问题。"

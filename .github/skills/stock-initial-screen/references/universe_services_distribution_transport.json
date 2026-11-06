@@ -37,7 +37,9 @@
   "rail": {
    "parent": "transport",
    "label": "Freight railroads",
-   "def": "North American Class I freight railroads: own track, yards and locomotives; carry bulk, merchandise and intermodal freight with high fixed costs and long-lived assets."
+   "def": "North American Class I freight railroads: own track, yards and locomotives; carry bulk, merchandise and intermodal freight with high fixed costs and long-lived assets.",
+   "complete": true,
+   "complete_why": "all five listed North American Class I freight railroads (BNSF is owned by Berkshire Hathaway); marked 2026-10-27"
   },
   "truck": {
    "parent": "transport",
@@ -533,6 +535,125 @@
    "tag": "waste",
    "why": "Nuclear and hazardous waste treatment facilities and waste services.",
    "gics": "Environmental & Facilities Services"
+  },
+  "XDUB_UPR": {
+   "t": "UPR",
+   "name": "Uniphar",
+   "tag": "health_dist",
+   "why": "Ireland's leading pharmaceutical wholesaler plus pan-European medtech distribution and pharma services; distribution is the core of all three divisions (some retail pharmacies inside Supply Chain & Retail). (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Health Care Distributors"
+  },
+  "XHEL_ORIOLA": {
+   "t": "ORIOLA",
+   "name": "Oriola",
+   "tag": "health_dist",
+   "why": "Nordic pharmaceutical distributor - one of the two dominant drug wholesalers in Finland and Sweden, delivering to pharmacies, hospitals and vets. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Health Care Distributors"
+  },
+  "XWAR_NEU": {
+   "t": "NEU",
+   "name": "Neuca",
+   "tag": "health_dist",
+   "why": "Poland's largest pharmaceutical wholesaler; Pharmaceutical Wholesale is typically over 90% of revenue per its profile. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Health Care Distributors"
+  },
+  "XSTO_ALIF.B": {
+   "t": "ALIF B",
+   "name": "AddLife",
+   "tag": "health_dist",
+   "why": "Acquisition-built value-added distributor of medical-technology and laboratory products to hospitals and labs - the closest European peer to Henry Schein/Medline-type supplies distribution. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Health Care Distributors"
+  },
+  "XETR_ILM1": {
+   "t": "ILM1",
+   "name": "Medios",
+   "tag": "health_dist",
+   "why": "German specialty-pharma wholesaler and compounder; the Pharmaceutical Supply (wholesale) segment is about 80% of sales per its profile. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Health Care Distributors"
+  },
+  "XSTO_BEIJ.B": {
+   "t": "BEIJ B",
+   "name": "Beijer Ref",
+   "tag": "bldg_dist",
+   "why": "Wholesale distributor of refrigeration and HVAC equipment to contractors and installers through 500+ branches in 45 countries - the closest international peer to Watsco. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XPAR_THEP": {
+   "t": "THEP",
+   "name": "Thermador Groupe",
+   "tag": "bldg_dist",
+   "why": "Specialised distributor of pumps, plumbing, heating, sanitary and ventilation equipment and pool equipment to installers. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "TSX_DBM": {
+   "t": "DBM",
+   "name": "Doman Building Materials",
+   "tag": "bldg_dist",
+   "why": "Wholesale distributor of lumber, panels, siding and roofing in Canada and the US with treating plants; a small forestry segment. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "TSX_ADEN": {
+   "t": "ADEN",
+   "name": "ADENTRA (formerly Hardwoods Distribution)",
+   "tag": "bldg_dist",
+   "why": "Wholesale distributor of specialty architectural building products (hardwood, plywood, doors, mouldings, panels) through 80+ North American facilities. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "TSX_TBL": {
+   "t": "TBL",
+   "name": "Taiga Building Products",
+   "tag": "bldg_dist",
+   "why": "Independent wholesale distributor of building materials in Canada and the US; lumber and panels about 46% of revenue, allied and treated products the rest. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "TSX_GDL": {
+   "t": "GDL",
+   "name": "Goodfellow",
+   "tag": "bldg_dist",
+   "why": "Wholesale distributor and remanufacturer of lumber, building materials and floor coverings; small. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "TSX_RCH": {
+   "t": "RCH",
+   "name": "Richelieu Hardware",
+   "tag": "bldg_dist",
+   "why": "Distributor and importer of specialty hardware and related products (130,000+ SKUs) to cabinet makers, woodworkers and renovation retailers in North America. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XLON_TPK": {
+   "t": "TPK",
+   "name": "Travis Perkins",
+   "tag": "bldg_dist",
+   "why": "UK builders' merchant: the Merchanting segment (building materials, timber, plumbing and heating to trade customers) is about 80% of revenue; Toolstation the rest. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XLON_SHI": {
+   "t": "SHI",
+   "name": "SIG",
+   "tag": "bldg_dist",
+   "why": "B2B distributor of specialist insulation, interiors and roofing products in the UK and continental Europe. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XLON_LORD": {
+   "t": "LORD",
+   "name": "Lords Group Trading",
+   "tag": "bldg_dist",
+   "why": "UK distributor of building, plumbing and heating products (Merchanting and Plumbing & Heating divisions). (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XLON_LTHM": {
+   "t": "LTHM",
+   "name": "James Latham",
+   "tag": "bldg_dist",
+   "why": "UK and Irish trade distributor of timber, panels and decorative surfaces. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XPAR_SAMS": {
+   "t": "SAMS",
+   "name": "SAMSE",
+   "tag": "bldg_dist",
+   "why": "Independent French distributor of building materials (about 80% of revenue) plus home-improvement stores. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Trading Companies & Distributors"
   }
  },
  "excluded": {

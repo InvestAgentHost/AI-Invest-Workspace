@@ -1,0 +1,1034 @@
+{
+ "name": "Industrials and materials (from the Claude run of 27 companies, prices to 2 Nov 2026)",
+ "as_of": "2026-11-02",
+ "status": "Draft: tags, members and reasons copied from the Claude run page of 2 Nov 2026 (engine v4.11.1); keys from Fiscal.ai companies_list (4 Nov 2026) or the shipped universes; not yet reviewed by the user. Sales channels not filled.",
+ "min_peers": 3,
+ "tags": {
+  "flow_control_and_fluid_handling": {
+   "parent": "industrial_components",
+   "label": "Flow control and fluid handling",
+   "def": "Pumps, valves, actuators, seals and dispensing equipment for process industries; a large share is replacement and service."
+  },
+  "defence_primes_and_diversified_a_d": {
+   "parent": "aircraft_makers_and_defence",
+   "label": "Defence primes and diversified A&D",
+   "def": "Prime contractors whose largest customer is a government defence budget, and diversified aerospace and defence groups."
+  },
+  "route_based_recurring_services": {
+   "parent": "environmental_and_business_services",
+   "label": "Route-based recurring services",
+   "def": "Uniform rental, pest control, hygiene, cleaning and facility services delivered on regular routes or under service contracts; revenue recurs, capital is mostly route vehicles and garment or product stock."
+  },
+  "industrial_mro_distribution": {
+   "parent": "distribution",
+   "label": "Industrial MRO distribution",
+   "def": "Distributors of maintenance, repair and operating supplies, fasteners, bearings, electrical and industrial products to manufacturers, contractors and institutions."
+  },
+  "building_products": {
+   "parent": "building_products",
+   "label": "Building products",
+   "def": "Makers of roofing, insulation, siding, decking, drainage, fixtures, HVAC equipment and structural building products sold through distributors and contractors."
+  },
+  "diversified_industrial_manufacturers": {
+   "parent": "industrial_machinery_and_tools",
+   "label": "Diversified industrial manufacturers",
+   "def": "Decentralised groups of many niche engineered-product businesses (pumps, fluid, marking, welding-free tools, sensors, software) with no single end market above about a third of sales; growth by acquisition."
+  },
+  "tools_welding_and_cutting": {
+   "parent": "industrial_machinery_and_tools",
+   "label": "Tools, welding and cutting",
+   "def": "Welding and cutting equipment and consumables, hand and power tools and cutting tools sold to industrial, construction and automotive customers through distributors, dealers and direct."
+  },
+  "electrical_equipment_and_automation": {
+   "parent": "electrical_equipment_and_automation",
+   "label": "Electrical equipment and automation",
+   "def": "Electrical distribution and protection equipment, power management, thermal and power systems for data centres, industrial automation and controls sold to utilities, data-centre, industrial and building customers."
+  },
+  "industrial_gases": {
+   "parent": "industrial_gases",
+   "label": "Industrial gases",
+   "def": "Oxygen, nitrogen, hydrogen and other gases supplied under long take-or-pay contracts through on-site plants, pipelines and merchant delivery; capital heavy, contract-protected returns."
+  },
+  "metal_glass_and_rigid_containers": {
+   "parent": "packaging",
+   "label": "Metal, glass and rigid containers",
+   "def": "Beverage and food cans, glass bottles and jars, closures and steel containers sold under multi-year supply contracts to consumer-goods companies; high plant capital, pass-through of metal and energy costs."
+  },
+  "labels_materials_and_flexible_packaging": {
+   "parent": "packaging",
+   "label": "Labels, materials and flexible packaging",
+   "def": "Pressure-sensitive label materials, flexible films and packaging, identification products and consumer packaging converted from paper, film and foil."
+  },
+  "life_science_tools_and_analytical_instruments": {
+   "parent": "life_science_tools",
+   "label": "Life science tools and analytical instruments",
+   "def": "Analytical, laboratory and bioprocessing instruments, consumables and software sold to pharma, biotech, academic and industrial laboratories; a large recurring consumables and service base."
+  },
+  "vertical_and_engineering_software": {
+   "parent": "vertical_software",
+   "label": "Vertical and engineering software",
+   "def": "Application software for specific industries and engineering workflows sold by licence or subscription with high recurring revenue and low capital needs."
+  },
+  "construction_concessions_and_infrastructure": {
+   "parent": "construction_and_infrastructure",
+   "label": "Construction, concessions and infrastructure",
+   "def": "Civil engineering and building contractors that also own or operate infrastructure concessions (toll roads, airports, energy assets); earnings mix contracting margins and concession cash flows."
+  }
+ },
+ "parents": {
+  "industrial_components": "Industrial components",
+  "aircraft_makers_and_defence": "Aircraft makers and defence",
+  "environmental_and_business_services": "Environmental and business services",
+  "distribution": "Distribution",
+  "building_products": "Building products",
+  "industrial_machinery_and_tools": "Industrial machinery and tools",
+  "electrical_equipment_and_automation": "Electrical equipment and automation",
+  "industrial_gases": "Industrial gases",
+  "packaging": "Packaging",
+  "life_science_tools": "Life science tools",
+  "vertical_software": "Vertical software",
+  "construction_and_infrastructure": "Construction and infrastructure"
+ },
+ "companies": {
+  "NYSE_ALLE": {
+   "t": "ALLE",
+   "name": "Allegion",
+   "tag": "building_products",
+   "why": "Locks, door hardware and electronic access products sold through distributors, dealers and OEMs.",
+   "gics": "Building Products"
+  },
+  "NYSE_CSL": {
+   "t": "CSL",
+   "name": "Carlisle Companies",
+   "tag": "building_products",
+   "why": "Commercial roofing, waterproofing and insulation (Carlisle Construction Materials, Weatherproofing Technologies); sold its non-building businesses 2021-2024.",
+   "gics": "Building Products"
+  },
+  "NYSE_FBIN": {
+   "t": "FBIN",
+   "name": "Fortune Brands Innovations",
+   "tag": "building_products",
+   "why": "Plumbing (Moen), outdoors and security products; spun off its cabinets business in Dec 2022.Window: MasterBrand cabinets spin-off (Dec 2022)",
+   "gics": "Building Products",
+   "window_from": 2023,
+   "window_why": "MasterBrand cabinets spin-off (Dec 2022)"
+  },
+  "NYSE_JHX": {
+   "t": "JHX",
+   "name": "James Hardie Industries",
+   "tag": "building_products",
+   "why": "Fiber cement siding; acquired AZEK (decking) in Jul 2025.",
+   "gics": "Construction Materials"
+  },
+  "NYSE_LII": {
+   "t": "LII",
+   "name": "Lennox International",
+   "tag": "building_products",
+   "why": "Residential and commercial HVAC equipment.",
+   "gics": "Building Products"
+  },
+  "NYSE_LPX": {
+   "t": "LPX",
+   "name": "Louisiana-Pacific",
+   "tag": "building_products",
+   "why": "Engineered wood siding and OSB.",
+   "gics": "Forest Products"
+  },
+  "NYSE_MAS": {
+   "t": "MAS",
+   "name": "Masco",
+   "tag": "building_products",
+   "why": "Plumbing fixtures (Delta, Hansgrohe) and paints (Behr).",
+   "gics": "Building Products"
+  },
+  "NYSE_OC": {
+   "t": "OC",
+   "name": "Owens Corning",
+   "tag": "building_products",
+   "why": "Roofing, insulation and doors; sold its glass reinforcements business in 2025.",
+   "gics": "Building Products"
+  },
+  "NASDAQ_ROCK": {
+   "t": "ROCK",
+   "name": "Gibraltar Industries",
+   "tag": "building_products",
+   "why": "Residential building products (mail, roof ventilation), agtech and structures.",
+   "gics": "Building Products"
+  },
+  "NYSE_SSD": {
+   "t": "SSD",
+   "name": "Simpson Manufacturing",
+   "tag": "building_products",
+   "why": "Structural connectors and anchors for wood and concrete construction.",
+   "gics": "Building Products"
+  },
+  "NYSE_TREX": {
+   "t": "TREX",
+   "name": "Trex",
+   "tag": "building_products",
+   "why": "Composite decking and railing.",
+   "gics": "Building Products"
+  },
+  "NASDAQ_UFPI": {
+   "t": "UFPI",
+   "name": "UFP Industries",
+   "tag": "building_products",
+   "why": "Treated lumber, packaging and construction components.",
+   "gics": "Building Products"
+  },
+  "NYSE_WMS": {
+   "t": "WMS",
+   "name": "Advanced Drainage Systems",
+   "tag": "building_products",
+   "why": "Thermoplastic stormwater and drainage pipe and chambers.",
+   "gics": "Building Products"
+  },
+  "BMEX_ACS": {
+   "t": "ACS",
+   "name": "ACS",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Construction (Hochtief, Turner) and concessions.",
+   "gics": "Construction & Engineering"
+  },
+  "XLON_BBY": {
+   "t": "BBY.L",
+   "name": "Balfour Beatty",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "UK construction and infrastructure investments.",
+   "gics": "Construction & Engineering"
+  },
+  "XPAR_DG": {
+   "t": "DG.PA",
+   "name": "Vinci",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Concessions (motorways, airports) and contracting.",
+   "gics": "Construction & Engineering"
+  },
+  "XPAR_EN": {
+   "t": "EN",
+   "name": "Bouygues",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Construction, telecoms and media.",
+   "gics": "Construction & Engineering"
+  },
+  "NASDAQ_FER": {
+   "t": "FER",
+   "name": "Ferrovial",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Toll roads (incl. 407 ETR), construction (Webber, Budimex) and energy infrastructure; moved listing from Madrid to Nasdaq in 2024.",
+   "gics": "Construction & Engineering"
+  },
+  "XPAR_FGR": {
+   "t": "FGR",
+   "name": "Eiffage",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Construction and concessions.",
+   "gics": "Construction & Engineering"
+  },
+  "BMEX_SCYR": {
+   "t": "SCYR",
+   "name": "Sacyr",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Concessions and construction.",
+   "gics": "Construction & Engineering"
+  },
+  "XSTO_SKA.B": {
+   "t": "SKA.B",
+   "name": "Skanska",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "Construction and project development.",
+   "gics": "Construction & Engineering"
+  },
+  "XWBO_STR": {
+   "t": "STR",
+   "name": "Strabag",
+   "tag": "construction_concessions_and_infrastructure",
+   "why": "European construction.",
+   "gics": "Construction & Engineering"
+  },
+  "XLON_BA.": {
+   "t": "BA.",
+   "name": "BAE Systems",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Defence platforms and electronics for the UK, US and Saudi governments.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_GD": {
+   "t": "GD",
+   "name": "General Dynamics",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Defence segments plus Gulfstream business jets.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_HII": {
+   "t": "HII",
+   "name": "Huntington Ingalls",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Naval shipbuilding for the US Navy.",
+   "gics": "Aerospace & Defense"
+  },
+  "XPAR_HO": {
+   "t": "HO",
+   "name": "Thales",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Defence and security is the largest segment; aerospace electronics and digital identity are the rest.",
+   "gics": "Aerospace & Defense"
+  },
+  "XOSL_KOG": {
+   "t": "KOG",
+   "name": "Kongsberg",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Defence and aerospace after the April 2026 demerger of Kongsberg Maritime.Window: Kongsberg Maritime demerged Apr 2026; no full year on the current perimeter yet",
+   "gics": "Aerospace & Defense",
+   "window_from": 2026,
+   "window_why": "Kongsberg Maritime demerged Apr 2026; no full year on the current perimeter yet"
+  },
+  "XMIL_LDO": {
+   "t": "LDO",
+   "name": "Leonardo",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Helicopters, defence electronics, aircraft and aerostructures.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_LHX": {
+   "t": "LHX",
+   "name": "L3Harris",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Defence electronics and space; US government is most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_LMT": {
+   "t": "LMT",
+   "name": "Lockheed Martin",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "US government is most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_NOC": {
+   "t": "NOC",
+   "name": "Northrop Grumman",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "US government is most of revenue.",
+   "gics": "Aerospace & Defense"
+  },
+  "XETR_RHM": {
+   "t": "RHM",
+   "name": "Rheinmetall",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Vehicles, weapons and ammunition; automotive is a shrinking minority.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_RTX": {
+   "t": "RTX",
+   "name": "RTX",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Collins, Pratt & Whitney and Raytheon in about equal parts; a diversified A&D group rather than a pure engine or component maker.",
+   "gics": "Aerospace & Defense"
+  },
+  "XSTO_SAAB.B": {
+   "t": "SAAB.B",
+   "name": "Saab",
+   "tag": "defence_primes_and_diversified_a_d",
+   "why": "Fighters, missiles, sensors and submarines.",
+   "gics": "Aerospace & Defense"
+  },
+  "NYSE_AME": {
+   "t": "AME",
+   "name": "AMETEK",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Electronic instruments and electromechanical devices; decentralised acquirer of niche engineered businesses. Tagged instruments in the aerospace universe; placed with its decentralised-acquirer peers here.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_DOV": {
+   "t": "DOV",
+   "name": "Dover",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Five segments: engineered products, clean energy and fueling, imaging and identification, pumps and process solutions, climate and sustainability.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_FTV": {
+   "t": "FTV",
+   "name": "Fortive",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Workflow software, facility and healthcare solutions and industrial safety instruments after the 2025 Ralliant spin-off.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_HLMA": {
+   "t": "HLMA",
+   "name": "Halma",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "UK group of about 50 niche safety, health and environmental technology businesses grown by acquisition. Tagged instruments in the aerospace universe; placed with its decentralised-acquirer peers here.",
+   "gics": "Electronic Equipment & Instruments"
+  },
+  "XSTO_INDT": {
+   "t": "INDT",
+   "name": "Indutrade",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Swedish acquirer of niche industrial technology companies (flow, components, instruments).",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_ITW": {
+   "t": "ITW",
+   "name": "Illinois Tool Works",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Seven decentralised segments (automotive OEM, food equipment, test and measurement, welding, polymers, construction, specialty).",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XSTO_LIFCO.B": {
+   "t": "LIFCO.B",
+   "name": "Lifco",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Swedish acquirer of dental, demolition-robot and systems-solutions businesses.",
+   "gics": "Industrial Conglomerates"
+  },
+  "XLON_SMIN": {
+   "t": "SMIN",
+   "name": "Smiths Group",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Detection, flow management, interconnect and industrial components; diversified UK industrial group.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_SXI": {
+   "t": "SXI",
+   "name": "Standex",
+   "tag": "diversified_industrial_manufacturers",
+   "why": "Electronics, engraving, scientific, engineering technologies and specialty businesses.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XSWX_ABBN": {
+   "t": "ABBN",
+   "name": "ABB",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Electrification, motion, process automation and robotics.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_AYI": {
+   "t": "AYI",
+   "name": "Acuity",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Lighting and building-management controls.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_EMR": {
+   "t": "EMR",
+   "name": "Emerson",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Process and discrete automation software and controls after exiting climate and safety units.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_ETN": {
+   "t": "ETN",
+   "name": "Eaton",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Electrical power management, data-centre and utility equipment, plus aerospace and vehicle segments.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_GNRC": {
+   "t": "GNRC",
+   "name": "Generac",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Standby generators, energy storage and engine-driven power products.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_HUBB": {
+   "t": "HUBB",
+   "name": "Hubbell",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Utility transmission and distribution components and electrical products.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "XPAR_LR": {
+   "t": "LR",
+   "name": "Legrand",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Electrical wiring devices, data-centre racks and building infrastructure.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_NVT": {
+   "t": "NVT",
+   "name": "nVent",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Enclosures, thermal management and electrical connections for data-centre, utility and industrial users.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_ROK": {
+   "t": "ROK",
+   "name": "Rockwell Automation",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Discrete and hybrid industrial automation hardware, software and services.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "XPAR_SU": {
+   "t": "SU",
+   "name": "Schneider Electric",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Energy management, automation and software.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "NYSE_VRT": {
+   "t": "VRT",
+   "name": "Vertiv",
+   "tag": "electrical_equipment_and_automation",
+   "why": "Power and cooling infrastructure for data centres.",
+   "gics": "Electrical Components & Equipment"
+  },
+  "XSTO_ALFA": {
+   "t": "ALFA",
+   "name": "Alfa Laval",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Heat exchangers, separators and fluid-handling pumps.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_CR": {
+   "t": "CR",
+   "name": "Crane Company",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Process Flow Technologies (valves, pumps) is the larger segment; Aerospace & Electronics the rest.Window: Crane Holdings separated into Crane Company and Crane NXT in Apr 2023",
+   "gics": "Industrial Machinery & Supplies & Components",
+   "window_from": 2023,
+   "window_why": "Crane Holdings separated into Crane Company and Crane NXT in Apr 2023"
+  },
+  "NYSE_DCI": {
+   "t": "DCI",
+   "name": "Donaldson",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Engine and industrial filtration (air and liquid) sold to OEMs and as replacement filters.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_FLS": {
+   "t": "FLS",
+   "name": "Flowserve",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Pumps, seals and valves for process industries.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_GGG": {
+   "t": "GGG",
+   "name": "Graco",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Fluid-handling pumps and spray equipment.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_IEX": {
+   "t": "IEX",
+   "name": "IDEX",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Pumps, flow meters and fluid-handling components.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_IMI": {
+   "t": "IMI",
+   "name": "IMI",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Valves, actuators and pneumatic motion control.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_IR": {
+   "t": "IR",
+   "name": "Ingersoll Rand",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Compressors, vacuum, blowers and pumps with a large aftermarket.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_ITT": {
+   "t": "ITT",
+   "name": "ITT",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Pumps and valves, connectors and motion (brake pads); flow is the largest segment.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NASDAQ_NDSN": {
+   "t": "NDSN",
+   "name": "Nordson",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Precision dispensing of adhesives, coatings and fluids.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_NPO": {
+   "t": "NPO",
+   "name": "Enpro",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Seals and engineered components for harsh environments.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_PNR": {
+   "t": "PNR",
+   "name": "Pentair",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Water pumps, filtration and pool equipment.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_ROR": {
+   "t": "ROR",
+   "name": "Rotork",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Valve actuators and flow control.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XLON_SPX": {
+   "t": "SPX",
+   "name": "Spirax Group",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Steam systems, thermal energy and peristaltic pumps.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_XYL": {
+   "t": "XYL",
+   "name": "Xylem",
+   "tag": "flow_control_and_fluid_handling",
+   "why": "Water pumps, treatment and metering equipment sold to utilities and industry.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_AIT": {
+   "t": "AIT",
+   "name": "Applied Industrial Technologies",
+   "tag": "industrial_mro_distribution",
+   "why": "Bearings, power transmission, fluid power and automation products to industrial customers.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NASDAQ_DSGR": {
+   "t": "DSGR",
+   "name": "Distribution Solutions Group",
+   "tag": "industrial_mro_distribution",
+   "why": "Specialty MRO and OEM supplies distribution (Lawson, TestEquity, Gexpro Services), merged in Apr 2022.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NASDAQ_DXPE": {
+   "t": "DXPE",
+   "name": "DXP Enterprises",
+   "tag": "industrial_mro_distribution",
+   "why": "Pumps, MRO supplies and service centres for industrial and energy customers.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NASDAQ_FAST": {
+   "t": "FAST",
+   "name": "Fastenal",
+   "tag": "industrial_mro_distribution",
+   "why": "Industrial and construction supplies, fasteners and safety products through branches, onsite locations and vending.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_GIC": {
+   "t": "GIC",
+   "name": "Global Industrial",
+   "tag": "industrial_mro_distribution",
+   "why": "Online and catalog distributor of industrial and MRO products.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_GWW": {
+   "t": "GWW",
+   "name": "W.W. Grainger",
+   "tag": "industrial_mro_distribution",
+   "why": "Broad-line MRO distribution through High-Touch Solutions and the endless-assortment websites (Zoro, MonotaRO).",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_MSM": {
+   "t": "MSM",
+   "name": "MSC Industrial Direct",
+   "tag": "industrial_mro_distribution",
+   "why": "Metalworking and MRO supplies to manufacturers.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "NYSE_WCC": {
+   "t": "WCC",
+   "name": "WESCO International",
+   "tag": "industrial_mro_distribution",
+   "why": "Electrical, communications and utility products distribution; acquired Anixter in Jun 2020.",
+   "gics": "Trading Companies & Distributors"
+  },
+  "XPAR_AI": {
+   "t": "AI.PA",
+   "name": "Air Liquide",
+   "tag": "industrial_gases",
+   "why": "Industrial gases, healthcare and engineering.",
+   "gics": "Industrial Gases"
+  },
+  "NYSE_APD": {
+   "t": "APD",
+   "name": "Air Products",
+   "tag": "industrial_gases",
+   "why": "On-site and merchant industrial gases plus large hydrogen projects.",
+   "gics": "Industrial Gases"
+  },
+  "NASDAQ_LIN": {
+   "t": "LIN",
+   "name": "Linde",
+   "tag": "industrial_gases",
+   "why": "World largest industrial gas supplier (on-site, merchant and packaged).",
+   "gics": "Industrial Gases"
+  },
+  "NYSE_AMCR": {
+   "t": "AMCR",
+   "name": "Amcor",
+   "tag": "labels_materials_and_flexible_packaging",
+   "why": "Flexible films and rigid plastic packaging.",
+   "gics": "Paper & Plastic Packaging Products & Materials"
+  },
+  "NYSE_AVY": {
+   "t": "AVY",
+   "name": "Avery Dennison",
+   "tag": "labels_materials_and_flexible_packaging",
+   "why": "Pressure-sensitive label materials, RFID and apparel labelling, and industrial tapes.",
+   "gics": "Paper & Plastic Packaging Products & Materials"
+  },
+  "NYSE_BRC": {
+   "t": "BRC",
+   "name": "Brady",
+   "tag": "labels_materials_and_flexible_packaging",
+   "why": "Identification solutions: labels, safety signs and printers.",
+   "gics": "Commercial Printing"
+  },
+  "TSX_CCL.A": {
+   "t": "CCL.A",
+   "name": "CCL Industries",
+   "tag": "labels_materials_and_flexible_packaging",
+   "why": "Labels, specialty packaging and Checkpoint retail security.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "XHEL_HUH1V": {
+   "t": "HUH1V",
+   "name": "Huhtamaki",
+   "tag": "labels_materials_and_flexible_packaging",
+   "why": "Food-service and flexible packaging.",
+   "gics": "Paper & Plastic Packaging Products & Materials"
+  },
+  "NYSE_SON": {
+   "t": "SON",
+   "name": "Sonoco",
+   "tag": "labels_materials_and_flexible_packaging",
+   "why": "Consumer and industrial paper and plastic packaging.",
+   "gics": "Paper & Plastic Packaging Products & Materials"
+  },
+  "NYSE_A": {
+   "t": "A",
+   "name": "Agilent",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Analytical instruments, consumables and diagnostics.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_BIO": {
+   "t": "BIO",
+   "name": "Bio-Rad",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Life-science research products and clinical diagnostics.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NASDAQ_BRKR": {
+   "t": "BRKR",
+   "name": "Bruker",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "High-performance scientific instruments.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_DHR": {
+   "t": "DHR",
+   "name": "Danaher",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Life-science and diagnostics instruments, bioprocessing and Cytiva after the Veralto split.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "XPAR_DIM": {
+   "t": "DIM",
+   "name": "Sartorius Stedim Biotech",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Bioprocess consumables and single-use systems.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_MTD": {
+   "t": "MTD",
+   "name": "Mettler-Toledo",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Precision laboratory, industrial and food-retail weighing and analytical instruments; tagged instruments in the aerospace universe.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_QGEN": {
+   "t": "QGEN",
+   "name": "Qiagen",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Sample and assay technologies for molecular diagnostics and life science.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_RVTY": {
+   "t": "RVTY",
+   "name": "Revvity",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Diagnostics and life-science reagents and instruments.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "XETR_SRT3": {
+   "t": "SRT3",
+   "name": "Sartorius",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Bioprocess equipment and lab products.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NASDAQ_TECH": {
+   "t": "TECH",
+   "name": "Bio-Techne",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Proteins, reagents and diagnostics for research.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_TMO": {
+   "t": "TMO",
+   "name": "Thermo Fisher",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Instruments, reagents, laboratory distribution and pharma services.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_WAT": {
+   "t": "WAT",
+   "name": "Waters",
+   "tag": "life_science_tools_and_analytical_instruments",
+   "why": "Liquid chromatography and mass spectrometry instruments and consumables; merged with BD Biosciences in 2026.",
+   "gics": "Life Sciences Tools & Services"
+  },
+  "NYSE_AMBP": {
+   "t": "AMBP",
+   "name": "Ardagh Metal Packaging",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Aluminium beverage cans; listed 2021.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "NYSE_BALL": {
+   "t": "BALL",
+   "name": "Ball",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Aluminium beverage cans and aerospace business.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "NYSE_CCK": {
+   "t": "CCK",
+   "name": "Crown Holdings",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Beverage and food cans, aerosol cans and closures.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "NYSE_GEF": {
+   "t": "GEF",
+   "name": "Greif",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Industrial packaging (steel and plastic drums, IBCs) and paper packaging.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "NYSE_OI": {
+   "t": "OI",
+   "name": "O-I Glass",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Glass containers for beverages and food.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "NYSE_SLGN": {
+   "t": "SLGN",
+   "name": "Silgan",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Metal food cans, closures and plastic containers.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "BMEX_VID": {
+   "t": "VID",
+   "name": "Vidrala",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Glass containers for beverage and food in Europe and Brazil.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "XPAR_VRLA": {
+   "t": "VRLA",
+   "name": "Verallia",
+   "tag": "metal_glass_and_rigid_containers",
+   "why": "Glass bottles and jars for beverages and food, mainly wine and spirits.",
+   "gics": "Metal, Glass & Plastic Containers"
+  },
+  "NYSE_ABM": {
+   "t": "ABM",
+   "name": "ABM Industries",
+   "tag": "route_based_recurring_services",
+   "why": "Janitorial, facility, parking and engineering services under contracts.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_BV": {
+   "t": "BV",
+   "name": "BrightView",
+   "tag": "route_based_recurring_services",
+   "why": "Commercial landscaping maintenance under recurring contracts.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NASDAQ_CTAS": {
+   "t": "CTAS",
+   "name": "Cintas",
+   "tag": "route_based_recurring_services",
+   "why": "Uniform rental and facility services on weekly routes, first aid and safety, fire protection.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_ECL": {
+   "t": "ECL",
+   "name": "Ecolab",
+   "tag": "route_based_recurring_services",
+   "why": "Cleaning, sanitation and water-treatment programs sold with on-site service routes; GICS specialty chemicals, but most revenue is recurring service-led programs.Window: ChampionX (upstream energy) separation in Jun 2020",
+   "gics": "Specialty Chemicals",
+   "window_from": 2021,
+   "window_why": "ChampionX (upstream energy) separation in Jun 2020"
+  },
+  "NASDAQ_HCSG": {
+   "t": "HCSG",
+   "name": "Healthcare Services Group",
+   "tag": "route_based_recurring_services",
+   "why": "Housekeeping, laundry and dining services for nursing homes.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_ROL": {
+   "t": "ROL",
+   "name": "Rollins",
+   "tag": "route_based_recurring_services",
+   "why": "Residential and commercial pest control (Orkin and regional brands) on recurring service contracts.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_RTO": {
+   "t": "RTO",
+   "name": "Rentokil Initial",
+   "tag": "route_based_recurring_services",
+   "why": "Pest control and hygiene services; acquired Terminix in Oct 2022.",
+   "gics": "Environmental & Facilities Services"
+  },
+  "NYSE_UNF": {
+   "t": "UNF",
+   "name": "UniFirst",
+   "tag": "route_based_recurring_services",
+   "why": "Uniform and workwear rental on routes; first aid and safety.",
+   "gics": "Diversified Support Services"
+  },
+  "NYSE_VSTS": {
+   "t": "VSTS",
+   "name": "Vestis",
+   "tag": "route_based_recurring_services",
+   "why": "Uniform and workplace supplies rental, spun off from Aramark in Sep 2023.",
+   "gics": "Diversified Support Services"
+  },
+  "XSTO_ATCO.A": {
+   "t": "ATCO.A",
+   "name": "Atlas Copco",
+   "tag": "tools_welding_and_cutting",
+   "why": "Compressors, vacuum, industrial power tools and assembly systems.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_ESAB": {
+   "t": "ESAB",
+   "name": "ESAB",
+   "tag": "tools_welding_and_cutting",
+   "why": "Welding and cutting equipment and consumables.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_KMT": {
+   "t": "KMT",
+   "name": "Kennametal",
+   "tag": "tools_welding_and_cutting",
+   "why": "Tungsten-carbide cutting tools and wear-resistant components.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NASDAQ_LECO": {
+   "t": "LECO",
+   "name": "Lincoln Electric",
+   "tag": "tools_welding_and_cutting",
+   "why": "Welding equipment, consumables and automation.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "XSTO_SAND": {
+   "t": "SAND",
+   "name": "Sandvik",
+   "tag": "tools_welding_and_cutting",
+   "why": "Cutting tools, mining and rock equipment and materials technology.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_SNA": {
+   "t": "SNA",
+   "name": "Snap-on",
+   "tag": "tools_welding_and_cutting",
+   "why": "Professional hand tools, diagnostics and repair-shop equipment sold through franchisee vans.",
+   "gics": "Industrial Machinery & Supplies & Components"
+  },
+  "NYSE_SWK": {
+   "t": "SWK",
+   "name": "Stanley Black & Decker",
+   "tag": "tools_welding_and_cutting",
+   "why": "Power and hand tools, outdoor products and industrial fasteners.",
+   "gics": "Household Appliances"
+  },
+  "NASDAQ_ADSK": {
+   "t": "ADSK",
+   "name": "Autodesk",
+   "tag": "vertical_and_engineering_software",
+   "why": "Design and engineering software.",
+   "gics": "Application Software"
+  },
+  "NASDAQ_BSY": {
+   "t": "BSY",
+   "name": "Bentley Systems",
+   "tag": "vertical_and_engineering_software",
+   "why": "Infrastructure engineering software.",
+   "gics": "Application Software"
+  },
+  "TSX_CSU": {
+   "t": "CSU",
+   "name": "Constellation Software",
+   "tag": "vertical_and_engineering_software",
+   "why": "Acquirer of vertical-market software businesses.",
+   "gics": "Application Software"
+  },
+  "TSX_DSG": {
+   "t": "DSG",
+   "name": "Descartes",
+   "tag": "vertical_and_engineering_software",
+   "why": "Logistics and supply-chain software.",
+   "gics": "Application Software"
+  },
+  "XPAR_DSY": {
+   "t": "DSY",
+   "name": "Dassault Systèmes",
+   "tag": "vertical_and_engineering_software",
+   "why": "Design, simulation and product-lifecycle software.",
+   "gics": "Application Software"
+  },
+  "NASDAQ_MANH": {
+   "t": "MANH",
+   "name": "Manhattan Associates",
+   "tag": "vertical_and_engineering_software",
+   "why": "Supply-chain and commerce software.",
+   "gics": "Application Software"
+  },
+  "XETR_NEM": {
+   "t": "NEM.DE",
+   "name": "Nemetschek",
+   "tag": "vertical_and_engineering_software",
+   "why": "Architecture, engineering and construction software.",
+   "gics": "Application Software"
+  },
+  "NASDAQ_PTC": {
+   "t": "PTC",
+   "name": "PTC",
+   "tag": "vertical_and_engineering_software",
+   "why": "CAD, product-lifecycle and IoT software.",
+   "gics": "Application Software"
+  },
+  "NASDAQ_ROP": {
+   "t": "ROP",
+   "name": "Roper Technologies",
+   "tag": "vertical_and_engineering_software",
+   "why": "Vertical software and technology-enabled products after exiting industrial businesses.",
+   "gics": "Application Software"
+  },
+  "XLON_SGE": {
+   "t": "SGE",
+   "name": "Sage Group",
+   "tag": "vertical_and_engineering_software",
+   "why": "Accounting and payroll software for small business.",
+   "gics": "Application Software"
+  },
+  "NYSE_TYL": {
+   "t": "TYL",
+   "name": "Tyler Technologies",
+   "tag": "vertical_and_engineering_software",
+   "why": "Public-sector software.",
+   "gics": "Application Software"
+  }
+ },
+ "excluded": []
+}

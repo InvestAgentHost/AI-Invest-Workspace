@@ -76,7 +76,14 @@ def classify_target(value: str, accession: str | None = None, fetcher: SecFetche
                 warnings=warnings,
             )
 
-    primary = manifest.primary_document()
+    # A direct document URL may identify an exhibit rather than the filing's
+    # cover document. Preserve that choice while retaining the full manifest.
+    primary = next(
+        (doc for doc in manifest.documents if reference.filename
+         and doc.filename.casefold() == reference.filename.casefold()
+         and doc.category in {"html", "xml", "pdf", "text"}),
+        None,
+    ) or manifest.primary_document()
     if primary is None:
         classification = Classification.SEC_NATIVE_TEXT_ONLY if manifest.header else Classification.UNKNOWN_OR_UNSUPPORTED
         pipeline = "sec_text_ingest" if classification == Classification.SEC_NATIVE_TEXT_ONLY else "manual_review"

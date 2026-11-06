@@ -1,18 +1,20 @@
 # Source Acquisition and Preparation
 
-## 1. Source hierarchy
+## 1. Source boundary
 
-Use the narrowest authoritative source that answers the question:
+### Filing and financial-data acquisition: SEC originals only
 
-1. SEC filings and footnotes, exchange filings, and audited annual reports.
-2. SEC 8-K exhibits, earnings releases, investor presentations, and official Q&A.
-3. Official product, organization, policy, and investor-relations pages.
-4. Faithfully prepared earnings calls, conferences, and other transcripts.
-5. Government, regulator, standards body, utility, customer, supplier, or independent industry data.
-6. Dated market data used only for a valuation boundary.
-7. Other provider or alternative data only when the user supplies the source and provenance.
+- Discover the issuer, filing inventory and latest actual period directly through SEC official public endpoints (`www.sec.gov`, `data.sec.gov`). Acquire original EDGAR filings, notes and exhibits, including 10-K/10-Q/8-K, amendments, relevant IPO registration statements/prospectuses and, where applicable, 20-F/6-K.
+- Do not call FocusAlpha or any other third-party service for identity/filing discovery, coverage checks, normalized financials, extracted sections or missing periods. Do not use third-party mirrors, transcripts, search snippets or provider-processed caches to populate this acquisition package. This skill's SEC route takes precedence over generic provider-first routing.
+- A prior local file is reusable only when its provenance establishes a direct SEC download of the original document. Record the official URL, accession, filing/report dates and hash; preserve it unchanged. A provider excerpt that cites SEC is not a SEC original. Reacquire unverifiable files directly from SEC or record the gap.
+- Use complete filed HTML/iXBRL and exhibits as the evidence base. Official SEC XBRL datasets may assist discovery and checking but do not replace the original filing, statement tables or notes. Local extraction is permitted when every value remains traceable to the original.
+- If SEC access fails, record attempts and retries and report the remaining gap. If the issuer has no SEC coverage, disclose that scope limitation; do not silently change to a provider or a different filing regime.
 
-Search-result snippets are discovery aids, not evidence. A company page is a company claim unless independently corroborated.
+### First-party supplements and later analysis
+
+- When requested, acquire company/brand website pages, IR releases, presentations and company-published transcripts from verified official domains. Keep them separate from SEC originals and label them as company-reported. Use an EDGAR exhibit for financial disclosure when available; website material does not substitute for the filed actuals.
+- Independent industry, government, regulatory or market evidence may be scoped in a later analysis module; it is not an automatic third-party fallback for this acquisition route. A task-level prohibition on third-party sources applies to the whole task. Processing a specifically supplied transcript in a separately authorized task does not authorize acquiring third-party minutes here.
+- Search-result snippets are discovery aids, not evidence. A company page is a company claim unless independently corroborated.
 
 ## 2. Source record
 
@@ -54,6 +56,7 @@ Keep rejected sources when they reveal a limitation, contradiction, blocked acce
 
 ## 5. File and quality checks
 
+- Check source eligibility before accepting coverage: every financial filing must resolve to its SEC original and accession; company-site supplements must resolve to an official domain. Quarantine references to ineligible provider-derived material from the new package without deleting historical files.
 - Preserve original filename when safe and add a collision suffix instead of overwriting.
 - Extract only the tables/pages needed, while retaining row order, labels, units, signs, blanks versus zero, comparative/restated status, and note references.
 - Visually inspect tables when columns, footnotes, continuation pages, OCR, or translations can change meaning.

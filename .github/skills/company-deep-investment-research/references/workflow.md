@@ -1,5 +1,7 @@
 # Workflow and Phase Gates
 
+For an unfamiliar company or an operating chapter, read [initial-operating-context.md](initial-operating-context.md) before drafting the first result. Establish company understanding with a complete, bounded module; do not turn every initial question into the full phase sequence or an unrequested workbook.
+
 ## Continuing a report or one chapter
 
 Use the lead skill's continuing-research mode when an existing report, workbook or
@@ -23,7 +25,7 @@ Capture the following in `research-context.md` before collecting evidence:
 | Issuer and legal entity | Use the filing cover page and legal name; resolve parent versus subsidiaries. |
 | Security | Ticker, exchange, share class, CIK, currency, and dated price boundary only when valuation is requested. |
 | Reporting basis | Fiscal year end, US GAAP/IFRS, consolidated perimeter, continuing/discontinued operations, units, and restatement policy. |
-| Time scope | Default to five audited fiscal years plus the latest 10-Q and relevant current events. Record the as-of date. |
+| Time scope | Unless specified otherwise, use the latest 10 published complete fiscal years and latest 4 disclosed discrete quarters, plus relevant current events. Apply the first-delivery standard for comparability and disclosure gaps; record the as-of date. |
 | Decision question | State what could change the investment view; do not begin with a target price. |
 | Output boundary | Report path, sources path, structured-data path, language, and whether a `PARTIAL` result is acceptable. |
 | Terminal dependencies | Python 3.12+, bundled runtime dependencies, browser/network access, Workspace financial calculator, and any valuation tools selected by the user. |
@@ -55,7 +57,7 @@ Automatically retry transient network failures, inspect candidate files, rebuild
 
 ## 4. Minimum evidence packet
 
-Before drafting conclusions, assemble the latest authoritative consolidated filing, five-year comparatives, relevant notes, segment disclosures, APM reconciliations, debt/lease/tax/impairment information, current IR guidance or Q&A, and sources for every route-critical unknown. If a category is irrelevant, mark `n.a.`; if relevant but not disclosed, check the required source categories and mark `unavailable` with an attempt ID.
+Before drafting conclusions, assemble the latest authoritative consolidated filing, the agreed historical window (default 10 complete years and 4 discrete quarters), relevant notes, segment disclosures, APM reconciliations, debt/lease/tax/impairment information, current IR guidance or Q&A, and sources for every route-critical unknown. Apply only the evidence categories relevant to the requested module. If a category is irrelevant, mark `n.a.`; if relevant but not disclosed, check the required source categories and mark `unavailable` with an attempt ID.
 
 ## 5. Handoff
 

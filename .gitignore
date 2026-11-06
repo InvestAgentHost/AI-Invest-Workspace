@@ -12,7 +12,8 @@ secrets.yml
 *.pem
 *.p12
 
-# Local runtime
+# Local runtime and local skill discovery roots
+.dsh/
 .local/
 .auth/
 .cache/
@@ -93,6 +94,25 @@ knowledge/databases/**
 
 # Generated deliverables and temporary intake
 research/**/figures/
+# Research images stay local; retain their links in the research text.
+research/**/*.png
+research/**/*.jpg
+research/**/*.jpeg
+research/**/*.gif
+research/**/*.webp
+research/**/*.svg
+research/**/*.avif
+research/**/*.heic
+research/**/*.tif
+research/**/*.tiff
+research/**/*.bmp
+# Ignore generated output data, one-off scripts, audits and font caches.
+# Keep directories traversable so durable notes and final model/report exceptions
+# below continue to work.
+research/**/outputs/**
+!research/**/outputs/**/
+!research/**/outputs/**/*.md
+!research/**/outputs/**/.gitignore
 outputs/**
 !outputs/README.md
 inbox/**

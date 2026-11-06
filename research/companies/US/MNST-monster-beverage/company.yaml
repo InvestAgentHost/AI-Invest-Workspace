@@ -1,0 +1,36 @@
+schema_version: 1
+id: US-MNST-monster-beverage
+source_path: sources/companies/US/MNST-monster-beverage
+name: Monster Beverage Corporation
+aliases: [Monster, Monster Beverage]
+tickers: [MNST]
+exchange: NASDAQ
+research_path: research/companies/US/MNST-monster-beverage
+inbox_path: research/companies/US/MNST-monster-beverage/data
+status: watchlist
+research_stage: initial-screen-follow-up
+action_status: follow
+as_of: 2026-11-03
+decision_origin: user-conversation-2026-11-03
+decision: "初筛后跟踪；暂不开展深度研究，主要等待估值回落。"
+resource_decision: "暂不投入深度研究资源；实质变化后由用户决定是否提高研究优先级。"
+current_report: sources/companies/US/MNST-monster-beverage/user-provided/2026-11-03/MNST.docx
+current_report_sha256: 0384c4cab632b435924fa2ae0e0e4066480d1886a874df1151f7e7705ecb0ec0
+current_baseline: research/companies/US/MNST-monster-beverage/tracking/baselines/2026-11-03.md
+current_baseline_version: 2026-11-03-v1
+current_round_materials: user-provided-word
+automated_monitoring: existing-combined-daily-task-active
+automated_monitoring_confirmed_on: 2026-11-03
+destinations:
+  sec: sources/companies/US/MNST-monster-beverage/sec
+  ir: sources/companies/US/MNST-monster-beverage/ir
+  transcripts: sources/companies/US/MNST-monster-beverage/transcripts
+  sellside: sources/companies/US/MNST-monster-beverage/sellside
+  user_provided: sources/companies/US/MNST-monster-beverage/user-provided
+  reports: research/companies/US/MNST-monster-beverage/outputs/reports
+  workbooks: research/companies/US/MNST-monster-beverage/outputs/workbooks
+  valuation_snapshots: research/companies/US/MNST-monster-beverage/outputs/valuation-snapshots
+curated_data: data/curated/companies/US/MNST-monster-beverage
+derived_data: data/derived/companies/US/MNST-monster-beverage
+manual_sync_paths:
+  - sources/companies/US/MNST-monster-beverage

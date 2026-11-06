@@ -11,6 +11,7 @@ module, use the [chapter completion criteria](financial-reconstruction.md#67-交
 
 - **A1 Identity/boundary:** issuer, security, CIK, fiscal periods, accounting, units, currency, consolidation, and as-of date are explicit.
 - **A2 Provenance:** material claims and inputs have source IDs, resolvable paths or URLs, locators, and source type; raw artifacts are preserved.
+- **A3 Acquisition source eligibility:** financial filings and extracted actuals trace to directly acquired SEC originals with accessions, official URLs and hashes. No FocusAlpha/third-party service or processed cache supplied discovery or data for the filing-acquisition route. First-party website supplements remain separate. Apply `source-acquisition.md`; a missing SEC source remains a visible gap, not a provider substitution.
 
 ## B. Evidence and routing
 
@@ -21,6 +22,8 @@ module, use the [chapter completion criteria](financial-reconstruction.md#67-交
 
 - **C1 Industry/operations:** material conclusions contain a causal chain, quantitative anchor where available, counterargument, and monitoring KPI.
 - **C2 Risk/strategy:** claims, advantages, risks, and management actions are separated and linked to statement lines, cash, and falsification conditions.
+- **C3 First operating context:** when applicable, meets [initial-operating-context.md](initial-operating-context.md): an experienced investor unfamiliar with the issuer can understand its revenue and profit mechanisms from the first delivery; all requested units and the default 10-year/4-quarter history are covered or gaps explained; prose explains causes, future direction and operating strategy with counterevidence. Concision does not remove necessary context or numerical coverage.
+- **C4 Chinese writing:** every Chinese research deliverable passes [section 4](initial-operating-context.md#4-语气篇幅与中文表达). Simple relationships are stated directly; English evidence is understood and recomposed using Chinese syntax and causal order; no empty process narration, padding or obscured subjects remain. The reader must not have to reconstruct the intended meaning or mentally translate back to English. Any failure requires rewriting before delivery, regardless of data/source correctness; preserve evidence, conditions and uncertainty while editing.
 
 ## D. Fundamentals
 
@@ -38,7 +41,7 @@ module, use the [chapter completion criteria](financial-reconstruction.md#67-交
 - **R1 Coverage/depth:** every `covered` matrix row is analyzed; unsupported rows are not hidden by a generic disclaimer.
 - **R2 Benchmark integrity:** a reference report, if used, affected method only; no reference-company facts, assumptions, or numbers leaked into the target report.
 - **R3 Independent review:** validators, parser/calculator checks, Markdown checks, and a clean review pass are recorded. Layout or rendering checks are performed where relevant.
-- **R4 Requested charts:** the saved figure answers the analytical question, reconciles to the source data and passes the [chart checks](research-charting.md#核验与交付), including actual Simplified Chinese face/glyph validation and visual inspection at intended reading size. A successful export or bounds check alone cannot pass this gate; only requested/current deliverables remain in the output directory.
+- **R4 Operating/default or requested charts:** the saved figure answers the analytical question, reconciles to the source data and passes the [chart checks](research-charting.md#核验与交付), including actual Simplified Chinese face/glyph validation and visual inspection at intended reading size. Chat delivery includes the actual inline images and matching complete tables, not only paths or attachments. A successful export or bounds check alone cannot pass this gate; only requested/current deliverables remain in the output directory.
 
 ## Status rules
 

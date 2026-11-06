@@ -60,70 +60,80 @@
    "name": "The Vita Coco Company",
    "tag": "branded_non_alcoholic_be",
    "why": "Coconut-water brand owner with outsourced production; also makes private-label drinks for retailers.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_FIZZ": {
    "t": "FIZZ",
    "name": "National Beverage",
    "tag": "branded_non_alcoholic_be",
    "why": "Owns LaCroix, Shasta and Faygo and makes them in its own plants.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_KDP": {
    "t": "KDP",
    "name": "Keurig Dr Pepper",
    "tag": "branded_non_alcoholic_be",
    "why": "Owns and partly bottles Dr Pepper, Canada Dry and other soft-drink brands plus the Keurig coffee system; JDE Peet's added in 2026.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_KO": {
    "t": "KO",
    "name": "The Coca-Cola Company",
    "tag": "branded_non_alcoholic_be",
    "why": "Sells concentrate and finished drinks under its own brands; bottling is mostly refranchised to independent bottlers.",
-   "gics": ""
+   "gics": "",
+   "channel": "distributors or dealers"
   },
   "NASDAQ_MNST": {
    "t": "MNST",
    "name": "Monster Beverage",
    "tag": "branded_non_alcoholic_be",
    "why": "Energy-drink brand owner; manufacturing outsourced and distribution through Coca-Cola bottlers.",
-   "gics": ""
+   "gics": "",
+   "channel": "distributors or dealers"
   },
   "NASDAQ_PEP": {
    "t": "PEP",
    "name": "PepsiCo",
    "tag": "branded_non_alcoholic_be",
    "why": "Owns Pepsi, Gatorade and other drink brands; about 40% of revenue is beverages, the rest is Frito-Lay and Quaker snacks and food.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_CELH": {
    "t": "CELH",
    "name": "Celsius Holdings",
    "tag": "branded_non_alcoholic_be",
    "why": "Energy and functional drink brands (Celsius, Alani Nu, Rockstar US/Canada); outsourced production, PepsiCo distribution.",
-   "gics": ""
+   "gics": "",
+   "channel": "distributors or dealers"
   },
   "NASDAQ_SUJA": {
    "t": "SUJA",
    "name": "Suja Life",
    "tag": "branded_non_alcoholic_be",
    "why": "Cold-pressed juice and functional drink brands made in its own plant.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_ZVIA": {
    "t": "ZVIA",
    "name": "Zevia",
    "tag": "branded_non_alcoholic_be",
    "why": "Zero-sugar soda brand; outsourced production.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XLON_BAG": {
    "t": "BAG",
    "name": "A.G. Barr",
    "tag": "branded_non_alcoholic_be",
    "why": "Owns IRN-BRU, Rubicon and other UK soft-drink brands and makes them itself.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XLON_FEVR": {
    "t": "FEVR",
@@ -137,287 +147,328 @@
    "name": "Coca-Cola HBC",
    "tag": "bottlers_and_beverage_di",
    "why": "Coca-Cola bottler for 29 countries in Europe and Africa (Nigeria, Egypt; CCBA added in 2026).",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_COKE": {
    "t": "COKE",
    "name": "Coca-Cola Consolidated",
    "tag": "bottlers_and_beverage_di",
    "why": "Largest US Coca-Cola bottler (Southeast and Mid-Atlantic territories).",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_FMX": {
    "t": "FMX",
    "name": "FEMSA",
    "tag": "bottlers_and_beverage_di",
    "why": "Holding company that consolidates Coca-Cola FEMSA (the largest Coca-Cola bottler by volume) and runs OXXO convenience stores; retail is now the larger part of revenue, so the tag is approximate.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NASDAQ_CCEP": {
    "t": "CCEP",
    "name": "Coca-Cola Europacific Partners",
    "tag": "bottlers_and_beverage_di",
    "why": "Coca-Cola bottler for Western Europe, Australia/Pacific and Southeast Asia.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_PRMB": {
    "t": "PRMB",
    "name": "Primo Brands",
    "tag": "bottlers_and_beverage_di",
    "why": "Spring-water brands (Poland Spring, Pure Life) with its own sourcing, bottling and home/office delivery network.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_AKO.B": {
    "t": "AKO.B",
    "name": "Embotelladora Andina",
    "tag": "bottlers_and_beverage_di",
    "why": "Coca-Cola bottler for Chile, Argentina, Brazil and Paraguay.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_KOF": {
    "t": "KOF",
    "name": "Coca-Cola FEMSA",
    "tag": "bottlers_and_beverage_di",
    "why": "Coca-Cola bottler for Mexico, Brazil and other Latin American territories.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XPRA_KOFOL": {
    "t": "KOFOL",
    "name": "Kofola CeskoSlovensko",
    "tag": "bottlers_and_beverage_di",
    "why": "Central European soft-drink maker with its own brands and the PepsiCo bottling licence in Czechia and Slovakia.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_CAG": {
    "t": "CAG",
    "name": "Conagra Brands",
    "tag": "packaged_food_with_bever",
    "why": "Frozen and shelf-stable packaged food; Swiss Miss cocoa is a small part.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_KHC": {
    "t": "KHC",
    "name": "The Kraft Heinz Company",
    "tag": "packaged_food_with_bever",
    "why": "Packaged food group; Maxwell House, Kool-Aid and MiO drinks are a small part.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_CPB": {
    "t": "CPB",
    "name": "The Campbell's Company",
    "tag": "packaged_food_with_bever",
    "why": "Soups, sauces and snacks; V8 juice is a small part.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_JJSF": {
    "t": "JJSF",
    "name": "J&J Snack Foods",
    "tag": "packaged_food_with_bever",
    "why": "Frozen snacks for food service and retail plus ICEE frozen beverages.",
-   "gics": ""
+   "gics": "",
+   "channel": "foodservice"
   },
   "NYSE_SJM": {
    "t": "SJM",
    "name": "The J. M. Smucker Company",
    "tag": "packaged_food_with_bever",
    "why": "Packaged coffee (Folgers, Cafe Bustelo, Dunkin') is the largest segment; also sweet baked goods, spreads and pet food.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_BGS": {
    "t": "BGS",
    "name": "B&G Foods",
    "tag": "packaged_food_with_bever",
    "why": "Shelf-stable and frozen packaged food brands.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_FLO": {
    "t": "FLO",
    "name": "Flowers Foods",
    "tag": "packaged_food_with_bever",
    "why": "Packaged bread and baked goods.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_GIS": {
    "t": "GIS",
    "name": "General Mills",
    "tag": "packaged_food_with_bever",
    "why": "Cereal, snacks, baking, pet food and food service.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_HAIN": {
    "t": "HAIN",
    "name": "The Hain Celestial Group",
    "tag": "packaged_food_with_bever",
    "why": "Natural and organic packaged food and drinks (Celestial Seasonings tea).",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_HRL": {
    "t": "HRL",
    "name": "Hormel Foods",
    "tag": "packaged_food_with_bever",
    "why": "Branded meat and packaged food.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_HSY": {
    "t": "HSY",
    "name": "The Hershey Company",
    "tag": "packaged_food_with_bever",
    "why": "Chocolate, candy and salty snacks.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XSWX_LISN": {
    "t": "LISN",
    "name": "Lindt & Sprungli",
    "tag": "packaged_food_with_bever",
    "why": "Premium chocolate.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_MDLZ": {
    "t": "MDLZ",
    "name": "Mondelez International",
    "tag": "packaged_food_with_bever",
    "why": "Biscuits, chocolate and candy.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_MKC": {
    "t": "MKC",
    "name": "McCormick",
    "tag": "packaged_food_with_bever",
    "why": "Spices, seasonings and flavours for retail and food makers.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XSWX_NESN": {
    "t": "NESN",
    "name": "Nestle",
    "tag": "packaged_food_with_bever",
    "why": "Largest food company; coffee (Nescafe, Nespresso, Starbucks at-home) and water are large parts.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_SENEA": {
    "t": "SENEA",
    "name": "Seneca Foods",
    "tag": "packaged_food_with_bever",
    "why": "Canned and frozen vegetables and fruit, mostly private label.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_TR": {
    "t": "TR",
    "name": "Tootsie Roll Industries",
    "tag": "packaged_food_with_bever",
    "why": "Candy.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_POST": {
    "t": "POST",
    "name": "Post Holdings",
    "tag": "packaged_food_with_bever",
    "why": "Cereal, refrigerated food, pet food and food service; spun off BellRing in 2022.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_LWAY": {
    "t": "LWAY",
    "name": "Lifeway Foods",
    "tag": "dairy_and_plant_based_dr",
    "why": "Kefir and other cultured dairy drinks made in its own plants.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_OTLY": {
    "t": "OTLY",
    "name": "Oatly Group",
    "tag": "dairy_and_plant_based_dr",
    "why": "Oat-based milk alternatives, made in own and partner plants.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XPAR_BN": {
    "t": "BN",
    "name": "Danone",
    "tag": "dairy_and_plant_based_dr",
    "why": "Dairy and plant-based products are the largest segment; also specialised nutrition and Evian/Volvic water.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XSWX_EMMN": {
    "t": "EMMN",
    "name": "Emmi",
    "tag": "dairy_and_plant_based_dr",
    "why": "Swiss dairy processor; milk drinks, yogurt, cheese and ready-to-drink coffee.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "XTSE_SAP": {
    "t": "SAP",
    "name": "Saputo",
    "tag": "dairy_and_plant_based_dr",
    "why": "Dairy processor (milk, cheese, cultured products) in North America, Europe and Australia.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NYSE_BRCC": {
    "t": "BRCC",
    "name": "BRC Inc. (Black Rifle Coffee)",
    "tag": "packaged_coffee_and_coff",
    "why": "Branded packaged coffee and ready-to-drink coffee sold through grocery, online and a few shops.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_WEST": {
    "t": "WEST",
    "name": "Westrock Coffee",
    "tag": "packaged_coffee_and_coff",
    "why": "Business-to-business coffee, tea and extract roaster and ready-to-drink maker for retail and restaurant brands.",
-   "gics": ""
+   "gics": "",
+   "channel": "other"
   },
   "NASDAQ_JVA": {
    "t": "JVA",
    "name": "Coffee Holding",
    "tag": "packaged_coffee_and_coff",
    "why": "Wholesale green and roasted coffee and private-label roasting.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_SMPL": {
    "t": "SMPL",
    "name": "The Simply Good Foods Company",
    "tag": "nutrition_and_protein_pr",
    "why": "Quest, Atkins and OWYN protein bars, snacks and shakes; outsourced production.",
-   "gics": ""
+   "gics": "",
+   "channel": "mass retail, club and e-commerce"
   },
   "NYSE_BRBR": {
    "t": "BRBR",
    "name": "BellRing Brands",
    "tag": "nutrition_and_protein_pr",
    "why": "Premier Protein ready-to-drink shakes and Dymatize powders; outsourced production.",
-   "gics": ""
+   "gics": "",
+   "channel": "mass retail, club and e-commerce"
   },
   "XDUB_GL9": {
    "t": "GL9",
    "name": "Glanbia",
    "tag": "nutrition_and_protein_pr",
    "why": "Optimum Nutrition and other sports-nutrition brands plus dairy nutrition ingredients.",
-   "gics": ""
+   "gics": "",
+   "channel": "direct to industrial or OEM customers"
   },
   "NYSE_HLF": {
    "t": "HLF",
    "name": "Herbalife",
    "tag": "nutrition_and_protein_pr",
    "why": "Protein shakes and supplements sold through direct selling.",
-   "gics": ""
+   "gics": "",
+   "channel": "direct selling"
   },
   "NYSE_MED": {
    "t": "MED",
    "name": "Medifast",
    "tag": "nutrition_and_protein_pr",
    "why": "Weight-management meal replacements sold through coaches.",
-   "gics": ""
+   "gics": "",
+   "channel": "direct selling"
   },
   "NYSE_USNA": {
    "t": "USNA",
    "name": "USANA Health Sciences",
    "tag": "nutrition_and_protein_pr",
    "why": "Supplements and nutrition products sold through direct selling.",
-   "gics": ""
+   "gics": "",
+   "channel": "direct selling"
   },
   "NYSE_DMC": {
    "t": "DMC",
    "name": "Del Monte (formerly Fresh Del Monte)",
    "tag": "fresh_produce_and_agri_f",
    "why": "Grows and distributes bananas, pineapples and fresh-cut produce; juice and packaged products are small.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_AVO": {
    "t": "AVO",
@@ -431,7 +482,8 @@
    "name": "Dole plc",
    "tag": "fresh_produce_and_agri_f",
    "why": "Fresh fruit and vegetables grower and distributor.",
-   "gics": ""
+   "gics": "",
+   "channel": "grocery and convenience"
   },
   "NASDAQ_LMNR": {
    "t": "LMNR",
@@ -445,21 +497,24 @@
    "name": "Starbucks",
    "tag": "coffee_and_beverage_shop",
    "why": "Company-run and licensed coffee shops plus packaged-coffee licensing.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NASDAQ_BRCB": {
    "t": "BRCB",
    "name": "Black Rock Coffee Bar",
    "tag": "coffee_and_beverage_shop",
    "why": "Coffee and energy-drink shops with drive-throughs.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NYSE_BROS": {
    "t": "BROS",
    "name": "Dutch Bros",
    "tag": "coffee_and_beverage_shop",
    "why": "Drive-through coffee and energy-drink shops, mostly company-run.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NASDAQ_DNUT": {
    "t": "DNUT",
@@ -473,49 +528,56 @@
    "name": "TH International (Tims China)",
    "tag": "coffee_and_beverage_shop",
    "why": "Tim Hortons coffee shops in China.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NYSE_CMG": {
    "t": "CMG",
    "name": "Chipotle Mexican Grill",
    "tag": "quick_service_restaurant",
    "why": "Fast-casual Mexican food; all company-run.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NASDAQ_DPZ": {
    "t": "DPZ",
    "name": "Domino's Pizza",
    "tag": "quick_service_restaurant",
    "why": "Pizza delivery and carry-out; mostly franchised, with its own supply chain.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NASDAQ_JACK": {
    "t": "JACK",
    "name": "Jack in the Box",
    "tag": "quick_service_restaurant",
    "why": "Quick-service burgers; mostly franchised.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NYSE_MCD": {
    "t": "MCD",
    "name": "McDonald's",
    "tag": "quick_service_restaurant",
    "why": "Quick-service burgers; mostly franchised.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NYSE_QSR": {
    "t": "QSR",
    "name": "Restaurant Brands International",
    "tag": "quick_service_restaurant",
    "why": "Tim Hortons, Burger King, Popeyes and Firehouse Subs; mostly franchised.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NASDAQ_WEN": {
    "t": "WEN",
    "name": "The Wendy's Company",
    "tag": "quick_service_restaurant",
    "why": "Quick-service burgers; mostly franchised.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
   },
   "NYSE_YUM": {
    "t": "YUM",
@@ -524,14 +586,65 @@
    "why": "KFC, Taco Bell and Pizza Hut; almost all franchised.",
    "gics": "",
    "window_from": 2017,
-   "window_why": "Yum China spin-off Nov 2016; FY2017 is the first year with both balance sheets after it"
+   "window_why": "Yum China spin-off Nov 2016; FY2017 is the first year with both balance sheets after it",
+   "channel": "own stores or restaurants"
   },
   "NYSE_YUMC": {
    "t": "YUMC",
    "name": "Yum China",
    "tag": "quick_service_restaurant",
    "why": "KFC and Pizza Hut in China, mostly company-run; also K Coffee.",
-   "gics": ""
+   "gics": "",
+   "channel": "own stores or restaurants"
+  },
+  "XPAR_SAVE": {
+   "t": "SAVE",
+   "name": "Savencia Fromage & Dairy",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "French cheese and dairy group (formerly Bongrain), one of the largest cheese makers in the world; dairy is essentially the whole business, comparable with Emmi and Saputo. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Packaged Foods & Meats"
+  },
+  "XMIL_CLI": {
+   "t": "CLI",
+   "name": "Centrale del Latte d'Italia",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Italian dairy (third-largest Italian dairy operator per its profile): fresh and UHT milk, yogurt, butter and plant-based drinks. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Packaged Foods & Meats"
+  },
+  "XMIL_VLS": {
+   "t": "VLS",
+   "name": "Valsoia",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Italian plant-based food maker: soy and other dairy alternatives (drinks, yogurts, ice cream) and meat alternatives; the closest European listed peer to Oatly. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Packaged Foods & Meats"
+  },
+  "XWAR_MLP": {
+   "t": "MLP",
+   "name": "Milkpol",
+   "tag": "dairy_and_plant_based_dr",
+   "why": "Polish dairy processor: milk, cottage cheese, sour cream, yogurt, kefir and buttermilk; small. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Packaged Foods & Meats"
+  },
+  "XMIL_ORS": {
+   "t": "ORS",
+   "name": "Orsero",
+   "tag": "fresh_produce_and_agri_f",
+   "why": "Imports and distributes fresh fruit and vegetables across Mediterranean Europe with its own shipping, ripening and distribution - the same sourcing-and-distribution model as Dole and Mission Produce. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Food Distributors"
+  },
+  "XAMS_ACOMO": {
+   "t": "ACOMO",
+   "name": "Acomo",
+   "tag": "fresh_produce_and_agri_f",
+   "why": "Sources, processes, packages and distributes plant-based food ingredients (nuts, dried fruit, seeds, spices, organic ingredients) - agri-food sourcing and distribution with thin margins like the produce members. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Food Distributors"
+  },
+  "TSX_SWP": {
+   "t": "SWP",
+   "name": "Swiss Water Decaffeinated Coffee",
+   "tag": "packaged_coffee_and_coff",
+   "why": "Buys green coffee, decaffeinates it with a chemical-free water process and sells it to specialty roasters and importers - a pure coffee-supply business. (added 2026-10-27, peer review for thin tags; Fiscal.ai profile)",
+   "gics": "Agricultural Products & Services"
   }
  },
  "excluded": {

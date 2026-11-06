@@ -9,3 +9,8 @@
 # These chart inputs belong under data/derived; guard against legacy regeneration.
 /outputs/cost-trends-20261027/*.csv
 /outputs/pricing-cost-volume-20261027/*.csv
+
+# Final user report stays local; retain a tracked Markdown archive index.
+/outputs/reports/**/*.docx
+# Excel ownership files are temporary, including while the model is open.
+/outputs/**/~$*

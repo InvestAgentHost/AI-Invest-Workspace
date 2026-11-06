@@ -1,86 +1,60 @@
-# 批量初筛：取数、估值与交付可靠性
+# 批量取数、估值与交付核验（v4.11.4）
 
-本文件是批量模式 Step 2、6—8 的执行约定。使用 `valuation_pipeline.py` 和 `checked_build.py`；不改变 `screener.py` 的数值公式、分位门槛或行动规则。个股筛选提示词不受影响。详尽原始标签由本轮转换者核验，脚本检查不能代替阅读披露。
+本约定保留本地来源追溯、币种及交付一致性检查，评分和行动按原包 v4.11.4 / 2026-11-04。直接调用 screener.py，不用旧 checked_build.py、valuation_pipeline.py 或对 page_data 改分的包装器；这些旧文件随旧版整体备份，历史运行档案不迁移。
 
-## 1. 先建覆盖矩阵，再安排补缺
+## 来源与字段覆盖
 
-每家公司分别检查：证券/报价、历史价格、TTM EPS、TTM经营利润、纯D&A、实际在外股数、EV各项权益/债务请求权、FX。先检查 FocusAlpha 当前工具、同截止日完整缓存和公司/期间覆盖。不能只取年度报表和价格就宣布完成估值。
+逐家公司、逐倍数记录本轮真实查询：FocusAlpha 优先，再按适用性检查 Gangtise 及监管、交易所、IR 原文。Fiscal.ai 停用。每次查询及复用记录包含工具/参数、期间、检索时间、状态、缺口原因、原始响应路径、原文 URL、单位、币种及转换公式，写入 source_ledger.json。具有同截止日、同口径和完整来源的缓存可以复用。数字缺项不能因为旧记录而跳过本轮能力检查，也不要求机械调用所有工具。
 
-- 不以 USD、`us-gaap` 命名空间或普通股单一维度筛掉其他有效数据。IFRS、半年报、非美元和公司扩展标签走相应转换；SEC companyfacts 未出现某标签时，再看原始iXBRL的股类/业务维度与附注。
-- 限流、权限不足、工具不支持该市场、空字段、返回预览、历史不足分别记录。限流不等于公司未覆盖；摘要或前后几行不等于全量序列。分页取完并保存完整响应才进入转换。
-- 多agent共享同一份取数清单和缓存；按发行人/工具/期间去重，避免各自重复请求。出现同类限流后暂停并发；遵守提供方的重试提示，同轮最多再作一次有间隔的重试，之后记录限制并用可访问来源补缺，不反复撞接口。
-- FocusAlpha 缺口再检查 Gangtise 的实际数据能力，见 `gangtise-screening.md`。能够直接补财务/市值的工具，与研报/纪要/生成一页通分开使用。数字优先回到监管、交易所和公司IR披露核验；不同提供方差异保留，不能选择最方便过门槛的值。
-- 每个未解决的重大估值缺口，交付前必须有 FocusAlpha 查询/缓存、Gangtise能力检查或取数、原始披露查询的实际记录；可复用本轮相同市场/接口的能力证据，不要求逐公司机械重复已证实不适用的接口。未尝试就继续取数，不能直接写“数据源不覆盖”。已尝试仍无解，明确原因后可以交付，不要求用户另行批准N/A。
+缺项先区分：基础源数据不存在、源字段定义不同、规则允许的未拆分分项默认值、真实短比较期、利润分母非正、历史来源覆盖不足。规则允许的默认值仅限批量说明中列明的摊销、减值、利息收入、总经营 CFO、和解债务流动部分；全部在报告里说明。它们不触发额外评分阻断。资本、股本、价格等其他缺口不能未经证据任意补零。没有一手修补值的年度不写入 facts；只用 operating_profit_bridge、amortization_acquired_intangibles、impairments_gw_intangibles、cfo_continuing、debt_like、data_fixes、data_overrides 等原生修补并附来源。
 
-`source_attempts`每条包含：`provider`（`FocusAlpha` / `Gangtise` / `Original disclosure`）、`tool`、真实`query`、`retrieved_at`、`scope`、`status`、`source`、`raw_path`及必要的`reason`。状态仅用`returned/reused/empty/missing_field/rate_limited/permission_denied/unsupported_market/truncated/unavailable`；计划不算尝试。`scope`可为字段名（prices/eps/op/da/shares/claims/history）或financials/market_data/valuation/all。缓存记录原查询及截止日，不能用事后行情覆盖旧筛选日。
+## 历史估值重建
 
-## 2. 财务与证券口径先核对
+本批量默认路线由 FocusAlpha 价格及报表原生重建日频倍数；其他提供方的直接倍数仅作另标来源的核对，只有当前倍数不能冒充历史。当来源缺少历史、且不是规则认可的短 IPO/并购窗口时，按 FocusAlpha → 可用辅助来源 → 原始市场/可信历史价格的次序补缺，使用原生 rebuild_multiples.py；保留重建前 raw 文件，修订存入新 run-id，不覆盖旧档案。
 
-1. **TTM与公开时点。** 同一口径的上年全年−上年同期累计+本年同期累计；半年报不能套单季时效。`ttm_bridge`检查期间、长度、币种及定义，保留三个输入。每个交易日只用当时已公开的资料，保守从首次披露次日可用；重述比较数不能回填到较早披露日。正式年报与中报EPS股类分配不同，不强拼TTM。
-2. **利润。** EPS为稀释、已报告每报价单位利润；经营利润采用原文未经调整的经营利润，另记分析小计。D&A必须为完整纯折旧摊销，不能混入减值、其他非现金项目或调整后EBITDA。不要把损失加回以制造正倍数。EPS/op/da分别可用，缺一项不能整家公司全部跳过。
-3. **股数。** 每日市值用当时已披露的实际在外股数，扣库存股；不使用稀释加权股数。区分发行总数、各股类、可交换单位、ADS/普通股比例及拆股前后基础。价格/EPS/股数统一到同一个`quote_unit_id`，ADR比例变动与反向拆股也一样。股价可能回溯调整拆股，`adj_close`还含股息，不能直接除未对应调整的EPS。
-4. **市值与Up-C。** 提供方市值不一定包括全部经济单位。以同日价格×对应实际经济单位核对。已价格化全部可交换单位时，不再把同一Up-C部分的账面NCI重复加到EV；若只使用上市A股市值，则需完整对应的其他权益请求权。把选择及原文写进`claims_review`，不一刀切地排除所有NCI。
-5. **EV。** 确认借款是否已含融资/经营租赁；另查供应链融资、库存/商品回购融资、优先股、可赎回NCI及普通NCI、固定分期和解负债。逐项明确是否适用、是否已包含、正负号和来源。普通优先股授权未发行的0不能覆盖已发行的可赎回优先资本。负债付清后以新披露余额更新，不永久沿用旧数。历史义务余额未完整复原时该日EV留空；后续披露的比较数不能证明早期投资者当时已知其为0。
-6. **币种与单位。** 年度main为百万，估值事件/市值为完整金额，ev.tev输出才转为百万。GBp先÷100为GBP；财报利润、净债务和当日FX转到报价币种。FX时间戳按提供方交易所时区映射日期，不能取UTC日期后直接说“早一天”；跨币种不能用今天的汇率回填全历史。M1薪酬也要对齐报价币种并保留原币金额、日期与FX来源。
-7. **窗口。** 记录真实经济上市/可比业务日期，剔除前身SPAC壳期。IPO本身不自动加12个月；并购窗口继续按原`pe_from`规则。v4.7.2数值引擎默认采用10年，保留的`pe_default_from`仅影响旧版显示文字，不能用来缩短数值窗口；显示起点必须与实际可比数据一致。提供方历史起点不是公司上市日。窗口内缺失日保留，不能删除缺失交易日使覆盖率虚增。
+先核对发行人与报价单位、上市币种、报告币种、拆股/分拆调整、ADS 比例、净债务是否含租赁及当时公开的财报。年度 main/季度 quarters/qbs 必须按规范化 schema 写入。对 daily close 的三个日期用第二来源交叉验证；历史股数、净债务、汇率不可全程用今天的数据回填。
 
-## 3. 可复用输入与命令
+原包脚本的已知近似和运行前提：
 
-把经核验的事件写到`$RUN/valuation_inputs.json`（schema_version=1）。它不是新的数据源，所有源响应和原文另存。顶层：
+- 使用稀释加权平均股数估计市值、年度 D&A 估计 EBITDA；缺季度资产负债表时沿用年度净债务及股数。它不是精确的逐日实际在外股数估值，报告和 coverage 中保留近似限制。
+- 未给真实公开日期时会用期末后 60 天（或 --lag-days）近似。应优先补真实日期；若采用统一滞后，先核实不会早于真实公开日，否则调整输入或仅交付可核实区间并说明限制，不声称是精确的当时可知历史。
+- 年度 FY 截止日存在命名假设（1—5 月年结可能视为次年）。用季度 Q4 日期及 --fy-end 核对每年实际财年，特别是 52/53 周财年；不适用时记录问题，不能暗改脚本。
+- 跨币种必须提供 --fx（报告币/一单位交易币），并确保 raw/pe.json 已存在且 --trading-currency 显式指定；FX 第一条不得晚于第一个价格日，因为脚本在没有此前 FX 时会取最早一条。逐日检查旧汇率覆盖和来源，不让未来汇率回填。
+- 脚本的 tev 金额以报告币计算，而价格/市值保留上市币。跨币种重建须检查原生研究线中的 tev 与 mcap 是否同币；不一致时保留原始重建作底稿、报告问题，不把冲突序列提升为无保留可用历史。优先取得同币种直接序列或按已核验单位规范化输入，不能修改引擎。
+- 周/月价格会向前持平到工作日，属于近似样本；不能隐去这条来源说明或把补齐的工作日当作真实交易日覆盖。
+- 运行前确保基础 op、净利润、债务、现金、股数和 D&A 有来源；原生脚本对部分空值有默认处理，不能让未核实的基础字段悄悄成为可用的精确估值。
 
-```json
-{
-  "schema_version": 1,
-  "price_date": "2026-10-23",
-  "disclosure_cutoff": "2026-10-26",
-  "companies": {
-    "AAA": {
-      "key": "NYSE_AAA", "listing": "AAA.N",
-      "listing_currency": "USD", "reporting_currency": "EUR",
-      "accounting_standard": "IFRS", "quote_unit_id": "AAA-ordinary-split-basis-2026-10-23",
-      "reporting_frequency": "semiannual",
-      "ev_claims": {"debt": 1, "cash": -1, "preferred": 1, "nci": 1},
-      "claims_review": {"complete": true, "source": "Original financial notes; no duplicate leases or priced units", "raw_path": "raw_sources/AAA_notes.html"},
-      "prices": [], "fx": [], "market_caps": [], "metrics": {}, "source_attempts": []
-    }
-  }
-}
-```
-
-数组省略内容是结构示例，不是可直接运行的数据文件。各数组内容：
-
-- `prices`：`{date,value,currency,basis,source,raw_path}`，唯一升序交易日，`basis=quote_unit_id`。未知价格保留null。`market_caps`同形状，可只提供当前截面；其他日期用真实在外股数×价格。超过2%的差异须先核对，必要时提供有证据的`market_cap_reconciliation`；不能直接调大容差掩盖差异。
-- `fx`：`{date,value,from,to,source,raw_path}`，定义为一单位财报币可换多少报价币；非相同币种必须有每日实际可用FX，默认最多向前取7天。相同币种无需数组。
-- `metrics`：字段→事件数组。每事件含`available,published,period_end,value,currency,unit,basis,source,raw_path`；计算值含公式和`inputs`，其中各输入不能晚于输出可用日。null须有reason，0须有原文核实。金额事件`unit=currency`，均为完整金额。
-- `eps`额外：`kind=ttm`、`unit=<币种>/quote_unit`、`basis=quote_unit_id`、`definition=diluted_reported_eps`。`op/da`额外：`kind=ttm,period_start`，同一期间/业务口径`basis`，definition分别为`reported_operating_profit`、`pure_depreciation_amortization`。不要为了通过检查改标签；先核对来源实际含义。
-- `shares`：`unit=quote_units`、`basis=quote_unit_id`，实际在外报价单位；currency用`shares`。其他EV请求权的字段名由`ev_claims`列出，有适用项就必须有事件或明确缺口；不能把不存在的事件自动补0。声明不适用的权益项目由有来源的`claims_review`解释。
-- `economic_history_from`只在有官方来源时填写，并给`history_start_evidence={source,raw_path,...}`。`max_age_days`按字段可覆盖默认时效：季报190、半年报290、年报410天；不能延长时效只为过覆盖门槛。年度股本/少数权益等代理可取最新公开余额，但须在limitations说明日期，不能标成同期直接披露值。
-- `approximate_current={values:{pe,ebit,ebitda},reason,source,raw_path,...}`可单列有来源的近似当前倍数；不会写入精确历史，也不参与分位、方向和研究线。受限现金、未披露的当期租赁等不能隐去。无正利润分母也不是数据源失败。
-
-从Workspace根目录用`.venv/bin/python`，`$RUN`等沿用批量工作流：
+命令示意（路径和参数按本轮事实填写；不是可直接运行的样例数据）：
 
 ```bash
-"$PY" "$RUN/valuation_pipeline.py" build "$RUN" --input "$RUN/valuation_inputs.json"
-# 检查 valuation_stage/valuation_audit.json；纠正来源、维度和完整性后再提升候选输入，无需另问用户许可。
-"$PY" "$RUN/valuation_pipeline.py" promote "$RUN"
-"$PY" "$RUN/checked_build.py" "$RUN"
-"$PY" "$RUN/valuation_pipeline.py" annotate "$RUN"
+"$PY" "$RUN/check_engine.py" "$RUN"
+"$PY" "$RUN/rebuild_multiples.py" "$RUN" <KEY> --prices <price-csv> --source <真实来源和日期> --trading-currency <上市币种>
+"$PY" "$RUN/check_engine.py" "$RUN"
+"$PY" "$RUN/screener.py" "$RUN" build
 "$PY" "$RUN/vault_records.py" snapshot "$RUN"
 "$PY" "$RUN/vault_records.py" compare "$RUN"
+"$PY" "$RUN/check_engine.py" "$RUN"
 "$PY" "$RUN/make_html.py" "$RUN"
-# 按 chinese-report-style.md 完成中文呈现后，再检查最终HTML。
-"$PY" "$RUN/valuation_pipeline.py" check "$RUN" --html "$RUN/<output>.html"
 ```
 
-`build`仅写候选；`promote`检查源/原输入哈希，备份到唯一的`valuation_revisions/`后提升。`checked_build`用原引擎公式，只把未核验的资本、利润修补、CFO/资本支出/SBC输入挡在确定评分之外；R1检查不全显示待核验。原facts不改，M1薪酬的规范化/缺口进入facts_model。个股提示词和原引擎阈值不改。
+需要时按原生帮助添加 --fx、--unit、--bs-quarters、--fy-end、--fwd 及 --fwd-source。没有前瞻倍数就省略，不能凭空补造。重建后的 raw/rebuilt_<KEY>.csv 保存每天的输入；抽查三个日期和最新值，并与同定义的最新 trailing P/E 交叉核对。分位接近 33/50/67 等行动边界时说明重建近似影响，不另做 bounds 评分或改标签。
 
-`annotate`不重写数值分数，核对引擎与来源覆盖状态一致后更新缺项原因、导出`valuation_coverage.csv`，并把底稿索引追加到来源台账。原始证据与生成的估值序列均绑定哈希；`delivery_bindings.json`再绑定最终page_data、事实输入、来源台账、覆盖表和运行元数据。`make_html`对新批量配置`valuation_pipeline_required=true`自动执行交付检查；HTML带page_data/config哈希，`check --html`可检出旧页面。修复后再跑原引擎build时必须重新annotate并重建HTML，不能沿用旧覆盖说明。中文规范见`chinese-report-style.md`，只改变呈现时不重建财务输入。
+## 引擎与交付一致性
 
-## 4. 部分补跑与交付
+复制后、build 前、HTML 前运行 check_engine.py，完整 15 个文件匹配 CHECKSUMS.txt；任一差异先恢复批准版本。代码问题写入 page_text.problems 并报告用户，本轮不改引擎。禁止旧 checked_build 缺项封锁或事后改分；新版默认值按原生计算并显式说明。期末以后并购写 after_year_end/pe_from，perimeter_start 不得晚于 FY L+1。
 
-- 部分修复用`build --tickers AAA,BBB`，输入另存如`valuation_inputs_revision2.json`，不要覆盖先前输入；非目标的pe/ev从现有文件逐字段保留。提升后以`refresh`替代完整`checked_build`及`annotate`，只重算目标估值/行动，逐字段断言非目标公司和全部质量评分未变。已有新规范audit时脚本合并其余公司的同截止日审计，并核验旧源输入哈希；首次把旧报告迁入新规范时分清已补跑与原基线，不把未审计公司标成完整。默认新名单必须全公司纳入audit。
-- 固定原价格和披露截止日，保存修复前page_data、来源索引、记录及原HTML/ZIP；不要覆盖原始响应、旧档案或手工决策。比较变化原因记为数据修复，不当作股价或经营变化。记录写入使用新revision的run-file锚点，防止同日修复被当成重复运行跳过；只更新目标记录，保留全部`our_*`字段和人工正文。
-- 发布前检查全部未判定位公司，不只抽几个绿灯：逐倍数区分非正利润、当前缺项、短比较窗、正值日数不足、历史资料缺口及正值覆盖不足，列出正值/非正值/缺失天数。门槛从原RULES读取：当前分母>0、至少250正值日、至少60%正值覆盖（沿用引擎取整）。不能把剩余11家或某次修复数量固化进脚本。
-- 右列标题为“历史估值分位不可用”；有当前倍数仍可列在此处。当前近似值与其限制单列；空EPS不能称为亏损，图线断点不能一概称为亏损期。无分位的Research at lower price必须说明是原引擎占位标签，尚未判断价格偏贵。
-- HTML、CSV、公司记录、摘要、来源台账和档案必须对应同一最终输入。检查链接、公司数、截止日、分位/研究线、近似值标记；源文件变化后重新构建相关文件和清单。数值抽查覆盖跨币种/股类或ADS、一个真实亏损、一个临界历史样本及一个非目标公司保留检查。另做桌面/手机、注释开合和内部链接视觉检查。
-- 把HTML、CSV、审计JSON和来源索引一并交付；完整原始资料保留在RUN档案。`check`允许已尝试补齐但仍未解决的缺口以warning交付，未取数、口径冲突、旧页面或审计不一致必须先修。不要用“保证以后不缺数据”代替这些检查。
+构建后按每家公司及倍数导出 valuation_coverage.csv：真实源、当前值和日期、比较期、正值/非正值/缺项样本、有效分位状态、重建标记及限制。门槛从原生 RULES 读取（当前分母为正、至少 250 正值日、正值覆盖达到 60%），不通过删缺项虚增覆盖。缺数据不能统称亏损；无有效分位的 Research at lower price 需说明其原生占位含义。每个未评分 B1—B4 都在交付中列出原生原因，以及固定修补是否有机会填补。
+
+使用中文写作要求编辑最终 HTML 的正文、表图及交互；只改呈现、真实来源标注及术语，不改 JSON、数值或行动。原生模板的 Fiscal.ai 固定文案在本地必须按实际 source_ledger 更正，不把 FocusAlpha 计算值归为该服务。保留原始 HTML 和本地化 HTML，核对公司数量、日期、金额、分位、研究线、图表坐标及锚点。桌面/手机、深浅色、注释开合及链接均需检查。
+
+最终 delivery_check.json 记录 config、page_data、run_meta、source_ledger、coverage 和实际交付 HTML 的 SHA-256、运行截止日、核验结果与未解决限制。此清单是本轮交付记录，不依赖旧 valuation_pipeline 自动钩子或旧 HTML meta 标签。输入变化后重建相关输出和清单；核对实际复制到 OUT 的文件。仅翻译旧 HTML 时保留旧数据与结论，不重新抓取、评分或写记录。
+
+源缺口在实际尝试补齐并说明限制后可以交付原生结果；口径冲突或旧 HTML 必须先解决。不将规则默认值等同于未尝试取数，也不因缺项创建另一套评分。所有历史档案、人工决策及 our_* 字段保留。新修订另存 RUN，输出和来源可追溯到同一最终输入。
+
+## v4.11.4 执行补充
+
+先运行四个原生转换器，保留全部旧口径年度及 basis_note，再重建倍数；每次 config 必须设置真实 data_route。包内 15 个文件保持原校验值，RUN 中另建 raw/pe.json 为 `{}`（若尚不存在）并显式传 --trading-currency、--fy-end；不能让缺省币种或财年假设决定序列。非12月年结在两份季度转换命令均传 --fye-month。
+
+FocusAlpha价格起始和申报覆盖以当前工具实际返回为准。包内给出的起始日期与 SEC 覆盖比较是作者当次观察，不能推断其他市场的 FocusAlpha 工具永久无数据。跨年度网页价格只按原生重叠验证接入；同一个行业使用包内共享覆盖池，不为不同运行另造标签。
+
+mcp_call.py 的成功退出不等于所有子查询成功，核查每个文件/页与 ERROR 信息；错误响应、截断内容或遗留旧文件不得用于转换。反复 cursor、空页或输出异常时记录最后成功页并停止该条查询，不能无限重试。新 RUN 保留独立输出，保护旧原始响应。实时脚本调用所需 SDK、端点及登录状态在实际筛选时检查；技能更新不等于已测试真实服务连接。

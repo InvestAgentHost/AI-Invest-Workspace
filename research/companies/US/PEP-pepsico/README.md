@@ -1,9 +1,13 @@
 # PepsiCo（PEP）研究入口
 
-更新日期：2026-10-29。已开展经营历史、三张财务报表、资本回报、薪酬计划与管理团队分析。底稿`Profit Forecast`覆盖2026全年补齐、2027—2031逐年预测与稳定期；`Valuation Model`按用户模板增加悲观、基准、乐观三情景，折现现金分红与退出P/FCF股权价值，并提供手动更新利润路径的步骤。原经营预测仍保留，现对应北美温和修复情景；估值基准采用较慢北美增长。情景与估值输入均为研究建议，完整再投资、融资和现金用途仍待闭环。各专题的覆盖限制以其说明为准，尤其是经营ROIC的历史与最新季度缺口。
+更新日期：2026-11-03。研究基本完成，主报告、Elliott补充研读和底稿已归档。入口为[归档索引](archive.md)、[跟踪规则](tracking/rules.md)和[保留基线](tracking/baselines/2026-11-02.md)。归档日不代表估值或财务数据全面刷新。
+
+底稿`Profit Forecast`覆盖2026全年补齐、2027—2031逐年预测与稳定期；`Valuation Model`保留悲观、基准、乐观三情景及操作说明。当前实时预测对应乐观路径，估值基准另存在手动快照中；三情景不随实时预测自动更新。情景是研究假设，完整再投资、融资和现金用途仍待闭环；各专题原有证据限制继续保留。
 
 ## 当前阅读入口
 
+- [主报告](outputs/reports/2026-11-02/PEP.docx)、[Elliott补充研读](outputs/elliott-review-20261030/PEP_Elliott_Review_2026-10-30.docx)及[归档核对记录](archive.md)。
+- [跟踪规则](tracking/rules.md)、[历史基线](tracking/baselines/2026-11-02.md)及[研究与模型边界](tracking/decisions.md)。
 - [图表与专题索引](outputs/README.md)：从这里选择当前采用版，区分历史补充、兼容副本与已停用版本。
 - [历史Excel底稿](outputs/company-research-to-excel/PEP_model.xlsx)及[覆盖说明](outputs/company-research-to-excel/README.md)。
 - [现金流与股东回报](outputs/cash-flow-20261028/README.md)：含十年累计现金流向、分红、回购及实际缩股；缩股图已补充年化缩股率。
@@ -12,7 +16,7 @@
 - [Ramon Laguarta职业生涯与重要选择](management/ramon-laguarta-career-and-decisions-2026-10-29.md)。
 - [官网业务资料](outputs/official-site-snapshot-20261020/business_and_offering_handbook.md)、[重要信息](outputs/official-site-snapshot-20261020/important_information.md)、[战略与进展](outputs/official-site-snapshot-20261020/strategy_and_developments.md)。
 
-个人Word报告由用户维护；本次目录整理未改写Word或Excel内容。图表文件的移动不会改变Word中已嵌入的图片。
+个人Word报告由用户维护；归档副本与用户上传版本相同。本次未改写Word或Excel内容，未新增重复图表。
 
 ## 文件保存与版本规则
 
