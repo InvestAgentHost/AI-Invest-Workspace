@@ -3,11 +3,14 @@ import argparse
 from datetime import date, datetime, timedelta
 import json
 import math
+import posixpath
 import re
 from pathlib import Path, PurePosixPath
+from xml.etree import ElementTree
+from zipfile import BadZipFile, ZipFile
 
 
-METHOD = "dividend-pfcf-net-shares-v3"
+METHOD = "dividend-forward-pfcf-net-shares-v4"
 CASH_USES = ("debt_principal", "finance_lease_principal", "acquisitions", "other_necessary_uses")
 CASH_INFLOWS = ("financing_inflow", "other_inflows", "equity_issuance_cash")
 
@@ -71,8 +74,6 @@ def valuation_inputs(record, label):
     values = {k: number(record.get(k), f"{label}.{k}") for k in VALUATION_INPUTS}
     if values["exit_p_fcf"] <= 0:
         raise ValueError(f"{label}: exit P/FCF must be positive")
-    if values["fcf_conversion_exit"] <= 0:
-        raise ValueError(f"{label}: exit FCF conversion must be positive for this route")
     if min(values[k] for k in ("fcf_conversion_start", "fcf_conversion_exit", "payout_ratio")) < 0:
         raise ValueError(f"{label}: conversion and payout must be nonnegative")
     if values["net_share_change"] <= -1:
@@ -112,9 +113,27 @@ def annual_parameters(inputs, periods, overrides=None, issuance=None):
             if row["net_share_change"] > d:
                 raise ValueError(f"{period}: net share change exceeds gross issuance; supported share bridge required")
         resolved.append(row)
-    if resolved and resolved[-1]["fcf_conversion"] <= 0:
-        raise ValueError("exit FCF conversion must be positive for this route")
     return resolved
+
+
+def forward_fcf_period(period, exit_date):
+    if not isinstance(period, dict):
+        raise ValueError("exit_forward requires period_start, period_end and FCF")
+    try:
+        begin, end = (iso(period.get(key)) for key in ("period_start", "period_end"))
+    except (ValueError, TypeError) as exc:
+        raise ValueError("exit_forward fiscal dates must be ISO dates") from exc
+    days = (end - begin).days + 1
+    if begin != exit_date + timedelta(days=1) or not 350 <= days <= 380:
+        raise ValueError("exit_forward must be the complete fiscal year immediately after exit")
+    raw_fcf = number(period.get("fcf"), "exit_forward FCF")
+    comparable_fcf = number(period.get("comparable_fcf", raw_fcf), "exit_forward comparable FCF", positive=True)
+    return {
+        "exit_forward_period_start": begin.isoformat(),
+        "exit_forward_period_end": end.isoformat(),
+        "exit_forward_fcf": raw_fcf,
+        "exit_forward_fcf_comparable": comparable_fcf,
+    }
 
 
 def calculate(model):
@@ -128,7 +147,7 @@ def calculate(model):
     if model["amount_unit"] != model["share_unit"]:
         raise ValueError("amount/share scale must match for per-share outputs")
     start = iso(model["valuation_date"])
-    base_ni = number(model.get("base_net_income"), "base net income", positive=True)
+    base_ni = number(model.get("base_net_income"), "base net income")
     n0 = number(model.get("current_shares"), "adopted valuation-date shares", positive=True)
     required = number(model.get("required_return"), "required return")
     if required <= -1:
@@ -159,30 +178,40 @@ def calculate(model):
             raise ValueError(f"{tag}: forecast periods must begin one day after base/prior fiscal end")
         if payment != end:
             raise ValueError(f"{tag}: cashflow date must equal annual fiscal end approximation")
-        ni = number(year.get("net_income"), tag + " net income", positive=True)
+        ni = number(year.get("net_income"), tag + " net income")
         adopted = parameters[i]
         conversion, payout, change, issuance = (adopted[k] for k in
             ("fcf_conversion", "payout_ratio", "net_share_change", "annual_issuance_rate"))
+        opening_shares = shares
         shares *= 1 + change
-        fcf = ni * conversion
+        if ni <= 0 and "operating_fcf" not in year:
+            raise ValueError(f"{tag}: nonpositive earnings require a separately forecast operating_fcf")
+        fcf = (number(year["operating_fcf"], tag + " operating FCF")
+               if "operating_fcf" in year else ni * conversion)
         if "fcf" in year and not math.isclose(number(year["fcf"], tag + " FCF"), fcf,
                                               rel_tol=1e-7, abs_tol=1e-9):
-            failures.append(f"{tag}: independently forecast FCF conflicts with conversion")
-        dividend = ni * payout
+            failures.append(f"{tag}: supplied FCF conflicts with the adopted cash flow")
+        dividend = (number(year["company_dividend"], tag + " company dividend", minimum=0)
+                    if "company_dividend" in year else ni * payout)
+        if dividend < 0:
+            raise ValueError(f"{tag}: loss-year payout requires an explicit nonnegative company_dividend")
         dps = dividend / shares
         cash = year.get("cash", {})
         if not isinstance(cash, dict):
             raise ValueError(f"{tag}: cash must be an object")
         reject_legacy(cash, tag + " cash")
-        proxy_buyback = (None if issuance is None or fcf < 0 else
-                         fcf * multiple * (issuance - change) / (1 + change))
+        buyback_shares = None if issuance is None else opening_shares * (issuance - change)
+        buyback_price = (number(cash["buyback_price"], tag + " buyback price", positive=True)
+                         if cash.get("buyback_price") is not None else None)
+        proxy_buyback = (0.0 if buyback_shares == 0 else None
+                         if buyback_shares is None or buyback_price is None else buyback_shares * buyback_price)
         buyback = (number(cash["gross_buyback_cash"], tag + " gross buyback", minimum=0)
                    if "gross_buyback_cash" in cash else proxy_buyback)
         distribution = None if buyback is None else dividend + buyback
         coverage_status = ("PARTIAL" if distribution is None else
                            "PASS" if fcf + 1e-8 >= distribution else "FAIL")
         if buyback is None:
-            gaps.append(f"{tag}: gross buyback budget missing; proxy needs issuance and nonnegative FCF")
+            gaps.append(f"{tag}: gross buyback budget missing; share-based budget needs issuance and buyback price")
         needed = CASH_USES + CASH_INFLOWS + ("minimum_cash",)
         missing = [k for k in needed if k not in cash or cash[k] is None]
         if missing:
@@ -205,8 +234,9 @@ def calculate(model):
         dividends.append((dps, tau))
         rows.append({"period_start": begin.isoformat(), "period_end": end.isoformat(),
                      "cashflow_date": payment.isoformat(), "holding_years": tau,
-                     "net_income": ni, "fcf_conversion": conversion, "fcf": fcf,
-                     "payout_ratio": payout, "net_share_change": change, "annual_issuance_rate": issuance,
+                     "net_income": ni, "fcf_conversion": fcf / ni if ni > 0 else None, "fcf": fcf,
+                     "payout_ratio": dividend / ni if ni > 0 else None, "net_share_change": change,
+                     "annual_issuance_rate": issuance,
                      "shares_end": shares, "eps": eps, "end_share_earnings": ni / shares,
                      "company_dividend": dividend, "dividend_per_share": dps,
                      "dividend_pv": dps / (1 + required) ** tau,
@@ -218,15 +248,18 @@ def calculate(model):
                      "cash_open": before_cash, "cash_close": cash_balance,
                      "funding_status": funding_status})
         prior_end = end
-    terminal = fcf * multiple / shares
+    forward = forward_fcf_period(model.get("exit_forward"), prior_end)
+    terminal_market_cap = forward["exit_forward_fcf_comparable"] * multiple
+    terminal = terminal_market_cap / shares
     terminal_pv = terminal / (1 + required) ** tau
     dividend_pv = present_value(dividends, required)
     target = dividend_pv + terminal_pv
     summary = {"valuation_date": start.isoformat(), "forecast_years": len(periods),
                "holding_years": tau, "base_net_income": base_ni,
-               "net_income_cagr": (ni / base_ni) ** (1 / len(periods)) - 1,
+               "net_income_cagr": (ni / base_ni) ** (1 / len(periods)) - 1 if ni > 0 and base_ni > 0 else None,
                "current_shares": n0, "terminal_price": terminal,
-               "terminal_market_cap": fcf * multiple,
+               "terminal_market_cap": terminal_market_cap, "exit_date": prior_end.isoformat(),
+               "exit_shares": shares, **forward,
                "dividend_pv": dividend_pv, "terminal_pv": terminal_pv,
                "target_price": target, "target_market_cap": target * n0,
                "distribution_coverage_status": ("FAIL" if any(r["distribution_coverage_status"] == "FAIL" for r in rows)
@@ -257,8 +290,16 @@ def calculate(model):
         summary["research_date"] = research.isoformat()
         summary["research_date_target_price"] = present_value(
             [(target, (start - research).days / 365.0)] + stub_flows, required)
+        if model.get("research_market_price") is not None:
+            price = number(model["research_market_price"], "research-date reference price", positive=True)
+            offset = (start - research).days / 365.0
+            flows = stub_flows + [(amount, t + offset) for amount, t in dividends + [(terminal, tau)]]
+            summary["research_market_price"] = price
+            summary["research_date_irr"] = solve_return(price, flows)
     elif model.get("pre_base_dividends") is not None:
         raise ValueError("pre_base_dividends require research_date")
+    elif model.get("research_market_price") is not None:
+        raise ValueError("research_market_price requires research_date")
     return {"method_version": METHOD, "status": "FAIL" if failures else "PARTIAL" if gaps else "PASS",
             "rows": rows, "summary": summary, "failures": failures, "gaps": gaps,
             "limitations": ["Cash feasibility depends on completeness and evidence of supplied budgets.",
@@ -295,7 +336,7 @@ def validate_cases(packet, config, metrics, errors, gaps):
     if scope == "valuation" and not config.get("valuation_sheet"):
         errors.append("config.valuation_sheet missing")
     try:
-        base = number(config.get("base_net_income"), "config.base_net_income", positive=scope == "valuation")
+        base = number(config.get("base_net_income"), "config.base_net_income")
     except ValueError as exc:
         errors.append(str(exc))
         base = None
@@ -315,8 +356,10 @@ def validate_cases(packet, config, metrics, errors, gaps):
             if not 350 <= (end - prior).days <= 380:
                 errors.append("config.forecast_periods must be contiguous annual fiscal ends")
             prior = end
+        if scope == "valuation" and not 350 <= (iso(config.get("exit_forward_period_end")) - prior).days <= 380:
+            errors.append("config.exit_forward_period_end must be the next fiscal year end")
     except (ValueError, TypeError):
-        errors.append("invalid fiscal end in config.forecast_periods/base_period_end")
+        errors.append("invalid fiscal end in config.forecast_periods/base_period_end/exit_forward_period_end")
     cases = packet.get("cases", [])
     if not isinstance(cases, list):
         errors.append("cases must be an array")
@@ -354,7 +397,7 @@ def validate_cases(packet, config, metrics, errors, gaps):
             errors.append(f"{cid}: net_income_path must contain base plus each shared forecast period")
         else:
             try:
-                values = [number(v, f"{cid} net income", positive=scope == "valuation") for v in path]
+                values = [number(v, f"{cid} net income") for v in path]
                 if base is not None and not math.isclose(values[0], base, rel_tol=1e-9, abs_tol=1e-9):
                     errors.append(f"{cid}: case base profit differs from shared base")
             except ValueError as exc:
@@ -384,7 +427,11 @@ def validate_cases(packet, config, metrics, errors, gaps):
                 inputs = valuation_inputs(values, f"{cid} valuation inputs")
                 annual_parameters(inputs, periods, values.get("annual_overrides"),
                                   values.get("annual_issuance_rate"))
-            except ValueError as exc:
+                if scope == "valuation" and periods:
+                    forward = forward_fcf_period(values.get("exit_forward"), iso(periods[-1]))
+                    if forward["exit_forward_period_end"] != config.get("exit_forward_period_end"):
+                        errors.append(f"{cid}: exit_forward must match the common next fiscal year")
+            except (ValueError, TypeError) as exc:
                 errors.append(str(exc))
     for case in adopted:
         drivers = case.get("driver_values")
@@ -669,17 +716,89 @@ def proposed_input_changes(packet, current_values):
     return changes
 
 
+def inspect_workbook(path, selected_sheet=None):
+    """Report common delivery artifacts in saved forecast and valuation sheets."""
+    sheet_ns = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+    rel_ns = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+    sheet_names = {"Profit Forecast", "Valuation Model"}
+    if selected_sheet is not None:
+        sheet_names = {selected_sheet}
+    legacy_labels = {"实时预测状态", "经营情景保存状态", "共同基础保存状态", "正在编辑", "已保存", "待刷新"}
+    legacy_notes = ("情景快照", "快照更新", "保存快照", "捕获日期", "三情景对比使用已保存")
+    legacy_case_label = re.compile(r"^(悲观|基准|乐观)\s*[·｜|：:]\s*(已保存|待刷新)$")
+    issues, scanned = [], []
+
+    def column_label(index):
+        label = ""
+        while index > 0:
+            index, remainder = divmod(index-1, 26)
+            label = chr(ord("A")+remainder) + label
+        return label
+
+    with ZipFile(path) as archive:
+        def read(part):
+            return ElementTree.fromstring(archive.read(part))
+
+        def content(node):
+            return "".join(t.text or "" for t in node.iter(sheet_ns+"t"))
+
+        paths = {r.attrib["Id"]: r.attrib["Target"] for r in read("xl/_rels/workbook.xml.rels")}
+        shared = ([content(entry) for entry in read("xl/sharedStrings.xml")]
+                  if "xl/sharedStrings.xml" in archive.namelist() else [])
+        for item in read("xl/workbook.xml").iter(sheet_ns+"sheet"):
+            name = item.attrib["name"]
+            if name not in sheet_names:
+                continue
+            target = paths[item.attrib[rel_ns+"id"]]
+            part = target.lstrip("/") if target.startswith("/") else posixpath.normpath("xl/"+target)
+            sheet = read(part)
+            scanned.append(name)
+            for tag, kind in (("row", "hidden_rows"), ("col", "hidden_columns")):
+                locations = [n.attrib["r"] if tag == "row" else
+                             ":".join(column_label(int(n.attrib[k])) for k in ("min", "max"))
+                             for n in sheet.iter(sheet_ns+tag) if n.get("hidden") in {"1", "true"}]
+                if locations:
+                    issues.append({"sheet": name, "kind": kind, "locations": locations})
+            for cell in sheet.iter(sheet_ns+"c"):
+                kind = cell.get("t")
+                value = cell.findtext(sheet_ns+"v", "")
+                formula = cell.findtext(sheet_ns+"f", "")
+                if kind == "s" and value:
+                    value = shared[int(value)]
+                elif kind == "inlineStr":
+                    value = content(cell)
+                address = cell.get("r")
+                if kind == "e" or "#REF!" in formula:
+                    issues.append({"sheet": name, "kind": "formula_error", "cell": address,
+                                   "detail": value if kind == "e" else "#REF!"})
+                if (value.strip() in legacy_labels
+                        or legacy_case_label.fullmatch(value.strip())
+                        or any(text in value for text in legacy_notes)
+                        or any(f'"{text}"' in formula for text in legacy_labels)):
+                    issues.append({"sheet": name, "kind": "legacy_snapshot", "cell": address})
+    if not scanned:
+        raise ValueError(f"no requested forecast or valuation sheet found: {', '.join(sorted(sheet_names))}")
+    return {"status": "FAIL" if issues else "PASS", "sheets": scanned, "issues": issues,
+            "limitations": ["Review visible content and any requested grouping. Recalculate all scenarios separately."]}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("calculate", "validate"))
+    parser.add_argument("command", choices=("calculate", "validate", "inspect-workbook"))
     parser.add_argument("input", type=Path)
+    parser.add_argument("--sheet", choices=("Profit Forecast", "Valuation Model"))
     args = parser.parse_args()
     try:
-        packet = json.loads(args.input.read_text(encoding="utf-8"))
-        if not isinstance(packet, dict):
-            raise ValueError("input must be a JSON object")
-        result = calculate(packet) if args.command == "calculate" else validate(packet)
-    except (ValueError, TypeError, KeyError, OSError, OverflowError) as exc:
+        if args.command == "inspect-workbook":
+            result = inspect_workbook(args.input, args.sheet)
+        else:
+            if args.sheet:
+                raise ValueError("--sheet is only available with inspect-workbook")
+            packet = json.loads(args.input.read_text(encoding="utf-8"))
+            if not isinstance(packet, dict):
+                raise ValueError("input must be a JSON object")
+            result = calculate(packet) if args.command == "calculate" else validate(packet)
+    except (ValueError, TypeError, KeyError, OSError, OverflowError, IndexError, BadZipFile, ElementTree.ParseError) as exc:
         result = {"status": "FAIL", "errors": [str(exc)]}
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
     return 1 if result["status"] == "FAIL" else 0

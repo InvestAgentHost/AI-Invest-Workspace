@@ -125,6 +125,8 @@ inbox/**
 *.docx
 *.xls
 *.xlsx
+# Portable, internally authored valuation skill template.
+!/.github/skills/valuation-binding-methodology/assets/forecast-valuation-template.xlsx
 *.ppt
 *.pptx
 *.parquet

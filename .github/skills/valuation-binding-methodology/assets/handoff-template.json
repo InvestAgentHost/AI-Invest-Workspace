@@ -10,7 +10,7 @@
     "currency": null,
     "amount_unit": null,
     "share_unit": null,
-    "method_version": "dividend-pfcf-net-shares-v3",
+    "method_version": "dividend-forward-pfcf-net-shares-v4",
     "latest_actual_period": null,
     "base_period_end": null,
     "workbook_path": null,
@@ -25,6 +25,7 @@
     "base_net_income": null,
     "common_basis_version": null,
     "forecast_periods": [],
+    "exit_forward_period_end": null,
     "operation": "initial"
   },
   "sources": [],

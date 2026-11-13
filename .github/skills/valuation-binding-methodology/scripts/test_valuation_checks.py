@@ -1,10 +1,19 @@
 """Behavioral tests using synthetic companies, without touching research files."""
 import copy
 from datetime import date, timedelta
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
+from zipfile import ZipFile
 
-from valuation_checks import (calculate, cumulative_to_quarters, present_value,
+from valuation_checks import (METHOD, calculate, cumulative_to_quarters, inspect_workbook, present_value,
                               proposed_input_changes, validate)
+
+
+def forward_after(exit_date, fcf=120, days=365):
+    exit_day = date.fromisoformat(exit_date)
+    return {"period_start": (exit_day + timedelta(days=1)).isoformat(),
+            "period_end": (exit_day + timedelta(days=days)).isoformat(), "fcf": fcf}
 
 
 def model():
@@ -18,14 +27,14 @@ def model():
                         "cash": {"debt_principal": 0, "financing_inflow": 0,
                                  "finance_lease_principal": 0, "acquisitions": 0,
                                  "other_necessary_uses": 0, "other_inflows": 0,
-                                 "equity_issuance_cash": 0, "minimum_cash": 0}})
-    return {"method_version": "dividend-pfcf-net-shares-v3", "valuation_date": "2030-12-31",
+                                 "equity_issuance_cash": 0, "minimum_cash": 0, "buyback_price": 30}})
+    return {"method_version": METHOD, "valuation_date": "2030-12-31",
             "currency": "USD", "amount_unit": "million", "share_unit": "million",
             "base_net_income": 100, "market_price": 20, "current_shares": 100,
             "required_return": 0.1, "exit_p_fcf": 20,
             "fcf_conversion_start": 0.9, "fcf_conversion_exit": 0.9,
             "payout_ratio": 0.5, "net_share_change": -0.01, "annual_issuance_rate": 0.002,
-            "opening_available_cash": 100, "years": periods}
+            "opening_available_cash": 100, "years": periods, "exit_forward": forward_after("2033-12-31")}
 
 
 def handoff():
@@ -44,7 +53,7 @@ def handoff():
                    "valuation_date": "2030-12-31", "fiscal_year_end": "12-31",
                    "fiscal_calendar_note": "calendar year", "currency": "USD",
                    "amount_unit": "million", "share_unit": "million",
-                   "method_version": "dividend-pfcf-net-shares-v3", "latest_actual_period": "2030Q2",
+                   "method_version": METHOD, "latest_actual_period": "2030Q2",
                    "scope": "forecast", "operation": "initial", "forecast_sheet": "Profit Forecast",
                    "valuation_sheet": "Valuation Model", "common_basis_version": "synthetic-v1",
                    "net_income_basis": "consolidated attributable to common shareholders",
@@ -78,12 +87,14 @@ def handoff():
 def valuation_handoff():
     p = handoff()
     p["config"]["scope"] = "valuation"
+    p["config"]["exit_forward_period_end"] = "2036-12-31"
     p["cases"] = [{"id": cid, "status": "adopted", "captured_at": "2030-08-01T10:00:00Z",
                    "basis_version": "synthetic-v1", "net_income_path": [100, 105, 110, 115, 120, 125],
                    "driver_values": {"revenue": [120, 130, 140, 150, 160]},
                    "valuation_inputs": {k: model()[k] for k in
                                         ("exit_p_fcf", "fcf_conversion_start", "fcf_conversion_exit",
-                                         "payout_ratio", "net_share_change")}}
+                                         "payout_ratio", "net_share_change")}
+                                       | {"exit_forward": forward_after("2035-12-31", days=366)}}
                   for cid in ("pessimistic", "base", "optimistic")]
     return p
 
@@ -99,12 +110,12 @@ def refresh_handoff():
 
 
 class CalculationTests(unittest.TestCase):
-    def test_final_conversion_changes_terminal_and_price(self):
+    def test_exit_year_conversion_changes_cash_but_not_terminal(self):
         a, b = model(), model()
         b["fcf_conversion_exit"] = 0.75
         ra, rb = calculate(a), calculate(b)
-        self.assertNotEqual(ra["summary"]["terminal_price"], rb["summary"]["terminal_price"])
-        self.assertNotEqual(ra["summary"]["target_price"], rb["summary"]["target_price"])
+        self.assertEqual(ra["summary"]["terminal_price"], rb["summary"]["terminal_price"])
+        self.assertEqual(ra["summary"]["target_price"], rb["summary"]["target_price"])
         self.assertAlmostEqual(rb["rows"][0]["fcf_conversion"], 0.9)
         self.assertAlmostEqual(rb["rows"][1]["fcf_conversion"], 0.825)
         self.assertAlmostEqual(rb["rows"][-1]["fcf_conversion"], 0.75)
@@ -122,7 +133,7 @@ class CalculationTests(unittest.TestCase):
         r = calculate(m)
         self.assertAlmostEqual(r["rows"][0]["shares_end"], 99)
         self.assertAlmostEqual(r["rows"][0]["dividend_per_share"], 105 * 0.5 / 99)
-        self.assertAlmostEqual(r["summary"]["terminal_price"], 100 * 1.05 ** 3 * 0.9 * 20 / (100 * 0.99 ** 3))
+        self.assertAlmostEqual(r["summary"]["terminal_price"], 120 * 20 / (100 * 0.99 ** 3))
         self.assertTrue(all("terminal_price" not in row and "irr" not in row for row in r["rows"]))
 
     def test_no_interim_fcf_double_count_or_debt_deduction(self):
@@ -137,8 +148,10 @@ class CalculationTests(unittest.TestCase):
 
     def test_gross_repurchase_uses_fcf_and_includes_issuance(self):
         row = calculate(model())["rows"][0]
-        self.assertAlmostEqual(row["gross_buyback_cash"], 105 * 0.9 * 20 * (0.002 + 0.01) / 0.99)
+        self.assertAlmostEqual(row["gross_buyback_cash"], 100 * (0.002 + 0.01) * 30)
         m = model()
+        m["exit_p_fcf"] = 24
+        self.assertEqual(calculate(m)["rows"], calculate(model())["rows"])
         m["years"][0]["cash"]["gross_buyback_cash"] = 11
         self.assertEqual(calculate(m)["rows"][0]["gross_buyback_cash"], 11)
 
@@ -160,15 +173,65 @@ class CalculationTests(unittest.TestCase):
         self.assertEqual(complete["status"], "PASS")
         self.assertEqual(complete["summary"]["distribution_coverage_status"], "PASS")
 
-    def test_positive_exit_fcf_required_but_start_can_be_zero(self):
+    def test_positive_forward_fcf_required_but_holding_year_fcf_can_be_zero(self):
         m = model()
         m["fcf_conversion_exit"] = 0
-        with self.assertRaisesRegex(ValueError, "exit FCF conversion"):
+        m["exit_forward"]["fcf"] = 0
+        with self.assertRaisesRegex(ValueError, "exit_forward comparable FCF"):
             calculate(m)
-        m["fcf_conversion_exit"], m["fcf_conversion_start"] = 0.9, 0
+        m["exit_forward"]["fcf"], m["fcf_conversion_start"] = 120, 0
         r = calculate(m)
         self.assertEqual(r["rows"][0]["fcf"], 0)
+        self.assertEqual(r["rows"][-1]["fcf"], 0)
         self.assertGreater(r["summary"]["terminal_price"], 0)
+
+    def test_only_next_year_cash_is_normalized_and_exit_timing_is_unchanged(self):
+        m = model()
+        m["exit_forward"] = forward_after("2033-12-31", 132.5, days=371)
+        r = calculate(m)
+        s = r["summary"]
+        self.assertEqual(s["exit_date"], "2033-12-31")
+        self.assertEqual(s["exit_forward_fcf_comparable"], 132.5)
+        m["exit_forward"]["comparable_fcf"] = 130
+        r = calculate(m)
+        s = r["summary"]
+        self.assertEqual(s["exit_forward_fcf_comparable"], 130)
+        self.assertAlmostEqual(s["terminal_price"], 130 * 20 / (100 * .99**3))
+        self.assertAlmostEqual(s["terminal_pv"], s["terminal_price"] / 1.1**s["holding_years"])
+        self.assertEqual(len(r["rows"]), 3)
+        m["exit_forward"]["period_start"] = "2034-01-02"
+        with self.assertRaisesRegex(ValueError, "immediately after"):
+            calculate(m)
+
+    def test_forward_fcf_changes_exit_price_without_adding_a_cashflow_period(self):
+        m = model()
+        before = calculate(m)
+        m["exit_forward"]["fcf"] *= 1.2
+        after = calculate(m)
+        self.assertEqual(before["rows"], after["rows"])
+        self.assertAlmostEqual(after["summary"]["terminal_price"], before["summary"]["terminal_price"] * 1.2)
+        self.assertGreater(after["summary"]["irr"], before["summary"]["irr"])
+
+    def test_loss_year_can_use_cash_flow_and_dividend_budgets(self):
+        m = model()
+        m["base_net_income"] = -10
+        m["years"][0].update(net_income=-5, operating_fcf=20, company_dividend=0)
+        r = calculate(m)
+        self.assertIsNone(r["summary"]["net_income_cagr"])
+        self.assertIsNone(r["rows"][0]["fcf_conversion"])
+        self.assertEqual(r["rows"][0]["fcf"], 20)
+        self.assertEqual(r["rows"][0]["company_dividend"], 0)
+        self.assertGreater(r["summary"]["target_price"], 0)
+        del m["years"][0]["operating_fcf"]
+        with self.assertRaisesRegex(ValueError, "separately forecast operating_fcf"):
+            calculate(m)
+
+    def test_missing_buyback_price_keeps_funding_partial(self):
+        m = model()
+        del m["years"][0]["cash"]["buyback_price"]
+        r = calculate(m)
+        self.assertIsNone(r["rows"][0]["gross_buyback_cash"])
+        self.assertEqual(r["summary"]["funding_status"], "PARTIAL")
 
     def test_debt_can_break_funding(self):
         m = model()
@@ -259,6 +322,7 @@ class CalculationTests(unittest.TestCase):
             year["period_start"] = (prior + timedelta(days=1)).isoformat()
             prior += timedelta(days=days)
             year["period_end"] = year["cashflow_date"] = prior.isoformat()
+        m["exit_forward"] = forward_after(prior.isoformat(), days=364)
         r = calculate(m)
         self.assertEqual(r["status"], "PASS")
         self.assertAlmostEqual(r["rows"][0]["holding_years"], 371 / 365)
@@ -268,6 +332,7 @@ class CalculationTests(unittest.TestCase):
         m = model()
         del m["market_price"]
         m["years"] = m["years"][:1]
+        m["exit_forward"] = forward_after("2031-12-31", days=366)
         m["fcf_conversion_start"], m["fcf_conversion_exit"] = 0.3, 0.8
         r = calculate(m)
         self.assertNotIn("irr", r["summary"])
@@ -288,6 +353,13 @@ class CalculationTests(unittest.TestCase):
         stub_tau = (date(2030, 11, 1) - date(2030, 8, 1)).days / 365
         self.assertAlmostEqual(with_stub["summary"]["research_date_target_price"], r["summary"]["research_date_target_price"] + 0.6 / 1.1 ** stub_tau)
         self.assertEqual(with_stub["summary"]["irr"], r["summary"]["irr"])
+        m["research_market_price"] = 20
+        research_result = calculate(m)
+        s = research_result["summary"]
+        flows = [(0.6, stub_tau)] + [(row["dividend_per_share"], row["holding_years"] + tau)
+                                     for row in research_result["rows"]]
+        flows.append((s["terminal_price"], s["holding_years"] + tau))
+        self.assertAlmostEqual(present_value(flows, s["research_date_irr"]), 20)
         m["pre_base_dividends"][0]["date"] = "2030-08-01"
         with self.assertRaisesRegex(ValueError, "stub dividend dates"):
             calculate(m)
@@ -317,6 +389,7 @@ class CrossCompanyTests(unittest.TestCase):
         for year, y in zip(m["years"], range(2031, 2036)):
             year.update(period_start=f"{y}-01-01", period_end=f"{y}-12-31",
                         cashflow_date=f"{y}-12-31", net_income=100)
+        m["exit_forward"] = forward_after("2035-12-31", days=366)
         return m
 
     def test_subscription_company_issuance_then_buybacks_and_dividends(self):
@@ -335,11 +408,11 @@ class CrossCompanyTests(unittest.TestCase):
         self.assertEqual([r["company_dividend"] for r in result["rows"]], [0, 0, 0, 16.5, 38])
         self.assertEqual([r["gross_buyback_cash"] for r in result["rows"][:2]], [0, 0])
         final_shares = 100 * 1.02**2 * .99 * .98**2
-        self.assertAlmostEqual(result["summary"]["terminal_price"], 199.5 * 20 / final_shares)
+        self.assertAlmostEqual(result["summary"]["terminal_price"], 120 * 20 / final_shares)
         # Terminal and earlier distributions must use the same resolved path.
         days4 = (date(2034, 12, 31) - date(2030, 12, 31)).days / 365
         days5 = (date(2035, 12, 31) - date(2030, 12, 31)).days / 365
-        expected = 16.5 / (final_shares / .98) / 1.1**days4 + (38 + 199.5 * 20) / final_shares / 1.1**days5
+        expected = 16.5 / (final_shares / .98) / 1.1**days4 + (38 + 120 * 20) / final_shares / 1.1**days5
         self.assertAlmostEqual(result["summary"]["target_price"], expected)
 
     def test_expansion_company_negative_cash_then_recovery(self):
@@ -353,11 +426,11 @@ class CrossCompanyTests(unittest.TestCase):
         self.assertEqual(result["status"], "PASS")
         self.assertEqual(result["rows"][0]["fcf"], -30)
         self.assertEqual(result["rows"][0]["cash_close"], 170)
-        self.assertIsNone(result["rows"][0]["gross_buyback_proxy"])
-        self.assertEqual(result["summary"]["terminal_price"], 18)
+        self.assertEqual(result["rows"][0]["gross_buyback_proxy"], 0)
+        self.assertEqual(result["summary"]["terminal_price"], 24)
         self.assertEqual(result["summary"]["distribution_coverage_status"], "FAIL")
         del m["years"][0]["cash"]["gross_buyback_cash"]
-        self.assertEqual(calculate(m)["summary"]["funding_status"], "PARTIAL")
+        self.assertEqual(calculate(m)["summary"]["funding_status"], "PASS")
 
     def test_partial_overrides_keep_defaults_and_invalid_paths_reject(self):
         m = model()
@@ -371,7 +444,7 @@ class CrossCompanyTests(unittest.TestCase):
                     [{"period_end": "2032-12-31", "net_share_change": -1}],
                     [{"period_end": "2032-12-31", "payout_ratio": None}],
                     [{"period_end": "2032-12-31", "payout_ration": .2}],
-                    [{"period_end": "2033-12-31", "fcf_conversion": 0}],
+                    [{"period_end": "2034-12-31", "fcf_conversion": 0}],
                     m["annual_overrides"] * 2):
             with self.subTest(bad=bad):
                 m["annual_overrides"] = bad
@@ -468,13 +541,16 @@ class HandoffTests(unittest.TestCase):
             (p if section is None else p[section])[key] = value
             self.assertEqual(validate(p)["status"], "FAIL")
 
-    def test_forecast_can_preserve_base_losses_but_valuation_route_cannot(self):
+    def test_forecast_and_valuation_can_preserve_base_losses(self):
         for base in (0, -100):
             p = handoff()
             p["config"]["base_net_income"] = base
             self.assertEqual(validate(p)["status"], "PASS")
-            p["config"]["scope"] = "valuation"
-            self.assertEqual(validate(p)["status"], "FAIL")
+            p = valuation_handoff()
+            p["config"]["base_net_income"] = base
+            for case in p["cases"]:
+                case["net_income_path"][0] = base
+            self.assertEqual(validate(p)["status"], "PASS")
 
     def test_handoff_horizon_requires_five_years_or_explicit_reason(self):
         p = handoff()
@@ -546,9 +622,9 @@ class HandoffTests(unittest.TestCase):
         p["metrics"][0]["workbook_mapping"][0]["cell"] = "$XFD$1048576"
         self.assertEqual(validate(p)["status"], "PASS")
 
-    def test_zero_exit_conversion_invalid_in_adopted_case(self):
+    def test_missing_forward_period_invalid_in_adopted_case(self):
         p = valuation_handoff()
-        p["cases"][0]["valuation_inputs"]["fcf_conversion_exit"] = 0
+        del p["cases"][0]["valuation_inputs"]["exit_forward"]
         self.assertEqual(validate(p)["status"], "FAIL")
 
     def test_history_must_be_right_of_forecast(self):
@@ -606,6 +682,39 @@ class HandoffTests(unittest.TestCase):
         p = handoff()
         p["sources"][0]["path"] = "../../external/source.html"
         self.assertEqual(validate(p)["status"], "FAIL")
+
+
+class WorkbookDeliveryTests(unittest.TestCase):
+    def test_checks_saved_artifacts_only_in_requested_sheets(self):
+        ns = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+        rel = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+        with TemporaryDirectory() as folder:
+            path = Path(folder) / "model.xlsx"
+            with ZipFile(path, "w") as package:
+                package.writestr("xl/workbook.xml", f'<workbook xmlns="{ns}" xmlns:r="{rel}"><sheets>'
+                                 '<sheet name="Profit Forecast" r:id="p"/><sheet name="Valuation Model" r:id="v"/>'
+                                 '</sheets></workbook>')
+                package.writestr("xl/_rels/workbook.xml.rels",
+                                 '<Relationships><Relationship Id="p" Target="worksheets/profit.xml"/>'
+                                 '<Relationship Id="v" Target="/xl/worksheets/value.xml"/></Relationships>')
+                package.writestr("xl/sharedStrings.xml", f'<sst xmlns="{ns}"><si><t>基准 · 已保存</t></si></sst>')
+                package.writestr("xl/worksheets/profit.xml", f'<worksheet xmlns="{ns}"><sheetData>'
+                                 '<row r="9"><c r="A9" t="inlineStr"><is><t>低于现金下限</t></is></c></row>'
+                                 '</sheetData></worksheet>')
+                package.writestr("xl/worksheets/value.xml", f'<worksheet xmlns="{ns}"><cols>'
+                                 '<col min="11" max="15" hidden="true"/></cols><sheetData>'
+                                 '<row r="302" hidden="1"><c r="A302" t="s"><v>0</v></c>'
+                                 '<c r="B302"><f>IF(A1,"正在编辑","基准")</f></c>'
+                                 '<c r="C302" t="e"><f>1/0</f><v>#DIV/0!</v></c>'
+                                 '</row></sheetData></worksheet>')
+            self.assertEqual(inspect_workbook(path, "Profit Forecast")["status"], "PASS")
+            result = inspect_workbook(path)
+            self.assertEqual(result["status"], "FAIL")
+            issues = result["issues"]
+            self.assertIn({"sheet": "Valuation Model", "kind": "hidden_rows", "locations": ["302"]}, issues)
+            self.assertIn({"sheet": "Valuation Model", "kind": "hidden_columns", "locations": ["K:O"]}, issues)
+            self.assertEqual([i["cell"] for i in issues if i["kind"] == "legacy_snapshot"], ["A302", "B302"])
+            self.assertEqual([i["cell"] for i in issues if i["kind"] == "formula_error"], ["C302"])
 
 
 if __name__ == "__main__":

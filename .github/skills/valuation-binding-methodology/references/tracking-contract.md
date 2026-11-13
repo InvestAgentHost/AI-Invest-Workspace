@@ -15,7 +15,7 @@
 
 ### 字段填写约定
 
-当前 schema 为 `valuation-handoff.v2`、method_version 为 `dividend-pfcf-net-shares-v3`。config.scope 为 `forecast` 或 `valuation`；forecast_sheet=`Profit Forecast`，完整估值的 valuation_sheet=`Valuation Model`。config 还记录 net_income_basis、base_net_income、common_basis_version，以及 forecast_periods（不含基年的未来年度期末 ISO 日期列表，默认五项；用户另定期限时记录 forecast_horizon_reason）。纯盈利预测可以记录零/负利润，CAGR 不适用时明确显示，不能因估值公式需要正利润而修改预测。
+当前 schema 为 `valuation-handoff.v2`，method_version 为 `dividend-forward-pfcf-net-shares-v4`。config.scope 为 `forecast` 或 `valuation`。forecast_sheet 为 `Profit Forecast`，完整估值的 valuation_sheet 为 `Valuation Model`。config 记录利润口径、基年净利、共同基础版本、forecast_periods（持有期财年末 ISO 日期，默认五项）及 exit_forward_period_end（完整估值必填）。用户另定期限时记录 forecast_horizon_reason。纯盈利预测可以记录零或负利润，并说明 CAGR 适用性。
 
 config.operation 为 `initial` 或 `refresh`。refresh 要求 previous_snapshot_path 及 updates；最新更新的 as_of 与 config.as_of 相同。旧资料恢复不全时记录缺口，不伪装首次构建绕过接管检查。
 
@@ -28,12 +28,12 @@ config.operation 为 `initial` 或 `refresh`。refresh 要求 previous_snapshot_
 - history_window：annual_periods、interim_periods 为选定可比窗口；按实际披露频率选择，可无中期数据，不强造季度。
 - forecast_layout：section（current_year/future_years；无需预测基年时只用后者）、sheet、row、forecast_columns（Excel从1起列号）、history_cells；每个 history_cell 含 period、column、actual_sheet、actual_cell。每个块列全选定历史，行由本 block.row 指定，同指标对齐。
 - workbook_mapping：sheet、section、period、cell、role（actual/input/formula/output）。重要指标必须有实际地址映射；不落表的辅助指标可标 material=false。详细映射在索引区，主预测区不堆内部 ID。
-- cases：完整估值的 id 为 pessimistic/base/optimistic，含 status（adopted/pending）、captured_at、basis_version、net_income_path（基年加各预测年）、driver_values（差异 metric ID→年度采用值数组）、valuation_inputs（exit_p_fcf、fcf_conversion_start、fcf_conversion_exit、payout_ratio、net_share_change）。valuation_inputs 可含 model contract 定义的 annual_overrides，捕获/恢复时一并保存。driver_values 必须绑定已定义指标，共用输入通过 basis_version 引用同一版本；不要把它们重复拷贝三遍。待定情景不得带伪造的利润/采用值。仅预测任务不要求 cases。
+- cases：完整估值的 id 为 pessimistic/base/optimistic，含 status、captured_at、basis_version、net_income_path（基年加持有期）、driver_values（已定义指标的持有期采用值）及 valuation_inputs。valuation_inputs 保留退出倍数、转换率、派息和股数参数、实际采用的年度覆盖，以及 `exit_forward={period_start, period_end, fcf}`。采用可比调整时在 exit_forward 增列 `comparable_fcf`，并在指标映射记录次年 FCF 的口径、经营依据和单元格。
 - updates：as_of、previous_snapshot_path、new_source_ids、actual_vs_forecast、input_changes、valuation_attribution、review_triggers_hit、checks、unresolved。最新刷新记录中 new_source_ids、actual_vs_forecast、input_changes、valuation_attribution、checks、unresolved 均为显式数组；无对应变化可为空，不得省略来冒充完成。actual_vs_forecast 保留原预测版本、实际数值、差异与原因；checks 至少有一项 kind/status 记录，状态为 PASS/PARTIAL/FAIL/BLOCKED，分别记录适用的计算、证据、工作簿保真与版面核验。仅填日期不算完成更新。
 
 核验器检查记录结构与预测右侧映射声明，不直接打开原始来源或 Excel；真正发布前必须检查声明与实际文件一致。初次构建 previous_snapshot_path 可为空，后续更新必须有旧快照。validation.status 不能只因结构检查通过就升级为研究 PASS。
 
-已采用输入唯一有效版本：参数记录与 Excel 保留双向映射/差异检查。用户手改 Excel 时先检测并登记 workbook-origin 决策，同步采用层，不用旧记录改回。实时利润行链接经营预测；三情景保存值有意独立，不能宣称自动同步。捕获日期/共同版本、完整基年与利润路径长度须一致；同一利润结果匹配并不能替代驱动恢复检查。
+用户手改 Excel 时登记 workbook-origin 决策并更新采用值。工作簿的三档经营输入由一个下拉框实时选取。捕获日期、共同版本、利润路径及次年 FCF 存在表外交接快照。用实际驱动及有效期核对更新。
 
 ## 更新策略
 
@@ -52,7 +52,7 @@ config.operation 为 `initial` 或 `refresh`。refresh 要求 previous_snapshot_
 2. 取本轮披露、纪要、市场数据，记录截止日与原始来源，不覆盖旧源。
 3. 实际替换预测并保留旧预测，算金额/比率误差及经营原因，不只比 EPS。
 4. 复核未实现期间与未来年度的驱动、指引、行业假设；只更新受影响依赖。
-5. 重算全年及五年利润，逐个保存受影响情景与恢复驱动，再更新现金、股份和估值；共同基础变化时三情景全部重存。滚期同时改基期、预测列、CAGR、退出年和使用说明，不跳过过渡现金流。
+5. 重算全年及持有期利润、退出次年 FCF、资金与估值。逐档刷新受影响情景的采用值与快照。滚期同步更新基期、预测列、CAGR、退出日期、退出次年和过渡期股息。
 6. 独立计算、来源/版面验收，同步报告需变动处或交付文本，记录 PASS/PARTIAL/BLOCKED。
 
 区分市场、实际业绩、预测、时间滚动、方法口径的估值变化。按固定顺序替换归因时记录顺序及交互残差，不当作唯一因果贡献。
