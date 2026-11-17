@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "retained_at": "2026-11-16T02:30:29.643291+00:00",
+  "update_policy": "Versioned report snapshots bundled with the skill. Update files, hashes and outlines together; do not silently refresh from external originals.",
+  "samples": [
+    {
+      "sample": "GGG",
+      "retained_path": "assets/report-samples/GGG.docx",
+      "bytes": 9229293,
+      "sha256": "a012f03d9103575f05483b3d48c94af0e774a5a5d211eacd6fbc99983d4e89c7",
+      "usage": "method and presentation reference only; not target-company evidence",
+      "source_kind": "user-provided report",
+      "original_filename": "GGG.docx"
+    },
+    {
+      "sample": "ALLE",
+      "retained_path": "assets/report-samples/ALLE.docx",
+      "bytes": 11225529,
+      "sha256": "244d96ce942f76e91908db5c65e47bd3c478e0497071f76e10c85e072ff66228",
+      "usage": "method and presentation reference only; not target-company evidence",
+      "source_kind": "user-provided report",
+      "original_filename": "ALLE.docx"
+    },
+    {
+      "sample": "COCO",
+      "retained_path": "assets/report-samples/COCO.docx",
+      "bytes": 2463814,
+      "sha256": "7fabf7687c4eb47a08fd14d82d8960ce79ae86303c07b5be3a93a361603bae08",
+      "usage": "method and presentation reference only; not target-company evidence",
+      "source_kind": "user-provided report",
+      "original_filename": "COCO.docx"
+    }
+  ]
+}

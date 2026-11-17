@@ -1,0 +1,7 @@
+# The user explicitly approved these three bundled reports for Git sync.
+*.docx
+!/GGG.docx
+!/ALLE.docx
+!/COCO.docx
+# The portable manifest is tracked. Generate the structure index locally.
+/outlines.json

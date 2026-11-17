@@ -1,6 +1,6 @@
 # 公司投资逻辑跟踪入口
 
-当前索引版本：2026-11-03-v3。下列保留原四家公司与后续接入历史，PEP及MNST研究条目见文末。各公司研究日期、成功覆盖点和调度独立记录，不代表已检查截至本日的全部最新信息。
+当前索引版本为 2026-11-17-v1。各公司研究日期、成功覆盖点和调度分别记录。GGG、ALLE 和 COCO 的最新跟踪入口见文末。
 
 | 公司 | 独立规则 | 当前保留基线 | 模型边界 |
 |---|---|---|---|
@@ -30,7 +30,7 @@
 
 当前索引版本：**2026-10-26-v1**。以上为原四家公司初始化记录，规则和 2026-10-21 基线保持原文；本次仅追加 OTLY、COCO 和伦敦 CCH。三家均处于**初筛后跟踪**，动作状态统一为**跟踪**；采用分析师 2026-10-26 周会判断，不因接入启动深度研究。CCH 独立位于 UK 目录，不能混同美股 KO。
 
-| 公司/市场 | 独立规则 | 当前保留基线 | 周会重点与资源 | 模型边界 |
+| 公司/市场 | 独立规则入口 | 当时接入基线 | 周会重点与资源 | 当时模型边界 |
 |---|---|---|---|---|
 | OTLY / US Nasdaq ADS | [rules.md](OTLY-oatly/tracking/rules.md) | [2026-10-26.md](OTLY-oatly/tracking/baselines/2026-10-26.md) | 事件驱动；后续业绩、修复持续性、展期/再融资、潜在资产处置及股东权益。保留 2026-10-21 排除历史；当前跟踪。 | Word/Excel 只读，不建立模型运行依赖 |
 | COCO / US | [rules.md](COCO-vita-coco/tracking/rules.md) | [2026-10-26.md](COCO-vita-coco/tracking/baselines/2026-10-26.md) | 持续跟踪重要经营变化和重大事件；后续安排深度研究资源，本次不启动。 | Word 只读，无新增模型 |
@@ -65,3 +65,27 @@ PEP于2026-11-03纳入原合并日报，当前跟踪池为ADSK、KO、LIN、MCD�
 用户于 2026-11-03 明确要求归档 MNST 初研报告，并在归档后加入既有每日跟踪任务。沿用已有 [MNST 公司目录](MNST-monster-beverage/README.md) 和管理层研究，不重复建公司；上传原件已原样归入 `sources/companies/US/MNST-monster-beverage/user-provided/2026-11-03/MNST.docx`，原惯例收件入口使用相对符号链接。报告 SHA256、不同财务覆盖期及历史估值口径缺口见 [materials.md](MNST-monster-beverage/materials.md)；接收日不是报告日期，不把旧场景转为现行买点。
 
 **MNST 于 2026-11-03 已接入既有合并日报**，沿用每日北京时间 08:30（Asia/Shanghai，UTC 00:30）和新业绩独立分析规则；平时轻量跟踪估值与实质变化，不自动启动深研，无额外盘中／夜间提醒。采用状态及权限见 [人工决定记录](MNST-monster-beverage/tracking/decisions.md)。
+
+## 2026-11-17 GGG 深度研究归档
+
+| 公司 | 归档与跟踪入口 | 接入状态 |
+|---|---|---|
+| GGG / US NYSE | [研究归档](GGG-graco/archive.md)、[跟踪规则](GGG-graco/tracking/rules.md)、[保留基线](GGG-graco/tracking/baselines/2026-11-17.md) | 可手动调用。拟议重审条件待确认，报告和工作簿只读。 |
+
+跟踪专业油漆渠道恢复、工业有机订单及 Valco、White Knight 积压转化、ABB、经营资本回报和 ASR 融资。GGG 仅纳入本地索引，尚未接入既有合并日报。
+
+## 2026-11-17 ALLE 深度研究归档
+
+| 公司/市场 | 独立规则 | 保留基线 | 研究范围与状态 |
+|---|---|---|---|
+| ALLE / US NYSE | [rules.md](ALLE-allegion/tracking/rules.md) | [2026-11-17.md](ALLE-allegion/tracking/baselines/2026-11-17.md) | 深研后长期跟踪，等待估值回落。关注美洲非住宅销量、存量电子化、国际效率与并购回报。 |
+
+[归档入口](ALLE-allegion/README.md)保存主报告和底稿版本，[人工决定](ALLE-allegion/tracking/decisions.md)记录权限。本地组件已备齐，合并日报待接入。
+
+## 2026-11-17 COCO 深度报告归档与跟踪更新
+
+| 公司/市场 | 当前材料 | 现行范围 |
+|---|---|---|
+| COCO / US | [深度研究归档](COCO-vita-coco/archive.md) · [独立规则](COCO-vita-coco/tracking/rules.md) · [2026-11-17 基线](COCO-vita-coco/tracking/baselines/2026-11-17.md) | 已归档深度报告，继续跟踪。报告判断为长期跟踪、等待价格回落。重点为品牌动销与供给交付、Copra 扩产及客户留存、正常化盈利与现金转换。报告与主底稿只读。 |
+
+当前本地规则 `2026-11-17-v1` 承接 V1、V2，云端同步待核对。既有合并日报的时间与交付约定沿用历史记录。本轮核对归档材料和指定原始来源，逐来源公开信息扫描覆盖点留待实际运行记录。[人工决定记录](COCO-vita-coco/tracking/decisions.md)

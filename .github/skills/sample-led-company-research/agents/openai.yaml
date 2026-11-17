@@ -1,0 +1,4 @@
+interface:
+  display_name: "样本范式公司深研"
+  short_description: "参考研究样本逐章深研，在中文 Word 报告中给出盈利预测和现价估值判断"
+  default_prompt: "请使用 $sample-led-company-research，参考 GGG、ALLE、COCO 的论证方式，对指定公司逐章深研并交付中文 Word，含逐年盈利预测、合理价值区间及现价贵便宜判断。"

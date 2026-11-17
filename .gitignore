@@ -50,6 +50,7 @@ sources/**
 
 # Company-local external material moved alongside research reports.
 research/companies/**/_file/
+research/companies/**/sources/
 
 # Rebuildable company-research intake and preprocessing artifacts.
 # Keep durable report Markdown at the company directory root tracked.
@@ -147,3 +148,6 @@ inbox/**
 # formats above.
 !research/companies/**/outputs/**/*.xlsx
 !research/companies/**/*.docx
+
+# Report render and verification files stay local, including draft Word files.
+research/companies/**/outputs/qa/

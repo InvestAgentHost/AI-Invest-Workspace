@@ -11,6 +11,8 @@ tags: [historical-financials, sec-originals, excel]
 
 # COCO 历史财务 Excel 底稿
 
+本文记录 2026-11-03 的历史底稿范围和复核。当前主底稿已扩展盈利预测及两种期限估值，见[深度研究归档](archive.md)。
+
 本轮承接已完成的数据准备，生产历史实际值与公式派生指标；不包含盈利预测、估值或深度研究正文。原 Word 及 2026-10-26 投资判断保持不变。
 
 ## 工作簿与覆盖
@@ -45,9 +47,9 @@ tags: [historical-financials, sec-originals, excel]
 
 ## 本地资产与复核入口
 
-工作簿和可重建审计材料保持 Git 忽略，不上传外部服务。工作簿尚未移入正式定稿目录 `outputs/workbooks/`。
+历史复核记录位于本地可重建目录。主底稿的当前 Git 状态见[深度研究归档](archive.md)。
 
 - 原件：`sources/companies/US/COCO-vita-coco/sec/2026-11-03/`。
 - 来源索引、映射、完整输入回读、引擎结果及独立复核记录：`data/derived/companies/US/COCO-vita-coco/excel/`，主要入口为 `filings.json`、`model.json`、`verification.json` 和 `review.json`。
 - 经营专项勾稽与范围保留检查：同目录 `operating-verification.json`。通用验证器不兼容公司定制模型的实际结果保留在 `generic-verifier-result.json` 及复核记录中；采用公司本地原件回读与等效检查，未把该通用工具的结果改写成通过。
-- 跨设备时按 `company.yaml` 的手工携带路径保存工作簿、原件及复核记录。
+- 跨设备时按 `company.yaml` 的手工携带路径保存原件及复核记录。

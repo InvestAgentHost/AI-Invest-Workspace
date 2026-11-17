@@ -7,15 +7,22 @@ tickers: [COCO]
 research_path: research/companies/US/COCO-vita-coco
 inbox_path: research/companies/US/COCO-vita-coco/data
 status: watchlist
-research_stage: historical-excel
-as_of: 2026-11-03
-decision_as_of: 2026-10-26
-decision_origin: user-reported-weekly-meeting
-decision: "跟踪；后续安排资源进行深度研究。"
-resource_decision: "用户已授权历史Excel底稿生产；本轮止于历史实际值、公式指标与数据复核，不含预测、估值或深度研究正文。"
-current_report: research/companies/US/COCO-vita-coco/data/inbox/2026-10-26/COCO.docx
-current_report_sha256: 7fabf7687c4eb47a08fd14d82d8960ce79ae86303c07b5be3a93a361603bae08
-current_round_materials: sec-originals-and-historical-excel
+research_stage: deep-research-archived
+as_of: 2026-11-17
+decision_as_of: 2026-11-17
+decision_origin: user-provided-deep-research-report
+decision: "长期跟踪，等待价格回落。"
+resource_decision: "归档用户指定的最新深度报告，更新跟踪基线及规则。"
+current_report: sources/companies/US/COCO-vita-coco/user-provided/2026-11-17/COCO.docx
+current_report_sha256: 650f02d2d0ceb6a8f570b23b3ee883290ffb7b224d628868a47dd7da771c0311
+current_round_materials: deep-research-report-forecast-and-valuation
+current_archive: research/companies/US/COCO-vita-coco/archive.md
+tracking:
+  version: 2026-11-17-v1
+  rules: research/companies/US/COCO-vita-coco/tracking/rules.md
+  baseline: research/companies/US/COCO-vita-coco/tracking/baselines/2026-11-17.md
+  decisions: research/companies/US/COCO-vita-coco/tracking/decisions.md
+  cloud_rules_sync: pending-verification
 historical_workbook:
   as_of: 2026-11-03
   status: complete
@@ -39,7 +46,7 @@ data_preparation:
   handoff: research/companies/US/COCO-vita-coco/data-preparation-2026-11-03.md
   context: research/companies/US/COCO-vita-coco/data/context/2026-11-03-source-preparation
   validation: data/derived/companies/US/COCO-vita-coco/2026-11-03/data-preparation-validation.json
-automated_monitoring: not-configured-by-this-task
+automated_monitoring: existing-merged-digest
 destinations:
   sec: sources/companies/US/COCO-vita-coco/sec
   ir: sources/companies/US/COCO-vita-coco/ir
@@ -56,5 +63,4 @@ manual_sync_paths:
   - research/companies/US/COCO-vita-coco/data/inbox/2026-10-26
   - research/companies/US/COCO-vita-coco/data/context/2026-11-03-source-preparation
   - sources/companies/US/COCO-vita-coco
-  - research/companies/US/COCO-vita-coco/outputs/company-research-to-excel
   - data/derived/companies/US/COCO-vita-coco/excel
