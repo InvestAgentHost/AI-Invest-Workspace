@@ -39,7 +39,7 @@ description: 参照用户提供的 GGG、ALLE、COCO 等研究报告样本，按
 4. **逐章写作和复核。** 起草前读 [写作与洞见](references/writing-and-insight.md)，基本面按[专门方法](references/fundamentals.md)完成各部分分析与图组，表图按 [图像规范](references/figures-and-images.md) 制作。根据证据解释经营机制，形成各章的局部洞见，并用反证检验。
 5. **留档并续接。** 多章研究使用 [工作记录](references/working-records.md)，保留原资料、核验数据、章 memo、章稿与读者反馈；恢复摘要只导航，不取代证据。短问题不新建整套项目档案。
 6. **预测与估值。** 主体章节完成并复核后，按[盈利预测与现价估值](references/forecast-and-valuation.md)建立可复算的逐年预测、价值区间和现价判断。模型依据公司的经济机制和证据调整。
-7. **合稿与交付。** 主作者在主体完成后归纳关键问题和全篇主线，统一口径并处理矛盾，结合适用的估值判断撰写开篇。按 [复核与交付](references/review-and-delivery.md) 检查当前正文、图像和实际成品。可使用当前环境的文档制作工具；工具负责生成和渲染，不引入另一套研究方法。
+7. **合稿与交付。** 主作者在主体完成后归纳关键问题和全篇主线，统一口径并处理矛盾，结合适用的估值判断撰写开篇。排版前读 [Word 字体与版面](references/review-and-delivery.md#word-字体与版面)，交付前按 [复核与交付](references/review-and-delivery.md) 检查当前正文、图像和实际成品。可使用当前环境的文档制作工具；工具负责生成和渲染，不引入另一套研究方法。
 
 ## 独立性与维护边界
 
